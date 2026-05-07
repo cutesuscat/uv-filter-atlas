@@ -33,6 +33,7 @@
     --uv-uvb: #5e3aa3;
     --uv-uva2: #b04a8a;
     --uv-uva1: #c98a3a;
+    --hev: #4d80b8;          /* blue for visible/HEV — distinct from UVA-I amber */
     --uv-vis: #d8d3cb;
     --serif: 'Inter', -apple-system, system-ui, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -60,6 +61,7 @@
       --uv-uvb: #b9a0e8;
       --uv-uva2: #e09bc4;
       --uv-uva1: #e8b977;
+      --hev: #7eafd9;
       --uv-vis: #2d2737;
     }
   }
@@ -68,7 +70,7 @@
     --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
     --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
     --ok:#87c697; --ok-soft:#1d2c22; --moderate:#e2b970; --moderate-soft:#2e2515;
-    --uv-uvb:#b9a0e8; --uv-uva2:#e09bc4; --uv-uva1:#e8b977; --uv-vis:#2d2737;
+    --uv-uvb:#b9a0e8; --uv-uva2:#e09bc4; --uv-uva1:#e8b977; --hev:#7eafd9; --uv-vis:#2d2737;
   }
 
   html{ scroll-behavior:smooth }
@@ -226,10 +228,12 @@
     transition: all .2s var(--ease);
   }
   .chip:hover{ border-color: var(--ink-soft) }
-  .chip.active{ background: var(--ink); border-color: var(--ink); color: var(--bg) }
-  .chip[data-group="range"].active{ background: var(--accent); border-color: var(--accent); color: #fff }
-  .chip[data-group="stab"].active{ background: var(--warn); border-color: var(--warn); color: #fff }
-  .chip[data-group="region"].active{ background: var(--ok); border-color: var(--ok); color: #fff }
+  .chip.active{
+    background: var(--accent-soft); border-color: var(--accent);
+    color: var(--accent); font-weight: 600;
+  }
+  .chip[data-group="stab"].active{ background: var(--warn-soft); border-color: var(--warn); color: var(--warn) }
+  .chip[data-group="region"].active{ background: var(--ok-soft); border-color: var(--ok); color: var(--ok) }
 
   .group-label{
     font: 500 0.66rem var(--mono); color: var(--muted); letter-spacing: 1.6px;
@@ -315,6 +319,7 @@
   .spec-svg .band-uvb{ fill: rgba(94,58,163,0.05) }
   .spec-svg .band-uva2{ fill: rgba(176,74,138,0.05) }
   .spec-svg .band-uva1{ fill: rgba(201,138,58,0.05) }
+  .spec-svg .band-hev{ fill: rgba(77,128,184,0.06) }
   .spec-svg .band-vis{ fill: rgba(216,211,203,0.06) }
   .spec-svg .band-label{ fill: var(--muted); font: 500 8px var(--mono); letter-spacing: 0.6px; text-transform: uppercase }
   .spec-svg .curve{
@@ -412,19 +417,62 @@
     display:inline-block; width:10px; height:10px; border-radius: 50%; margin-right: 6px;
     vertical-align: middle;
   }
-  .scatter-tooltip{
-    position: absolute; pointer-events: none;
-    background: var(--ink); color: var(--bg);
-    font: 500 0.78rem var(--mono); padding: 6px 10px;
-    border-radius: 4px; opacity: 0; transition: opacity .15s;
-    transform: translate(-50%, -100%); margin-top: -8px;
-    white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 10;
+  /* Side info pane (replaces cursor-following tooltip) */
+  .scatter-layout{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 24px;
+    align-items: start;
   }
-  .scatter-tooltip.show{ opacity: 1 }
-  .scatter-tooltip .tt-name{ font-weight: 700 }
-  .scatter-tooltip .tt-sub{ color: rgba(255,255,255,0.6); margin-top: 2px }
+  @media (max-width: 820px){
+    .scatter-layout{ grid-template-columns: 1fr }
+  }
+  .scatter-info{
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px;
+    font-size: 0.85rem;
+    align-self: start;
+    min-height: 360px;
+    transition: border-color .2s var(--ease);
+  }
+  .scatter-info.has-data{ border-color: var(--accent) }
+  .info-empty{
+    color: var(--muted); font: 500 0.82rem var(--mono);
+    text-align: center; padding: 60px 8px 0;
+    line-height: 1.7;
+  }
+  .info-empty-icon{
+    font-size: 2rem; opacity: 0.4;
+    margin-bottom: 14px; font-weight: 300;
+  }
+  .info-name{
+    font-size: 1.1rem; font-weight: 700; line-height: 1.2;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .info-alias{
+    font: 500 0.7rem var(--mono); color: var(--muted);
+    margin-bottom: 14px; line-height: 1.4;
+  }
+  .info-row{
+    padding: 8px 0; border-top: 1px solid var(--line-soft);
+    font-size: 0.8rem;
+  }
+  .info-row:first-of-type{ border-top: none; padding-top: 0 }
+  .info-row dt{
+    font: 500 0.65rem var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.2px;
+    margin-bottom: 3px;
+  }
+  .info-row dd{
+    font: 500 0.86rem var(--mono); color: var(--ink); line-height: 1.5;
+  }
+  .info-row dd .unc{ color: var(--muted); font-weight: 400; font-size: 0.78rem }
+  .info-row .info-cond{
+    font: 500 0.74rem var(--mono); color: var(--ink-soft);
+    line-height: 1.55; margin-top: 3px;
+  }
 
   @media (max-width: 720px){
     .scatter-svg{ height: 380px }
@@ -817,8 +865,15 @@
       </div>
     </div>
     <div class="scatter-card">
-      <svg class="scatter-svg" id="scatterSvg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet"></svg>
-      <div class="scatter-tooltip" id="scatterTooltip"></div>
+      <div class="scatter-layout">
+        <svg class="scatter-svg" id="scatterSvg" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet"></svg>
+        <aside class="scatter-info" id="scatterInfo">
+          <div class="info-empty">
+            <div class="info-empty-icon">↗</div>
+            <div>Hover or click a filter point to see details</div>
+          </div>
+        </aside>
+      </div>
       <div class="scatter-legend">
         <span><i style="background: var(--uv-uvb)"></i>UVB-dominant organic</span>
         <span><i style="background: var(--uv-uva2)"></i>UVA-II / dual</span>
@@ -1254,15 +1309,17 @@ const FILTERS = [
 
   // INORGANIC
   {idx:29, inci:"Zinc Oxide", aliases:"ZnO, nano-ZnO", cas:"1314-13-2", mw:81.4, category:"inorganic",
-   ranges:["UVB","UVA-I","UVA-II"], lambda:[368], lambdaTxt:"cutoff 368 nm (Eg = 3.37 eV)", solvent:"semiconductor", epsilon:null, e1:null,
-   stab:"excellent", absStart:280, absEnd:380, peak:340,
+   ranges:["UVB","UVA-I","UVA-II"], lambda:[368], lambdaTxt:"cutoff 368 nm (Eg = 3.37 eV, direct)", solvent:"semiconductor", epsilon:null, e1:null,
+   epsilonEff: 80000, bandgap: 3.37, urbach: 0.07,
+   stab:"excellent", absStart:280, absEnd:380, peak:368,
    reg:{fda:25,eu:25,au:25,jp:"quasi-drug",kr:25}, banned:false,
    notes:"Wide-bandgap semiconductor. Eg = 3.37 eV → λ_cutoff = 1240/3.37 = 368 nm (calculated). Only 4–5% UV reflection (Cole 2016) — absorption dominates 10:1. Refractive index 2.0 → low whitening. EU: nano (entry 30a) and non-nano (entry 30) listed; nano spray formulations prohibited. Some Zn²⁺ ionic dissolution measured (Gulson 2010).",
    t_half:-1, t_half_cond:"Crystal lattice — not photolabile; ROS catalysis is the concern", t_half_conf:"C1",
    detail:"research/inorganic/claims/c001-zinc-oxide.md"},
   {idx:30, inci:"Titanium Dioxide (rutile)", aliases:"TiO₂, nano-TiO₂", cas:"13463-67-7", mw:79.9, category:"inorganic",
-   ranges:["UVB","UVA-I","UVA-II"], lambda:[413], lambdaTxt:"cutoff 387–413 nm (Eg = 3.0–3.2 eV)", solvent:"semiconductor", epsilon:null, e1:null,
-   stab:"excellent", absStart:280, absEnd:400, peak:340,
+   ranges:["UVB","UVA-I","UVA-II"], lambda:[413], lambdaTxt:"cutoff 387–413 nm (Eg = 3.0–3.2 eV, indirect)", solvent:"semiconductor", epsilon:null, e1:null,
+   epsilonEff: 100000, bandgap: 3.0, urbach: 0.10,
+   stab:"excellent", absStart:280, absEnd:400, peak:413,
    reg:{fda:25,eu:25,au:25,jp:"quasi-drug",kr:25}, banned:false,
    notes:"Wide-bandgap semiconductor. Anatase (Eg = 3.20 eV) is highly photocatalytic — AVOID in cosmetics; rutile (Eg = 3.00 eV) is preferred. Refractive index 2.7 → strong whitening. Always use coated grades (silica, alumina, dimethicone) — coatings suppress 70–95% of ROS. IARC Group 2B for inhalation only. EU: nano spray formulations prohibited.",
    t_half:-1, t_half_cond:"Crystal lattice — not photolabile; rutile preferred over anatase", t_half_conf:"C1",
@@ -1280,21 +1337,24 @@ const FILTERS = [
   // IRON OXIDES (regulated as colorants, not UV filters; provide visible-light/HEV protection)
   {idx:32, inci:"Iron Oxide Red", aliases:"CI 77491, hematite, α-Fe₂O₃", cas:"1309-37-1", mw:159.7, category:"iron-oxide",
    ranges:["UVB","UVA-II","UVA-I","Visible"], lambda:[570], lambdaTxt:"cutoff ~570–620 nm (Eg ≈ 2.1 eV)", solvent:"crystal", epsilon:null, e1:null,
-   stab:"excellent", absStart:280, absEnd:600, peak:570, vis:true,
+   stab:"excellent", absStart:280, absEnd:600, peak:590, vis:true,
+   epsilonEff: 35000, bandgap: 2.1, urbach: 0.18,
    reg:{fda:"colorant",eu:"colorant",au:"colorant",jp:"colorant",kr:"colorant"}, banned:false,
    notes:"Red-brown hematite. NOT regulated as a UV filter — listed as color additive (FDA 21 CFR 73.2250; EU Annex IV CI 77491). Bandgap 2.1 eV → cutoff ~590 nm; combined with d-d ligand-field bands at 535 + 650 nm absorbs across whole UV plus blue/green visible. Tinted mineral sunscreens with 1–3% iron oxides give 60–70% blue-light blockade vs 10–20% for untinted (Mahmoud 2010, Castanedo-Cazares 2014). Lattice photostable.",
    t_half:-1, t_half_cond:"Crystal lattice — not photolabile", t_half_conf:"C1",
    detail:"research/inorganic/claims/c003-iron-oxides.md"},
   {idx:33, inci:"Iron Oxide Yellow", aliases:"CI 77492, goethite, α-FeO(OH)", cas:"51274-00-1", mw:88.9, category:"iron-oxide",
    ranges:["UVB","UVA-II","UVA-I","Visible"], lambda:[500], lambdaTxt:"cutoff ~500 nm (Eg ≈ 2.5 eV)", solvent:"crystal", epsilon:null, e1:null,
-   stab:"excellent", absStart:280, absEnd:520, peak:500, vis:true,
+   stab:"excellent", absStart:280, absEnd:520, peak:496, vis:true,
+   epsilonEff: 18000, bandgap: 2.5, urbach: 0.16,
    reg:{fda:"colorant",eu:"colorant",au:"colorant",jp:"colorant",kr:"colorant"}, banned:false,
    notes:"Hydrated iron oxide / goethite. NOT a UV filter — color additive only. Bandgap 2.5 eV → cutoff ~496 nm with weaker tail to ~570 nm. The default 'sunny' tint base in tinted sunscreens; typical 3:1 yellow:red blend with iron oxide red gives skin-tone neutral. Strong HEV protection (400–500 nm).",
    t_half:-1, t_half_cond:"Crystal lattice — not photolabile", t_half_conf:"C1",
    detail:"research/inorganic/claims/c003-iron-oxides.md"},
   {idx:34, inci:"Iron Oxide Black", aliases:"CI 77499, magnetite, Fe₃O₄", cas:"1317-61-9", mw:231.5, category:"iron-oxide",
    ranges:["UVB","UVA-II","UVA-I","Visible"], lambda:[700], lambdaTxt:"absorbs across full visible (Fe²⁺/Fe³⁺ IVCT)", solvent:"crystal", epsilon:null, e1:null,
-   stab:"excellent", absStart:280, absEnd:750, peak:700, vis:true,
+   stab:"excellent", absStart:280, absEnd:750, peak:750, vis:true,
+   epsilonEff: 60000, bandgap: 0.2, urbach: 0.30,
    reg:{fda:"colorant",eu:"colorant",au:"colorant",jp:"colorant",kr:"colorant"}, banned:false,
    notes:"Magnetite, Fe²⁺/Fe³⁺ inverse spinel. NOT a UV filter — color additive only. Bandgap 0.1–0.3 eV (semimetal-like) — broadband absorption across UV + entire visible 400–700 nm + into NIR. Used for darker skin-tone tints; often blended with red+yellow at low % for tone-matching. Strongest visible-light blocker of the three.",
    t_half:-1, t_half_cond:"Crystal lattice — not photolabile", t_half_conf:"C1",
@@ -1387,7 +1447,7 @@ bandsBar.style.background = `linear-gradient(90deg,
   rgba(94,58,163,0.10) 0%, rgba(94,58,163,0.10) ${(xPct(315)*100).toFixed(1)}%,
   rgba(176,74,138,0.10) ${(xPct(315)*100).toFixed(1)}%, rgba(176,74,138,0.10) ${(xPct(340)*100).toFixed(1)}%,
   rgba(201,138,58,0.10) ${(xPct(340)*100).toFixed(1)}%, rgba(201,138,58,0.10) ${(xPct(400)*100).toFixed(1)}%,
-  rgba(180,124,32,0.08) ${(xPct(400)*100).toFixed(1)}%, rgba(180,124,32,0.08) ${(xPct(500)*100).toFixed(1)}%,
+  rgba(77,128,184,0.10) ${(xPct(400)*100).toFixed(1)}%, rgba(77,128,184,0.10) ${(xPct(500)*100).toFixed(1)}%,
   rgba(120,110,130,0.06) ${(xPct(500)*100).toFixed(1)}%, rgba(120,110,130,0.06) 100%)`;
 bandsBar.innerHTML = [
   {x1: 280, x2: 315, label: 'UVB'},
@@ -1622,13 +1682,32 @@ function solventCell(s){
   return `<span class="info-tip" tabindex="0">${s}<span class="info-bubble">${note}</span></span>`;
 }
 
-// Returns the relative absorbance (0–1, normalized to peak=1) at a wavelength
+// Returns relative absorbance (0–1, peak=1) at a wavelength.
+// Semiconductors (ZnO, TiO₂, iron oxides) use a literature-grounded
+// Tauc edge + Urbach tail model:
+//   • Above bandgap (E ≥ Eg): α ∝ tanh-saturated rise from the band edge
+//   • Below bandgap (E < Eg): exponential Urbach tail, α ∝ exp(-(Eg-E)/E_U)
+// E_U (Urbach energy in eV) is broader for iron oxides (mixed-valence)
+// than for ZnO/TiO₂ (clean wide-gap semiconductors).
+// References: Srikant & Clarke 1998 J Appl Phys 83:5447 (ZnO);
+// Marusak et al. 1980 J Phys Chem Solids 41:981 (Fe₂O₃);
+// Cole et al. 2016 Photodermatol Photoimmunol Photomed 32:5.
 function relAbsorbance(f, lam){
   if (f.category === 'inorganic' || f.category === 'iron-oxide'){
     const cutoff = f.peak;
-    const k = f.category === 'iron-oxide' ? 0.06 : 0.4;
-    return 1 / (1 + Math.exp((lam - cutoff) * k));
+    const Eg = f.bandgap || (1240 / cutoff);
+    const E = 1240 / lam;
+    const E_U = f.urbach || (f.category === 'iron-oxide' ? 0.18 : 0.08);
+    if (E >= Eg){
+      // Above bandgap — Tauc-type rise saturating to 1
+      const dE = E - Eg;
+      return Math.min(1, 0.55 + 0.45 * Math.tanh(dE * 2.5));
+    } else {
+      // Below bandgap — Urbach exponential tail
+      return Math.exp(-(Eg - E) / E_U);
+    }
   }
+  // Organic chromophores: Gaussian centred at λmax
   const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
   const halfBand = Math.max(8, ((f.absEnd || (f.peak+15)) - (f.absStart || (f.peak-15))) / 4);
   let a = 0;
@@ -1644,18 +1723,21 @@ function spectrumSVG(f){
   const innerH = H - padT - padB;
   const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
 
-  // Y-axis: log scale of ε in M⁻¹·cm⁻¹
-  // For organics: y is log10(ε * relAbs). For inorganics/iron-oxides ε is N/A → use relative scale.
-  const useLogY = !!f.epsilon;
-  const yLogMin = 2.0;   // 10² = 100
+  // Y-axis: log scale of effective ε (M⁻¹·cm⁻¹).
+  // Organics: ε is the molar extinction coefficient at λmax.
+  // Inorganics: epsilonEff is a calibrated effective coefficient that lets
+  // the semiconductor edge appear on the same axis (the lattice doesn't
+  // have a "molar ε" in the same sense — we use mass-extinction × MW).
+  const effEps = f.epsilon || f.epsilonEff;
+  const useLogY = !!effEps;
+  const yLogMin = 1.0;   // 10¹ = 10
   const yLogMax = 5.3;   // ~2 × 10⁵
-  const yLogTicks = [2, 3, 4, 5];   // 100, 1k, 10k, 100k
-  const yLogLabels = ['10²', '10³', '10⁴', '10⁵'];
+  const yLogTicks = [1, 2, 3, 4, 5];
+  const yLogLabels = ['10¹', '10²', '10³', '10⁴', '10⁵'];
 
-  // Convert (relAbs, ε) → screen Y (log scale). Floor to baseline if below 100.
   const yLogAt = (relAbs) => {
-    const eff = relAbs * (f.epsilon || 1);
-    if (eff < Math.pow(10, yLogMin)) return padT + innerH;  // baseline
+    const eff = relAbs * (effEps || 1);
+    if (eff < Math.pow(10, yLogMin)) return padT + innerH;
     const logV = Math.min(yLogMax, Math.log10(eff));
     return padT + (1 - (logV - yLogMin) / (yLogMax - yLogMin)) * innerH;
   };
@@ -1677,7 +1759,7 @@ function spectrumSVG(f){
         {x1: 280, x2: 315, cls: 'band-uvb',  label: 'UVB'},
         {x1: 315, x2: 340, cls: 'band-uva2', label: 'UVA-II'},
         {x1: 340, x2: 400, cls: 'band-uva1', label: 'UVA-I'},
-        {x1: 400, x2: 500, cls: 'band-vis',  label: 'HEV'},
+        {x1: 400, x2: 500, cls: 'band-hev',  label: 'HEV'},
         {x1: 500, x2: xMax, cls: 'band-vis', label: 'VIS'},
       ]
     : [
@@ -1730,8 +1812,9 @@ function spectrumSVG(f){
   }).join('');
 
   // Y-axis title
+  const yAxisName = (f.epsilon ? 'ε (M⁻¹cm⁻¹), log scale' : 'effective ε (estimated), log scale');
   const yLabel = useLogY
-    ? `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">ε (M⁻¹cm⁻¹), log scale</text>`
+    ? `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">${yAxisName}</text>`
     : `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">Relative attenuation</text>`;
   const xLabel = `<text class="axis-label" x="${(padL+innerW/2).toFixed(1)}" y="${(padT+innerH+26).toFixed(1)}" text-anchor="middle">Wavelength (nm)</text>`;
 
@@ -2002,7 +2085,7 @@ function drawBuilderPlot(){
     {x1: 280, x2: 315, color: 'var(--uv-uvb)',  label: 'UVB'},
     {x1: 315, x2: 340, color: 'var(--uv-uva2)', label: 'UVA-II'},
     {x1: 340, x2: 400, color: 'var(--uv-uva1)', label: 'UVA-I'},
-    {x1: 400, x2: 500, color: 'var(--moderate)', label: 'HEV'},
+    {x1: 400, x2: 500, color: 'var(--hev)',     label: 'HEV'},
     {x1: 500, x2: xMax, color: 'var(--ink-soft)', label: 'VIS'},
   ];
   bands.forEach(b => {
@@ -2094,8 +2177,7 @@ applyPreset('uvmune-400');
 // =========================================
 function renderScatter(){
   const svg = document.getElementById('scatterSvg');
-  const tooltip = document.getElementById('scatterTooltip');
-  const card = svg.parentElement;
+  const infoBox = document.getElementById('scatterInfo');
   const W = 900, H = 520, padL = 80, padR = 30, padT = 30, padB = 64;
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
@@ -2111,12 +2193,12 @@ function renderScatter(){
 
   let parts = [];
 
-  // Band rectangles (subtle)
+  // Band rectangles (subtle) — distinct colours for each band
   const bands = [
     {x1: 280, x2: 315, color: 'var(--uv-uvb)',  label: 'UVB'},
     {x1: 315, x2: 340, color: 'var(--uv-uva2)', label: 'UVA-II'},
     {x1: 340, x2: 400, color: 'var(--uv-uva1)', label: 'UVA-I'},
-    {x1: 400, x2: 500, color: 'var(--moderate)', label: 'HEV'},
+    {x1: 400, x2: 500, color: 'var(--hev)',     label: 'HEV'},
     {x1: 500, x2: 700, color: 'var(--ink-soft)', label: 'VIS'},
   ];
   bands.forEach(b => {
@@ -2226,38 +2308,60 @@ function renderScatter(){
 
   svg.innerHTML = parts.join('');
 
-  // Hover behaviour
+  // Hover/focus behaviour: populate the side info pane
+  const emptyHTML = `<div class="info-empty">
+    <div class="info-empty-icon">↗</div>
+    <div>Hover or click a filter point to see details</div>
+  </div>`;
+  function fillInfo(f){
+    const halfDec = uncBar(f.t_half_conf);
+    let tHalfTxt;
+    if (f.t_half === -1){
+      tHalfTxt = '∞ <span class="unc">(crystal lattice)</span>';
+    } else {
+      const lo = Math.max(0.3, f.t_half * Math.pow(10, -halfDec));
+      const hi = Math.min(2000, f.t_half * Math.pow(10, halfDec));
+      const fmt = (n) => n < 10 ? n.toFixed(1) : Math.round(n).toString();
+      tHalfTxt = `${fmt(f.t_half)} h <span class="unc">(uncertainty ${fmt(lo)}–${fmt(hi)} h, ${f.t_half_conf})</span>`;
+    }
+    const lambdaTxt = f.lambdaTxt || (f.peak + ' nm');
+    const eps = f.epsilon || f.epsilonEff;
+    const epsLabel = f.epsilon ? 'ε (M⁻¹cm⁻¹)' : 'ε effective (estimated)';
+    infoBox.classList.add('has-data');
+    infoBox.innerHTML = `
+      <div class="info-name">${f.inci}</div>
+      <div class="info-alias">${f.aliases || ''}</div>
+      <div class="info-row"><dt>λmax</dt><dd>${lambdaTxt}</dd></div>
+      <div class="info-row"><dt>${epsLabel}</dt><dd>${eps ? eps.toLocaleString() : '—'}</dd></div>
+      <div class="info-row"><dt>Half-life under solar UV</dt><dd>${tHalfTxt}</dd>
+        <div class="info-cond">${f.t_half_cond || ''}</div></div>
+      <div class="info-row"><dt>Category</dt><dd>${f.category.replace('-', ' ')}</dd></div>
+      <div class="info-row" style="border-top:1px solid var(--line-soft);padding-top:10px;margin-top:6px">
+        <a class="file-link" href="../${f.detail}" target="_blank" rel="noopener" style="font:500 0.72rem var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">View claim file →</a>
+      </div>`;
+  }
+  function clearInfo(){
+    infoBox.classList.remove('has-data');
+    infoBox.innerHTML = emptyHTML;
+  }
+
   svg.querySelectorAll('.pt').forEach(node => {
     const idx = parseInt(node.dataset.idx, 10);
     const f = FILTERS.find(x => x.idx === idx);
     node.addEventListener('mouseenter', () => {
-      const halfDec = uncBar(f.t_half_conf);
-      const lo = Math.max(0.3, f.t_half * Math.pow(10, -halfDec)).toFixed(1);
-      const hi = Math.min(2000, f.t_half * Math.pow(10, halfDec)).toFixed(0);
-      const tHalfTxt = f.t_half === -1 ? '∞ (lattice)' :
-                        `${f.t_half} h <span style="opacity:0.6">(uncertainty: ${lo}–${hi} h)</span>`;
-      tooltip.innerHTML = `<div class="tt-name">${f.inci}</div>
-        <div class="tt-sub">λmax ${f.peak} nm · t½ ${tHalfTxt}</div>
-        <div class="tt-sub">${f.t_half_cond || ''}</div>`;
-      tooltip.classList.add('show');
+      fillInfo(f);
       svg.querySelectorAll(`.smear-bar[data-for="${idx}"]`).forEach(b => b.setAttribute('opacity', '1'));
       svg.querySelectorAll(`.unc-bar[data-for="${idx}"]`).forEach(u => u.setAttribute('opacity', '1'));
-      // Bring the dot to a slightly larger size
       node.setAttribute('r', (parseFloat(node.getAttribute('r')) * 1.4).toFixed(1));
     });
-    node.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      tooltip.style.left = (e.clientX - rect.left) + 'px';
-      tooltip.style.top = (e.clientY - rect.top) + 'px';
-    });
     node.addEventListener('mouseleave', () => {
-      tooltip.classList.remove('show');
       svg.querySelectorAll(`.smear-bar[data-for="${idx}"]`).forEach(b => b.setAttribute('opacity', '0'));
       svg.querySelectorAll(`.unc-bar[data-for="${idx}"]`).forEach(u => u.setAttribute('opacity', '0'));
       node.setAttribute('r', (parseFloat(node.getAttribute('r')) / 1.4).toFixed(1));
     });
     node.addEventListener('click', () => openDetail(f));
   });
+  svg.addEventListener('mouseleave', clearInfo);
 }
 renderScatter();
 
