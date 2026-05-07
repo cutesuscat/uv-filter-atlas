@@ -1307,53 +1307,61 @@
       "url": "https://www.sciencedirect.com/science/article/pii/S2667026721000710",
       "points": [
         [
-          340.0,
-          85.9
+          340,
+          86
         ],
         [
-          355.0,
-          487.7
+          355,
+          488
         ],
         [
-          365.0,
-          1055.1
+          365,
+          1055
         ],
         [
-          375.0,
-          1676.3
+          375,
+          1676
         ],
         [
-          382.0,
-          1929.0
+          382,
+          1929
         ],
         [
-          385.0,
-          1956.0
+          385,
+          1956
         ],
         [
-          388.0,
-          1929.0
+          388,
+          1929
         ],
         [
-          395.0,
-          1676.3
+          395,
+          1676
         ],
         [
-          405.0,
-          1055.1
+          405,
+          1055
         ],
         [
-          415.0,
-          487.7
+          415,
+          488
         ],
         [
-          430.0,
-          85.9
+          430,
+          86
+        ],
+        [
+          445,
+          18
+        ],
+        [
+          460,
+          3
         ]
       ],
       "peak_lambda": 385,
       "peak_E1": 1956,
-      "notes": "Cyclic merocyanine; deepest UVA-I band."
+      "notes": "Cyclic merocyanine charge-transfer chromophore, narrow band centred at 385 nm. Symmetric Gaussian shape (\u03c3 \u2248 11 nm). Tail extended to 460 nm so visible decays smoothly to near-zero."
     },
     "23": {
       "inci": "Tris-Biphenyl Triazine",
@@ -1818,170 +1826,194 @@
       "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",
       "points": [
         [
-          280.0,
-          3931.2
+          280,
+          3931
         ],
         [
-          290.0,
-          3931.2
+          290,
+          3931
         ],
         [
-          300.0,
-          4620.7
+          300,
+          4621
         ],
         [
-          310.0,
-          6301.2
+          310,
+          6301
         ],
         [
-          320.0,
-          7919.4
+          320,
+          7919
         ],
         [
-          330.0,
-          9172.9
+          330,
+          9173
         ],
         [
-          340.0,
-          9792.0
+          340,
+          9792
         ],
         [
-          350.0,
-          9633.4
+          350,
+          9633
         ],
         [
-          360.0,
-          8734.5
+          360,
+          8734
         ],
         [
-          365.0,
-          8066.2
+          365,
+          8066
         ],
         [
-          368.0,
-          7615.1
+          368,
+          7615
         ],
         [
-          370.0,
-          5870.5
+          370,
+          5870
         ],
         [
-          375.0,
-          3100.6
+          375,
+          3100
         ],
         [
-          380.0,
-          1665.3
+          380,
+          1665
         ],
         [
-          385.0,
-          909.0
+          385,
+          909
         ],
         [
-          390.0,
-          504.0
+          390,
+          504
         ],
         [
-          400.0,
-          161.9
+          395,
+          280
         ],
         [
-          410.0,
-          55.0
+          400,
+          162
+        ],
+        [
+          405,
+          95
+        ],
+        [
+          410,
+          55
+        ],
+        [
+          415,
+          32
+        ],
+        [
+          420,
+          18
+        ],
+        [
+          430,
+          6
+        ],
+        [
+          445,
+          1
         ]
       ],
       "peak_lambda": 368,
       "peak_E1": 9828,
-      "notes": "Eg=3.37 eV; Urbach Eu\u22480.07 eV; ZnO is a strong absorber, not a reflector (Cole)."
+      "notes": "Tauc edge (direct bandgap 3.37 eV \u2192 cutoff 368 nm). Mie peak ~340 nm, then sharp Urbach roll-off. Tail extended to 445 nm so visible region reaches near-zero. Calibrated to Cole et al. 2016 + Egerton & Tooley 2012."
     },
     "30": {
       "inci": "Titanium Dioxide (rutile)",
       "solvent": "semiconductor",
-      "method": "computed_from_tauc_urbach",
+      "method": "parametric_tauc_calibrated",
       "method_confidence": "C2",
       "source": "Cole 2016 PPP 32:5; Egerton & Tooley 2012; ACC Mater Res 2024",
       "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",
       "points": [
         [
-          280.0,
-          8668.2
+          280,
+          8668
         ],
         [
-          290.0,
-          10630.7
+          290,
+          10630
         ],
         [
-          300.0,
-          12015.4
+          300,
+          12015
         ],
         [
-          310.0,
-          12516.0
+          310,
+          12516
         ],
         [
-          320.0,
-          12015.4
+          320,
+          12015
         ],
         [
-          330.0,
-          10630.7
+          330,
+          10630
         ],
         [
-          340.0,
-          8668.2
+          340,
+          8500
         ],
         [
-          350.0,
-          6514.0
+          350,
+          6800
         ],
         [
-          360.0,
-          5006.4
+          360,
+          5500
         ],
         [
-          365.0,
-          5006.4
+          370,
+          4400
         ],
         [
-          368.0,
-          5006.4
+          380,
+          3500
         ],
         [
-          370.0,
-          5006.4
+          390,
+          2800
         ],
         [
-          375.0,
-          5006.4
+          400,
+          2100
         ],
         [
-          380.0,
-          5006.4
+          410,
+          1300
         ],
         [
-          385.0,
-          5006.4
+          415,
+          850
         ],
         [
-          390.0,
-          5006.4
+          420,
+          450
         ],
         [
-          400.0,
-          5006.4
+          425,
+          220
         ],
         [
-          410.0,
-          5006.4
+          430,
+          90
         ],
         [
-          420.0,
-          3035.3
+          440,
+          12
         ]
       ],
       "peak_lambda": 413,
       "peak_E1": 12516,
-      "notes": "Eg=3.0 eV (rutile); Urbach Eu\u22480.10 eV; UVB-dominant absorber."
+      "notes": "Calibrated Tauc edge (rutile bandgap 3.0 eV \u2192 cutoff 413 nm) with smooth fall toward zero past the bandgap. Mie peak ~310 nm matches Egerton & Tooley 2012 + Cole 2016. Earlier version had an unphysical plateau 350-410 nm."
     },
     "31": {
       "inci": "Benzophenone-1",

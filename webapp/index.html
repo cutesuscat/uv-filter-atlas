@@ -1932,10 +1932,22 @@ fetch('data/spectrum-data.json')
   .catch(err => { console.warn('Spectrum data not loaded — falling back to parametric curves:', err); });
 
 // Linear interpolation between (λ, E1%) data points.
+// Past the data range, decay exponentially so the curve falls to near-zero
+// rather than clamping flat. Without this, e.g. TiO₂ (last point 420 nm,
+// E1% ≈ 3000) would show a flat ~3000 baseline through all of visible —
+// which is wrong: cosmetic-grade rutile TiO₂ has a sharp Tauc edge near
+// 413 nm and absorbance drops by 1+ decade within ~10 nm above it.
+const TAIL_DECAY_NM = 4;   // 1/e per ~4 nm past the last data point
 function interpolatePoints(points, lam){
   if (!points || !points.length) return null;
-  if (lam <= points[0][0]) return points[0][1];
-  if (lam >= points[points.length-1][0]) return points[points.length-1][1];
+  const first = points[0], last = points[points.length-1];
+  if (lam <= first[0]){
+    // Below the first point — decay toward zero with the same scale
+    return first[1] * Math.exp(-(first[0] - lam) / TAIL_DECAY_NM);
+  }
+  if (lam >= last[0]){
+    return last[1] * Math.exp(-(lam - last[0]) / TAIL_DECAY_NM);
+  }
   for (let i = 1; i < points.length; i++){
     if (points[i][0] >= lam){
       const [x1, y1] = points[i-1];
@@ -1944,7 +1956,7 @@ function interpolatePoints(points, lam){
       return y1 + t * (y2 - y1);
     }
   }
-  return points[points.length-1][1];
+  return last[1];
 }
 
 // Return E(1%, 1cm) at a wavelength for a filter.
@@ -2012,7 +2024,11 @@ function relAbsorbance(f, lam){
 function spectrumSVG(f){
   const W = 480, H = 200, padL = 56, padR = 14, padT = 22, padB = 32;
   const extendedRange = !!f.vis;
-  const xMin = 280, xMax = extendedRange ? 700 : 410;
+  // For UV-only filters, extend the chart slightly past 410 nm if the peak
+  // sits above 370 — otherwise the modal cuts off the band's visible-side
+  // tail and gives the impression that absorption stays high in HEV.
+  const xMin = 280;
+  const xMax = extendedRange ? 700 : (f.peak > 370 ? 460 : 410);
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
   const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
