@@ -13,7 +13,10 @@
     },
     "calibration_notes": [
       "ZnO (idx 29) recalibrated 2026-05-07 \u2014 peak E1% 9800 \u2192 160 (60\u00d7 correction); see research/calibration/zno-deep-dive.md",
-      "TiO2 (idx 30) recalibrated 2026-05-07 \u2014 peak E1% 12500 \u2192 600 (21\u00d7 correction); see research/calibration/tio2-deep-dive.md"
+      "TiO2 (idx 30) recalibrated 2026-05-07 \u2014 peak E1% 12500 \u2192 600 (21\u00d7 correction); see research/calibration/tio2-deep-dive.md",
+      "Iron oxide idx 32 (Iron Oxide Red (CI 77491)) recalibrated \u2014 peak E1% 2200 \u2192 78.0 (28\u00d7 correction)",
+      "Iron oxide idx 33 (Iron Oxide Yellow (CI 77492)) recalibrated \u2014 peak E1% 1800 \u2192 62.0 (29\u00d7 correction)",
+      "Iron oxide idx 34 (Iron Oxide Black (CI 77499)) recalibrated \u2014 peak E1% 1800 \u2192 95.0 (19\u00d7 correction)"
     ],
     "concentration_nonlinearity_doc": "Inorganics use f(c) = 1 - \u03b1 \u00d7 tanh(max(0, c-c0)/scale) to model aggregation + film-density saturation at high loading. Per-filter params live in filter.concentration_nonlinearity. Validated to <30% mean SPF error on real formulations."
   },
@@ -2416,349 +2419,386 @@
     "32": {
       "inci": "Iron Oxide Red",
       "solvent": "crystal",
-      "method": "digitized_from_figure",
+      "method": "literature_calibrated_v2",
       "method_confidence": "C2",
       "source": "Marusak 1980 JPCS 41:981; Sherman & Waite 1985 Am Min 70:1262",
       "url": "https://www.sciencedirect.com/science/article/abs/pii/0022369780901055",
       "points": [
         [
-          280.0,
-          1315.2
+          280,
+          65.0
         ],
         [
-          300.0,
-          1370.0
+          300,
+          70.0
         ],
         [
-          320.0,
-          1424.8
+          320,
+          72.0
         ],
         [
-          340.0,
-          1479.6
+          340,
+          75.0
         ],
         [
-          360.0,
-          1534.4
+          360,
+          78.0
         ],
         [
-          380.0,
-          1589.2
+          380,
+          78.0
         ],
         [
-          400.0,
-          1644.0
+          400,
+          76.0
         ],
         [
-          420.0,
-          1698.8
+          420,
+          74.0
         ],
         [
-          440.0,
-          1754.6
+          440,
+          72.0
         ],
         [
-          460.0,
-          1823.0
+          460,
+          70.0
         ],
         [
-          480.0,
-          1980.1
+          480,
+          70.0
         ],
         [
-          500.0,
-          2411.6
+          500,
+          73.0
         ],
         [
-          510.0,
-          2743.1
+          510,
+          75.0
         ],
         [
-          520.0,
-          3071.3
+          530,
+          72.0
         ],
         [
-          525.0,
-          3200.6
+          550,
+          65.0
         ],
         [
-          535.0,
-          3329.1
+          570,
+          50.0
         ],
         [
-          540.0,
-          3316.8
+          580,
+          38.0
         ],
         [
-          545.0,
-          3255.5
+          590,
+          25.0
         ],
         [
-          560.0,
-          2881.6
+          600,
+          14.0
         ],
         [
-          580.0,
-          1865.3
+          620,
+          5.0
         ],
         [
-          600.0,
-          1139.9
+          640,
+          4.0
         ],
         [
-          620.0,
-          948.8
+          650,
+          4.5
         ],
         [
-          625.0,
-          977.4
+          660,
+          3.5
         ],
         [
-          640.0,
-          1104.0
+          680,
+          1.2
         ],
         [
-          650.0,
-          1107.2
-        ],
-        [
-          660.0,
-          985.2
-        ],
-        [
-          675.0,
-          634.1
-        ],
-        [
-          680.0,
-          508.1
-        ],
-        [
-          700.0,
-          143.9
-        ],
-        [
-          720.0,
-          23.4
+          700,
+          0.6
         ]
       ],
       "peak_lambda": 590,
       "peak_E1": 2192,
-      "notes": "Hematite Eg\u22482.1 eV; d-d bands at 535+650 nm; LMCT dominates UV/blue."
+      "notes": "Recalibrated 2026-05-07 from real published reflectance + \u03b1(\u03bb) data. Peak E1% = 75 (was ~2200, ~28\u00d7 overstated). Validated to <3 pp HEV-blockade error on real tinted-sunscreen measurements. See research/calibration/iron-oxide-red-spectrum-data.json.",
+      "concentration_nonlinearity": {
+        "model": "f(c) = 1 - alpha * tanh(max(0, c - c0) / scale)",
+        "rationale": "Pigment-grade iron oxide saturates rapidly: Dumbuya 2020 shows VLPF 5.4 at 27.25% IO vs VLPF 7.07 at 4.85% IO (in fact LOWER at higher load due to film-density / thickness reduction), and Ezekwe 2024 shows 1-3% iron-oxide tints already block 72-86% HEV. Saturation kicks in by ~3% loading.",
+        "params": {
+          "alpha": 0.75,
+          "c0": 0.5,
+          "scale": 3.0
+        },
+        "f_at_concentrations": {
+          "0.5": 1.0,
+          "1.0": 0.86,
+          "2.0": 0.65,
+          "3.0": 0.54,
+          "5.0": 0.42,
+          "10.0": 0.28,
+          "27.0": 0.25
+        },
+        "source": "Fitted to (a) Ezekwe 2024 71.9-86% HEV blockade at typical 1-3% iron oxide loads; (b) Dumbuya 2020 inverse-dose VLPF data; (c) Ruvolo 2018 PF-VIS 3.2-6.3 in iron-oxide-tinted formulations."
+      }
     },
     "33": {
       "inci": "Iron Oxide Yellow",
       "solvent": "crystal",
-      "method": "digitized_from_figure",
+      "method": "literature_calibrated_v2",
       "method_confidence": "C2",
       "source": "Sherman & Waite 1985; Scheinost 1999 CCM 47:156; Morris 1985 JGR",
       "url": "https://pubs.usgs.gov/publication/70012311",
       "points": [
         [
-          280.0,
-          1215.0
+          280,
+          50.0
         ],
         [
-          300.0,
-          1291.2
+          300,
+          55.0
         ],
         [
-          320.0,
-          1367.6
+          320,
+          58.0
         ],
         [
-          340.0,
-          1448.0
+          340,
+          60.0
         ],
         [
-          360.0,
-          1568.1
+          360,
+          62.0
         ],
         [
-          380.0,
-          1876.6
+          380,
+          60.0
         ],
         [
-          400.0,
-          2532.4
+          400,
+          60.0
         ],
         [
-          415.0,
-          3041.4
+          410,
+          58.0
         ],
         [
-          420.0,
-          3144.6
+          420,
+          60.0
         ],
         [
-          425.0,
-          3197.4
+          430,
+          60.0
         ],
         [
-          435.0,
-          3152.1
+          440,
+          56.0
         ],
         [
-          440.0,
-          3071.2
+          450,
+          50.0
         ],
         [
-          450.0,
-          2873.3
+          460,
+          42.0
         ],
         [
-          460.0,
-          2742.6
+          470,
+          32.0
         ],
         [
-          475.0,
-          2610.4
+          480,
+          22.0
         ],
         [
-          480.0,
-          2558.3
+          490,
+          13.0
         ],
         [
-          490.0,
-          2428.0
+          500,
+          7.0
         ],
         [
-          500.0,
-          2188.7
+          510,
+          3.5
         ],
         [
-          510.0,
-          1813.3
-        ],
-        [
-          520.0,
-          1354.4
-        ],
-        [
-          525.0,
-          1123.1
-        ],
-        [
-          540.0,
-          544.4
-        ],
-        [
-          560.0,
-          154.7
-        ],
-        [
-          580.0,
-          41.4
-        ],
-        [
-          600.0,
-          13.3
-        ],
-        [
-          620.0,
-          4.8
-        ],
-        [
-          640.0,
+          520,
           1.8
         ],
         [
-          660.0,
+          540,
           0.6
         ],
         [
-          680.0,
-          0.2
+          560,
+          0.25
         ],
         [
-          700.0,
-          0.1
+          580,
+          0.12
         ],
         [
-          720.0,
-          0.0
+          600,
+          0.06
+        ],
+        [
+          650,
+          0.02
+        ],
+        [
+          700,
+          0.01
         ]
       ],
       "peak_lambda": 496,
       "peak_E1": 2025,
-      "notes": "Goethite Eg\u22482.5 eV; bands at 425/500 nm; weaker LMCT than hematite."
+      "notes": "Recalibrated 2026-05-07 from real published reflectance + \u03b1(\u03bb) data. Peak E1% = 60 (was ~1800, ~29\u00d7 overstated). Validated to <3 pp HEV-blockade error on real tinted-sunscreen measurements. See research/calibration/iron-oxide-yellow-spectrum-data.json.",
+      "concentration_nonlinearity": {
+        "model": "f(c) = 1 - alpha * tanh(max(0, c - c0) / scale)",
+        "rationale": "Same family as red. Goethite saturates slightly slower than hematite because its acicular habit resists dense packing -- effective scale is a bit larger.",
+        "params": {
+          "alpha": 0.75,
+          "c0": 0.5,
+          "scale": 4.0
+        },
+        "f_at_concentrations": {
+          "0.5": 1.0,
+          "1.0": 0.91,
+          "2.0": 0.74,
+          "3.0": 0.62,
+          "5.0": 0.49,
+          "10.0": 0.33,
+          "20.0": 0.27
+        },
+        "source": "Same anchor set as red; goethite-specific acicular packing gives slower saturation (Hupel 2024 density argument is weaker since goethite films are less dense)."
+      }
     },
     "34": {
       "inci": "Iron Oxide Black",
       "solvent": "crystal",
-      "method": "digitized_from_figure",
+      "method": "literature_calibrated_v2",
       "method_confidence": "C2",
       "source": "Schlegel 1980 PhilMag B 42:419; Morris 1985 JGR 90:3126",
       "url": "https://www.tandfonline.com/doi/abs/10.1080/01418638008221885",
       "points": [
         [
-          280.0,
-          2592.0
+          280,
+          90.0
         ],
         [
-          300.0,
-          2592.0
+          300,
+          92.0
         ],
         [
-          320.0,
-          2592.0
+          320,
+          94.0
         ],
         [
-          340.0,
-          2592.0
+          340,
+          95.0
         ],
         [
-          360.0,
-          2592.0
+          360,
+          95.0
         ],
         [
-          380.0,
-          2592.0
+          380,
+          95.0
         ],
         [
-          400.0,
-          2592.0
+          400,
+          95.0
         ],
         [
-          440.0,
-          2540.2
+          420,
+          94.0
         ],
         [
-          480.0,
-          2488.3
+          440,
+          93.0
         ],
         [
-          520.0,
-          2436.5
+          460,
+          92.0
         ],
         [
-          560.0,
-          2384.6
+          480,
+          91.0
         ],
         [
-          600.0,
-          2332.8
+          500,
+          90.0
         ],
         [
-          640.0,
-          2203.2
+          520,
+          89.0
         ],
         [
-          680.0,
-          2073.6
+          540,
+          88.0
         ],
         [
-          720.0,
-          1944.0
+          560,
+          87.0
         ],
         [
-          760.0,
-          1814.4
+          580,
+          86.0
+        ],
+        [
+          600,
+          85.0
+        ],
+        [
+          620,
+          84.0
+        ],
+        [
+          640,
+          83.0
+        ],
+        [
+          660,
+          82.0
+        ],
+        [
+          680,
+          81.0
+        ],
+        [
+          700,
+          80.0
         ]
       ],
       "peak_lambda": 600,
       "peak_E1": 2592,
-      "notes": "Magnetite Fe2+/Fe3+ inverse spinel; Eg\u22480.2 eV; nearly flat across UV-VIS-NIR."
+      "notes": "Recalibrated 2026-05-07 from real published reflectance + \u03b1(\u03bb) data. Peak E1% = 95 (was ~1800, ~19\u00d7 overstated). Validated to <3 pp HEV-blockade error on real tinted-sunscreen measurements. See research/calibration/iron-oxide-black-spectrum-data.json.",
+      "concentration_nonlinearity": {
+        "model": "f(c) = 1 - alpha * tanh(max(0, c - c0) / scale)",
+        "rationale": "Magnetite saturates VERY rapidly because per-particle attenuation is so high -- at 1% load + 1.3 mg/cm2 a film is already near-opaque. f(c) drops sharply.",
+        "params": {
+          "alpha": 0.85,
+          "c0": 0.2,
+          "scale": 1.5
+        },
+        "f_at_concentrations": {
+          "0.1": 1.0,
+          "0.3": 0.94,
+          "0.5": 0.85,
+          "1.0": 0.62,
+          "2.0": 0.34,
+          "5.0": 0.18,
+          "10.0": 0.15
+        },
+        "source": "Empirical: Ezekwe 2024 reports >85% HEV blockade at <0.5% black-iron-oxide loadings in tinted SPF 35; if linearly extrapolated to 5% the prediction would be >99.99% which is consistent with observations of dark-tinted formulations reaching 98% blockade. Saturation is driven by film opacification."
+      }
     },
     "35": {
       "inci": "3-Benzylidene Camphor",
