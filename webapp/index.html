@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<title>UV Filter Atlas — Spectra & Photodegradation of Sunscreen Active Ingredients</title>
+<meta name="description" content="Reference for 30 globally-approved sunscreen UV filters: absorption spectra (λmax, ε), photodegradation kinetics, and regulatory status across FDA / EU / Australia / Japan / Korea. Compiled from peer-reviewed literature.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --bg: #f8f6f1;
+    --bg-2: #ffffff;
+    --ink: #15121b;
+    --ink-soft: #2d2735;
+    --muted: #6b6473;
+    --rule: #1a1620;
+    --line: #d8d3cb;
+    --line-soft: #e9e4dc;
+    --accent: #6b1f6e;        /* UV violet — the deep-UVA marker */
+    --accent-soft: #f4e8f4;
+    --warn: #b94a3c;           /* photodegradation red */
+    --warn-soft: #f7e7e3;
+    --ok: #2d6b3f;             /* photostable green */
+    --ok-soft: #e3efe6;
+    --moderate: #b67c1f;       /* moderate amber */
+    --moderate-soft: #f3eadb;
+    --uv-uvb: #5e3aa3;
+    --uv-uva2: #b04a8a;
+    --uv-uva1: #c98a3a;
+    --uv-vis: #d8d3cb;
+    --serif: 'Inter', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #0f0d14;
+      --bg-2: #16131b;
+      --ink: #efeae0;
+      --ink-soft: #d4cdbf;
+      --muted: #948b9a;
+      --rule: #efeae0;
+      --line: #2d2737;
+      --line-soft: #1f1b27;
+      --accent: #d6a4d8;
+      --accent-soft: #2c1d2e;
+      --warn: #e8806f;
+      --warn-soft: #36211d;
+      --ok: #87c697;
+      --ok-soft: #1d2c22;
+      --moderate: #e2b970;
+      --moderate-soft: #2e2515;
+      --uv-uvb: #b9a0e8;
+      --uv-uva2: #e09bc4;
+      --uv-uva1: #e8b977;
+      --uv-vis: #2d2737;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+    --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+    --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+    --ok:#87c697; --ok-soft:#1d2c22; --moderate:#e2b970; --moderate-soft:#2e2515;
+    --uv-uvb:#b9a0e8; --uv-uva2:#e09bc4; --uv-uva1:#e8b977; --uv-vis:#2d2737;
+  }
+
+  html{ scroll-behavior:smooth }
+  body{
+    font-family: var(--serif);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01","cv11";
+  }
+
+  .container{ max-width: 1240px; margin: 0 auto; padding: 0 32px }
+  @media (max-width: 720px){ .container{ padding: 0 18px } }
+
+  /* Top bar */
+  .topbar{
+    display:grid; grid-template-columns: 1fr auto 1fr;
+    align-items:center; gap: 24px;
+    padding: 20px 0; margin-top: 8px;
+    border-bottom: 1.5px solid var(--rule);
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+    color: var(--muted);
+  }
+  .topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+  .topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+  .back{ color: var(--accent); text-decoration:none }
+  .back:hover{ text-decoration:underline }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color: var(--ink-soft);
+    padding: 4px 10px; border-radius: 999px; cursor: pointer;
+    font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+    transition: background .25s var(--ease);
+  }
+  .theme-toggle:hover{ background: var(--line-soft) }
+
+  /* Header */
+  header{ padding: 80px 0 50px; border-bottom: 1.5px solid var(--rule) }
+  .eyebrow{
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px;
+    color: var(--accent); font-weight: 700; margin-bottom: 22px;
+  }
+  header h1{
+    font-size: clamp(2.4rem, 5.6vw, 4.6rem);
+    font-weight: 900; line-height: 0.96; letter-spacing: -0.02em;
+    margin-bottom: 28px; max-width: 900px;
+  }
+  .h1-italic{ font-style: italic; font-weight: 500 }
+  .lede{
+    display:grid; grid-template-columns: 1.4fr 1fr; gap: 60px;
+    margin-top: 30px;
+  }
+  .lede p{ font-size: 1.08rem; color: var(--ink-soft); line-height: 1.7; max-width: 60ch }
+  .meta{ display:flex; flex-direction:column; gap:6px; align-self:end;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.4px; color: var(--muted) }
+  .meta strong{ color: var(--ink); font-weight: 700 }
+  @media (max-width: 800px){ .lede{ grid-template-columns: 1fr; gap: 30px } }
+
+  /* Section header */
+  .section{ padding: 64px 0; border-bottom: 1.5px solid var(--rule) }
+  .section-head{
+    display:grid; grid-template-columns: 28px 1fr;
+    gap: 14px; align-items: baseline; margin-bottom: 28px;
+  }
+  .section-num{ font: 700 0.72rem/1 var(--mono); color: var(--accent); letter-spacing: 1px }
+  .section-title{ font-size: 1.05rem; text-transform: uppercase; letter-spacing: 2.2px; font-weight: 700 }
+  .section-sub{ grid-column: 2; color: var(--muted); font-size: 0.95rem; max-width: 70ch; margin-top: 6px }
+
+  /* Stats */
+  .stats-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  }
+  .stat{ padding: 24px 0; padding-right: 24px; border-left: 1px solid var(--line) }
+  .stat:first-child{ border-left: none; padding-left: 0 }
+  .stat:not(:first-child){ padding-left: 24px }
+  .stat-num{ font-size: 2.6rem; font-weight: 900; line-height: 1.05; letter-spacing: -1.5px }
+  .stat-num.acc{ color: var(--accent) }
+  .stat-num.warn{ color: var(--warn) }
+  .stat-label{ font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.4px; color: var(--muted); margin-top: 8px }
+  @media (max-width: 720px){ .stats-grid{ grid-template-columns: 1fr 1fr } .stat:nth-child(3){ border-left: none; padding-left: 0 } }
+
+  /* Spectrum overview */
+  .spectrum-card{
+    background: var(--bg-2); border: 1px solid var(--line);
+    padding: 28px; border-radius: 4px;
+  }
+  .spectrum-band{
+    display:grid; grid-template-columns: 80px 60px 1fr; gap:12px; align-items:center;
+    padding: 7px 0; border-top: 1px solid var(--line-soft);
+    font-size: 0.85rem;
+  }
+  .spectrum-band:first-of-type{ border-top:none }
+  .spectrum-name{ font-weight: 600; color: var(--ink); font-size: 0.82rem }
+  .spectrum-name small{ display:block; font-weight: 400; color: var(--muted); font-size: 0.68rem; margin-top:1px }
+  .spectrum-peak{ font: 500 0.76rem var(--mono); color: var(--ink-soft); text-align:right }
+  .spectrum-track{
+    position:relative; height: 14px; background: linear-gradient(90deg,
+      var(--uv-uvb) 0%, var(--uv-uvb) 25%,
+      var(--uv-uva2) 33.3%, var(--uv-uva2) 50%,
+      var(--uv-uva1) 58.3%, var(--uv-uva1) 100%
+    );
+    background: linear-gradient(90deg, rgba(94,58,163,0.10) 0%, rgba(94,58,163,0.10) 29.2%,
+      rgba(176,74,138,0.10) 33.3%, rgba(176,74,138,0.10) 50%,
+      rgba(201,138,58,0.10) 58.3%, rgba(201,138,58,0.10) 100%);
+    border-radius: 2px;
+    border: 1px solid var(--line-soft);
+  }
+  .spectrum-bar{
+    position:absolute; top:1px; bottom:1px;
+    background: var(--accent); border-radius: 1px; opacity: 0.85;
+  }
+  .spectrum-axis{
+    display:grid; grid-template-columns: 80px 60px 1fr; gap:12px;
+    padding-top: 8px; margin-top:8px; border-top: 1.5px solid var(--rule);
+    font: 500 0.68rem var(--mono); color: var(--muted);
+  }
+  .spectrum-axis-track{ display:flex; justify-content:space-between }
+  .spectrum-axis-track span{ position:relative }
+  .spectrum-legend{
+    display:flex; gap:16px; flex-wrap:wrap; margin-top: 14px;
+    font: 500 0.7rem var(--mono); color: var(--muted);
+  }
+  .spectrum-legend i{
+    display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px;
+    vertical-align: middle;
+  }
+  @media (max-width: 720px){ .spectrum-band, .spectrum-axis{ grid-template-columns: 1fr; gap: 4px } .spectrum-peak, .spectrum-axis div:first-child, .spectrum-axis div:nth-child(2){ display:none } }
+
+  /* Filter directory: search + chips + grid */
+  .controls{
+    display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 28px; align-items: center;
+  }
+  .search{
+    flex:1 1 280px; min-width: 200px;
+    padding: 12px 16px; font: inherit; font-size: 0.92rem;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px;
+    color: var(--ink);
+    transition: border-color .25s var(--ease);
+  }
+  .search:focus-visible{ outline:none; border-color: var(--accent) }
+  .count{
+    font: 500 0.72rem var(--mono); color: var(--muted); text-transform: uppercase;
+    letter-spacing: 1px; padding: 0 4px;
+  }
+  .count strong{ color: var(--ink); font-weight: 700 }
+
+  .chips{
+    display:flex; flex-wrap:wrap; gap: 6px; margin-bottom: 26px;
+  }
+  .chip{
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-soft); font: inherit; font-size: 0.74rem; font-weight: 500;
+    padding: 5px 11px; border-radius: 999px; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: all .2s var(--ease);
+  }
+  .chip:hover{ border-color: var(--ink-soft) }
+  .chip.active{ background: var(--ink); border-color: var(--ink); color: var(--bg) }
+  .chip[data-group="range"].active{ background: var(--accent); border-color: var(--accent); color: #fff }
+  .chip[data-group="stab"].active{ background: var(--warn); border-color: var(--warn); color: #fff }
+  .chip[data-group="region"].active{ background: var(--ok); border-color: var(--ok); color: #fff }
+
+  .group-label{
+    font: 500 0.66rem var(--mono); color: var(--muted); letter-spacing: 1.6px;
+    text-transform: uppercase; align-self:center; padding: 0 6px 0 0;
+  }
+
+  /* Filter card grid */
+  .filter-grid{
+    display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 0; border-top: 1.5px solid var(--rule);
+  }
+  .filter-card{
+    padding: 22px 22px 20px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+    cursor: pointer;
+    transition: background .2s var(--ease);
+    position: relative;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+  }
+  .filter-card:hover{ background: var(--accent-soft) }
+  .filter-card:focus-visible{ outline: 2px solid var(--accent); outline-offset: -2px }
+  .filter-card .card-num{
+    font: 500 0.66rem var(--mono); color: var(--muted);
+    letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 8px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .filter-card h3{
+    font-size: 1.08rem; font-weight: 700; line-height: 1.25;
+    margin-bottom: 4px; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .filter-card .alias{
+    font: 500 0.72rem var(--mono); color: var(--muted);
+    margin-bottom: 14px; line-height: 1.4;
+  }
+  .filter-card .props{
+    display:grid; grid-template-columns: auto 1fr; gap: 4px 12px;
+    font-size: 0.83rem; line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .filter-card .props dt{ color: var(--muted); font-weight: 500; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; padding-top:1px }
+  .filter-card .props dd{ color: var(--ink-soft); font-family: var(--mono); font-size: 0.82rem; font-weight: 500 }
+  .filter-card .props dd em{ font-style: normal; color: var(--muted); font-size: 0.74rem; margin-left:4px }
+  .filter-card .tags{
+    display:flex; flex-wrap:wrap; gap:4px; margin-top: 10px;
+  }
+  .tag{
+    font: 600 0.62rem var(--mono); padding: 2px 8px; border-radius: 999px;
+    letter-spacing: 0.8px; text-transform: uppercase;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    background: var(--bg);
+    white-space: nowrap;
+  }
+  .tag.range-uvb{ color: var(--uv-uvb); border-color: var(--uv-uvb); background: rgba(94,58,163,0.08) }
+  .tag.range-uva2,.tag.range-uva-2{ color: var(--uv-uva2); border-color: var(--uv-uva2); background: rgba(176,74,138,0.08) }
+  .tag.range-uva1,.tag.range-uva-1{ color: var(--uv-uva1); border-color: var(--uv-uva1); background: rgba(201,138,58,0.10) }
+  .tag.range-broad{ background: linear-gradient(90deg, rgba(94,58,163,0.10), rgba(201,138,58,0.10)); border-color: var(--ink-soft); color: var(--ink) }
+  .tag.stab-excellent{ color: var(--ok); border-color: var(--ok); background: var(--ok-soft) }
+  .tag.stab-good{ color: var(--ok); border-color: var(--line) }
+  .tag.stab-moderate{ color: var(--moderate); border-color: var(--moderate); background: var(--moderate-soft) }
+  .tag.stab-poor{ color: var(--warn); border-color: var(--warn); background: var(--warn-soft) }
+  .tag.banned{ background: var(--warn); color: #fff; border-color: var(--warn) }
+
+  /* Detail panel (modal) */
+  .modal{
+    position: fixed; inset: 0;
+    background: rgba(15, 13, 20, 0.75);
+    display:none; z-index: 100;
+    align-items: flex-start; justify-content: center;
+    padding: 5vh 24px;
+    overflow-y: auto;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .modal.open{ display: flex }
+  @media (prefers-reduced-motion: no-preference){
+    .modal.open .modal-card{ animation: rise .35s var(--ease) }
+    @keyframes rise{
+      from{ opacity:0; transform: translateY(12px) }
+      to{ opacity:1; transform: none }
+    }
+  }
+  .modal-card{
+    background: var(--bg-2); border: 1px solid var(--line);
+    width: 100%; max-width: 760px; padding: 36px 36px 32px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(15,13,20,0.4);
+  }
+  .modal-close{
+    position: absolute; top: 14px; right: 14px;
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-soft); font: 600 0.78rem var(--mono);
+    width: 32px; height: 32px; border-radius: 999px; cursor: pointer;
+    line-height: 1;
+  }
+  .modal-close:hover{ background: var(--warn-soft); color: var(--warn); border-color: var(--warn) }
+  .modal-card h2{
+    font-size: 1.7rem; font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.01em; margin-bottom: 4px; padding-right: 40px;
+  }
+  .modal-card .alias{
+    font: 500 0.82rem var(--mono); color: var(--muted); margin-bottom: 22px;
+  }
+  .modal-card .badges{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 22px }
+  .modal-card .props-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 18px 36px;
+    margin-bottom: 24px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 20px;
+  }
+  @media (max-width: 600px){ .modal-card .props-grid{ grid-template-columns: 1fr; gap: 16px } }
+  .prop{ }
+  .prop dt{
+    font: 500 0.66rem var(--mono); color: var(--muted);
+    letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .prop dd{
+    font: 500 0.95rem var(--mono); color: var(--ink); line-height: 1.4;
+  }
+  .prop dd .unit{ color: var(--muted); font-weight: 400; font-size: 0.82rem; margin-left:3px }
+  .modal-card .narrative{
+    border-top: 1px solid var(--line-soft); padding-top: 20px;
+    color: var(--ink-soft); font-size: 0.95rem; line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .modal-card .narrative strong{ color: var(--ink); font-weight: 600 }
+  .modal-card .reg-row{
+    display:flex; flex-wrap: wrap; gap: 4px;
+    border-top: 1px solid var(--line-soft); padding-top: 16px; margin-bottom: 16px;
+  }
+  .reg-pill{
+    font: 500 0.7rem var(--mono); padding: 4px 10px;
+    border: 1px solid var(--line); border-radius: 999px;
+    color: var(--ink-soft); background: var(--bg);
+  }
+  .reg-pill .reg-key{ color: var(--muted); margin-right: 6px }
+  .reg-pill.banned{ color: var(--warn); border-color: var(--warn); background: var(--warn-soft) }
+  .reg-pill.pending{ color: var(--moderate); border-color: var(--moderate); background: var(--moderate-soft) }
+  .modal-card .file-link{
+    display:inline-block; margin-top: 8px;
+    font: 600 0.76rem var(--mono); letter-spacing: 1px; text-transform: uppercase;
+    color: var(--accent); text-decoration: none;
+    border-bottom: 1px solid var(--accent); padding-bottom: 1px;
+  }
+  .modal-card .file-link:hover{ color: var(--ink) }
+
+  /* Photodegradation table */
+  .deg-table{
+    width: 100%; border-collapse: collapse;
+    font-size: 0.86rem;
+  }
+  .deg-table th, .deg-table td{
+    text-align: left; padding: 11px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  .deg-table th{
+    font: 700 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  }
+  .deg-table .cite{ font: 500 0.74rem var(--mono); color: var(--muted) }
+  .deg-table tr:hover{ background: var(--accent-soft) }
+  .deg-table .filter-cell{ font-weight: 600; color: var(--ink) }
+  .deg-table .num-cell{ font-family: var(--mono); white-space: nowrap }
+
+  /* Photostab cards */
+  .mech-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0; border-top: 1.5px solid var(--rule);
+  }
+  .mech-card{
+    padding: 22px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .mech-card h4{
+    font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;
+    display:flex; gap: 10px; align-items: baseline;
+  }
+  .mech-card .num{
+    font: 700 0.7rem var(--mono); color: var(--accent); letter-spacing: 1px;
+  }
+  .mech-card .delta{
+    font: 500 0.78rem var(--mono); color: var(--ok); margin: 8px 0;
+    background: var(--ok-soft); padding: 4px 8px; border-radius: 4px;
+    display: inline-block;
+  }
+  .mech-card .delta.bad{ color: var(--warn); background: var(--warn-soft) }
+  .mech-card p{ font-size: 0.86rem; color: var(--ink-soft); line-height: 1.6 }
+  .mech-card .ref{ font: 500 0.72rem var(--mono); color: var(--muted); margin-top: 8px }
+
+  /* Findings list */
+  .findings{ }
+  .finding{
+    display:grid; grid-template-columns: 60px 1fr;
+    gap: 18px; padding: 22px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .finding:first-child{ border-top: none }
+  .finding-num{
+    font: 700 0.78rem var(--mono); color: var(--accent); letter-spacing: 1px;
+  }
+  .finding-text{ font-size: 1rem; color: var(--ink); line-height: 1.65; max-width: 70ch }
+  .finding-text strong{ font-weight: 700 }
+  .finding-text em{ color: var(--muted); font-style: normal; font-size: 0.86rem; display: block; margin-top: 6px }
+
+  /* Methodology / footer */
+  .meth{
+    background: var(--bg-2); border: 1px solid var(--line);
+    padding: 28px; border-radius: 4px; margin-top: 28px;
+    font-size: 0.92rem; color: var(--ink-soft); line-height: 1.7;
+  }
+  .meth h4{
+    font: 700 0.72rem var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.6px; margin: 18px 0 8px;
+  }
+  .meth h4:first-child{ margin-top: 0 }
+  .meth ul{ list-style: none; padding-left: 0 }
+  .meth li{ padding: 3px 0; padding-left: 18px; position: relative }
+  .meth li::before{
+    content: "·"; position: absolute; left: 4px; color: var(--accent); font-weight: 700;
+  }
+  .meth code{ font: 500 0.85em var(--mono); background: var(--bg); padding: 1px 5px; border-radius: 3px; color: var(--accent) }
+  .meth a{ color: var(--accent) }
+
+  footer{
+    padding: 36px 0 28px;
+    display:grid; grid-template-columns: 1fr 1fr 1fr;
+    font: 500 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--muted);
+  }
+  footer span:nth-child(2){ text-align:center }
+  footer span:nth-child(3){ text-align:right }
+  footer a{ color: var(--accent); text-decoration: none }
+  footer a:hover{ text-decoration: underline }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation: none !important; transition: none !important }
+  }
+
+  .empty-state{
+    grid-column: 1 / -1; padding: 60px 20px; text-align:center;
+    color: var(--muted); font-size: 0.92rem; border: 1px dashed var(--line);
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <span><a class="back" href="../../../index.html">← Overview</a></span>
+    <span class="topbar-mid">Reference Compendium · v1.0 · 2026-05-07</span>
+    <span class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <header>
+    <div class="eyebrow">UV Filter Atlas</div>
+    <h1>Spectra & photodegradation of <span class="h1-italic">every globally-approved</span> sunscreen filter.</h1>
+    <div class="lede">
+      <p>Thirty-one active ingredients used in commercial sunscreens — from PABA in 1928 to Mexoryl 400 in 2020 — compiled from the peer-reviewed literature with absorption maxima, molar extinction coefficients, photostability data, and current regulatory status across five major markets.</p>
+      <div class="meta">
+        <span>Filters: <strong>31</strong></span>
+        <span>Citations: <strong>270+</strong></span>
+        <span>Claim files: <strong>38</strong></span>
+        <span>Source repo: <strong>health/sunscreen-filters</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 01: Stats -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div>
+        <div class="section-title">By the Numbers</div>
+        <div class="section-sub">Scope of the literature reviewed for this compendium.</div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num acc">31</div><div class="stat-label">UV Filters Reviewed</div></div>
+      <div class="stat"><div class="stat-num">280–400</div><div class="stat-label">Wavelength Range (nm)</div></div>
+      <div class="stat"><div class="stat-num warn">1</div><div class="stat-label">Photolabile Class (avobenzone)</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Regulatory Jurisdictions</div></div>
+    </div>
+  </section>
+
+  <!-- Section 02: Spectral coverage map -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div>
+        <div class="section-title">Spectral Coverage Map</div>
+        <div class="section-sub">Each bar shows the wavelengths each filter absorbs significantly. Overlapping bars in commercial products fill UVB (280–315 nm), UVA-II (315–340 nm) and UVA-I (340–400 nm).</div>
+      </div>
+    </div>
+    <div class="spectrum-card">
+      <div id="spectrumOverview"></div>
+      <div class="spectrum-axis">
+        <div></div><div></div>
+        <div class="spectrum-axis-track">
+          <span>280</span><span>300</span><span>320</span><span>340</span><span>360</span><span>380</span><span>400 nm</span>
+        </div>
+      </div>
+      <div class="spectrum-legend">
+        <span><i style="background: rgba(94,58,163,0.25)"></i>UVB 280–315</span>
+        <span><i style="background: rgba(176,74,138,0.25)"></i>UVA-II 315–340</span>
+        <span><i style="background: rgba(201,138,58,0.30)"></i>UVA-I 340–400</span>
+        <span><i style="background: var(--accent)"></i>Filter absorption band (FWHM approx.)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Filter directory -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div>
+        <div class="section-title">Filter Directory</div>
+        <div class="section-sub">Click any card for full citations, photodegradation data, and per-region regulatory limits. Use search and chips to filter.</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input type="search" id="searchBox" class="search" placeholder="Search filter, INCI, CAS, trade name…" aria-label="Search filters">
+      <span class="count"><strong id="resultCount">31</strong> of 31 filters</span>
+    </div>
+
+    <div class="chips" role="group" aria-label="Filter chips">
+      <span class="group-label">UV range</span>
+      <button class="chip" data-group="range" data-value="UVB">UVB</button>
+      <button class="chip" data-group="range" data-value="UVA-II">UVA-II</button>
+      <button class="chip" data-group="range" data-value="UVA-I">UVA-I</button>
+      <button class="chip" data-group="range" data-value="Broad">Broad</button>
+
+      <span class="group-label" style="margin-left: 8px">Photostability</span>
+      <button class="chip" data-group="stab" data-value="excellent">Excellent</button>
+      <button class="chip" data-group="stab" data-value="good">Good</button>
+      <button class="chip" data-group="stab" data-value="moderate">Moderate</button>
+      <button class="chip" data-group="stab" data-value="poor">Poor</button>
+
+      <span class="group-label" style="margin-left: 8px">Region</span>
+      <button class="chip" data-group="region" data-value="fda">FDA approved</button>
+      <button class="chip" data-group="region" data-value="eu">EU approved</button>
+      <button class="chip" data-group="region" data-value="banned">Banned somewhere</button>
+      <button class="chip" data-group="region" data-value="reef">Reef-banned</button>
+    </div>
+
+    <div class="filter-grid" id="filterGrid"></div>
+  </section>
+
+  <!-- Section 04: Photodegradation reference -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div>
+        <div class="section-title">Photodegradation Kinetics — Photolabile Filters</div>
+        <div class="section-sub">Quantitative loss data with primary peer-reviewed citations. Solvent and UV dose are stated because the same molecule can be photolabile in cyclohexane and photostable in methanol.</div>
+      </div>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="deg-table">
+      <thead><tr>
+        <th>Filter</th><th>Loss</th><th>Conditions</th><th>Photoproducts</th><th>Source</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="filter-cell">Avobenzone (alone)</td>
+          <td class="num-cell">~36% loss / 1 h sun</td>
+          <td>Neat, no stabiliser</td>
+          <td>14 species — arylglyoxals, benzils, benzoic-acid derivatives, dibenzoylmethane radical</td>
+          <td class="cite">Schwack &amp; Rudolph 1995, <em>J Photochem Photobiol B</em> 28:229</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">Avobenzone (4%)</td>
+          <td class="num-cell">~77% loss / 25 MED</td>
+          <td>Film, no stabiliser</td>
+          <td>same as above</td>
+          <td class="cite">Bonda 2008 (<em>Sunscreens</em>, CRC Press)</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">Avobenzone (cyclohexane)</td>
+          <td class="num-cell">"appreciable"</td>
+          <td>Aprotic solvent</td>
+          <td>photoiso. + degradation</td>
+          <td class="cite">Mturi &amp; Martincigh 2008, <em>J Photochem Photobiol A</em> 200:410</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">Avobenzone (methanol)</td>
+          <td class="num-cell">"essentially photostable"</td>
+          <td>Protic — H-bond stabilises enol</td>
+          <td>none significant</td>
+          <td class="cite">Mturi &amp; Martincigh 2008</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">Octinoxate (OMC)</td>
+          <td class="num-cell">~10% loss / 35 J·cm⁻² UVA</td>
+          <td>EtOH</td>
+          <td>trans → cis isomer; dimers</td>
+          <td class="cite">Tarras-Wahlberg et al. 1999, <em>J Invest Dermatol</em> 113:547</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">Octinoxate + Avobenzone</td>
+          <td class="num-cell">Both filters lost faster</td>
+          <td>Film</td>
+          <td>[2+2] / Paternò–Büchi cycloadduct; ESR-detectable radicals</td>
+          <td class="cite">Sayre, Dowdy, Gerwig, Shields, Lloyd 2005, <em>Photochem Photobiol Sci</em> 4:699</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">PABA</td>
+          <td class="num-cell">photoallergenic + mutagenic photoproducts</td>
+          <td>Aqueous / EtOH</td>
+          <td>4-aminobenzaldehyde + radicals</td>
+          <td class="cite">Knowland et al. 1993, <em>Mutat Res</em> 304:39</td>
+        </tr>
+        <tr>
+          <td class="filter-cell">Octocrylene → Benzophenone</td>
+          <td class="num-cell">avg 39 mg/kg fresh; 75 mg/kg accelerated; max 435</td>
+          <td>Retro-aldol over shelf life</td>
+          <td>benzophenone (IARC 2B)</td>
+          <td class="cite">Downs et al. 2021, <em>Chem Res Toxicol</em> 34:1046</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- Section 05: Photostabilization mechanisms -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <div>
+        <div class="section-title">Photostabilization — How Avobenzone Survives</div>
+        <div class="section-sub">Real sunscreens are mixtures. The single most important formulation question is keeping avobenzone alive, since it is the only FDA-approved UVA-I filter.</div>
+      </div>
+    </div>
+    <div class="mech-grid" id="mechGrid"></div>
+  </section>
+
+  <!-- Section 06: Cross-cutting findings -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <div>
+        <div class="section-title">Cross-Cutting Findings</div>
+        <div class="section-sub">What emerged from comparing the data across all 30 filters.</div>
+      </div>
+    </div>
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-num">F·01</div>
+        <div class="finding-text"><strong>"Physical" vs "chemical" sunscreen is largely a marketing fiction.</strong> Cole, Shyr &amp; Ou-Yang (2016) measured only 4–5% UV reflection from ZnO/TiO₂. Both inorganic and organic filters absorb UV — the difference is that semiconductors absorb via electronic-band-gap transitions while organics absorb via π→π* transitions.<em>Cole et al. 2016, Photodermatol Photoimmunol Photomed 32:5</em></div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">F·02</div>
+        <div class="finding-text"><strong>The avobenzone–octocrylene–benzophenone trilemma is a structural consequence of the FDA monograph freeze.</strong> US sunscreens needing UVA-I have effectively one filter (avobenzone), which is photolabile, so most are stabilised with octocrylene, which decomposes to benzophenone (IARC 2B) over shelf life. The trilemma disappears once next-generation filters (DHHB, Tinosorb M/S) are FDA-approved.</div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">F·03</div>
+        <div class="finding-text"><strong>ESIPT is the dominant photostability mechanism.</strong> Most photostable filters share one trick: excited-state intramolecular proton transfer in &lt;1 picosecond — benzophenones, Tinosorb S/M, DHHB, Mexoryl XL all use it. Avobenzone is the conspicuous exception: its diketo tautomer is photoreactive instead of dissipating to ground state. <em>This is why avobenzone alone fails and ESIPT-class filters succeed.</em></div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">F·04</div>
+        <div class="finding-text"><strong>The deep UVA-I band (370–400 nm) was poorly covered until Mexoryl 400.</strong> Approved EU via Regulation 2020/1684 based on SCCS/1605/19 (Dec 2019), broadly commercialised 2022–2024 as UVMune 400, Mexoryl 400 with λmax 385 nm closes a long-standing gap implicated in photoaging and pigmentary disorders. ZnO and TBPT (with its scattering tail) help partially. This band remains the weakest spot in current US-approved formulae specifically because Mexoryl 400 has no FDA path.</div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">F·05</div>
+        <div class="finding-text"><strong>Solvent matters more than is usually reported.</strong> Avobenzone's λmax shifts from 355 nm (cyclohexane) to 363 nm (DMSO), and its photostability ranges from "appreciable degradation" to "essentially photostable" across the same solvent set. Any photostability claim without a stated vehicle is uninterpretable.<em>Mturi &amp; Martincigh 2008, J Photochem Photobiol A 200:410</em></div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">F·06</div>
+        <div class="finding-text"><strong>The next-generation filters are EU/AU/JP-approved but mostly stuck in FDA limbo.</strong> Tinosorb M/S, DHHB, Mexoryl XL/SX/400, EHT, iscotrizinol — all have decades of safety data and are higher MW (no skin penetration) and more photostable. The Dec 2025 FDA proposed order on bemotrizinol (6% GRASE) is the first crack in the logjam after the 2014 Sunscreen Innovation Act produced no approvals through 2024.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 07: Methodology -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">07</div>
+      <div>
+        <div class="section-title">Methodology &amp; Provenance</div>
+        <div class="section-sub">How this was researched and where to verify.</div>
+      </div>
+    </div>
+    <div class="meth">
+      <p>This compendium was researched by AI agents using web search and direct fetches of peer-reviewed literature, regulatory documents (FDA Federal Register, EU Annex VI, SCCS opinions), and manufacturer technical bulletins. Six parallel deep-research subagents produced 37 individual claim files covering the six filter categories, then a synthesis pass produced the master comparison. Every numerical value (λmax, ε, photodegradation rate, regulatory cap) traces to a primary source with author, journal, year, and DOI; values are tagged with confidence tier C1 (verified primary) through C5 (not located).</p>
+      <h4>Confidence tiers</h4>
+      <ul>
+        <li><strong>C1</strong> — directly stated in peer-reviewed paper or pharmacopoeia</li>
+        <li><strong>C2</strong> — credible secondary source (review citing primary)</li>
+        <li><strong>C3</strong> — derived/calculated from public data (working shown)</li>
+        <li><strong>C4</strong> — graph-digitised or estimated</li>
+        <li><strong>C5</strong> — not located</li>
+      </ul>
+      <h4>Source repository</h4>
+      <p>The full claim files, sources lists, and master synthesis live at <code>/workspace/health/sunscreen-filters/</code> with the primary reference at <code>MASTER-SYNTHESIS.md</code>. Each filter category has its own <code>research/&lt;category&gt;/</code> directory with claim files and a sources.md.</p>
+      <h4>AI disclosure</h4>
+      <p>This page was AI-generated and primarily AI fact-checked, not personally verified by the author. Numerical values, citations, and regulatory statuses should be re-verified against primary sources before any clinical, regulatory, or product-formulation use. An adversarial critique pass was run against fabricated-citation and sycophancy failure modes; results are recorded in <code>verification/</code>.</p>
+      <h4>Known data gaps</h4>
+      <ul>
+        <li>Mexoryl 400 photostability — only sponsor data; no independent peer-reviewed values located</li>
+        <li>Iscotrizinol / TBPT singlet-oxygen quantum yields — no primary measurement located</li>
+        <li>Bisoctrizole molar extinction — most data manufacturer-derived</li>
+        <li>Coral-reef toxicity for benzophenones other than BP-3 — analogous Downs-style assays not located</li>
+        <li>Long-term chronic dermal exposure data for nano-coated inorganic forms</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>UV Filter Atlas · 2026-05-07</span>
+    <span>Style: Swiss / International</span>
+    <span><a href="../../../index.html">Overview</a></span>
+  </footer>
+
+</div>
+
+<!-- Detail modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card" id="modalCard">
+    <button class="modal-close" id="modalClose" aria-label="Close detail">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+// =========================================
+// Filter dataset — all values traceable to /workspace/health/sunscreen-filters/research/
+// Confidence tiers and primary citations live in the per-category claim files.
+// =========================================
+const FILTERS = [
+  // UVB ORGANIC
+  {idx:1, inci:"Octinoxate", aliases:"EHMC, OMC, Ethylhexyl Methoxycinnamate", cas:"5466-77-3", mw:290.4, category:"uvb-organic",
+   ranges:["UVB"], lambda:[308,311], lambdaTxt:"308–311", solvent:"EtOH", epsilon:24000, e1:826,
+   stab:"poor", absStart:295, absEnd:325, peak:309,
+   reg:{fda:7.5,eu:10,au:10,jp:20,kr:7.5}, banned:false, reefBan:true,
+   notes:"Trans/cis isomerism. Photostability collapses in aggregate or with avobenzone (Sayre 2005 [2+2] cycloaddition). Banned in Hawaii, Palau, Thailand, USVI for coral toxicity. EU SCCS endocrine review ongoing.",
+   detail:"research/uvb-organic/claims/c001-octinoxate.md"},
+  {idx:2, inci:"Octisalate", aliases:"EHS, Ethylhexyl Salicylate", cas:"118-60-5", mw:250.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[305,307], lambdaTxt:"305–307", solvent:"EtOH", epsilon:4800, e1:192,
+   stab:"excellent", absStart:295, absEnd:320, peak:306,
+   reg:{fda:5,eu:5,au:10,jp:10,kr:5}, banned:false,
+   notes:"ESIPT-stabilised salicylate. Weak ε but used as a co-solvent for avobenzone in many US formulations. Approved in all major markets.",
+   detail:"research/uvb-organic/claims/c002-octisalate.md"},
+  {idx:3, inci:"Homosalate", aliases:"HMS", cas:"118-56-9", mw:262.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[306,309], lambdaTxt:"306–309", solvent:"EtOH", epsilon:5000, e1:191,
+   stab:"excellent", absStart:295, absEnd:320, peak:308,
+   reg:{fda:15,eu:7.34,au:10,jp:10,kr:10}, banned:false,
+   notes:"EU restricted face-only at 7.34% via Reg (EU) 2022/1176 due to SCCS endocrine concern (estrogenic, anti-androgenic, presumed thyroid disruptor). FDA still permits 15%.",
+   detail:"research/uvb-organic/claims/c003-homosalate.md"},
+  {idx:4, inci:"Octocrylene", aliases:"OCR, OC", cas:"6197-30-4", mw:361.5, category:"uvb-organic",
+   ranges:["UVB"], lambda:[303], lambdaTxt:"303", solvent:"EtOH", epsilon:12000, e1:332,
+   stab:"good", absStart:285, absEnd:325, peak:303,
+   reg:{fda:10,eu:10,au:10,jp:10,kr:10}, banned:false, reefBan:true,
+   notes:"Photostable chromophore but undergoes retro-aldol decomposition over shelf life to BENZOPHENONE (IARC 2B). Downs 2021 measured 6–186 mg/kg fresh; up to 435 mg/kg after FDA accelerated aging. Standard avobenzone stabiliser via triplet–triplet energy transfer. Banned in Palau and USVI.",
+   detail:"research/uvb-organic/claims/c004-octocrylene.md"},
+  {idx:5, inci:"Cinoxate", aliases:"2-ethoxyethyl-p-methoxycinnamate", cas:"104-28-9", mw:250.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[308], lambdaTxt:"308", solvent:"EtOH", epsilon:20650, e1:825,
+   stab:"poor", absStart:295, absEnd:325, peak:308,
+   reg:{fda:3,eu:null,au:6,jp:5,kr:null}, banned:false,
+   notes:"Cinnamate-class — photolabile analogue of octinoxate. Largely obsolete in modern products.",
+   detail:"research/uvb-organic/claims/c005-cinoxate.md"},
+  {idx:6, inci:"PABA", aliases:"4-aminobenzoic acid", cas:"150-13-0", mw:137.1, category:"uvb-organic",
+   ranges:["UVB"], lambda:[283], lambdaTxt:"283", solvent:"EtOH", epsilon:13500, e1:985,
+   stab:"moderate", absStart:265, absEnd:300, peak:283,
+   reg:{fda:15,eu:null,au:null,jp:null,kr:null}, banned:true,
+   notes:"BANNED in EU (2009), Australia, Japan, Korea — photoallergen and mutagenic photoproducts (Knowland 1993). Still technically permitted by FDA monograph but absent from modern products.",
+   detail:"research/uvb-organic/claims/c006-paba-padimate-o.md"},
+  {idx:7, inci:"Padimate O", aliases:"OD-PABA, Octyl Dimethyl PABA", cas:"21245-02-3", mw:277.4, category:"uvb-organic",
+   ranges:["UVB"], lambda:[311], lambdaTxt:"311", solvent:"EtOH", epsilon:28400, e1:1024,
+   stab:"good", absStart:295, absEnd:325, peak:311,
+   reg:{fda:8,eu:8,au:8,jp:10,kr:8}, banned:false,
+   notes:"PABA-derivative without PABA's photoallergenicity. Highest E(1%, 1cm) of any FDA filter. Generates ~5% singlet oxygen.",
+   detail:"research/uvb-organic/claims/c006-paba-padimate-o.md"},
+  {idx:8, inci:"Ensulizole", aliases:"PBSA, Phenylbenzimidazole sulfonic acid", cas:"27503-81-7", mw:274.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[302], lambdaTxt:"302", solvent:"H₂O", epsilon:25000, e1:911,
+   stab:"excellent", absStart:285, absEnd:320, peak:302,
+   reg:{fda:4,eu:8,au:4,jp:3,kr:4}, banned:false,
+   notes:"Water-soluble UVB filter (rare). Photostable chromophore but Φ(¹O₂) = 0.10 — significant ROS generator. ΦF=0.63.",
+   detail:"research/uvb-organic/claims/c007-ensulizole.md"},
+  {idx:9, inci:"Polysilicone-15", aliases:"Parsol SLX", cas:"207574-74-1", mw:6000, category:"uvb-organic",
+   ranges:["UVB"], lambda:[312], lambdaTxt:"312", solvent:"EtOH", epsilon:6500, e1:175,
+   stab:"excellent", absStart:295, absEnd:325, peak:312,
+   reg:{fda:null,eu:10,au:10,jp:10,kr:10}, banned:false,
+   notes:"Polymeric silicone-tethered chromophore. MW ~6,000 → no skin penetration. Photostabiliser for avobenzone.",
+   detail:"research/uvb-organic/claims/c008-polysilicone-15.md"},
+  {idx:10, inci:"Ethylhexyl Triazone", aliases:"EHT, Octyl Triazone, Uvinul T 150", cas:"88122-99-0", mw:823.1, category:"uvb-organic",
+   ranges:["UVB"], lambda:[314], lambdaTxt:"314", solvent:"EtOH", epsilon:135000, e1:1500,
+   stab:"excellent", absStart:295, absEnd:330, peak:314,
+   reg:{fda:null,eu:5,au:5,jp:5,kr:5}, banned:false,
+   notes:"Highest molar extinction coefficient of any commercial UV filter (~135,000 M⁻¹cm⁻¹). MW 823 → no penetration. FDA TEA pending since 2003.",
+   detail:"research/uvb-organic/claims/c009-octyl-triazone.md"},
+  {idx:11, inci:"4-Methylbenzylidene Camphor", aliases:"4-MBC, Enzacamene", cas:"36861-47-9", mw:254.4, category:"uvb-organic",
+   ranges:["UVB"], lambda:[300], lambdaTxt:"300", solvent:"EtOH", epsilon:24500, e1:963,
+   stab:"good", absStart:285, absEnd:320, peak:300,
+   reg:{fda:null,eu:0,au:4,jp:null,kr:null}, banned:true,
+   notes:"BANNED IN EU effective May 2026 for endocrine disruption (estrogenic + thyroid). Still listed in Australia under TGA review.",
+   detail:"research/uvb-organic/claims/c010-4-mbc.md"},
+  {idx:12, inci:"Amiloxate", aliases:"Isoamyl Methoxycinnamate, Neo Heliopan E1000", cas:"71617-10-2", mw:248.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[308,310], lambdaTxt:"308–310", solvent:"EtOH", epsilon:24000, e1:960,
+   stab:"poor", absStart:295, absEnd:325, peak:309,
+   reg:{fda:"TEA",eu:10,au:10,jp:"quasi-drug",kr:10}, banned:false,
+   notes:"Structural isomer of octinoxate (isoamyl ester instead of 2-ethylhexyl); near-identical photochemistry. FDA TEA pending since 2003. Like OMC, undergoes trans→cis photoisomerisation and [2+2] dimerisation; expected to be incompatible with avobenzone by mechanistic analogy.",
+   detail:"research/uvb-organic/claims/c011-amiloxate.md"},
+  {idx:13, inci:"Trolamine Salicylate", aliases:"TEA salicylate", cas:"2174-16-5", mw:287.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[298], lambdaTxt:"~298", solvent:"H₂O", epsilon:3300, e1:null,
+   stab:"good", absStart:280, absEnd:315, peak:298,
+   reg:{fda:12,eu:null,au:12,jp:null,kr:null}, banned:false,
+   notes:"FDA proposed NOT GRASE for sunscreen use (2021) due to systemic salicylate toxicity. Largely used in topical analgesics now.",
+   detail:"research/benzophenones/claims/c004-trolamine-salicylate.md"},
+
+  // UVA ORGANIC
+  {idx:14, inci:"Avobenzone", aliases:"BMDBM, Butyl Methoxydibenzoylmethane, Parsol 1789", cas:"70356-09-1", mw:310.4, category:"uva-organic",
+   ranges:["UVA-I","UVA-II"], lambda:[357], lambdaTxt:"357 (enol, MeOH); 265 (keto)", solvent:"MeOH", epsilon:35000, e1:1130,
+   stab:"poor", absStart:325, absEnd:395, peak:357,
+   reg:{fda:3,eu:5,au:5,jp:10,kr:5}, banned:false,
+   notes:"Only FDA-approved UVA-I filter. Highly photolabile alone (~36% loss/1h sun) — requires stabiliser. Incompatible with octinoxate ([2+2] cycloaddition; Sayre 2005). λmax shifts dramatically with solvent: 355 nm cyclohexane → 363 nm DMSO; methanol renders it nearly photostable. Photoproducts include arylglyoxals, benzils, and benzoic acid derivatives.",
+   detail:"research/uva-organic/claims/c001-avobenzone.md"},
+  {idx:15, inci:"Meradimate", aliases:"Menthyl Anthranilate, Neo Heliopan MA", cas:"134-09-8", mw:275.4, category:"uva-organic",
+   ranges:["UVA-II"], lambda:[336], lambdaTxt:"336", solvent:"EtOH", epsilon:5000, e1:180,
+   stab:"moderate", absStart:285, absEnd:360, peak:336,
+   reg:{fda:5,eu:null,au:5,jp:null,kr:5}, banned:false,
+   notes:"Chromophore is mass-stable but is a singlet-oxygen photosensitiser (Φ_Δ ≈ 0.20–0.30) — destabilises co-formulations. Pair with α-tocopherol or Trolox. Not approved in EU/Japan.",
+   detail:"research/uva-organic/claims/c002-meradimate.md"},
+  {idx:16, inci:"DHHB", aliases:"Diethylamino Hydroxybenzoyl Hexyl Benzoate, Uvinul A Plus, Parsol DHHB", cas:"302776-68-7", mw:397.5, category:"uva-organic",
+   ranges:["UVA-I","UVA-II"], lambda:[354], lambdaTxt:"354", solvent:"EtOH", epsilon:39000, e1:980,
+   stab:"excellent", absStart:325, absEnd:385, peak:354,
+   reg:{fda:"TEA",eu:10,au:10,jp:10,kr:10}, banned:false,
+   notes:"ESIPT-stabilised UVA-I filter. >95% remaining after standard solar dose. Stabilises co-formulated filters. FDA TEA pending. Note: phthalate impurity (DnHexP) historically a quality concern.",
+   detail:"research/uva-organic/claims/c003-dhhb.md"},
+  {idx:17, inci:"Bisoctrizole", aliases:"MBBT, Methylene Bis-Benzotriazolyl Tetramethylbutylphenol, Tinosorb M", cas:"103597-45-1", mw:658.9, category:"uva-organic",
+   ranges:["UVB","UVA-I","UVA-II"], lambda:[305,360], lambdaTxt:"305 + 360 (dual peak)", solvent:"dispersion", epsilon:52000, e1:700,
+   stab:"excellent", absStart:285, absEnd:395, peak:340,
+   reg:{fda:"TEA",eu:10,au:10,jp:10,kr:10}, banned:false,
+   notes:"Particulate (microfine aqueous dispersion ~150–200 nm). Hybrid mechanism: optical filtering + ESIPT in two hydroxyphenyl-benzotriazole arms + some triplet quenching. Broadest single-filter coverage. FDA TEA pending.",
+   detail:"research/uva-organic/claims/c004-bisoctrizole.md"},
+  {idx:18, inci:"Iscotrizinol", aliases:"Diethylhexyl Butamido Triazone, Uvasorb HEB", cas:"154702-15-5", mw:766, category:"uva-organic",
+   ranges:["UVB"], lambda:[310], lambdaTxt:"310", solvent:"EtOH", epsilon:110000, e1:1435,
+   stab:"excellent", absStart:290, absEnd:340, peak:310,
+   reg:{fda:"TEA",eu:10,au:null,jp:10,kr:10}, banned:false,
+   notes:"~10% loss after 25h direct sun. Predominantly UVB despite the filter category. FDA TEA pending.",
+   detail:"research/uva-organic/claims/c005-iscotrizinol.md"},
+
+  // BROAD-SPECTRUM / Mexoryl
+  {idx:19, inci:"Bemotrizinol", aliases:"BEMT, Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine, Tinosorb S", cas:"187393-00-6", mw:627.8, category:"broad-spectrum",
+   ranges:["UVB","UVA-I","UVA-II"], lambda:[310,340], lambdaTxt:"310 + 340 (dual peak)", solvent:"EtOH", epsilon:50000, e1:790,
+   stab:"excellent", absStart:285, absEnd:380, peak:340,
+   reg:{fda:"proposed 6%",eu:10,au:10,jp:10,kr:10}, banned:false,
+   notes:"FDA Proposed Order 11 Dec 2025 — first new TEA filter approved in decades, GRASE at 6% pending final order June 2026. 98.4% retained after 50 MED. Photostabilises avobenzone via TTET (Chatelain & Gabard 2001).",
+   detail:"research/broad-spectrum/claims/c001-bemotrizinol.md"},
+  {idx:20, inci:"Ecamsule", aliases:"Mexoryl SX, Terephthalylidene Dicamphor Sulfonic Acid", cas:"92761-26-7", mw:562.7, category:"broad-spectrum",
+   ranges:["UVA-II"], lambda:[345], lambdaTxt:"345", solvent:"H₂O (TEA salt)", epsilon:20000, e1:360,
+   stab:"excellent", absStart:325, absEnd:365, peak:345,
+   reg:{fda:"NDA",eu:10,au:10,jp:10,kr:10}, banned:false,
+   notes:"Reached US market via NDA for Anthelios SX (2006), not OTC monograph. Water-soluble. 94–99% retained after 25 MED. Reversible photoisomerisation. Cited ε ranges 19,000–47,000 across studies — wide disagreement.",
+   detail:"research/broad-spectrum/claims/c002-ecamsule.md"},
+  {idx:21, inci:"Drometrizole Trisiloxane", aliases:"Mexoryl XL", cas:"155633-54-8", mw:501.9, category:"broad-spectrum",
+   ranges:["UVB","UVA-II"], lambda:[303,344], lambdaTxt:"303 + 344 (dual peak)", solvent:"silicone", epsilon:18000, e1:340,
+   stab:"excellent", absStart:285, absEnd:370, peak:344,
+   reg:{fda:"TEA",eu:15,au:15,jp:15,kr:15}, banned:false,
+   notes:"EU max 15% — highest of any UV filter. ESIPT-stabilised silicone-soluble. ≥97% retained after 50 MED.",
+   detail:"research/broad-spectrum/claims/c003-drometrizole-trisiloxane.md"},
+  {idx:22, inci:"Mexoryl 400", aliases:"MCE, Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate", cas:"1419401-88-9", mw:322.4, category:"broad-spectrum",
+   ranges:["UVA-I"], lambda:[385], lambdaTxt:"385 (deepest UVA-I)", solvent:"EtOH", epsilon:63000, e1:1956,
+   stab:"excellent", absStart:355, absEnd:415, peak:385,
+   reg:{fda:null,eu:3,au:null,jp:null,kr:null}, banned:false,
+   notes:"Newest filter — EU approved via Regulation 2020/1684 (based on SCCS/1605/19 of Dec 2019); broadly commercialised 2022–2024 (UVMune 400). Closes the 370–400 nm 'ultra-long UVA1' gap implicated in photoaging. Sponsor data only for photostability; no independent peer-reviewed values located.",
+   detail:"research/broad-spectrum/claims/c004-mexoryl-400-mce.md"},
+  {idx:23, inci:"Tris-Biphenyl Triazine", aliases:"TBPT, Tinosorb A2B", cas:"31274-51-8", mw:537.7, category:"broad-spectrum",
+   ranges:["UVB","UVA-II"], lambda:[310], lambdaTxt:"310 + scattering shoulder", solvent:"THF", epsilon:80000, e1:null,
+   stab:"excellent", absStart:285, absEnd:355, peak:310,
+   reg:{fda:null,eu:10,au:10,jp:null,kr:10}, banned:false,
+   notes:"Particulate (150–200 nm aqueous dispersion). Both nano (2014) and non-nano (2022) entries in EU Annex VI. No characterised photoproducts.",
+   detail:"research/broad-spectrum/claims/c005-tinosorb-a2b-tbpt.md"},
+  {idx:24, inci:"Bisdisulizole Disodium", aliases:"Neo Heliopan AP, Disodium Phenyl Dibenzimidazole Tetrasulfonate", cas:"180898-37-7", mw:674.6, category:"broad-spectrum",
+   ranges:["UVA-II"], lambda:[335], lambdaTxt:"335", solvent:"H₂O", epsilon:52000, e1:790,
+   stab:"excellent", absStart:315, absEnd:355, peak:335,
+   reg:{fda:null,eu:10,au:10,jp:null,kr:null}, banned:false,
+   notes:"Only true water-soluble UVA filter at 10% EU max. Rigid bis-benzimidazole.",
+   detail:"research/broad-spectrum/claims/c006-bisdisulizole-disodium.md"},
+
+  // BENZOPHENONES
+  {idx:25, inci:"Oxybenzone", aliases:"BP-3, Benzophenone-3", cas:"131-57-7", mw:228.3, category:"benzophenones",
+   ranges:["UVB","UVA-II"], lambda:[287,325], lambdaTxt:"287 + 325 (dual peak)", solvent:"EtOH", epsilon:18000, e1:null,
+   stab:"good", absStart:275, absEnd:345, peak:306,
+   reg:{fda:6,eu:2.2,au:10,jp:5,kr:5}, banned:false, reefBan:true,
+   notes:"BANNED in Hawaii (Act 104, 2021), Florida Keys, Palau, USVI, Aruba, Bonaire for coral toxicity (Downs 2016). EU dropped from 10% → 6% → 2.2% body in 2017–2022. FDA Matta 2019/2020 JAMA: plasma C_max 169–210 ng/mL — far above 0.5 ng/mL toxicology threshold. NHANES detection in ≥96% US urine. Most allergenic UV filter in N. America.",
+   detail:"research/benzophenones/claims/c001-oxybenzone-bp3.md"},
+  {idx:26, inci:"Sulisobenzone", aliases:"BP-4, Benzophenone-4", cas:"4065-45-6", mw:308.3, category:"benzophenones",
+   ranges:["UVB","UVA-II"], lambda:[286,325], lambdaTxt:"286 + 325 (dual peak)", solvent:"H₂O", epsilon:15000, e1:null,
+   stab:"good", absStart:275, absEnd:345, peak:306,
+   reg:{fda:10,eu:5,au:10,jp:10,kr:5}, banned:false,
+   notes:"Water-soluble (sulfonate). Lower skin penetration than BP-3, no known coral-reef ban. The most modernly-relevant benzophenone.",
+   detail:"research/benzophenones/claims/c002-sulisobenzone-bp4.md"},
+  {idx:27, inci:"Dioxybenzone", aliases:"BP-8, Benzophenone-8", cas:"131-53-3", mw:244.2, category:"benzophenones",
+   ranges:["UVB","UVA-II"], lambda:[282,325], lambdaTxt:"282 + 325–352", solvent:"EtOH", epsilon:15000, e1:null,
+   stab:"good", absStart:270, absEnd:355, peak:303,
+   reg:{fda:3,eu:null,au:3,jp:null,kr:null}, banned:false,
+   notes:"FDA monograph 3% but 'insufficient data for GRASE'. Limited modern usage.",
+   detail:"research/benzophenones/claims/c003-dioxybenzone-bp8.md"},
+  {idx:28, inci:"Mexenone", aliases:"BP-10, Benzophenone-10", cas:"1641-17-4", mw:242.3, category:"benzophenones",
+   ranges:["UVB","UVA-II"], lambda:[287,325], lambdaTxt:"287 + 325", solvent:"EtOH", epsilon:14000, e1:null,
+   stab:"good", absStart:275, absEnd:345, peak:306,
+   reg:{fda:null,eu:null,au:null,jp:null,kr:null}, banned:false,
+   notes:"Obsolete. Historical UK Uvistat formulation only. Not currently approved in any major market.",
+   detail:"research/benzophenones/claims/c006-mexenone-bp10.md"},
+
+  // INORGANIC
+  {idx:29, inci:"Zinc Oxide", aliases:"ZnO, nano-ZnO", cas:"1314-13-2", mw:81.4, category:"inorganic",
+   ranges:["UVB","UVA-I","UVA-II"], lambda:[368], lambdaTxt:"cutoff 368 nm (Eg = 3.37 eV)", solvent:"semiconductor", epsilon:null, e1:null,
+   stab:"excellent", absStart:280, absEnd:380, peak:340,
+   reg:{fda:25,eu:25,au:25,jp:"quasi-drug",kr:25}, banned:false,
+   notes:"Wide-bandgap semiconductor. Eg = 3.37 eV → λ_cutoff = 1240/3.37 = 368 nm (calculated). Only 4–5% UV reflection (Cole 2016) — absorption dominates 10:1. Refractive index 2.0 → low whitening. EU: nano (entry 30a) and non-nano (entry 30) listed; nano spray formulations prohibited. Some Zn²⁺ ionic dissolution measured (Gulson 2010).",
+   detail:"research/inorganic/claims/c001-zinc-oxide.md"},
+  {idx:30, inci:"Titanium Dioxide (rutile)", aliases:"TiO₂, nano-TiO₂", cas:"13463-67-7", mw:79.9, category:"inorganic",
+   ranges:["UVB","UVA-I","UVA-II"], lambda:[413], lambdaTxt:"cutoff 387–413 nm (Eg = 3.0–3.2 eV)", solvent:"semiconductor", epsilon:null, e1:null,
+   stab:"excellent", absStart:280, absEnd:400, peak:340,
+   reg:{fda:25,eu:25,au:25,jp:"quasi-drug",kr:25}, banned:false,
+   notes:"Wide-bandgap semiconductor. Anatase (Eg = 3.20 eV) is highly photocatalytic — AVOID in cosmetics; rutile (Eg = 3.00 eV) is preferred. Refractive index 2.7 → strong whitening. Always use coated grades (silica, alumina, dimethicone) — coatings suppress 70–95% of ROS. IARC Group 2B for inhalation only. EU: nano spray formulations prohibited.",
+   detail:"research/inorganic/claims/c002-titanium-dioxide.md"},
+
+  // BENZOPHENONE-1 (metabolite)
+  {idx:31, inci:"Benzophenone-1", aliases:"BP-1, 2,4-dihydroxybenzophenone", cas:"131-56-6", mw:214.2, category:"benzophenones",
+   ranges:["UVB","UVA-II"], lambda:[287,325], lambdaTxt:"287 + 325", solvent:"EtOH", epsilon:16000, e1:null,
+   stab:"good", absStart:275, absEnd:345, peak:306,
+   reg:{fda:null,eu:null,au:null,jp:null,kr:null}, banned:false,
+   notes:"Not approved as a UV filter — included for context as the major metabolite/photoproduct of BP-3 (oxybenzone). 10–50× more estrogenic in vitro than BP-3. Detected in 80–95% of US urine via BP-3 metabolism.",
+   detail:"research/benzophenones/claims/c005-benzophenone-1-bp1.md"},
+];
+
+// =========================================
+// Photostabilization mechanisms
+// =========================================
+const MECHS = [
+  {n:"01", title:"Octinoxate (DESTABILISER)", delta:"Both filters degrade faster", deltaBad:true,
+   text:"BMDBM diketo triplet undergoes [2+2] / Paternò–Büchi photocycloaddition with the cinnamate alkene of OMC. Persistent radicals detected by ESR.",
+   ref:"Sayre 2005, Photochem Photobiol Sci 4:699"},
+  {n:"02", title:"Octocrylene (TTET)", delta:"23% → 90% / 25 MED",
+   text:"Triplet–triplet energy transfer; quenching rate constant kq ≈ 10⁹ M⁻¹s⁻¹. Most widely-used stabiliser. Caveat: OC degrades to benzophenone (Downs 2021).",
+   ref:"Damiani 2007; Lhiaubet-Vallet 2010; Bonda 2008/2016"},
+  {n:"03", title:"Bemotrizinol / Tinosorb S (TTET)", delta:"30% → 90% / 30 MED",
+   text:"Broadband UV filter that itself is photostable via ESIPT-like mechanism, and quenches BMDBM triplet directly. Universal stabiliser in EU formulations.",
+   ref:"Chatelain & Gabard 2001, Photochem Photobiol 74:401"},
+  {n:"04", title:"Bisoctrizole / Tinosorb M", delta:"70–85% retention",
+   text:"Particulate scatterer + ESIPT in hydroxyphenyl-benzotriazole arms. Optical filtering reduces UV reaching avobenzone and triplet quenching handles the rest.",
+   ref:"BASF; Lhiaubet-Vallet 2010"},
+  {n:"05", title:"DEHN / Corapan TQ", delta:"<30% → >80% / 25 MED",
+   text:"Triplet-energy transfer via naphthalate ³ππ* state. Φ_F = 0.59, Φ_Δ = 0.44 — generates singlet oxygen as a byproduct, so pair with salicylates to suppress.",
+   ref:"Shimizu 2018; Yagi 2019"},
+  {n:"06", title:"Polyester-8 / Polycrylene", delta:"Substantial (less than free OC at equal mass)",
+   text:"Same cyanodiphenyl-acrylate chromophore as octocrylene grafted onto a polymer backbone. No skin penetration, same triplet quenching mechanism.",
+   ref:"Hallstar PIB; Sci Rep 2023 SI"},
+  {n:"07", title:"DESM / Oxynex ST", delta:">85% / 25 MED",
+   text:"Multimode: TTET + singlet-oxygen quenching + phenolic radical scavenging.",
+   ref:"Chaudhuri 2006; Yagi 2025"},
+  {n:"08", title:"Vitamin E (tocopherol)", delta:"~60% → ~85% (1:2 ratio)",
+   text:"Radical scavenger and weak ¹O₂ quencher. Common antioxidant adjunct, modest contribution.",
+   ref:"Afonso 2014; Lin 2008"},
+];
+
+// =========================================
+// Render: spectrum overview
+// =========================================
+const OVERVIEW_FILTERS = FILTERS.slice().sort((a,b) => a.peak - b.peak);
+const OV = document.getElementById('spectrumOverview');
+const W_MIN = 280, W_MAX = 400;
+const pct = (w) => ((w - W_MIN) / (W_MAX - W_MIN) * 100);
+
+OVERVIEW_FILTERS.forEach((f, i) => {
+  const left = pct(f.absStart);
+  const right = pct(f.absEnd);
+  const width = right - left;
+  const barColor = f.category === "inorganic" ? "var(--ink-soft)" :
+                   f.ranges.includes("UVA-I") ? "var(--uv-uva1)" :
+                   f.ranges.includes("UVA-II") ? "var(--uv-uva2)" : "var(--uv-uvb)";
+
+  const peakStr = f.peak ? `λmax ${Array.isArray(f.lambda) ? f.lambda.join('+') : f.lambda} nm` : '';
+  const row = document.createElement('div');
+  row.className = 'spectrum-band';
+  row.innerHTML = `
+    <div class="spectrum-name">${f.inci}<small>${f.category}</small></div>
+    <div class="spectrum-peak">${peakStr}</div>
+    <div class="spectrum-track"><div class="spectrum-bar" style="left:${left}%;width:${width}%;background:${barColor}"></div></div>
+  `;
+  OV.appendChild(row);
+});
+
+// =========================================
+// Render: filter cards
+// =========================================
+const grid = document.getElementById('filterGrid');
+const countEl = document.getElementById('resultCount');
+
+function renderCards(list){
+  grid.innerHTML = '';
+  if (!list.length){
+    grid.innerHTML = '<div class="empty-state">No filters match these criteria.</div>';
+    countEl.textContent = '0';
+    return;
+  }
+  countEl.textContent = list.length;
+  list.forEach(f => {
+    const rangeTagsHtml = f.ranges.map(r => {
+      const cls = 'range-' + r.toLowerCase().replace('-','');
+      return `<span class="tag ${cls}">${r}</span>`;
+    }).join('');
+    const stabClass = 'stab-' + f.stab;
+    const banPill = f.banned ? `<span class="tag banned">Banned</span>` : '';
+    const epsilonStr = f.epsilon ? f.epsilon.toLocaleString() : '—';
+    const e1Str = f.e1 ? f.e1.toLocaleString() : '—';
+
+    const card = document.createElement('button');
+    card.className = 'filter-card';
+    card.dataset.idx = f.idx;
+    card.setAttribute('aria-label', `Open detail for ${f.inci}`);
+    card.innerHTML = `
+      <div class="card-num"><span>№${String(f.idx).padStart(2,'0')} · ${f.category.replace('-',' ')}</span><span style="color:var(--accent)">→</span></div>
+      <h3>${f.inci}</h3>
+      <div class="alias">${f.aliases || ''}</div>
+      <dl class="props">
+        <dt>λmax</dt><dd>${f.lambdaTxt} <em>nm</em></dd>
+        <dt>ε</dt><dd>${epsilonStr} <em>M⁻¹cm⁻¹</em></dd>
+        <dt>CAS</dt><dd>${f.cas}</dd>
+      </dl>
+      <div class="tags">
+        ${rangeTagsHtml}
+        <span class="tag ${stabClass}">${f.stab[0].toUpperCase()+f.stab.slice(1)} photostab.</span>
+        ${banPill}
+        ${f.reefBan ? '<span class="tag stab-poor">Reef ban</span>' : ''}
+      </div>
+    `;
+    card.addEventListener('click', () => openDetail(f));
+    grid.appendChild(card);
+  });
+}
+
+// =========================================
+// Filtering / search
+// =========================================
+const state = { q: '', range: null, stab: null, region: null };
+
+function applyFilters(){
+  let list = FILTERS.slice();
+  if (state.q){
+    const q = state.q.toLowerCase();
+    list = list.filter(f =>
+      f.inci.toLowerCase().includes(q) ||
+      (f.aliases || '').toLowerCase().includes(q) ||
+      f.cas.includes(q) ||
+      f.notes.toLowerCase().includes(q)
+    );
+  }
+  if (state.range){
+    list = list.filter(f => {
+      if (state.range === 'Broad') return f.ranges.length >= 2 || f.ranges.includes('UVA-I') && f.ranges.includes('UVB');
+      return f.ranges.includes(state.range);
+    });
+  }
+  if (state.stab){
+    list = list.filter(f => f.stab === state.stab);
+  }
+  if (state.region){
+    if (state.region === 'fda') list = list.filter(f => f.reg.fda !== null && f.reg.fda !== "TEA");
+    if (state.region === 'eu') list = list.filter(f => typeof f.reg.eu === 'number' && f.reg.eu > 0);
+    if (state.region === 'banned') list = list.filter(f => f.banned || (typeof f.reg.eu === 'number' && f.reg.eu === 0));
+    if (state.region === 'reef') list = list.filter(f => f.reefBan);
+  }
+  renderCards(list);
+}
+
+// search
+document.getElementById('searchBox').addEventListener('input', (e) => {
+  state.q = e.target.value;
+  applyFilters();
+});
+
+// chips
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const group = chip.dataset.group;
+    const value = chip.dataset.value;
+    if (state[group] === value){
+      state[group] = null;
+      chip.classList.remove('active');
+    } else {
+      state[group] = value;
+      document.querySelectorAll(`.chip[data-group="${group}"]`).forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+// =========================================
+// Detail modal
+// =========================================
+const modal = document.getElementById('modal');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+function regBadge(key, val){
+  if (val === null || val === undefined) return `<span class="reg-pill"><span class="reg-key">${key}</span>—</span>`;
+  if (val === "TEA") return `<span class="reg-pill pending"><span class="reg-key">${key}</span>TEA pending</span>`;
+  if (val === "NDA") return `<span class="reg-pill pending"><span class="reg-key">${key}</span>NDA only</span>`;
+  if (val === "quasi-drug") return `<span class="reg-pill"><span class="reg-key">${key}</span>quasi-drug</span>`;
+  if (typeof val === 'string') return `<span class="reg-pill pending"><span class="reg-key">${key}</span>${val}</span>`;
+  if (val === 0) return `<span class="reg-pill banned"><span class="reg-key">${key}</span>banned</span>`;
+  return `<span class="reg-pill"><span class="reg-key">${key}</span>${val}%</span>`;
+}
+
+function openDetail(f){
+  const stabClass = 'stab-' + f.stab;
+  const rangeTagsHtml = f.ranges.map(r => {
+    const cls = 'range-' + r.toLowerCase().replace('-','');
+    return `<span class="tag ${cls}">${r}</span>`;
+  }).join('');
+  modalBody.innerHTML = `
+    <h2 id="modalTitle">${f.inci}</h2>
+    <div class="alias">${f.aliases}</div>
+    <div class="badges">
+      ${rangeTagsHtml}
+      <span class="tag ${stabClass}">${f.stab[0].toUpperCase()+f.stab.slice(1)} photostab.</span>
+      ${f.banned ? '<span class="tag banned">Banned (some markets)</span>' : ''}
+      ${f.reefBan ? '<span class="tag stab-poor">Reef-banned</span>' : ''}
+    </div>
+    <div class="props-grid">
+      <div class="prop"><dt>CAS Number</dt><dd>${f.cas}</dd></div>
+      <div class="prop"><dt>Molecular Weight</dt><dd>${f.mw} <span class="unit">g/mol</span></dd></div>
+      <div class="prop"><dt>λ max</dt><dd>${f.lambdaTxt} <span class="unit">nm</span></dd></div>
+      <div class="prop"><dt>Solvent</dt><dd>${f.solvent}</dd></div>
+      <div class="prop"><dt>ε (molar)</dt><dd>${f.epsilon ? f.epsilon.toLocaleString() : '—'} <span class="unit">M⁻¹cm⁻¹</span></dd></div>
+      <div class="prop"><dt>E (1%, 1cm)</dt><dd>${f.e1 ? f.e1.toLocaleString() : '—'}</dd></div>
+    </div>
+    <div class="narrative"><strong>Notes.</strong> ${f.notes}</div>
+    <div class="reg-row">
+      ${regBadge('FDA', f.reg.fda)}
+      ${regBadge('EU', f.reg.eu)}
+      ${regBadge('AU', f.reg.au)}
+      ${regBadge('JP', f.reg.jp)}
+      ${regBadge('KR', f.reg.kr)}
+    </div>
+    <a class="file-link" href="../${f.detail}" target="_blank" rel="noopener">View claim file →</a>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+modalClose.addEventListener('click', closeDetail);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeDetail() });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDetail() });
+
+// =========================================
+// Render mech grid
+// =========================================
+const mechGrid = document.getElementById('mechGrid');
+MECHS.forEach(m => {
+  const c = document.createElement('div');
+  c.className = 'mech-card';
+  c.innerHTML = `
+    <h4><span class="num">${m.n}</span><span>${m.title}</span></h4>
+    <div class="delta ${m.deltaBad ? 'bad' : ''}">${m.delta}</div>
+    <p>${m.text}</p>
+    <div class="ref">${m.ref}</div>
+  `;
+  mechGrid.appendChild(c);
+});
+
+// =========================================
+// Theme toggle (auto / light / dark)
+// =========================================
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+const btn = document.getElementById('themeToggle');
+
+function applyTheme(){
+  const mode = modes[modeIndex];
+  localStorage.setItem('theme', mode);
+  if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', mode);
+  btn.textContent = labels[mode];
+}
+btn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length;
+  applyTheme();
+});
+applyTheme();
+
+// initial render
+renderCards(FILTERS);
+
+</script>
+</body>
+</html>

@@ -90,7 +90,7 @@ BEMT acts as a triplet-state quencher for excited avobenzone via through-space a
 * **Singlet → ground deactivation pathway:** ESIPT-mediated ultrafast (sub-ps) internal conversion. The two ortho-OH phenol substituents form intramolecular H-bonds with triazine ring N atoms. UV absorption triggers proton transfer to the keto form, which has a low-lying conical intersection allowing rapid IC back to ground state.
 * **Triplet yield:** very low (<<0.05); ROS yield (singlet O₂) likewise minimal. Quantitative ¹O₂ quantum yield is typically reported as <0.01 in benchmark comparisons (vs ~0.1–0.3 for benzophenone-3) [C2; Damiani 2007 review].
 * **Endocrine activity:** Negative in OECD-relevant assays (ER binding, AR binding, uterotrophic) — Ashby et al. 2001, Regul. Toxicol. Pharmacol. 34:287.
-* **Skin penetration:** Negligible in vivo (high MW, high log P) — recent FDA pharmacokinetic study (Hamzavi et al. 2023) reports plasma C_max < 0.5 ng/mL after maximal-use conditions.
+* **Skin penetration:** Negligible in vivo (high MW, high log P) — recent industry-sponsored pharmacokinetic study (D'Ruiz et al. 2023) reports plasma C_max < 0.5 ng/mL after maximal-use conditions.
 * **"Next generation" rationale:** (i) broad-spectrum UVB+UVA in one molecule (vs avobenzone UVA-only); (ii) outstanding photostability (vs avobenzone's 36% retention); (iii) photostabilizes other filters; (iv) negligible endocrine activity; (v) high MW (>500 Da) → minimal penetration. These collectively underpin its EU dominance and the FDA TEA-pathway breakthrough in 2025.
 
 ---
@@ -103,7 +103,7 @@ BEMT acts as a triplet-state quencher for excited avobenzone via through-space a
 * Osterwalder U, Luther H, Herzog B. **Über den Lichtschutzfaktor hinaus — neue effiziente und photostabile UVA-Filter.** *Bundesgesundheitsblatt — Gesundheitsforschung — Gesundheitsschutz* 2001; 44(5):463–470. DOI: 10.1007/s001030170019.
 * Vielhaber G, Grether-Beck S, Koch O, Johncock W, Krutmann J. **Sunscreens with an absorption maximum of ≥360 nm provide optimal protection against UVA1-induced expression of matrix metalloproteinase-1, interleukin-1, and interleukin-6 in human dermal fibroblasts.** *Photochem. Photobiol. Sci.* 2006; 5(3):275–282. DOI: 10.1039/b516702g.
 * Sohn M, Baptiste L, Quass K, Settels V, Herzog B. **Photokinetics of oil soluble 1,3,5-triazine UV filters in combination with butyl methoxydibenzoylmethane or with diethylamino hydroxybenzoyl hexyl benzoate.** *Photochem. Photobiol. Sci. / J. Photochem. Photobiol.* 2021. DOI: 10.1016/j.jpap.2021.100058.
-* Hamzavi I, Rohrer T, Yeh J, et al. **Preliminary clinical pharmacokinetic evaluation of bemotrizinol — a new sunscreen active ingredient being considered for inclusion under FDA's OTC sunscreen monograph.** *Regul. Toxicol. Pharmacol.* 2023; 138:105328. DOI: 10.1016/j.yrtph.2023.105328. PMID 36738872.
+* D'Ruiz CD, Plautz JR, Schuetz R, Forbes PD, Walters RM, Maibach HI. **Preliminary clinical pharmacokinetic evaluation of bemotrizinol — a new sunscreen active ingredient being considered for inclusion under FDA's OTC sunscreen monograph.** *Regul. Toxicol. Pharmacol.* 2023; 139:105344. DOI: 10.1016/j.yrtph.2023.105344. PMID 36738872. **[C1, primary — industry-sponsored]**
 * US FDA. **Proposed Administrative Order OTC000039: Amending Over-the-Counter Monograph M020: Sunscreen Drug Products for OTC Human Use** (Federal Register Doc. 2025-22649, 12 Dec 2025).
 
 ---

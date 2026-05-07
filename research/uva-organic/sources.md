@@ -13,7 +13,7 @@
 3. **Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.** "Unexpected Photolysis of the Sunscreen Octinoxate in the Presence of the Sunscreen Avobenzone." *Photochemistry and Photobiology* **81**(2): 452–456 (2005). doi:10.1562/2004-02-12-RA-083.
    - https://pubmed.ncbi.nlm.nih.gov/15560736/
 
-4. **Holt EL, Krokidi KM, Turner MAP et al.** "Determining the photostability of avobenzone in sunscreen formulation models using ultrafast spectroscopy." *Phys Chem Chem Phys* **23**: 24373 (2021). doi:10.1039/D1CP03610F.
+4. **Holt EL, Krokidi KM, Turner MAP et al.** "Determining the photostability of avobenzone in sunscreen formulation models using ultrafast spectroscopy." *Phys Chem Chem Phys* **23**(42): 24439–24448 (2021). doi:10.1039/D1CP03610F.
    - https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp03610f
 
 5. **Downs CA, DiNardo JC, Stien D, Rodrigues AMS, Lebaron P.** "Benzophenone Accumulates over Time from the Degradation of Octocrylene in Commercial Sunscreen Products." *Chemical Research in Toxicology* **34**(4): 1046–1054 (2021). doi:10.1021/acs.chemrestox.0c00461.

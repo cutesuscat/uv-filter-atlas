@@ -33,11 +33,11 @@ The molecule shows pronounced *solvatochromism* (the **trans** isomer's λmax sh
 
 | Solvent | Isomer | λmax (nm) | ε (M⁻¹ cm⁻¹) | Conf. | Source |
 |---|---|---|---|---|---|
-| Cyclohexane (apolar) | trans | 291 | 24,000 | C1 | Stange et al., Photochem Photobiol Sci 14 (2015) 1701-1709 (DOI:10.1039/C5PP00074B) |
-| Cyclohexane | cis | 305 | 12,600 | C1 | Stange et al. 2015 |
-| Ethanol (polar protic) | trans | 310 | ~24,300 | C1 | Stange et al. 2015 |
-| Methanol | trans | 310 | ~25,000 | C1 | Stange et al. 2015; Pattanaargson & Limphong-Pand, Int J Cosmet Sci 23 (2001) 153-160 |
-| Aqueous aggregates / film | trans | 328 | n/a (red-shift due to H-aggregate stacking) | C1 | Stange et al. 2015 |
+| Cyclohexane (apolar) | trans | 291 | 24,000 | C1 | Hanson, Narayanan, Nichols & Bardeen, Photochem Photobiol Sci 14:1607-1616 (2015), DOI:10.1039/C5PP00074B |
+| Cyclohexane | cis | 305 | 12,600 | C1 | Hanson et al. 2015 |
+| Ethanol (polar protic) | trans | 310 | ~24,300 | C1 | Hanson et al. 2015 |
+| Methanol | trans | 310 | ~25,000 | C1 | Hanson et al. 2015; Pattanaargson & Limphong-Pand, Int J Cosmet Sci 23 (2001) 153-160 |
+| Aqueous aggregates / film | trans | 328 | n/a (red-shift due to H-aggregate stacking) | C1 | Hanson et al. 2015 |
 | Acetonitrile | trans | 308 | ~23,800 | C1 | Pattanaargson et al. 2004, J Photochem Photobiol A 161:269 |
 
 **Reported "headline" value for cosmetic formulators:** λmax ≈ 308–311 nm with ε ≈ 23,300–25,000 M⁻¹ cm⁻¹ in alcohol [Wikipedia/Octyl_methoxycinnamate citing Pattanaargson; Cosmetic Ingredient Guide; Couteau et al., Int J Pharm 325 (2006) 28-30] — **C1**.
@@ -48,11 +48,11 @@ E(1%, 1cm) is not commonly reported for octinoxate because formulators normally 
 
 ### Dilute solution (sub-mM)
 * In dilute alcoholic solution, OMC reaches a *photostationary state* between trans and cis isomers; the cis form has lower ε. After a few seconds of solar simulator exposure, absorptivity drops to a stable plateau:
-  * Cyclohexane: 79 % ± 1 % of initial absorbance retained at PSS [C1, Stange 2015].
-  * Methanol: 68 % ± 2 % retained at PSS [C1, Stange 2015].
-* No further photodegradation between 112 s and 1120 s in dilute solution (<2 % change) — i.e., monomer in solution is essentially photostable once at PSS [C1, Stange 2015].
+  * Cyclohexane: 79 % ± 1 % of initial absorbance retained at PSS [C1, Hanson 2015].
+  * Methanol: 68 % ± 2 % retained at PSS [C1, Hanson 2015].
+* No further photodegradation between 112 s and 1120 s in dilute solution (<2 % change) — i.e., monomer in solution is essentially photostable once at PSS [C1, Hanson 2015].
 
-**Photoisomerization quantum yields** [C1, Stange 2015, broadband solar simulator]:
+**Photoisomerization quantum yields** [C1, Hanson 2015, broadband solar simulator]:
 | Solvent | Φ(trans→cis) | Φ(cis→trans) |
 |---|---|---|
 | Methanol (solar) | 0.37 ± 0.01 | 0.47 ± 0.06 |
@@ -62,7 +62,7 @@ E(1%, 1cm) is not commonly reported for octinoxate because formulators normally 
 ### Aggregated / neat film / formulated product
 This is where the famous photolability appears.
 
-* Quantum yield of *irreversible* photodegradation of aggregated OMC: **Φd = 6.2 (±0.6) × 10⁻⁴** (assuming ε = 24,000 M⁻¹ cm⁻¹) or **1.9 (±0.3) × 10⁻³** (assuming aggregate ε = 8,200) [C1, Stange et al. 2015].
+* Quantum yield of *irreversible* photodegradation of aggregated OMC: **Φd = 6.2 (±0.6) × 10⁻⁴** (assuming ε = 24,000 M⁻¹ cm⁻¹) or **1.9 (±0.3) × 10⁻³** (assuming aggregate ε = 8,200) [C1, Hanson et al. 2015].
 * Tarras-Wahlberg et al., J Invest Dermatol 113 (1999) 547-553, doi:10.1046/j.1523-1747.1999.00721.x — **OMC films lose ≈10 % UV absorption after 35 J/cm² UVA + UVB irradiation; full curve shows 20–30 % drop after a "full day in sun" dose** [C1].
 * Sayre et al., Photochem Photobiol 81 (2005) 452-456, doi:10.1562/2004-02-12-RA-083.1 — In the presence of avobenzone, OMC undergoes much faster photolysis: a 2+2 cycloadduct between the two filters is formed; OMC + avobenzone irradiated at 1 MED already shows ≥30 % combined degradation [C1].
 * Half-life on skin equivalent (4 % OMC sunscreen film): ~95 min under 1.4 MED/h xenon lamp [C2, summarized in Couteau et al., Pharm Res 24 (2007) 1153].
@@ -70,11 +70,11 @@ This is where the famous photolability appears.
 ### Photoproducts identified
 | Photoproduct | CAS | Formation mode | Source |
 |---|---|---|---|
-| cis-OMC (Z-isomer) | 24887-75-0 | Reversible E→Z photoisomerization | Stange 2015 (C1) |
-| Truxillic acid 2-ethylhexyl diester (head-to-head [2+2] photodimer) | not assigned | UVB on neat OMC | Pattanaargson 2004; Stange 2015 (C1) |
+| cis-OMC (Z-isomer) | 24887-75-0 | Reversible E→Z photoisomerization | Hanson 2015 (C1) |
+| Truxillic acid 2-ethylhexyl diester (head-to-head [2+2] photodimer) | not assigned | UVB on neat OMC | Pattanaargson 2004; Hanson 2015 (C1) |
 | Truxinic acid 2-ethylhexyl diester (head-to-tail dimer) | not assigned | UVB on neat OMC | same (C1) |
-| 4-Methoxybenzaldehyde (anisaldehyde) | 123-11-5 | Photofragmentation via Norrish | Stange 2015 (C1) |
-| 2-Ethylhexanol | 104-76-7 | Co-fragment | Stange 2015 (C1) |
+| 4-Methoxybenzaldehyde (anisaldehyde) | 123-11-5 | Photofragmentation via Norrish | Hanson 2015 (C1) |
+| 2-Ethylhexanol | 104-76-7 | Co-fragment | Hanson 2015 (C1) |
 | 4-Methoxycinnamic acid | 943-89-5 / 830-09-1 (trans) | Hydrolytic photodegradation | Mitchnick et al. 1996 (C2) |
 | Mixed [2+2] cycloadduct with avobenzone | not assigned | OMC + avobenzone co-photolysis | Sayre 2005 (C1) |
 
@@ -82,7 +82,7 @@ This is where the famous photolability appears.
 
 * **Endocrine activity:** SCCS/1671/24 (June 2025) classified EHMC as an *endocrine-active substance* with estrogenic and weak antiandrogenic activity in vitro and in vivo, but concluded acceptable Margin of Safety at 10 % [C1]. Schlumpf et al. (Environ Health Perspect 2001) showed uterotrophic effect in rats — among the original triggers for EU re-evaluation [C1].
 * **Skin penetration:** Janjua et al. (2008) measured detectable urinary EHMC and 5–10 % systemic uptake when applied as 2 mg/cm² lotion [C2]. Detected in human breast milk and urine in multiple biomonitoring studies [C2].
-* **ROS / phototoxicity:** Aggregate-form OMC photoproducts photosensitize singlet oxygen at λex 405 nm (Stange 2015) [C1]. Damiani et al., Free Radic Biol Med 35 (2003) — 4 % OMC sunscreen with avobenzone enhanced UV-induced ROS in skin model [C2].
+* **ROS / phototoxicity:** Aggregate-form OMC photoproducts photosensitize singlet oxygen at λex 405 nm (Hanson 2015) [C1]. Damiani et al., Free Radic Biol Med 35 (2003) — 4 % OMC sunscreen with avobenzone enhanced UV-induced ROS in skin model [C2].
 * **Aquatic toxicity:** OMC is on the Hawaii/Palau ban list for coral reef bleaching; LC50 (Daphnia magna 48 h) ≈ 0.4–0.6 mg/L [C2, EU SCCS dossier].
 * **Synergy/antagonism:**
   * Strong **antagonism with avobenzone** — the [2+2] cycloaddition destroys both filters [C1, Sayre 2005].
@@ -90,7 +90,7 @@ This is where the famous photolability appears.
   * Synergy with bemotrizinol/bisoctrizole (Tinosorb S/M) which are fast triplet quenchers [C2].
 
 ## Sources
-1. Stange et al., "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates", Photochem Photobiol Sci 14 (2015) 1701-1709, doi:10.1039/C5PP00074B.
+1. Hanson KM, Narayanan S, Nichols VM, Bardeen CJ, "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates", Photochem Photobiol Sci 14:1607-1616 (2015), doi:10.1039/C5PP00074B.
 2. Tarras-Wahlberg N, Stenhagen G, Larkö O, Rosén A, Wennberg AM, Wennerström O. "Changes in ultraviolet absorption of sunscreens after ultraviolet irradiation". J Invest Dermatol 113 (1999) 547-553, doi:10.1046/j.1523-1747.1999.00721.x.
 3. Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV. "Unexpected photolysis of the sunscreen octinoxate in the presence of the sunscreen avobenzone". Photochem Photobiol 81 (2005) 452-456.
 4. Pattanaargson S, Munhapol T, Hirunsupachot P, Luangthongaram P. "Photoisomerization of octyl methoxycinnamate". J Photochem Photobiol A 161 (2004) 269-274.

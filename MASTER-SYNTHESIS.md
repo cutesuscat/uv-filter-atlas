@@ -87,7 +87,7 @@ TiO₂ anatase                ████████████████ E
 | Bemotrizinol (Tinosorb S, BEMT) | 187393-00-6 | 627.8 | 310 + 340 | 50,000 @340 | 790 | 98.4% / 50 MED | **proposed GRASE 6%** Dec-2025 | 10 | `broad-spectrum/c001` |
 | Ecamsule (Mexoryl SX) | 92761-26-7 | 562.7 | 345 | 20,000 (19-47k range) | 360 | 94–99% / 25 MED | NDA only (Anthelios SX) | 10 | `broad-spectrum/c002` |
 | Drometrizole Trisiloxane (Mexoryl XL) | 155633-54-8 | 501.9 | 303 + 344 | 17–18,000 @344 | 340 | ≥97% / 50 MED | TEA pending | 15 (highest of any) | `broad-spectrum/c003` |
-| Mexoryl 400 (MCE) | 1419401-88-9 | 322.4 | **385** | 63,000 | 1,956 | "100%" sponsor | — | 3 (2024 approval) | `broad-spectrum/c004` |
+| Mexoryl 400 (MCE) | 1419401-88-9 | 322.4 | **385** | 63,000 | 1,956 | "100%" sponsor | — | 3 (Reg 2020/1684) | `broad-spectrum/c004` |
 | Tinosorb A2B (TBPT) | 31274-51-8 | 537.7 | 310 + scatter | 80,000 (THF) | — | excellent | — | 10 (nano + non-nano) | `broad-spectrum/c005` |
 | Bisdisulizole (Neo Heliopan AP) | 180898-37-7 | 674.6 | 335 (H₂O) | 52,000 | 770–800 | >95% | — | 10 | `broad-spectrum/c006` |
 | **Benzophenones** | | | | | | | | | |
@@ -227,7 +227,7 @@ mineral oil ≈ light paraffins ≈ anhydrous waxes < cyclohexane ≈ DMSO < eth
 | Bemotrizinol (Tinosorb S) | **proposed GRASE 6% Dec 2025** | 10% | 10% | 10% | 10% | — |
 | Ecamsule (Mexoryl SX) | NDA (Anthelios SX 2006 only) | 10% | 10% | 10% | 10% | — |
 | Drometrizole Trisiloxane (Mexoryl XL) | TEA pending | 15% (highest cap) | 15% | 15% | 15% | — |
-| Mexoryl 400 (MCE) | — | 3% (2024) | — | — | — | — |
+| Mexoryl 400 (MCE) | — | 3% (Reg 2020/1684) | — | — | — | — |
 | Tinosorb A2B (TBPT) | — | 10% (nano + non-nano) | 10% | — | 10% | — |
 | Bisdisulizole | — | 10% | 10% | — | — | — |
 | Oxybenzone (BP-3) | 6% (insufficient data for GRASE) | **2.2% body / 6% face** | 10% | 5% | 5% | **HI / FL Keys / Palau / USVI / Aruba / Bonaire** |
@@ -241,7 +241,7 @@ mineral oil ≈ light paraffins ≈ anhydrous waxes < cyclohexane ≈ DMSO < eth
 - The Dec 2025 proposed FDA order on bemotrizinol (6% GRASE) is the first new TEA approval in decades — may break the logjam for DHHB, MBBT, iscotrizinol, drometrizole trisiloxane, ethylhexyl triazone.
 - Trolamine salicylate is proposed by FDA as **not GRASE** in sunscreens (2021 Proposed Order).
 - 4-MBC is banned in EU effective May 2026 for endocrine disruption.
-- Mexoryl 400 (approved EU 2024) is the newest filter — λmax 385 nm closes the previously-uncovered ultra-long UVA1 band.
+- Mexoryl 400 (approved EU via Reg 2020/1684, broadly commercialized 2022–2024) is the newest filter — λmax 385 nm closes the previously-uncovered ultra-long UVA1 band.
 
 ---
 
@@ -285,7 +285,7 @@ No single filter covers 280–400 nm uniformly. Modern SPF50+ formulae stack 4�
 - **UVA-I anchor**: avobenzone / DHHB / Mexoryl 400 / MBBT
 - **Particulate / inorganic**: ZnO and/or TiO₂ + TBPT
 
-The deep UVA-I band (370–400 nm) — implicated in photoaging and pigmentary disorders — was poorly covered until Mexoryl 400 (λmax 385 nm) was approved in EU 2024. ZnO and TBPT (with its scattering tail) help but partially. This band remains the weakest spot in current US-approved formulae specifically because Mexoryl 400 has no FDA path.
+The deep UVA-I band (370–400 nm) — implicated in photoaging and pigmentary disorders — was poorly covered until Mexoryl 400 (λmax 385 nm) was approved in EU via Reg 2020/1684 (commercial rollout 2022–2024). ZnO and TBPT (with its scattering tail) help but partially. This band remains the weakest spot in current US-approved formulae specifically because Mexoryl 400 has no FDA path.
 
 ---
 

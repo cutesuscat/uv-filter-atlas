@@ -111,7 +111,7 @@ This is why DK quenchers (octocrylene) and protic solvents (which stabilize enol
 
 Reported quantum yield for photoreactivity (formation of DK and downstream products) is small but non-negligible: Φ_total photoproduct ≈ 10⁻³–10⁻² depending on solvent (C2 from various ultrafast / steady-state studies). Specific Φ for cleavage in cyclohexane reported on the order of 10⁻³ — **C5 for exact value** without primary numerical access.
 
-Ultrafast TEAS studies (Holt et al. 2021, *PCCP* 23, 24373; D1CP03610F) report excited-state lifetimes:
+Ultrafast TEAS studies (Holt et al. 2021, *PCCP* 23(42):24439–24448; D1CP03610F) report excited-state lifetimes:
 - τ₁ ≈ 150–235 fs (Franck-Condon evolution)
 - τ₂ ≈ 0.7–1.2 ps (S₁ stimulated emission)
 - τ₃ ≈ 7.7–8.4 ps (vibrational cooling)
@@ -229,6 +229,6 @@ Some triazine filters can over-quench, dropping protective effect.
 3. Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV. *Photochem Photobiol* (2005) 81:452–456. doi:10.1562/2004-02-12-RA-083
 4. Bonda CA. (2008) "The Photostability of Organic Sunscreen Actives: A Review." In: *Sunscreens: Regulations and Commercial Development*, Shaath ed., Taylor & Francis.
 5. Downs CA et al. *Chem Res Toxicol* (2021) 34:1046–1054. doi:10.1021/acs.chemrestox.0c00461
-6. Holt EL et al. *Phys Chem Chem Phys* (2021) 23:24373. doi:10.1039/D1CP03610F
+6. Holt EL, Krokidi KM, Turner MAP et al. *Phys Chem Chem Phys* (2021) 23(42):24439–24448. doi:10.1039/D1CP03610F
 7. Karpkird T et al. *Photochem Photobiol Sci* (2018) — DEHN photophysics. doi:10.1039/c8pp00204e
 8. SCCS opinions on UV filters — health.ec.europa.eu

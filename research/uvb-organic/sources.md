@@ -4,7 +4,7 @@ This file lists every primary, secondary, and regulatory source cited across the
 
 ## A. Photochemistry / spectroscopy primary literature
 
-1. **Stange B, Klein L, Heger D, et al.** "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates". *Photochem. Photobiol. Sci.* 14 (2015) 1701–1709. doi:10.1039/C5PP00074B. — Primary λmax/ε/quantum-yield data for OMC.
+1. **Hanson KM, Narayanan S, Nichols VM, Bardeen CJ.** "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates". *Photochem. Photobiol. Sci.* 14:1607–1616 (2015). doi:10.1039/C5PP00074B. — Primary λmax/ε/quantum-yield data for OMC.
 2. **Tarras-Wahlberg N, Stenhagen G, Larkö O, Rosén A, Wennberg AM, Wennerström O.** "Changes in ultraviolet absorption of sunscreens after ultraviolet irradiation". *J. Invest. Dermatol.* 113 (1999) 547–553. doi:10.1046/j.1523-1747.1999.00721.x. — Foundational photodegradation paper.
 3. **Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.** "Unexpected photolysis of the sunscreen octinoxate in the presence of the sunscreen avobenzone". *Photochem. Photobiol.* 81 (2005) 452–456. doi:10.1562/2004-02-12-RA-083.1.
 4. **Pattanaargson S, Munhapol T, Hirunsupachot P, Luangthongaram P.** "Photoisomerization of octyl methoxycinnamate". *J. Photochem. Photobiol. A* 161 (2004) 269–274.

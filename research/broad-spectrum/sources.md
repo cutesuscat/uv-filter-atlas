@@ -14,7 +14,7 @@
 * **Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.** Study of the efficacy of 18 sun filters authorized in European Union tested in vitro. *Pharmazie* 2007; 62(6):449–452. DOI: 10.1691/ph.2007.6.6247.
 * **Vielhaber G, Grether-Beck S, Koch O, Johncock W, Krutmann J.** Sunscreens with an absorption maximum of ≥360 nm provide optimal protection against UVA1-induced expression of matrix metalloproteinase-1, interleukin-1, and interleukin-6 in human dermal fibroblasts. *Photochem. Photobiol. Sci.* 2006; 5(3):275–282. DOI: 10.1039/b516702g.
 * **Sohn M, Baptiste L, Quass K, Settels V, Herzog B.** Photokinetics of oil soluble 1,3,5-triazine UV filters in combination with butyl methoxydibenzoylmethane or with diethylamino hydroxybenzoyl hexyl benzoate. *J. Photochem. Photobiol.* 2021; 8:100058. DOI: 10.1016/j.jpap.2021.100058.
-* **Hamzavi I, Rohrer T, Yeh J, et al.** Preliminary clinical pharmacokinetic evaluation of bemotrizinol — a new sunscreen active ingredient being considered for inclusion under FDA's OTC sunscreen monograph. *Regul. Toxicol. Pharmacol.* 2023; 138:105328. DOI: 10.1016/j.yrtph.2023.105328. PMID 36738872.
+* **D'Ruiz CD, Plautz JR, Schuetz R, Forbes PD, Walters RM, Maibach HI.** Preliminary clinical pharmacokinetic evaluation of bemotrizinol — a new sunscreen active ingredient being considered for inclusion under FDA's OTC sunscreen monograph. *Regul. Toxicol. Pharmacol.* 2023; 139:105344. DOI: 10.1016/j.yrtph.2023.105344. PMID 36738872.
 * **Osterwalder U, Luther H, Herzog B.** Über den Lichtschutzfaktor hinaus — neue effiziente und photostabile UVA-Filter. *Bundesgesundheitsblatt* 2001; 44(5):463–470. DOI: 10.1007/s001030170019.
 
 ### Ecamsule (Mexoryl SX)
