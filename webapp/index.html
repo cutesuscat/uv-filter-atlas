@@ -199,6 +199,29 @@
   }
   @media (max-width: 720px){ .spectrum-band, .spectrum-axis{ grid-template-columns: 100px 1fr; gap: 8px } }
 
+  /* Iron-oxide divider in the Spectral Coverage Map */
+  .overview-divider{
+    margin: 18px 0 12px;
+    padding: 0;
+  }
+  .overview-divider-rule{
+    height: 1px; background: var(--rule); opacity: 0.7;
+    margin-bottom: 14px;
+  }
+  .overview-divider-note{
+    font: 500 0.78rem/1.6 var(--serif);
+    color: var(--ink-soft);
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--warn);
+    padding: 12px 16px;
+    border-radius: 4px;
+    max-width: 80ch;
+  }
+  .overview-divider-note strong{ color: var(--warn); font-weight: 700 }
+  .overview-divider-note em{ color: var(--ink); font-style: italic; font-weight: 600 }
+  .overview-divider-note sub{ font-size: 0.7em }
+
   /* Filter directory: search + chips + grid */
   .controls{
     display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 28px; align-items: center;
@@ -477,6 +500,41 @@
   @media (max-width: 720px){
     .scatter-svg{ height: 380px }
   }
+
+  /* Methodology drawer (above the spectrum builder card) */
+  .methodology-drawer{
+    margin-bottom: 22px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px;
+  }
+  .methodology-drawer summary{
+    cursor: pointer; user-select: none;
+    padding: 14px 18px;
+    font: 600 0.85rem var(--mono); color: var(--accent);
+    letter-spacing: 0.5px;
+    list-style: none;
+  }
+  .methodology-drawer summary::-webkit-details-marker{ display: none }
+  .methodology-drawer summary::before{
+    content: "▸"; display: inline-block; margin-right: 10px;
+    color: var(--muted); transition: transform .2s var(--ease);
+  }
+  .methodology-drawer[open] summary::before{ transform: rotate(90deg) }
+  .methodology-drawer summary:hover{ background: var(--accent-soft) }
+  .methodology-body{
+    padding: 6px 22px 22px;
+    border-top: 1px solid var(--line-soft);
+    color: var(--ink-soft); font-size: 0.92rem; line-height: 1.65;
+    max-width: 80ch;
+  }
+  .methodology-body h4{
+    font: 700 0.7rem var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.6px;
+    margin: 18px 0 8px;
+  }
+  .methodology-body h4:first-child{ margin-top: 16px }
+  .methodology-body p{ margin: 8px 0 }
+  .methodology-body strong{ color: var(--ink); font-weight: 600 }
+  .methodology-body em{ color: var(--accent); font-style: italic }
 
   /* Spectrum Builder */
   .builder-card{
@@ -975,9 +1033,27 @@
       <div class="section-num">05</div>
       <div>
         <div class="section-title">Spectrum Builder — How Filters Combine</div>
-        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them; drag the sliders to change concentrations. <span class="info-tip" tabindex="0">Math &amp; methodology<span class="info-bubble">Each filter contributes <strong>E(1%, 1cm)(λ) × concentration%</strong> at every wavelength. Beer-Lambert says absorbances add, so the bold curve is the sum across all selected filters. E(1%, 1cm) is the cosmetics-industry-standard metric: the absorbance of a 1% w/w solution at 1 cm path length, as reported in BASF/DSM/Symrise/3V Sigma datasheets. <strong>Caveats</strong>: (1) Beer-Lambert is exact for dissolved organics; for particulate inorganics (ZnO, TiO₂, iron oxides) at &gt;5% loading, particle aggregation and multiple scattering reduce the realised attenuation to ~60–80% of the linear-stacking prediction. (2) The chart shows peak attenuation, not SPF. SPF integrates over the erythema action spectrum at a 2 mg/cm² film; real users apply ~0.5–1 mg/cm², so realised SPF is typically half to a quarter of the lab measurement. The chart is best read as a <em>relative</em> comparison of formulations, not an absolute SPF predictor.</span></span>.</div>
+        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them; drag the sliders to change concentrations.</div>
       </div>
     </div>
+    <details class="methodology-drawer">
+      <summary>Math, calibration, and known limitations →</summary>
+      <div class="methodology-body">
+        <h4>How the curves and metrics are computed</h4>
+        <p>Each filter contributes <strong>E(1%, 1cm)(λ) × f(c) × concentration%</strong> at every wavelength. Beer-Lambert says absorbances add, so the bold curve is the sum across all selected filters. <strong>E(1%, 1cm)</strong> is the cosmetics-industry-standard metric — the absorbance of a 1% w/w solution at 1 cm path length, as reported in BASF/DSM/Symrise/3V Sigma datasheets.</p>
+        <h4>Concentration nonlinearity f(c)</h4>
+        <p><strong>Inorganics (ZnO, TiO₂, iron oxides)</strong>: per-filter f(c) = 1 − α·tanh((c−c₀)/scale), with parameters fit to real SPF and HEV-blockade measurements. ZnO α=0.70 / c₀=2 / scale=10 (validated 22% mean SPF error on 9 mineral formulations). TiO₂ α=0.62 / scale=8. Iron oxides saturate fastest (scale 1.5–4%) — pigment-grade particles opacify films at lower loading.</p>
+        <p><strong>Organics</strong>: default f(c) α=0.92 / c₀=0.5 / scale=2.5. Captures self-quenching at high concentration, partial dissolution / micelle formation, and the cuvette-to-real-film discrepancy. Calibrated against Sayre 2005 in-vitro SPFs of mono-filter formulations: 5% octinoxate predicted SPF 6 vs measured 5–8; 5% bemotrizinol predicted 9 vs 7–12.</p>
+        <h4>SPF estimator</h4>
+        <p>SPF = ∫E_solar(λ)·E_ery(λ)·dλ / ∫E_solar(λ)·E_ery(λ)·10<sup>−A(λ)</sup>·dλ, integrated over 290–400 nm. E_ery is the CIE 1987 erythema action spectrum (the FDA SPF testing standard). E_solar is AM 1.5 sea-level solar irradiance. The same integration restricted to 320–400 nm gives UVA-PF; "critical λ" is the wavelength below which 90% of the absorbance area sits.</p>
+        <h4>Known limitations</h4>
+        <p>1) <strong>Mineral SPFs are over-predicted</strong> by ~10×. The CIE 1987 action spectrum drops sharply past 340 nm, so mineral filters' soft band-edge leak past 380 nm doesn't hurt SPF in the math even though it does in real cosmetic films (where particle aggregation, film roughness, and thickness inhomogeneity matter). Capped at "100+" on display.</p>
+        <p>2) <strong>Stacked organic formulations are sometimes under-predicted</strong> by ~3×. Per-filter f(c) double-counts when many filters share the total chromophore load. The "US classic" preset (25% total organic load across 4 filters) lands at SPF ~12 in the math vs ~30–50 measured.</p>
+        <p>3) <strong>Real-world application is 0.5–1 mg/cm²</strong>, half to a quarter of the FDA-standard 2 mg/cm² test thickness. Switch the film mode below to see the difference (Beer-Lambert is linear in path length).</p>
+        <p>4) <strong>The chart's Y-axis literal value</strong> (E(1%,1cm) × concentration%) is what you'd measure in a 1 cm spectrophotometer cuvette at the displayed concentration. Real cosmetic films are ~14 µm thick (500× thinner), so multiply by 0.002 to get film-level absorbance.</p>
+        <p><em>Best read as a relative comparison of formulations, not an exact SPF predictor.</em></p>
+      </div>
+    </details>
     <div class="builder-card">
       <div class="builder-presets">
         <span class="group-label">Presets</span>
@@ -1607,7 +1683,7 @@ function spectrumBarSVG(f){
   // Boundary guides (dotted, ghosted)
   const guides = GUIDES.map(g => {
     const x = xAt(g.lam);
-    return `<line x1="${x.toFixed(1)}" y1="-2" x2="${x.toFixed(1)}" y2="${H+2}" stroke="currentColor" stroke-width="0.6" stroke-dasharray="1.5 2" opacity="0.18"/>`;
+    return `<line x1="${x.toFixed(1)}" y1="-2" x2="${x.toFixed(1)}" y2="${H+2}" stroke="var(--ink-soft)" stroke-width="1.2" stroke-dasharray="2.5 2" opacity="0.55"/>`;
   }).join('');
 
   return `<svg class="spectrum-track-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-label="Absorption band of ${f.inci}">
@@ -1618,10 +1694,17 @@ function spectrumBarSVG(f){
   </svg>`;
 }
 
-// Sort by peak wavelength
-const OVERVIEW_FILTERS = FILTERS.slice().sort((a,b) => a.peak - b.peak);
+// Sort UV filters first (by peak), then iron-oxide pigments at the bottom.
+// They are different beasts — UV filters are regulated as actives, iron
+// oxides as colorants — so they get a visual divider with a note.
+const OVERVIEW_UV_FILTERS = FILTERS
+  .filter(f => f.category !== 'iron-oxide')
+  .sort((a,b) => a.peak - b.peak);
+const OVERVIEW_IRON_OXIDES = FILTERS
+  .filter(f => f.category === 'iron-oxide')
+  .sort((a,b) => a.peak - b.peak);
 
-OVERVIEW_FILTERS.forEach(f => {
+function renderOverviewRow(f){
   const peaks = f.lambda || [f.peak];
   const peakStr = peaks.join('+') + ' nm';
   const row = document.createElement('div');
@@ -1633,7 +1716,20 @@ OVERVIEW_FILTERS.forEach(f => {
   row.style.cursor = 'pointer';
   row.addEventListener('click', () => openDetail(f));
   OV.appendChild(row);
-});
+}
+OVERVIEW_UV_FILTERS.forEach(renderOverviewRow);
+
+// Iron oxide divider with explanatory note
+const divider = document.createElement('div');
+divider.className = 'overview-divider';
+divider.innerHTML = `
+  <div class="overview-divider-rule"></div>
+  <div class="overview-divider-note">
+    <strong>Iron oxides ↓</strong> are color additives (FDA 21 CFR 73.2250; EU Annex IV), <em>not</em> regulated UV filters. They appear in tinted mineral sunscreens because their bandgap sits inside visible — Fe<sub>2</sub>O<sub>3</sub> 2.1 eV, FeOOH 2.5 eV — making them the only practical cosmetic ingredients (alongside pigment-grade TiO<sub>2</sub>) that block HEV blue light.
+  </div>
+`;
+OV.appendChild(divider);
+OVERVIEW_IRON_OXIDES.forEach(renderOverviewRow);
 
 // =========================================
 // Render: filter cards
@@ -2179,10 +2275,15 @@ function spectrumSVG(f){
     `<text class="band-label" x="${((b.x1+b.x2)/2).toFixed(1)}" y="${(padT+11).toFixed(1)}" text-anchor="middle">${b.label}</text>`
   ).join('');
 
-  // X-axis ticks
+  // X-axis ticks. Three ranges:
+  //  - extended (iron oxides): 280-700 with sparser visible spacing
+  //  - extended-UV (peak > 370 nm, e.g. Mexoryl 400): 280-460 with ticks
+  //    into HEV so users can see the curve drop into visible
+  //  - default (UV filters): 280-410
   const xTickValues = extendedRange
     ? [280, 320, 360, 400, 450, 500, 550, 600, 650, 700]
-    : [280, 300, 320, 340, 360, 380, 400];
+    : (xMax > 410 ? [280, 300, 320, 340, 360, 380, 400, 420, 440, 460]
+                  : [280, 300, 320, 340, 360, 380, 400]);
   const xTicks = xTickValues.map(t =>
     `<line class="axis-tick" x1="${xAt(t)}" y1="${padT+innerH}" x2="${xAt(t)}" y2="${padT+innerH+4}"/>` +
     `<text class="axis-label" x="${xAt(t)}" y="${padT+innerH+15}" text-anchor="middle">${t}</text>`
