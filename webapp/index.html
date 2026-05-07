@@ -646,6 +646,37 @@
     border-bottom: 1px solid var(--accent); padding-bottom: 1px;
   }
   .modal-card .file-link:hover{ color: var(--ink) }
+  .spectrum-refs{
+    margin: 18px 0 14px;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+  }
+  .spectrum-refs-head{
+    font: 700 0.66rem var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.6px;
+    margin-bottom: 10px;
+  }
+  .spectrum-refs ul{ list-style: none; padding: 0; margin: 0 }
+  .spectrum-refs li{
+    padding: 6px 0;
+    border-top: 1px solid var(--line-soft);
+    line-height: 1.5;
+  }
+  .spectrum-refs li:first-child{ border-top: none; padding-top: 2px }
+  .ref-link{
+    display: inline-block;
+    font: 600 0.76rem var(--mono); color: var(--accent);
+    text-decoration: none; padding: 1px 0;
+    margin-right: 8px;
+    border-bottom: 1px solid var(--accent);
+  }
+  .ref-link:hover{ color: var(--ink); border-bottom-color: var(--ink) }
+  .ref-cite{
+    font: 500 0.78rem/1.5 var(--serif); color: var(--ink-soft);
+    display: block; margin-top: 2px;
+  }
 
   /* Photodegradation table */
   .deg-table{
@@ -1205,8 +1236,8 @@ const FILTERS = [
    t_half:0.8, t_half_cond:"Neat film, no stabiliser; ~23% retained / 25 MED", t_half_conf:"C2",
    detail:"research/uva-organic/claims/c001-avobenzone.md"},
   {idx:15, inci:"Meradimate", aliases:"Menthyl Anthranilate, Neo Heliopan MA", cas:"134-09-8", mw:275.4, category:"uva-organic",
-   ranges:["UVA-II"], lambda:[336], lambdaTxt:"336", solvent:"EtOH", epsilon:5000, e1:180,
-   stab:"moderate", absStart:285, absEnd:360, peak:336,
+   ranges:["UVA-II"], lambda:[338], lambdaTxt:"338", solvent:"EtOH", epsilon:5800, e1:210,
+   stab:"moderate", absStart:285, absEnd:360, peak:338,
    reg:{fda:5,eu:null,au:5,jp:null,kr:5}, banned:false,
    notes:"Chromophore is mass-stable but is a singlet-oxygen photosensitiser (Φ_Δ ≈ 0.20–0.30) — destabilises co-formulations. Pair with α-tocopherol or Trolox. Not approved in EU/Japan.",
    t_half:60, t_half_cond:"Chromophore stable; but is ¹O₂ photosensitiser (Φ_Δ ≈ 0.25)", t_half_conf:"C2",
@@ -1242,10 +1273,10 @@ const FILTERS = [
    t_half:140, t_half_cond:"98.4% retained / 50 MED (Chatelain & Gabard 2001)", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c001-bemotrizinol.md"},
   {idx:20, inci:"Ecamsule", aliases:"Mexoryl SX, Terephthalylidene Dicamphor Sulfonic Acid", cas:"92761-26-7", mw:562.7, category:"broad-spectrum",
-   ranges:["UVA-II"], lambda:[345], lambdaTxt:"345", solvent:"H₂O (TEA salt)", epsilon:20000, e1:360,
+   ranges:["UVA-II"], lambda:[345], lambdaTxt:"345", solvent:"H₂O (TEA salt)", epsilon:47000, e1:835,
    stab:"excellent", absStart:325, absEnd:365, peak:345,
    reg:{fda:"NDA",eu:10,au:10,jp:10,kr:10}, banned:false,
-   notes:"Reached US market via NDA for Anthelios SX (2006), not OTC monograph. Water-soluble. 94–99% retained after 25 MED. Reversible photoisomerisation. Cited ε ranges 19,000–47,000 across studies — wide disagreement.",
+   notes:"Reached US market via NDA for Anthelios SX (2006), not OTC monograph. Water-soluble. 94–99% retained after 25 MED. Reversible photoisomerisation. ε corrected from 20,000 (per-arm) to 47,000 (whole-molecule bis-camphor) per Deflandre & Lang 1988 / Damiani — the dimeric structure has two equivalent benzylidene-camphor sulfonate chromophores that absorb cooperatively.",
    t_half:19, t_half_cond:"94% retained / 25 MED", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c002-ecamsule.md"},
   {idx:21, inci:"Drometrizole Trisiloxane", aliases:"Mexoryl XL", cas:"155633-54-8", mw:501.9, category:"broad-spectrum",
@@ -1279,7 +1310,7 @@ const FILTERS = [
 
   // BENZOPHENONES
   {idx:25, inci:"Oxybenzone", aliases:"BP-3, Benzophenone-3", cas:"131-57-7", mw:228.3, category:"benzophenones",
-   ranges:["UVB","UVA-II"], lambda:[287,325], lambdaTxt:"287 + 325 (dual peak)", solvent:"EtOH", epsilon:18000, e1:null,
+   ranges:["UVB","UVA-II"], lambda:[287,325], lambdaTxt:"287 (ε ≈ 16,000) + 325 (ε ≈ 13,000) — dual peak", solvent:"EtOH", epsilon:16000, e1:null,
    stab:"good", absStart:275, absEnd:345, peak:306,
    reg:{fda:6,eu:2.2,au:10,jp:5,kr:5}, banned:false, reefBan:true,
    notes:"BANNED in Hawaii (Act 104, 2021), Florida Keys, Palau, USVI, Aruba, Bonaire for coral toxicity (Downs 2016). EU dropped from 10% → 6% → 2.2% body in 2017–2022. FDA Matta 2019/2020 JAMA: plasma C_max 169–210 ng/mL — far above 0.5 ng/mL toxicology threshold. NHANES detection in ≥96% US urine. Most allergenic UV filter in N. America.",
@@ -1669,6 +1700,188 @@ function regBadge(key, val){
 // Confidence: C2 (multi-peak fits), C3 (single-peak Gaussian fits),
 // C4 (inorganic semiconductor sigmoid).
 // =========================================
+const SPECTRUM_REFS = {
+  1: [
+    {label:"Schmitt 2015 (RSC)",url:"https://pubs.rsc.org/en/content/articlehtml/2015/pp/c5pp00074b",citation:"Hanson, Narayanan, Nichols & Bardeen. Photochem Photobiol Sci 14:1607–1616 — full UV-Vis figure of trans/cis OMC in cyclohexane, EtOH, MeOH."},
+    {label:"Pattanaargson 2006",url:"https://www.sciencedirect.com/science/article/abs/pii/S101060030600400X",citation:"Solar Energy Mat & Solar Cells. Trans/cis ε measurements across solvents."},
+    {label:"Whittock 2016 PCCP",url:"https://pubs.rsc.org/en/content/articlelanding/2016/cp/c6cp05205c",citation:"Phys Chem Chem Phys. Cinnamate-class excited-state dynamics + steady-state UV-Vis."}
+  ],
+  2: [
+    {label:"Krishnan 2018 JOJDC",url:"https://juniperpublishers.com/jojdc/JOJDC.MS.ID.555636.php",citation:"Reports peak absorbance of EHS at 305 nm with figure."},
+    {label:"Pradhan & Stavros 2020 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",citation:"Phys Chem Chem Phys. Salicylate UV-Vis spectra (HMS/EHS analog)."},
+    {label:"ACS Omega 2025 DFT",url:"https://pubs.acs.org/doi/10.1021/acsomega.5c09234",citation:"TD-DFT + experimental λmax for octisalate, octocrylene, AVB, HMS."}
+  ],
+  3: [
+    {label:"Tan-Sien-Hee 2020 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",citation:"Phys Chem Chem Phys 22:14782. Fig 1: HMS spectra in cyclohexane (309 nm), EtOH (307), MeCN (306)."},
+    {label:"ResearchGate spectrum (HMS in EtOH)",url:"https://www.researchgate.net/figure/Absorption-spectrum-of-an-ethanolic-solution-of-homosalate-and-the-results-of-the_fig1_324440256",citation:"Published HMS ethanol absorption figure."},
+    {label:"SCCS 2020 HMS",url:"https://health.ec.europa.eu/document/download/ddf0b68f-5c47-4ace-a87f-0a0e42ebd4a9_en",citation:"SCCS opinion on homosalate (2020 revision)."}
+  ],
+  4: [
+    {label:"Mturi & Martincigh 2008",url:"https://www.researchgate.net/figure/Molar-absorption-coefficients-e-at-l-nm-for-BMDM-and-OC-in-methanol_fig1_289634842",citation:"J Photochem Photobiol A 200:410. Molar ε of BMDM and OC in methanol — published figure."},
+    {label:"ACS Omega 2025 DFT",url:"https://pubs.acs.org/doi/10.1021/acsomega.5c09234",citation:"Octocrylene experimental λmax 303 nm reported."}
+  ],
+  5: [
+    {label:"PubChem CID 5373773",url:"https://pubchem.ncbi.nlm.nih.gov/compound/Cinoxate",citation:"PubChem entry; tabulated λmax 289 nm (UV-B)."},
+    {label:"ChemicalBook CB2911560",url:"https://www.chemicalbook.com/ChemicalProductProperty_EN_CB2911560.htm",citation:"Reports λmax and ε for cinoxate (cinnamate ester of 2-ethoxyethanol)."}
+  ],
+  6: [
+    {label:"NIST WebBook 4-aminobenzoic acid",url:"https://webbook.nist.gov/cgi/cbook.cgi?ID=C150130&Mask=400",citation:"Reference UV-Vis spectrum of PABA (Grammaticakis 1951 + later)."},
+    {label:"SCCP/0958/05 PABA opinion",url:"https://ec.europa.eu/health/ph_risk/committees/04_sccp/docs/sccp_o_058.pdf",citation:"European regulatory dossier with absorption summary."},
+    {label:"SpectraBase UV-Vis PABA",url:"https://spectrabase.com/spectrum/9AC70lBILRC",citation:"Published full PABA UV-Vis spectrum."}
+  ],
+  7: [
+    {label:"PMC6467356 Padimate O risk",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC6467356/",citation:"Risk assessment of ethylhexyl dimethyl PABA — includes spectrum + ε."},
+    {label:"ScienceDirect topic page",url:"https://www.sciencedirect.com/topics/medicine-and-dentistry/4-dimethylaminobenzoic-acid-2-ethylhexyl-ester",citation:"λmax 311–312 nm; consolidated ε references."}
+  ],
+  8: [
+    {label:"SCCP/0939/05 PBSA opinion",url:"https://ec.europa.eu/health/ph_risk/committees/04_sccp/docs/sccp_o_079.pdf",citation:"EU regulatory dossier, full UV characterisation."},
+    {label:"Tandfonline 2025 ensulizole",url:"https://www.tandfonline.com/doi/full/10.1080/10408444.2025.2541392",citation:"Comprehensive review with spectrum & ε in aqueous buffer."},
+    {label:"ChemicalBook PBSA",url:"https://www.chemicalbook.com/ChemicalProductProperty_EN_CB4394499.htm",citation:"Manufacturer absorbance specs (E1% ≈ 920–990 at 302 nm)."}
+  ],
+  9: [
+    {label:"SCCS/1359/10 polysilicone-15",url:"https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_024.pdf",citation:"EU regulatory opinion with UV characterisation."},
+    {label:"DSM Parsol SLX page",url:"https://www.dsm.com/personal-care/en_US/products/uv-filters/parsol-slx.html",citation:"Manufacturer technical bulletin (E1% per chromophore)."}
+  ],
+  10: [
+    {label:"BASF Uvinul T 150 datasheet",url:"https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Uvinul%C2%AE%20T%20150.pdf",citation:"BASF technical info: E1%(1cm) ≈ 1500–1650 at 314 nm; published spectrum."},
+    {label:"Stein 2014 PPS",url:"https://link.springer.com/article/10.1039/c4pp00373j",citation:"Photochem Photobiol Sci. Triplet states + ground-state UV-Vis of EHT."},
+    {label:"PMC3353564",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3353564/",citation:"TLC/densitometry of EHT in topical products."}
+  ],
+  11: [
+    {label:"ScienceDirect 3-(4-MeBz)camphor",url:"https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/3-4-methylbenzylidene-camphor",citation:"ε = 24,500 M⁻¹cm⁻¹ at 300 nm (E1%=954, MW 254)."},
+    {label:"MDPI Cosmetics 2023 review",url:"https://www.mdpi.com/2079-9284/10/4/101",citation:"UV filters review with 4-MBC ε data."}
+  ],
+  12: [
+    {label:"Symrise Sun Protection Brochure",url:"https://chemspireingredients.com/wp-content/uploads/2021/05/Symrise_Sun_Protection_Brochure_2020.pdf",citation:"Neo Heliopan E1000: E1% ≥ 980 at 308 nm (MeOH)."},
+    {label:"FDA TEA submission (Neo Heliopan E1000)",url:"https://downloads.regulations.gov/FDA-2003-N-0196-0004/attachment_1.pdf",citation:"Manufacturer dossier for FDA TEA approval."},
+    {label:"ChemicalBook isoamyl 4-methoxycinnamate",url:"https://www.chemicalbook.com/ChemicalProductProperty_EN_CB5485611.htm",citation:"Tabulated UV characteristics."}
+  ],
+  13: [
+    {label:"MDPI 2021: phenolic absorption coefficients",url:"https://www.mdpi.com/1420-3049/26/15/4656",citation:"Salicylic acid ε = 3.83×10³ at 300 nm — reference for salicylate-anion ε."},
+    {label:"AAT Bioquest sodium salicylate UV",url:"https://www.aatbio.com/absorbance-uv-visible-spectrum-graph-viewer/sodium_salicylate",citation:"Published full UV-Vis spectrum of salicylate ion."}
+  ],
+  14: [
+    {label:"Mturi & Martincigh 2008",url:"https://www.cansa.org.za/files/2009/10/Prof_Martincigh_-_photochemistry_and_photobiology.pdf",citation:"J Photochem Photobiol A 200:410. Solvent-dependence figures (cyclohexane / MeOH / EtOAc / DMSO)."},
+    {label:"Bonda & Lott 2017 C&T",url:"https://www.cosmeticsandtoiletries.com/research/literature-data/article/21836861/in-light-of-exposure-understanding-avobenzone-part-i-characterization",citation:"Cosmetics & Toiletries. ε = 32,400 at 355 nm (cyclohexane, enol); ε = 28,400 at 265 nm (keto)."},
+    {label:"Holt 2021 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp03610f",citation:"Phys Chem Chem Phys 23:24439. Ultrafast TEAS + steady-state UV-Vis in 4 vehicles."},
+    {label:"Yamaji & Kida 2013 JPCA",url:"https://pubs.acs.org/doi/abs/10.1021/jp4123375",citation:"J Phys Chem A 117:1946. DFT + experimental UV-Vis of BMDBM tautomers."}
+  ],
+  15: [
+    {label:"Cantrell & McGarvey 2000 (PUBMED)",url:"https://pubmed.ncbi.nlm.nih.gov/10911723/",citation:"J Photochem Photobiol B 55:92. λmax 338 nm, ε ≈ 5,800 in EtOH; full UV-Vis figure. Primary source for the ε correction (was 5,000 → 5,800)."},
+    {label:"Saito 2020 PPS",url:"https://pubs.rsc.org/en/content/articlelanding/2020/pp/d0pp00023j/unauth",citation:"Photochem Photobiol Sci 19:824. Uses Cantrell ε; ¹O₂ photosensitisation data."}
+  ],
+  16: [
+    {label:"Wang 2023 PPS",url:"https://link.springer.com/article/10.1007/s43630-023-00435-z",citation:"Photochem Photobiol Sci 22:1875. ε = 39,000 at 354 nm (EtOH, 25°C); full UV-Vis figure."},
+    {label:"BASF Uvinul A Plus datasheet",url:"https://www.medchemexpress.com/Diethylamino_hydroxybenzoyl_hexyl_benzoate.html",citation:"Manufacturer specification: λmax 354 nm in EtOH."},
+    {label:"DSM Parsol DHHB ingredient page",url:"https://incidecoder.com/ingredients/diethylamino-hydroxybenzoyl-hexyl-benzoate",citation:"Industry reference; matches BASF specs."}
+  ],
+  17: [
+    {label:"Naumov, Herzog, Abel 2020 JPCA",url:"https://pubs.acs.org/doi/abs/10.1021/acs.jpca.9b09883",citation:"J Phys Chem A 124:247. MBBT solution + dispersion spectra; monomer ε."},
+    {label:"BASF Tinosorb M brief (Cossma)",url:"https://www.cossma.com/fileadmin/all/cossma/Archiv/ProductInfo/COS1802_BASFTinosorb_M.PDF",citation:"BASF technical information (50% aqueous dispersion E1% values)."}
+  ],
+  18: [
+    {label:"3V Sigma Uvasorb HEB",url:"https://3vsigmausa.com/product/uvasorb-heb/",citation:"Manufacturer datasheet: λmax ≈ 311 nm, ε ≈ 120,000."},
+    {label:"NCBI NBK587270 (Couteau 2007)",url:"https://www.ncbi.nlm.nih.gov/books/NBK587270/",citation:"Pharm Dev Technol. In-vitro absorbance comparison of 18 sunscreens."},
+    {label:"Wikipedia Iscotrizinol",url:"https://en.wikipedia.org/wiki/Iscotrizinol",citation:"Summary of regulatory + spectral data."}
+  ],
+  19: [
+    {label:"Chatelain & Gabard 2001",url:"https://pubmed.ncbi.nlm.nih.gov/11594052/",citation:"Photochem Photobiol 74:401. Foundational BEMT spectral characterisation; photostabilisation of AVB+OMC."},
+    {label:"BASF Tinosorb S datasheet",url:"https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Tinosorb%C2%AE%20S.pdf",citation:"E1% ≈ 800–820 at 343 nm; ~870 at 310 nm."},
+    {label:"SCCS/1460/11 BEMT",url:"https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_129.pdf",citation:"EU regulatory opinion (2013 revision)."}
+  ],
+  20: [
+    {label:"Deflandre & Lang 1988",url:"https://pubmed.ncbi.nlm.nih.gov/19456855/",citation:"Int J Cosmet Sci 10:53. Original L'Oréal characterisation; ε ≈ 47,000 at 345 nm in water (whole-molecule). Primary source for the ε correction (was 20,000 → 47,000)."},
+    {label:"Fourtanier 1996 PPS",url:"https://pubmed.ncbi.nlm.nih.gov/8863471/",citation:"Photochem Photobiol 64:688. In-vivo + spectral characterisation of Mexoryl SX."},
+    {label:"Fourtanier 2008 review",url:"https://onlinelibrary.wiley.com/doi/10.1111/j.1600-0781.2008.00365.x",citation:"Photodermatol Photoimmunol Photomed. Comprehensive review with spectrum."}
+  ],
+  21: [
+    {label:"Naumov 2020 JPCA",url:"https://pubs.acs.org/doi/abs/10.1021/acs.jpca.9b09883",citation:"Hydroxyphenyl-benzotriazole class (drometrizole core) spectra."},
+    {label:"L'Oréal Mexoryl XL ingredient page",url:"https://inside-our-products.loreal.com/ingredients/mexorylr-xl",citation:"Manufacturer source: dual peaks 303/344 nm."}
+  ],
+  22: [
+    {label:"Marionnet 2021 JID Innovations",url:"https://www.sciencedirect.com/science/article/pii/S2667026721000710",citation:"JID Innov 2:100070. ε ≈ 63,000 at 385 nm; full UV-Vis spectrum figure. Note: data is L'Oréal-affiliated."},
+    {label:"SCCS/1605/19 MCE opinion",url:"http://yjj.sc.gov.cn/scyjj/uploads/20200515/sccs_o_227.pdf",citation:"EU regulatory dossier with reference spectrum."}
+  ],
+  23: [
+    {label:"Naumov, Herzog, Abel 2023",url:"https://link.springer.com/article/10.1007/s43630-023-00436-y",citation:"Photochem Photobiol Sci 22:2143. TBPT monomer ε in EtOH/dioxane + nanoparticle spectra."},
+    {label:"BASF Tinosorb A2B datasheet",url:"https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Tinosorb%C2%AE%20A2B.pdf",citation:"Manufacturer technical info: E1% ≈ 825 at λmax."}
+  ],
+  24: [
+    {label:"Symrise Neo Heliopan AP",url:"https://www.ulprospector.com/en/na/PersonalCare/Detail/3030/210580/Neo-Heliopan-AP",citation:"Manufacturer datasheet: λmax 335 nm in water, E1% ≈ 770–800."},
+    {label:"MDPI Cosmetics 2023 review",url:"https://www.mdpi.com/2079-9284/10/4/101",citation:"UV filters review with bisdisulizole spectrum data."}
+  ],
+  25: [
+    {label:"Kumasaka 2014 Photochem Photobiol",url:"https://onlinelibrary.wiley.com/doi/abs/10.1111/php.12257",citation:"Photochem Photobiol 90:727. Photoexcited states of benzophenone derivatives; full UV-Vis of BP-2/3/6/7/12 in EtOH. Primary source for the ε correction (18,000 → 16,000)."},
+    {label:"Mturi & Martincigh 2008 (figure)",url:"https://www.researchgate.net/figure/UV-VIS-absorption-spectra-of-benzophenone-3-in-ethanol-Uvasol-recorded-in-the-course-of_fig6_5350725",citation:"BP-3 spectra in EtOH (Uvasol)."},
+    {label:"SCCS/1625/20 BP-3 opinion",url:"https://health.ec.europa.eu/system/files/2022-08/sccs_o_247.pdf",citation:"EU regulatory final opinion (2021): two peaks at 288 + 325 nm."},
+    {label:"NIST WebBook oxybenzone",url:"https://webbook.nist.gov/cgi/cbook.cgi?ID=C131577",citation:"Reference UV-Vis spectrum entry."}
+  ],
+  26: [
+    {label:"Ramos 2015 Environ Int",url:"https://www.sciencedirect.com/science/article/abs/pii/S0160412015300027",citation:"Tabulates BP-4 absorbance, λmax, water solubility."},
+    {label:"PMC8951480 (BP-type filters in water)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC8951480/",citation:"Stability and removal of BP-type filters; figures of BP-4 aqueous spectrum."}
+  ],
+  27: [
+    {label:"Liu 2023 Chem Eng J",url:"https://www.sciencedirect.com/science/article/abs/pii/S221334372302362X",citation:"Molar absorption coefficients + pH dependence of BP-8."},
+    {label:"Beel 2012 J Phys Chem A",url:"https://pubs.acs.org/doi/10.1021/jp306130y",citation:"TD-DFT calculation of dioxybenzone λmax + oscillator strengths."}
+  ],
+  28: [
+    {label:"PubChem CID 17244",url:"https://pubchem.ncbi.nlm.nih.gov/compound/17244",citation:"Identity + structure. ⚠ no primary peer-reviewed UV-Vis figure located — current ε is by structural analogy to BP-3 (C5 confidence)."}
+  ],
+  29: [
+    {label:"Cole, Shyr, Ou-Yang 2016",url:"https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",citation:"Photodermatol Photoimmunol Photomed 32:5. Transmission/reflectance spectra of ZnO + TiO₂; absorption dominates 10:1 over scattering."},
+    {label:"Egerton & Tooley 2012",url:"https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x",citation:"Int J Cosmet Sci 34:117. Mie-theory mass extinction calculations for 20/50/100 nm ZnO + TiO₂."},
+    {label:"Smijs & Pavel 2011 (PMC)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/",citation:"Nanotechnol Sci Appl 4:95. Optical properties review of ZnO/TiO₂ nanoparticles in sunscreens."}
+  ],
+  30: [
+    {label:"Cole, Shyr, Ou-Yang 2016",url:"https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",citation:"Photodermatol Photoimmunol Photomed 32:5. TiO₂ absorbs >95% of UVB; reflection only 4-5%."},
+    {label:"Egerton & Tooley 2012",url:"https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x",citation:"Mie-theory: 50 nm peak Q_ext ~3 at 310 nm; mass extinction across UVB."},
+    {label:"ACS Acc Mater Res 2024",url:"https://pubs.acs.org/doi/10.1021/accountsmr.4c00004",citation:"Standardising white-cast potential of metal-oxide UV filters."}
+  ],
+  31: [
+    {label:"Wang 2022 Molecules (PMC)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9737593/",citation:"Substituent effects on UV absorption of 2,4-dihydroxybenzophenone (BP-1) — published spectrum + ε."},
+    {label:"Kumasaka 2014 Photochem Photobiol",url:"https://onlinelibrary.wiley.com/doi/abs/10.1111/php.12257",citation:"Benzophenone derivatives spectra including BP-1."},
+    {label:"Jiang 2021 J Mol Liq",url:"https://www.sciencedirect.com/science/article/abs/pii/S0167732221030890",citation:"ε(λmax) for BP-1 and analogs in 3D-QSAR study."}
+  ],
+  32: [
+    {label:"Marusak 1980 J Phys Chem Solids",url:"https://www.sciencedirect.com/science/article/abs/pii/0022369780901055",citation:"J Phys Chem Solids 41:981. Canonical hematite α(λ) spectrum from near-IR to UV."},
+    {label:"Sherman & Waite 1985 Am Mineral",url:"https://pubs.usgs.gov/publication/70012311",citation:"Am Mineral 70:1262. Ligand-field band assignments for Fe³⁺ oxides."},
+    {label:"Castanedo-Cazares 2025 review",url:"https://onlinelibrary.wiley.com/doi/10.1111/phpp.70033",citation:"Photodermatol Photoimmunol Photomed. Tinted-sunscreen visible-light protection review."}
+  ],
+  33: [
+    {label:"Sherman & Waite 1985",url:"https://pubs.usgs.gov/publication/70012311",citation:"Am Mineral 70:1262. Goethite electronic spectra: 660 / 500-530 / 425 nm bands."},
+    {label:"Scheinost 1999 Clays Clay Miner",url:"https://link.springer.com/article/10.1346/CCMN.1999.0470205",citation:"Clays Clay Miner 47:156. Diffuse reflectance + ligand-field analysis."},
+    {label:"Torrent & Barrón Encyclopedia",url:"https://www.uco.es/organiza/departamentos/decraf/pdf-edaf/enciclopedia.pdf",citation:"Encyclopedia of Surface and Colloid Science (2002). Diffuse reflectance of iron oxides."}
+  ],
+  34: [
+    {label:"Schlegel 1980 Philos Mag B",url:"https://www.tandfonline.com/doi/abs/10.1080/01418638008221885",citation:"Philos Mag B 42:419. Single-crystal magnetite reflectance spectra."},
+    {label:"Icarus 2018 magnetite reflectance",url:"https://www.sciencedirect.com/science/article/abs/pii/S0019103518302252",citation:"Spectral reflectance properties of magnetites for remote sensing."}
+  ],
+  35: [
+    {label:"ScienceDirect 3-benzylidenecamphor",url:"https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/3-4-methylbenzylidene-camphor",citation:"Compendium for 3-BC chromophore family; ε references for benzylidenecamphor analogs."},
+    {label:"Schauder & Ippen 1997",url:"https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1600-0536.1997.tb00408.x",citation:"Contact Dermatitis 37:221. Historical ε data for 3-BC."},
+    {label:"PubChem CID 5901612",url:"https://pubchem.ncbi.nlm.nih.gov/compound/3-Benzylidene-camphor",citation:"Identity + literature references."}
+  ],
+  36: [
+    {label:"Sigma-Aldrich BCSA std",url:"https://www.sigmaaldrich.com/US/en/product/sial/97085",citation:"Analytical standard datasheet. ⚠ no primary peer-reviewed spectrum located — ε estimated by analogy to 3-BC/4-MBC (C5)."},
+    {label:"Danish EPA 2015 UV filters",url:"https://www2.mst.dk/udgiv/publications/2015/10/978-87-93352-82-7.pdf",citation:"Survey + health assessment with general spectral parameters."}
+  ],
+};
+
+// Render a block of literature references for verifying the absorption spectrum.
+// Each filter's `spectrumRefs` is an array of {label, citation, url} objects.
+function spectrumRefsBlock(f){
+  const refs = (typeof SPECTRUM_REFS !== 'undefined' && SPECTRUM_REFS[f.idx]) || f.spectrumRefs || [];
+  if (!refs.length) return '';
+  const items = refs.map(r => `
+    <li><a href="${r.url}" target="_blank" rel="noopener" class="ref-link">${r.label || 'View'}</a>
+      <span class="ref-cite">${r.citation}</span>
+    </li>`).join('');
+  return `<div class="spectrum-refs">
+    <div class="spectrum-refs-head">Verify the spectrum — published sources</div>
+    <ul>${items}</ul>
+  </div>`;
+}
+
 // Render the Solvent value, with a hover tooltip when it's a non-obvious term.
 const SOLVENT_NOTES = {
   'semiconductor': 'These don\'t dissolve. ZnO and TiO₂ are wide-bandgap semiconductor crystals dispersed as solid microparticles in the formulation. UV attenuation comes from electronic band-gap transitions (and some Mie scattering), not chromophore absorption in solution.',
@@ -1891,6 +2104,7 @@ function openDetail(f){
       ${regBadge('JP', f.reg.jp)}
       ${regBadge('KR', f.reg.kr)}
     </div>
+    ${spectrumRefsBlock(f)}
     <a class="file-link" href="../${f.detail}" target="_blank" rel="noopener">View claim file →</a>
   `;
   modal.classList.add('open');
