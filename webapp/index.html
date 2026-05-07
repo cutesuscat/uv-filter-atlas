@@ -922,7 +922,7 @@
       <div class="section-num">05</div>
       <div>
         <div class="section-title">Spectrum Builder — How Filters Combine</div>
-        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them; drag the sliders to change concentrations. <span class="info-tip" tabindex="0">Math &amp; methodology<span class="info-bubble">Each filter contributes <strong>E(1%, 1cm) × concentration% × rel_absorbance(λ)</strong> at every wavelength. Beer-Lambert says absorbances add, so the bold curve is the sum across all selected filters — that's what the skin sees. E(1%, 1cm) is the cosmetics-industry-standard metric: the absorbance of a 1% w/w solution at 1 cm path length, as reported in BASF/DSM/Symrise/3V Sigma datasheets. Linear stacking is exact under Beer-Lambert; for high-load semiconductor particulates it becomes an approximation.</span></span>.</div>
+        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them; drag the sliders to change concentrations. <span class="info-tip" tabindex="0">Math &amp; methodology<span class="info-bubble">Each filter contributes <strong>E(1%, 1cm)(λ) × concentration%</strong> at every wavelength. Beer-Lambert says absorbances add, so the bold curve is the sum across all selected filters. E(1%, 1cm) is the cosmetics-industry-standard metric: the absorbance of a 1% w/w solution at 1 cm path length, as reported in BASF/DSM/Symrise/3V Sigma datasheets. <strong>Caveats</strong>: (1) Beer-Lambert is exact for dissolved organics; for particulate inorganics (ZnO, TiO₂, iron oxides) at &gt;5% loading, particle aggregation and multiple scattering reduce the realised attenuation to ~60–80% of the linear-stacking prediction. (2) The chart shows peak attenuation, not SPF. SPF integrates over the erythema action spectrum at a 2 mg/cm² film; real users apply ~0.5–1 mg/cm², so realised SPF is typically half to a quarter of the lab measurement. The chart is best read as a <em>relative</em> comparison of formulations, not an absolute SPF predictor.</span></span>.</div>
       </div>
     </div>
     <div class="builder-card">
@@ -2291,8 +2291,8 @@ const PRESETS = {
   'uvmune-400':     [['Mexoryl 400', 3], ['Bemotrizinol', 5], ['Bisoctrizole', 5], ['DHHB', 5], ['Avobenzone', 3], ['Octocrylene', 5]],
   'us-classic':     [['Avobenzone', 3], ['Octocrylene', 7], ['Octisalate', 5], ['Homosalate', 10]],
   'eu-broad':       [['Bisoctrizole', 8], ['Bemotrizinol', 5], ['DHHB', 8], ['Ethylhexyl Triazone', 4]],
-  'mineral':        [['Zinc Oxide', 20], ['Titanium Dioxide (rutile)', 5]],
-  'tinted-mineral': [['Zinc Oxide', 18], ['Titanium Dioxide (rutile)', 4], ['Iron Oxide Yellow', 1.5], ['Iron Oxide Red', 0.7], ['Iron Oxide Black', 0.2]],
+  'mineral':        [['Zinc Oxide', 15], ['Titanium Dioxide (rutile)', 5]],
+  'tinted-mineral': [['Zinc Oxide', 14], ['Titanium Dioxide (rutile)', 4], ['Iron Oxide Yellow', 1.5], ['Iron Oxide Red', 0.7], ['Iron Oxide Black', 0.2]],
   'all-uvb':        [['Octinoxate', 7], ['Octocrylene', 7], ['Ethylhexyl Triazone', 5], ['Octisalate', 5]],
   'clear':          [],
 };
