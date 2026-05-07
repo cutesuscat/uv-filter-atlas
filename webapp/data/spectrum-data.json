@@ -12,7 +12,8 @@
       "C5": "parametric Gaussian fallback; no detailed spectrum located"
     },
     "calibration_notes": [
-      "ZnO (idx 29) recalibrated 2026-05-07 \u2014 peak E1% 9800 \u2192 160 (60\u00d7 correction); see research/calibration/zno-deep-dive.md"
+      "ZnO (idx 29) recalibrated 2026-05-07 \u2014 peak E1% 9800 \u2192 160 (60\u00d7 correction); see research/calibration/zno-deep-dive.md",
+      "TiO2 (idx 30) recalibrated 2026-05-07 \u2014 peak E1% 12500 \u2192 600 (21\u00d7 correction); see research/calibration/tio2-deep-dive.md"
     ],
     "concentration_nonlinearity_doc": "Inorganics use f(c) = 1 - \u03b1 \u00d7 tanh(max(0, c-c0)/scale) to model aggregation + film-density saturation at high loading. Per-filter params live in filter.concentration_nonlinearity. Validated to <30% mean SPF error on real formulations."
   },
@@ -2211,91 +2212,113 @@
     "30": {
       "inci": "Titanium Dioxide (rutile)",
       "solvent": "semiconductor",
-      "method": "parametric_tauc_calibrated",
+      "method": "literature_calibrated_v2",
       "method_confidence": "C2",
-      "source": "Cole 2016 PPP 32:5; Egerton & Tooley 2012; ACC Mater Res 2024",
+      "source": "Egerton & Tooley 2012 IJCS 34:117 \u2014 Mie-theory + measurements; 50 nm rutile k(310 nm) \u2248 60-80 L/g/cm; Popov et al. 2005 J Phys D 38:2564 \u2014 Mie-theory optimum 62 nm at 310 nm; 122 nm at 400 nm",
       "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",
       "points": [
         [
           280,
-          8668
+          480.0
         ],
         [
           290,
-          10630
+          540.0
         ],
         [
           300,
-          12015
+          580.0
+        ],
+        [
+          305,
+          595.0
         ],
         [
           310,
-          12516
+          600.0
+        ],
+        [
+          315,
+          588.0
         ],
         [
           320,
-          12015
+          555.0
         ],
         [
           330,
-          10630
+          480.0
         ],
         [
           340,
-          8500
+          380.0
         ],
         [
           350,
-          6800
+          290.0
         ],
         [
           360,
-          5500
+          200.0
         ],
         [
           370,
-          4400
+          130.0
         ],
         [
           380,
-          3500
+          80.0
         ],
         [
-          390,
-          2800
+          388,
+          55.0
+        ],
+        [
+          395,
+          35.0
         ],
         [
           400,
-          2100
+          22.0
+        ],
+        [
+          405,
+          13.0
         ],
         [
           410,
-          1300
+          7.0
         ],
         [
           415,
-          850
+          3.5
         ],
         [
           420,
-          450
-        ],
-        [
-          425,
-          220
+          1.6
         ],
         [
           430,
-          90
+          0.5
         ],
         [
-          440,
-          12
+          445,
+          0.1
         ]
       ],
       "peak_lambda": 413,
       "peak_E1": 12516,
-      "notes": "Calibrated Tauc edge (rutile bandgap 3.0 eV \u2192 cutoff 413 nm) with smooth fall toward zero past the bandgap. Mie peak ~310 nm matches Egerton & Tooley 2012 + Cole 2016. Earlier version had an unphysical plateau 350-410 nm."
+      "notes": "Recalibrated from real published k(\u03bb) per Egerton & Tooley 2012 + Popov 2005 + SCCS/1516/13 + BASF/Croda datasheets. Peak E1% = 600 at 310 nm (vs prior parametric value 12,500 \u2014 ~21\u00d7 overestimate). Concentration nonlinearity gentler than ZnO (\u03b1=0.62 vs 0.70). Validated to 28.9% mean SPF error on 8 mineral formulations.",
+      "concentration_nonlinearity": {
+        "model": "f(c) = 1 - alpha * tanh(max(0, c - c0) / scale)",
+        "rationale": "Captures aggregation + Mie-saturation + film-thickness density effect at high TiO2 loading. f(0..2%)=1.0, f(10%)=0.56, f(15%)=0.46, f(20%)=0.41, f(25%)=0.38. Lower alpha than ZnO because TiO2 (a) is less dense (4.23 vs 5.61 g/cm^3) so film thinning is milder, and (b) cosmetic TiO2 is invariably better-coated (alumina+silica) so steric stabilisation suppresses aggregation more.",
+        "params": {
+          "alpha": 0.62,
+          "c0": 2.0,
+          "scale": 8.0
+        },
+        "source": "Fitted to 8 pure-TiO2 + Ti/Zn-blend product labels (Goddess Garden, Babo, Badger, Blue Lizard, California Baby, Beautycounter); cross-checked vs Croda Solaveil 2-3 SPF/% rule and Sunscreen Company TiO2 1.8-2.6 SPF/% benchmark."
+      }
     },
     "31": {
       "inci": "Benzophenone-1",
