@@ -157,37 +157,36 @@
     padding: 28px; border-radius: 4px;
   }
   .spectrum-band{
-    display:grid; grid-template-columns: 80px 60px 1fr; gap:12px; align-items:center;
-    padding: 7px 0; border-top: 1px solid var(--line-soft);
+    display:grid; grid-template-columns: 130px 1fr; gap:12px; align-items:center;
+    padding: 4px 0;
     font-size: 0.85rem;
   }
-  .spectrum-band:first-of-type{ border-top:none }
-  .spectrum-name{ font-weight: 600; color: var(--ink); font-size: 0.82rem }
-  .spectrum-name small{ display:block; font-weight: 400; color: var(--muted); font-size: 0.68rem; margin-top:1px }
-  .spectrum-peak{ font: 500 0.76rem var(--mono); color: var(--ink-soft); text-align:right }
-  .spectrum-track{
-    position:relative; height: 14px; background: linear-gradient(90deg,
-      var(--uv-uvb) 0%, var(--uv-uvb) 25%,
-      var(--uv-uva2) 33.3%, var(--uv-uva2) 50%,
-      var(--uv-uva1) 58.3%, var(--uv-uva1) 100%
-    );
-    background: linear-gradient(90deg, rgba(94,58,163,0.10) 0%, rgba(94,58,163,0.10) 29.2%,
-      rgba(176,74,138,0.10) 33.3%, rgba(176,74,138,0.10) 50%,
-      rgba(201,138,58,0.10) 58.3%, rgba(201,138,58,0.10) 100%);
-    border-radius: 2px;
-    border: 1px solid var(--line-soft);
+  .spectrum-name{
+    font-weight: 600; color: var(--ink); font-size: 0.78rem; line-height: 1.2;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-  .spectrum-bar{
-    position:absolute; top:1px; bottom:1px;
-    background: var(--accent); border-radius: 1px; opacity: 0.85;
+  .spectrum-name small{ display:block; font-weight: 400; color: var(--muted); font-size: 0.66rem; margin-top:1px; font-family: var(--mono) }
+  .spectrum-track-svg{
+    width: 100%; height: 18px; display: block;
+    border-radius: 2px;
   }
   .spectrum-axis{
-    display:grid; grid-template-columns: 80px 60px 1fr; gap:12px;
+    display:grid; grid-template-columns: 130px 1fr; gap:12px;
     padding-top: 8px; margin-top:8px; border-top: 1.5px solid var(--rule);
     font: 500 0.68rem var(--mono); color: var(--muted);
   }
   .spectrum-axis-track{ display:flex; justify-content:space-between }
-  .spectrum-axis-track span{ position:relative }
+  .spectrum-bands-bg{
+    margin-top: 4px; height: 14px; position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .spectrum-bands-bg div{
+    position:absolute; top:0; bottom:0;
+    display:flex; align-items:center; justify-content:center;
+    font: 600 0.6rem var(--mono); letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+  }
   .spectrum-legend{
     display:flex; gap:16px; flex-wrap:wrap; margin-top: 14px;
     font: 500 0.7rem var(--mono); color: var(--muted);
@@ -196,7 +195,7 @@
     display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px;
     vertical-align: middle;
   }
-  @media (max-width: 720px){ .spectrum-band, .spectrum-axis{ grid-template-columns: 1fr; gap: 4px } .spectrum-peak, .spectrum-axis div:first-child, .spectrum-axis div:nth-child(2){ display:none } }
+  @media (max-width: 720px){ .spectrum-band, .spectrum-axis{ grid-template-columns: 100px 1fr; gap: 8px } }
 
   /* Filter directory: search + chips + grid */
   .controls{
@@ -303,7 +302,7 @@
 
   /* Spectrum SVG (modal) */
   .spec-svg{
-    width: 100%; height: 180px;
+    width: 100%; height: 220px;
     background: var(--bg);
     border: 1px solid var(--line-soft);
     border-radius: 4px;
@@ -340,6 +339,40 @@
   .conf-tag.c2{ background: var(--accent-soft); color: var(--accent) }
   .conf-tag.c3{ background: var(--moderate-soft); color: var(--moderate) }
   .conf-tag.c4{ background: var(--warn-soft); color: var(--warn) }
+
+  /* Inline info-tooltip */
+  .info-tip{
+    position: relative; display: inline-flex; align-items: center;
+    border-bottom: 1px dotted var(--muted); cursor: help;
+  }
+  .info-tip::after{
+    content: ""; display: inline-block; margin-left: 5px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--line); color: var(--muted);
+    font: 700 9px var(--mono); line-height: 12px; text-align: center;
+    content: "?";
+  }
+  .info-tip:hover .info-bubble,
+  .info-tip:focus-visible .info-bubble{ opacity: 1; transform: translate(-50%, -100%) translateY(-6px); pointer-events: auto }
+  .info-bubble{
+    position: absolute; left: 50%; top: 0;
+    transform: translate(-50%, -100%) translateY(0);
+    background: var(--ink); color: var(--bg);
+    font: 500 0.78rem/1.5 var(--serif); letter-spacing: 0;
+    padding: 10px 14px; border-radius: 4px;
+    width: max-content; max-width: 280px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s var(--ease), transform .2s var(--ease);
+    text-transform: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    z-index: 50;
+    text-align: left;
+  }
+  .info-bubble::after{
+    content: ""; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: var(--ink);
+  }
 
   .halflife-row{
     display:grid; grid-template-columns: 1fr; gap: 8px;
@@ -396,6 +429,91 @@
   @media (max-width: 720px){
     .scatter-svg{ height: 380px }
   }
+
+  /* Spectrum Builder */
+  .builder-card{
+    background: var(--bg-2); border: 1px solid var(--line);
+    padding: 28px; border-radius: 4px;
+  }
+  .builder-presets{
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    margin-bottom: 20px; padding-bottom: 18px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .builder-presets .chip{ background: var(--bg) }
+  .builder-active{
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
+    min-height: 0;
+  }
+  .builder-active:empty::before{
+    content: "No filters selected. Pick a preset above, or expand 'Add another filter' below.";
+    font: 500 0.78rem var(--mono); color: var(--muted);
+    padding: 10px 14px; background: var(--bg);
+    border-radius: 4px; flex: 1; border: 1px dashed var(--line);
+  }
+  .active-pill{
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+    font-size: 0.82rem;
+  }
+  .active-pill .ap-name{ font-weight: 600; color: var(--ink) }
+  .active-pill .ap-conc{
+    display: inline-flex; align-items: center; gap: 6px;
+    padding-left: 10px; margin-left: 4px;
+    border-left: 1px solid var(--line);
+  }
+  .active-pill .ap-conc input[type="range"]{
+    width: 70px; accent-color: var(--accent);
+  }
+  .active-pill .ap-conc-val{ font: 600 0.78rem var(--mono); color: var(--accent); min-width: 36px; text-align: right }
+  .active-pill .ap-remove{
+    background: none; border: none; cursor: pointer;
+    color: var(--muted); font: 500 1rem var(--mono);
+    width: 18px; height: 18px; line-height: 1; padding: 0; margin-left: 4px;
+    border-radius: 999px;
+  }
+  .active-pill .ap-remove:hover{ color: var(--warn) }
+  .active-pill .ap-color{
+    width: 10px; height: 10px; border-radius: 999px; flex-shrink: 0;
+  }
+  .builder-plot-wrap{ margin-bottom: 16px }
+  .builder-svg{ width: 100%; height: 360px; display: block }
+  .builder-svg .axis-line{ stroke: var(--rule); stroke-width: 1.5 }
+  .builder-svg .grid-line{ stroke: var(--line-soft); stroke-width: 1; stroke-dasharray: 2 3 }
+  .builder-svg .axis-label{ fill: var(--muted); font: 600 10px var(--mono); letter-spacing: 1px; text-transform: uppercase }
+  .builder-svg .tick-label{ fill: var(--muted); font: 500 10px var(--mono) }
+  .builder-svg .filter-curve{ fill: none; stroke-width: 1.5; opacity: 0.55 }
+  .builder-svg .total-curve{ fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round }
+  .builder-svg .total-fill{ fill: var(--ink); opacity: 0.06 }
+  .builder-svg .band-rect{ opacity: 0.05 }
+  .builder-svg .band-text{ fill: var(--muted); font: 700 9px var(--mono); letter-spacing: 1.2px; text-transform: uppercase }
+  .builder-add{ margin-top: 18px }
+  .builder-add summary{
+    cursor: pointer; font: 500 0.84rem var(--mono); color: var(--accent);
+    padding: 8px 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
+    display: inline-block;
+    user-select: none;
+  }
+  .builder-add summary:hover{ background: var(--accent-soft) }
+  .builder-grid{
+    margin-top: 12px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 4px;
+    max-height: 280px; overflow-y: auto;
+    padding: 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg);
+  }
+  .builder-grid button{
+    text-align: left; padding: 6px 10px; font-size: 0.78rem;
+    background: transparent; border: 1px solid transparent; border-radius: 3px;
+    color: var(--ink-soft); cursor: pointer;
+    font: inherit; font-size: 0.78rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .builder-grid button:hover{ background: var(--accent-soft); border-color: var(--line); color: var(--ink) }
+  .builder-grid button.added{ background: var(--ok-soft); color: var(--ok); border-color: var(--ok) }
+  .builder-grid button .bg-dot{ width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0 }
+  .builder-grid button small{ color: var(--muted); margin-left: auto; font: 500 0.7rem var(--mono) }
 
   /* Detail panel (modal) */
   .modal{
@@ -631,22 +749,21 @@
       <div class="section-num">02</div>
       <div>
         <div class="section-title">Spectral Coverage Map</div>
-        <div class="section-sub">Each bar shows the wavelengths each filter absorbs significantly. Overlapping bars in commercial products fill UVB (280–315 nm), UVA-II (315–340 nm) and UVA-I (340–400 nm).</div>
+        <div class="section-sub">Each bar is one filter's approximate absorption band — Gaussian-shaped, peak opacity at λmax, fading toward the wings. Sorted by peak wavelength. Iron oxides extend deep into visible (HEV / blue light through near-IR).</div>
       </div>
     </div>
     <div class="spectrum-card">
       <div id="spectrumOverview"></div>
       <div class="spectrum-axis">
-        <div></div><div></div>
-        <div class="spectrum-axis-track">
-          <span>280</span><span>300</span><span>320</span><span>340</span><span>360</span><span>380</span><span>400 nm</span>
-        </div>
+        <div></div>
+        <div class="spectrum-axis-track" id="spectrumAxisTicks"></div>
       </div>
       <div class="spectrum-legend">
-        <span><i style="background: rgba(94,58,163,0.25)"></i>UVB 280–315</span>
-        <span><i style="background: rgba(176,74,138,0.25)"></i>UVA-II 315–340</span>
-        <span><i style="background: rgba(201,138,58,0.30)"></i>UVA-I 340–400</span>
-        <span><i style="background: var(--accent)"></i>Filter absorption band (FWHM approx.)</span>
+        <span><i style="background: var(--uv-uvb)"></i>UVB-dominant</span>
+        <span><i style="background: var(--uv-uva2)"></i>UVA-II / dual</span>
+        <span><i style="background: var(--uv-uva1)"></i>UVA-I anchor</span>
+        <span><i style="background: var(--ink-soft)"></i>Inorganic semiconductor</span>
+        <span><i style="background: var(--warn)"></i>Iron oxide (HEV / visible)</span>
       </div>
     </div>
   </section>
@@ -696,7 +813,7 @@
       <div class="section-num">04</div>
       <div>
         <div class="section-title">λmax × Photostability — At a Glance</div>
-        <div class="section-sub">Each circle is one filter, positioned by its peak absorption wavelength (x) and half-life under solar-simulator UV (y, log scale). The half-life axis spans 5 orders of magnitude — from PABA at ~1.5 hours to photostable triazines at &gt;500 hours. Inorganics are off-scale at top: their lattice does not photodegrade.</div>
+        <div class="section-sub">Each filter is rendered as a horizontal smear bar — its width and Gaussian fade represent its absorption band, with peak opacity at λmax. Vertical position is half-life under solar UV (log scale). Hover any filter to see the uncertainty range: the half-life is highly conditions-dependent, and the dotted bracket shows the range across vehicles and dose conditions for that filter's confidence tier. Inorganics and iron oxides sit on the dashed "∞" line at top — their lattice does not photodegrade.</div>
       </div>
     </div>
     <div class="scatter-card">
@@ -713,10 +830,40 @@
     </div>
   </section>
 
-  <!-- Section 05: Photodegradation reference -->
+  <!-- Section 05 (new): Spectrum builder — combine filters and see total absorption -->
   <section class="section">
     <div class="section-head">
       <div class="section-num">05</div>
+      <div>
+        <div class="section-title">Spectrum Builder — How Filters Combine</div>
+        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them. Each filter contributes a Gaussian (or sigmoid for inorganics) to the combined absorbance, weighted by ε and concentration. The bold curve is the sum — that's what the skin sees.</div>
+      </div>
+    </div>
+    <div class="builder-card">
+      <div class="builder-presets">
+        <span class="group-label">Presets</span>
+        <button class="chip" data-preset="us-classic">US classic (AVB+OC)</button>
+        <button class="chip" data-preset="eu-broad">EU broad-spectrum (Tinosorb M+S+DHHB+EHT)</button>
+        <button class="chip" data-preset="mineral">Mineral (ZnO+TiO₂)</button>
+        <button class="chip" data-preset="tinted-mineral">Tinted mineral (+ iron oxides)</button>
+        <button class="chip" data-preset="all-uvb">All UVB workhorses</button>
+        <button class="chip" data-preset="clear">Clear</button>
+      </div>
+      <div class="builder-active" id="builderActive"></div>
+      <div class="builder-plot-wrap">
+        <svg class="builder-svg" id="builderSvg" viewBox="0 0 900 360" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <details class="builder-add">
+        <summary>Add another filter…</summary>
+        <div class="builder-grid" id="builderGrid"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Section 06: Photodegradation reference -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">06</div>
       <div>
         <div class="section-title">Photodegradation Kinetics — Photolabile Filters</div>
         <div class="section-sub">Quantitative loss data with primary peer-reviewed citations. Solvent and UV dose are stated because the same molecule can be photolabile in cyclohexane and photostable in methanol.</div>
@@ -789,10 +936,10 @@
     </div>
   </section>
 
-  <!-- Section 06: Photostabilization mechanisms -->
+  <!-- Section 07: Photostabilization mechanisms -->
   <section class="section">
     <div class="section-head">
-      <div class="section-num">06</div>
+      <div class="section-num">07</div>
       <div>
         <div class="section-title">Photostabilization — How Avobenzone Survives</div>
         <div class="section-sub">Real sunscreens are mixtures. The single most important formulation question is keeping avobenzone alive, since it is the only FDA-approved UVA-I filter.</div>
@@ -801,10 +948,10 @@
     <div class="mech-grid" id="mechGrid"></div>
   </section>
 
-  <!-- Section 07: Cross-cutting findings -->
+  <!-- Section 08: Cross-cutting findings -->
   <section class="section">
     <div class="section-head">
-      <div class="section-num">07</div>
+      <div class="section-num">08</div>
       <div>
         <div class="section-title">Cross-Cutting Findings</div>
         <div class="section-sub">What emerged from comparing the data across all 30 filters.</div>
@@ -842,10 +989,10 @@
     </div>
   </section>
 
-  <!-- Section 08: Methodology -->
+  <!-- Section 09: Methodology -->
   <section class="section">
     <div class="section-head">
-      <div class="section-num">08</div>
+      <div class="section-num">09</div>
       <div>
         <div class="section-title">Methodology &amp; Provenance</div>
         <div class="section-sub">How this was researched and where to verify.</div>
@@ -1200,29 +1347,84 @@ const MECHS = [
 ];
 
 // =========================================
-// Render: spectrum overview
+// Render: spectrum overview (Gaussian gradient bars, 280-700 nm)
 // =========================================
-const OVERVIEW_FILTERS = FILTERS.slice().sort((a,b) => a.peak - b.peak);
 const OV = document.getElementById('spectrumOverview');
-const W_MIN = 280, W_MAX = 400;
-const pct = (w) => ((w - W_MIN) / (W_MAX - W_MIN) * 100);
+const OV_AXIS = document.getElementById('spectrumAxisTicks');
+const W_MIN = 280, W_MAX = 700;
 
-OVERVIEW_FILTERS.forEach((f, i) => {
-  const left = pct(f.absStart);
-  const right = pct(f.absEnd);
-  const width = right - left;
-  const barColor = f.category === "inorganic" ? "var(--ink-soft)" :
-                   f.ranges.includes("UVA-I") ? "var(--uv-uva1)" :
-                   f.ranges.includes("UVA-II") ? "var(--uv-uva2)" : "var(--uv-uvb)";
+// Build axis ticks
+const tickValues = [280, 320, 360, 400, 450, 500, 550, 600, 650, 700];
+OV_AXIS.innerHTML = tickValues.map(t => `<span>${t}</span>`).join('');
 
-  const peakStr = f.peak ? `λmax ${Array.isArray(f.lambda) ? f.lambda.join('+') : f.lambda} nm` : '';
+// Color by category for the overview
+function overviewColor(f){
+  if (f.category === 'iron-oxide') return [185, 74, 60]; // warm red-brown for iron oxides
+  if (f.category === 'inorganic') return [100, 95, 110];  // gray for ZnO/TiO2
+  if (f.category === 'broad-spectrum') return [110, 60, 130]; // deep purple
+  if (f.ranges.includes('UVA-I')) return [201, 138, 58];   // amber
+  if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return [176, 74, 138]; // pink
+  return [94, 58, 163]; // UV-violet for UVB
+}
+
+// Build a Gaussian-gradient SVG bar for a single filter
+function spectrumBarSVG(f){
+  const W = 1000, H = 18;
+  const xAt = lam => ((lam - W_MIN) / (W_MAX - W_MIN)) * W;
+  const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
+  const halfBand = Math.max(8, ((f.absEnd || (f.peak+15)) - (f.absStart || (f.peak-15))) / 4);
+
+  const isLatticeOrIron = (f.category === 'inorganic' || f.category === 'iron-oxide');
+  const cutoff = f.peak;
+  const k = f.category === 'iron-oxide' ? 0.06 : 0.4;
+
+  // Sample many wavelengths and build a gradient stop list
+  const stops = [];
+  const N = 60;
+  for (let i = 0; i <= N; i++){
+    const lam = W_MIN + (W_MAX - W_MIN) * i / N;
+    let a;
+    if (isLatticeOrIron){
+      a = 1 / (1 + Math.exp((lam - cutoff) * k));
+    } else {
+      a = 0;
+      peaks.forEach(p => {
+        a = Math.max(a, Math.exp(-Math.pow(lam - p, 2) / (2 * halfBand * halfBand)));
+      });
+    }
+    stops.push({pct: 100 * i / N, alpha: a});
+  }
+
+  const [r,g,b] = overviewColor(f);
+  const gradId = 'g_' + f.idx;
+  const gradStops = stops.map(s => `<stop offset="${s.pct.toFixed(1)}%" stop-color="rgb(${r},${g},${b})" stop-opacity="${s.alpha.toFixed(3)}"/>`).join('');
+
+  // Peak markers
+  const markers = peaks.filter(p => p >= W_MIN && p <= W_MAX).map(p =>
+    `<line x1="${xAt(p).toFixed(1)}" y1="0" x2="${xAt(p).toFixed(1)}" y2="${H}" stroke="rgb(${r},${g},${b})" stroke-width="0.7" stroke-dasharray="2 2" opacity="0.55"/>`
+  ).join('');
+
+  return `<svg class="spectrum-track-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-label="Absorption band of ${f.inci}">
+    <defs><linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">${gradStops}</linearGradient></defs>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#${gradId})"/>
+    ${markers}
+  </svg>`;
+}
+
+// Sort by peak wavelength
+const OVERVIEW_FILTERS = FILTERS.slice().sort((a,b) => a.peak - b.peak);
+
+OVERVIEW_FILTERS.forEach(f => {
+  const peaks = f.lambda || [f.peak];
+  const peakStr = peaks.join('+') + ' nm';
   const row = document.createElement('div');
   row.className = 'spectrum-band';
   row.innerHTML = `
-    <div class="spectrum-name">${f.inci}<small>${f.category}</small></div>
-    <div class="spectrum-peak">${peakStr}</div>
-    <div class="spectrum-track"><div class="spectrum-bar" style="left:${left}%;width:${width}%;background:${barColor}"></div></div>
+    <div class="spectrum-name">${f.inci}<small>λmax ${peakStr}</small></div>
+    ${spectrumBarSVG(f)}
   `;
+  row.style.cursor = 'pointer';
+  row.addEventListener('click', () => openDetail(f));
   OV.appendChild(row);
 });
 
@@ -1356,51 +1558,69 @@ function regBadge(key, val){
 // Confidence: C2 (multi-peak fits), C3 (single-peak Gaussian fits),
 // C4 (inorganic semiconductor sigmoid).
 // =========================================
+// Render the Solvent value, with a hover tooltip when it's a non-obvious term.
+const SOLVENT_NOTES = {
+  'semiconductor': 'These don\'t dissolve. ZnO and TiO₂ are wide-bandgap semiconductor crystals dispersed as solid microparticles in the formulation. UV attenuation comes from electronic band-gap transitions (and some Mie scattering), not chromophore absorption in solution.',
+  'crystal': 'Iron oxides are crystalline pigments dispersed as solid micro-particles in the formulation — they don\'t dissolve. Visible-light attenuation comes from electronic band-gap transitions plus Fe³⁺ d-d ligand-field bands.',
+  'dispersion': 'Particulate UV filter dispersed as ~150–200 nm particles in the water phase rather than dissolved. Bisoctrizole (Tinosorb M) and TBPT (Tinosorb A2B) are the two main examples.',
+  'silicone': 'Soluble in silicone-phase oils (cyclomethicone, dimethicone) but not in conventional cosmetic oils or water — typical of siloxane-tethered chromophores.',
+};
+function solventCell(s){
+  const note = SOLVENT_NOTES[s];
+  if (!note) return s;
+  return `<span class="info-tip" tabindex="0">${s}<span class="info-bubble">${note}</span></span>`;
+}
+
+// Returns the relative absorbance (0–1, normalized to peak=1) at a wavelength
+function relAbsorbance(f, lam){
+  if (f.category === 'inorganic' || f.category === 'iron-oxide'){
+    const cutoff = f.peak;
+    const k = f.category === 'iron-oxide' ? 0.06 : 0.4;
+    return 1 / (1 + Math.exp((lam - cutoff) * k));
+  }
+  const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
+  const halfBand = Math.max(8, ((f.absEnd || (f.peak+15)) - (f.absStart || (f.peak-15))) / 4);
+  let a = 0;
+  peaks.forEach(p => { a = Math.max(a, Math.exp(-Math.pow(lam - p, 2) / (2 * halfBand * halfBand))); });
+  return a;
+}
+
 function spectrumSVG(f){
-  const W = 480, H = 180, padL = 38, padR = 14, padT = 18, padB = 28;
-  // Iron oxides absorb deep into visible — extend the x-axis to 700 nm
+  const W = 480, H = 200, padL = 56, padR = 14, padT = 22, padB = 32;
   const extendedRange = !!f.vis;
   const xMin = 280, xMax = extendedRange ? 700 : 410;
-  const xRange = xMax - xMin;
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
-  const xAt = lam => padL + ((lam - xMin) / xRange) * innerW;
-  const yAt = a   => padT + (1 - a) * innerH;
+  const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
 
-  let curveType = 'gauss', confLevel = 'C3';
-  function absorbance(lam){
-    if (f.category === 'inorganic' || f.category === 'iron-oxide'){
-      curveType = 'sigmoid'; confLevel = f.category === 'iron-oxide' ? 'C3' : 'C2';
-      const cutoff = f.peak;
-      // Iron oxide black absorbs across whole visible — softer slope
-      const k = f.category === 'iron-oxide' ? 0.06 : 0.4;
-      const s = 1 / (1 + Math.exp((lam - cutoff) * k));
-      return s * 0.95;
-    }
-    const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
-    if (peaks.length > 1) confLevel = 'C2';
-    const halfBand = Math.max(8, ((f.absEnd || (f.peak+15)) - (f.absStart || (f.peak-15))) / 4);
-    let a = 0;
-    peaks.forEach(p => {
-      const sigma = halfBand;
-      a = Math.max(a, Math.exp(-Math.pow(lam - p, 2) / (2 * sigma * sigma)));
-    });
-    if (f.tail){ // particulate scattering tail (TBPT)
-      const tail = Math.max(0, 0.18 * Math.exp(-Math.pow(lam - (f.peak + 30), 2) / 1500));
-      a = Math.max(a, tail);
-    }
-    return a * 0.95;
-  }
+  // Y-axis: log scale of ε in M⁻¹·cm⁻¹
+  // For organics: y is log10(ε * relAbs). For inorganics/iron-oxides ε is N/A → use relative scale.
+  const useLogY = !!f.epsilon;
+  const yLogMin = 2.0;   // 10² = 100
+  const yLogMax = 5.3;   // ~2 × 10⁵
+  const yLogTicks = [2, 3, 4, 5];   // 100, 1k, 10k, 100k
+  const yLogLabels = ['10²', '10³', '10⁴', '10⁵'];
 
-  // Build curve and fill paths
+  // Convert (relAbs, ε) → screen Y (log scale). Floor to baseline if below 100.
+  const yLogAt = (relAbs) => {
+    const eff = relAbs * (f.epsilon || 1);
+    if (eff < Math.pow(10, yLogMin)) return padT + innerH;  // baseline
+    const logV = Math.min(yLogMax, Math.log10(eff));
+    return padT + (1 - (logV - yLogMin) / (yLogMax - yLogMin)) * innerH;
+  };
+  const yLinAt = (relAbs) => padT + (1 - relAbs * 0.95) * innerH;
+
+  // Build curve points
   const points = [];
   for (let lam = xMin; lam <= xMax; lam += 1){
-    points.push([xAt(lam), yAt(absorbance(lam))]);
+    const a = relAbsorbance(f, lam);
+    points.push([xAt(lam), useLogY ? yLogAt(a) : yLinAt(a)]);
   }
+  const baselineY = padT + innerH;
   const curvePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
-  const fillPath = curvePath + ' L' + xAt(xMax).toFixed(1) + ' ' + yAt(0).toFixed(1) + ' L' + xAt(xMin).toFixed(1) + ' ' + yAt(0).toFixed(1) + ' Z';
+  const fillPath = curvePath + ` L${xAt(xMax).toFixed(1)} ${baselineY} L${xAt(xMin).toFixed(1)} ${baselineY} Z`;
 
-  // UV bands (UVB 280-315, UVA-II 315-340, UVA-I 340-400, vis 400+)
+  // UV / visible band rectangles
   const bandSpec = extendedRange
     ? [
         {x1: 280, x2: 315, cls: 'band-uvb',  label: 'UVB'},
@@ -1423,26 +1643,52 @@ function spectrumSVG(f){
     `<text class="band-label" x="${((b.x1+b.x2)/2).toFixed(1)}" y="${(padT+11).toFixed(1)}" text-anchor="middle">${b.label}</text>`
   ).join('');
 
-  // Axis ticks
-  const tickValues = extendedRange
+  // X-axis ticks
+  const xTickValues = extendedRange
     ? [280, 320, 360, 400, 450, 500, 550, 600, 650, 700]
     : [280, 300, 320, 340, 360, 380, 400];
-  const ticks = tickValues.map(t =>
+  const xTicks = xTickValues.map(t =>
     `<line class="axis-tick" x1="${xAt(t)}" y1="${padT+innerH}" x2="${xAt(t)}" y2="${padT+innerH+4}"/>` +
     `<text class="axis-label" x="${xAt(t)}" y="${padT+innerH+15}" text-anchor="middle">${t}</text>`
   ).join('');
 
+  // Y-axis ticks
+  let yTicks = '';
+  if (useLogY){
+    yTicks = yLogTicks.map((tv, i) => {
+      const yPx = padT + (1 - (tv - yLogMin) / (yLogMax - yLogMin)) * innerH;
+      return `<line class="axis-tick" x1="${padL-3}" y1="${yPx.toFixed(1)}" x2="${padL}" y2="${yPx.toFixed(1)}"/>` +
+             `<line class="axis-tick" x1="${padL}" y1="${yPx.toFixed(1)}" x2="${padL+innerW}" y2="${yPx.toFixed(1)}" stroke-dasharray="2 3" opacity="0.5"/>` +
+             `<text class="axis-label" x="${padL-6}" y="${(yPx+3).toFixed(1)}" text-anchor="end">${yLogLabels[i]}</text>`;
+    }).join('');
+  } else {
+    // Inorganics: relative scale
+    [0, 0.5, 1].forEach(rv => {
+      const yPx = padT + (1 - rv * 0.95) * innerH;
+      yTicks += `<line class="axis-tick" x1="${padL-3}" y1="${yPx.toFixed(1)}" x2="${padL}" y2="${yPx.toFixed(1)}"/>` +
+               `<text class="axis-label" x="${padL-6}" y="${(yPx+3).toFixed(1)}" text-anchor="end">${rv}</text>`;
+    });
+  }
+
   // Peak markers
   const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
-  const peakMarkers = peaks.map(p => {
+  const peakMarkers = peaks.filter(p => p >= xMin && p <= xMax).map(p => {
     const x = xAt(p);
     return `<line class="peak-marker" x1="${x}" y1="${padT}" x2="${x}" y2="${padT+innerH}"/>` +
            `<text class="peak-label" x="${x}" y="${padT-4}" text-anchor="middle">${p} nm</text>`;
   }).join('');
 
-  // Y-axis label
-  const yLabel = `<text class="axis-label" x="${(padL-6).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-6} ${padT+innerH/2})">Relative absorbance</text>`;
-  const xLabel = `<text class="axis-label" x="${(padL+innerW/2).toFixed(1)}" y="${(padT+innerH+24).toFixed(1)}" text-anchor="middle">Wavelength (nm)</text>`;
+  // Y-axis title
+  const yLabel = useLogY
+    ? `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">ε (M⁻¹cm⁻¹), log scale</text>`
+    : `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">Relative attenuation</text>`;
+  const xLabel = `<text class="axis-label" x="${(padL+innerW/2).toFixed(1)}" y="${(padT+innerH+26).toFixed(1)}" text-anchor="middle">Wavelength (nm)</text>`;
+
+  // Confidence: log Y is C3 for single-Gaussian, C2 for multi-peak; sigmoid is C2 for ZnO/TiO2, C3 iron oxide
+  const curveType = (f.category === 'inorganic' || f.category === 'iron-oxide') ? 'sigmoid' : 'gauss';
+  const confLevel = (f.category === 'iron-oxide') ? 'C3' :
+                    (f.category === 'inorganic') ? 'C2' :
+                    (peaks.length > 1) ? 'C2' : 'C3';
 
   return {
     svg: `<svg class="spec-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-label="Absorption spectrum of ${f.inci}">
@@ -1452,12 +1698,15 @@ function spectrumSVG(f){
       <path class="curve-fill" d="${fillPath}"/>
       <path class="curve" d="${curvePath}"/>
       <line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>
-      ${ticks}
+      <line class="axis-line" x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT+innerH}"/>
+      ${xTicks}
+      ${yTicks}
       ${yLabel}
       ${xLabel}
     </svg>`,
     confidence: confLevel,
-    curveType
+    curveType,
+    useLogY
   };
 }
 
@@ -1496,7 +1745,7 @@ function openDetail(f){
       <div class="prop"><dt>CAS Number</dt><dd>${f.cas}</dd></div>
       <div class="prop"><dt>Molecular Weight</dt><dd>${f.mw} <span class="unit">g/mol</span></dd></div>
       <div class="prop"><dt>λ max</dt><dd>${f.lambdaTxt} <span class="unit">nm</span></dd></div>
-      <div class="prop"><dt>Solvent</dt><dd>${f.solvent}</dd></div>
+      <div class="prop"><dt>Solvent</dt><dd>${solventCell(f.solvent)}</dd></div>
       <div class="prop"><dt>ε (molar)</dt><dd>${f.epsilon ? f.epsilon.toLocaleString() : '—'} <span class="unit">M⁻¹cm⁻¹</span></dd></div>
       <div class="prop"><dt>E (1%, 1cm)</dt><dd>${f.e1 ? f.e1.toLocaleString() : '—'}</dd></div>
     </div>
@@ -1560,17 +1809,248 @@ btn.addEventListener('click', () => {
 applyTheme();
 
 // =========================================
-// λmax × half-life scatter plot
+// Spectrum Builder — pick filters, see combined absorbance
+// =========================================
+const PRESETS = {
+  'us-classic':     [['Avobenzone', 3], ['Octocrylene', 7], ['Octisalate', 5], ['Homosalate', 10]],
+  'eu-broad':       [['Bisoctrizole', 8], ['Bemotrizinol', 5], ['DHHB', 8], ['Ethylhexyl Triazone', 4]],
+  'mineral':        [['Zinc Oxide', 20], ['Titanium Dioxide (rutile)', 5]],
+  'tinted-mineral': [['Zinc Oxide', 18], ['Titanium Dioxide (rutile)', 4], ['Iron Oxide Yellow', 1.5], ['Iron Oxide Red', 0.7], ['Iron Oxide Black', 0.2]],
+  'all-uvb':        [['Octinoxate', 7], ['Octocrylene', 7], ['Ethylhexyl Triazone', 5], ['Octisalate', 5]],
+  'clear':          [],
+};
+
+const builderState = {
+  selected: [],   // array of {filter, conc} objects
+};
+
+function builderColor(f){
+  const [r,g,b] = (function(){
+    if (f.category === 'iron-oxide') return [185, 74, 60];
+    if (f.category === 'inorganic') return [100, 95, 110];
+    if (f.category === 'broad-spectrum') return [110, 60, 130];
+    if (f.ranges.includes('UVA-I')) return [201, 138, 58];
+    if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return [176, 74, 138];
+    return [94, 58, 163];
+  })();
+  return `rgb(${r},${g},${b})`;
+}
+
+function defaultConc(f){
+  // Use the FDA cap if numeric, else EU cap, else fall back
+  if (typeof f.reg.fda === 'number') return f.reg.fda;
+  if (typeof f.reg.eu === 'number' && f.reg.eu > 0) return f.reg.eu;
+  if (typeof f.reg.au === 'number' && f.reg.au > 0) return f.reg.au;
+  return 5;
+}
+
+function findFilter(name){ return FILTERS.find(f => f.inci === name); }
+
+function builderAdd(filterOrName, conc){
+  const f = (typeof filterOrName === 'string') ? findFilter(filterOrName) : filterOrName;
+  if (!f) return;
+  if (builderState.selected.some(s => s.filter.idx === f.idx)) return;
+  builderState.selected.push({ filter: f, conc: conc != null ? conc : defaultConc(f) });
+  renderBuilder();
+}
+
+function builderRemove(idx){
+  builderState.selected = builderState.selected.filter(s => s.filter.idx !== idx);
+  renderBuilder();
+}
+
+function builderUpdateConc(idx, conc){
+  const s = builderState.selected.find(s => s.filter.idx === idx);
+  if (s) { s.conc = conc; renderBuilder(); }
+}
+
+function applyPreset(name){
+  builderState.selected = [];
+  (PRESETS[name] || []).forEach(([n, c]) => builderAdd(n, c));
+  if (!PRESETS[name].length) renderBuilder();
+}
+
+// Compute absolute absorbance contribution at λ for a filter at given concentration (% w/w).
+// For organics with ε: A_filter(λ) = ε(λ) × molarity. molarity (M) ≈ (conc% × 10) / MW.
+// For inorganics & iron oxides (no ε): use a normalized concentration-weighted relAbs scaled to a typical mass extinction.
+function builderAbsAt(s, lam){
+  const f = s.filter;
+  const rel = relAbsorbance(f, lam);
+  if (f.category === 'inorganic' || f.category === 'iron-oxide'){
+    // Pigments work mass-not-molar. Use a mass-extinction proxy ~5e3 / (% loading) at peak.
+    return rel * (s.conc / 5) * 4e4;   // typical loading 5%, attenuation tuned visually
+  }
+  if (!f.epsilon) return rel * (s.conc / 5) * 1e4;
+  const molar = (s.conc * 10) / f.mw;   // mol / L (approximate)
+  return f.epsilon * rel * molar;
+}
+
+function renderBuilder(){
+  // Update active pill list
+  const activeBox = document.getElementById('builderActive');
+  activeBox.innerHTML = builderState.selected.map(s => {
+    const f = s.filter;
+    return `<div class="active-pill" data-idx="${f.idx}">
+      <span class="ap-color" style="background:${builderColor(f)}"></span>
+      <span class="ap-name">${f.inci}</span>
+      <span class="ap-conc">
+        <input type="range" min="0.1" max="${
+          f.category === 'inorganic' ? 25 :
+          f.category === 'iron-oxide' ? 5 :
+          15
+        }" step="0.1" value="${s.conc}" data-idx="${f.idx}" aria-label="${f.inci} concentration"/>
+        <span class="ap-conc-val">${s.conc.toFixed(1)}%</span>
+      </span>
+      <button class="ap-remove" data-idx="${f.idx}" aria-label="Remove ${f.inci}">×</button>
+    </div>`;
+  }).join('');
+
+  // Wire up interactions
+  activeBox.querySelectorAll('input[type="range"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.dataset.idx, 10);
+      const newConc = parseFloat(e.target.value);
+      builderUpdateConc(idx, newConc);
+    });
+  });
+  activeBox.querySelectorAll('.ap-remove').forEach(btn => {
+    btn.addEventListener('click', (e) => builderRemove(parseInt(e.target.dataset.idx, 10)));
+  });
+
+  // Update "added" markers in the add-filter grid
+  document.querySelectorAll('#builderGrid button').forEach(btn => {
+    const isSelected = builderState.selected.some(s => s.filter.idx === parseInt(btn.dataset.idx, 10));
+    btn.classList.toggle('added', isSelected);
+  });
+
+  // Plot
+  drawBuilderPlot();
+}
+
+function drawBuilderPlot(){
+  const svg = document.getElementById('builderSvg');
+  const W = 900, H = 360, padL = 70, padR = 30, padT = 30, padB = 50;
+  const innerW = W - padL - padR, innerH = H - padT - padB;
+  const xMin = 280, xMax = 700;
+  const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
+
+  // Compute total + per-filter contributions on a log Y scale
+  // Y axis: log10(A * 1000) so we can show small contributions
+  const yLogMin = 2, yLogMax = 6;   // 100 to 1e6 ε-units
+  const yAt = v => {
+    if (v <= 0) return padT + innerH;
+    const lv = Math.min(yLogMax, Math.max(yLogMin, Math.log10(v)));
+    return padT + (1 - (lv - yLogMin) / (yLogMax - yLogMin)) * innerH;
+  };
+
+  let parts = [];
+
+  // Bands background
+  const bands = [
+    {x1: 280, x2: 315, color: 'var(--uv-uvb)',  label: 'UVB'},
+    {x1: 315, x2: 340, color: 'var(--uv-uva2)', label: 'UVA-II'},
+    {x1: 340, x2: 400, color: 'var(--uv-uva1)', label: 'UVA-I'},
+    {x1: 400, x2: 500, color: 'var(--moderate)', label: 'HEV'},
+    {x1: 500, x2: xMax, color: 'var(--ink-soft)', label: 'VIS'},
+  ];
+  bands.forEach(b => {
+    const x1 = xAt(b.x1), x2 = xAt(b.x2);
+    parts.push(`<rect class="band-rect" x="${x1}" y="${padT}" width="${x2-x1}" height="${innerH}" fill="${b.color}"/>`);
+    parts.push(`<text class="band-text" x="${(x1+x2)/2}" y="${padT+12}" text-anchor="middle">${b.label}</text>`);
+  });
+
+  // Y-axis ticks (log scale)
+  const supDigit = {2:'²', 3:'³', 4:'⁴', 5:'⁵', 6:'⁶'};
+  [3, 4, 5, 6].forEach(t => {
+    const y = padT + (1 - (t - yLogMin) / (yLogMax - yLogMin)) * innerH;
+    parts.push(`<line class="grid-line" x1="${padL}" y1="${y}" x2="${padL+innerW}" y2="${y}"/>`);
+    parts.push(`<text class="tick-label" x="${padL-8}" y="${y+3}" text-anchor="end">10${supDigit[t]}</text>`);
+  });
+  parts.push(`<text class="axis-label" x="${22}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 22 ${padT+innerH/2})">Combined absorbance contribution (log)</text>`);
+
+  // X-axis ticks
+  [280, 320, 360, 400, 450, 500, 550, 600, 650, 700].forEach(t => {
+    const x = xAt(t);
+    parts.push(`<line class="axis-line" x1="${x}" y1="${padT+innerH}" x2="${x}" y2="${padT+innerH+5}"/>`);
+    parts.push(`<text class="tick-label" x="${x}" y="${padT+innerH+18}" text-anchor="middle">${t}</text>`);
+  });
+  parts.push(`<line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>`);
+  parts.push(`<line class="axis-line" x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT+innerH}"/>`);
+  parts.push(`<text class="axis-label" x="${padL+innerW/2}" y="${H-16}" text-anchor="middle">Wavelength (nm)</text>`);
+
+  // Per-filter curves
+  builderState.selected.forEach(s => {
+    const points = [];
+    for (let lam = xMin; lam <= xMax; lam += 2){
+      points.push([xAt(lam), yAt(builderAbsAt(s, lam))]);
+    }
+    const path = points.map((p,i) => (i===0?'M':'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+    parts.push(`<path class="filter-curve" d="${path}" stroke="${builderColor(s.filter)}"/>`);
+  });
+
+  // Total curve = sum of all filters' absorbances at each λ
+  if (builderState.selected.length){
+    const totalPoints = [];
+    for (let lam = xMin; lam <= xMax; lam += 2){
+      let total = 0;
+      builderState.selected.forEach(s => { total += builderAbsAt(s, lam); });
+      totalPoints.push([xAt(lam), yAt(total)]);
+    }
+    const totalPath = totalPoints.map((p,i) => (i===0?'M':'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+    const baselineY = padT + innerH;
+    const fillPath = totalPath + ` L${xAt(xMax).toFixed(1)} ${baselineY} L${xAt(xMin).toFixed(1)} ${baselineY} Z`;
+    parts.push(`<path class="total-fill" d="${fillPath}"/>`);
+    parts.push(`<path class="total-curve" d="${totalPath}"/>`);
+  }
+
+  svg.innerHTML = parts.join('');
+}
+
+// Build the "Add another filter" picker grid
+function initBuilderGrid(){
+  const grid = document.getElementById('builderGrid');
+  // Sort filters by category then peak
+  const sorted = FILTERS.slice().sort((a,b) => {
+    if (a.category !== b.category) return a.category.localeCompare(b.category);
+    return a.peak - b.peak;
+  });
+  grid.innerHTML = sorted.map(f =>
+    `<button data-idx="${f.idx}"><span class="bg-dot" style="background:${builderColor(f)}"></span><span>${f.inci}</span><small>${f.peak} nm</small></button>`
+  ).join('');
+  grid.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = FILTERS.find(x => x.idx === parseInt(btn.dataset.idx, 10));
+      if (builderState.selected.some(s => s.filter.idx === f.idx)){
+        builderRemove(f.idx);
+      } else {
+        builderAdd(f);
+      }
+    });
+  });
+}
+
+// Wire preset chips
+document.querySelectorAll('.builder-presets .chip').forEach(chip => {
+  chip.addEventListener('click', () => applyPreset(chip.dataset.preset));
+});
+initBuilderGrid();
+applyPreset('us-classic');
+
+// =========================================
+// λmax × half-life scatter — Gaussian-faded smear bars with uncertainty
 // =========================================
 function renderScatter(){
   const svg = document.getElementById('scatterSvg');
   const tooltip = document.getElementById('scatterTooltip');
   const card = svg.parentElement;
-  const W = 800, H = 480, padL = 70, padR = 30, padT = 30, padB = 60;
+  const W = 900, H = 520, padL = 80, padR = 30, padT = 30, padB = 64;
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
-  const xMin = 280, xMax = 410;
+  const xMin = 280, xMax = 700;
   const yMin = Math.log10(0.5), yMax = Math.log10(1500);
+
+  // Update SVG viewBox to match new dimensions
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
   const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
   const yAt = th  => {
@@ -1578,27 +2058,23 @@ function renderScatter(){
     return padT + (1 - (ly - yMin) / (yMax - yMin)) * innerH;
   };
 
-  // UV bands as background
-  const bands = [
-    {x1: 280, x2: 315, cls: 'band-uvb',  label: 'UVB'},
-    {x1: 315, x2: 340, cls: 'band-uva2', label: 'UVA-II'},
-    {x1: 340, x2: 400, cls: 'band-uva1', label: 'UVA-I'},
-    {x1: 400, x2: 410, cls: 'band-vis',  label: 'Vis'},
-  ];
-  const colors = {
-    'band-uvb': 'var(--uv-uvb)',
-    'band-uva2': 'var(--uv-uva2)',
-    'band-uva1': 'var(--uv-uva1)',
-    'band-vis': 'var(--ink-soft)',
-  };
   let parts = [];
+
+  // UV / visible band rectangles (very subtle background)
+  const bands = [
+    {x1: 280, x2: 315, color: 'var(--uv-uvb)',  label: 'UVB'},
+    {x1: 315, x2: 340, color: 'var(--uv-uva2)', label: 'UVA-II'},
+    {x1: 340, x2: 400, color: 'var(--uv-uva1)', label: 'UVA-I'},
+    {x1: 400, x2: 500, color: 'var(--moderate)', label: 'HEV'},
+    {x1: 500, x2: xMax, color: 'var(--ink-soft)', label: 'VIS'},
+  ];
   bands.forEach(b => {
     const x1 = xAt(b.x1), x2 = xAt(b.x2);
-    parts.push(`<rect class="band-rect" x="${x1}" y="${padT}" width="${x2-x1}" height="${innerH}" fill="${colors[b.cls]}"/>`);
+    parts.push(`<rect class="band-rect" x="${x1}" y="${padT}" width="${x2-x1}" height="${innerH}" fill="${b.color}"/>`);
     parts.push(`<text class="band-text" x="${(x1+x2)/2}" y="${padT+14}" text-anchor="middle">${b.label}</text>`);
   });
 
-  // Y-axis log gridlines at 1, 10, 100, 1000 hours
+  // Y-axis log gridlines
   [1, 3, 10, 30, 100, 300, 1000].forEach(t => {
     if (t < Math.pow(10, yMin) || t > Math.pow(10, yMax)) return;
     const y = yAt(t);
@@ -1606,60 +2082,116 @@ function renderScatter(){
     parts.push(`<text class="tick-label" x="${padL-10}" y="${y+3}" text-anchor="end">${t} h</text>`);
   });
 
-  // Off-scale annotation for inorganics
-  const offScaleY = padT + 18;
+  // Off-scale lattice line for inorganics
+  const offScaleY = padT + 22;
   parts.push(`<line class="grid-line" x1="${padL}" y1="${offScaleY}" x2="${padL+innerW}" y2="${offScaleY}" stroke-dasharray="4 3"/>`);
   parts.push(`<text class="tick-label" x="${padL-10}" y="${offScaleY+3}" text-anchor="end" fill="var(--moderate)">∞ (lattice)</text>`);
 
-  // X-axis
+  // Axes
   parts.push(`<line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>`);
   parts.push(`<line class="axis-line" x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT+innerH}"/>`);
-  [280, 300, 320, 340, 360, 380, 400].forEach(t => {
+  [280, 320, 360, 400, 450, 500, 550, 600, 650, 700].forEach(t => {
     const x = xAt(t);
     parts.push(`<line class="axis-line" x1="${x}" y1="${padT+innerH}" x2="${x}" y2="${padT+innerH+5}"/>`);
     parts.push(`<text class="tick-label" x="${x}" y="${padT+innerH+18}" text-anchor="middle">${t}</text>`);
   });
-  parts.push(`<text class="axis-label" x="${padL+innerW/2}" y="${H-22}" text-anchor="middle">λmax (nm)</text>`);
-  parts.push(`<text class="axis-label" x="${20}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 20 ${padT+innerH/2})">Half-life under solar UV (log scale)</text>`);
+  parts.push(`<text class="axis-label" x="${padL+innerW/2}" y="${H-26}" text-anchor="middle">Wavelength (nm) — center of absorption band</text>`);
+  parts.push(`<text class="axis-label" x="${22}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 22 ${padT+innerH/2})">Half-life under solar UV (log scale)</text>`);
 
-  // Plot points
+  // Color by category
   const colorFor = (f) => {
-    if (f.category === 'iron-oxide') return 'var(--warn)';
-    if (f.category === 'inorganic') return 'var(--moderate)';
-    if (f.category === 'broad-spectrum') return 'var(--ink)';
-    if (f.ranges.includes('UVA-I')) return 'var(--uv-uva1)';
-    if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return 'var(--uv-uva2)';
-    return 'var(--uv-uvb)';
+    if (f.category === 'iron-oxide') return [185, 74, 60];
+    if (f.category === 'inorganic') return [120, 110, 130];
+    if (f.category === 'broad-spectrum') return [42, 35, 51];
+    if (f.ranges.includes('UVA-I')) return [201, 138, 58];
+    if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return [176, 74, 138];
+    return [94, 58, 163];
   };
-  FILTERS.forEach(f => {
-    // Iron oxides have peaks in visible (>400) — clamp x to right edge so they appear at the visible boundary
-    const lam = Math.min(f.peak, 405);
-    const x = xAt(lam);
+
+  // Half-life uncertainty (used when hovering): the half-life is highly conditions-dependent.
+  // We show a vertical error bar spanning approximately ±0.5 decade (a factor of ~3) for C2,
+  // ±0.3 decade for C1, ±0.7 decade for C3, ±1 decade for C4.
+  function uncBar(conf){
+    return ({C1:0.3, C2:0.5, C3:0.7, C4:1.0}[conf] || 0.5);
+  }
+
+  // For each filter, render a horizontal smear bar (Gaussian-faded along λ).
+  // Length = absorption band width; opacity peaks at λmax.
+  // Sort iron-oxide / inorganic to render under organics.
+  const sortedFilters = FILTERS.slice().sort((a,b) => {
+    const order = (f) => (f.category === 'inorganic' || f.category === 'iron-oxide') ? 0 : 1;
+    return order(a) - order(b);
+  });
+
+  sortedFilters.forEach(f => {
     const isInorg = f.t_half === -1;
     const y = isInorg ? offScaleY : yAt(Math.max(0.5, f.t_half));
-    const r = f.epsilon ? Math.max(4, Math.min(12, 4 + Math.log10(f.epsilon) * 1.0)) : 5;
-    const fill = colorFor(f);
-    parts.push(`<circle class="pt" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${fill}" fill-opacity="0.65" stroke="${fill}" stroke-width="1" data-idx="${f.idx}"/>`);
+    const [r,g,b] = colorFor(f);
+    const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
+    const bandStart = Math.max(xMin, f.absStart || (f.peak - 20));
+    const bandEnd = Math.min(xMax, f.absEnd || (f.peak + 20));
+
+    // Build gradient with stops sampled along the absorption band shape
+    const gradId = `sg_${f.idx}`;
+    const stops = [];
+    const N = 24;
+    for (let i = 0; i <= N; i++){
+      const lam = bandStart + (bandEnd - bandStart) * i / N;
+      const a = relAbsorbance(f, lam);
+      stops.push({pct: 100 * i / N, alpha: a});
+    }
+    const gradStops = stops.map(s => `<stop offset="${s.pct.toFixed(1)}%" stop-color="rgb(${r},${g},${b})" stop-opacity="${(s.alpha * 0.85).toFixed(3)}"/>`).join('');
+
+    // Bar height
+    const barHeight = isInorg ? 6 : 8;
+    const x1 = xAt(bandStart), x2 = xAt(bandEnd);
+
+    parts.push(`<defs><linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">${gradStops}</linearGradient></defs>`);
+    parts.push(`<rect class="pt" x="${x1.toFixed(1)}" y="${(y - barHeight/2).toFixed(1)}" width="${(x2-x1).toFixed(1)}" height="${barHeight}" fill="url(#${gradId})" data-idx="${f.idx}" rx="${barHeight/2}"/>`);
+
+    // Center marker dot
+    const cx = xAt(Math.min(xMax, peaks.reduce((s, p) => s + p, 0) / peaks.length));
+    parts.push(`<circle cx="${cx.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="rgb(${r},${g},${b})" data-idx="${f.idx}" class="pt"/>`);
+
+    // Vertical uncertainty bar (rendered initially hidden, shown on hover via JS)
+    if (!isInorg){
+      const halfDec = uncBar(f.t_half_conf);
+      const yHigh = yAt(Math.min(2000, f.t_half * Math.pow(10, halfDec)));
+      const yLow  = yAt(Math.max(0.3, f.t_half * Math.pow(10, -halfDec)));
+      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${cx.toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${cx.toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0"/>`);
+      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${(cx-4).toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${(cx+4).toFixed(1)}" y2="${yHigh.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0"/>`);
+      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${(cx-4).toFixed(1)}" y1="${yLow.toFixed(1)}" x2="${(cx+4).toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0"/>`);
+    }
   });
 
   svg.innerHTML = parts.join('');
 
-  // Hover tooltip
-  svg.querySelectorAll('.pt').forEach(circle => {
-    const idx = parseInt(circle.dataset.idx, 10);
+  // Hover behaviour: show tooltip + reveal uncertainty bar for hovered filter
+  svg.querySelectorAll('.pt').forEach(node => {
+    const idx = parseInt(node.dataset.idx, 10);
     const f = FILTERS.find(x => x.idx === idx);
-    circle.addEventListener('mouseenter', (e) => {
+    node.addEventListener('mouseenter', () => {
+      const halfDec = uncBar(f.t_half_conf);
+      const lo = Math.max(0.3, f.t_half * Math.pow(10, -halfDec)).toFixed(1);
+      const hi = Math.min(2000, f.t_half * Math.pow(10, halfDec)).toFixed(0);
+      const tHalfTxt = f.t_half === -1 ? '∞ (lattice)' :
+                        `${f.t_half} h <span style="opacity:0.6">(approx ${lo}–${hi} h)</span>`;
       tooltip.innerHTML = `<div class="tt-name">${f.inci}</div>
-        <div class="tt-sub">λmax ${f.peak} nm · t½ ${f.t_half === -1 ? '∞ (lattice)' : f.t_half + ' h'}</div>`;
+        <div class="tt-sub">λmax ${f.peak} nm · t½ ${tHalfTxt}</div>
+        <div class="tt-sub">${f.t_half_cond || ''}</div>`;
       tooltip.classList.add('show');
+      svg.querySelectorAll(`.unc-bar[data-for="${idx}"]`).forEach(u => u.setAttribute('opacity', '1'));
     });
-    circle.addEventListener('mousemove', (e) => {
+    node.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       tooltip.style.left = (e.clientX - rect.left) + 'px';
       tooltip.style.top = (e.clientY - rect.top) + 'px';
     });
-    circle.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
-    circle.addEventListener('click', () => openDetail(f));
+    node.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('show');
+      svg.querySelectorAll(`.unc-bar[data-for="${idx}"]`).forEach(u => u.setAttribute('opacity', '0'));
+    });
+    node.addEventListener('click', () => openDetail(f));
   });
 }
 renderScatter();
