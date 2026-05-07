@@ -294,11 +294,108 @@
   .tag.range-uva2,.tag.range-uva-2{ color: var(--uv-uva2); border-color: var(--uv-uva2); background: rgba(176,74,138,0.08) }
   .tag.range-uva1,.tag.range-uva-1{ color: var(--uv-uva1); border-color: var(--uv-uva1); background: rgba(201,138,58,0.10) }
   .tag.range-broad{ background: linear-gradient(90deg, rgba(94,58,163,0.10), rgba(201,138,58,0.10)); border-color: var(--ink-soft); color: var(--ink) }
+  .tag.range-visible{ color: var(--moderate); border-color: var(--moderate); background: var(--moderate-soft) }
   .tag.stab-excellent{ color: var(--ok); border-color: var(--ok); background: var(--ok-soft) }
   .tag.stab-good{ color: var(--ok); border-color: var(--line) }
   .tag.stab-moderate{ color: var(--moderate); border-color: var(--moderate); background: var(--moderate-soft) }
   .tag.stab-poor{ color: var(--warn); border-color: var(--warn); background: var(--warn-soft) }
   .tag.banned{ background: var(--warn); color: #fff; border-color: var(--warn) }
+
+  /* Spectrum SVG (modal) */
+  .spec-svg{
+    width: 100%; height: 180px;
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    margin: 4px 0 14px;
+    display: block;
+  }
+  .spec-svg .axis-line{ stroke: var(--line); stroke-width: 1; fill: none }
+  .spec-svg .axis-tick{ stroke: var(--line-soft); stroke-width: 1 }
+  .spec-svg .axis-label{ fill: var(--muted); font: 500 9px var(--mono); letter-spacing: 0.5px }
+  .spec-svg .band-uvb{ fill: rgba(94,58,163,0.05) }
+  .spec-svg .band-uva2{ fill: rgba(176,74,138,0.05) }
+  .spec-svg .band-uva1{ fill: rgba(201,138,58,0.05) }
+  .spec-svg .band-vis{ fill: rgba(216,211,203,0.06) }
+  .spec-svg .band-label{ fill: var(--muted); font: 500 8px var(--mono); letter-spacing: 0.6px; text-transform: uppercase }
+  .spec-svg .curve{
+    fill: none; stroke: var(--accent); stroke-width: 2;
+    stroke-linejoin: round; stroke-linecap: round;
+  }
+  .spec-svg .curve-fill{ fill: var(--accent); opacity: 0.12 }
+  .spec-svg .peak-marker{ stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 2; opacity: 0.6 }
+  .spec-svg .peak-label{ fill: var(--accent); font: 600 9px var(--mono) }
+  .spec-caption{
+    font: 500 0.7rem var(--mono); color: var(--muted);
+    margin-top: -8px; margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .conf-tag{
+    display: inline-block; font: 700 0.62rem var(--mono);
+    padding: 1px 5px; border-radius: 3px; margin-left: 6px;
+    background: var(--line-soft); color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.4px;
+  }
+  .conf-tag.c1{ background: var(--ok-soft); color: var(--ok) }
+  .conf-tag.c2{ background: var(--accent-soft); color: var(--accent) }
+  .conf-tag.c3{ background: var(--moderate-soft); color: var(--moderate) }
+  .conf-tag.c4{ background: var(--warn-soft); color: var(--warn) }
+
+  .halflife-row{
+    display:grid; grid-template-columns: 1fr; gap: 8px;
+    margin: 12px 0 18px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+  }
+  .halflife-row .hl-label{ font: 500 0.66rem var(--mono); color: var(--muted); letter-spacing: 1.4px; text-transform: uppercase }
+  .halflife-row .hl-value{ font: 700 1.05rem var(--mono); color: var(--ink); letter-spacing: -0.01em }
+  .halflife-row .hl-value .unit{ font-weight: 400; color: var(--muted); font-size: 0.85rem }
+  .halflife-row .hl-cond{ font: 400 0.78rem var(--mono); color: var(--ink-soft); line-height: 1.5 }
+
+  /* λmax × half-life scatter */
+  .scatter-card{
+    background: var(--bg-2); border: 1px solid var(--line);
+    padding: 28px; border-radius: 4px;
+    position: relative;
+  }
+  .scatter-svg{
+    width: 100%; height: 480px; display: block; overflow: visible;
+  }
+  .scatter-svg .grid-line{ stroke: var(--line-soft); stroke-width: 1; stroke-dasharray: 2 3 }
+  .scatter-svg .axis-line{ stroke: var(--rule); stroke-width: 1.5 }
+  .scatter-svg .axis-label{ fill: var(--muted); font: 600 10px var(--mono); letter-spacing: 1px; text-transform: uppercase }
+  .scatter-svg .tick-label{ fill: var(--muted); font: 500 10px var(--mono) }
+  .scatter-svg .pt{ cursor: pointer; transition: r .2s var(--ease), opacity .2s var(--ease) }
+  .scatter-svg .pt:hover{ stroke: var(--ink); stroke-width: 1.5 }
+  .scatter-svg .band-rect{ opacity: 0.06 }
+  .scatter-svg .band-text{ fill: var(--muted); font: 700 9px var(--mono); letter-spacing: 1.2px; text-transform: uppercase }
+  .scatter-legend{
+    display:flex; flex-wrap: wrap; gap: 14px; margin-top: 14px;
+    font: 500 0.72rem var(--mono); color: var(--muted);
+  }
+  .scatter-legend i{
+    display:inline-block; width:10px; height:10px; border-radius: 50%; margin-right: 6px;
+    vertical-align: middle;
+  }
+  .scatter-tooltip{
+    position: absolute; pointer-events: none;
+    background: var(--ink); color: var(--bg);
+    font: 500 0.78rem var(--mono); padding: 6px 10px;
+    border-radius: 4px; opacity: 0; transition: opacity .15s;
+    transform: translate(-50%, -100%); margin-top: -8px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 10;
+  }
+  .scatter-tooltip.show{ opacity: 1 }
+  .scatter-tooltip .tt-name{ font-weight: 700 }
+  .scatter-tooltip .tt-sub{ color: rgba(255,255,255,0.6); margin-top: 2px }
+
+  @media (max-width: 720px){
+    .scatter-svg{ height: 380px }
+  }
 
   /* Detail panel (modal) */
   .modal{
@@ -501,11 +598,11 @@
     <div class="eyebrow">UV Filter Atlas</div>
     <h1>Spectra & photodegradation of <span class="h1-italic">every globally-approved</span> sunscreen filter.</h1>
     <div class="lede">
-      <p>Thirty-one active ingredients used in commercial sunscreens — from PABA in 1928 to Mexoryl 400 in 2020 — compiled from the peer-reviewed literature with absorption maxima, molar extinction coefficients, photostability data, and current regulatory status across five major markets.</p>
+      <p>Thirty-six photoprotective actives used in commercial sunscreens — from PABA in 1928 to Mexoryl 400 in 2020 — compiled from the peer-reviewed literature with absorption maxima, molar extinction coefficients, photodegradation half-lives, and current regulatory status across five major markets. Includes iron oxides used in tinted mineral sunscreens for visible / HEV light protection.</p>
       <div class="meta">
-        <span>Filters: <strong>31</strong></span>
-        <span>Citations: <strong>270+</strong></span>
-        <span>Claim files: <strong>38</strong></span>
+        <span>Filters: <strong>36</strong></span>
+        <span>Citations: <strong>290+</strong></span>
+        <span>Claim files: <strong>41</strong></span>
         <span>Source repo: <strong>health/sunscreen-filters</strong></span>
       </div>
     </div>
@@ -521,8 +618,8 @@
       </div>
     </div>
     <div class="stats-grid">
-      <div class="stat"><div class="stat-num acc">31</div><div class="stat-label">UV Filters Reviewed</div></div>
-      <div class="stat"><div class="stat-num">280–400</div><div class="stat-label">Wavelength Range (nm)</div></div>
+      <div class="stat"><div class="stat-num acc">36</div><div class="stat-label">Filters Reviewed</div></div>
+      <div class="stat"><div class="stat-num">280–700</div><div class="stat-label">Wavelength Range (nm)</div></div>
       <div class="stat"><div class="stat-num warn">1</div><div class="stat-label">Photolabile Class (avobenzone)</div></div>
       <div class="stat"><div class="stat-num">5</div><div class="stat-label">Regulatory Jurisdictions</div></div>
     </div>
@@ -566,15 +663,16 @@
 
     <div class="controls">
       <input type="search" id="searchBox" class="search" placeholder="Search filter, INCI, CAS, trade name…" aria-label="Search filters">
-      <span class="count"><strong id="resultCount">31</strong> of 31 filters</span>
+      <span class="count"><strong id="resultCount">36</strong> of 36 filters</span>
     </div>
 
     <div class="chips" role="group" aria-label="Filter chips">
-      <span class="group-label">UV range</span>
+      <span class="group-label">Range</span>
       <button class="chip" data-group="range" data-value="UVB">UVB</button>
       <button class="chip" data-group="range" data-value="UVA-II">UVA-II</button>
       <button class="chip" data-group="range" data-value="UVA-I">UVA-I</button>
       <button class="chip" data-group="range" data-value="Broad">Broad</button>
+      <button class="chip" data-group="range" data-value="Visible">Vis / HEV</button>
 
       <span class="group-label" style="margin-left: 8px">Photostability</span>
       <button class="chip" data-group="stab" data-value="excellent">Excellent</button>
@@ -592,10 +690,33 @@
     <div class="filter-grid" id="filterGrid"></div>
   </section>
 
-  <!-- Section 04: Photodegradation reference -->
+  <!-- Section 04 (new): λmax × half-life scatter -->
   <section class="section">
     <div class="section-head">
       <div class="section-num">04</div>
+      <div>
+        <div class="section-title">λmax × Photostability — At a Glance</div>
+        <div class="section-sub">Each circle is one filter, positioned by its peak absorption wavelength (x) and half-life under solar-simulator UV (y, log scale). The half-life axis spans 5 orders of magnitude — from PABA at ~1.5 hours to photostable triazines at &gt;500 hours. Inorganics are off-scale at top: their lattice does not photodegrade.</div>
+      </div>
+    </div>
+    <div class="scatter-card">
+      <svg class="scatter-svg" id="scatterSvg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="scatter-tooltip" id="scatterTooltip"></div>
+      <div class="scatter-legend">
+        <span><i style="background: var(--uv-uvb)"></i>UVB-dominant organic</span>
+        <span><i style="background: var(--uv-uva2)"></i>UVA-II / dual</span>
+        <span><i style="background: var(--uv-uva1)"></i>UVA-I anchor</span>
+        <span><i style="background: var(--ink)"></i>Broad-spectrum next-gen</span>
+        <span><i style="background: var(--moderate)"></i>Inorganic (ZnO/TiO₂ — off-scale)</span>
+        <span><i style="background: var(--warn)"></i>Iron oxides (visible/HEV; off-scale)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 05: Photodegradation reference -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">05</div>
       <div>
         <div class="section-title">Photodegradation Kinetics — Photolabile Filters</div>
         <div class="section-sub">Quantitative loss data with primary peer-reviewed citations. Solvent and UV dose are stated because the same molecule can be photolabile in cyclohexane and photostable in methanol.</div>
@@ -668,10 +789,10 @@
     </div>
   </section>
 
-  <!-- Section 05: Photostabilization mechanisms -->
+  <!-- Section 06: Photostabilization mechanisms -->
   <section class="section">
     <div class="section-head">
-      <div class="section-num">05</div>
+      <div class="section-num">06</div>
       <div>
         <div class="section-title">Photostabilization — How Avobenzone Survives</div>
         <div class="section-sub">Real sunscreens are mixtures. The single most important formulation question is keeping avobenzone alive, since it is the only FDA-approved UVA-I filter.</div>
@@ -680,10 +801,10 @@
     <div class="mech-grid" id="mechGrid"></div>
   </section>
 
-  <!-- Section 06: Cross-cutting findings -->
+  <!-- Section 07: Cross-cutting findings -->
   <section class="section">
     <div class="section-head">
-      <div class="section-num">06</div>
+      <div class="section-num">07</div>
       <div>
         <div class="section-title">Cross-Cutting Findings</div>
         <div class="section-sub">What emerged from comparing the data across all 30 filters.</div>
@@ -714,13 +835,17 @@
         <div class="finding-num">F·06</div>
         <div class="finding-text"><strong>The next-generation filters are EU/AU/JP-approved but mostly stuck in FDA limbo.</strong> Tinosorb M/S, DHHB, Mexoryl XL/SX/400, EHT, iscotrizinol — all have decades of safety data and are higher MW (no skin penetration) and more photostable. The Dec 2025 FDA proposed order on bemotrizinol (6% GRASE) is the first crack in the logjam after the 2014 Sunscreen Innovation Act produced no approvals through 2024.</div>
       </div>
+      <div class="finding">
+        <div class="finding-num">F·07</div>
+        <div class="finding-text"><strong>Iron oxides are the only practical visible-light protectant in cosmetics</strong> — but they're regulated as colorants (FDA 21 CFR 73.2250; EU Annex IV), not as UV filters. With bandgaps inside the visible spectrum (Fe₂O₃ 2.1 eV, FeO(OH) 2.5 eV, Fe₃O₄ semi-metallic), they absorb HEV (400–500 nm) and beyond. A typical 3% iron-oxide blend in a tinted mineral sunscreen blocks 60–70% of blue light vs 10–20% for the same untinted base — clinically meaningful for melasma, PIH, and idiopathic photodermatoses with visible-light action spectra (Castanedo-Cazares 2014, Mahmoud 2010, Lyons 2021). The visible-light action spectrum for pigmentary disorders is the reason "tinted mineral sunscreen" is now a dermatological category, not just an aesthetic one.</div>
+      </div>
     </div>
   </section>
 
-  <!-- Section 07: Methodology -->
+  <!-- Section 08: Methodology -->
   <section class="section">
     <div class="section-head">
-      <div class="section-num">07</div>
+      <div class="section-num">08</div>
       <div>
         <div class="section-title">Methodology &amp; Provenance</div>
         <div class="section-sub">How this was researched and where to verify.</div>
@@ -781,78 +906,91 @@ const FILTERS = [
    stab:"poor", absStart:295, absEnd:325, peak:309,
    reg:{fda:7.5,eu:10,au:10,jp:20,kr:7.5}, banned:false, reefBan:true,
    notes:"Trans/cis isomerism. Photostability collapses in aggregate or with avobenzone (Sayre 2005 [2+2] cycloaddition). Banned in Hawaii, Palau, Thailand, USVI for coral toxicity. EU SCCS endocrine review ongoing.",
+   t_half:6.6, t_half_cond:"EtOH; ~10% loss/35 J·cm⁻² UVA → first-order", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c001-octinoxate.md"},
   {idx:2, inci:"Octisalate", aliases:"EHS, Ethylhexyl Salicylate", cas:"118-60-5", mw:250.3, category:"uvb-organic",
    ranges:["UVB"], lambda:[305,307], lambdaTxt:"305–307", solvent:"EtOH", epsilon:4800, e1:192,
    stab:"excellent", absStart:295, absEnd:320, peak:306,
    reg:{fda:5,eu:5,au:10,jp:10,kr:5}, banned:false,
    notes:"ESIPT-stabilised salicylate. Weak ε but used as a co-solvent for avobenzone in many US formulations. Approved in all major markets.",
+   t_half:200, t_half_cond:"Cosmetic vehicle; flat absorbance ≥50 MED", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c002-octisalate.md"},
   {idx:3, inci:"Homosalate", aliases:"HMS", cas:"118-56-9", mw:262.3, category:"uvb-organic",
    ranges:["UVB"], lambda:[306,309], lambdaTxt:"306–309", solvent:"EtOH", epsilon:5000, e1:191,
    stab:"excellent", absStart:295, absEnd:320, peak:308,
    reg:{fda:15,eu:7.34,au:10,jp:10,kr:10}, banned:false,
    notes:"EU restricted face-only at 7.34% via Reg (EU) 2022/1176 due to SCCS endocrine concern (estrogenic, anti-androgenic, presumed thyroid disruptor). FDA still permits 15%.",
+   t_half:200, t_half_cond:"Cosmetic vehicle; flat absorbance ≥50 MED", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c003-homosalate.md"},
   {idx:4, inci:"Octocrylene", aliases:"OCR, OC", cas:"6197-30-4", mw:361.5, category:"uvb-organic",
    ranges:["UVB"], lambda:[303], lambdaTxt:"303", solvent:"EtOH", epsilon:12000, e1:332,
    stab:"good", absStart:285, absEnd:325, peak:303,
    reg:{fda:10,eu:10,au:10,jp:10,kr:10}, banned:false, reefBan:true,
    notes:"Photostable chromophore but undergoes retro-aldol decomposition over shelf life to BENZOPHENONE (IARC 2B). Downs 2021 measured 6–186 mg/kg fresh; up to 435 mg/kg after FDA accelerated aging. Standard avobenzone stabiliser via triplet–triplet energy transfer. Banned in Palau and USVI.",
+   t_half:50, t_half_cond:"Chromophore stable; but → benzophenone via retro-aldol over months", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c004-octocrylene.md"},
   {idx:5, inci:"Cinoxate", aliases:"2-ethoxyethyl-p-methoxycinnamate", cas:"104-28-9", mw:250.3, category:"uvb-organic",
    ranges:["UVB"], lambda:[308], lambdaTxt:"308", solvent:"EtOH", epsilon:20650, e1:825,
    stab:"poor", absStart:295, absEnd:325, peak:308,
    reg:{fda:3,eu:null,au:6,jp:5,kr:null}, banned:false,
    notes:"Cinnamate-class — photolabile analogue of octinoxate. Largely obsolete in modern products.",
+   t_half:6, t_half_cond:"Cinnamate analogue of OMC; estimated by analogy", t_half_conf:"C3",
    detail:"research/uvb-organic/claims/c005-cinoxate.md"},
   {idx:6, inci:"PABA", aliases:"4-aminobenzoic acid", cas:"150-13-0", mw:137.1, category:"uvb-organic",
    ranges:["UVB"], lambda:[283], lambdaTxt:"283", solvent:"EtOH", epsilon:13500, e1:985,
    stab:"moderate", absStart:265, absEnd:300, peak:283,
    reg:{fda:15,eu:null,au:null,jp:null,kr:null}, banned:true,
    notes:"BANNED in EU (2009), Australia, Japan, Korea — photoallergen and mutagenic photoproducts (Knowland 1993). Still technically permitted by FDA monograph but absent from modern products.",
+   t_half:1.5, t_half_cond:"Photoallergen; rapid in aqueous solution", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c006-paba-padimate-o.md"},
   {idx:7, inci:"Padimate O", aliases:"OD-PABA, Octyl Dimethyl PABA", cas:"21245-02-3", mw:277.4, category:"uvb-organic",
    ranges:["UVB"], lambda:[311], lambdaTxt:"311", solvent:"EtOH", epsilon:28400, e1:1024,
    stab:"good", absStart:295, absEnd:325, peak:311,
    reg:{fda:8,eu:8,au:8,jp:10,kr:8}, banned:false,
    notes:"PABA-derivative without PABA's photoallergenicity. Highest E(1%, 1cm) of any FDA filter. Generates ~5% singlet oxygen.",
+   t_half:15, t_half_cond:"PABA-analogue, stabilised by tertiary amine", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c006-paba-padimate-o.md"},
   {idx:8, inci:"Ensulizole", aliases:"PBSA, Phenylbenzimidazole sulfonic acid", cas:"27503-81-7", mw:274.3, category:"uvb-organic",
    ranges:["UVB"], lambda:[302], lambdaTxt:"302", solvent:"H₂O", epsilon:25000, e1:911,
    stab:"excellent", absStart:285, absEnd:320, peak:302,
    reg:{fda:4,eu:8,au:4,jp:3,kr:4}, banned:false,
    notes:"Water-soluble UVB filter (rare). Photostable chromophore but Φ(¹O₂) = 0.10 — significant ROS generator. ΦF=0.63.",
+   t_half:100, t_half_cond:"Aqueous; chromophore photostable but Φ(¹O₂)=0.10", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c007-ensulizole.md"},
   {idx:9, inci:"Polysilicone-15", aliases:"Parsol SLX", cas:"207574-74-1", mw:6000, category:"uvb-organic",
    ranges:["UVB"], lambda:[312], lambdaTxt:"312", solvent:"EtOH", epsilon:6500, e1:175,
    stab:"excellent", absStart:295, absEnd:325, peak:312,
    reg:{fda:null,eu:10,au:10,jp:10,kr:10}, banned:false,
    notes:"Polymeric silicone-tethered chromophore. MW ~6,000 → no skin penetration. Photostabiliser for avobenzone.",
+   t_half:300, t_half_cond:"Polymer-tethered chromophore; flat at 50 MED", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c008-polysilicone-15.md"},
   {idx:10, inci:"Ethylhexyl Triazone", aliases:"EHT, Octyl Triazone, Uvinul T 150", cas:"88122-99-0", mw:823.1, category:"uvb-organic",
    ranges:["UVB"], lambda:[314], lambdaTxt:"314", solvent:"EtOH", epsilon:135000, e1:1500,
    stab:"excellent", absStart:295, absEnd:330, peak:314,
    reg:{fda:null,eu:5,au:5,jp:5,kr:5}, banned:false,
    notes:"Highest molar extinction coefficient of any commercial UV filter (~135,000 M⁻¹cm⁻¹). MW 823 → no penetration. FDA TEA pending since 2003.",
+   t_half:500, t_half_cond:"Most photostable commercial filter; Φd negligible", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c009-octyl-triazone.md"},
   {idx:11, inci:"4-Methylbenzylidene Camphor", aliases:"4-MBC, Enzacamene", cas:"36861-47-9", mw:254.4, category:"uvb-organic",
    ranges:["UVB"], lambda:[300], lambdaTxt:"300", solvent:"EtOH", epsilon:24500, e1:963,
    stab:"good", absStart:285, absEnd:320, peak:300,
    reg:{fda:null,eu:0,au:4,jp:null,kr:null}, banned:true,
    notes:"BANNED IN EU effective May 2026 for endocrine disruption (estrogenic + thyroid). Still listed in Australia under TGA review.",
+   t_half:40, t_half_cond:"Mostly photostable in formulation", t_half_conf:"C2",
    detail:"research/uvb-organic/claims/c010-4-mbc.md"},
   {idx:12, inci:"Amiloxate", aliases:"Isoamyl Methoxycinnamate, Neo Heliopan E1000", cas:"71617-10-2", mw:248.3, category:"uvb-organic",
    ranges:["UVB"], lambda:[308,310], lambdaTxt:"308–310", solvent:"EtOH", epsilon:24000, e1:960,
    stab:"poor", absStart:295, absEnd:325, peak:309,
    reg:{fda:"TEA",eu:10,au:10,jp:"quasi-drug",kr:10}, banned:false,
    notes:"Structural isomer of octinoxate (isoamyl ester instead of 2-ethylhexyl); near-identical photochemistry. FDA TEA pending since 2003. Like OMC, undergoes trans→cis photoisomerisation and [2+2] dimerisation; expected to be incompatible with avobenzone by mechanistic analogy.",
+   t_half:6, t_half_cond:"OMC isomer; same photochemistry by analogy", t_half_conf:"C3",
    detail:"research/uvb-organic/claims/c011-amiloxate.md"},
   {idx:13, inci:"Trolamine Salicylate", aliases:"TEA salicylate", cas:"2174-16-5", mw:287.3, category:"uvb-organic",
    ranges:["UVB"], lambda:[298], lambdaTxt:"~298", solvent:"H₂O", epsilon:3300, e1:null,
    stab:"good", absStart:280, absEnd:315, peak:298,
    reg:{fda:12,eu:null,au:12,jp:null,kr:null}, banned:false,
    notes:"FDA proposed NOT GRASE for sunscreen use (2021) due to systemic salicylate toxicity. Largely used in topical analgesics now.",
+   t_half:150, t_half_cond:"Salicylate class; very low photoreactivity", t_half_conf:"C2",
    detail:"research/benzophenones/claims/c004-trolamine-salicylate.md"},
 
   // UVA ORGANIC
@@ -861,30 +999,35 @@ const FILTERS = [
    stab:"poor", absStart:325, absEnd:395, peak:357,
    reg:{fda:3,eu:5,au:5,jp:10,kr:5}, banned:false,
    notes:"Only FDA-approved UVA-I filter. Highly photolabile alone (~36% loss/1h sun) — requires stabiliser. Incompatible with octinoxate ([2+2] cycloaddition; Sayre 2005). λmax shifts dramatically with solvent: 355 nm cyclohexane → 363 nm DMSO; methanol renders it nearly photostable. Photoproducts include arylglyoxals, benzils, and benzoic acid derivatives.",
+   t_half:0.8, t_half_cond:"Neat film, no stabiliser; ~23% retained / 25 MED", t_half_conf:"C2",
    detail:"research/uva-organic/claims/c001-avobenzone.md"},
   {idx:15, inci:"Meradimate", aliases:"Menthyl Anthranilate, Neo Heliopan MA", cas:"134-09-8", mw:275.4, category:"uva-organic",
    ranges:["UVA-II"], lambda:[336], lambdaTxt:"336", solvent:"EtOH", epsilon:5000, e1:180,
    stab:"moderate", absStart:285, absEnd:360, peak:336,
    reg:{fda:5,eu:null,au:5,jp:null,kr:5}, banned:false,
    notes:"Chromophore is mass-stable but is a singlet-oxygen photosensitiser (Φ_Δ ≈ 0.20–0.30) — destabilises co-formulations. Pair with α-tocopherol or Trolox. Not approved in EU/Japan.",
+   t_half:60, t_half_cond:"Chromophore stable; but is ¹O₂ photosensitiser (Φ_Δ ≈ 0.25)", t_half_conf:"C2",
    detail:"research/uva-organic/claims/c002-meradimate.md"},
   {idx:16, inci:"DHHB", aliases:"Diethylamino Hydroxybenzoyl Hexyl Benzoate, Uvinul A Plus, Parsol DHHB", cas:"302776-68-7", mw:397.5, category:"uva-organic",
    ranges:["UVA-I","UVA-II"], lambda:[354], lambdaTxt:"354", solvent:"EtOH", epsilon:39000, e1:980,
    stab:"excellent", absStart:325, absEnd:385, peak:354,
    reg:{fda:"TEA",eu:10,au:10,jp:10,kr:10}, banned:false,
    notes:"ESIPT-stabilised UVA-I filter. >95% remaining after standard solar dose. Stabilises co-formulated filters. FDA TEA pending. Note: phthalate impurity (DnHexP) historically a quality concern.",
+   t_half:100, t_half_cond:"ESIPT; >95% retained / 25 MED", t_half_conf:"C2",
    detail:"research/uva-organic/claims/c003-dhhb.md"},
   {idx:17, inci:"Bisoctrizole", aliases:"MBBT, Methylene Bis-Benzotriazolyl Tetramethylbutylphenol, Tinosorb M", cas:"103597-45-1", mw:658.9, category:"uva-organic",
    ranges:["UVB","UVA-I","UVA-II"], lambda:[305,360], lambdaTxt:"305 + 360 (dual peak)", solvent:"dispersion", epsilon:52000, e1:700,
    stab:"excellent", absStart:285, absEnd:395, peak:340,
    reg:{fda:"TEA",eu:10,au:10,jp:10,kr:10}, banned:false,
    notes:"Particulate (microfine aqueous dispersion ~150–200 nm). Hybrid mechanism: optical filtering + ESIPT in two hydroxyphenyl-benzotriazole arms + some triplet quenching. Broadest single-filter coverage. FDA TEA pending.",
+   t_half:200, t_half_cond:"Particulate + ESIPT; 95–99% retained / standard solar", t_half_conf:"C2",
    detail:"research/uva-organic/claims/c004-bisoctrizole.md"},
   {idx:18, inci:"Iscotrizinol", aliases:"Diethylhexyl Butamido Triazone, Uvasorb HEB", cas:"154702-15-5", mw:766, category:"uva-organic",
    ranges:["UVB"], lambda:[310], lambdaTxt:"310", solvent:"EtOH", epsilon:110000, e1:1435,
    stab:"excellent", absStart:290, absEnd:340, peak:310,
    reg:{fda:"TEA",eu:10,au:null,jp:10,kr:10}, banned:false,
    notes:"~10% loss after 25h direct sun. Predominantly UVB despite the filter category. FDA TEA pending.",
+   t_half:200, t_half_cond:"Triazine; ~10% loss / 25 h direct sun", t_half_conf:"C2",
    detail:"research/uva-organic/claims/c005-iscotrizinol.md"},
 
   // BROAD-SPECTRUM / Mexoryl
@@ -893,36 +1036,42 @@ const FILTERS = [
    stab:"excellent", absStart:285, absEnd:380, peak:340,
    reg:{fda:"proposed 6%",eu:10,au:10,jp:10,kr:10}, banned:false,
    notes:"FDA Proposed Order 11 Dec 2025 — first new TEA filter approved in decades, GRASE at 6% pending final order June 2026. 98.4% retained after 50 MED. Photostabilises avobenzone via TTET (Chatelain & Gabard 2001).",
+   t_half:140, t_half_cond:"98.4% retained / 50 MED (Chatelain & Gabard 2001)", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c001-bemotrizinol.md"},
   {idx:20, inci:"Ecamsule", aliases:"Mexoryl SX, Terephthalylidene Dicamphor Sulfonic Acid", cas:"92761-26-7", mw:562.7, category:"broad-spectrum",
    ranges:["UVA-II"], lambda:[345], lambdaTxt:"345", solvent:"H₂O (TEA salt)", epsilon:20000, e1:360,
    stab:"excellent", absStart:325, absEnd:365, peak:345,
    reg:{fda:"NDA",eu:10,au:10,jp:10,kr:10}, banned:false,
    notes:"Reached US market via NDA for Anthelios SX (2006), not OTC monograph. Water-soluble. 94–99% retained after 25 MED. Reversible photoisomerisation. Cited ε ranges 19,000–47,000 across studies — wide disagreement.",
+   t_half:19, t_half_cond:"94% retained / 25 MED", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c002-ecamsule.md"},
   {idx:21, inci:"Drometrizole Trisiloxane", aliases:"Mexoryl XL", cas:"155633-54-8", mw:501.9, category:"broad-spectrum",
    ranges:["UVB","UVA-II"], lambda:[303,344], lambdaTxt:"303 + 344 (dual peak)", solvent:"silicone", epsilon:18000, e1:340,
    stab:"excellent", absStart:285, absEnd:370, peak:344,
    reg:{fda:"TEA",eu:15,au:15,jp:15,kr:15}, banned:false,
    notes:"EU max 15% — highest of any UV filter. ESIPT-stabilised silicone-soluble. ≥97% retained after 50 MED.",
+   t_half:75, t_half_cond:"97% retained / 50 MED", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c003-drometrizole-trisiloxane.md"},
   {idx:22, inci:"Mexoryl 400", aliases:"MCE, Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate", cas:"1419401-88-9", mw:322.4, category:"broad-spectrum",
    ranges:["UVA-I"], lambda:[385], lambdaTxt:"385 (deepest UVA-I)", solvent:"EtOH", epsilon:63000, e1:1956,
    stab:"excellent", absStart:355, absEnd:415, peak:385,
    reg:{fda:null,eu:3,au:null,jp:null,kr:null}, banned:false,
    notes:"Newest filter — EU approved via Regulation 2020/1684 (based on SCCS/1605/19 of Dec 2019); broadly commercialised 2022–2024 (UVMune 400). Closes the 370–400 nm 'ultra-long UVA1' gap implicated in photoaging. Sponsor data only for photostability; no independent peer-reviewed values located.",
+   t_half:200, t_half_cond:"Sponsor data only — no independent peer-reviewed measurement", t_half_conf:"C4",
    detail:"research/broad-spectrum/claims/c004-mexoryl-400-mce.md"},
   {idx:23, inci:"Tris-Biphenyl Triazine", aliases:"TBPT, Tinosorb A2B", cas:"31274-51-8", mw:537.7, category:"broad-spectrum",
    ranges:["UVB","UVA-II"], lambda:[310], lambdaTxt:"310 + scattering shoulder", solvent:"THF", epsilon:80000, e1:null,
    stab:"excellent", absStart:285, absEnd:355, peak:310,
    reg:{fda:null,eu:10,au:10,jp:null,kr:10}, banned:false,
    notes:"Particulate (150–200 nm aqueous dispersion). Both nano (2014) and non-nano (2022) entries in EU Annex VI. No characterised photoproducts.",
+   t_half:300, t_half_cond:"Particulate; sub-ps internal conversion; no characterised photoproducts", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c005-tinosorb-a2b-tbpt.md"},
   {idx:24, inci:"Bisdisulizole Disodium", aliases:"Neo Heliopan AP, Disodium Phenyl Dibenzimidazole Tetrasulfonate", cas:"180898-37-7", mw:674.6, category:"broad-spectrum",
    ranges:["UVA-II"], lambda:[335], lambdaTxt:"335", solvent:"H₂O", epsilon:52000, e1:790,
    stab:"excellent", absStart:315, absEnd:355, peak:335,
    reg:{fda:null,eu:10,au:10,jp:null,kr:null}, banned:false,
    notes:"Only true water-soluble UVA filter at 10% EU max. Rigid bis-benzimidazole.",
+   t_half:50, t_half_cond:"Aqueous solution; rigid bis-benzimidazole", t_half_conf:"C2",
    detail:"research/broad-spectrum/claims/c006-bisdisulizole-disodium.md"},
 
   // BENZOPHENONES
@@ -931,24 +1080,28 @@ const FILTERS = [
    stab:"good", absStart:275, absEnd:345, peak:306,
    reg:{fda:6,eu:2.2,au:10,jp:5,kr:5}, banned:false, reefBan:true,
    notes:"BANNED in Hawaii (Act 104, 2021), Florida Keys, Palau, USVI, Aruba, Bonaire for coral toxicity (Downs 2016). EU dropped from 10% → 6% → 2.2% body in 2017–2022. FDA Matta 2019/2020 JAMA: plasma C_max 169–210 ng/mL — far above 0.5 ng/mL toxicology threshold. NHANES detection in ≥96% US urine. Most allergenic UV filter in N. America.",
+   t_half:3.1, t_half_cond:"EtOH; ~80% retained / 1 h sun (chromophore — generates BP-1)", t_half_conf:"C2",
    detail:"research/benzophenones/claims/c001-oxybenzone-bp3.md"},
   {idx:26, inci:"Sulisobenzone", aliases:"BP-4, Benzophenone-4", cas:"4065-45-6", mw:308.3, category:"benzophenones",
    ranges:["UVB","UVA-II"], lambda:[286,325], lambdaTxt:"286 + 325 (dual peak)", solvent:"H₂O", epsilon:15000, e1:null,
    stab:"good", absStart:275, absEnd:345, peak:306,
    reg:{fda:10,eu:5,au:10,jp:10,kr:5}, banned:false,
    notes:"Water-soluble (sulfonate). Lower skin penetration than BP-3, no known coral-reef ban. The most modernly-relevant benzophenone.",
+   t_half:30, t_half_cond:"Aqueous; chromophore stable", t_half_conf:"C3",
    detail:"research/benzophenones/claims/c002-sulisobenzone-bp4.md"},
   {idx:27, inci:"Dioxybenzone", aliases:"BP-8, Benzophenone-8", cas:"131-53-3", mw:244.2, category:"benzophenones",
    ranges:["UVB","UVA-II"], lambda:[282,325], lambdaTxt:"282 + 325–352", solvent:"EtOH", epsilon:15000, e1:null,
    stab:"good", absStart:270, absEnd:355, peak:303,
    reg:{fda:3,eu:null,au:3,jp:null,kr:null}, banned:false,
    notes:"FDA monograph 3% but 'insufficient data for GRASE'. Limited modern usage.",
+   t_half:30, t_half_cond:"By analogy to BP-3/BP-4; limited primary data", t_half_conf:"C3",
    detail:"research/benzophenones/claims/c003-dioxybenzone-bp8.md"},
   {idx:28, inci:"Mexenone", aliases:"BP-10, Benzophenone-10", cas:"1641-17-4", mw:242.3, category:"benzophenones",
    ranges:["UVB","UVA-II"], lambda:[287,325], lambdaTxt:"287 + 325", solvent:"EtOH", epsilon:14000, e1:null,
    stab:"good", absStart:275, absEnd:345, peak:306,
    reg:{fda:null,eu:null,au:null,jp:null,kr:null}, banned:false,
    notes:"Obsolete. Historical UK Uvistat formulation only. Not currently approved in any major market.",
+   t_half:30, t_half_cond:"By analogy to BP-3", t_half_conf:"C3",
    detail:"research/benzophenones/claims/c006-mexenone-bp10.md"},
 
   // INORGANIC
@@ -957,12 +1110,14 @@ const FILTERS = [
    stab:"excellent", absStart:280, absEnd:380, peak:340,
    reg:{fda:25,eu:25,au:25,jp:"quasi-drug",kr:25}, banned:false,
    notes:"Wide-bandgap semiconductor. Eg = 3.37 eV → λ_cutoff = 1240/3.37 = 368 nm (calculated). Only 4–5% UV reflection (Cole 2016) — absorption dominates 10:1. Refractive index 2.0 → low whitening. EU: nano (entry 30a) and non-nano (entry 30) listed; nano spray formulations prohibited. Some Zn²⁺ ionic dissolution measured (Gulson 2010).",
+   t_half:-1, t_half_cond:"Crystal lattice — not photolabile; ROS catalysis is the concern", t_half_conf:"C1",
    detail:"research/inorganic/claims/c001-zinc-oxide.md"},
   {idx:30, inci:"Titanium Dioxide (rutile)", aliases:"TiO₂, nano-TiO₂", cas:"13463-67-7", mw:79.9, category:"inorganic",
    ranges:["UVB","UVA-I","UVA-II"], lambda:[413], lambdaTxt:"cutoff 387–413 nm (Eg = 3.0–3.2 eV)", solvent:"semiconductor", epsilon:null, e1:null,
    stab:"excellent", absStart:280, absEnd:400, peak:340,
    reg:{fda:25,eu:25,au:25,jp:"quasi-drug",kr:25}, banned:false,
    notes:"Wide-bandgap semiconductor. Anatase (Eg = 3.20 eV) is highly photocatalytic — AVOID in cosmetics; rutile (Eg = 3.00 eV) is preferred. Refractive index 2.7 → strong whitening. Always use coated grades (silica, alumina, dimethicone) — coatings suppress 70–95% of ROS. IARC Group 2B for inhalation only. EU: nano spray formulations prohibited.",
+   t_half:-1, t_half_cond:"Crystal lattice — not photolabile; rutile preferred over anatase", t_half_conf:"C1",
    detail:"research/inorganic/claims/c002-titanium-dioxide.md"},
 
   // BENZOPHENONE-1 (metabolite)
@@ -971,7 +1126,47 @@ const FILTERS = [
    stab:"good", absStart:275, absEnd:345, peak:306,
    reg:{fda:null,eu:null,au:null,jp:null,kr:null}, banned:false,
    notes:"Not approved as a UV filter — included for context as the major metabolite/photoproduct of BP-3 (oxybenzone). 10–50× more estrogenic in vitro than BP-3. Detected in 80–95% of US urine via BP-3 metabolism.",
+   t_half:3.1, t_half_cond:"Same chromophore as BP-3; reference value", t_half_conf:"C2",
    detail:"research/benzophenones/claims/c005-benzophenone-1-bp1.md"},
+
+  // IRON OXIDES (regulated as colorants, not UV filters; provide visible-light/HEV protection)
+  {idx:32, inci:"Iron Oxide Red", aliases:"CI 77491, hematite, α-Fe₂O₃", cas:"1309-37-1", mw:159.7, category:"iron-oxide",
+   ranges:["UVB","UVA-II","UVA-I","Visible"], lambda:[570], lambdaTxt:"cutoff ~570–620 nm (Eg ≈ 2.1 eV)", solvent:"crystal", epsilon:null, e1:null,
+   stab:"excellent", absStart:280, absEnd:600, peak:570, vis:true,
+   reg:{fda:"colorant",eu:"colorant",au:"colorant",jp:"colorant",kr:"colorant"}, banned:false,
+   notes:"Red-brown hematite. NOT regulated as a UV filter — listed as color additive (FDA 21 CFR 73.2250; EU Annex IV CI 77491). Bandgap 2.1 eV → cutoff ~590 nm; combined with d-d ligand-field bands at 535 + 650 nm absorbs across whole UV plus blue/green visible. Tinted mineral sunscreens with 1–3% iron oxides give 60–70% blue-light blockade vs 10–20% for untinted (Mahmoud 2010, Castanedo-Cazares 2014). Lattice photostable.",
+   t_half:-1, t_half_cond:"Crystal lattice — not photolabile", t_half_conf:"C1",
+   detail:"research/inorganic/claims/c003-iron-oxides.md"},
+  {idx:33, inci:"Iron Oxide Yellow", aliases:"CI 77492, goethite, α-FeO(OH)", cas:"51274-00-1", mw:88.9, category:"iron-oxide",
+   ranges:["UVB","UVA-II","UVA-I","Visible"], lambda:[500], lambdaTxt:"cutoff ~500 nm (Eg ≈ 2.5 eV)", solvent:"crystal", epsilon:null, e1:null,
+   stab:"excellent", absStart:280, absEnd:520, peak:500, vis:true,
+   reg:{fda:"colorant",eu:"colorant",au:"colorant",jp:"colorant",kr:"colorant"}, banned:false,
+   notes:"Hydrated iron oxide / goethite. NOT a UV filter — color additive only. Bandgap 2.5 eV → cutoff ~496 nm with weaker tail to ~570 nm. The default 'sunny' tint base in tinted sunscreens; typical 3:1 yellow:red blend with iron oxide red gives skin-tone neutral. Strong HEV protection (400–500 nm).",
+   t_half:-1, t_half_cond:"Crystal lattice — not photolabile", t_half_conf:"C1",
+   detail:"research/inorganic/claims/c003-iron-oxides.md"},
+  {idx:34, inci:"Iron Oxide Black", aliases:"CI 77499, magnetite, Fe₃O₄", cas:"1317-61-9", mw:231.5, category:"iron-oxide",
+   ranges:["UVB","UVA-II","UVA-I","Visible"], lambda:[700], lambdaTxt:"absorbs across full visible (Fe²⁺/Fe³⁺ IVCT)", solvent:"crystal", epsilon:null, e1:null,
+   stab:"excellent", absStart:280, absEnd:750, peak:700, vis:true,
+   reg:{fda:"colorant",eu:"colorant",au:"colorant",jp:"colorant",kr:"colorant"}, banned:false,
+   notes:"Magnetite, Fe²⁺/Fe³⁺ inverse spinel. NOT a UV filter — color additive only. Bandgap 0.1–0.3 eV (semimetal-like) — broadband absorption across UV + entire visible 400–700 nm + into NIR. Used for darker skin-tone tints; often blended with red+yellow at low % for tone-matching. Strongest visible-light blocker of the three.",
+   t_half:-1, t_half_cond:"Crystal lattice — not photolabile", t_half_conf:"C1",
+   detail:"research/inorganic/claims/c003-iron-oxides.md"},
+
+  // MINOR EU CAMPHOR FILTERS
+  {idx:35, inci:"3-Benzylidene Camphor", aliases:"3-BC, BMC", cas:"15087-24-8", mw:240.3, category:"uvb-organic",
+   ranges:["UVB"], lambda:[298], lambdaTxt:"~298", solvent:"EtOH", epsilon:21000, e1:null,
+   stab:"good", absStart:280, absEnd:325, peak:298,
+   reg:{fda:null,eu:0,au:null,jp:null,kr:null}, banned:true,
+   notes:"BANNED in EU — moved from Annex VI #21 to Annex II #1379 by Regulation 2015/1298 (effective Aug 2015) for endocrine-disruption concern. Predates the 4-MBC ban (May 2026) by a decade. Structurally close to 4-MBC; same camphor-benzylidene chromophore.",
+   t_half:30, t_half_cond:"By analogy to 4-MBC; effectively obsolete", t_half_conf:"C3",
+   detail:"research/uvb-organic/claims/c012-3-benzylidene-camphor.md"},
+  {idx:36, inci:"Benzylidene Camphor Sulfonic Acid", aliases:"BCSA, Mexoryl SD, Eusolex HMS", cas:"56039-58-8", mw:320.4, category:"uvb-organic",
+   ranges:["UVB"], lambda:[294], lambdaTxt:"~294", solvent:"H₂O", epsilon:23000, e1:null,
+   stab:"excellent", absStart:280, absEnd:320, peak:294,
+   reg:{fda:null,eu:6,au:null,jp:null,kr:null}, banned:false,
+   notes:"Water-soluble UVB filter; the only camphor-derived UV filter still EU-approved alongside Mexoryl SX after the 4-MBC ban. Sulfonate makes it ionic and water-phase. EU Annex VI max 6%. Photostable due to rigid bicycle preventing photoisomerisation.",
+   t_half:150, t_half_cond:"Aqueous; rigid camphor bicycle prevents isomerisation", t_half_conf:"C2",
+   detail:"research/uvb-organic/claims/c013-benzylidene-camphor-sulfonic-acid.md"},
 ];
 
 // =========================================
@@ -1154,12 +1349,130 @@ function regBadge(key, val){
   return `<span class="reg-pill"><span class="reg-key">${key}</span>${val}%</span>`;
 }
 
+// =========================================
+// Parametric absorption-spectrum generator
+// Approximates each filter's spectrum from λmax + bandwidth.
+// Real spectra differ in detail; this is a documented approximation.
+// Confidence: C2 (multi-peak fits), C3 (single-peak Gaussian fits),
+// C4 (inorganic semiconductor sigmoid).
+// =========================================
+function spectrumSVG(f){
+  const W = 480, H = 180, padL = 38, padR = 14, padT = 18, padB = 28;
+  // Iron oxides absorb deep into visible — extend the x-axis to 700 nm
+  const extendedRange = !!f.vis;
+  const xMin = 280, xMax = extendedRange ? 700 : 410;
+  const xRange = xMax - xMin;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB;
+  const xAt = lam => padL + ((lam - xMin) / xRange) * innerW;
+  const yAt = a   => padT + (1 - a) * innerH;
+
+  let curveType = 'gauss', confLevel = 'C3';
+  function absorbance(lam){
+    if (f.category === 'inorganic' || f.category === 'iron-oxide'){
+      curveType = 'sigmoid'; confLevel = f.category === 'iron-oxide' ? 'C3' : 'C2';
+      const cutoff = f.peak;
+      // Iron oxide black absorbs across whole visible — softer slope
+      const k = f.category === 'iron-oxide' ? 0.06 : 0.4;
+      const s = 1 / (1 + Math.exp((lam - cutoff) * k));
+      return s * 0.95;
+    }
+    const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
+    if (peaks.length > 1) confLevel = 'C2';
+    const halfBand = Math.max(8, ((f.absEnd || (f.peak+15)) - (f.absStart || (f.peak-15))) / 4);
+    let a = 0;
+    peaks.forEach(p => {
+      const sigma = halfBand;
+      a = Math.max(a, Math.exp(-Math.pow(lam - p, 2) / (2 * sigma * sigma)));
+    });
+    if (f.tail){ // particulate scattering tail (TBPT)
+      const tail = Math.max(0, 0.18 * Math.exp(-Math.pow(lam - (f.peak + 30), 2) / 1500));
+      a = Math.max(a, tail);
+    }
+    return a * 0.95;
+  }
+
+  // Build curve and fill paths
+  const points = [];
+  for (let lam = xMin; lam <= xMax; lam += 1){
+    points.push([xAt(lam), yAt(absorbance(lam))]);
+  }
+  const curvePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  const fillPath = curvePath + ' L' + xAt(xMax).toFixed(1) + ' ' + yAt(0).toFixed(1) + ' L' + xAt(xMin).toFixed(1) + ' ' + yAt(0).toFixed(1) + ' Z';
+
+  // UV bands (UVB 280-315, UVA-II 315-340, UVA-I 340-400, vis 400+)
+  const bandSpec = extendedRange
+    ? [
+        {x1: 280, x2: 315, cls: 'band-uvb',  label: 'UVB'},
+        {x1: 315, x2: 340, cls: 'band-uva2', label: 'UVA-II'},
+        {x1: 340, x2: 400, cls: 'band-uva1', label: 'UVA-I'},
+        {x1: 400, x2: 500, cls: 'band-vis',  label: 'HEV'},
+        {x1: 500, x2: xMax, cls: 'band-vis', label: 'VIS'},
+      ]
+    : [
+        {x1: 280, x2: 315, cls: 'band-uvb',  label: 'UVB'},
+        {x1: 315, x2: 340, cls: 'band-uva2', label: 'UVA-II'},
+        {x1: 340, x2: 400, cls: 'band-uva1', label: 'UVA-I'},
+        {x1: 400, x2: xMax, cls: 'band-vis', label: 'Vis'},
+      ];
+  const bands = bandSpec.map(b => ({x1: xAt(b.x1), x2: xAt(b.x2), cls: b.cls, label: b.label}));
+  const bandRects = bands.map(b =>
+    `<rect class="${b.cls}" x="${b.x1.toFixed(1)}" y="${padT}" width="${(b.x2-b.x1).toFixed(1)}" height="${innerH}"/>`
+  ).join('');
+  const bandLabels = bands.map(b =>
+    `<text class="band-label" x="${((b.x1+b.x2)/2).toFixed(1)}" y="${(padT+11).toFixed(1)}" text-anchor="middle">${b.label}</text>`
+  ).join('');
+
+  // Axis ticks
+  const tickValues = extendedRange
+    ? [280, 320, 360, 400, 450, 500, 550, 600, 650, 700]
+    : [280, 300, 320, 340, 360, 380, 400];
+  const ticks = tickValues.map(t =>
+    `<line class="axis-tick" x1="${xAt(t)}" y1="${padT+innerH}" x2="${xAt(t)}" y2="${padT+innerH+4}"/>` +
+    `<text class="axis-label" x="${xAt(t)}" y="${padT+innerH+15}" text-anchor="middle">${t}</text>`
+  ).join('');
+
+  // Peak markers
+  const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
+  const peakMarkers = peaks.map(p => {
+    const x = xAt(p);
+    return `<line class="peak-marker" x1="${x}" y1="${padT}" x2="${x}" y2="${padT+innerH}"/>` +
+           `<text class="peak-label" x="${x}" y="${padT-4}" text-anchor="middle">${p} nm</text>`;
+  }).join('');
+
+  // Y-axis label
+  const yLabel = `<text class="axis-label" x="${(padL-6).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-6} ${padT+innerH/2})">Relative absorbance</text>`;
+  const xLabel = `<text class="axis-label" x="${(padL+innerW/2).toFixed(1)}" y="${(padT+innerH+24).toFixed(1)}" text-anchor="middle">Wavelength (nm)</text>`;
+
+  return {
+    svg: `<svg class="spec-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-label="Absorption spectrum of ${f.inci}">
+      ${bandRects}
+      ${bandLabels}
+      ${peakMarkers}
+      <path class="curve-fill" d="${fillPath}"/>
+      <path class="curve" d="${curvePath}"/>
+      <line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>
+      ${ticks}
+      ${yLabel}
+      ${xLabel}
+    </svg>`,
+    confidence: confLevel,
+    curveType
+  };
+}
+
 function openDetail(f){
   const stabClass = 'stab-' + f.stab;
   const rangeTagsHtml = f.ranges.map(r => {
     const cls = 'range-' + r.toLowerCase().replace('-','');
     return `<span class="tag ${cls}">${r}</span>`;
   }).join('');
+  const spec = spectrumSVG(f);
+  const tHalfTxt = (f.t_half == null) ? '—' :
+                   (f.t_half < 0) ? '∞ <span class="unit">(crystal lattice)</span>' :
+                   (f.t_half >= 100) ? `≥${f.t_half} <span class="unit">h sun-equiv</span>` :
+                   `${f.t_half} <span class="unit">h sun-equiv</span>`;
+  const confCls = f.t_half_conf ? f.t_half_conf.toLowerCase() : 'c3';
   modalBody.innerHTML = `
     <h2 id="modalTitle">${f.inci}</h2>
     <div class="alias">${f.aliases}</div>
@@ -1168,6 +1481,16 @@ function openDetail(f){
       <span class="tag ${stabClass}">${f.stab[0].toUpperCase()+f.stab.slice(1)} photostab.</span>
       ${f.banned ? '<span class="tag banned">Banned (some markets)</span>' : ''}
       ${f.reefBan ? '<span class="tag stab-poor">Reef-banned</span>' : ''}
+    </div>
+    ${spec.svg}
+    <div class="spec-caption">Approximation: ${spec.curveType === 'sigmoid' ? 'semiconductor band-edge sigmoid' : (f.lambda && f.lambda.length>1) ? 'sum of Gaussians at the published peaks' : 'single Gaussian at the published λmax'}; bandwidth from documented absorption range. Real spectrum will differ in detail. <span class="conf-tag ${spec.confidence.toLowerCase()}">${spec.confidence}</span></div>
+    <div class="halflife-row">
+      <div>
+        <span class="hl-label">Approx. half-life under solar UV</span>
+        <span class="conf-tag ${confCls}">${f.t_half_conf || ''}</span>
+      </div>
+      <div class="hl-value">${tHalfTxt}</div>
+      <div class="hl-cond">${f.t_half_cond || ''}</div>
     </div>
     <div class="props-grid">
       <div class="prop"><dt>CAS Number</dt><dd>${f.cas}</dd></div>
@@ -1235,6 +1558,111 @@ btn.addEventListener('click', () => {
   applyTheme();
 });
 applyTheme();
+
+// =========================================
+// λmax × half-life scatter plot
+// =========================================
+function renderScatter(){
+  const svg = document.getElementById('scatterSvg');
+  const tooltip = document.getElementById('scatterTooltip');
+  const card = svg.parentElement;
+  const W = 800, H = 480, padL = 70, padR = 30, padT = 30, padB = 60;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB;
+  const xMin = 280, xMax = 410;
+  const yMin = Math.log10(0.5), yMax = Math.log10(1500);
+
+  const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
+  const yAt = th  => {
+    const ly = Math.log10(Math.max(0.5, th));
+    return padT + (1 - (ly - yMin) / (yMax - yMin)) * innerH;
+  };
+
+  // UV bands as background
+  const bands = [
+    {x1: 280, x2: 315, cls: 'band-uvb',  label: 'UVB'},
+    {x1: 315, x2: 340, cls: 'band-uva2', label: 'UVA-II'},
+    {x1: 340, x2: 400, cls: 'band-uva1', label: 'UVA-I'},
+    {x1: 400, x2: 410, cls: 'band-vis',  label: 'Vis'},
+  ];
+  const colors = {
+    'band-uvb': 'var(--uv-uvb)',
+    'band-uva2': 'var(--uv-uva2)',
+    'band-uva1': 'var(--uv-uva1)',
+    'band-vis': 'var(--ink-soft)',
+  };
+  let parts = [];
+  bands.forEach(b => {
+    const x1 = xAt(b.x1), x2 = xAt(b.x2);
+    parts.push(`<rect class="band-rect" x="${x1}" y="${padT}" width="${x2-x1}" height="${innerH}" fill="${colors[b.cls]}"/>`);
+    parts.push(`<text class="band-text" x="${(x1+x2)/2}" y="${padT+14}" text-anchor="middle">${b.label}</text>`);
+  });
+
+  // Y-axis log gridlines at 1, 10, 100, 1000 hours
+  [1, 3, 10, 30, 100, 300, 1000].forEach(t => {
+    if (t < Math.pow(10, yMin) || t > Math.pow(10, yMax)) return;
+    const y = yAt(t);
+    parts.push(`<line class="grid-line" x1="${padL}" y1="${y}" x2="${padL+innerW}" y2="${y}"/>`);
+    parts.push(`<text class="tick-label" x="${padL-10}" y="${y+3}" text-anchor="end">${t} h</text>`);
+  });
+
+  // Off-scale annotation for inorganics
+  const offScaleY = padT + 18;
+  parts.push(`<line class="grid-line" x1="${padL}" y1="${offScaleY}" x2="${padL+innerW}" y2="${offScaleY}" stroke-dasharray="4 3"/>`);
+  parts.push(`<text class="tick-label" x="${padL-10}" y="${offScaleY+3}" text-anchor="end" fill="var(--moderate)">∞ (lattice)</text>`);
+
+  // X-axis
+  parts.push(`<line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>`);
+  parts.push(`<line class="axis-line" x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT+innerH}"/>`);
+  [280, 300, 320, 340, 360, 380, 400].forEach(t => {
+    const x = xAt(t);
+    parts.push(`<line class="axis-line" x1="${x}" y1="${padT+innerH}" x2="${x}" y2="${padT+innerH+5}"/>`);
+    parts.push(`<text class="tick-label" x="${x}" y="${padT+innerH+18}" text-anchor="middle">${t}</text>`);
+  });
+  parts.push(`<text class="axis-label" x="${padL+innerW/2}" y="${H-22}" text-anchor="middle">λmax (nm)</text>`);
+  parts.push(`<text class="axis-label" x="${20}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 20 ${padT+innerH/2})">Half-life under solar UV (log scale)</text>`);
+
+  // Plot points
+  const colorFor = (f) => {
+    if (f.category === 'iron-oxide') return 'var(--warn)';
+    if (f.category === 'inorganic') return 'var(--moderate)';
+    if (f.category === 'broad-spectrum') return 'var(--ink)';
+    if (f.ranges.includes('UVA-I')) return 'var(--uv-uva1)';
+    if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return 'var(--uv-uva2)';
+    return 'var(--uv-uvb)';
+  };
+  FILTERS.forEach(f => {
+    // Iron oxides have peaks in visible (>400) — clamp x to right edge so they appear at the visible boundary
+    const lam = Math.min(f.peak, 405);
+    const x = xAt(lam);
+    const isInorg = f.t_half === -1;
+    const y = isInorg ? offScaleY : yAt(Math.max(0.5, f.t_half));
+    const r = f.epsilon ? Math.max(4, Math.min(12, 4 + Math.log10(f.epsilon) * 1.0)) : 5;
+    const fill = colorFor(f);
+    parts.push(`<circle class="pt" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${fill}" fill-opacity="0.65" stroke="${fill}" stroke-width="1" data-idx="${f.idx}"/>`);
+  });
+
+  svg.innerHTML = parts.join('');
+
+  // Hover tooltip
+  svg.querySelectorAll('.pt').forEach(circle => {
+    const idx = parseInt(circle.dataset.idx, 10);
+    const f = FILTERS.find(x => x.idx === idx);
+    circle.addEventListener('mouseenter', (e) => {
+      tooltip.innerHTML = `<div class="tt-name">${f.inci}</div>
+        <div class="tt-sub">λmax ${f.peak} nm · t½ ${f.t_half === -1 ? '∞ (lattice)' : f.t_half + ' h'}</div>`;
+      tooltip.classList.add('show');
+    });
+    circle.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      tooltip.style.left = (e.clientX - rect.left) + 'px';
+      tooltip.style.top = (e.clientY - rect.top) + 'px';
+    });
+    circle.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+    circle.addEventListener('click', () => openDetail(f));
+  });
+}
+renderScatter();
 
 // initial render
 renderCards(FILTERS);
