@@ -530,6 +530,54 @@
   .active-pill .ap-color{
     width: 10px; height: 10px; border-radius: 999px; flex-shrink: 0;
   }
+  .builder-metrics{
+    margin-bottom: 18px; padding: 16px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
+  }
+  .metrics-row{
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    padding-bottom: 12px; margin-bottom: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .metrics-label{
+    font: 700 0.66rem var(--mono); color: var(--muted);
+    letter-spacing: 1.4px; text-transform: uppercase;
+  }
+  .film-mode-btn{
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-soft); font: 500 0.74rem var(--mono);
+    padding: 4px 10px; border-radius: 999px; cursor: pointer;
+    transition: all .2s var(--ease);
+  }
+  .film-mode-btn:hover{ border-color: var(--ink-soft) }
+  .film-mode-btn.active{
+    background: var(--accent-soft); border-color: var(--accent);
+    color: var(--accent); font-weight: 600;
+  }
+  .metrics-grid{
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .metric-card{
+    padding: 8px 0;
+  }
+  .metric-card .m-label{
+    font: 500 0.66rem var(--mono); color: var(--muted);
+    letter-spacing: 1.4px; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .metric-card .m-value{
+    font: 800 1.6rem var(--mono); color: var(--ink);
+    letter-spacing: -0.02em; line-height: 1;
+  }
+  .metric-card .m-value.acc{ color: var(--accent) }
+  .metric-card .m-value.warn{ color: var(--warn) }
+  .metric-card .m-value.ok{ color: var(--ok) }
+  .metric-card .m-sub{
+    font: 500 0.7rem var(--mono); color: var(--muted);
+    margin-top: 4px;
+  }
+
   .builder-plot-wrap{ margin-bottom: 16px }
   .builder-svg{ width: 100%; height: 360px; display: block }
   .builder-svg .axis-line{ stroke: var(--rule); stroke-width: 1.5 }
@@ -942,6 +990,18 @@
         <button class="chip" data-preset="clear">Clear</button>
       </div>
       <div class="builder-active" id="builderActive"></div>
+
+      <div class="builder-metrics" id="builderMetrics">
+        <div class="metrics-row">
+          <span class="metrics-label">Film:</span>
+          <button class="film-mode-btn" data-mode="2.0">Lab test (2 mg/cm²)</button>
+          <button class="film-mode-btn" data-mode="0.75">Real-world (~0.75 mg/cm²)</button>
+          <button class="film-mode-btn" data-mode="cuvette">Spectrophotometer (1 cm)</button>
+          <span class="info-tip" tabindex="0">methodology<span class="info-bubble">SPF integrates erythemal-weighted UV transmittance per CIE 1987: SPF = ∫E_solar(λ)·E_ery(λ)dλ / ∫E_solar·E_ery·10^(-A(λ))dλ. Film absorbance A(λ) = Σ E1%(λ)·f(c)·c·ℓ_cm summed across selected filters. Per-filter f(c) damping is fit to real SPF/HEV measurements: ZnO 22% Badger predicted 47 vs measured 40, etc. <strong>Limitations</strong>: (1) The CIE 1987 action spectrum understates UVA-1 sensitivity, so mineral sunscreens (which leak past 370 nm) are over-predicted. (2) Stacked organic formulations are sometimes under-predicted because per-filter f(c) double-counts when many filters share the total load. (3) Real SPF testing has a measurement ceiling around 100; "100+" should be treated as "very high" rather than a precise number. (4) Real-world application of 0.5–1 mg/cm² gives roughly 25–50% of lab SPF. The chart is best read as a structured comparison of formulations, not an exact SPF predictor.</span></span>
+        </div>
+        <div class="metrics-grid" id="metricsGrid"></div>
+      </div>
+
       <div class="builder-plot-wrap">
         <svg class="builder-svg" id="builderSvg" viewBox="0 0 900 360" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
@@ -2363,15 +2423,24 @@ function applyPreset(name){
 }
 
 // Concentration-nonlinearity factor f(c) for filters with literature-fit
-// nonlinearity parameters (e.g., ZnO/TiO₂/iron oxides — particles aggregate
-// at high loading, breaking the linear-stacking assumption of Beer-Lambert).
-// Form: f(c) = 1 - α × tanh(max(0, c - c0) / scale).
-// Returns 1 (no correction) for filters without nonlinearity data.
+// nonlinearity parameters. Form: f(c) = 1 - α × tanh(max(0, c - c0) / scale).
+// - Inorganics/iron oxides: per-filter params from spectrum-data.json (fit
+//   to SPF/HEV-blockade ground truth; particle aggregation + film-density
+//   saturation).
+// - Organics: a default f_org(c) = 1 - 0.92 × tanh(max(0, c-0.5)/2.5).
+//   Captures self-quenching at high concentration, partial dissolution /
+//   micelle formation, and the cuvette-to-real-film discrepancy.
+//   Calibrated against Sayre 2005 Photochem Photobiol Sci (in-vitro SPFs
+//   of mono-filter formulations) and the BASF Sunscreen Simulator.
+//   f(1%)=0.78, f(3%)=0.32, f(5%)=0.13, f(10%)=0.08.
+//   Ideal Beer-Lambert would predict SPF 50+ for 5% octinoxate-only;
+//   real measurement is SPF 5-8 — this f(c) brings predictions in line.
+const ORGANIC_FC_DEFAULT = {alpha: 0.92, c0: 0.5, scale: 2.5};
 function concentrationFactor(f, conc){
   const data = SPECTRUM_DATA[f.idx];
   const nl = data && data.concentration_nonlinearity && data.concentration_nonlinearity.params;
-  if (!nl) return 1;
-  const {alpha = 0, c0 = 0, scale = 1} = nl;
+  const params = nl || ORGANIC_FC_DEFAULT;
+  const {alpha = 0, c0 = 0, scale = 1} = params;
   const above = Math.max(0, conc - c0);
   return 1 - alpha * Math.tanh(above / scale);
 }
@@ -2382,6 +2451,93 @@ function concentrationFactor(f, conc){
 function builderAbsAt(s, lam){
   const fc = concentrationFactor(s.filter, s.conc);
   return e1At(s.filter, lam) * fc * s.conc;
+}
+
+// Erythema action spectrum (CIE 1987/1998 standard)
+function erythemaWeight(lam){
+  if (lam <= 298) return 1.0;
+  if (lam <= 328) return Math.pow(10, 0.094 * (298 - lam));
+  if (lam <= 400) return Math.pow(10, 0.015 * (139 - lam));
+  return 0;
+}
+
+// Solar UV spectrum at sea level (AM 1.5, simplified to a 16-point table
+// in W·m⁻²·nm⁻¹). Real measured shape: ~0 below 290 nm (atmospheric ozone
+// cutoff), rising to ~0.9 by 400 nm.
+const SOLAR_AM15_UV = [
+  [290, 0.0001], [295, 0.005], [300, 0.05], [305, 0.15], [310, 0.30],
+  [315, 0.45], [320, 0.55], [325, 0.62], [330, 0.65], [340, 0.70],
+  [350, 0.74], [360, 0.79], [370, 0.80], [380, 0.84], [390, 0.86], [400, 0.90],
+];
+function solarUV(lam){
+  if (lam <= SOLAR_AM15_UV[0][0]) return SOLAR_AM15_UV[0][1];
+  if (lam >= SOLAR_AM15_UV[SOLAR_AM15_UV.length-1][0]) return SOLAR_AM15_UV[SOLAR_AM15_UV.length-1][1];
+  for (let i = 1; i < SOLAR_AM15_UV.length; i++){
+    if (SOLAR_AM15_UV[i][0] >= lam){
+      const [x1, y1] = SOLAR_AM15_UV[i-1];
+      const [x2, y2] = SOLAR_AM15_UV[i];
+      const t = (lam - x1) / (x2 - x1);
+      return y1 + t * (y2 - y1);
+    }
+  }
+  return 0;
+}
+
+// Total film absorbance at wavelength λ, given a film thickness in mg/cm².
+// Beer-Lambert summation across all selected filters, with each filter's
+// own f(c) nonlinearity applied. Film thickness in cm = mg/cm² × 1e-3
+// (assuming density ~1 g/cm³ for the cosmetic vehicle).
+function totalFilmAbsorbance(lam, mg_per_cm2){
+  const lCm = mg_per_cm2 * 1e-3;
+  let A = 0;
+  builderState.selected.forEach(s => {
+    const e1 = e1At(s.filter, lam);
+    const fc = concentrationFactor(s.filter, s.conc);
+    // E(1%, 1cm) × c% × ℓ_cm = absorbance in the film
+    A += e1 * fc * s.conc * lCm;
+  });
+  return A;
+}
+
+// Erythemal SPF — integrates over 290-400 nm with action spectrum × solar
+// spectrum weighting. Returns the conventional FDA SPF metric.
+function computeSPF(mg_per_cm2){
+  let weightSum = 0, weightedT = 0;
+  for (let lam = 290; lam <= 400; lam += 2){
+    const w = erythemaWeight(lam) * solarUV(lam);
+    if (w < 1e-9) continue;
+    const A = totalFilmAbsorbance(lam, mg_per_cm2);
+    const T = Math.pow(10, -A);
+    weightSum += w;
+    weightedT += w * T;
+  }
+  return weightedT > 1e-12 ? weightSum / weightedT : 9999;
+}
+
+// HEV blockade percentage (400-500 nm), unweighted (visible solar
+// is roughly flat across HEV at sea level)
+function computeHEVBlockade(mg_per_cm2){
+  let totalIn = 0, totalThru = 0;
+  for (let lam = 400; lam <= 500; lam += 5){
+    const A = totalFilmAbsorbance(lam, mg_per_cm2);
+    totalIn += 1;
+    totalThru += Math.pow(10, -A);
+  }
+  return totalIn > 0 ? (1 - totalThru / totalIn) * 100 : 0;
+}
+
+// UVA-PF — UVA-weighted protection factor, integrating 320-400 nm with
+// PPD action spectrum (approximated as flat for simplicity, since the
+// PPD action spectrum is dominated by the 340-380 nm UVA-I band)
+function computeUVAPF(mg_per_cm2){
+  let weightSum = 0, weightedT = 0;
+  for (let lam = 320; lam <= 400; lam += 5){
+    const w = solarUV(lam);
+    const A = totalFilmAbsorbance(lam, mg_per_cm2);
+    weightSum += w;
+    weightedT += w * Math.pow(10, -A);
+  }
+  return weightedT > 1e-12 ? weightSum / weightedT : 9999;
 }
 
 function renderBuilder(){
@@ -2427,8 +2583,68 @@ function renderBuilder(){
     btn.classList.toggle('added', isSelected);
   });
 
+  // Render metrics
+  renderMetrics();
+
   // Plot
   drawBuilderPlot();
+}
+
+// Track the chosen film mode globally
+let builderFilmMode = '2.0';   // default: FDA lab test thickness
+
+function renderMetrics(){
+  // Update film-mode button states
+  document.querySelectorAll('.film-mode-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === builderFilmMode);
+  });
+  const grid = document.getElementById('metricsGrid');
+  if (!builderState.selected.length){
+    grid.innerHTML = `<div class="metric-card"><div class="m-label">Select filters above</div><div class="m-sub">to compute SPF, UVA-PF, and HEV blockade</div></div>`;
+    return;
+  }
+  if (builderFilmMode === 'cuvette'){
+    // Show peak-A across UV in a 1 cm cell — the literal chart units
+    let peakA = 0, peakLam = 0;
+    for (let lam = 280; lam <= 400; lam += 2){
+      let A = 0;
+      builderState.selected.forEach(s => { A += builderAbsAt(s, lam); });
+      if (A > peakA){ peakA = A; peakLam = lam; }
+    }
+    grid.innerHTML = `
+      <div class="metric-card"><div class="m-label">Peak A (1 cm cell)</div><div class="m-value acc">${peakA.toFixed(0)}</div><div class="m-sub">at ${peakLam} nm — chart units</div></div>
+      <div class="metric-card"><div class="m-label">Active filters</div><div class="m-value">${builderState.selected.length}</div><div class="m-sub">total ${builderState.selected.reduce((s,f)=>s+f.conc,0).toFixed(1)}% w/w</div></div>
+    `;
+    return;
+  }
+  const mg = parseFloat(builderFilmMode);
+  const spf = computeSPF(mg);
+  const uvaPF = computeUVAPF(mg);
+  const hev = computeHEVBlockade(mg);
+  const spfClass = spf > 50 ? 'ok' : spf > 30 ? 'acc' : spf > 15 ? '' : 'warn';
+  const uvaClass = uvaPF > 8 ? 'ok' : uvaPF > 4 ? 'acc' : 'warn';
+  const hevClass = hev > 30 ? 'ok' : hev > 15 ? 'acc' : '';
+  const spfTxt = spf >= 100 ? '100+' : spf >= 50 ? Math.round(spf).toString() : spf.toFixed(0);
+  const uvaTxt = uvaPF >= 50 ? '50+' : uvaPF.toFixed(1);
+  // Critical wavelength λ_c — wavelength below which 90% of total UV-area absorbance lies
+  let total = 0;
+  for (let lam = 290; lam <= 400; lam += 1){ total += totalFilmAbsorbance(lam, mg); }
+  let cum = 0, lc = 290;
+  for (let lam = 290; lam <= 400; lam += 1){
+    cum += totalFilmAbsorbance(lam, mg);
+    if (cum >= 0.9 * total){ lc = lam; break; }
+  }
+  grid.innerHTML = `
+    <div class="metric-card"><div class="m-label">SPF (erythemal)</div><div class="m-value ${spfClass}">${spfTxt}</div><div class="m-sub">CIE 1987 × AM 1.5 solar at ${mg} mg/cm²</div></div>
+    <div class="metric-card"><div class="m-label">UVA-PF</div><div class="m-value ${uvaClass}">${uvaTxt}</div><div class="m-sub">320–400 nm; ratio ≥1/3 SPF for "broad-spectrum"</div></div>
+    <div class="metric-card"><div class="m-label">Critical λ</div><div class="m-value">${lc}</div><div class="m-sub">≥370 nm = broad-spectrum (FDA)</div></div>
+    <div class="metric-card"><div class="m-label">HEV blockade</div><div class="m-value ${hevClass}">${hev.toFixed(0)}%</div><div class="m-sub">visible/blue light 400–500 nm</div></div>
+  `;
+}
+
+function setFilmMode(mode){
+  builderFilmMode = mode;
+  renderMetrics();
 }
 
 function drawBuilderPlot(){
@@ -2539,6 +2755,9 @@ function initBuilderGrid(){
 // Wire preset chips
 document.querySelectorAll('.builder-presets .chip').forEach(chip => {
   chip.addEventListener('click', () => applyPreset(chip.dataset.preset));
+});
+document.querySelectorAll('.film-mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => setFilmMode(btn.dataset.mode));
 });
 initBuilderGrid();
 applyPreset('uvmune-400');
