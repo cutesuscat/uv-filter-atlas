@@ -1911,6 +1911,71 @@ function solventCell(s){
   return `<span class="info-tip" tabindex="0">${s}<span class="info-bubble">${note}</span></span>`;
 }
 
+// =========================================
+// Spectrum data: real (λ, E1%) data points extracted from peer-reviewed
+// papers and manufacturer datasheets. See data/spectrum-data.json and
+// research/verification/spectra-verification-*.md.
+// Falls back to parametric Gaussian/Tauc model if data is missing.
+// =========================================
+let SPECTRUM_DATA = {};
+let SPECTRUM_DATA_LOADED = false;
+const __rerenderCallbacks = [];
+function onSpectrumDataReady(cb){ if (SPECTRUM_DATA_LOADED) cb(); else __rerenderCallbacks.push(cb); }
+
+fetch('data/spectrum-data.json')
+  .then(r => r.json())
+  .then(json => {
+    Object.entries(json.filters || {}).forEach(([k, v]) => { SPECTRUM_DATA[parseInt(k, 10)] = v; });
+    SPECTRUM_DATA_LOADED = true;
+    __rerenderCallbacks.forEach(cb => { try { cb(); } catch (e) { console.warn(e); } });
+  })
+  .catch(err => { console.warn('Spectrum data not loaded — falling back to parametric curves:', err); });
+
+// Linear interpolation between (λ, E1%) data points.
+function interpolatePoints(points, lam){
+  if (!points || !points.length) return null;
+  if (lam <= points[0][0]) return points[0][1];
+  if (lam >= points[points.length-1][0]) return points[points.length-1][1];
+  for (let i = 1; i < points.length; i++){
+    if (points[i][0] >= lam){
+      const [x1, y1] = points[i-1];
+      const [x2, y2] = points[i];
+      const t = (lam - x1) / (x2 - x1);
+      return y1 + t * (y2 - y1);
+    }
+  }
+  return points[points.length-1][1];
+}
+
+// Return E(1%, 1cm) at a wavelength for a filter.
+// Prefers real data points; falls back to parametric × peak-E1%.
+function e1At(f, lam){
+  const data = SPECTRUM_DATA[f.idx];
+  if (data && data.points && data.points.length){
+    const v = interpolatePoints(data.points, lam);
+    if (v != null) return Math.max(0, v);
+  }
+  const e1Eff = f.e1 || (f.epsilon ? f.epsilon * 10 / f.mw : null) ||
+                (f.epsilonEff ? f.epsilonEff * 10 / f.mw : 0);
+  return relAbsorbance(f, lam) * e1Eff;
+}
+
+// What confidence + source backs the spectrum data?
+function spectrumSourceMeta(f){
+  const data = SPECTRUM_DATA[f.idx];
+  if (data){
+    return {
+      kind: 'data',
+      confidence: data.method_confidence || 'C3',
+      method: data.method || 'unspecified',
+      source: data.source || '',
+      url: data.url || '',
+      pointCount: (data.points && data.points.length) || 0,
+    };
+  }
+  return { kind: 'model', confidence: 'C5', method: 'parametric Gaussian / Tauc model', source: '', url: '', pointCount: 0 };
+}
+
 // Returns relative absorbance (0–1, peak=1) at a wavelength.
 // Semiconductors (ZnO, TiO₂, iron oxides) use a literature-grounded
 // Tauc edge + Urbach tail model:
@@ -1969,23 +2034,36 @@ function spectrumSVG(f){
   const yLogTicks = [1, 2, 3, 4];
   const yLogLabels = ['10¹', '10²', '10³', '10⁴'];
 
-  const yLogAt = (relAbs) => {
-    const eff = relAbs * (e1Effective || 1);
-    if (eff < Math.pow(10, yLogMin)) return padT + innerH;
-    const logV = Math.min(yLogMax, Math.log10(eff));
+  // Y position for an absolute E1% value (preferred; used when we have data points)
+  const yAbsLogAt = (e1Value) => {
+    if (!e1Value || e1Value < Math.pow(10, yLogMin)) return padT + innerH;
+    const logV = Math.min(yLogMax, Math.log10(e1Value));
     return padT + (1 - (logV - yLogMin) / (yLogMax - yLogMin)) * innerH;
   };
+  // Backward-compat: scaled by peak E1% if only relative absorbance is known
+  const yLogAt = (relAbs) => yAbsLogAt(relAbs * (e1Effective || 1));
   const yLinAt = (relAbs) => padT + (1 - relAbs * 0.95) * innerH;
 
-  // Build curve points
+  // Build curve points — prefer interpolated literature data points,
+  // fall back to parametric (Gaussian / Tauc) model.
+  const sourceMeta = spectrumSourceMeta(f);
   const points = [];
   for (let lam = xMin; lam <= xMax; lam += 1){
-    const a = relAbsorbance(f, lam);
-    points.push([xAt(lam), useLogY ? yLogAt(a) : yLinAt(a)]);
+    const e1Val = e1At(f, lam);
+    points.push([xAt(lam), useLogY ? yAbsLogAt(e1Val) : yLinAt((e1Val || 0) / (e1Effective || 1))]);
   }
   const baselineY = padT + innerH;
   const curvePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
   const fillPath = curvePath + ` L${xAt(xMax).toFixed(1)} ${baselineY} L${xAt(xMin).toFixed(1)} ${baselineY} Z`;
+
+  // Mark each real data point (when available) as small dots so it's visible
+  // that the curve is anchored to literature values rather than parametric
+  const dataDots = (sourceMeta.kind === 'data' && SPECTRUM_DATA[f.idx] && SPECTRUM_DATA[f.idx].points)
+    ? SPECTRUM_DATA[f.idx].points
+        .filter(([lam,_]) => lam >= xMin && lam <= xMax)
+        .map(([lam, e1v]) => `<circle cx="${xAt(lam).toFixed(1)}" cy="${yAbsLogAt(e1v).toFixed(1)}" r="2" fill="var(--accent)" opacity="0.7"/>`)
+        .join('')
+    : '';
 
   // UV / visible band rectangles
   const bandSpec = extendedRange
@@ -2053,11 +2131,13 @@ function spectrumSVG(f){
     : `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">Relative attenuation</text>`;
   const xLabel = `<text class="axis-label" x="${(padL+innerW/2).toFixed(1)}" y="${(padT+innerH+26).toFixed(1)}" text-anchor="middle">Wavelength (nm)</text>`;
 
-  // Confidence: log Y is C3 for single-Gaussian, C2 for multi-peak; sigmoid is C2 for ZnO/TiO2, C3 iron oxide
-  const curveType = (f.category === 'inorganic' || f.category === 'iron-oxide') ? 'sigmoid' : 'gauss';
-  const confLevel = (f.category === 'iron-oxide') ? 'C3' :
-                    (f.category === 'inorganic') ? 'C2' :
-                    (peaks.length > 1) ? 'C2' : 'C3';
+  // Confidence + curve type from data source (real points if available, else parametric)
+  const curveType = sourceMeta.kind === 'data'
+    ? `interpolated from ${sourceMeta.pointCount} literature data points`
+    : ((f.category === 'inorganic' || f.category === 'iron-oxide')
+        ? 'parametric Tauc band-edge + Urbach tail'
+        : ((f.lambda && f.lambda.length > 1) ? 'parametric: sum of Gaussians at the published peaks' : 'parametric: single Gaussian at the published λmax'));
+  const confLevel = sourceMeta.confidence;
 
   return {
     svg: `<svg class="spec-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-label="Absorption spectrum of ${f.inci}">
@@ -2066,6 +2146,7 @@ function spectrumSVG(f){
       ${peakMarkers}
       <path class="curve-fill" d="${fillPath}"/>
       <path class="curve" d="${curvePath}"/>
+      ${dataDots}
       <line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>
       <line class="axis-line" x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT+innerH}"/>
       ${xTicks}
@@ -2075,11 +2156,13 @@ function spectrumSVG(f){
     </svg>`,
     confidence: confLevel,
     curveType,
-    useLogY
+    useLogY,
+    sourceMeta
   };
 }
 
 function openDetail(f){
+  window.__currentFilter = f;
   const stabClass = 'stab-' + f.stab;
   const rangeTagsHtml = f.ranges.map(r => {
     const cls = 'range-' + r.toLowerCase().replace('-','');
@@ -2103,8 +2186,11 @@ function openDetail(f){
     ${spec.svg}
     <div class="spec-caption">
       <span class="info-tip" tabindex="0">Y axis = E(1%, 1cm)<span class="info-bubble">${methodologyBubble(f)}</span></span>
-      · curve = ${spec.curveType === 'sigmoid' ? 'Tauc band-edge + Urbach tail (semiconductor)' : (f.lambda && f.lambda.length>1) ? 'sum of Gaussians at the published peaks' : 'single Gaussian at the published λmax'}.
+      · ${spec.curveType}.
       <span class="conf-tag ${spec.confidence.toLowerCase()}">${spec.confidence}</span>
+      ${spec.sourceMeta && spec.sourceMeta.kind === 'data'
+        ? `<div style="margin-top:6px;font-size:0.7rem">Data: ${spec.sourceMeta.source}${spec.sourceMeta.url ? ` · <a href="${spec.sourceMeta.url}" target="_blank" rel="noopener" style="color:var(--accent)">verify ↗</a>` : ''}</div>`
+        : `<div style="margin-top:6px;font-size:0.7rem;color:var(--muted)">No primary published spectrum located — curve is a parametric estimate from λmax + bandwidth.</div>`}
     </div>
     <div class="halflife-row">
       <div>
@@ -2247,15 +2333,11 @@ function applyPreset(name){
 
 // Compute absorbance contribution at λ in a 1 cm path-length cell for a filter
 // at given concentration (% w/w). Uses E(1%, 1cm) directly:
-//   A(λ) = E(1%, 1cm) × (conc / 1%)  × rel_absorbance(λ)
-// At conc% = 1% the contribution at λmax equals E1%. Linear scaling is exact under
-// Beer-Lambert; for high-conc semiconductor particulates this becomes an approximation.
+//   A(λ) = E(1%, 1cm)(λ) × concentration%
+// Prefers literature-anchored E1%(λ) data points where available; falls back
+// to parametric peak-E1% × Gaussian/Tauc shape.
 function builderAbsAt(s, lam){
-  const f = s.filter;
-  const rel = relAbsorbance(f, lam);
-  const e1 = f.e1 || (f.epsilon ? f.epsilon * 10 / f.mw : null) ||
-             (f.epsilonEff ? f.epsilonEff * 10 / f.mw : 200);
-  return e1 * s.conc * rel;
+  return e1At(s.filter, lam) * s.conc;
 }
 
 function renderBuilder(){
@@ -2608,6 +2690,17 @@ renderScatter();
 
 // initial render
 renderCards(FILTERS);
+
+// When the spectrum-data JSON finishes loading, re-render so the curves
+// switch from parametric Gaussians to literature-anchored interpolations.
+onSpectrumDataReady(() => {
+  drawBuilderPlot();
+  renderScatter();
+  // If the modal is currently open for some filter, refresh it.
+  if (modal.classList.contains('open') && window.__currentFilter){
+    openDetail(window.__currentFilter);
+  }
+});
 
 </script>
 </body>

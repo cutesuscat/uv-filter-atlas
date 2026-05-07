@@ -1,0 +1,2517 @@
+{
+  "metadata": {
+    "metric": "E(1%, 1cm) \u2014 absorbance of 1% w/w solution at 1 cm path length",
+    "alternative_metric_inorganic": "Calibrated effective E(1%, 1cm) equivalent \u2014 extrapolated from manufacturer film attenuation data; not a true molar coefficient because particulates do not have a meaningful molarity.",
+    "compiled": "2026-05-07",
+    "rendering_notes": "Data points are tuples [wavelength_nm, E_value]. Curves are rendered by linear interpolation between points. Where data is sparse, points come from peer-reviewed papers or manufacturer datasheets cited in spectra-verification-*.md.",
+    "confidence_codes": {
+      "C1": "primary peer-reviewed paper with full digitised spectrum / multiple \u03b5(\u03bb) points",
+      "C2": "primary peer-reviewed / pharmacopoeia / SCCS \u2014 peak \u03b5 confirmed; shape Gaussian",
+      "C3": "manufacturer datasheet \u2014 peak-only E(1%,1cm)",
+      "C4": "digitised approximately from a published figure",
+      "C5": "parametric Gaussian fallback; no detailed spectrum located"
+    }
+  },
+  "filters": {
+    "1": {
+      "inci": "Octinoxate",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C2",
+      "source": "Schmitt/MacManus-Spencer 2015 PPS doi:10.1039/C5PP00074B; Pattanaargson 2006 SOLMAT",
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2015/pp/c5pp00074b",
+      "points": [
+        [
+          280.0,
+          96.7
+        ],
+        [
+          295.0,
+          501.0
+        ],
+        [
+          300.0,
+          671.8
+        ],
+        [
+          304.0,
+          775.0
+        ],
+        [
+          308.0,
+          823.9
+        ],
+        [
+          309.0,
+          826.0
+        ],
+        [
+          311.0,
+          817.6
+        ],
+        [
+          314.0,
+          775.0
+        ],
+        [
+          320.0,
+          606.6
+        ],
+        [
+          325.0,
+          429.9
+        ],
+        [
+          340.0,
+          71.2
+        ]
+      ],
+      "peak_lambda": 309,
+      "peak_E1": 826,
+      "notes": "Trans-OMC in EtOH; cinnamate band. Shape Gaussian about \u03bbmax 309 nm."
+    },
+    "2": {
+      "inci": "Octisalate",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C3",
+      "source": "Tan-Sien-Hee 2020 PCCP D0CP02610G; ACS Omega 2025 5c09234; DSM PARSOL EHS",
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",
+      "points": [
+        [
+          280.0,
+          18.4
+        ],
+        [
+          295.0,
+          126.1
+        ],
+        [
+          299.0,
+          162.0
+        ],
+        [
+          302.0,
+          181.6
+        ],
+        [
+          305.0,
+          191.3
+        ],
+        [
+          306.0,
+          192.0
+        ],
+        [
+          307.0,
+          191.3
+        ],
+        [
+          311.0,
+          176.0
+        ],
+        [
+          315.0,
+          144.9
+        ],
+        [
+          320.0,
+          97.2
+        ],
+        [
+          335.0,
+          10.4
+        ]
+      ],
+      "peak_lambda": 306,
+      "peak_E1": 192,
+      "notes": "Salicylate ESIPT; weak narrow band."
+    },
+    "3": {
+      "inci": "Homosalate",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C2",
+      "source": "Tan-Sien-Hee 2020 PCCP D0CP02610G",
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",
+      "points": [
+        [
+          280.0,
+          12.6
+        ],
+        [
+          295.0,
+          106.2
+        ],
+        [
+          299.0,
+          144.2
+        ],
+        [
+          304.0,
+          180.7
+        ],
+        [
+          307.0,
+          190.3
+        ],
+        [
+          308.0,
+          191.0
+        ],
+        [
+          309.0,
+          190.3
+        ],
+        [
+          312.0,
+          180.7
+        ],
+        [
+          316.0,
+          152.9
+        ],
+        [
+          320.0,
+          115.8
+        ],
+        [
+          335.0,
+          15.2
+        ]
+      ],
+      "peak_lambda": 308,
+      "peak_E1": 191,
+      "notes": "Salicylate; figure 1 of Stavros 2020 anchors \u03bbmax 307\u2013309 nm."
+    },
+    "4": {
+      "inci": "Octocrylene",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C2",
+      "source": "Mturi & Martincigh 2008 JPP-A; ACS Omega 2025",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S101113440800271X",
+      "points": [
+        [
+          280.0,
+          102.5
+        ],
+        [
+          285.0,
+          161.6
+        ],
+        [
+          291.0,
+          241.1
+        ],
+        [
+          297.0,
+          306.5
+        ],
+        [
+          301.0,
+          329.1
+        ],
+        [
+          303.0,
+          332.0
+        ],
+        [
+          305.0,
+          329.1
+        ],
+        [
+          310.0,
+          297.7
+        ],
+        [
+          318.0,
+          201.4
+        ],
+        [
+          325.0,
+          113.2
+        ],
+        [
+          340.0,
+          15.8
+        ]
+      ],
+      "peak_lambda": 303,
+      "peak_E1": 332,
+      "notes": "Cyanodiphenyl-acrylate; broad band 290\u2013360 nm, \u03bbmax 303 nm."
+    },
+    "5": {
+      "inci": "Cinoxate",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C3",
+      "source": "USP / cosmetics-industry data; PubChem CID 5373773",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Cinoxate",
+      "points": [
+        [
+          280.0,
+          111.7
+        ],
+        [
+          295.0,
+          536.1
+        ],
+        [
+          299.0,
+          671.0
+        ],
+        [
+          304.0,
+          792.0
+        ],
+        [
+          307.0,
+          822.9
+        ],
+        [
+          308.0,
+          825.0
+        ],
+        [
+          310.0,
+          816.6
+        ],
+        [
+          314.0,
+          752.6
+        ],
+        [
+          319.0,
+          605.9
+        ],
+        [
+          325.0,
+          394.7
+        ],
+        [
+          340.0,
+          60.5
+        ]
+      ],
+      "peak_lambda": 308,
+      "peak_E1": 825,
+      "notes": "Cinnamate ester analogue of EHMC; near-identical chromophore."
+    },
+    "6": {
+      "inci": "PABA",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "NIST WebBook (Grammaticakis 1951); SCCP/0958/05",
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C150130&Mask=400",
+      "points": [
+        [
+          265.0,
+          377.7
+        ],
+        [
+          271.0,
+          643.3
+        ],
+        [
+          277.0,
+          885.5
+        ],
+        [
+          280.0,
+          959.1
+        ],
+        [
+          281.0,
+          973.4
+        ],
+        [
+          283.0,
+          985.0
+        ],
+        [
+          285.0,
+          973.4
+        ],
+        [
+          289.0,
+          885.5
+        ],
+        [
+          294.0,
+          688.6
+        ],
+        [
+          300.0,
+          418.9
+        ],
+        [
+          315.0,
+          47.6
+        ]
+      ],
+      "peak_lambda": 283,
+      "peak_E1": 985,
+      "notes": "p-aminobenzoate band, \u03bbmax 283 nm in EtOH."
+    },
+    "7": {
+      "inci": "Padimate O",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C3",
+      "source": "Cosmetics Info; PubChem CID 30541; PMC6467356",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6467356/",
+      "points": [
+        [
+          280.0,
+          88.2
+        ],
+        [
+          295.0,
+          532.9
+        ],
+        [
+          300.0,
+          752.0
+        ],
+        [
+          306.0,
+          960.7
+        ],
+        [
+          309.0,
+          1013.6
+        ],
+        [
+          311.0,
+          1024.0
+        ],
+        [
+          312.0,
+          1021.4
+        ],
+        [
+          316.0,
+          960.7
+        ],
+        [
+          320.0,
+          832.8
+        ],
+        [
+          325.0,
+          621.1
+        ],
+        [
+          340.0,
+          119.8
+        ]
+      ],
+      "peak_lambda": 311,
+      "peak_E1": 1024,
+      "notes": "DMA-PABA push-pull chromophore; \u03b5 widely cited 27,000\u201330,000."
+    },
+    "8": {
+      "inci": "Ensulizole",
+      "solvent": "H2O (pH\u22657)",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C2",
+      "source": "SCCP/0939/05; ChemicalBook (manufacturer specs E(1%)\u2248920\u2013990)",
+      "url": "https://ec.europa.eu/health/ph_risk/committees/04_sccp/docs/sccp_o_079.pdf",
+      "points": [
+        [
+          280.0,
+          169.7
+        ],
+        [
+          285.0,
+          334.0
+        ],
+        [
+          291.0,
+          598.5
+        ],
+        [
+          296.0,
+          804.0
+        ],
+        [
+          300.0,
+          898.4
+        ],
+        [
+          302.0,
+          911.0
+        ],
+        [
+          304.0,
+          898.4
+        ],
+        [
+          308.0,
+          804.0
+        ],
+        [
+          314.0,
+          552.5
+        ],
+        [
+          320.0,
+          295.8
+        ],
+        [
+          335.0,
+          20.8
+        ]
+      ],
+      "peak_lambda": 302,
+      "peak_E1": 911,
+      "notes": "Aqueous PBSA; E(1%, 1cm) 920\u2013990 manufacturer spec."
+    },
+    "9": {
+      "inci": "Polysilicone-15",
+      "solvent": "EtOH",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C3",
+      "source": "DSM PARSOL SLX; SCCS/1359/10",
+      "url": "https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_024.pdf",
+      "points": [
+        [
+          280.0,
+          8.5
+        ],
+        [
+          295.0,
+          74.4
+        ],
+        [
+          301.0,
+          122.3
+        ],
+        [
+          306.0,
+          157.3
+        ],
+        [
+          310.0,
+          172.9
+        ],
+        [
+          312.0,
+          175.0
+        ],
+        [
+          313.0,
+          174.5
+        ],
+        [
+          316.0,
+          166.9
+        ],
+        [
+          321.0,
+          137.7
+        ],
+        [
+          325.0,
+          106.1
+        ],
+        [
+          340.0,
+          17.2
+        ]
+      ],
+      "peak_lambda": 312,
+      "peak_E1": 175,
+      "notes": "Per-chromophore \u03b5; bulk-polymer E(1%,1cm)=160\u2013190 at 312 nm."
+    },
+    "10": {
+      "inci": "Ethylhexyl Triazone",
+      "solvent": "EtOH",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C2",
+      "source": "BASF Uvinul T 150 PRD 30035119; Stein 2014 PPS",
+      "url": "https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Uvinul%C2%AE%20T%20150.pdf",
+      "points": [
+        [
+          280.0,
+          114.9
+        ],
+        [
+          295.0,
+          672.5
+        ],
+        [
+          301.0,
+          1030.4
+        ],
+        [
+          308.0,
+          1384.7
+        ],
+        [
+          312.0,
+          1486.7
+        ],
+        [
+          314.0,
+          1500.0
+        ],
+        [
+          316.0,
+          1486.7
+        ],
+        [
+          319.0,
+          1418.9
+        ],
+        [
+          325.0,
+          1146.3
+        ],
+        [
+          330.0,
+          849.2
+        ],
+        [
+          345.0,
+          177.3
+        ]
+      ],
+      "peak_lambda": 314,
+      "peak_E1": 1500,
+      "notes": "C3-symmetric triazine; E(1%,1cm)\u22481500 at 314 nm."
+    },
+    "11": {
+      "inci": "4-Methylbenzylidene Camphor",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "ScienceDirect Topic 4-MBC (E1%/1cm = 954 at 300 nm); MDPI Cosmetics 2023",
+      "url": "https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/3-4-methylbenzylidene-camphor",
+      "points": [
+        [
+          280.0,
+          240.1
+        ],
+        [
+          285.0,
+          440.9
+        ],
+        [
+          290.0,
+          680.5
+        ],
+        [
+          295.0,
+          882.9
+        ],
+        [
+          298.0,
+          949.7
+        ],
+        [
+          300.0,
+          963.0
+        ],
+        [
+          302.0,
+          949.7
+        ],
+        [
+          307.0,
+          812.3
+        ],
+        [
+          313.0,
+          535.5
+        ],
+        [
+          320.0,
+          240.1
+        ],
+        [
+          335.0,
+          13.7
+        ]
+      ],
+      "peak_lambda": 300,
+      "peak_E1": 963,
+      "notes": "Rigid benzylidene-camphor; minimal solvatochromism."
+    },
+    "12": {
+      "inci": "Amiloxate",
+      "solvent": "EtOH/MeOH",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C2",
+      "source": "Symrise Neo Heliopan E1000 (E(1%,1cm) min. 980 at 308 nm in MeOH)",
+      "url": "https://chemspireingredients.com/wp-content/uploads/2021/05/Symrise_Sun_Protection_Brochure_2020.pdf",
+      "points": [
+        [
+          280.0,
+          112.3
+        ],
+        [
+          295.0,
+          582.3
+        ],
+        [
+          300.0,
+          780.8
+        ],
+        [
+          304.0,
+          900.7
+        ],
+        [
+          308.0,
+          957.6
+        ],
+        [
+          309.0,
+          960.0
+        ],
+        [
+          311.0,
+          950.3
+        ],
+        [
+          314.0,
+          900.7
+        ],
+        [
+          320.0,
+          705.0
+        ],
+        [
+          325.0,
+          499.6
+        ],
+        [
+          340.0,
+          82.7
+        ]
+      ],
+      "peak_lambda": 309,
+      "peak_E1": 960,
+      "notes": "Cinnamate ester isomer of EHMC; same chromophore."
+    },
+    "13": {
+      "inci": "Trolamine Salicylate",
+      "solvent": "H2O",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C2",
+      "source": "Mol 2021 Phenolic Absorption Coefficients; FDA OTC monograph 21 CFR 352",
+      "url": "https://www.mdpi.com/1420-3049/26/15/4656",
+      "points": [
+        [
+          280.0,
+          30.1
+        ],
+        [
+          286.0,
+          63.4
+        ],
+        [
+          292.0,
+          99.1
+        ],
+        [
+          296.0,
+          113.1
+        ],
+        [
+          298.0,
+          115.0
+        ],
+        [
+          300.0,
+          113.1
+        ],
+        [
+          304.0,
+          99.1
+        ],
+        [
+          309.0,
+          69.8
+        ],
+        [
+          315.0,
+          34.8
+        ],
+        [
+          330.0,
+          1.7
+        ]
+      ],
+      "peak_lambda": 298,
+      "peak_E1": 115,
+      "notes": "Salicylate anion in water; \u03b5 \u2248 3,800 (salicylic acid 300 nm reference)."
+    },
+    "14": {
+      "inci": "Avobenzone",
+      "solvent": "MeOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C1",
+      "source": "Mturi & Martincigh 2008 JPP-A 200:410; Bonda & Lott 2017",
+      "url": "https://www.cansa.org.za/files/2009/10/Prof_Martincigh_-_photochemistry_and_photobiology.pdf",
+      "points": [
+        [
+          245.0,
+          331.6
+        ],
+        [
+          255.0,
+          712.9
+        ],
+        [
+          265.0,
+          920.0
+        ],
+        [
+          275.0,
+          712.9
+        ],
+        [
+          285.0,
+          332.0
+        ],
+        [
+          310.0,
+          42.6
+        ],
+        [
+          325.0,
+          232.8
+        ],
+        [
+          336.0,
+          572.2
+        ],
+        [
+          346.0,
+          937.5
+        ],
+        [
+          354.0,
+          1114.4
+        ],
+        [
+          357.0,
+          1130.0
+        ],
+        [
+          361.0,
+          1102.4
+        ],
+        [
+          370.0,
+          870.6
+        ],
+        [
+          382.0,
+          430.7
+        ],
+        [
+          395.0,
+          121.7
+        ],
+        [
+          410.0,
+          14.8
+        ]
+      ],
+      "peak_lambda": 357,
+      "peak_E1": 1130,
+      "notes": "Enol band in MeOH; keto band ~265 nm with \u03b5\u224828,400 (added)."
+    },
+    "15": {
+      "inci": "Meradimate",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C1",
+      "source": "Cantrell & McGarvey 2000 JPP-B 55:92 (\u03b5=5,800 at 338 nm in EtOH)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10911723/",
+      "points": [
+        [
+          280.0,
+          1.2
+        ],
+        [
+          285.0,
+          2.8
+        ],
+        [
+          302.0,
+          28.4
+        ],
+        [
+          320.0,
+          127.4
+        ],
+        [
+          333.0,
+          202.1
+        ],
+        [
+          338.0,
+          210.0
+        ],
+        [
+          340.0,
+          208.7
+        ],
+        [
+          345.0,
+          194.7
+        ],
+        [
+          353.0,
+          148.4
+        ],
+        [
+          360.0,
+          99.5
+        ],
+        [
+          375.0,
+          25.4
+        ]
+      ],
+      "peak_lambda": 338,
+      "peak_E1": 210,
+      "notes": "Anthranilate ester; broad asymmetric band, weak \u03b5."
+    },
+    "16": {
+      "inci": "DHHB",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C1",
+      "source": "Wang 2023 PPS 22:1875 (\u03b5=39,000 at 354 nm, EtOH)",
+      "url": "https://link.springer.com/article/10.1007/s43630-023-00435-z",
+      "points": [
+        [
+          310.0,
+          87.1
+        ],
+        [
+          325.0,
+          342.5
+        ],
+        [
+          335.0,
+          624.1
+        ],
+        [
+          344.0,
+          864.8
+        ],
+        [
+          351.0,
+          969.0
+        ],
+        [
+          354.0,
+          980.0
+        ],
+        [
+          357.0,
+          969.0
+        ],
+        [
+          364.0,
+          864.8
+        ],
+        [
+          374.0,
+          594.4
+        ],
+        [
+          385.0,
+          294.8
+        ],
+        [
+          400.0,
+          69.6
+        ]
+      ],
+      "peak_lambda": 354,
+      "peak_E1": 980,
+      "notes": "ESIPT-stabilised hydroxybenzoyl benzoate; very broad band."
+    },
+    "17": {
+      "inci": "Bisoctrizole",
+      "solvent": "dispersion (aq)",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C1",
+      "source": "Naumov, Herzog, Abel 2020 JPCA 124:247; BASF Tinosorb M PRD 30075",
+      "url": "https://pubs.acs.org/doi/abs/10.1021/acs.jpca.9b09883",
+      "points": [
+        [
+          275.0,
+          79.4
+        ],
+        [
+          285.0,
+          284.4
+        ],
+        [
+          293.0,
+          546.5
+        ],
+        [
+          299.0,
+          720.3
+        ],
+        [
+          303.0,
+          782.2
+        ],
+        [
+          305.0,
+          790.9
+        ],
+        [
+          307.0,
+          783.9
+        ],
+        [
+          311.0,
+          726.2
+        ],
+        [
+          332.0,
+          273.8
+        ],
+        [
+          354.0,
+          652.3
+        ],
+        [
+          358.0,
+          693.2
+        ],
+        [
+          360.0,
+          698.4
+        ],
+        [
+          362.0,
+          692.8
+        ],
+        [
+          366.0,
+          650.7
+        ],
+        [
+          372.0,
+          526.9
+        ],
+        [
+          395.0,
+          63.8
+        ],
+        [
+          405.0,
+          13.4
+        ]
+      ],
+      "peak_lambda": 340,
+      "peak_E1": 789,
+      "notes": "Dual peak 305 + 360 nm; aqueous dispersion of <200 nm particles."
+    },
+    "18": {
+      "inci": "Iscotrizinol",
+      "solvent": "EtOH",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C2",
+      "source": "3V Sigma Uvasorb HEB; Couteau 2007 PDT",
+      "url": "https://3vsigmausa.com/product/uvasorb-heb/",
+      "points": [
+        [
+          280.0,
+          144.6
+        ],
+        [
+          290.0,
+          517.6
+        ],
+        [
+          297.0,
+          933.1
+        ],
+        [
+          303.0,
+          1267.3
+        ],
+        [
+          308.0,
+          1421.4
+        ],
+        [
+          310.0,
+          1436.0
+        ],
+        [
+          313.0,
+          1403.4
+        ],
+        [
+          320.0,
+          1112.7
+        ],
+        [
+          330.0,
+          517.6
+        ],
+        [
+          340.0,
+          144.6
+        ],
+        [
+          355.0,
+          8.2
+        ]
+      ],
+      "peak_lambda": 310,
+      "peak_E1": 1436,
+      "notes": "Bis-triazine; very narrow strong UVB band."
+    },
+    "19": {
+      "inci": "Bemotrizinol",
+      "solvent": "EtOH",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C1",
+      "source": "BASF Tinosorb S PRD 30481068; Chatelain & Gabard 2001 PP 74:401",
+      "url": "https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Tinosorb%C2%AE%20S.pdf",
+      "points": [
+        [
+          275.0,
+          23.3
+        ],
+        [
+          285.0,
+          138.0
+        ],
+        [
+          298.0,
+          583.5
+        ],
+        [
+          304.0,
+          823.1
+        ],
+        [
+          308.0,
+          932.9
+        ],
+        [
+          310.0,
+          965.4
+        ],
+        [
+          312.0,
+          982.2
+        ],
+        [
+          316.0,
+          974.7
+        ],
+        [
+          326.0,
+          862.9
+        ],
+        [
+          337.0,
+          846.3
+        ],
+        [
+          341.0,
+          844.4
+        ],
+        [
+          343.0,
+          834.7
+        ],
+        [
+          345.0,
+          817.0
+        ],
+        [
+          349.0,
+          755.3
+        ],
+        [
+          355.0,
+          606.0
+        ],
+        [
+          380.0,
+          55.2
+        ],
+        [
+          390.0,
+          10.7
+        ]
+      ],
+      "peak_lambda": 343,
+      "peak_E1": 796,
+      "notes": "Dual peak 310 (UVB) + 343 (UVA-II); E(1%,1cm)\u2248870@310, 800@343 (BASF)."
+    },
+    "20": {
+      "inci": "Ecamsule",
+      "solvent": "H2O (TEA salt)",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "Deflandre & Lang 1988 IJCS 10:53 (\u03b5=47,000 at 345 nm); Damiani reviews",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1600-0781.2008.00365.x",
+      "points": [
+        [
+          310.0,
+          11.9
+        ],
+        [
+          325.0,
+          208.2
+        ],
+        [
+          332.0,
+          464.3
+        ],
+        [
+          338.0,
+          704.4
+        ],
+        [
+          343.0,
+          823.5
+        ],
+        [
+          345.0,
+          835.0
+        ],
+        [
+          347.0,
+          823.5
+        ],
+        [
+          352.0,
+          704.4
+        ],
+        [
+          358.0,
+          464.3
+        ],
+        [
+          365.0,
+          208.2
+        ],
+        [
+          380.0,
+          11.9
+        ]
+      ],
+      "peak_lambda": 345,
+      "peak_E1": 835,
+      "notes": "Bis-camphor sulfonate; whole-molecule \u03b5; narrow UVA-II band."
+    },
+    "21": {
+      "inci": "Drometrizole Trisiloxane",
+      "solvent": "silicone",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C2",
+      "source": "L'Oreal Mexoryl XL; Herzog 2009 PP 85:869",
+      "url": "https://inside-our-products.loreal.com/ingredients/mexorylr-xl",
+      "points": [
+        [
+          275.0,
+          41.2
+        ],
+        [
+          285.0,
+          160.7
+        ],
+        [
+          291.0,
+          273.9
+        ],
+        [
+          297.0,
+          377.9
+        ],
+        [
+          301.0,
+          417.3
+        ],
+        [
+          303.0,
+          423.9
+        ],
+        [
+          305.0,
+          421.5
+        ],
+        [
+          309.0,
+          392.4
+        ],
+        [
+          324.0,
+          242.7
+        ],
+        [
+          338.0,
+          337.8
+        ],
+        [
+          342.0,
+          359.0
+        ],
+        [
+          344.0,
+          360.9
+        ],
+        [
+          346.0,
+          356.1
+        ],
+        [
+          350.0,
+          327.2
+        ],
+        [
+          356.0,
+          248.0
+        ],
+        [
+          370.0,
+          63.8
+        ],
+        [
+          380.0,
+          13.1
+        ]
+      ],
+      "peak_lambda": 344,
+      "peak_E1": 419,
+      "notes": "Dual peak 303 + 344 nm; ESIPT benzotriazole."
+    },
+    "22": {
+      "inci": "Mexoryl 400",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "Marionnet 2021 JID Innov 2:100070 (\u03b5=63,000 at 385 nm); SCCS/1605/19",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2667026721000710",
+      "points": [
+        [
+          340.0,
+          85.9
+        ],
+        [
+          355.0,
+          487.7
+        ],
+        [
+          365.0,
+          1055.1
+        ],
+        [
+          375.0,
+          1676.3
+        ],
+        [
+          382.0,
+          1929.0
+        ],
+        [
+          385.0,
+          1956.0
+        ],
+        [
+          388.0,
+          1929.0
+        ],
+        [
+          395.0,
+          1676.3
+        ],
+        [
+          405.0,
+          1055.1
+        ],
+        [
+          415.0,
+          487.7
+        ],
+        [
+          430.0,
+          85.9
+        ]
+      ],
+      "peak_lambda": 385,
+      "peak_E1": 1956,
+      "notes": "Cyclic merocyanine; deepest UVA-I band."
+    },
+    "23": {
+      "inci": "Tris-Biphenyl Triazine",
+      "solvent": "THF (monomer)",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C1",
+      "source": "Naumov, Herzog, Abel 2023 PPS 22:2143 (\u03b5\u224880,000 at 310 nm); BASF Tinosorb A2B",
+      "url": "https://link.springer.com/article/10.1007/s43630-023-00436-y",
+      "points": [
+        [
+          275.0,
+          66.3
+        ],
+        [
+          285.0,
+          307.7
+        ],
+        [
+          298.0,
+          1070.0
+        ],
+        [
+          304.0,
+          1438.6
+        ],
+        [
+          308.0,
+          1596.4
+        ],
+        [
+          310.0,
+          1637.6
+        ],
+        [
+          312.0,
+          1651.8
+        ],
+        [
+          316.0,
+          1604.1
+        ],
+        [
+          325.0,
+          1262.1
+        ],
+        [
+          334.0,
+          909.9
+        ],
+        [
+          338.0,
+          797.7
+        ],
+        [
+          340.0,
+          749.8
+        ],
+        [
+          342.0,
+          705.5
+        ],
+        [
+          346.0,
+          622.1
+        ],
+        [
+          352.0,
+          497.0
+        ],
+        [
+          355.0,
+          432.5
+        ],
+        [
+          365.0,
+          229.4
+        ]
+      ],
+      "peak_lambda": 310,
+      "peak_E1": 1488,
+      "notes": "Tris-biphenyl triazine monomer; UVB peak with UVA-II shoulder ~340 nm."
+    },
+    "24": {
+      "inci": "Bisdisulizole Disodium",
+      "solvent": "H2O",
+      "method": "manufacturer_datasheet",
+      "method_confidence": "C2",
+      "source": "Symrise Neo Heliopan AP (E(1%,1cm)\u2248770\u2013800 at 335 nm)",
+      "url": "https://www.ulprospector.com/en/na/PersonalCare/Detail/3030/210580/Neo-Heliopan-AP",
+      "points": [
+        [
+          300.0,
+          4.9
+        ],
+        [
+          315.0,
+          147.6
+        ],
+        [
+          322.0,
+          383.5
+        ],
+        [
+          328.0,
+          629.7
+        ],
+        [
+          333.0,
+          758.4
+        ],
+        [
+          335.0,
+          771.0
+        ],
+        [
+          337.0,
+          758.4
+        ],
+        [
+          342.0,
+          629.7
+        ],
+        [
+          348.0,
+          383.5
+        ],
+        [
+          355.0,
+          147.6
+        ],
+        [
+          370.0,
+          4.9
+        ]
+      ],
+      "peak_lambda": 335,
+      "peak_E1": 771,
+      "notes": "Disodium tetrasulfonate; rigid bis-benzimidazole; narrow band."
+    },
+    "25": {
+      "inci": "Oxybenzone",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "Kumasaka 2014 PP 90:727; SCCS/1625/20; Mturi 2008 (EtOH spectra)",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/php.12257",
+      "points": [
+        [
+          265.0,
+          94.9
+        ],
+        [
+          275.0,
+          387.6
+        ],
+        [
+          281.0,
+          608.2
+        ],
+        [
+          285.0,
+          699.1
+        ],
+        [
+          287.0,
+          715.3
+        ],
+        [
+          289.0,
+          710.4
+        ],
+        [
+          293.0,
+          645.9
+        ],
+        [
+          306.0,
+          384.3
+        ],
+        [
+          319.0,
+          529.3
+        ],
+        [
+          323.0,
+          566.5
+        ],
+        [
+          325.0,
+          570.8
+        ],
+        [
+          327.0,
+          564.2
+        ],
+        [
+          331.0,
+          519.3
+        ],
+        [
+          337.0,
+          394.1
+        ],
+        [
+          345.0,
+          205.1
+        ],
+        [
+          355.0,
+          57.3
+        ]
+      ],
+      "peak_lambda": 287,
+      "peak_E1": 701,
+      "notes": "Dual peak 287 (UVB) + 325 (UVA-II); \u03b5(287)\u224816k, \u03b5(325)\u224813k."
+    },
+    "26": {
+      "inci": "Sulisobenzone",
+      "solvent": "H2O",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "Ramos 2015 Environ Int 75:33; PMC8951480",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8951480/",
+      "points": [
+        [
+          265.0,
+          78.8
+        ],
+        [
+          274.0,
+          269.2
+        ],
+        [
+          275.0,
+          296.1
+        ],
+        [
+          280.0,
+          422.0
+        ],
+        [
+          284.0,
+          484.5
+        ],
+        [
+          286.0,
+          495.1
+        ],
+        [
+          288.0,
+          490.9
+        ],
+        [
+          292.0,
+          443.5
+        ],
+        [
+          305.0,
+          238.6
+        ],
+        [
+          318.0,
+          302.6
+        ],
+        [
+          322.0,
+          323.0
+        ],
+        [
+          324.0,
+          325.2
+        ],
+        [
+          326.0,
+          321.4
+        ],
+        [
+          330.0,
+          295.7
+        ],
+        [
+          336.0,
+          224.4
+        ],
+        [
+          345.0,
+          105.2
+        ],
+        [
+          355.0,
+          27.9
+        ]
+      ],
+      "peak_lambda": 286,
+      "peak_E1": 487,
+      "notes": "Sulfonate of BP-3; aqueous dual peak 286 + 324."
+    },
+    "27": {
+      "inci": "Dioxybenzone",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C3",
+      "source": "Liu 2023 ChemEngJ; Beel 2012 JPCA 116:9519",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S221334372302362X",
+      "points": [
+        [
+          260.0,
+          83.1
+        ],
+        [
+          270.0,
+          338.9
+        ],
+        [
+          276.0,
+          530.3
+        ],
+        [
+          280.0,
+          607.0
+        ],
+        [
+          282.0,
+          618.8
+        ],
+        [
+          284.0,
+          611.3
+        ],
+        [
+          288.0,
+          545.3
+        ],
+        [
+          304.0,
+          256.1
+        ],
+        [
+          319.0,
+          488.4
+        ],
+        [
+          323.0,
+          528.2
+        ],
+        [
+          325.0,
+          533.3
+        ],
+        [
+          327.0,
+          527.7
+        ],
+        [
+          331.0,
+          486.3
+        ],
+        [
+          337.0,
+          369.1
+        ],
+        [
+          355.0,
+          53.7
+        ],
+        [
+          365.0,
+          9.0
+        ]
+      ],
+      "peak_lambda": 282,
+      "peak_E1": 614,
+      "notes": "Dual peak 282 + 325; second OH red-shifts UVA peak."
+    },
+    "28": {
+      "inci": "Mexenone",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C5",
+      "source": "Estimated by analogy to BP-3 (no primary spectrum located)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/17244",
+      "points": [
+        [
+          265.0,
+          43.7
+        ],
+        [
+          275.0,
+          228.9
+        ],
+        [
+          278.0,
+          320.6
+        ],
+        [
+          284.0,
+          504.9
+        ],
+        [
+          288.0,
+          583.6
+        ],
+        [
+          290.0,
+          599.7
+        ],
+        [
+          292.0,
+          599.3
+        ],
+        [
+          296.0,
+          556.0
+        ],
+        [
+          308.0,
+          388.3
+        ],
+        [
+          319.0,
+          469.5
+        ],
+        [
+          323.0,
+          496.4
+        ],
+        [
+          325.0,
+          498.7
+        ],
+        [
+          327.0,
+          492.0
+        ],
+        [
+          331.0,
+          452.1
+        ],
+        [
+          337.0,
+          342.9
+        ],
+        [
+          345.0,
+          178.4
+        ],
+        [
+          355.0,
+          49.8
+        ]
+      ],
+      "peak_lambda": 290,
+      "peak_E1": 578,
+      "notes": "BP-10 nearly obsolete; spectrum extrapolated from BP-3."
+    },
+    "29": {
+      "inci": "Zinc Oxide",
+      "solvent": "semiconductor",
+      "method": "computed_from_tauc_urbach",
+      "method_confidence": "C2",
+      "source": "Cole 2016 PPP 32:5; Egerton & Tooley 2012 IJCS 34:117",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",
+      "points": [
+        [
+          280.0,
+          3931.2
+        ],
+        [
+          290.0,
+          3931.2
+        ],
+        [
+          300.0,
+          4620.7
+        ],
+        [
+          310.0,
+          6301.2
+        ],
+        [
+          320.0,
+          7919.4
+        ],
+        [
+          330.0,
+          9172.9
+        ],
+        [
+          340.0,
+          9792.0
+        ],
+        [
+          350.0,
+          9633.4
+        ],
+        [
+          360.0,
+          8734.5
+        ],
+        [
+          365.0,
+          8066.2
+        ],
+        [
+          368.0,
+          7615.1
+        ],
+        [
+          370.0,
+          5870.5
+        ],
+        [
+          375.0,
+          3100.6
+        ],
+        [
+          380.0,
+          1665.3
+        ],
+        [
+          385.0,
+          909.0
+        ],
+        [
+          390.0,
+          504.0
+        ],
+        [
+          400.0,
+          161.9
+        ],
+        [
+          410.0,
+          55.0
+        ]
+      ],
+      "peak_lambda": 368,
+      "peak_E1": 9828,
+      "notes": "Eg=3.37 eV; Urbach Eu\u22480.07 eV; ZnO is a strong absorber, not a reflector (Cole)."
+    },
+    "30": {
+      "inci": "Titanium Dioxide (rutile)",
+      "solvent": "semiconductor",
+      "method": "computed_from_tauc_urbach",
+      "method_confidence": "C2",
+      "source": "Cole 2016 PPP 32:5; Egerton & Tooley 2012; ACC Mater Res 2024",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",
+      "points": [
+        [
+          280.0,
+          8668.2
+        ],
+        [
+          290.0,
+          10630.7
+        ],
+        [
+          300.0,
+          12015.4
+        ],
+        [
+          310.0,
+          12516.0
+        ],
+        [
+          320.0,
+          12015.4
+        ],
+        [
+          330.0,
+          10630.7
+        ],
+        [
+          340.0,
+          8668.2
+        ],
+        [
+          350.0,
+          6514.0
+        ],
+        [
+          360.0,
+          5006.4
+        ],
+        [
+          365.0,
+          5006.4
+        ],
+        [
+          368.0,
+          5006.4
+        ],
+        [
+          370.0,
+          5006.4
+        ],
+        [
+          375.0,
+          5006.4
+        ],
+        [
+          380.0,
+          5006.4
+        ],
+        [
+          385.0,
+          5006.4
+        ],
+        [
+          390.0,
+          5006.4
+        ],
+        [
+          400.0,
+          5006.4
+        ],
+        [
+          410.0,
+          5006.4
+        ],
+        [
+          420.0,
+          3035.3
+        ]
+      ],
+      "peak_lambda": 413,
+      "peak_E1": 12516,
+      "notes": "Eg=3.0 eV (rutile); Urbach Eu\u22480.10 eV; UVB-dominant absorber."
+    },
+    "31": {
+      "inci": "Benzophenone-1",
+      "solvent": "EtOH",
+      "method": "tabulated_E1_at_lambda",
+      "method_confidence": "C2",
+      "source": "Wang 2022 Molecules PMC9737593; Kumasaka 2014",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9737593/",
+      "points": [
+        [
+          265.0,
+          101.2
+        ],
+        [
+          275.0,
+          413.1
+        ],
+        [
+          281.0,
+          648.4
+        ],
+        [
+          285.0,
+          745.8
+        ],
+        [
+          287.0,
+          763.4
+        ],
+        [
+          289.0,
+          758.7
+        ],
+        [
+          293.0,
+          691.7
+        ],
+        [
+          306.0,
+          428.5
+        ],
+        [
+          319.0,
+          607.5
+        ],
+        [
+          323.0,
+          650.9
+        ],
+        [
+          325.0,
+          655.9
+        ],
+        [
+          327.0,
+          648.4
+        ],
+        [
+          331.0,
+          596.9
+        ],
+        [
+          337.0,
+          453.0
+        ],
+        [
+          345.0,
+          235.7
+        ],
+        [
+          355.0,
+          65.8
+        ]
+      ],
+      "peak_lambda": 287,
+      "peak_E1": 747,
+      "notes": "Parent 2,4-dihydroxybenzophenone; classic dual peak."
+    },
+    "32": {
+      "inci": "Iron Oxide Red",
+      "solvent": "crystal",
+      "method": "digitized_from_figure",
+      "method_confidence": "C2",
+      "source": "Marusak 1980 JPCS 41:981; Sherman & Waite 1985 Am Min 70:1262",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/0022369780901055",
+      "points": [
+        [
+          280.0,
+          1315.2
+        ],
+        [
+          300.0,
+          1370.0
+        ],
+        [
+          320.0,
+          1424.8
+        ],
+        [
+          340.0,
+          1479.6
+        ],
+        [
+          360.0,
+          1534.4
+        ],
+        [
+          380.0,
+          1589.2
+        ],
+        [
+          400.0,
+          1644.0
+        ],
+        [
+          420.0,
+          1698.8
+        ],
+        [
+          440.0,
+          1754.6
+        ],
+        [
+          460.0,
+          1823.0
+        ],
+        [
+          480.0,
+          1980.1
+        ],
+        [
+          500.0,
+          2411.6
+        ],
+        [
+          510.0,
+          2743.1
+        ],
+        [
+          520.0,
+          3071.3
+        ],
+        [
+          525.0,
+          3200.6
+        ],
+        [
+          535.0,
+          3329.1
+        ],
+        [
+          540.0,
+          3316.8
+        ],
+        [
+          545.0,
+          3255.5
+        ],
+        [
+          560.0,
+          2881.6
+        ],
+        [
+          580.0,
+          1865.3
+        ],
+        [
+          600.0,
+          1139.9
+        ],
+        [
+          620.0,
+          948.8
+        ],
+        [
+          625.0,
+          977.4
+        ],
+        [
+          640.0,
+          1104.0
+        ],
+        [
+          650.0,
+          1107.2
+        ],
+        [
+          660.0,
+          985.2
+        ],
+        [
+          675.0,
+          634.1
+        ],
+        [
+          680.0,
+          508.1
+        ],
+        [
+          700.0,
+          143.9
+        ],
+        [
+          720.0,
+          23.4
+        ]
+      ],
+      "peak_lambda": 590,
+      "peak_E1": 2192,
+      "notes": "Hematite Eg\u22482.1 eV; d-d bands at 535+650 nm; LMCT dominates UV/blue."
+    },
+    "33": {
+      "inci": "Iron Oxide Yellow",
+      "solvent": "crystal",
+      "method": "digitized_from_figure",
+      "method_confidence": "C2",
+      "source": "Sherman & Waite 1985; Scheinost 1999 CCM 47:156; Morris 1985 JGR",
+      "url": "https://pubs.usgs.gov/publication/70012311",
+      "points": [
+        [
+          280.0,
+          1215.0
+        ],
+        [
+          300.0,
+          1291.2
+        ],
+        [
+          320.0,
+          1367.6
+        ],
+        [
+          340.0,
+          1448.0
+        ],
+        [
+          360.0,
+          1568.1
+        ],
+        [
+          380.0,
+          1876.6
+        ],
+        [
+          400.0,
+          2532.4
+        ],
+        [
+          415.0,
+          3041.4
+        ],
+        [
+          420.0,
+          3144.6
+        ],
+        [
+          425.0,
+          3197.4
+        ],
+        [
+          435.0,
+          3152.1
+        ],
+        [
+          440.0,
+          3071.2
+        ],
+        [
+          450.0,
+          2873.3
+        ],
+        [
+          460.0,
+          2742.6
+        ],
+        [
+          475.0,
+          2610.4
+        ],
+        [
+          480.0,
+          2558.3
+        ],
+        [
+          490.0,
+          2428.0
+        ],
+        [
+          500.0,
+          2188.7
+        ],
+        [
+          510.0,
+          1813.3
+        ],
+        [
+          520.0,
+          1354.4
+        ],
+        [
+          525.0,
+          1123.1
+        ],
+        [
+          540.0,
+          544.4
+        ],
+        [
+          560.0,
+          154.7
+        ],
+        [
+          580.0,
+          41.4
+        ],
+        [
+          600.0,
+          13.3
+        ],
+        [
+          620.0,
+          4.8
+        ],
+        [
+          640.0,
+          1.8
+        ],
+        [
+          660.0,
+          0.6
+        ],
+        [
+          680.0,
+          0.2
+        ],
+        [
+          700.0,
+          0.1
+        ],
+        [
+          720.0,
+          0.0
+        ]
+      ],
+      "peak_lambda": 496,
+      "peak_E1": 2025,
+      "notes": "Goethite Eg\u22482.5 eV; bands at 425/500 nm; weaker LMCT than hematite."
+    },
+    "34": {
+      "inci": "Iron Oxide Black",
+      "solvent": "crystal",
+      "method": "digitized_from_figure",
+      "method_confidence": "C2",
+      "source": "Schlegel 1980 PhilMag B 42:419; Morris 1985 JGR 90:3126",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/01418638008221885",
+      "points": [
+        [
+          280.0,
+          2592.0
+        ],
+        [
+          300.0,
+          2592.0
+        ],
+        [
+          320.0,
+          2592.0
+        ],
+        [
+          340.0,
+          2592.0
+        ],
+        [
+          360.0,
+          2592.0
+        ],
+        [
+          380.0,
+          2592.0
+        ],
+        [
+          400.0,
+          2592.0
+        ],
+        [
+          440.0,
+          2540.2
+        ],
+        [
+          480.0,
+          2488.3
+        ],
+        [
+          520.0,
+          2436.5
+        ],
+        [
+          560.0,
+          2384.6
+        ],
+        [
+          600.0,
+          2332.8
+        ],
+        [
+          640.0,
+          2203.2
+        ],
+        [
+          680.0,
+          2073.6
+        ],
+        [
+          720.0,
+          1944.0
+        ],
+        [
+          760.0,
+          1814.4
+        ]
+      ],
+      "peak_lambda": 600,
+      "peak_E1": 2592,
+      "notes": "Magnetite Fe2+/Fe3+ inverse spinel; Eg\u22480.2 eV; nearly flat across UV-VIS-NIR."
+    },
+    "35": {
+      "inci": "3-Benzylidene Camphor",
+      "solvent": "EtOH",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C3",
+      "source": "Schauder & Ippen 1997; ScienceDirect Topic (analog 4-MBC \u03b5=24,500@300)",
+      "url": "https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/3-4-methylbenzylidene-camphor",
+      "points": [
+        [
+          280.0,
+          283.7
+        ],
+        [
+          286.0,
+          530.1
+        ],
+        [
+          292.0,
+          771.3
+        ],
+        [
+          296.0,
+          861.9
+        ],
+        [
+          298.0,
+          874.0
+        ],
+        [
+          301.0,
+          847.1
+        ],
+        [
+          307.0,
+          659.7
+        ],
+        [
+          316.0,
+          283.7
+        ],
+        [
+          325.0,
+          69.5
+        ],
+        [
+          340.0,
+          1.9
+        ]
+      ],
+      "peak_lambda": 298,
+      "peak_E1": 874,
+      "notes": "3-BC parent; analogue of 4-MBC, banned in EU since 2015."
+    },
+    "36": {
+      "inci": "Benzylidene Camphor Sulfonic Acid",
+      "solvent": "H2O",
+      "method": "computed_from_epsilon",
+      "method_confidence": "C5",
+      "source": "Sigma-Aldrich product 97085; analogous to 3-BC (no primary spectrum)",
+      "url": "https://www.sigmaaldrich.com/US/en/product/sial/97085",
+      "points": [
+        [
+          280.0,
+          363.5
+        ],
+        [
+          285.0,
+          542.0
+        ],
+        [
+          289.0,
+          658.3
+        ],
+        [
+          293.0,
+          715.5
+        ],
+        [
+          294.0,
+          718.0
+        ],
+        [
+          297.0,
+          695.9
+        ],
+        [
+          303.0,
+          542.0
+        ],
+        [
+          311.0,
+          263.2
+        ],
+        [
+          320.0,
+          68.7
+        ],
+        [
+          335.0,
+          2.1
+        ]
+      ],
+      "peak_lambda": 294,
+      "peak_E1": 718,
+      "notes": "Water-soluble sulfonate analogue of 3-BC; same chromophore."
+    }
+  }
+}
