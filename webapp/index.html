@@ -922,7 +922,7 @@
       <div class="section-num">05</div>
       <div>
         <div class="section-title">Spectrum Builder — How Filters Combine</div>
-        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them. Each filter contributes a Gaussian (or sigmoid for inorganics) to the combined absorbance, weighted by ε and concentration. The bold curve is the sum — that's what the skin sees.</div>
+        <div class="section-sub">Real sunscreens stack 4–7 filters at different concentrations to fill the gap between UVB and UVA-I. Pick a preset or click filters in the legend to add them; drag the sliders to change concentrations. <span class="info-tip" tabindex="0">Math &amp; methodology<span class="info-bubble">Each filter contributes <strong>E(1%, 1cm) × concentration% × rel_absorbance(λ)</strong> at every wavelength. Beer-Lambert says absorbances add, so the bold curve is the sum across all selected filters — that's what the skin sees. E(1%, 1cm) is the cosmetics-industry-standard metric: the absorbance of a 1% w/w solution at 1 cm path length, as reported in BASF/DSM/Symrise/3V Sigma datasheets. Linear stacking is exact under Beer-Lambert; for high-load semiconductor particulates it becomes an approximation.</span></span>.</div>
       </div>
     </div>
     <div class="builder-card">
@@ -1867,6 +1867,22 @@ const SPECTRUM_REFS = {
   ],
 };
 
+// Methodology explainer for the Y-axis (E(1%, 1cm)) — shown as a hover bubble.
+function methodologyBubble(f){
+  const isOrganic = !!f.epsilon;
+  if (isOrganic){
+    const e1 = f.e1 || Math.round(f.epsilon * 10 / f.mw);
+    return `<strong>E(1%, 1cm)</strong> = the absorbance of a 1% w/w solution at 1 cm path length — the cosmetics-industry-standard metric, reported by BASF/DSM/Symrise on their datasheets. ` +
+      `Computed as ε × 10 / MW. For ${f.inci}: ε = ${f.epsilon.toLocaleString()} M⁻¹cm⁻¹, MW = ${f.mw} g/mol → E1% ≈ ${e1}. ` +
+      `On log scale, salicylates (~190) are visibly weaker than EHT (~1640).`;
+  }
+  if (f.epsilonEff){
+    const e1 = Math.round(f.epsilonEff * 10 / f.mw);
+    return `<strong>Effective E(1%, 1cm)</strong> for ${f.inci}: a calibrated equivalent (~${e1}) — particulate semiconductors don't have a true molarity, so this is back-derived from manufacturer film attenuation data so the curve sits comparably with organic filters on the same axis. The shape comes from a Tauc band-edge + Urbach tail model fit to literature reflectance / mass-extinction data.`;
+  }
+  return `Relative attenuation; absolute scale not assigned for this filter.`;
+}
+
 // Render a block of literature references for verifying the absorption spectrum.
 // Each filter's `spectrumRefs` is an array of {label, citation, url} objects.
 function spectrumRefsBlock(f){
@@ -1936,20 +1952,25 @@ function spectrumSVG(f){
   const innerH = H - padT - padB;
   const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
 
-  // Y-axis: log scale of effective ε (M⁻¹·cm⁻¹).
-  // Organics: ε is the molar extinction coefficient at λmax.
-  // Inorganics: epsilonEff is a calibrated effective coefficient that lets
-  // the semiconductor edge appear on the same axis (the lattice doesn't
-  // have a "molar ε" in the same sense — we use mass-extinction × MW).
-  const effEps = f.epsilon || f.epsilonEff;
-  const useLogY = !!effEps;
-  const yLogMin = 1.0;   // 10¹ = 10
-  const yLogMax = 5.3;   // ~2 × 10⁵
-  const yLogTicks = [1, 2, 3, 4, 5];
-  const yLogLabels = ['10¹', '10²', '10³', '10⁴', '10⁵'];
+  // Y-axis: log scale of E(1%, 1cm) — the cosmetics-industry-standard
+  // metric. E1% is the absorbance of a 1% w/w solution at 1 cm path:
+  //   A_1cm(1%) = ε × c(M) × 1 cm,  where c = 10/MW for 1% w/v
+  //   ⇒ E(1%, 1cm) = ε × 10 / MW
+  // For organics, derived from the published ε. For inorganics
+  // (particulates without a meaningful molarity), a calibrated
+  // effective E1% is computed from epsilonEff × 10 / MW; this is
+  // labelled separately in the Y-axis tooltip.
+  const e1Effective = f.e1 || (f.epsilon ? Math.round(f.epsilon * 10 / f.mw) : null) ||
+                      (f.epsilonEff ? Math.round(f.epsilonEff * 10 / f.mw) : null);
+  const useLogY = !!e1Effective;
+  const isOrganic = !!f.epsilon;
+  const yLogMin = 1.0;   // E1% = 10
+  const yLogMax = 4.3;   // E1% ≈ 20,000 (covers all filters incl. inorganics)
+  const yLogTicks = [1, 2, 3, 4];
+  const yLogLabels = ['10¹', '10²', '10³', '10⁴'];
 
   const yLogAt = (relAbs) => {
-    const eff = relAbs * (effEps || 1);
+    const eff = relAbs * (e1Effective || 1);
     if (eff < Math.pow(10, yLogMin)) return padT + innerH;
     const logV = Math.min(yLogMax, Math.log10(eff));
     return padT + (1 - (logV - yLogMin) / (yLogMax - yLogMin)) * innerH;
@@ -2024,8 +2045,9 @@ function spectrumSVG(f){
            `<text class="peak-label" x="${x}" y="${padT-4}" text-anchor="middle">${p} nm</text>`;
   }).join('');
 
-  // Y-axis title
-  const yAxisName = (f.epsilon ? 'ε (M⁻¹cm⁻¹), log scale' : 'effective ε (estimated), log scale');
+  // Y-axis title (rendered above the SVG as plain HTML so we can attach a tooltip)
+  // The actual SVG text is the rotated axis label; the tooltip lives in the caption below.
+  const yAxisName = isOrganic ? 'E(1%, 1cm), log scale' : 'effective E(1%, 1cm), log scale';
   const yLabel = useLogY
     ? `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">${yAxisName}</text>`
     : `<text class="axis-label" x="${(padL-44).toFixed(1)}" y="${(padT+innerH/2).toFixed(1)}" text-anchor="middle" transform="rotate(-90 ${padL-44} ${padT+innerH/2})">Relative attenuation</text>`;
@@ -2079,7 +2101,11 @@ function openDetail(f){
       ${f.reefBan ? '<span class="tag stab-poor">Reef-banned</span>' : ''}
     </div>
     ${spec.svg}
-    <div class="spec-caption">Approximation: ${spec.curveType === 'sigmoid' ? 'semiconductor band-edge sigmoid' : (f.lambda && f.lambda.length>1) ? 'sum of Gaussians at the published peaks' : 'single Gaussian at the published λmax'}; bandwidth from documented absorption range. Real spectrum will differ in detail. <span class="conf-tag ${spec.confidence.toLowerCase()}">${spec.confidence}</span></div>
+    <div class="spec-caption">
+      <span class="info-tip" tabindex="0">Y axis = E(1%, 1cm)<span class="info-bubble">${methodologyBubble(f)}</span></span>
+      · curve = ${spec.curveType === 'sigmoid' ? 'Tauc band-edge + Urbach tail (semiconductor)' : (f.lambda && f.lambda.length>1) ? 'sum of Gaussians at the published peaks' : 'single Gaussian at the published λmax'}.
+      <span class="conf-tag ${spec.confidence.toLowerCase()}">${spec.confidence}</span>
+    </div>
     <div class="halflife-row">
       <div>
         <span class="hl-label">Approx. half-life under solar UV</span>
@@ -2219,19 +2245,17 @@ function applyPreset(name){
   if (!PRESETS[name].length) renderBuilder();
 }
 
-// Compute absolute absorbance contribution at λ for a filter at given concentration (% w/w).
-// For organics with ε: A_filter(λ) = ε(λ) × molarity. molarity (M) ≈ (conc% × 10) / MW.
-// For inorganics & iron oxides (no ε): use a normalized concentration-weighted relAbs scaled to a typical mass extinction.
+// Compute absorbance contribution at λ in a 1 cm path-length cell for a filter
+// at given concentration (% w/w). Uses E(1%, 1cm) directly:
+//   A(λ) = E(1%, 1cm) × (conc / 1%)  × rel_absorbance(λ)
+// At conc% = 1% the contribution at λmax equals E1%. Linear scaling is exact under
+// Beer-Lambert; for high-conc semiconductor particulates this becomes an approximation.
 function builderAbsAt(s, lam){
   const f = s.filter;
   const rel = relAbsorbance(f, lam);
-  if (f.category === 'inorganic' || f.category === 'iron-oxide'){
-    // Pigments work mass-not-molar. Use a mass-extinction proxy ~5e3 / (% loading) at peak.
-    return rel * (s.conc / 5) * 4e4;   // typical loading 5%, attenuation tuned visually
-  }
-  if (!f.epsilon) return rel * (s.conc / 5) * 1e4;
-  const molar = (s.conc * 10) / f.mw;   // mol / L (approximate)
-  return f.epsilon * rel * molar;
+  const e1 = f.e1 || (f.epsilon ? f.epsilon * 10 / f.mw : null) ||
+             (f.epsilonEff ? f.epsilonEff * 10 / f.mw : 200);
+  return e1 * s.conc * rel;
 }
 
 function renderBuilder(){
@@ -2283,9 +2307,11 @@ function drawBuilderPlot(){
   const xMin = 280, xMax = 700;
   const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
 
-  // Compute total + per-filter contributions on a log Y scale
-  // Y axis: log10(A * 1000) so we can show small contributions
-  const yLogMin = 2, yLogMax = 6;   // 100 to 1e6 ε-units
+  // Compute total + per-filter contributions on a log Y scale.
+  // Each filter contributes E(1%, 1cm) × concentration% × rel_absorbance(λ).
+  // For a 5% filter at λmax, single-filter contribution ≈ 5 × E1% (so 5 × 1000 = 5000 for a strong filter).
+  // Y axis spans 10⁰ to 10⁵ to show both single and stacked totals.
+  const yLogMin = 0, yLogMax = 5;
   const yAt = v => {
     if (v <= 0) return padT + innerH;
     const lv = Math.min(yLogMax, Math.max(yLogMin, Math.log10(v)));
@@ -2309,13 +2335,14 @@ function drawBuilderPlot(){
   });
 
   // Y-axis ticks (log scale)
-  const supDigit = {2:'²', 3:'³', 4:'⁴', 5:'⁵', 6:'⁶'};
-  [3, 4, 5, 6].forEach(t => {
+  const supDigit = {0:'⁰', 1:'¹', 2:'²', 3:'³', 4:'⁴', 5:'⁵'};
+  [0, 1, 2, 3, 4, 5].forEach(t => {
+    if (t < yLogMin || t > yLogMax) return;
     const y = padT + (1 - (t - yLogMin) / (yLogMax - yLogMin)) * innerH;
     parts.push(`<line class="grid-line" x1="${padL}" y1="${y}" x2="${padL+innerW}" y2="${y}"/>`);
     parts.push(`<text class="tick-label" x="${padL-8}" y="${y+3}" text-anchor="end">10${supDigit[t]}</text>`);
   });
-  parts.push(`<text class="axis-label" x="${22}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 22 ${padT+innerH/2})">Combined absorbance contribution (log)</text>`);
+  parts.push(`<text class="axis-label" x="${22}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 22 ${padT+innerH/2})">E(1%,1cm) × concentration% — log scale</text>`);
 
   // X-axis ticks
   [280, 320, 360, 400, 450, 500, 550, 600, 650, 700].forEach(t => {
