@@ -1,0 +1,230 @@
+{
+  "filterIdx": 29,
+  "name": "Zinc Oxide",
+  "metric": "E(1%, 1cm) \u2014 intrinsic, derived from published mass extinction k(\u03bb) via E1% = k(L/g/cm) x 10. Reflects well-dispersed, ~50 nm primary particles in dilute cuvette measurement.",
+  "method": "literature_calibrated",
+  "method_confidence": "C2",
+  "primary_sources": [
+    "US20060228310 (Croda) \u2014 patent specifying E_max = 12-20 L/g/cm, most preferred 15-16",
+    "Patent E360 = 11-20 L/g/cm (most preferred 13.5-14.5), E308 = 11-20 (most preferred 12.5-13.5)",
+    "Egerton & Tooley 2012 IJCS 34:117 \u2014 Mie theory \u03b1(310 nm) \u2248 6-10 L/g/cm, \u03b1(360 nm) \u2248 4-7 L/g/cm",
+    "Cole, Shyr & Ou-Yang 2016 PPP 32:5 \u2014 confirmed sharp transition at 370 nm; 4-5% UV reflection",
+    "Smijs & Pavel 2011 Nanotechnol Sci Appl 4:95 \u2014 bandgap 3.22-3.32 eV \u2192 \u03bbcutoff ~ 370-380 nm"
+  ],
+  "peak_intrinsic_E1pct": 160,
+  "peak_wavelength_nm": 350,
+  "lambda_cutoff_nm": 372,
+  "particle_size_default_nm": 50,
+  "points": [
+    [
+      280,
+      88.0
+    ],
+    [
+      290,
+      104.0
+    ],
+    [
+      300,
+      124.8
+    ],
+    [
+      310,
+      142.4
+    ],
+    [
+      320,
+      147.2
+    ],
+    [
+      330,
+      153.6
+    ],
+    [
+      340,
+      160.0
+    ],
+    [
+      350,
+      163.2
+    ],
+    [
+      360,
+      160.0
+    ],
+    [
+      365,
+      152.0
+    ],
+    [
+      368,
+      140.8
+    ],
+    [
+      370,
+      124.8
+    ],
+    [
+      375,
+      72.0
+    ],
+    [
+      380,
+      28.8
+    ],
+    [
+      385,
+      12.0
+    ],
+    [
+      390,
+      4.8
+    ],
+    [
+      395,
+      2.4
+    ],
+    [
+      400,
+      1.28
+    ],
+    [
+      405,
+      0.64
+    ],
+    [
+      410,
+      0.32
+    ],
+    [
+      415,
+      0.16
+    ],
+    [
+      420,
+      0.08
+    ],
+    [
+      430,
+      0.02
+    ],
+    [
+      445,
+      0.01
+    ]
+  ],
+  "concentration_nonlinearity": {
+    "model": "f(c) = 1 - alpha * tanh(max(0, c - c0) / scale)",
+    "rationale": "Captures aggregation + film-thickness density effect at high ZnO loading. f(0..2%)=1.0, f(20%)=0.36, f(25%)=0.31. Anchored to industry SPF/% benchmark (1.4 to 2.8).",
+    "params": {
+      "alpha": 0.7,
+      "c0": 2.0,
+      "scale": 10.0
+    },
+    "source": "Fitted to (a) Sunscreen Co 2024 industry analysis 1.4-2.8 SPF/%, (b) Badger/ThinkSport/Aveeno labelled in-vivo SPFs at 20-25% ZnO, (c) Hupel et al. 2024 PPSci on density-induced film-thickness effect"
+  },
+  "particle_size_correction": {
+    "model": "multiplier on E1%(\u03bb); Mie-theory based",
+    "table": {
+      "20_nm": 0.85,
+      "30_nm": 1.0,
+      "50_nm": 1.0,
+      "100_nm": 0.85,
+      "200_nm": 0.55
+    },
+    "source": "Egerton & Tooley 2012; Popov et al. 2005"
+  },
+  "spf_model": {
+    "formula": "SPF = \u222b E_solar(\u03bb) E_ery(\u03bb) d\u03bb / \u222b E_solar(\u03bb) E_ery(\u03bb) 10^(-A(\u03bb)) d\u03bb",
+    "absorbance": "A(\u03bb) = E1%(\u03bb) \u00d7 f(c) \u00d7 particle_size_factor \u00d7 100 \u00d7 c_active_g_per_cm2",
+    "active_per_area": "c_active = film_mg_per_cm2 \u00d7 (c_pct/100) \u00d7 1e-3 g/cm^2",
+    "default_film_mg_per_cm2": 2.0
+  },
+  "validation": [
+    {
+      "formulation": "Badger Clear Zinc Sport Tin",
+      "pct_ZnO": 22.5,
+      "measured_SPF": 40,
+      "predicted_SPF": 47.6,
+      "error_pct": 19.0,
+      "source": "Badger product label, in-vivo claim"
+    },
+    {
+      "formulation": "Badger Adventure Mineral Cream",
+      "pct_ZnO": 25.0,
+      "measured_SPF": 50,
+      "predicted_SPF": 57.3,
+      "error_pct": 14.5,
+      "source": "Badger product label, in-vivo claim"
+    },
+    {
+      "formulation": "ThinkSport EveryDay Face",
+      "pct_ZnO": 20.0,
+      "measured_SPF": 30,
+      "predicted_SPF": 39.5,
+      "error_pct": 31.6,
+      "source": "ThinkSport label"
+    },
+    {
+      "formulation": "ThinkSport Clear Zinc Stick",
+      "pct_ZnO": 20.0,
+      "measured_SPF": 30,
+      "predicted_SPF": 39.5,
+      "error_pct": 31.6,
+      "source": "ThinkSport label"
+    },
+    {
+      "formulation": "ThinkSport SPF50 Clear Zinc",
+      "pct_ZnO": 23.4,
+      "measured_SPF": 50,
+      "predicted_SPF": 50.9,
+      "error_pct": 1.9,
+      "source": "ThinkSport label"
+    },
+    {
+      "formulation": "Aveeno Positively Mineral SPF 50",
+      "pct_ZnO": 21.6,
+      "measured_SPF": 50,
+      "predicted_SPF": 44.5,
+      "error_pct": -11.0,
+      "source": "Product label"
+    },
+    {
+      "formulation": "Industry low-conc avg",
+      "pct_ZnO": 10.0,
+      "measured_SPF": 28,
+      "predicted_SPF": 21.6,
+      "error_pct": -22.9,
+      "source": "Sunscreen Co Group 1: 2.8 SPF/% \u00d7 10"
+    },
+    {
+      "formulation": "Industry mid-range (1.4 SPF/%)",
+      "pct_ZnO": 12.0,
+      "measured_SPF": 17,
+      "predicted_SPF": 24.3,
+      "error_pct": 43.0,
+      "source": "Sunscreen Co benchmark"
+    },
+    {
+      "formulation": "Industry high-conc avg",
+      "pct_ZnO": 18.0,
+      "measured_SPF": 28,
+      "predicted_SPF": 34.3,
+      "error_pct": 22.4,
+      "source": "Sunscreen Co Group 2: 1.54 SPF/% \u00d7 18"
+    }
+  ],
+  "validation_summary": {
+    "n_formulations": 9,
+    "mean_abs_error_pct": 22.0,
+    "max_abs_error_pct": 43.0
+  },
+  "caveats": [
+    "Peak E1%=160 is the dispersed-particle (intrinsic) value at \u03bb_max ~ 350-360 nm. Real cosmetic films show effective k 30-50% lower due to aggregation, captured by f(c).",
+    "Range across literature: E1% peak 110-200 (k = 11-20 L/g/cm in Croda patent). Central estimate 160 corresponds to 'preferred' patent values 14-16 L/g/cm.",
+    "Spectrum below 290 nm not relevant (solar UVB cutoff at sea level).",
+    "Particle-size correction is approximate; 50 nm primary represents Z-COTE-grade ZnO. Pigment-grade (>200 nm) has substantially lower mass-specific k.",
+    "Coating effects (silica, dimethicone, triethoxycaprylylsilane) shift k by <10% in UV; included as additional uncertainty band.",
+    "SPF model uses CIE 1987 erythema action spectrum and ASTM G173 solar irradiance. Beer-Lambert with concentration nonlinearity; no explicit Mie scattering correction (5% reflection per Cole 2016 is small)."
+  ]
+}

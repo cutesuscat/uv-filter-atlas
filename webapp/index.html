@@ -515,6 +515,11 @@
     width: 70px; accent-color: var(--accent);
   }
   .active-pill .ap-conc-val{ font: 600 0.78rem var(--mono); color: var(--accent); min-width: 36px; text-align: right }
+  .active-pill .ap-fc{
+    font: 500 0.66rem var(--mono); color: var(--warn); margin-left: 6px;
+    padding: 1px 5px; border-radius: 3px; background: var(--warn-soft);
+    cursor: help;
+  }
   .active-pill .ap-remove{
     background: none; border: none; cursor: pointer;
     color: var(--muted); font: 500 1rem var(--mono);
@@ -1870,15 +1875,25 @@ const SPECTRUM_REFS = {
 // Methodology explainer for the Y-axis (E(1%, 1cm)) — shown as a hover bubble.
 function methodologyBubble(f){
   const isOrganic = !!f.epsilon;
+  // Prefer recalibrated data values (from literature-grounded mass extinction)
+  const data = SPECTRUM_DATA[f.idx];
+  const calibratedPeak = data && data.peak_intrinsic_E1pct;
+
   if (isOrganic){
     const e1 = f.e1 || Math.round(f.epsilon * 10 / f.mw);
-    return `<strong>E(1%, 1cm)</strong> = the absorbance of a 1% w/w solution at 1 cm path length — the cosmetics-industry-standard metric, reported by BASF/DSM/Symrise on their datasheets. ` +
+    return `<strong>E(1%, 1cm)</strong> = absorbance of a 1% w/w solution at 1 cm path length — the cosmetics-industry-standard metric, reported on BASF/DSM/Symrise datasheets. ` +
       `Computed as ε × 10 / MW. For ${f.inci}: ε = ${f.epsilon.toLocaleString()} M⁻¹cm⁻¹, MW = ${f.mw} g/mol → E1% ≈ ${e1}. ` +
-      `On log scale, salicylates (~190) are visibly weaker than EHT (~1640).`;
+      `Linear in concentration (Beer-Lambert exact for dissolved organics).`;
+  }
+  if (calibratedPeak){
+    return `<strong>E(1%, 1cm)</strong> for ${f.inci}: ${calibratedPeak} at peak. ` +
+      `Recalibrated 2026-05-07 from real published mass extinction k(λ) via E1% = k(L/g/cm) × 10. ` +
+      `${f.category === 'iron-oxide' ? 'Pigment-grade particles (200-500 nm) — k includes both absorption and Mie scattering.' : 'Cosmetic-grade ~50 nm primary particles in dilute dispersion.'} ` +
+      `<strong>Concentration nonlinearity</strong>: at high loading (>5%), particle aggregation reduces effective k below the linear-stacking prediction. Per-filter f(c) function fit to real SPF / HEV-blockade measurements; applied automatically in the Spectrum Builder.`;
   }
   if (f.epsilonEff){
     const e1 = Math.round(f.epsilonEff * 10 / f.mw);
-    return `<strong>Effective E(1%, 1cm)</strong> for ${f.inci}: a calibrated equivalent (~${e1}) — particulate semiconductors don't have a true molarity, so this is back-derived from manufacturer film attenuation data so the curve sits comparably with organic filters on the same axis. The shape comes from a Tauc band-edge + Urbach tail model fit to literature reflectance / mass-extinction data.`;
+    return `<strong>Effective E(1%, 1cm)</strong> for ${f.inci}: ${e1} (parametric estimate, pending recalibration from literature mass-extinction data).`;
   }
   return `Relative attenuation; absolute scale not assigned for this filter.`;
 }
@@ -2347,13 +2362,26 @@ function applyPreset(name){
   if (!PRESETS[name].length) renderBuilder();
 }
 
-// Compute absorbance contribution at λ in a 1 cm path-length cell for a filter
-// at given concentration (% w/w). Uses E(1%, 1cm) directly:
-//   A(λ) = E(1%, 1cm)(λ) × concentration%
-// Prefers literature-anchored E1%(λ) data points where available; falls back
-// to parametric peak-E1% × Gaussian/Tauc shape.
+// Concentration-nonlinearity factor f(c) for filters with literature-fit
+// nonlinearity parameters (e.g., ZnO/TiO₂/iron oxides — particles aggregate
+// at high loading, breaking the linear-stacking assumption of Beer-Lambert).
+// Form: f(c) = 1 - α × tanh(max(0, c - c0) / scale).
+// Returns 1 (no correction) for filters without nonlinearity data.
+function concentrationFactor(f, conc){
+  const data = SPECTRUM_DATA[f.idx];
+  const nl = data && data.concentration_nonlinearity && data.concentration_nonlinearity.params;
+  if (!nl) return 1;
+  const {alpha = 0, c0 = 0, scale = 1} = nl;
+  const above = Math.max(0, conc - c0);
+  return 1 - alpha * Math.tanh(above / scale);
+}
+
+// Compute absorbance contribution at λ for a filter at given concentration (% w/w).
+// Uses E(1%, 1cm) × f(c) × concentration%. f(c) corrects for sub-linear stacking
+// at high particulate loading; for organics it's identically 1.
 function builderAbsAt(s, lam){
-  return e1At(s.filter, lam) * s.conc;
+  const fc = concentrationFactor(s.filter, s.conc);
+  return e1At(s.filter, lam) * fc * s.conc;
 }
 
 function renderBuilder(){
@@ -2361,6 +2389,10 @@ function renderBuilder(){
   const activeBox = document.getElementById('builderActive');
   activeBox.innerHTML = builderState.selected.map(s => {
     const f = s.filter;
+    const fc = concentrationFactor(f, s.conc);
+    const fcDisplay = fc < 0.97
+      ? `<span class="ap-fc" title="Particulate aggregation reduces effective extinction at high loading">×${fc.toFixed(2)}</span>`
+      : '';
     return `<div class="active-pill" data-idx="${f.idx}">
       <span class="ap-color" style="background:${builderColor(f)}"></span>
       <span class="ap-name">${f.inci}</span>
@@ -2371,6 +2403,7 @@ function renderBuilder(){
           15
         }" step="0.1" value="${s.conc}" data-idx="${f.idx}" aria-label="${f.inci} concentration"/>
         <span class="ap-conc-val">${s.conc.toFixed(1)}%</span>
+        ${fcDisplay}
       </span>
       <button class="ap-remove" data-idx="${f.idx}" aria-label="Remove ${f.inci}">×</button>
     </div>`;

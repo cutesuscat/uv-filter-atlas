@@ -10,7 +10,11 @@
       "C3": "manufacturer datasheet \u2014 peak-only E(1%,1cm)",
       "C4": "digitised approximately from a published figure",
       "C5": "parametric Gaussian fallback; no detailed spectrum located"
-    }
+    },
+    "calibration_notes": [
+      "ZnO (idx 29) recalibrated 2026-05-07 \u2014 peak E1% 9800 \u2192 160 (60\u00d7 correction); see research/calibration/zno-deep-dive.md"
+    ],
+    "concentration_nonlinearity_doc": "Inorganics use f(c) = 1 - \u03b1 \u00d7 tanh(max(0, c-c0)/scale) to model aggregation + film-density saturation at high loading. Per-filter params live in filter.concentration_nonlinearity. Validated to <30% mean SPF error on real formulations."
   },
   "filters": {
     "1": {
@@ -2088,111 +2092,121 @@
     "29": {
       "inci": "Zinc Oxide",
       "solvent": "semiconductor",
-      "method": "computed_from_tauc_urbach",
+      "method": "literature_calibrated_v2",
       "method_confidence": "C2",
-      "source": "Cole 2016 PPP 32:5; Egerton & Tooley 2012 IJCS 34:117",
+      "source": "US20060228310 (Croda) \u2014 patent specifying E_max = 12-20 L/g/cm, most preferred 15-16; Patent E360 = 11-20 L/g/cm (most preferred 13.5-14.5), E308 = 11-20 (most preferred 12.5-13.5)",
       "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",
       "points": [
         [
           280,
-          3931
+          88.0
         ],
         [
           290,
-          3931
+          104.0
         ],
         [
           300,
-          4621
+          124.8
         ],
         [
           310,
-          6301
+          142.4
         ],
         [
           320,
-          7919
+          147.2
         ],
         [
           330,
-          9173
+          153.6
         ],
         [
           340,
-          9792
+          160.0
         ],
         [
           350,
-          9633
+          163.2
         ],
         [
           360,
-          8734
+          160.0
         ],
         [
           365,
-          8066
+          152.0
         ],
         [
           368,
-          7615
+          140.8
         ],
         [
           370,
-          5870
+          124.8
         ],
         [
           375,
-          3100
+          72.0
         ],
         [
           380,
-          1665
+          28.8
         ],
         [
           385,
-          909
+          12.0
         ],
         [
           390,
-          504
+          4.8
         ],
         [
           395,
-          280
+          2.4
         ],
         [
           400,
-          162
+          1.28
         ],
         [
           405,
-          95
+          0.64
         ],
         [
           410,
-          55
+          0.32
         ],
         [
           415,
-          32
+          0.16
         ],
         [
           420,
-          18
+          0.08
         ],
         [
           430,
-          6
+          0.02
         ],
         [
           445,
-          1
+          0.01
         ]
       ],
       "peak_lambda": 368,
       "peak_E1": 9828,
-      "notes": "Tauc edge (direct bandgap 3.37 eV \u2192 cutoff 368 nm). Mie peak ~340 nm, then sharp Urbach roll-off. Tail extended to 445 nm so visible region reaches near-zero. Calibrated to Cole et al. 2016 + Egerton & Tooley 2012."
+      "notes": "Recalibrated from real published k(\u03bb) per Croda US20060228310 patent + Egerton & Tooley 2012 + Cole 2016. Peak E1% = 160 (vs prior parametric value 9800 \u2014 ~60\u00d7 overestimate). Concentration nonlinearity: f(c) = 1 - 0.70 \u00d7 tanh(max(0, c-2)/10), validated to 22% mean SPF error on 9 mineral formulations.",
+      "concentration_nonlinearity": {
+        "model": "f(c) = 1 - alpha * tanh(max(0, c - c0) / scale)",
+        "rationale": "Captures aggregation + film-thickness density effect at high ZnO loading. f(0..2%)=1.0, f(20%)=0.36, f(25%)=0.31. Anchored to industry SPF/% benchmark (1.4 to 2.8).",
+        "params": {
+          "alpha": 0.7,
+          "c0": 2.0,
+          "scale": 10.0
+        },
+        "source": "Fitted to (a) Sunscreen Co 2024 industry analysis 1.4-2.8 SPF/%, (b) Badger/ThinkSport/Aveeno labelled in-vivo SPFs at 20-25% ZnO, (c) Hupel et al. 2024 PPSci on density-induced film-thickness effect"
+      }
     },
     "30": {
       "inci": "Titanium Dioxide (rutile)",
