@@ -842,8 +842,9 @@
     <div class="builder-card">
       <div class="builder-presets">
         <span class="group-label">Presets</span>
-        <button class="chip" data-preset="us-classic">US classic (AVB+OC)</button>
+        <button class="chip" data-preset="uvmune-400">UVMune 400 (LRP Anthelios)</button>
         <button class="chip" data-preset="eu-broad">EU broad-spectrum (Tinosorb M+S+DHHB+EHT)</button>
+        <button class="chip" data-preset="us-classic">US classic (AVB+OC)</button>
         <button class="chip" data-preset="mineral">Mineral (ZnO+TiO₂)</button>
         <button class="chip" data-preset="tinted-mineral">Tinted mineral (+ iron oxides)</button>
         <button class="chip" data-preset="all-uvb">All UVB workhorses</button>
@@ -1347,30 +1348,73 @@ const MECHS = [
 ];
 
 // =========================================
-// Render: spectrum overview (Gaussian gradient bars, 280-700 nm)
+// Render: spectrum overview (Gaussian gradient bars, piecewise x-axis)
 // =========================================
 const OV = document.getElementById('spectrumOverview');
 const OV_AXIS = document.getElementById('spectrumAxisTicks');
 const W_MIN = 280, W_MAX = 700;
+const UV_FRAC = 0.72;        // UV (280–400) takes 72% of width
+const UV_BREAK = 400;        // boundary
+const UV_SPAN = UV_BREAK - W_MIN;
+const VIS_SPAN = W_MAX - UV_BREAK;
+// Maps wavelength → fraction (0..1) of the bar width
+function xPct(lam){
+  if (lam <= UV_BREAK) return ((lam - W_MIN) / UV_SPAN) * UV_FRAC;
+  return UV_FRAC + ((lam - UV_BREAK) / VIS_SPAN) * (1 - UV_FRAC);
+}
 
-// Build axis ticks
-const tickValues = [280, 320, 360, 400, 450, 500, 550, 600, 650, 700];
-OV_AXIS.innerHTML = tickValues.map(t => `<span>${t}</span>`).join('');
+// Boundary positions (where dotted guides go)
+const GUIDES = [
+  {lam: 315, label: 'UVB/UVA-II'},
+  {lam: 340, label: 'UVA-II/UVA-I'},
+  {lam: 400, label: 'UV/visible'},
+  {lam: 500, label: 'HEV/visible'},
+];
+
+// Build axis ticks at piecewise-correct positions
+const tickValues = [280, 300, 320, 340, 360, 380, 400, 500, 600, 700];
+OV_AXIS.style.position = 'relative';
+OV_AXIS.style.height = '14px';
+OV_AXIS.innerHTML = tickValues.map(t => {
+  const left = (xPct(t) * 100).toFixed(1);
+  return `<span style="position:absolute;left:${left}%;transform:translateX(-50%);font:500 0.66rem var(--mono);color:var(--muted)">${t}</span>`;
+}).join('');
+
+// Add the band labels into a small bar above
+const bandsBar = document.createElement('div');
+bandsBar.className = 'spectrum-bands-bg';
+bandsBar.style.background = `linear-gradient(90deg,
+  rgba(94,58,163,0.10) 0%, rgba(94,58,163,0.10) ${(xPct(315)*100).toFixed(1)}%,
+  rgba(176,74,138,0.10) ${(xPct(315)*100).toFixed(1)}%, rgba(176,74,138,0.10) ${(xPct(340)*100).toFixed(1)}%,
+  rgba(201,138,58,0.10) ${(xPct(340)*100).toFixed(1)}%, rgba(201,138,58,0.10) ${(xPct(400)*100).toFixed(1)}%,
+  rgba(180,124,32,0.08) ${(xPct(400)*100).toFixed(1)}%, rgba(180,124,32,0.08) ${(xPct(500)*100).toFixed(1)}%,
+  rgba(120,110,130,0.06) ${(xPct(500)*100).toFixed(1)}%, rgba(120,110,130,0.06) 100%)`;
+bandsBar.innerHTML = [
+  {x1: 280, x2: 315, label: 'UVB'},
+  {x1: 315, x2: 340, label: 'UVA-II'},
+  {x1: 340, x2: 400, label: 'UVA-I'},
+  {x1: 400, x2: 500, label: 'HEV'},
+  {x1: 500, x2: 700, label: 'VIS'},
+].map(b => {
+  const x1 = xPct(b.x1) * 100;
+  const x2 = xPct(b.x2) * 100;
+  return `<div style="left:${x1.toFixed(1)}%;width:${(x2-x1).toFixed(1)}%">${b.label}</div>`;
+}).join('');
 
 // Color by category for the overview
 function overviewColor(f){
-  if (f.category === 'iron-oxide') return [185, 74, 60]; // warm red-brown for iron oxides
-  if (f.category === 'inorganic') return [100, 95, 110];  // gray for ZnO/TiO2
-  if (f.category === 'broad-spectrum') return [110, 60, 130]; // deep purple
-  if (f.ranges.includes('UVA-I')) return [201, 138, 58];   // amber
-  if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return [176, 74, 138]; // pink
-  return [94, 58, 163]; // UV-violet for UVB
+  if (f.category === 'iron-oxide') return [185, 74, 60];
+  if (f.category === 'inorganic') return [100, 95, 110];
+  if (f.category === 'broad-spectrum') return [110, 60, 130];
+  if (f.ranges.includes('UVA-I')) return [201, 138, 58];
+  if (f.ranges.includes('UVA-II') && !f.ranges.includes('UVB')) return [176, 74, 138];
+  return [94, 58, 163];
 }
 
-// Build a Gaussian-gradient SVG bar for a single filter
+// Build a Gaussian-gradient SVG bar with piecewise x-axis + dotted guides
 function spectrumBarSVG(f){
   const W = 1000, H = 18;
-  const xAt = lam => ((lam - W_MIN) / (W_MAX - W_MIN)) * W;
+  const xAt = lam => xPct(lam) * W;
   const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
   const halfBand = Math.max(8, ((f.absEnd || (f.peak+15)) - (f.absStart || (f.peak-15))) / 4);
 
@@ -1378,9 +1422,9 @@ function spectrumBarSVG(f){
   const cutoff = f.peak;
   const k = f.category === 'iron-oxide' ? 0.06 : 0.4;
 
-  // Sample many wavelengths and build a gradient stop list
+  // Sample wavelengths uniformly in λ-space (NOT pixel-space, since the scale is non-linear)
   const stops = [];
-  const N = 60;
+  const N = 80;
   for (let i = 0; i <= N; i++){
     const lam = W_MIN + (W_MAX - W_MIN) * i / N;
     let a;
@@ -1392,21 +1436,28 @@ function spectrumBarSVG(f){
         a = Math.max(a, Math.exp(-Math.pow(lam - p, 2) / (2 * halfBand * halfBand)));
       });
     }
-    stops.push({pct: 100 * i / N, alpha: a});
+    stops.push({pct: xPct(lam) * 100, alpha: a});
   }
 
   const [r,g,b] = overviewColor(f);
   const gradId = 'g_' + f.idx;
-  const gradStops = stops.map(s => `<stop offset="${s.pct.toFixed(1)}%" stop-color="rgb(${r},${g},${b})" stop-opacity="${s.alpha.toFixed(3)}"/>`).join('');
+  const gradStops = stops.map(s => `<stop offset="${s.pct.toFixed(2)}%" stop-color="rgb(${r},${g},${b})" stop-opacity="${s.alpha.toFixed(3)}"/>`).join('');
 
   // Peak markers
   const markers = peaks.filter(p => p >= W_MIN && p <= W_MAX).map(p =>
     `<line x1="${xAt(p).toFixed(1)}" y1="0" x2="${xAt(p).toFixed(1)}" y2="${H}" stroke="rgb(${r},${g},${b})" stroke-width="0.7" stroke-dasharray="2 2" opacity="0.55"/>`
   ).join('');
 
+  // Boundary guides (dotted, ghosted)
+  const guides = GUIDES.map(g => {
+    const x = xAt(g.lam);
+    return `<line x1="${x.toFixed(1)}" y1="-2" x2="${x.toFixed(1)}" y2="${H+2}" stroke="currentColor" stroke-width="0.6" stroke-dasharray="1.5 2" opacity="0.18"/>`;
+  }).join('');
+
   return `<svg class="spectrum-track-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-label="Absorption band of ${f.inci}">
     <defs><linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">${gradStops}</linearGradient></defs>
     <rect x="0" y="0" width="${W}" height="${H}" fill="url(#${gradId})"/>
+    ${guides}
     ${markers}
   </svg>`;
 }
@@ -1812,6 +1863,7 @@ applyTheme();
 // Spectrum Builder — pick filters, see combined absorbance
 // =========================================
 const PRESETS = {
+  'uvmune-400':     [['Mexoryl 400', 3], ['Bemotrizinol', 5], ['Bisoctrizole', 5], ['DHHB', 5], ['Avobenzone', 3], ['Octocrylene', 5]],
   'us-classic':     [['Avobenzone', 3], ['Octocrylene', 7], ['Octisalate', 5], ['Homosalate', 10]],
   'eu-broad':       [['Bisoctrizole', 8], ['Bemotrizinol', 5], ['DHHB', 8], ['Ethylhexyl Triazone', 4]],
   'mineral':        [['Zinc Oxide', 20], ['Titanium Dioxide (rutile)', 5]],
@@ -2034,10 +2086,11 @@ document.querySelectorAll('.builder-presets .chip').forEach(chip => {
   chip.addEventListener('click', () => applyPreset(chip.dataset.preset));
 });
 initBuilderGrid();
-applyPreset('us-classic');
+applyPreset('uvmune-400');
 
 // =========================================
-// λmax × half-life scatter — Gaussian-faded smear bars with uncertainty
+// λmax × half-life scatter — points by default, smear bar + uncertainty on hover
+// Piecewise x-axis: UV (280-400) takes 72% of width, visible (400-700) takes 28%
 // =========================================
 function renderScatter(){
   const svg = document.getElementById('scatterSvg');
@@ -2046,13 +2099,11 @@ function renderScatter(){
   const W = 900, H = 520, padL = 80, padR = 30, padT = 30, padB = 64;
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
-  const xMin = 280, xMax = 700;
   const yMin = Math.log10(0.5), yMax = Math.log10(1500);
-
-  // Update SVG viewBox to match new dimensions
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-  const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
+  // Piecewise x: 72% UV, 28% visible
+  const xAt = lam => padL + xPct(lam) * innerW;
   const yAt = th  => {
     const ly = Math.log10(Math.max(0.5, th));
     return padT + (1 - (ly - yMin) / (yMax - yMin)) * innerH;
@@ -2060,18 +2111,24 @@ function renderScatter(){
 
   let parts = [];
 
-  // UV / visible band rectangles (very subtle background)
+  // Band rectangles (subtle)
   const bands = [
     {x1: 280, x2: 315, color: 'var(--uv-uvb)',  label: 'UVB'},
     {x1: 315, x2: 340, color: 'var(--uv-uva2)', label: 'UVA-II'},
     {x1: 340, x2: 400, color: 'var(--uv-uva1)', label: 'UVA-I'},
     {x1: 400, x2: 500, color: 'var(--moderate)', label: 'HEV'},
-    {x1: 500, x2: xMax, color: 'var(--ink-soft)', label: 'VIS'},
+    {x1: 500, x2: 700, color: 'var(--ink-soft)', label: 'VIS'},
   ];
   bands.forEach(b => {
     const x1 = xAt(b.x1), x2 = xAt(b.x2);
     parts.push(`<rect class="band-rect" x="${x1}" y="${padT}" width="${x2-x1}" height="${innerH}" fill="${b.color}"/>`);
     parts.push(`<text class="band-text" x="${(x1+x2)/2}" y="${padT+14}" text-anchor="middle">${b.label}</text>`);
+  });
+
+  // Dotted boundary guides extending above and below the chart
+  GUIDES.forEach(g => {
+    const x = xAt(g.lam);
+    parts.push(`<line x1="${x}" y1="${padT-10}" x2="${x}" y2="${padT+innerH+10}" stroke="var(--ink-soft)" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.35"/>`);
   });
 
   // Y-axis log gridlines
@@ -2082,20 +2139,25 @@ function renderScatter(){
     parts.push(`<text class="tick-label" x="${padL-10}" y="${y+3}" text-anchor="end">${t} h</text>`);
   });
 
-  // Off-scale lattice line for inorganics
-  const offScaleY = padT + 22;
+  // Off-scale lattice line for inorganics (with band for staggered points)
+  const offScaleY = padT + 28;
   parts.push(`<line class="grid-line" x1="${padL}" y1="${offScaleY}" x2="${padL+innerW}" y2="${offScaleY}" stroke-dasharray="4 3"/>`);
   parts.push(`<text class="tick-label" x="${padL-10}" y="${offScaleY+3}" text-anchor="end" fill="var(--moderate)">∞ (lattice)</text>`);
 
   // Axes
   parts.push(`<line class="axis-line" x1="${padL}" y1="${padT+innerH}" x2="${padL+innerW}" y2="${padT+innerH}"/>`);
   parts.push(`<line class="axis-line" x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT+innerH}"/>`);
-  [280, 320, 360, 400, 450, 500, 550, 600, 650, 700].forEach(t => {
+
+  // X-axis ticks (denser in UV, sparser in visible)
+  [280, 300, 320, 340, 360, 380, 400, 500, 600, 700].forEach(t => {
     const x = xAt(t);
     parts.push(`<line class="axis-line" x1="${x}" y1="${padT+innerH}" x2="${x}" y2="${padT+innerH+5}"/>`);
     parts.push(`<text class="tick-label" x="${x}" y="${padT+innerH+18}" text-anchor="middle">${t}</text>`);
   });
-  parts.push(`<text class="axis-label" x="${padL+innerW/2}" y="${H-26}" text-anchor="middle">Wavelength (nm) — center of absorption band</text>`);
+  // Subtle indicator that scale changes at 400 nm
+  const breakX = xAt(400);
+  parts.push(`<text class="tick-label" x="${breakX}" y="${padT+innerH+38}" text-anchor="middle" fill="var(--muted)" font-size="9" opacity="0.7">↑ scale break (visible compressed)</text>`);
+  parts.push(`<text class="axis-label" x="${padL+innerW/2}" y="${H-12}" text-anchor="middle">Wavelength (nm)</text>`);
   parts.push(`<text class="axis-label" x="${22}" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 22 ${padT+innerH/2})">Half-life under solar UV (log scale)</text>`);
 
   // Color by category
@@ -2108,65 +2170,63 @@ function renderScatter(){
     return [94, 58, 163];
   };
 
-  // Half-life uncertainty (used when hovering): the half-life is highly conditions-dependent.
-  // We show a vertical error bar spanning approximately ±0.5 decade (a factor of ~3) for C2,
-  // ±0.3 decade for C1, ±0.7 decade for C3, ±1 decade for C4.
-  function uncBar(conf){
-    return ({C1:0.3, C2:0.5, C3:0.7, C4:1.0}[conf] || 0.5);
-  }
+  // Half-life uncertainty bracket (decades on log scale)
+  function uncBar(conf){ return ({C1:0.3, C2:0.5, C3:0.7, C4:1.0}[conf] || 0.5); }
 
-  // For each filter, render a horizontal smear bar (Gaussian-faded along λ).
-  // Length = absorption band width; opacity peaks at λmax.
-  // Sort iron-oxide / inorganic to render under organics.
-  const sortedFilters = FILTERS.slice().sort((a,b) => {
-    const order = (f) => (f.category === 'inorganic' || f.category === 'iron-oxide') ? 0 : 1;
-    return order(a) - order(b);
+  // For points sitting at the lattice line, stagger them vertically so they don't overlap.
+  // Group by approximate (rounded) y-value, then within each group offset evenly.
+  const latticeFilters = FILTERS.filter(f => f.t_half === -1);
+  const latticeOffsets = {};
+  latticeFilters.forEach((f, i) => {
+    // Center group around offScaleY
+    const N = latticeFilters.length;
+    latticeOffsets[f.idx] = (i - (N-1)/2) * 5;
   });
 
-  sortedFilters.forEach(f => {
+  // For each filter render: hidden smear bar + hidden uncertainty + visible center dot
+  FILTERS.forEach(f => {
     const isInorg = f.t_half === -1;
-    const y = isInorg ? offScaleY : yAt(Math.max(0.5, f.t_half));
+    const y0 = isInorg ? offScaleY + latticeOffsets[f.idx] : yAt(Math.max(0.5, f.t_half));
     const [r,g,b] = colorFor(f);
     const peaks = (f.lambda && f.lambda.length) ? f.lambda : [f.peak];
-    const bandStart = Math.max(xMin, f.absStart || (f.peak - 20));
-    const bandEnd = Math.min(xMax, f.absEnd || (f.peak + 20));
+    const cx = xAt(Math.min(700, peaks.reduce((s, p) => s + p, 0) / peaks.length));
 
-    // Build gradient with stops sampled along the absorption band shape
+    // Hidden smear bar (Gaussian-faded along the absorption band)
+    const bandStart = Math.max(280, f.absStart || (f.peak - 20));
+    const bandEnd = Math.min(700, f.absEnd || (f.peak + 20));
     const gradId = `sg_${f.idx}`;
     const stops = [];
-    const N = 24;
+    const N = 30;
     for (let i = 0; i <= N; i++){
       const lam = bandStart + (bandEnd - bandStart) * i / N;
       const a = relAbsorbance(f, lam);
       stops.push({pct: 100 * i / N, alpha: a});
     }
     const gradStops = stops.map(s => `<stop offset="${s.pct.toFixed(1)}%" stop-color="rgb(${r},${g},${b})" stop-opacity="${(s.alpha * 0.85).toFixed(3)}"/>`).join('');
-
-    // Bar height
-    const barHeight = isInorg ? 6 : 8;
     const x1 = xAt(bandStart), x2 = xAt(bandEnd);
+    const barHeight = 7;
 
     parts.push(`<defs><linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">${gradStops}</linearGradient></defs>`);
-    parts.push(`<rect class="pt" x="${x1.toFixed(1)}" y="${(y - barHeight/2).toFixed(1)}" width="${(x2-x1).toFixed(1)}" height="${barHeight}" fill="url(#${gradId})" data-idx="${f.idx}" rx="${barHeight/2}"/>`);
+    parts.push(`<rect class="smear-bar" data-for="${f.idx}" x="${x1.toFixed(1)}" y="${(y0 - barHeight/2).toFixed(1)}" width="${(x2-x1).toFixed(1)}" height="${barHeight}" fill="url(#${gradId})" rx="${barHeight/2}" opacity="0" pointer-events="none"/>`);
 
-    // Center marker dot
-    const cx = xAt(Math.min(xMax, peaks.reduce((s, p) => s + p, 0) / peaks.length));
-    parts.push(`<circle cx="${cx.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="rgb(${r},${g},${b})" data-idx="${f.idx}" class="pt"/>`);
-
-    // Vertical uncertainty bar (rendered initially hidden, shown on hover via JS)
+    // Hidden uncertainty bracket
     if (!isInorg){
       const halfDec = uncBar(f.t_half_conf);
       const yHigh = yAt(Math.min(2000, f.t_half * Math.pow(10, halfDec)));
       const yLow  = yAt(Math.max(0.3, f.t_half * Math.pow(10, -halfDec)));
-      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${cx.toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${cx.toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0"/>`);
-      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${(cx-4).toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${(cx+4).toFixed(1)}" y2="${yHigh.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0"/>`);
-      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${(cx-4).toFixed(1)}" y1="${yLow.toFixed(1)}" x2="${(cx+4).toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0"/>`);
+      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${cx.toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${cx.toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0" pointer-events="none"/>`);
+      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${(cx-5).toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${(cx+5).toFixed(1)}" y2="${yHigh.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0" pointer-events="none"/>`);
+      parts.push(`<line class="unc-bar" data-for="${f.idx}" x1="${(cx-5).toFixed(1)}" y1="${yLow.toFixed(1)}" x2="${(cx+5).toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="rgb(${r},${g},${b})" stroke-width="1.5" opacity="0" pointer-events="none"/>`);
     }
+
+    // The visible point — small dot
+    const dotR = f.epsilon ? Math.max(3.5, Math.min(7, 2.5 + Math.log10(f.epsilon) * 0.5)) : 4;
+    parts.push(`<circle class="pt" data-idx="${f.idx}" cx="${cx.toFixed(1)}" cy="${y0.toFixed(1)}" r="${dotR.toFixed(1)}" fill="rgb(${r},${g},${b})" stroke="rgb(${r},${g},${b})" stroke-width="1" fill-opacity="0.7"/>`);
   });
 
   svg.innerHTML = parts.join('');
 
-  // Hover behaviour: show tooltip + reveal uncertainty bar for hovered filter
+  // Hover behaviour
   svg.querySelectorAll('.pt').forEach(node => {
     const idx = parseInt(node.dataset.idx, 10);
     const f = FILTERS.find(x => x.idx === idx);
@@ -2175,12 +2235,15 @@ function renderScatter(){
       const lo = Math.max(0.3, f.t_half * Math.pow(10, -halfDec)).toFixed(1);
       const hi = Math.min(2000, f.t_half * Math.pow(10, halfDec)).toFixed(0);
       const tHalfTxt = f.t_half === -1 ? '∞ (lattice)' :
-                        `${f.t_half} h <span style="opacity:0.6">(approx ${lo}–${hi} h)</span>`;
+                        `${f.t_half} h <span style="opacity:0.6">(uncertainty: ${lo}–${hi} h)</span>`;
       tooltip.innerHTML = `<div class="tt-name">${f.inci}</div>
         <div class="tt-sub">λmax ${f.peak} nm · t½ ${tHalfTxt}</div>
         <div class="tt-sub">${f.t_half_cond || ''}</div>`;
       tooltip.classList.add('show');
+      svg.querySelectorAll(`.smear-bar[data-for="${idx}"]`).forEach(b => b.setAttribute('opacity', '1'));
       svg.querySelectorAll(`.unc-bar[data-for="${idx}"]`).forEach(u => u.setAttribute('opacity', '1'));
+      // Bring the dot to a slightly larger size
+      node.setAttribute('r', (parseFloat(node.getAttribute('r')) * 1.4).toFixed(1));
     });
     node.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -2189,7 +2252,9 @@ function renderScatter(){
     });
     node.addEventListener('mouseleave', () => {
       tooltip.classList.remove('show');
+      svg.querySelectorAll(`.smear-bar[data-for="${idx}"]`).forEach(b => b.setAttribute('opacity', '0'));
       svg.querySelectorAll(`.unc-bar[data-for="${idx}"]`).forEach(u => u.setAttribute('opacity', '0'));
+      node.setAttribute('r', (parseFloat(node.getAttribute('r')) / 1.4).toFixed(1));
     });
     node.addEventListener('click', () => openDetail(f));
   });
