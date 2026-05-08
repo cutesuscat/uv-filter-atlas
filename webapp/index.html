@@ -1382,11 +1382,11 @@
         <span class="group-label">Presets</span>
         <span class="preset-with-src">
           <button class="chip" data-preset="uvmune-400">UVMune 400 (LRP Anthelios)</button>
-          <a class="preset-src" href="md.html?path=research/sources/uvmune-400-source.md" target="_blank" rel="noopener" title="View source document with ingredient list and concentration inference">📄</a>
+          <a class="preset-src" href="../research/sources/uvmune-400-source.html" target="_blank" rel="noopener" title="View source document with ingredient list and concentration inference">📄</a>
         </span>
         <span class="preset-with-src">
           <button class="chip" data-preset="skinaqua">Skin Aqua Super UV Moisture Milk (JP hybrid)</button>
-          <a class="preset-src" href="md.html?path=research/sources/skinaqua-source.md" target="_blank" rel="noopener" title="View source document with ingredient list and concentration inference">📄</a>
+          <a class="preset-src" href="../research/sources/skinaqua-source.html" target="_blank" rel="noopener" title="View source document with ingredient list and concentration inference">📄</a>
         </span>
         <button class="chip" data-preset="eu-broad">EU broad-spectrum (Tinosorb M+S+DHHB+EHT)</button>
         <button class="chip" data-preset="us-classic">US classic (AVB+OC)</button>
@@ -1617,7 +1617,7 @@
         <li><strong>C5</strong> — not located</li>
       </ul>
       <h4>About this atlas</h4>
-      <p>This is an AI-generated reference compendium. Background on how it was built — and on the broader experiment of sharing Claude Code outputs publicly — is at <a href="https://blog.sus.cat/p/share-your-claude-code-outputs" target="_blank" rel="noopener">blog.sus.cat / share-your-claude-code-outputs</a>. Source markdown files (claim files, verification docs, calibration deep-dives, preset-source documentation) are browsable via the document viewer: <a href="md.html?path=MASTER-SYNTHESIS.md">MASTER-SYNTHESIS</a>, <a href="md.html?path=research/sources/skinaqua-source.md">SkinAqua source</a>, <a href="md.html?path=research/sources/uvmune-400-source.md">UVMune 400 source</a>, and any other <code>.md</code> file via <code>md.html?path=...</code>.</p>
+      <p>This is an AI-generated reference compendium. Background on how it was built — and on the broader experiment of sharing Claude Code outputs publicly — is at <a href="https://blog.sus.cat/p/share-your-claude-code-outputs" target="_blank" rel="noopener">blog.sus.cat / share-your-claude-code-outputs</a>. The 66 source documents (claim files, verification docs, calibration deep-dives, preset-source documentation) are pre-rendered to static HTML and accessible directly: <a href="../MASTER-SYNTHESIS.html">MASTER-SYNTHESIS</a>, <a href="../research/sources/skinaqua-source.html">SkinAqua source</a>, <a href="../research/sources/uvmune-400-source.html">UVMune 400 source</a>, and the per-category summaries linked from the master file. Each page links to its raw <code>.md</code> source for verification.</p>
       <h4>AI disclosure</h4>
       <p>Researched, synthesized, and rendered by AI agents. Primarily AI fact-checked, not personally verified by the author. Citations were spot-checked against PubMed and publisher pages — <strong>2 misattributed citations were corrected</strong> in an adversarial critique pass (Stange→Hanson; Hamzavi→D'Ruiz). Numerical values, regulatory statuses, and SPF predictions should be re-verified against primary sources before any clinical, regulatory, or product-formulation use.</p>
 
@@ -2853,7 +2853,7 @@ function openDetail(f){
       ${regBadge('KR', f.reg.kr)}
     </div>
     ${spectrumRefsBlock(f)}
-    <a class="file-link" href="../${f.detail}" target="_blank" rel="noopener">View claim file →</a>
+    <a class="file-link" href="../${f.detail.replace(/\.md$/, '.html')}" target="_blank" rel="noopener">View claim file →</a>
   `;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -3519,7 +3519,7 @@ function renderScatter(){
         <div class="info-cond">${f.t_half_cond || ''}</div></div>
       <div class="info-row"><dt>Category</dt><dd>${f.category.replace('-', ' ')}</dd></div>
       <div class="info-row" style="border-top:1px solid var(--line-soft);padding-top:10px;margin-top:6px">
-        <a class="file-link" href="../${f.detail}" target="_blank" rel="noopener" style="font:500 0.72rem var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">View claim file →</a>
+        <a class="file-link" href="../${f.detail.replace(/\.md$/, '.html')}" target="_blank" rel="noopener" style="font:500 0.72rem var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">View claim file →</a>
       </div>`;
   }
   function clearInfo(){
