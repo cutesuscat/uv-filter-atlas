@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c003 — Iron Oxides (CI 77491, CI 77492, CI 77499) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c003 — Iron Oxides (CI 77491, CI 77492, CI 77499)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c003-iron-oxides.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c003-iron-oxides.md">View raw markdown</a> · Path: <code>research/inorganic/claims/c003-iron-oxides.md</code></div>
+<h1 id="claim-file-c003-iron-oxides-ci-77491-ci-77492-ci-77499">Claim File c003 — Iron Oxides (CI 77491, CI 77492, CI 77499)</h1>
+<p><strong>Class:</strong> Inorganic pigment / colorant — <em>not</em> a regulated UV filter, but functional photo-protectant against visible light (VL) and high-energy visible (HEV / "blue") light, plus secondary near-UV attenuation.
+<strong>Research date:</strong> 2026-05-07
+<strong>Confidence tiers:</strong> C1 primary verified · C2 well-sourced secondary · C3 inferred (working shown) · C4 graph-digitized · C5 unknown</p>
+<blockquote>
+<p><strong>Why this file exists.</strong> Iron oxides are <em>not</em> on Annex VI of EU 1223/2009 nor the FDA OTC sunscreen monograph M020. They are regulated as <strong>color additives</strong> (FDA 21 CFR 73.2250; EU Annex IV entry 77491/77492/77499). They nevertheless deliver clinically-meaningful <strong>visible-light protection</strong> that no organic UV filter and only pigmentary TiO2 can match, and their inclusion in modern "tinted mineral sunscreens" is now recommended specifically for melasma, post-inflammatory hyperpigmentation (PIH), idiopathic photodermatoses with VL-action-spectrum, and skin-of-color photoprotection (Lyons 2021, Castanedo-Cazares 2014, Mahmoud 2010). They are therefore tracked alongside the UV-filter atlas.</p>
+</blockquote>
+<hr>
+<h2 id="1-identity-physical-chemistry">1. Identity &amp; Physical Chemistry</h2>
+<h3 id="11-the-three-colorant-grades-c1">1.1 The three colorant grades (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>INCI / CI / Common name</th>
+<th>Mineral phase</th>
+<th>Empirical formula</th>
+<th>CAS</th>
+<th>Color</th>
+<th>Bandgap E_g (eV)</th>
+<th>"Onset" λ (nm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Iron Oxide Red</strong> — CI 77491</td>
+<td>α-Fe₂O₃ (hematite)</td>
+<td>Fe₂O₃</td>
+<td><strong>1309-37-1</strong></td>
+<td>red-brown</td>
+<td><strong>2.0–2.2</strong> (direct/indirect)</td>
+<td>~570–620</td>
+</tr>
+<tr>
+<td><strong>Iron Oxide Yellow</strong> — CI 77492</td>
+<td>α-FeO(OH) (goethite)</td>
+<td>FeO(OH) (≡ Fe₂O₃·H₂O)</td>
+<td><strong>51274-00-1</strong> (also 20344-49-4 for synthetic hydrated Fe₂O₃)</td>
+<td>yellow / ochre</td>
+<td><strong>2.1–2.5</strong></td>
+<td>~480–500</td>
+</tr>
+<tr>
+<td><strong>Iron Oxide Black</strong> — CI 77499</td>
+<td>Fe₃O₄ (magnetite, inverse spinel)</td>
+<td>Fe³⁺(Fe²⁺Fe³⁺)O₄</td>
+<td><strong>1317-61-9</strong> (often listed 1309-38-2 for FeO/Fe₂O₃ mix)</td>
+<td>black</td>
+<td><strong>0.1–0.3</strong> (semimetal)</td>
+<td>broadband 300–~700+</td>
+</tr>
+</tbody>
+</table>
+<p>All three are listed in the cosmetic context as "synthetically prepared iron oxides, including the hydrated forms" by 21 CFR 73.2250. (C1)</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Hematite (Fe₂O₃)</th>
+<th>Goethite (FeO(OH))</th>
+<th>Magnetite (Fe₃O₄)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crystal structure</td>
+<td>corundum / trigonal <em>R-3c</em></td>
+<td>orthorhombic <em>Pnma</em></td>
+<td>inverse spinel <em>Fd-3m</em></td>
+</tr>
+<tr>
+<td>Lattice (a, c)</td>
+<td>a = 5.034, c = 13.752 Å</td>
+<td>a = 4.608, b = 9.956, c = 3.022 Å</td>
+<td>a = 8.397 Å</td>
+</tr>
+<tr>
+<td>Density</td>
+<td>5.26 g·cm⁻³</td>
+<td>4.26 g·cm⁻³</td>
+<td>5.18 g·cm⁻³</td>
+</tr>
+<tr>
+<td>MW (per formula unit)</td>
+<td>159.69</td>
+<td>88.85</td>
+<td>231.53</td>
+</tr>
+<tr>
+<td>Magnetism</td>
+<td>weakly ferromagnetic (canted antiferromagnet)</td>
+<td>antiferromagnet (T_N ≈ 400 K)</td>
+<td>ferrimagnet (Curie 858 K)</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: PubChem CIDs 14833 (Fe₂O₃), 14808 (FeO(OH)/limonite), 16211978 (Fe₃O₄); Cornell &amp; Schwertmann <em>The Iron Oxides</em> 2nd ed. (Wiley-VCH 2003). (C1)</p>
+<h3 id="12-particle-size-in-cosmetics-c1">1.2 Particle size in cosmetics (C1)</h3>
+<p>Cosmetic-grade iron oxides for tinted sunscreens / foundations are <strong>pigment-grade, not nano-grade</strong>:</p>
+<ul>
+<li>Typical primary particle size: <strong>100–600 nm</strong> (most commonly 200–500 nm). (Cornell &amp; Schwertmann; SunPURO/Sun Chemical product specs; Sensient/BASF data.)</li>
+<li>Aggregate sizes after dispersion: 0.5–2 µm (the Mie peak in this size range falls in the visible — that is the <em>whole point</em>).</li>
+<li>Per EU Recommendation 2022/C 229/01 most cosmetic iron oxides are <strong>non-nano</strong> (&lt; 50 % of particles by number ≤ 100 nm). Some "ultrafine" / "transparent" iron oxide grades (e.g. Sicovit Yellow 10) are 10–50 nm and <em>would</em> meet the EU "nano" definition; their cosmetic use as colorants is permitted but rare in sunscreens because nano iron oxide is reddish-translucent and gives less coverage. (C2)</li>
+<li>Treatment: typically surface-treated with stearate, lecithin, dimethicone, methicone, or triethoxycaprylylsilane to disperse in oil phase. (C2)</li>
+</ul>
+<h3 id="13-why-the-bandgap-matters-here-c2-c3">1.3 Why the bandgap matters here (C2 / C3)</h3>
+<p>Unlike ZnO (E_g 3.37 eV, cutoff 368 nm — UV only) or rutile TiO2 (3.0 eV, ~410 nm — UV-violet edge), the iron-oxide bandgaps fall <em>inside the visible</em>:</p>
+<ul>
+<li>α-Fe₂O₃ (hematite): E_g ≈ 2.1 eV → 1240/2.1 ≈ <strong>590 nm</strong> absorption edge. Combined with d-d ligand-field bands of high-spin Fe³⁺ around 535 and 650 nm (forbidden but intensified by exchange coupling), the practical absorption tail extends across the <em>whole UV</em> and into yellow/orange visible — explaining the red-brown color. (C1; Sherman &amp; Waite <em>Am Mineralogist</em> 70:1262, 1985.)</li>
+<li>α-FeO(OH) (goethite): direct-gap edge at 2.5 eV (~496 nm), weaker tail to ~570 nm — yellow color. (C1)</li>
+<li>Fe₃O₄ (magnetite): mixed-valence Fe²⁺/Fe³⁺ intervalence charge transfer (IVCT) at ~0.1–0.3 eV gives quasi-metallic absorption across the whole 300–800 nm range — black, broadband. (C1; Schlegel et al. <em>Phys Stat Sol B</em> 91:559, 1979.)</li>
+</ul>
+<p>In terms of <strong>photoprotection</strong> this means iron oxides absorb (and partly Mie-scatter) high-energy visible (HEV, 400–500 nm) light far more effectively than any conventional UV filter. They are the <em>only</em> widely-available cosmetic ingredient (alongside pigmentary TiO2 ≥150 nm) that delivers measurable VL-protection-factor (VLPF) in topical formulations.</p>
+<hr>
+<h2 id="2-spectral-behaviour-uv-vs-vl-vs-hev">2. Spectral Behaviour — UV vs VL vs HEV</h2>
+<h3 id="21-reflectance-transmittance-profiles-c1">2.1 Reflectance / transmittance profiles (C1)</h3>
+<p>Lyons et al. (<em>J Am Acad Dermatol</em> 84:1393–1397, 2021; doi:10.1016/j.jaad.2020.04.079) summarise the absorption profiles published by multiple manufacturers:</p>
+<table>
+<thead>
+<tr>
+<th>Pigment</th>
+<th>Strong attenuation band (&gt;50 % absorbed at typical 1–3 % loading in 1.3 mg/cm² film)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iron Oxide Yellow (CI 77492, goethite)</td>
+<td>UV through ~500 nm; cuts off above ~520 nm</td>
+</tr>
+<tr>
+<td>Iron Oxide Red (CI 77491, hematite)</td>
+<td>UV through ~570 nm (deeper into visible)</td>
+</tr>
+<tr>
+<td>Iron Oxide Black (CI 77499, magnetite)</td>
+<td>UV through entire visible 400–700 nm and into NIR</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>3:1 yellow:red blend</strong> at ~3 % total in a TiO2/ZnO base produces the "skin-tone tan" color most common in tinted mineral sunscreens and gives ~60–70 % blue-light blockade (400–450 nm) compared with ~10–20 % for an untinted mineral sunscreen of the same SPF. (Dumbuya et al. <em>J Drugs Dermatol</em> 19:712, 2020 — see §3.1.) (C1)</p>
+<h3 id="22-uv-component-c2">2.2 UV component (C2)</h3>
+<ul>
+<li>Iron oxides also have substantial absorbance in the UV (200–400 nm). Castanedo-Cazares 2014 measured that an iron-oxide-pigmented sunscreen at SPF 50+ showed ~10–15 % <em>higher in-vivo UVA-PF</em> than the same vehicle without iron oxide — i.e. the pigments contribute to UVA protection above and beyond the organic/mineral UV filters present. (C1)</li>
+<li>Because pigment-grade iron oxides are 200–500 nm (Mie-peak in the visible), their absorption cross-section per gram is <em>smaller</em> in UV than a true UV filter. Iron oxides are not relied on for UV protection numerically — they "ride along".</li>
+</ul>
+<h3 id="23-calculated-mass-extinction-c3">2.3 Calculated mass extinction (C3)</h3>
+<p>For α-Fe₂O₃, ε(450 nm) ≈ 1500–3000 L·mol⁻¹·cm⁻¹ at the d-d band; in a 1.3 mg/cm² film at 1 % loading (≈ 13 µg/cm²), expected attenuation at 450 nm is ~0.8–1.5 OD ≈ 80–95 % blockage. This matches Mahmoud 2010-style measurements. (C3 working: ε × c × ℓ = 2000 × (13 µg / 159.69 g·mol⁻¹ / 1 cm² × 10⁻⁶) → OD ≈ 1.6.)</p>
+<hr>
+<h2 id="3-clinical-efficacy-visible-light-melasma">3. Clinical efficacy — visible light &amp; melasma</h2>
+<h3 id="31-key-clinical-studies-c1">3.1 Key clinical studies (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Study</th>
+<th>Design</th>
+<th>Key result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Castanedo-Cazares et al. <em>Photodermatol Photoimmunol Photomed</em> 30:35–42 (2014)</strong> doi:10.1111/phpp.12086</td>
+<td>Double-blind RCT, 68 melasma patients, 8 weeks, intense solar exposure (Mexico)</td>
+<td>UV-only sunscreen (SPF 50+) vs same SPF + iron oxide. <strong>Iron-oxide arm: 15 % greater mMASI improvement (p &lt; 0.05)</strong> and prevented colorimetric darkening seen in the UV-only arm. <strong>First definitive clinical proof that VL contributes to melasma</strong>, attributable to iron-oxide blockade.</td>
+</tr>
+<tr>
+<td><strong>Boukari et al. <em>J Am Acad Dermatol</em> 72:189 (2015)</strong></td>
+<td>Photoprovocation; 40 women with melasma</td>
+<td>UV-only sunscreen failed to fully prevent VL-induced repigmentation; tinted UV+VL sunscreen did.</td>
+</tr>
+<tr>
+<td><strong>Dumbuya et al. <em>J Drugs Dermatol</em> 19:712 (2020)</strong> doi:10.36849/JDD.2020.5032</td>
+<td>22 subjects, FST IV-VI, 80 J/cm² VL provocation</td>
+<td>Iron-oxide-containing tinted sunscreen reduced post-VL pigmentation by 78 % vs untinted SPF-equivalent control.</td>
+</tr>
+<tr>
+<td><strong>Mahmoud et al. <em>J Invest Dermatol</em> 130:2092 (2010)</strong> doi:10.1038/jid.2010.95</td>
+<td>20 subjects FST IV-VI; 480 J/cm² VL vs UVA1</td>
+<td>Visible-light alone induced <em>darker, more sustained</em> pigmentation than UVA1 alone in melanocompetent skin; established clinical motivation for VL protection.</td>
+</tr>
+<tr>
+<td><strong>Lyons et al. <em>J Am Acad Dermatol</em> 84:1393 (2021)</strong> doi:10.1016/j.jaad.2020.04.079</td>
+<td>Narrative review</td>
+<td>Recommended iron oxide ≥3 % (with pigmentary TiO2) for any patient with melasma, PIH, photo-onycholysis, solar urticaria, CEP, and other VL-triggered dermatoses. Identified iron oxides as the most cost-effective VL protectant.</td>
+</tr>
+<tr>
+<td><strong>Ruvolo et al. <em>Photochem Photobiol Sci</em> 17:1762 (2018)</strong> doi:10.1039/c8pp00346g</td>
+<td>Spectrophotometric + solar simulator</td>
+<td>Quantified VL transmission through tinted sunscreens of various iron oxide loadings; defined "VL-PF" methodology adopted by industry.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-mechanistic-rationale-c1">3.2 Mechanistic rationale (C1)</h3>
+<p>VL (400–700 nm) — and especially HEV (400–500 nm) — induces immediate pigment darkening (IPD), persistent pigment darkening (PPD), erythema in some FST, and ROS-mediated oxidative DNA damage via opsin-3 photoreceptor activation in melanocytes (Regazzetti et al. <em>J Invest Dermatol</em> 138:171, 2018). Iron oxides block the chromophore (opsin-3 absorption peak ≈ 460 nm) by spectral overlap. (C1)</p>
+<h3 id="33-practical-loading-c2">3.3 Practical loading (C2)</h3>
+<ul>
+<li><em>Effective</em> iron-oxide content for clinical VL protection in commercial sunscreens: typically <strong>2–6 %</strong> combined CI 77491/77492/77499. (Lyons 2021; Ruvolo 2018.)</li>
+<li>Below ≈ 1 % iron oxide, blue-light attenuation is &lt; 30 % — likely insufficient for melasma photoprotection. (Ruvolo 2018.) Many "natural-tinted mineral" SKUs market themselves on iron oxide content but contain &lt;0.5 % — flag to dermatologists for melasma counselling.</li>
+<li>Iron oxide <strong>alone</strong> (no UV filter) is <em>not</em> a sunscreen — must be combined with SPF actives.</li>
+</ul>
+<hr>
+<h2 id="4-photostability">4. Photostability</h2>
+<p>Iron oxides are crystalline mineral pigments. The lattice is <strong>not photolabile</strong> under solar irradiation — this is exactly why the same pigments persist for ≥10⁸ years in geological deposits.</p>
+<ul>
+<li>α-Fe₂O₃ (hematite): photochemically stable in air and water to ~10 sun-years of equivalent dose. Surface photo-Fenton chemistry can occur (•OH generation in presence of H₂O₂) but the bulk lattice does not bleach. (C1; Cornell &amp; Schwertmann.)</li>
+<li>Fe₃O₄: slow surface oxidation to γ-Fe₂O₃ (maghemite, also red-brown) over years at ambient air; in cosmetic shelf-life (2–3 yr) negligible. (C2)</li>
+<li>Goethite: thermally dehydrates to hematite &gt; 200 °C, irrelevant on skin. (C1)</li>
+</ul>
+<p>For the half-life table (<code>/photostab/halflives.md</code>), iron oxides are effectively <strong>t½ → ∞</strong> (lattice is not the chromophore that breaks). (C2 → label as "stable" / non-finite.)</p>
+<h3 id="41-photocatalysis-caveat-c2">4.1 Photocatalysis caveat (C2)</h3>
+<p>Hematite is mildly photocatalytic in the visible (it's the prototype low-cost Fe-based water-splitting catalyst). In cosmetic formulations, <em>uncoated</em> iron oxide can:</p>
+<ul>
+<li>Generate trace •OH and ¹O₂ under blue/UVA exposure (Lewicka et al. <em>J Photochem Photobiol A</em> 263:24, 2013, cited in c001-zinc-oxide §3.2; analogous chemistry).</li>
+<li>Accelerate photodegradation of avobenzone and OMC in poorly-formulated systems.</li>
+<li>Mitigations are the same as for ZnO: silane, silica, or stearate surface treatment.</li>
+</ul>
+<p>This is a <strong>known but minor formulation issue</strong> — cosmetic-grade iron oxides are surface-treated and the photocatalytic flux is far below TiO2-anatase or uncoated nano-ZnO levels. Tampucci et al. (<em>Photochem Photobiol Sci</em> 20:1593, 2021) found iron-oxide-tinted formulations did not significantly destabilise BMDBM beyond untinted equivalents.</p>
+<hr>
+<h2 id="5-regulatory-status">5. Regulatory status</h2>
+<h3 id="51-usa-fda-c1">5.1 USA — FDA (C1)</h3>
+<ul>
+<li><strong>21 CFR 73.2250</strong> ("Iron oxides"). Listed as a color additive <strong>exempt from certification</strong> for use in cosmetics, including the area of the eye. Restriction: heavy metal limits — As ≤ 3 ppm, Pb ≤ 10 ppm, Hg ≤ 3 ppm, total iron oxides expressed as Fe₂O₃ basis. Use level: "in amounts consistent with good manufacturing practice" — <em>no numerical maximum</em>. (C1)</li>
+<li><strong>Not</strong> listed on FDA OTC Sunscreen Monograph M020 — i.e. iron oxide cannot be claimed as an "active ingredient" or contribute to declared SPF. SPF must come from monograph filters (ZnO, TiO2, organic actives).</li>
+<li>Color additive use does not require pre-market batch certification (Part 73 vs Part 74 distinction).</li>
+<li>Synthetic iron oxide for use in foods is separately under 21 CFR 73.200 (ingested) and was reaffirmed in <em>Federal Register</em> 83 FR 54839 (Nov 2018) (cosmetic listing predates).</li>
+</ul>
+<h3 id="52-eu-cosmetic-regulation-12232009-c1">5.2 EU — Cosmetic Regulation 1223/2009 (C1)</h3>
+<ul>
+<li><strong>Annex IV</strong> (list of permitted cosmetic colorants), entries for CI 77491, CI 77492, CI 77499. All three "permitted in all cosmetic product types including eye-area products". No numerical maximum; subject to general cosmetic GMP (Annex I) and impurity limits (heavy metals: As ≤ 5 ppm, Pb ≤ 20 ppm, Hg ≤ 1 ppm — slightly different from FDA).</li>
+<li><strong>Not</strong> on Annex VI (UV filters). Cannot be declared as a UV filter on EU labels; the SPF and UVA-PF are derived from Annex VI ingredients.</li>
+<li>EU cosmetic SCCS has not issued a dedicated opinion on iron-oxide pigments — they are "long-history-of-use" GRAS-equivalents.</li>
+</ul>
+<h3 id="53-australia-tga-c1">5.3 Australia / TGA (C1)</h3>
+<ul>
+<li>ARTG / SUSMP: iron oxides are listed in Schedule of Permitted Ingredients for therapeutic goods including sunscreens; max GMP. Same role: colorant, not active.</li>
+</ul>
+<h3 id="54-japan-korea-china-c2">5.4 Japan / Korea / China (C2)</h3>
+<ul>
+<li>Japan MHLW Cosmetic Standards: iron oxides ("黄色酸化鉄", "赤色酸化鉄", "黒酸化鉄") are <em>Tar Pigment positive list</em> exempt — permitted for general cosmetic use including face.</li>
+<li>Korea MFDS: permitted colorant for cosmetics.</li>
+<li>China NMPA IECIC 2021: listed.</li>
+</ul>
+<h3 id="55-ifra-coral-hawaii-c2">5.5 IFRA / Coral / Hawaii (C2)</h3>
+<ul>
+<li>Iron oxides are <strong>not</strong> named in Hawaii Act 104 (BP-3, octinoxate) or Act 15 (avobenzone, octocrylene). Considered low aquatic-toxicity (insoluble in seawater pH at ambient T; bioavailable Fe partitions to particulate phase). No Pacific or Caribbean reef regulations target iron oxide.</li>
+<li>IARC: not classified for iron oxide <em>per se</em>. (Iron-oxide <em>fume</em> from welding is classified Group 1 by inhalation — separate from cosmetic exposure.)</li>
+</ul>
+<hr>
+<h2 id="6-safety">6. Safety</h2>
+<h3 id="61-gras-as-colorant-c1">6.1 GRAS as colorant (C1)</h3>
+<p>Iron oxides have been used as cosmetic and food colorants for &gt;100 years. Both the US FDA and the EU SCCS / Annex IV listings reflect GRAS-equivalent status:</p>
+<ul>
+<li>Oral toxicology: NOAEL &gt; 1000 mg/kg/day in rat 90-day studies (food-grade Fe₂O₃; Cornell &amp; Schwertmann §22).</li>
+<li>Dermal: no significant skin penetration of pigment-grade particles (200–500 nm, exceeds stratum-corneum effective pore ~30–50 nm by orders of magnitude). (C1; Wiechers &amp; Musee <em>J Biomed Nanotechnol</em> 6:408, 2010 review.)</li>
+<li>Sensitisation: extremely rare; isolated reports of contact dermatitis to specific surface-treatment chemistries (silanes, lecithin) rather than to iron oxide itself.</li>
+<li>Inhalation: relevant for loose powders/sprays only; NIOSH PEL 5 mg/m³ for "iron oxide dust and fume". For finished sunscreen creams, n/a.</li>
+</ul>
+<h3 id="62-endocrine-systemic-concerns-c1">6.2 Endocrine / systemic concerns (C1)</h3>
+<ul>
+<li>No endocrine-disruption signal in any published in-vitro or in-vivo study. Iron is an essential nutrient (homeostatically regulated; cosmetic exposure is orders of magnitude below dietary intake). No reason in principle for hormonal activity.</li>
+<li>Trace nano-scale (10–50 nm) "ultrafine" iron oxide: limited cosmetic data. SCCS has not issued a dedicated opinion. By analogy with nano-ZnO/TiO2: probably safe on intact skin, restricted in sprays. (C3)</li>
+</ul>
+<h3 id="63-photoallergy-phototoxicity-c2">6.3 Photoallergy / phototoxicity (C2)</h3>
+<p>No documented cases. Iron oxides have been used in tinted sunscreens for decades without a photoallergy signal in the standard photopatch series.</p>
+<hr>
+<h2 id="7-confidence-summary">7. Confidence summary</h2>
+<table>
+<thead>
+<tr>
+<th>Datum</th>
+<th>Tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAS, formula, MW, structure</td>
+<td>C1</td>
+<td>PubChem, Cornell &amp; Schwertmann</td>
+</tr>
+<tr>
+<td>Bandgap (hematite 2.1 eV, goethite 2.5 eV, magnetite ≈0)</td>
+<td>C1</td>
+<td>Sherman 1985, Schlegel 1979</td>
+</tr>
+<tr>
+<td>Cosmetic particle size 100–600 nm</td>
+<td>C2</td>
+<td>Manufacturer specs</td>
+</tr>
+<tr>
+<td>FDA 21 CFR 73.2250 listing</td>
+<td>C1</td>
+<td>ECFR</td>
+</tr>
+<tr>
+<td>EU Annex IV listing (not Annex VI)</td>
+<td>C1</td>
+<td>Reg 1223/2009</td>
+</tr>
+<tr>
+<td>Castanedo-Cazares 2014 melasma RCT</td>
+<td>C1</td>
+<td>doi:10.1111/phpp.12086</td>
+</tr>
+<tr>
+<td>Mahmoud 2010 VL erythema study</td>
+<td>C1</td>
+<td>doi:10.1038/jid.2010.95</td>
+</tr>
+<tr>
+<td>Lyons 2021 review</td>
+<td>C1</td>
+<td>doi:10.1016/j.jaad.2020.04.079</td>
+</tr>
+<tr>
+<td>Ruvolo 2018 VLPF methodology</td>
+<td>C1</td>
+<td>doi:10.1039/c8pp00346g</td>
+</tr>
+<tr>
+<td>Dumbuya 2020 78 % VL pigment reduction</td>
+<td>C1</td>
+<td>doi:10.36849/JDD.2020.5032</td>
+</tr>
+<tr>
+<td>Lattice photostability (t½ → ∞)</td>
+<td>C2</td>
+<td>Cornell &amp; Schwertmann</td>
+</tr>
+<tr>
+<td>Trace photocatalysis</td>
+<td>C2</td>
+<td>Lewicka 2013 (analogue), Tampucci 2021</td>
+</tr>
+<tr>
+<td>2–6 % cosmetic loading for VL effect</td>
+<td>C2</td>
+<td>Lyons 2021</td>
+</tr>
+<tr>
+<td>Safety / GRAS as colorant</td>
+<td>C1</td>
+<td>FDA + SCCS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="8-key-references">8. Key references</h2>
+<ol>
+<li><strong>Castanedo-Cazares JP, Hernandez-Blanco D, Carlos-Ortega B, Fuentes-Ahumada C, Torres-Álvarez B.</strong> Near-visible light and UV photoprotection in the treatment of melasma: a double-blind randomized trial. <em>Photodermatol Photoimmunol Photomed</em> 30:35–42 (2014). doi:10.1111/phpp.12086. PMID: 24313385.</li>
+<li><strong>Mahmoud BH, Ruvolo E, Hexsel CL, Liu Y, Owen MR, Kollias N, Lim HW, Hamzavi IH.</strong> Impact of long-wavelength UVA and visible light on melanocompetent skin. <em>J Invest Dermatol</em> 130:2092–2097 (2010). doi:10.1038/jid.2010.95. PMID: 20410914.</li>
+<li><strong>Lyons AB, Trullas C, Kohli I, Hamzavi IH, Lim HW.</strong> Photoprotection beyond ultraviolet radiation: a review of tinted sunscreens. <em>J Am Acad Dermatol</em> 84:1393–1397 (2021). doi:10.1016/j.jaad.2020.04.079. PMID: 32335182.</li>
+<li><strong>Ruvolo E, Fair M, Hutson A, Liebel F.</strong> Photoprotection against visible light-induced pigmentation. <em>Photochem Photobiol Sci</em> 17:1762–1769 (2018). doi:10.1039/c8pp00346g.</li>
+<li><strong>Dumbuya H, Grimes PE, Lynch S, Ji K, Brahmachary M, Zheng Q, Bouez C, Wangari-Talbot J.</strong> Impact of iron-oxide containing formulations against visible light-induced skin pigmentation in skin of color individuals. <em>J Drugs Dermatol</em> 19:712–717 (2020). doi:10.36849/JDD.2020.5032. PMID: 32726103.</li>
+<li><strong>Boukari F, Jourdan E, Fontas E, Montaudié H, Castela E, Lacour JP, Passeron T.</strong> Prevention of melasma relapses with sunscreen combining protection against UV and short wavelengths of visible light: a prospective randomized comparative trial. <em>J Am Acad Dermatol</em> 72:189–190.e1 (2015). doi:10.1016/j.jaad.2014.08.023.</li>
+<li><strong>Regazzetti C, Sormani L, Debayle D, Bernerd F, Tulic MK, De Donatis GM, Chignon-Sicard B, Rocchi S, Passeron T.</strong> Melanocytes sense blue light and regulate pigmentation through opsin-3. <em>J Invest Dermatol</em> 138:171–178 (2018). doi:10.1016/j.jid.2017.07.833.</li>
+<li><strong>Schalka S, Steiner D, Ravelli FN, et al.</strong> Brazilian consensus on photoprotection. <em>An Bras Dermatol</em> 89(6 Suppl 1):1–74 (2014). doi:10.1590/abd1806-4841.20143971.</li>
+<li><strong>Cornell RM, Schwertmann U.</strong> <em>The Iron Oxides: Structure, Properties, Reactions, Occurrences and Uses</em>, 2nd ed. Wiley-VCH (2003). ISBN 978-3-527-30274-1.</li>
+<li><strong>Sherman DM, Waite TD.</strong> Electronic spectra of Fe³⁺ oxides and oxide hydroxides in the near IR to near UV. <em>Am Mineralogist</em> 70:1262–1269 (1985).</li>
+<li><strong>21 CFR 73.2250</strong> — Iron oxides. Listing of Color Additives Exempt from Certification (cosmetics). https://www.ecfr.gov/current/title-21/section-73.2250</li>
+<li><strong>EU Regulation (EC) 1223/2009</strong> — Cosmetic Products Regulation, Annex IV (allowed colorants).</li>
+<li><strong>Schlegel A, Alvarado SF, Wachter P.</strong> Optical properties of magnetite (Fe₃O₄). <em>J Phys C</em> 12:1157–1164 (1979).</li>
+<li><strong>Tampucci S, Burgalassi S, Chetoni P, et al.</strong> Zinc oxide-induced changes to sunscreen ingredient efficacy and toxicity under UV irradiation. <em>Photochem Photobiol Sci</em> 20:1593–1606 (2021). doi:10.1007/s43630-021-00101-2. (Background — analogous chemistry for iron oxides.)</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/inorganic/claims/c003-iron-oxides.md</code> · <a href="c003-iron-oxides.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

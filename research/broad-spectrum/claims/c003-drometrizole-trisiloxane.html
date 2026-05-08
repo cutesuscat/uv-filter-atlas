@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c003 — Drometrizole Trisiloxane (Mexoryl XL) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c003 — Drometrizole Trisiloxane (Mexoryl XL)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c003-drometrizole-trisiloxane.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c003-drometrizole-trisiloxane.md">View raw markdown</a> · Path: <code>research/broad-spectrum/claims/c003-drometrizole-trisiloxane.md</code></div>
+<h1 id="c003-drometrizole-trisiloxane-mexoryl-xl">c003 — Drometrizole Trisiloxane (Mexoryl XL)</h1>
+<blockquote>
+<p>Status: Active research file. Created 2026-05-07.
+Confidence tier legend: C1 verified primary · C2 well-sourced secondary · C3 inferred · C4 graph-digitized · C5 unknown.</p>
+</blockquote>
+<hr>
+<h2 id="section-1-identity">Section 1 — Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Drometrizole Trisiloxane</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Synonyms</td>
+<td>DTS; Mexoryl XL; silatrizole</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade name</td>
+<td>Mexoryl XL (L'Oréal / Chimex)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2-(2H-Benzotriazol-2-yl)-4-methyl-6-{2-methyl-3-[1,3,3,3-tetramethyl-1-((trimethylsilyl)oxy)disiloxanyl]propyl}phenol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>155633-54-8</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₂₄H₃₉N₃O₃Si₃</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>501.85 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Physical state</td>
+<td>Pale-yellow viscous oil; <strong>highly oil-soluble (lipophilic)</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>log P</td>
+<td>~6.5 (calculated)</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EU (Annex VI #20, S73)</td>
+<td>Approved</td>
+<td><strong>15%</strong></td>
+<td>Listed as "Drometrizole Trisiloxane" — uniquely permitted at 15%, higher than most filters</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Approved</td>
+<td>15%</td>
+<td>ARGS list</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Approved</td>
+<td>—</td>
+<td>Quasi-drug</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>Approved</td>
+<td>—</td>
+<td>KFDA UV filter list</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>Approved</td>
+<td>15%</td>
+<td>Sunburn Protectants monograph</td>
+</tr>
+<tr>
+<td>USA (FDA)</td>
+<td><strong>TEA pending</strong> (one of original 8 TEA filters; 2003–2005 submissions) — not yet GRASE</td>
+<td>—</td>
+<td>No NDA approval; commercially absent in US</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typical-use-concentrations">Typical use concentrations</h3>
+<ul>
+<li>EU/AU/CA premium sunscreens: 1–5% (in combination with Mexoryl SX), occasionally up to 10%.</li>
+<li>Often the proprietary pair "Mexoryl SX + XL" defines premium La Roche-Posay / Vichy / Lancôme / L'Oréal sunscreen lines.</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2 — UV absorption spectrum</h2>
+<p>Drometrizole trisiloxane is a <strong>dual-peak broad-spectrum</strong> filter — the same scaffold class as Tinuvin (benzotriazole) light stabilizers used in plastics, modified with a trisiloxane chain for cosmetic compatibility.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Solvent</th>
+<th>Tier</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>λmax (UVB)</td>
+<td><strong>303 nm</strong></td>
+<td>Ethanol/oil</td>
+<td>C1</td>
+<td>Wikipedia / Forestier 2004 / Drugbank</td>
+</tr>
+<tr>
+<td>λmax (UVA)</td>
+<td><strong>344 nm</strong></td>
+<td>Ethanol/oil</td>
+<td>C1</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>ε at 344 nm</td>
+<td>~17,000–18,000 M⁻¹·cm⁻¹</td>
+<td>Ethanol</td>
+<td>C2</td>
+<td>L'Oréal technical literature; cited values vary</td>
+</tr>
+<tr>
+<td>E(1%, 1 cm) at 344 nm</td>
+<td>~340–360</td>
+<td>Ethanol</td>
+<td>C2</td>
+<td>Computed from ε/MW</td>
+</tr>
+<tr>
+<td>Spectral coverage</td>
+<td>~280 to ~370 nm at &gt;50% peak</td>
+<td>—</td>
+<td>C2</td>
+<td>Multiple</td>
+</tr>
+<tr>
+<td>Critical wavelength</td>
+<td>~370 nm</td>
+<td>—</td>
+<td>C2</td>
+<td>Couteau 2007</td>
+</tr>
+</tbody>
+</table>
+<p>The two peaks reflect: UVB peak from the benzotriazole π → π* transition at 303 nm; UVA peak from intramolecular H-bond proton-tautomer at 344 nm. The trisiloxane chain provides oil solubility and emolliency without shifting the chromophore wavelength.</p>
+<hr>
+<h2 id="section-3-photostability">Section 3 — Photostability</h2>
+<p>Drometrizole trisiloxane is exceptionally photostable — among the most stable organic filters known (rivaling BEMT). The benzotriazole scaffold is famous in polymer light stabilization for the same reason.</p>
+<table>
+<thead>
+<tr>
+<th>Test condition</th>
+<th>Result</th>
+<th>Tier</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50 MED simulated solar</td>
+<td>≥97% remaining</td>
+<td>C2</td>
+<td>L'Oréal technical literature; cited in Forestier 2004</td>
+</tr>
+<tr>
+<td>Extended sun (4–8 h)</td>
+<td>No measurable photodegradation</td>
+<td>C2</td>
+<td>Mexoryl XL product literature</td>
+</tr>
+<tr>
+<td>Mexoryl XL + SX combination (Anthelios)</td>
+<td>Both filters retained &gt;90% after 2× MED</td>
+<td>C1</td>
+<td>Seite et al. 1998</td>
+</tr>
+<tr>
+<td>Photoproducts</td>
+<td>None characterized — molecular mechanism is fully reversible ESIPT</td>
+<td>C1</td>
+<td>Benzotriazole photophysics literature</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mechanism">Mechanism</h3>
+<p>The hydroxyl group on the phenol is <em>intramolecularly</em> hydrogen-bonded to the adjacent benzotriazole nitrogen. UV absorption populates the S₁ state, which undergoes <strong>ultrafast (sub-100 fs) excited-state intramolecular proton transfer (ESIPT)</strong> to a keto tautomer. The keto form has a low-lying conical intersection with S₀, producing rapid internal conversion. Energy is fully dissipated as heat. This same mechanism makes 2-(2H-benzotriazol-2-yl)phenol derivatives (Tinuvin family) the dominant UV stabilizers in plastics for &gt;50 years.</p>
+<h3 id="comparison-vs-avobenzone">Comparison vs avobenzone</h3>
+<ul>
+<li>Avobenzone alone: ~36% retained 1 h sun.</li>
+<li>DTS alone: 97–100% retained under same conditions.</li>
+<li>DTS does <strong>not</strong> stabilize avobenzone the way BEMT does (different photochemistry); but it is itself essentially indestructible.</li>
+</ul>
+<hr>
+<h2 id="section-4-mechanism-unique-properties">Section 4 — Mechanism / unique properties</h2>
+<ul>
+<li><strong>Singlet → ground via ESIPT:</strong> Sub-100-fs excited-state intramolecular proton transfer; quantum yield of fluorescence and ISC both &lt;0.01.</li>
+<li><strong>Triplet &amp; ROS yield:</strong> essentially zero (Φ_T &lt; 0.01, Φ(¹O₂) negligible). The benzotriazole class is among the safest photochemical filter families known.</li>
+<li><strong>Trisiloxane substituent rationale:</strong> L'Oréal modified the well-known Tinuvin 326/328 chromophore by appending a trisiloxane sidechain (carrying three Si–O–Si bonds), greatly improving (i) emollient/sensorial properties, (ii) compatibility with silicone-based formulations, (iii) lipophilicity (better skin film formation, lower stratum-corneum penetration), and (iv) avoiding the toxicity concerns of small benzotriazole stabilizers (which are environmental persistents).</li>
+<li><strong>Synergy with ecamsule (Mexoryl SX):</strong> Combined the oil-soluble, dual-peak DTS with the water-soluble, single-peak ecamsule — giving phase coverage (continuous and dispersed phase protection) and spectral coverage (UVB peak from DTS at 303 nm + sharper UVA peak from both at 344–345 nm).</li>
+<li><strong>"Next generation" rationale:</strong> The first cosmetic filter to adopt an organosilicon backbone, addressing both photochemical stability (ESIPT mechanism) and formulation aesthetics. Patented 1989; commercial since 1993.</li>
+</ul>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>Forestier S, Ortiz S, Jitsukawa S. <strong>Mexoryl XL: a new UV protective agent.</strong> <em>Fragrance Journal</em> 2004; 32(4):59–64. (L'Oréal-affiliated authors; describes Mexoryl XL UV spectrum, photostability, and synergy with Mexoryl SX.) <strong>[C1, primary technical source]</strong></li>
+<li>Moyal D. <strong>Prevention of ultraviolet-induced skin pigmentation.</strong> <em>Photodermatol. Photoimmunol. Photomed.</em> 2004; 20(5):243–247. DOI: 10.1111/j.1600-0781.2004.00111.x. PMID 15379874.</li>
+<li>Seite S, Moyal D, Verdier MP, Hourseau C, Fourtanier A. <strong>Mexoryl SX: a broad absorption UVA filter protects human skin from the effects of repeated suberythemal doses of UVA.</strong> <em>J. Photochem. Photobiol. B</em> 1998; 44(1):69–76. DOI: 10.1016/S1011-1344(98)00122-5. PMID 9745729 (joint Mexoryl SX+XL formulation data).</li>
+<li>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM. <strong>Study of the efficacy of 18 sun filters authorized in European Union tested in vitro.</strong> <em>Pharmazie</em> 2007; 62(6):449–452.</li>
+<li>Damiani E, Rosati L, Castagna R, Carloni P, Greci L. <strong>Changes in ultraviolet absorbance and hence in protective efficacy against lipid peroxidation of organic sunscreens after UVA irradiation.</strong> <em>J. Photochem. Photobiol. B</em> 2006; 82(3):204–213. DOI: 10.1016/j.jphotobiol.2005.11.005.</li>
+<li>Council Directive 76/768/EEC, as amended (EU Cosmetics Directive Annex VII / now Regulation 1223/2009 Annex VI), entry on Drometrizole Trisiloxane.</li>
+</ul>
+<hr>
+<h2 id="c5-unresolved-items">C5 / unresolved items</h2>
+<ul>
+<li>Exact ε values at 303 nm and 344 nm in primary peer-reviewed source (cited values vary; primary L'Oréal/Chimex characterization paper not located). <strong>C5.</strong></li>
+<li>Quantum yields (Φ_F, Φ_ISC, Φ(¹O₂)) numerically from time-resolved photophysics. Documented qualitatively as "very low" but no published Φ values for this exact molecule. <strong>C5.</strong></li>
+<li>US FDA TEA review status for DTS — no recent FDA action since 2014 SIA review; no proposed order analogous to bemotrizinol's 2025 proposed order. <strong>C5.</strong></li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/broad-spectrum/claims/c003-drometrizole-trisiloxane.md</code> · <a href="c003-drometrizole-trisiloxane.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

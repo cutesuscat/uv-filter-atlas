@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c006: Tinosorb M (MBBT, Bisoctrizole) as Photostabilizer of Avobenzone — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c006: Tinosorb M (MBBT, Bisoctrizole) as Photostabilizer of Avobenzone</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c006-tinosorb-m-mbbt.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c006-tinosorb-m-mbbt.md">View raw markdown</a> · Path: <code>research/photostab/claims/c006-tinosorb-m-mbbt.md</code></div>
+<h1 id="c006-tinosorb-m-mbbt-bisoctrizole-as-photostabilizer-of-avobenzone">c006: Tinosorb M (MBBT, Bisoctrizole) as Photostabilizer of Avobenzone</h1>
+<p><strong>Claim</strong>: Tinosorb M (methylene bis-benzotriazolyl tetramethylbutylphenol; INCI; trade Tinosorb M, BASF; CAS 103597-45-1) is an organic-particulate, hybrid (absorbing + scattering) UV filter. It is intrinsically highly photostable through ESIPT on its hydroxyphenyl-benzotriazole arms, and provides modest indirect photostabilisation of avobenzone primarily through (a) UV optical filtering (particle scattering 5–10% of incident UV reduces effective fluence on AVB) and (b) some triplet-energy-transfer activity (T1 of MBBT &lt; T1 of BMDBM diketo). The dominant practical effect is <em>fluence reduction</em> rather than direct photophysical quenching, which distinguishes MBBT from soluble TTET stabilisers.</p>
+<p><strong>Confidence</strong>: C1 for the high intrinsic photostability of MBBT and its broadband UV absorption; C2 for the magnitude of the AVB-rescue contribution; C3 for the partition between optical filtering and direct triplet quenching.</p>
+<hr>
+<h2 id="section-1-mechanism">Section 1: Mechanism</h2>
+<h3 id="mbbt-chromophore">MBBT chromophore</h3>
+<ul>
+<li>Two 2-(2H-benzotriazol-2-yl)-4-(1,1,3,3-tetramethylbutyl)phenol arms linked by a methylene bridge — a dimer of a Tinuvin-type benzotriazole UV-absorber (used industrially as a polymer photostabiliser).</li>
+<li>The 2-(2H-benzotriazol-2-yl)phenol motif undergoes ultrafast ESIPT (sub-ps) on excitation: phenolic-OH proton transfers to triazole-N → keto-tautomer → ground state. This is the textbook polymer-additive-class mechanism (Tinuvin) and explains the near-unity intrinsic photostability of MBBT.</li>
+<li>T1 energy is reported at ~55 kcal/mol (estimated from analogous Tinuvin compounds), below E_T(BMDBM diketo).</li>
+</ul>
+<h3 id="particulate-organic-pigment-behaviour">Particulate (organic-pigment) behaviour</h3>
+<ul>
+<li>MBBT is supplied as a 50% aqueous dispersion (Tinosorb M) of micronised solid particles (median diameter 200 nm). It is therefore both an organic absorber <em>and</em> a UV-scatterer (Mie/Rayleigh hybrid). BASF technical literature claims 5–10% of incident UV is scattered/reflected.</li>
+<li>This means MBBT acts in two modes:
+  1. <em>Optical</em>: less UV reaches AVB in the same film → less photolysis. Independent of energy-transfer chemistry.
+  2. <em>Photophysical</em>: TTET from BMDBM* to MBBT chromophore where dissolved/dispersed close to AVB.</li>
+</ul>
+<h3 id="avobenzone-stabilisation-pathway">Avobenzone stabilisation pathway</h3>
+<p>The dominant published claim is that mode (1) — fluence reduction across the broad UV range — is the principal in-formulation contribution, supplemented by direct quenching at the particle surface where AVB molecules adsorb or partition. This contrasts with bemotrizinol/octocrylene which act predominantly via molecular TTET in solution.</p>
+<hr>
+<h2 id="section-2-quantitative-effect">Section 2: Quantitative effect</h2>
+<ul>
+<li>Tinosorb M is rated as one of the most photostable approved UV filters: &lt;2% loss after 30 MED in O/W cream (BASF technical brochure PRD 30482916). [C2 manufacturer]</li>
+<li>In AVB+OMC formulations stabilised with MBBT alone (no OC, no Tinosorb S): AVB retention typically reported at ≈70–85% after 25 MED depending on level (3–10% MBBT). At 5% MBBT, residual AVB ≈ 75–80% in a 3% AVB / 7.5% OMC O/W cream. [C2, BASF / formulation press]</li>
+<li>Combined with bemotrizinol: AVB retention ≥90% after 30 MED — Tinosorb S + Tinosorb M is the BASF-recommended stabilising "kit" for avobenzone in EU sunscreens.</li>
+<li>MBBT itself absorbs at 305 and 360 nm with broadband coverage (280–400 nm), and contributes to SPF + UVA-PF independently.</li>
+</ul>
+<h3 id="caveats">Caveats</h3>
+<ul>
+<li>In US sunscreens, MBBT is <em>not</em> approved (FDA monograph), so the stabilisation contribution is not available to US formulators.</li>
+<li>Allergic contact dermatitis to MBBT is rare but documented (case reports &lt; 0.5% of patch-tested cosmetic users).</li>
+<li>The high MW (~659 Da) and particulate state limit percutaneous absorption (negligible systemic exposure — favourable safety profile).</li>
+</ul>
+<hr>
+<h2 id="section-3-practical-formulation-guidance">Section 3: Practical formulation guidance</h2>
+<ul>
+<li>Typical use level: 2–10% w/w (max 10% EU). As an aqueous dispersion (Tinosorb M / Tinosorb M Active), it goes in the water phase; some grades (Tinosorb M-OL Lite Aqua) are also water-phase but optimised for flowable systems.</li>
+<li>Best paired with: bemotrizinol (Tinosorb S), avobenzone, ZnO, TiO2.</li>
+<li>Vehicle: O/W systems strongly preferred (the dispersion's surfactant package is designed for this). Cannot easily be used in anhydrous oil/silicone systems.</li>
+<li>Patent: Ciba (now BASF) EP 0,818,450 (composition of matter); BASF EP 1,776,950 (compositions with avobenzone); BASF EP 1,200,059 covers Tinosorb S/M + avobenzone systems.</li>
+</ul>
+<hr>
+<h2 id="section-4-citations">Section 4: Citations</h2>
+<ol>
+<li><strong>BASF / Ciba.</strong> Tinosorb M Technical Information PRD 30482916 (rev. 12.03.2019). <strong>[C2, manufacturer]</strong></li>
+<li><strong>Herzog B, Sohn M, Mongiat S, Kleiman M.</strong> "An efficient sunscreen UV filter combining UV absorption and scattering: bisoctrizole." <em>Photochem Photobiol Sci</em> 7(?):? (2007/2009). [C1 if found; check]</li>
+<li><strong>Lhiaubet-Vallet V, Marin M, Jimenez O, Gorchs O, Trullas C, Miranda MÁ.</strong> "Filter-filter interactions. Photostabilization, triplet quenching and reactivity with singlet oxygen." <em>Photochem Photobiol Sci</em> 9(4):552-558 (2010). DOI: 10.1039/b9pp00158a. <strong>[C1, includes MBBT]</strong></li>
+<li><strong>EU SCCS Opinion 1546/15</strong> (revision 25 June 2015). Methylene bis-benzotriazolyl tetramethylbutylphenol safety review. <strong>[C1, regulatory]</strong></li>
+<li><strong>Bisoctrizole — Wikipedia / DrugBank DB11262</strong>. [C3, tertiary] — useful for cross-checking the consensus view.</li>
+<li><strong>Bonda CA, Lott D.</strong> Sunscreen Photostability. Springer 2016 (chapter discusses particulate organic UV filters). <strong>[C2 review]</strong></li>
+</ol>
+<h3 id="bias-caveat">Bias caveat</h3>
+<p>A large fraction of MBBT efficacy data are in BASF technical literature (the manufacturer). Independent academic confirmation of broadband UV filtering and intrinsic photostability is solid; the magnitude of the AVB-rescue contribution from MBBT <em>in isolation</em> (i.e., without Tinosorb S) is less rigorously documented in the academic record.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/photostab/claims/c006-tinosorb-m-mbbt.md</code> · <a href="c006-tinosorb-m-mbbt.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

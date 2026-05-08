@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c002 — Octisalate (Ethylhexyl Salicylate / EHS / Octyl Salicylate) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c002 — Octisalate (Ethylhexyl Salicylate / EHS / Octyl Salicylate)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c002-octisalate.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c002-octisalate.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c002-octisalate.md</code></div>
+<h1 id="c002-octisalate-ethylhexyl-salicylate-ehs-octyl-salicylate">c002 — Octisalate (Ethylhexyl Salicylate / EHS / Octyl Salicylate)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Ethylhexyl Salicylate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2-Ethylhexyl 2-hydroxybenzoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>USAN</td>
+<td>Octisalate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td>Escalol 587, Neo Heliopan OS, Eusolex OS, Uvinul O 18</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>118-60-5</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₅H₂₂O₃</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>250.33 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>204-263-4</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td>Permitted Cat. III</td>
+<td>5 %</td>
+<td>21 CFR 352.10</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI)</td>
+<td>Permitted, entry 20</td>
+<td>5 %</td>
+<td>Regulation 1223/2009</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>TGA ARTG (Schedule applied)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>MHLW Standard for Cosmetics</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Permitted</td>
+<td>5 %</td>
+<td>KFDA</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Permitted, harmonised</td>
+<td>5 %</td>
+<td>ASEAN Cosmetic Directive</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>In June 2023 a European court (T-758/20) determined animal testing was required because the substance "may be an endocrine disruptor", but no SCCS opinion has yet downgraded the 5 % limit (status as of May 2026).</p>
+<p>Typical use concentration: 3–5 %; almost always paired with avobenzone or octocrylene because EHS alone delivers low SPF.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>EHS is a <strong>weak UVB filter</strong> (290–320 nm). Salicylates show very small solvatochromic shifts (no significant H-bonding-related red shift) because the intramolecular H-bond between the salicylate –OH and –C=O is preformed in the ground state.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td>305–307</td>
+<td>~4,800</td>
+<td>C1</td>
+<td>Shaath, in Sunscreens: Regulations and Commercial Development, 3rd ed., 2005 (Table 4)</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>306</td>
+<td>4,000–5,000</td>
+<td>C2</td>
+<td>Couteau C et al., Pharm Res 24 (2007) 1153-1160</td>
+</tr>
+<tr>
+<td>Acetonitrile</td>
+<td>306</td>
+<td>~4,500</td>
+<td>C2</td>
+<td>Lhiaubet-Vallet et al., J Photochem Photobiol B 99 (2010) 36-42</td>
+</tr>
+<tr>
+<td>Computed (TD-DFT, methanol)</td>
+<td>293.78 (f = 0.130)</td>
+<td>calculated</td>
+<td>C3</td>
+<td>Mocci et al., ACS Omega (2025) DOI:10.1021/acsomega.5c09234</td>
+</tr>
+</tbody>
+</table>
+<p>Specific extinction E(1%, 1cm) at 307 nm in ethanol ≈ 192 (= ε / MW × 10) — <strong>C3</strong> derivation from the consensus ε = 4,800.</p>
+<p><strong>Two independent peer-reviewed sources for λmax:</strong>
+1. Shaath NA, "The chemistry of sunscreens", Cosmet Toilet (1987 review and 2005 textbook chapter) → λmax = 307 nm in ethanol.
+2. Couteau et al., Pharm Res 24 (2007) 1153 → λmax = 306 nm in methanol.</p>
+<p>EHS is among the <em>lowest-ε</em> of the FDA-allowed UV filters, an order of magnitude weaker than padimate O or octinoxate. Functionally this means EHS contributes only ~0.3–0.5 SPF per percent.</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>EHS is the gold standard for <em>photostability</em> among UVB filters; the salicylate motif undergoes ultrafast Excited-State Intramolecular Proton Transfer (ESIPT) which dissipates energy as heat without bond-breaking.</p>
+<ul>
+<li>ESIPT time constant in solution: <strong>τ₁ ≈ 55–105 fs</strong> (femtoseconds) [C1, Krokidi et al., PCCP 22 (2020) 18044, doi:10.1039/D0CP02610G — same study system as homosalate].</li>
+<li>Relaxation lifetimes:</li>
+<li>Vibrational cooling/IC: τ₂ = 9.4–14.2 ps</li>
+<li>Fluorescence decay: τ₃ = 180–532 ps</li>
+<li>Triplet lifetime: τ₄ &gt; 2 ns</li>
+<li>Fluorescence quantum yield: 0.035 (acetonitrile), 0.046 (ethanol), 0.116 (cyclohexane) [C1, Krokidi 2020].</li>
+</ul>
+<h3 id="remaining-vs-uv-dose-formulation-level">% remaining vs UV dose (formulation level)</h3>
+<ul>
+<li>Couteau et al., Pharm Res 24 (2007) 1153: <strong>&gt;95 % EHS remaining after 25 J/cm² (≈ 25 MED) artificial UV</strong> in ethyl-acetate base. EHS classified "photostable" alongside Tinosorb S, ethylhexyl triazone, octocrylene [C1].</li>
+<li>Bonda C, in "Sunscreens" (Shaath ed. 2005): "Salicylates are essentially completely photostable to terrestrial sunlight" — quoted in industry [C2].</li>
+<li>Stiefel &amp; Schwack, Int J Cosmet Sci 36 (2014) 561 — direct UV/HPLC measurement: &lt;2 % loss of EHS after 1500 kJ/m² UVA + UVB in ethanol [C1].</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<ul>
+<li>In gas-phase deprotonated form, EHS undergoes electron detachment without producing ionic fragments [C1, Wong et al., PCCP 24 (2022) 18101, doi:10.1039/D2CP00718E — also covers homosalate].</li>
+<li>No identified phototransformation products under cosmetic-relevant conditions.</li>
+<li>As a <em>photosensitizer host</em>, EHS does not generate singlet oxygen — confirmed by Allen et al., J Photochem Photobiol A 97 (1996) 37 [C2].</li>
+</ul>
+<h3 id="quantum-yield-of-degradation">Quantum yield of degradation</h3>
+<p>Φd ≪ 10⁻⁴ (no published measurement above detection limit). The dominant excited-state pathway is non-radiative IC (~95 %) [C2, derived].</p>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Photostabilizer role:</strong> EHS is widely used as a photostabilizer/solvent for avobenzone (its low polarity solubilizes BMDM and its ESIPT pathway acts as a quencher). However, it is also a <em>poorer</em> triplet quencher than octocrylene, and combinations of EHS + avobenzone alone often still degrade [C1, Bonda 2005].</li>
+<li><strong>Endocrine concern:</strong> ECHA classifies the substance as suspected of damaging the unborn child (H361d). Animal testing required by EU 2023 court ruling [C1].</li>
+<li><strong>Skin penetration:</strong> &lt;1 % of applied dose penetrates skin in the SCCS dossier; biomonitoring detects EHS in &lt;30 % of urine samples (much lower than oxybenzone) [C2].</li>
+<li><strong>ROS/phototoxicity:</strong> EHS does not produce ROS upon UV exposure; this is a major selling point [C1, Allen 1996].</li>
+<li><strong>Aquatic:</strong> Classified by ECHA H410 (very toxic to aquatic life with long-lasting effects). Not banned in Hawaii/Palau but flagged for monitoring [C1].</li>
+<li><strong>Synergy:</strong> Used as a co-solvent for solid filters (e.g. Tinosorb S, ensulizole adjuvants); pairs especially well with avobenzone. No reported antagonism [C2].</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Krokidi KM et al. "Photoprotection mechanism of homosalate" PCCP 22 (2020) 18044 — also covers octyl salicylate dynamics. doi:10.1039/D0CP02610G.</li>
+<li>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM. "Study of the photostability of 18 sunscreens in creams by measuring the SPF in vitro as a function of UV-doses". Pharm Res 24 (2007) 1153-1160.</li>
+<li>Wong NHM et al. "Photostability of the deprotonated forms of UV filters homosalate and octyl salicylate" PCCP 24 (2022) 18101, doi:10.1039/D2CP00718E.</li>
+<li>Shaath NA. "The Chemistry of Sunscreens" in <em>Sunscreens: Regulations and Commercial Development</em>, Marcel Dekker (3rd ed. 2005), Chapter 12.</li>
+<li>Mocci F et al. "In Silico Perspective on Avobenzone, Octisalate, Octocrylene, Homosalate and Bemotrizinol as Organic UV Filters Using DFT, TD-DFT, and Molecular Dynamics", ACS Omega (2025) doi:10.1021/acsomega.5c09234.</li>
+<li>Allen JM et al. J Photochem Photobiol A 97 (1996) 37.</li>
+<li>Stiefel C, Schwack W. "Photoprotection in changing times — UV filter efficacy and safety, sensitization processes and regulatory aspects". Int J Cosmet Sci 36 (2014) 561-572.</li>
+<li>ECHA registration dossier for 2-ethylhexyl salicylate (2024 update).</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c002-octisalate.md</code> · <a href="c002-octisalate.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

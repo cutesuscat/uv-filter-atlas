@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filter Tail Extension Corrections — 2026-05-07 — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Filter Tail Extension Corrections — 2026-05-07</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="tail-corrections-2026-05-07.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="tail-corrections-2026-05-07.md">View raw markdown</a> · Path: <code>research/verification/tail-corrections-2026-05-07.md</code></div>
+<h1 id="filter-tail-extension-corrections-2026-05-07">Filter Tail Extension Corrections — 2026-05-07</h1>
+<h2 id="context">Context</h2>
+<p>The webapp interpolates linearly between data points and then exponentially decays (1/e per 4 nm) past the last point. Filters whose tails ended at high E1% values (e.g., Avobenzone at 410 nm with E1%=14.8, Tris-Biphenyl Triazine at 365 nm with E1%=229) produced unrealistic flat-then-fast-decay artifacts in the visible region. Each tail was extended so that the final point sits at &lt;2 E1% within ~30-50 nm past the spectral peak.</p>
+<h2 id="filters-updated-21-total">Filters updated (21 total)</h2>
+<p><strong>HIGH PRIORITY (10):</strong> idx 14 Avobenzone (+3, to 440 nm; Mturi 2008), idx 15 Meradimate (+3, to 410 nm; Cantrell 2000), idx 16 DHHB (+3, to 435 nm; Wang 2023), idx 17 Bisoctrizole (+3, to 435 nm; Naumov 2020), idx 18 Iscotrizinol (+3, to 385 nm; 3V Sigma), idx 19 Bemotrizinol (+3, to 420 nm; Chatelain 2001), idx 20 Ecamsule (+3, to 415 nm; Deflandre 1988), idx 21 Drometrizole Trisiloxane (+3, to 415 nm; ESIPT analogy), idx 23 TBPT (+5, to 415 nm; Naumov 2023 — biggest fix, last point was 229 E1%), idx 24 Bisdisulizole (+3, to 405 nm; Symrise).</p>
+<p><strong>MEDIUM PRIORITY benzophenones (5):</strong> idx 25 BP-3 (+4, to 395 nm), idx 26 BP-4 (+4, to 400 nm), idx 27 BP-8 (+3, to 400 nm), idx 28 BP-10 (+4, to 400 nm; C5 by analogy), idx 31 BP-1 (+4, to 400 nm).</p>
+<p><strong>LOW PRIORITY UVB filters (6):</strong> idx 1 Octinoxate (+4, to 385 nm; cinnamate red asymmetry), idx 4 Octocrylene (+3, to 375 nm), idx 7 Padimate O (+4, to 385 nm), idx 10 EHT (+4, to 385 nm), idx 11 4-MBC (+3, to 368 nm), idx 13 Trolamine Salicylate (+2, to 355 nm).</p>
+<h2 id="already-adequate-no-change">Already adequate (no change)</h2>
+<ul>
+<li>idx 22 Mexoryl 400 (already extended to 460 nm at E1%=3 in prior fix).</li>
+<li>idx 29 ZnO, idx 30 TiO₂ (manually fixed previously).</li>
+<li>idx 32-34 Iron Oxides (already extend to 720 nm).</li>
+</ul>
+<h2 id="c5-cases-estimated-by-analogy">C5 cases (estimated by analogy)</h2>
+<ul>
+<li><strong>idx 28 Mexenone (BP-10):</strong> sparse independent spectrum data. Tail extrapolated by analogy to BP-3 and BP-1 (same chromophore class).</li>
+<li><strong>idx 18 Iscotrizinol</strong> and <strong>idx 21 Drometrizole Trisiloxane:</strong> independent academic spectra are limited; tails follow benzotriazole/triazine class shape from Naumov 2020/2023 figures.</li>
+</ul>
+<h2 id="quality-check">Quality check</h2>
+<ul>
+<li>JSON validated (36 filters intact).</li>
+<li>All tails decay to &lt;2 E1% within ~30-50 nm of last existing data point.</li>
+<li>Asymmetry preserved per chromophore class: cinnamates (Octinoxate, Padimate O) extend further on red side; ESIPT (BMOT, BEMT, Mexoryl XL) decay sharply; benzophenones (BP-3/4/8/10/1) decay symmetrically from the UVA-II peak.</li>
+<li>Existing in-range data points were not modified; only appended past last point.</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/verification/tail-corrections-2026-05-07.md</code> · <a href="tail-corrections-2026-05-07.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

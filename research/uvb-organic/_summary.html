@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVB Organic Sunscreen Filters — Comparison Summary — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">UVB Organic Sunscreen Filters — Comparison Summary</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="_summary.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="_summary.md">View raw markdown</a> · Path: <code>research/uvb-organic/_summary.md</code></div>
+<h1 id="uvb-organic-sunscreen-filters-comparison-summary">UVB Organic Sunscreen Filters — Comparison Summary</h1>
+<p>Compiled 2026-05-07 for the knowledge base at <code>/workspace/sunscreen-filters/research/uvb-organic/</code>.
+Each row links to a detailed claim file in <code>claims/</code>.</p>
+<h2 id="quick-reference-table">Quick Reference Table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Filter</th>
+<th>INCI / common</th>
+<th>CAS</th>
+<th>MW (g/mol)</th>
+<th>λmax (EtOH, nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Photostab. rank</th>
+<th>FDA %</th>
+<th>EU %</th>
+<th>Aus %</th>
+<th>JP %</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="claims/c001-octinoxate.html">c001</a></td>
+<td>Octinoxate (EHMC, OMC)</td>
+<td>5466-77-3</td>
+<td>290.4</td>
+<td>308–311</td>
+<td>23,300–25,000</td>
+<td>~826</td>
+<td>4 (poor)</td>
+<td>7.5</td>
+<td>10</td>
+<td>10</td>
+<td>20</td>
+<td>trans/cis isomerism; degrades in aggregate; banned Hawaii/Palau/Thailand</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="claims/c002-octisalate.html">c002</a></td>
+<td>Octisalate (EHS)</td>
+<td>118-60-5</td>
+<td>250.3</td>
+<td>305–307</td>
+<td>~4,800</td>
+<td>~192</td>
+<td>1 (excellent)</td>
+<td>5</td>
+<td>5</td>
+<td>10</td>
+<td>10</td>
+<td>Weak ε; ESIPT mechanism; co-solvent for avobenzone</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="claims/c003-homosalate.html">c003</a></td>
+<td>Homosalate (HMS)</td>
+<td>118-56-9</td>
+<td>262.3</td>
+<td>306–309</td>
+<td>~5,000</td>
+<td>~191</td>
+<td>1 (excellent)</td>
+<td>15</td>
+<td>7.34* face only</td>
+<td>10</td>
+<td>10</td>
+<td>EU restricted by SCCS for endocrine concern</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="claims/c004-octocrylene.html">c004</a></td>
+<td>Octocrylene (OCR)</td>
+<td>6197-30-4</td>
+<td>361.5</td>
+<td>303</td>
+<td>~12,000</td>
+<td>~332</td>
+<td>2 (good but BP issue)</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>Generates benzophenone on storage; triplet quencher of avobenzone</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="claims/c005-cinoxate.html">c005</a></td>
+<td>Cinoxate</td>
+<td>104-28-9</td>
+<td>250.3</td>
+<td>308</td>
+<td>~20,650</td>
+<td>~825</td>
+<td>4 (analogous to OMC)</td>
+<td>3</td>
+<td>not listed</td>
+<td>6</td>
+<td>5</td>
+<td>Obsolete; rare in modern products</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="claims/c006-paba-padimate-o.html">c006</a></td>
+<td>PABA / Padimate O</td>
+<td>150-13-0 / 21245-02-3</td>
+<td>137.1 / 277.4</td>
+<td>283 / 311</td>
+<td>~13,500 / ~28,400</td>
+<td>~985 / ~1,024</td>
+<td>2 / 2</td>
+<td>15 / 8</td>
+<td>banned / 8</td>
+<td>banned / 8</td>
+<td>banned / 10</td>
+<td>PABA banned EU 2009; allergenic; sunlight mutagenicity (Knowland 1993); padimate O has highest E(1%,1cm) of any FDA filter</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="claims/c007-ensulizole.html">c007</a></td>
+<td>Ensulizole (PBSA)</td>
+<td>27503-81-7</td>
+<td>274.3</td>
+<td>302 (water)</td>
+<td>~25,000</td>
+<td>~911</td>
+<td>1 (chromophore stable)</td>
+<td>4</td>
+<td>8</td>
+<td>4</td>
+<td>3</td>
+<td>Water-soluble; ROS generator (Φ¹O₂ = 0.10); ΦF = 0.63</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="claims/c008-polysilicone-15.html">c008</a></td>
+<td>Polysilicone-15 (Parsol SLX)</td>
+<td>207574-74-1</td>
+<td>oligomer ~6,000</td>
+<td>312</td>
+<td>per-chromophore ~6,500</td>
+<td>160–190</td>
+<td>1 (excellent)</td>
+<td>not approved</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>Polymer → no skin penetration; photostabilizer for avobenzone</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="claims/c009-octyl-triazone.html">c009</a></td>
+<td>Ethylhexyl Triazone (EHT, Uvinul T 150)</td>
+<td>88122-99-0</td>
+<td>823.1</td>
+<td>314</td>
+<td>~135,000</td>
+<td>~1,500</td>
+<td>1 (best)</td>
+<td>not approved</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Highest ε of any commercial UV filter; large MW → no penetration</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="claims/c010-4-mbc.html">c010</a></td>
+<td>4-Methylbenzylidene Camphor (Enzacamene)</td>
+<td>36861-47-9</td>
+<td>254.4</td>
+<td>300</td>
+<td>24,500</td>
+<td>~963</td>
+<td>2 (mostly photostable)</td>
+<td>not approved</td>
+<td><strong>banned (May 2026)</strong></td>
+<td>4 (under review)</td>
+<td>not permitted</td>
+<td>EU banned for endocrine disruption (estrogen + thyroid)</td>
+</tr>
+</tbody>
+</table>
+<p>* Homosalate at 7.34 % is permitted in EU <strong>only in face products excluding propellant/pump sprays</strong>, per Reg. (EU) 2022/1176.</p>
+<h3 id="photostability-rank-legend">Photostability rank legend</h3>
+<p>1 = effectively photostable (&gt;95 % retention at 25 MED)
+2 = mostly photostable, with caveats (&gt;85 %)
+3 = partial photostability (50–85 %)
+4 = poor / significant photolysis under solar dose (&lt;70 % at 25 MED for monomer/aggregate)
+5 = highly photolabile (avobenzone-class, not in this UVB list)</p>
+<h2 id="birds-eye-observations">Bird's-eye observations</h2>
+<ul>
+<li><strong>Highest ε:</strong> Ethylhexyl triazone (~135,000 M⁻¹ cm⁻¹) &gt; Padimate O (~28,400) &gt; 4-MBC (~24,500) ≈ Octinoxate (~24,000) &gt; Cinoxate (~20,650) &gt; Octocrylene (~12,000) &gt; PBSA (~25,000 in water; counterion-dependent) ≫ Salicylates (~5,000).</li>
+<li><strong>Highest specific extinction (per-mass efficacy):</strong> Padimate O (~1,024 in EtOH) &gt; Ethylhexyl triazone (~1,500) &gt; 4-MBC (~963) &gt; PABA (~985) &gt; Octinoxate / Cinoxate (~826) &gt; PBSA (~911) ≫ salicylates (~190) ≫ Polysilicone-15 (~175).</li>
+<li><strong>Photostability winners:</strong> EHT, Polysilicone-15, salicylates (HMS, EHS) — flat absorbance even at 50 MED.</li>
+<li><strong>Photostability losers (in this UVB set):</strong> Octinoxate (in aggregate or with avobenzone) and PABA family (photoallergenic, mutagenic in some studies).</li>
+<li><strong>Largest regulatory divergence (FDA vs EU):</strong></li>
+<li>Homosalate: 15 % FDA vs 7.34 % EU (face only) — endocrine concern not yet acted on by FDA.</li>
+<li>Octinoxate: 7.5 % FDA vs 10 % EU vs 20 % Japan.</li>
+<li>Ethylhexyl triazone, polysilicone-15, 4-MBC: in EU/Japan/Australia but <strong>not FDA-approved</strong> (frozen FDA monograph since 1999).</li>
+<li>4-MBC: banned in EU/UK/China but still permitted in Canada and (transitionally) Australia.</li>
+<li><strong>Approved in all five major markets (FDA, EU, Australia, Japan, Korea):</strong> Octinoxate, Octisalate, Homosalate, Octocrylene. (Ensulizole permitted in all but at variable concentrations.)</li>
+<li><strong>Endocrine concerns flagged 2020–2026:</strong> Octinoxate (estrogenic + anti-androgenic), Homosalate (estrogenic, anti-androgenic, presumed thyroid disruptor), Octocrylene (under investigation), 4-MBC (estrogen + thyroid; EU ban), PABA (banned EU 2009 due to photoallergy more than endocrine).</li>
+<li><strong>Reef bans:</strong> Octinoxate (Hawaii, Palau, Thailand, USVI), Octocrylene (Palau, USVI). The salicylates are not on reef-ban lists.</li>
+<li><strong>Skin-penetration low (&gt;500 Da molecules):</strong> Polysilicone-15 (~6,000), EHT (823). All small-molecule UVB filters in this list have detectable systemic absorption per FDA Maximal Usage Trial (Matta 2020 JAMA), exceeding the 0.5 ng/mL toxicology threshold.</li>
+</ul>
+<h2 id="c5-not-found-could-not-access-items-aggregated-across-files">C5 ("not found / could not access") items aggregated across files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Missing data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c005 (Cinoxate)</td>
+<td>Modern photodegradation kinetics (k, t½), Φ values, biomonitoring %, aquatic LC50</td>
+</tr>
+<tr>
+<td>c008 (Polysilicone-15)</td>
+<td>Direct Φd, Φ(E/Z) measurements; environmental half-life data</td>
+</tr>
+<tr>
+<td>c001 (Octinoxate)</td>
+<td>Detailed environmental persistence beyond aquatic LC50</td>
+</tr>
+<tr>
+<td>c002–c004, c006, c007, c009, c010</td>
+<td>Specific gaps noted within each file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><code>sources.md</code> — full bibliography</li>
+<li><code>claims/c001</code> to <code>claims/c010</code> — individual claim files</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/_summary.md</code> · <a href="_summary.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

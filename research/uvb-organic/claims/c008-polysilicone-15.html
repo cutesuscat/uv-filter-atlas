@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c008 — Polysilicone-15 (Parsol SLX) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c008 — Polysilicone-15 (Parsol SLX)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c008-polysilicone-15.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c008-polysilicone-15.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c008-polysilicone-15.md</code></div>
+<h1 id="c008-polysilicone-15-parsol-slx">c008 — Polysilicone-15 (Parsol SLX)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Polysilicone-15</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC (representative repeat unit)</td>
+<td>"α-(trimethylsilyl)-ω-(trimethylsilyloxy)poly[oxy(dimethyl)silylene]-co-[oxy(methyl)(2-{4-[2,2-bis(ethoxycarbonyl)vinyl]phenoxy}-1-methyleneethyl)silylene]"</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Other name</td>
+<td>Dimethico­diethyl­benzal­malonate (the older Cosmetics Europe name); benzylidene malonate polysiloxane</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade name</td>
+<td><strong>Parsol SLX</strong> (DSM-Firmenich, formerly Hoffmann-La Roche / DSM)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>207574-74-1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Polymer / oligomer (variable molecular weight)</td>
+<td>average Mw ≈ 6,000 g/mol (manufacturer datasheet, range 5,000–8,000)</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Empirical formula (one common chromophore unit)</td>
+<td>the repeat carries a benzylidene malonate group: –Ph–O–CH(CH₃)–CH=C(COOEt)₂</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td><strong>Not approved</strong> (not on FDA OTC sunscreen monograph)</td>
+<td>n/a</td>
+<td>21 CFR 352</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI, entry 25)</td>
+<td>Permitted</td>
+<td><strong>10 %</strong></td>
+<td>Reg. 1223/2009; SCCS/0024/05 (Polysilicone-15)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>TGA ARTG</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>MHLW Standard</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>KFDA</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>ASEAN ACD</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Typical concentration 1–10 %. Often used at 2–5 % as photostabilizer/film-former in combination with avobenzone.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (280–340 nm), broad single-band absorption due to the benzylidene-malonate chromophore. As an oligomer, ε is conventionally expressed not in M⁻¹ cm⁻¹ but as <strong>specific extinction E(1 %, 1 cm)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>312</strong></td>
+<td><strong>160–190</strong> (manufacturer specification)</td>
+<td>C1</td>
+<td>DSM Parsol SLX technical data sheet (Hoffmann-La Roche 1998); SCCS/0024/05</td>
+</tr>
+<tr>
+<td>Cyclohexane</td>
+<td>~310</td>
+<td>~160</td>
+<td>C2</td>
+<td>manufacturer data</td>
+</tr>
+<tr>
+<td>Cosmetic oil/wax</td>
+<td>~310</td>
+<td>comparable</td>
+<td>C2</td>
+<td>DSM datasheet</td>
+</tr>
+</tbody>
+</table>
+<p>ε per chromophore unit (assuming MW per chromophore ≈ 380): ε ≈ 6,300–7,200 M⁻¹ cm⁻¹ — <strong>C3</strong> derived. The advantage is per-mass: the oligomeric backbone delivers 5–6 chromophore units per molecule, giving a per-gram absorption similar to a small-molecule UVB filter at higher concentration.</p>
+<p>Two independent sources for λmax: SCCS/0024/05 opinion (2005), DSM technical literature (multiple decades) — both 312 nm in ethanol [C1].</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p><strong>Polysilicone-15 is among the most photostable UVB filters known.</strong> The benzylidene malonate chromophore relaxes from the excited state via ultrafast E/Z isomerization that is reversible and dissipates energy as heat (analogous mechanism to bemotrizinol, octocrylene).</p>
+<ul>
+<li>Manufacturer datasheet: "no significant change in absorption spectrum after 25 J/cm² UV exposure" [C2, DSM Parsol SLX TDS].</li>
+<li>SCCS/0024/05 reports &gt;95 % photo-recovery at simulated 1 MED [C1].</li>
+<li>Couteau 2007 includes Parsol SLX-containing formulations among "fully photostable" set (&gt;95 % at 25 MED) [C1].</li>
+<li>Per supplier data, polysilicone-15 also acts as photostabilizer for avobenzone (rate of triplet quenching ~10⁹ M⁻¹ s⁻¹) — "photostabilizing benefit on Parsol 1789" explicitly claimed in patent EP 0815836 (1996) [C1].</li>
+</ul>
+<h3 id="quantum-yields-rate-constants">Quantum yields &amp; rate constants</h3>
+<ul>
+<li>Φ(degradation): <strong>C5</strong> — no published direct measurement of Φd. Industry data implies Φd &lt; 10⁻⁴.</li>
+<li>Φ(E→Z isomerization): <strong>C5</strong> — not directly published. By analogy with diisooctyl methoxyphenyl-vinylene-malonate, Φ ~0.4 expected.</li>
+<li>k (first-order): not measurable with current methods in formulation studies; effectively zero on cosmetic-relevant timescales [C2].</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<ul>
+<li>No isolated photoproducts reported in peer-reviewed literature [C1].</li>
+<li>Cosmetic shelf-life studies (2 years at 40 °C) showed no detectable degradation products [C2, DSM TDS].</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Skin penetration:</strong> Polymer / oligomer (Mw ~6,000) → <strong>does not penetrate skin</strong> (well above 500 Da Lipinski cut-off for transdermal absorption). Confirmed by SCCS/0024/05 — in vitro dermal absorption &lt;0.05 %, in vivo undetectable in plasma [C1]. This is the major safety advantage over small-molecule UVB filters.</li>
+<li><strong>Endocrine activity:</strong> No measured estrogenic, antiandrogenic, or thyroid activity in standard screens (SCCS/0024/05) [C1]. Polymer size precludes binding to nuclear receptors.</li>
+<li><strong>ROS / phototoxicity:</strong> Not reported. The benzylidene-malonate chromophore relaxes via fast IC; triplet yield negligible [C2].</li>
+<li><strong>Aquatic concerns:</strong> Limited data on environmental fate. Polysiloxane backbone is persistent in environment; current SCCS dossier did not flag concern. Not on Hawaii/Palau ban lists. ECHA registration shows <strong>C5</strong> for environmental half-life specifically [C5].</li>
+<li><strong>Allergenicity:</strong> No notable photoallergy or sensitization in clinical literature. Listed on multiple "sensitive skin" sunscreen formulations.</li>
+<li><strong>Synergy:</strong></li>
+<li>Excellent <strong>photostabilizer for avobenzone</strong> (Bonda 2005, DSM patents).</li>
+<li>Synergy with octocrylene for combined avobenzone protection.</li>
+<li>Forms a film that improves water resistance (oligomeric silicone backbone) — combined SPF/water-resistance benefit [C1].</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>SCCS/0024/05 — Opinion on Polysilicone-15 (10 May 2005). European Commission.</li>
+<li>DSM (formerly Hoffmann-La Roche) Parsol SLX technical data sheet, multiple revisions 1998–2024.</li>
+<li>EP Patent 0815836 (Hoffmann-La Roche, 1996) — Polysilicone UV filters and use as avobenzone stabilizer.</li>
+<li>Couteau C et al. Pharm Res 24 (2007) 1153.</li>
+<li>Wikipedia / Polysilicone-15 (citing SCCS).</li>
+<li>EU Cosmetics Regulation 1223/2009, Annex VI (entry 25).</li>
+</ol>
+<p><strong>C5 items for c008:</strong>
+* Quantum yield of E/Z photoisomerization not published.
+* Quantum yield of irreversible photodegradation not published.
+* Detailed environmental half-life and biodegradation profile (aquatic photolysis k) not in open literature.
+* Solvent-resolved λmax in cyclohexane vs polar solvents — limited published data; manufacturer reports only ethanol.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c008-polysilicone-15.md</code> · <a href="c008-polysilicone-15.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c004 — Trolamine Salicylate — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c004 — Trolamine Salicylate</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c004-trolamine-salicylate.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c004-trolamine-salicylate.md">View raw markdown</a> · Path: <code>research/benzophenones/claims/c004-trolamine-salicylate.md</code></div>
+<h1 id="claim-file-c004-trolamine-salicylate">Claim File c004 — Trolamine Salicylate</h1>
+<p>CAS 2174-16-5</p>
+<blockquote>
+<p>Note: trolamine salicylate is a <strong>salicylate-class</strong> UVB filter, not a benzophenone. It is included in this collection for completeness as part of the older U.S. monograph filter set, and because it is one of the few water-soluble UVB chemical filters used historically in cosmetic and pain-relief products.</p>
+</blockquote>
+<hr>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<ul>
+<li><strong>INCI / USAN:</strong> Trolamine Salicylate (also "Triethanolamine Salicylate", "TEA-Salicylate") [C1]</li>
+<li><strong>IUPAC:</strong> 2,2′,2″-Nitrilotriethan-1-ol; 2-hydroxybenzoate (1:1 salt of triethanolamine and salicylic acid) [C1]</li>
+<li><strong>Alternate forms:</strong> the cation/anion pair [HN(CH₂CH₂OH)₃]⁺ · [C₆H₄(OH)COO]⁻ [C1]</li>
+<li><strong>CAS:</strong> 2174-16-5 [C1]</li>
+<li><strong>Molecular formula:</strong> C13H21NO6 [C1]</li>
+<li><strong>Molecular weight:</strong> 287.31 g/mol [C1]</li>
+<li><strong>Physical:</strong> light-yellow to amber crystalline solid; sweet odor; mp ~57–59 °C; density ≈ 1.21 g/mL [C1]</li>
+<li><strong>Solubility:</strong> water soluble (~68–73 g/L); soluble in lower alcohols; pH of 10% solution ~5.5–7.5 [C1]</li>
+<li><strong>logKow:</strong> salicylate anion logD ≈ –1.5 (very polar/hydrophilic) [C2]</li>
+</ul>
+<h3 id="regulatory-status-current-as-of-may-2026">Regulatory status (current as of May 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA</strong> OTC Monograph (1999 final)</td>
+<td>Listed as Category I sunscreen active at up to <strong>12%</strong> (also as topical analgesic up to 10%) [C1]</td>
+</tr>
+<tr>
+<td><strong>USA</strong> FDA 2019 Proposed Rule / 2021 Amended Order M020</td>
+<td>Proposed <strong>NOT GRASE</strong> for sunscreen use due to insufficient safety data and salicylate-related toxicity concerns (coagulation, salicylate poisoning risk in children); FDA noted trolamine salicylate is not used in marketed sunscreens any longer in the U.S. [C1]</td>
+</tr>
+<tr>
+<td><strong>USA</strong> Topical analgesic (counterirritant) monograph</td>
+<td>Remains permitted as an OTC analgesic at 10% (e.g., Aspercreme, Myoflex) [C1]</td>
+</tr>
+<tr>
+<td><strong>EU</strong> Annex VI (UV filters)</td>
+<td><strong>NOT listed</strong> — not approved as a UV filter in EU sunscreens [C1]</td>
+</tr>
+<tr>
+<td><strong>Japan / Korea / Australia</strong></td>
+<td>Not commonly used as a UV filter in modern products [C3]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Typical use levels (sunscreen, historical):</strong> 5–12% — required at high concentration because of weak absorptivity [C1]</li>
+<li><strong>Typical use (analgesic):</strong> 10% in topical pain-relief creams [C1]</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<ul>
+<li>The chromophore is the <strong>salicylate (2-hydroxybenzoate) anion</strong>; triethanolamine is a non-absorbing counter-ion.</li>
+<li><strong>λmax:</strong> ~298–302 nm in aqueous solution (the salicylate anion's longer-wavelength band); a smaller band near 235 nm is also present. In acidic protonated form λmax shifts slightly.</li>
+<li><strong>Spectral coverage:</strong> ~260–315 nm — purely <strong>UVB</strong>; <strong>no useful absorption above ~315 nm</strong> (i.e. no UVA filtering capability whatsoever). [C1]</li>
+<li><strong>Molar absorption coefficient:</strong> salicylate anion ε at ~298 nm ≈ 3.0–3.6 × 10³ M⁻¹·cm⁻¹ — <strong>roughly 5–7× weaker than BP-3</strong> at its UVB peak. This is why high concentrations (≥8%) are required for SPF contribution. [C2 — standard UV-Vis tabulations of salicylate]</li>
+<li><strong>E(1%, 1 cm)</strong> at 298 nm: ≈ 105–125 (computed from MW 287 and ε ≈ 3 × 10³) [C3]</li>
+<li><strong>Solvent dependence:</strong> small. Salicylate is fully ionized in cosmetic-pH water systems; modest red-shift in the protonated form (low pH). The trolamine cation does not absorb in UV-A or UV-B.</li>
+<li><strong>Functional classification:</strong> <strong>weak UVB filter.</strong> Useful only at very high % loadings. Provides minimal SPF contribution by itself; never used as a primary sunscreen active in modern products.</li>
+</ul>
+<hr>
+<h2 id="section-3-photodegradation">Section 3: Photodegradation</h2>
+<ul>
+<li>Salicylates as a class are <strong>moderately photostable</strong>: the chromophore dissipates UV energy via excited-state intramolecular proton transfer (ESIPT) between the 2-OH and the carboxylate (analogous mechanism to that of methyl salicylate, used as a fluorescence standard for quantum-yield measurements). [C2]</li>
+<li><strong>Photoproducts in aqueous direct photolysis:</strong> small amounts of salicylaldehyde, 2,3-dihydroxybenzoate, and 2,5-dihydroxybenzoate (gentisate) have been reported for salicylic acid; minor products only. [C2]</li>
+<li><strong>Photodegradation kinetics:</strong> in dilute aqueous solution under simulated sunlight, k ≈ 10⁻⁶ s⁻¹ (i.e. half-life of many hours to days) — substantially more photostable than oxybenzone in absolute degradation rate, partly because absorbance is so low at solar wavelengths. [C2]</li>
+<li><strong>Quantum yield:</strong> Φ_loss ≈ 10⁻⁴ in aqueous solution (low). [C2]</li>
+<li><strong>Behavior in formulation:</strong> chemically stable in cream/gel/lotion vehicles. Volatility very low (salt). Compatible with most other actives.</li>
+</ul>
+<hr>
+<h2 id="section-4-notable-issues">Section 4: Notable issues</h2>
+<h3 id="41-salicylate-toxicity-the-dominant-safety-concern">4.1 Salicylate toxicity (the dominant safety concern)</h3>
+<ul>
+<li><strong>Systemic salicylate exposure</strong> is the principal FDA concern. Topical salicylate-containing products have been associated with cases of salicylate poisoning when applied to large body-surface areas, especially in children. A landmark case (Arnold 2007) reported a fatality in a 17-year-old athlete attributable to chronic high-volume application of a methyl-salicylate / trolamine-salicylate analgesic cream. [C2]</li>
+<li>Chronic supratherapeutic exposure can produce tinnitus, GI bleeding, metabolic acidosis (high-dose salicylate toxidrome), particularly with concomitant heating pads or occlusive dressings.</li>
+<li><strong>Coagulation effects:</strong> salicylates inhibit cyclo-oxygenase / platelet aggregation; cited by FDA as a concern for chronic high-area sunscreen use. Anticoagulant interactions (warfarin INR elevation) reported with topical salicylate creams. [C1 — FDA 2019/2021 orders]</li>
+</ul>
+<h3 id="42-skin-penetration">4.2 Skin penetration</h3>
+<ul>
+<li><strong>Significant</strong> percutaneous absorption — 12–22% of applied dose absorbed in 12 h in some studies (Roberts et al. 1998 <em>Br J Clin Pharmacol</em>). This is substantially higher fraction-absorbed than most UV filters. The high penetration is the basis for both the analgesic effect and the systemic-toxicity concern.</li>
+</ul>
+<h3 id="43-endocrine-activity">4.3 Endocrine activity</h3>
+<ul>
+<li>Not flagged as estrogenic. No notable endocrine-disruption signal in standard assays; <strong>not</strong> an ED concern in the way oxybenzone is.</li>
+</ul>
+<h3 id="44-allergenicity">4.4 Allergenicity</h3>
+<ul>
+<li>Allergic contact dermatitis to triethanolamine (the cation) is well documented; allergy to the salicylate anion is rare. Cross-reactivity with other salicylates (methyl, glycol, octisalate, homosalate) is uncommon because the salicylate is the conserved part of all those molecules and the alkyl/ester portion typically determines sensitization potential. Triethanolamine itself is on most "common allergens" lists — patch-test prevalence ~0.5–2%. [C2]</li>
+</ul>
+<h3 id="45-coral-aquatic-toxicity">4.5 Coral / aquatic toxicity</h3>
+<ul>
+<li>Not a documented coral toxicant; not named in any sunscreen ingredient ban. Salicylates are biodegradable in WWTPs.</li>
+</ul>
+<h3 id="46-effective-spf-contribution">4.6 Effective SPF contribution</h3>
+<ul>
+<li>At 12% in a typical o/w emulsion, trolamine salicylate alone delivers SPF ≈ 4–6 (rough order). It does not provide UVA protection. In modern sunscreen formulation, it is essentially obsolete as a primary UVB filter. Its current commercial relevance is overwhelmingly in <strong>topical analgesic</strong> (counter-irritant) products rather than sunscreens.</li>
+</ul>
+<hr>
+<h2 id="confidence">Confidence</h2>
+<ul>
+<li>Identity / FDA monograph status → C1</li>
+<li>Absorption spectrum → C2 (well-known salicylate chromophore)</li>
+<li>Photodegradation → C2 (analogous to salicylic acid)</li>
+<li>FDA "not GRASE" proposed status → C1</li>
+<li>Skin absorption → C2</li>
+</ul>
+<h2 id="key-citations">Key citations</h2>
+<ol>
+<li>FDA Proposed Rule, <em>Federal Register</em> 84 FR 6204 (26 Feb 2019), "Sunscreen Drug Products for Over-the-Counter Human Use".</li>
+<li>FDA Proposed Order OTC000008 (24 Sept 2021), Amending OTC Monograph M020.</li>
+<li>FDA Final Administrative Order OTC000006 (M020 final).</li>
+<li>Roberts MS et al. <em>Br J Clin Pharmacol</em> 1998;46:355-363. doi:10.1046/j.1365-2125.1998.00792.x</li>
+<li>Trolamine salicylate PubChem CID 25213.</li>
+<li>CIR Final Report, Triethanolamine. <em>Int J Toxicol</em> 2013;32(3 Suppl):S46-S71.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/claims/c004-trolamine-salicylate.md</code> · <a href="c004-trolamine-salicylate.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

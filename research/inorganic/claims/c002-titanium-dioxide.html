@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c002 — Titanium Dioxide (TiO2) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c002 — Titanium Dioxide (TiO2)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c002-titanium-dioxide.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c002-titanium-dioxide.md">View raw markdown</a> · Path: <code>research/inorganic/claims/c002-titanium-dioxide.md</code></div>
+<h1 id="claim-file-c002-titanium-dioxide-tio2">Claim File c002 — Titanium Dioxide (TiO2)</h1>
+<p><strong>Class:</strong> Inorganic / mineral UV filter (wide-bandgap n-type semiconductor)
+<strong>Research date:</strong> 2026-05-07
+<strong>Author tier scheme:</strong> C1 primary verified · C2 well-sourced secondary · C3 inferred (working shown) · C4 graph-digitized · C5 unknown</p>
+<hr>
+<h2 id="1-identity-physical-chemistry">1. Identity &amp; Physical Chemistry</h2>
+<h3 id="11-identifiers-c1">1.1 Identifiers (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI name</td>
+<td>Titanium Dioxide</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>Titanium(IV) oxide / titanium dioxide</td>
+</tr>
+<tr>
+<td>Common synonyms</td>
+<td>Titania, CI 77891, Pigment White 6</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>13463-67-7 (general TiO2)</td>
+</tr>
+<tr>
+<td>Polymorph CAS</td>
+<td>1317-70-0 (anatase) · 1317-80-2 (rutile) · 12188-41-9 (brookite)</td>
+</tr>
+<tr>
+<td>EC / EINECS</td>
+<td>236-675-5</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>TiO2</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>79.866 g·mol⁻¹</td>
+</tr>
+<tr>
+<td>Density</td>
+<td>4.23 g·cm⁻³ (rutile) · 3.78 g·cm⁻³ (anatase) · 4.17 g·cm⁻³ (brookite)</td>
+</tr>
+<tr>
+<td>Melting point</td>
+<td>1843 °C (rutile, in air); anatase converts to rutile at ~600–800 °C</td>
+</tr>
+<tr>
+<td>Appearance</td>
+<td>White crystalline powder, odourless</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: PubChem CID 26042; ChemicalBook CB0461627; Cosmetic Ingredient Review monograph 2002.</p>
+<h3 id="12-crystal-structures-c1">1.2 Crystal structures (C1)</h3>
+<p>Three natural polymorphs; all have octahedral TiO6 building blocks but differ in connectivity:</p>
+<table>
+<thead>
+<tr>
+<th>Polymorph</th>
+<th>Space group</th>
+<th>a (Å)</th>
+<th>c (Å)</th>
+<th>Photocatalytic activity</th>
+<th>Use in cosmetics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rutile</strong></td>
+<td>P4₂/mnm (tetragonal)</td>
+<td>4.594</td>
+<td>2.959</td>
+<td>Low</td>
+<td>Yes, preferred grade</td>
+</tr>
+<tr>
+<td><strong>Anatase</strong></td>
+<td>I4₁/amd (tetragonal)</td>
+<td>3.785</td>
+<td>9.514</td>
+<td>High</td>
+<td>No (avoided as cosmetic UV filter, used in foods/pigments)</td>
+</tr>
+<tr>
+<td><strong>Brookite</strong></td>
+<td>Pbca (orthorhombic)</td>
+<td>9.184</td>
+<td>5.447</td>
+<td>Intermediate</td>
+<td>Rare</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase choice in sunscreens (C1):</strong> Rutile is universally preferred because (a) higher refractive index → broader UVA scattering, (b) much lower photocatalytic activity, (c) broader spectral cutoff (~410 nm) extending UVA protection. Anatase, despite slightly higher mass-specific UVB absorption, is rarely used in sunscreens because of ROS generation. Schneider &amp; Lim 2019 explicitly note "rutile … is generally used in cosmetic and sunscreen products due to … not possessing observed ability to damage the skin … and having a higher UV absorption."</p>
+<h3 id="13-bandgap-cutoff-wavelength-c1-c3">1.3 Bandgap &amp; cutoff wavelength (C1 / C3)</h3>
+<table>
+<thead>
+<tr>
+<th>Polymorph</th>
+<th>Bandgap E_g (eV)</th>
+<th>λ_g calc = 1240/E_g (C3)</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rutile (bulk)</strong></td>
+<td>3.00–3.03</td>
+<td>1240/3.00 = <strong>413 nm</strong></td>
+<td>Direct (some authors call it indirect; subtle controversy — but optical edge ~410 nm)</td>
+</tr>
+<tr>
+<td><strong>Anatase (bulk)</strong></td>
+<td>3.20</td>
+<td>1240/3.20 = <strong>387 nm</strong></td>
+<td>Indirect</td>
+</tr>
+<tr>
+<td><strong>Brookite (bulk)</strong></td>
+<td>3.14</td>
+<td>1240/3.14 = <strong>395 nm</strong></td>
+<td>Indirect</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key consequence (C1):</strong> Rutile's bandgap is at <em>visible</em> edge wavelengths (~410 nm) — meaning rutile absorbs through the entire UVA range and slightly into the violet. Anatase cuts off at 387 nm. Both extend further into UVA than ZnO (368–380 nm).</p>
+<p>Caveat: bandgap shifts by ~+0.05–0.15 eV (blueshift) for nano-particles &lt; 10 nm by quantum confinement (Brus formula). Sunscreen-grade rutile (20–100 nm) shows minimal shift; effective edge ~395–410 nm. Smijs &amp; Pavel (2011) note 4.7 nm anatase showed +0.15 eV shift.</p>
+<h3 id="14-refractive-index-c1">1.4 Refractive index (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Polymorph</th>
+<th>λ = 590 nm (visible)</th>
+<th>UV (~310 nm)</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rutile</td>
+<td>n_o = 2.616, n_e = 2.903 (avg ~2.7)</td>
+<td>n ≈ 3.0–3.5</td>
+<td>Highest n of any common transparent oxide → strong scattering / white cast</td>
+</tr>
+<tr>
+<td>Anatase</td>
+<td>n_o = 2.561, n_e = 2.488 (avg ~2.5)</td>
+<td>n ≈ 2.7–3.1</td>
+<td>Lower scattering than rutile</td>
+</tr>
+<tr>
+<td>Brookite</td>
+<td>≈ 2.58</td>
+<td>—</td>
+<td>Similar to anatase</td>
+</tr>
+</tbody>
+</table>
+<p>(DeVore tabulation; refractiveindex.info; Wikipedia titanium dioxide.)</p>
+<p><strong>Cosmetic implication:</strong> TiO2's high n (≈ 2.7) is <em>the</em> reason it whitens skin more than ZnO (n ≈ 2.0) at the same particle size and load. The Mie scattering cross-section in the visible scales steeply with (n−1)². Hence formulators reduce TiO2 particle size to push the scattering peak below visible wavelengths.</p>
+<h3 id="15-particle-sizes-used-in-sunscreen-c1">1.5 Particle sizes used in sunscreen (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>d50 typical</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pigment-grade TiO2</td>
+<td>200–300 nm</td>
+<td>White paints, opaque sunscreens, foundation. Strong white cast.</td>
+</tr>
+<tr>
+<td>"Microfine" TiO2</td>
+<td>80–150 nm</td>
+<td>Older sun lotions; partial transparency.</td>
+</tr>
+<tr>
+<td>Nano-TiO2</td>
+<td>10–50 nm primary; aggregates 70–150 nm</td>
+<td>Modern transparent sunscreens.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EU regulatory threshold:</strong> 50 % (number) ≤ 100 nm = "nano". Same as ZnO. (C1)</p>
+<p>SCCS/1516/13 specifies safe nano-TiO2 must have ≥ 95 % rutile, primary particle size ≥ 30 nm and aspect ratio ≤ 4.5; impurities limited.</p>
+<h3 id="16-surface-coatings-c1">1.6 Surface coatings (C1)</h3>
+<p>Cosmetic-grade nano-TiO2 is <strong>always</strong> coated, both for dispersion and to suppress photocatalysis.</p>
+<p><strong>SCCS-approved coatings on nano-TiO2 (SCCS/1516/13 + 2020 update SCCS/1617/20):</strong>
+- Silica (SiO2) / hydrated silica
+- Alumina (Al2O3) / aluminium hydroxide
+- Aluminium stearate, stearic acid
+- <strong>Trimethoxycaprylylsilane</strong> (very common — same C8 silane as on ZnO)
+- Glycerin
+- Dimethicone, hydrogen dimethicone, simethicone</p>
+<p>Multi-layer coatings are common: e.g., alumina underlayer + silica overlayer + stearate top-coat for hydrophobic dispersibility.</p>
+<p>Coating loadings: typical 5–15 wt% of total particle. Croda's Solaveil™ rutile and BASF T-Lite™ are workhorse grades.</p>
+<p><strong>Doped grades:</strong> Manganese-doped rutile (Wakefield et al., Optisol™, <em>Photochem. Photobiol. Sci.</em> 3:648, 2004; doi:10.1039/B403697B) substitutes ~0.7 % Mn into rutile lattice — provides electron-hole de-excitation pathway, <strong>reduces free-radical generation by &gt;90 %</strong>, and provides intrinsic radical-scavenging.</p>
+<h3 id="17-regulatory-status-c1">1.7 Regulatory status (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Limit</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA — FDA</strong></td>
+<td>OTC monograph M020 / 21 CFR 352.10(t)</td>
+<td>≤ 25 %</td>
+<td>GRASE Category I. No nano-specific restriction.</td>
+</tr>
+<tr>
+<td><strong>EU</strong></td>
+<td>Annex VI <strong>entry 27</strong> (non-nano, since original Annex VI) and <strong>entry 27a</strong> (nano, added 2016 by Reg. 2016/1143)</td>
+<td>≤ 25 %</td>
+<td>Spray products prohibited (SCCS/1583/17). Coatings restricted to SCCS-approved list.</td>
+</tr>
+<tr>
+<td><strong>EU food (E171)</strong></td>
+<td><strong>Banned</strong> (Reg. 2022/63 effective Aug 2022)</td>
+<td>—</td>
+<td>Different exposure route; cosmetic use unaffected.</td>
+</tr>
+<tr>
+<td><strong>France</strong></td>
+<td>Banned E171 in foods since 2020. Cosmetic use permitted.</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Listed sunscreen active</td>
+<td>≤ 25 %</td>
+<td>TGA 2017 review concluded safe topically.</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>MHLW positive list, Quasi-drug ingredient</td>
+<td>up to 25 %</td>
+<td>Approved; nano forms require specific data.</td>
+</tr>
+<tr>
+<td><strong>ASEAN / Korea (MFDS)</strong></td>
+<td>Annex VII permitted UV filter</td>
+<td>≤ 25 %</td>
+<td>Aligned with EU.</td>
+</tr>
+<tr>
+<td><strong>IARC</strong></td>
+<td><strong>Group 2B</strong> — possibly carcinogenic to humans (inhalation)</td>
+<td>—</td>
+<td>Monograph 93 (2010). Topical use unaffected.</td>
+</tr>
+<tr>
+<td><strong>California Prop 65</strong></td>
+<td>Listed: TiO2 (airborne, unbound particles of respirable size)</td>
+<td>—</td>
+<td>Inhalation only.</td>
+</tr>
+<tr>
+<td><strong>EU CLH (CLP)</strong></td>
+<td>Originally classified Carc Cat 2 (inhalation, ≥ 1 % particles ≤ 10 μm) by Reg. 2020/217. Annulled by ECJ Nov 2022; classification withdrawn (Reg. 2024/197).</td>
+<td>—</td>
+<td>Now no harmonised CLP carcinogen classification.</td>
+</tr>
+</tbody>
+</table>
+<p>Key SCCS opinions: <strong>SCCS/1516/13</strong> (2014, base — nano-TiO2 ≤ 25 % safe except spray); <strong>SCCS/1583/17</strong> (final 2018 — spray products not safe); <strong>SCCS/1617/20</strong> (additional coatings); SCCS/1641/21 (oral E171 — separate route).</p>
+<hr>
+<h2 id="2-uv-attenuation-spectrum">2. UV Attenuation Spectrum</h2>
+<h3 id="21-mechanism-c1">2.1 Mechanism (C1)</h3>
+<p>Same physics as ZnO: bandgap absorption + Mie scattering. Cole, Shyr &amp; Ou-Yang (2016) — average reflection across UV is <strong>only 4–5 %</strong> for TiO2 sunscreens, equivalent to &lt; SPF 2 from scattering. Absorption dominates.</p>
+<h3 id="22-cutoff-c1-c3">2.2 Cutoff (C1 / C3)</h3>
+<ul>
+<li><strong>Rutile:</strong> 1240/3.00 = <strong>413 nm</strong> (bulk). Practical absorption edge of cosmetic rutile typically ~390–400 nm. (Edge slightly blueshifted vs bulk because of Mie + dispersion effects.)</li>
+<li><strong>Anatase:</strong> 1240/3.20 = <strong>387 nm</strong> (bulk), edge ~370–380 nm in nano grades.</li>
+</ul>
+<p>Rutile thus extends slightly <em>deeper</em> into UVA than anatase, reinforcing rutile's preference for UVA1 protection. However, <strong>practical UVA1 protection is weaker than ZnO</strong> because:
+1. Mass-specific absorption falls off above 360 nm — the absorption coefficient drops because photon energy becomes &lt; bandgap and only band-tail / scattering contributes.
+2. ZnO's higher visible transparency at the same particle size lets formulators load more ZnO.</p>
+<h3 id="23-particle-size-dependence-mie-theory-c1">2.3 Particle size dependence — Mie theory (C1)</h3>
+<p>Popov et al. 2005 (above):
+- Optimum TiO2 size for <strong>310 nm UVB</strong> = <strong>62 nm</strong>.
+- Optimum TiO2 size for <strong>400 nm UVA</strong> = <strong>122 nm</strong>.</p>
+<p>Egerton &amp; Tooley 2012 (<em>Int. J. Cosmet. Sci.</em> 34:117–122; doi:10.1111/j.1468-2494.2011.00689.x) computed Mie attenuation for 20, 50, 100 nm TiO2 — the 50 nm material gave the best mass-specific attenuation across UVB and UVA2 simultaneously; 100 nm shifted optimum into UVA1 but visible scattering rose.</p>
+<p>In practice, sunscreen formulators commonly use <strong>two TiO2 grades</strong> in one product: 15–25 nm primary for UVB efficiency + 80–120 nm for UVA1, blended.</p>
+<h3 id="24-mass-extinction-coefficient-c2-c4">2.4 Mass extinction coefficient (C2 / C4)</h3>
+<p>Approximate values for typical 25 nm rutile + dispersing aid (Egerton 2012, graph-digitized — C4):</p>
+<table>
+<thead>
+<tr>
+<th>λ</th>
+<th>α (L·g⁻¹·cm⁻¹)</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>290 nm</td>
+<td>~25–35</td>
+<td>Strong UVB absorption</td>
+</tr>
+<tr>
+<td>310 nm</td>
+<td>~20–30</td>
+<td>UVB peak region</td>
+</tr>
+<tr>
+<td>340 nm</td>
+<td>~10–15</td>
+<td>UVA2</td>
+</tr>
+<tr>
+<td>360 nm</td>
+<td>~5–10</td>
+<td>Edge of UVA2</td>
+</tr>
+<tr>
+<td>380 nm</td>
+<td>~2–4</td>
+<td>UVA1</td>
+</tr>
+<tr>
+<td>400 nm</td>
+<td>~1–2</td>
+<td>Far UVA1 / visible edge — Mie scattering only</td>
+</tr>
+</tbody>
+</table>
+<p>Compared to ZnO at the same size, TiO2 attenuates UVB roughly 2–3× more efficiently per gram, but ZnO catches up at λ &gt; 370 nm.</p>
+<h3 id="25-anatase-vs-rutile-spectra-c2">2.5 Anatase vs rutile spectra (C2)</h3>
+<p>Anatase's slightly larger bandgap means it absorbs marginally more <em>intensely</em> in the UVB but <em>cuts off earlier</em> (~388 nm) than rutile (~410 nm). This is one reason commercial sunscreens use rutile despite anatase being mass-cheaper to manufacture: rutile gives broader UVA cover and dramatically lower photocatalysis.</p>
+<h3 id="26-particle-scattering-vs-absorption-ratio-c1">2.6 Particle scattering vs absorption ratio (C1)</h3>
+<p>Cole et al. 2016, integrating-sphere measurements: for typical sunscreen film,</p>
+<ul>
+<li>UV reflection: 4–5 % (i.e., 4–5 % of incident UV is scattered back; the rest is <em>absorbed</em>).</li>
+<li>Above bandgap (visible): reflection rises to ~60 % — the cosmetic "white cast" the user sees.</li>
+</ul>
+<p>Absorption: scattering ratio in the UV ≈ <strong>&gt;10:1</strong>. The historical claim that TiO2 "reflects UV" is <strong>wrong</strong>; this was a marketing-driven simplification corrected by Cole et al. (Schneider &amp; Lim 2019 reiterate this.)</p>
+<hr>
+<h2 id="3-photocatalytic-activity">3. Photocatalytic activity</h2>
+<h3 id="31-mechanism-c1">3.1 Mechanism (C1)</h3>
+<p>Above bandgap: electron–hole pair → surface redox → ROS:
+- e⁻(CB) + O2 → O2•⁻ (anatase CB at -0.5 V vs NHE; rutile CB at -0.3 V vs NHE → both thermodynamically generate O2•⁻).
+- h⁺(VB) + H2O → •OH + H⁺ (anatase VB +2.7 V; rutile VB +2.7 V → both produce •OH).
+- Indirect generation of H2O2 via dismutation; ¹O2 via energy transfer.</p>
+<p>Anatase's electrons and holes have higher mobility (lower effective mass) and the conduction-band edge is more reducing — both factors make anatase substantially more photocatalytic than rutile. (C1)</p>
+<h3 id="32-quantitative-ros-photocatalysis-c1">3.2 Quantitative ROS / photocatalysis (C1)</h3>
+<ul>
+<li><strong>Anatase produces ~5–10× more •OH than rutile</strong> under matched UV365 illumination on per-mass basis. (Hirakawa &amp; Nosaka, <em>Langmuir</em> 18:3247, 2002; Carlotti et al., <em>J. Photochem. Photobiol. B</em> 96:130, 2009.) (C2)</li>
+<li>Rutile produces detectable but much lower ROS; cosmetic-grade nano-rutile with multi-layer coating shows near-baseline ROS in DCFH-DA assays (Lewicka et al. 2013).</li>
+<li><strong>Mn-doped rutile (Optisol)</strong>: free-radical generation reduced <strong>&gt;90 %</strong> vs undoped (Wakefield et al. 2004; doi:10.1039/B403697B) and active radical-scavenging behaviour observed.</li>
+</ul>
+<h3 id="33-effect-of-coatings-c1">3.3 Effect of coatings (C1)</h3>
+<p>Carlotti et al. 2009; Egerton 2012; Lewicka et al. 2013:</p>
+<ul>
+<li><strong>Alumina (Al2O3)</strong>: reduces rutile photocatalysis by 70–90 %.</li>
+<li><strong>Silica (SiO2)</strong>: reduces by 80–95 %, increases with shell thickness.</li>
+<li><strong>Combined Al2O3/SiO2</strong>: &gt;95 % suppression typical for commercial-grade.</li>
+<li><strong>Stearic acid / stearate</strong>: modest reduction (~30–50 %); mainly hydrophobic dispersion aid.</li>
+<li><strong>Trimethoxycaprylylsilane</strong>: reduces ROS modestly + improves dispersion.</li>
+</ul>
+<p>Nanoscale TiO2 from neat sunscreens (post-extraction) was found by Lewicka et al. 2013 to be <strong>relatively inactive</strong> upon UV illumination — coatings on commercial TiO2 are generally effective. ZnO from the same products produced substantially more ROS — i.e. industry has done a better job coating TiO2 than ZnO.</p>
+<p>Overall, <strong>coatings do not eliminate photocatalysis</strong>; SCCS notes that residual photocatalytic activity remains a consideration but at coated-grade levels does not drive the safety conclusion.</p>
+<h3 id="34-bleaching-of-co-formulated-organic-filters-c1">3.4 Bleaching of co-formulated organic filters (C1)</h3>
+<ul>
+<li>Photolysis of avobenzone is <em>accelerated</em> by uncoated nano-TiO2 (Serpone, Salinaro et al., <em>Photochem. Photobiol. Sci.</em> 2:970, 2003; Buchalska et al., <em>Photochem. Photobiol. Sci.</em> 9:1276, 2010). (C1)</li>
+<li>Co-formulating TiO2 with avobenzone without proper coating <em>and</em> without a photostabiliser (octocrylene, DEHN, polycrylene) is a known formulation pitfall — Croda Beauty's "Top 10 sun care formulation development mistakes" lists this as #1.</li>
+<li>Mn-doped rutile (Optisol) reportedly <em>triples</em> avobenzone photostability vs commercial undoped TiO2 in test formulations (Wakefield et al. 2004).</li>
+</ul>
+<h3 id="35-implications-for-skin-c1-c2">3.5 Implications for skin (C1 / C2)</h3>
+<ul>
+<li><em>In vitro</em> anatase + UV → keratinocyte / fibroblast DNA damage, lipid peroxidation, viability loss at 4–16 μg·mL⁻¹ + 10 J·cm⁻² UVA (Smijs &amp; Pavel 2011 review).</li>
+<li><em>In vivo</em> rutile, coated, intact skin → no measurable ROS escalation in clinical tests; multiple SCCS opinions and the TGA 2017 review concur "no biologically significant ROS reaches viable cells under normal use." (C1)</li>
+<li>The persistence of <em>intracellular</em> ROS would require nanoparticles to reach viable keratinocytes, which is not observed at meaningful levels.</li>
+</ul>
+<hr>
+<h2 id="4-safety-regulatory">4. Safety / Regulatory</h2>
+<h3 id="41-skin-penetration-c1">4.1 Skin penetration (C1)</h3>
+<ul>
+<li>Filipe et al. 2009 (above) — TiO2 detectable only in stratum corneum after 48 h occlusion; no penetration into viable epidermis.</li>
+<li>Mavon et al. 2007 — 20 nm TiO2 in decyl-glucoside vehicle: 83 % SC, 5 % viable epidermis, ~0.1 % dermis (using exhaustive analytical methods to detect any signal).</li>
+<li>Sadrieh, Wokovich, Hahn et al. <em>Toxicol. Sci.</em> 115:156, 2010 (doi:10.1093/toxsci/kfq041) — "Lack of significant dermal penetration of titanium dioxide from sunscreen formulations containing nano- and submicron-size TiO2 particles" — Yucatan pig skin in vivo, 4 weeks of daily application, four formulations including nano forms — TiO2 stays in stratum corneum.</li>
+<li>Lademann et al. <em>Skin Pharmacol. Appl. Skin Physiol.</em> 12:247, 1999 — TiO2 microparticles penetrate to upper 1–2 corneocyte layers in stratum corneum; some accumulation in hair-follicle openings; no viable-skin penetration.</li>
+</ul>
+<p><strong>Consensus:</strong> stratum corneum is an effective barrier; FDA, SCCS, TGA all accept this for coated rutile at commercial particle sizes. Damaged / sunburned skin remains a residual uncertainty noted explicitly by SCCS.</p>
+<h3 id="42-inhalation-hazard-c1">4.2 Inhalation hazard (C1)</h3>
+<ul>
+<li>IARC Monograph 93 (2010) — TiO2 = <strong>Group 2B</strong>, possibly carcinogenic via inhalation, based on rat lung tumour studies at high chronic doses. Mechanism is "lung overload" particle clearance impairment, not a direct carcinogenic mechanism — relevance to humans contested.</li>
+<li>EU CLH initially classified TiO2 as Carc Cat 2 (inhalation; 2020/217) — annulled by ECJ 2022 (Case T-279/20); classification withdrawn 2024.</li>
+<li>Cosmetic spray products with nano-TiO2 are <strong>prohibited</strong> by EU (SCCS/1583/17) and by SCCS guidance.</li>
+<li>FDA does not separately restrict nano-TiO2 in sprays but warns about inhalation risk for any spray sunscreen.</li>
+<li>Regulatory landscape continues to evolve — formulators routinely avoid nano-TiO2 in any aerosol/pump-spray product.</li>
+</ul>
+<h3 id="43-coral-aquatic-safety-c1-c2">4.3 Coral / aquatic safety (C1 / C2)</h3>
+<ul>
+<li>Hawaii bans (Acts 104, 15) target organic filters; TiO2 is not banned but is not unconditionally "reef safe."</li>
+<li>Corinaldesi et al. 2018 (above) and Tang et al. 2024 — uncoated nano-TiO2 toxic to coral and marine invertebrates at sub-mg/L. Coated, larger-particle TiO2 substantially lower toxicity.</li>
+<li>TiO2 widely promoted alongside ZnO as "reef-friendlier" relative to oxybenzone/octinoxate; the comparison is favourable but not absolute.</li>
+</ul>
+<h3 id="44-other-regulatory-consumer-concerns">4.4 Other regulatory / consumer concerns</h3>
+<ul>
+<li><strong>EFSA (European Food Safety Authority)</strong> withdrew safety opinion on TiO2 (E171) for food in 2021 due to potential genotoxicity — banned as food additive in EU since Aug 2022. Cosmetic / sunscreen use is <strong>separate and unaffected</strong> because oral exposure differs from topical.</li>
+<li><strong>GreenScreen for Safer Chemicals</strong> lists nano-TiO2 as concern level "moderate" pending further nanotoxicology data.</li>
+<li>TiO2 is generally regarded as <strong>low allergen risk</strong> — Schneider &amp; Lim 2019 note "no reports of allergic contact dermatitis or photoallergic contact dermatitis to titanium dioxide."</li>
+</ul>
+<hr>
+<h2 id="5-confidence-summary">5. Confidence summary</h2>
+<table>
+<thead>
+<tr>
+<th>Datum</th>
+<th>Tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAS, MW, density</td>
+<td>C1</td>
+<td>Multiple primary refs</td>
+</tr>
+<tr>
+<td>Polymorphs (rutile/anatase/brookite)</td>
+<td>C1</td>
+<td>Universal consensus</td>
+</tr>
+<tr>
+<td>Bandgap rutile 3.00 eV / anatase 3.20 eV</td>
+<td>C1</td>
+<td>Multiple textbook + Smijs 2011</td>
+</tr>
+<tr>
+<td>Cutoff calc 413/387 nm (C3) vs observed ~400/380 nm</td>
+<td>C3 / C2</td>
+<td>1240/E shown</td>
+</tr>
+<tr>
+<td>Refractive index ~2.5–2.7 (anatase/rutile)</td>
+<td>C1</td>
+<td>DeVore; refractiveindex.info</td>
+</tr>
+<tr>
+<td>Particle sizes 10–150 nm</td>
+<td>C1</td>
+<td>SCCS + patent literature</td>
+</tr>
+<tr>
+<td>Coating list</td>
+<td>C1</td>
+<td>SCCS/1516/13, 1617/20</td>
+</tr>
+<tr>
+<td>Mn-doping &gt;90 % free-radical reduction</td>
+<td>C1</td>
+<td>Wakefield 2004</td>
+</tr>
+<tr>
+<td>Anatase 5–10× ROS rutile</td>
+<td>C2</td>
+<td>Hirakawa &amp; Nosaka; Carlotti</td>
+</tr>
+<tr>
+<td>Coatings 70–95 % photocatalysis suppression</td>
+<td>C2</td>
+<td>Carlotti, Egerton, Lewicka</td>
+</tr>
+<tr>
+<td>FDA GRASE ≤ 25 %</td>
+<td>C1</td>
+<td>21 CFR 352</td>
+</tr>
+<tr>
+<td>EU Annex VI 27/27a</td>
+<td>C1</td>
+<td>Reg. 1223/2009 + 2016/1143</td>
+</tr>
+<tr>
+<td>IARC Group 2B (inhalation)</td>
+<td>C1</td>
+<td>Monograph 93 (2010)</td>
+</tr>
+<tr>
+<td>Skin penetration &lt; 0.1 % to dermis</td>
+<td>C1</td>
+<td>Filipe; Mavon; Sadrieh</td>
+</tr>
+<tr>
+<td>Spray prohibition</td>
+<td>C1</td>
+<td>SCCS/1583/17</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-key-references-full-list-in-sourcesmd">6. Key references (full list in /sources.md)</h2>
+<ol>
+<li>Schneider SL, Lim HW. A review of inorganic UV filters zinc oxide and titanium dioxide. <em>Photodermatol. Photoimmunol. Photomed.</em> 35:442–446 (2019). doi:10.1111/phpp.12439</li>
+<li>Smijs TG, Pavel S. Titanium dioxide and zinc oxide nanoparticles in sunscreens: focus on their safety and effectiveness. <em>Nanotechnol. Sci. Appl.</em> 4:95–112 (2011). doi:10.2147/NSA.S19419</li>
+<li>Cole C, Shyr T, Ou-Yang H. Metal oxide sunscreens protect skin by absorption, not by reflection or scattering. <em>Photodermatol. Photoimmunol. Photomed.</em> 32:5–10 (2016). doi:10.1111/phpp.12214</li>
+<li>Popov AP, Priezzhev AV, Lademann J, Myllylä R. TiO2 nanoparticles as an effective UV-B radiation skin-protective compound in sunscreens. <em>J. Phys. D: Appl. Phys.</em> 38:2564–2570 (2005). doi:10.1088/0022-3727/38/15/006</li>
+<li>Egerton TA, Tooley IR. UV absorption and scattering properties of inorganic-based sunscreens. <em>Int. J. Cosmet. Sci.</em> 34:117–122 (2012). doi:10.1111/j.1468-2494.2011.00689.x</li>
+<li>Wakefield G, Lipscomb S, Holland E, Knowland J. The effects of manganese doping on UVA absorption and free radical generation of micronised titanium dioxide and its consequences for the photostability of UVA absorbing organic sunscreen components. <em>Photochem. Photobiol. Sci.</em> 3:648–652 (2004). doi:10.1039/B403697B</li>
+<li>Lewicka ZA, Yu WW, Oliva BL, Contreras EQ, Colvin VL. Photochemical behavior of nanoscale TiO2 and ZnO sunscreen ingredients. <em>J. Photochem. Photobiol. A</em> 263:24–33 (2013). doi:10.1016/j.jphotochem.2013.04.019</li>
+<li>Carlotti ME, Ugazio E, Sapino S, et al. Specific effects of single antioxidants in the lipid peroxidation caused by nano-titania used in sunscreen lotions. <em>J. Photochem. Photobiol. B</em> 96:130–135 (2009). doi:10.1016/j.jphotobiol.2009.05.001</li>
+<li>Filipe P, Silva JN, Silva R, et al. Stratum corneum is an effective barrier to TiO2 and ZnO nanoparticle percutaneous absorption. <em>Skin Pharmacol. Physiol.</em> 22:266–275 (2009). doi:10.1159/000235554</li>
+<li>Mavon A, Miquel C, Lejeune O, et al. In vitro percutaneous absorption and in vivo stratum corneum distribution of an organic and a mineral sunscreen. <em>Skin Pharmacol. Physiol.</em> 20:10–20 (2007). doi:10.1159/000096167</li>
+<li>Sadrieh N, Wokovich AM, Gopee NV, et al. Lack of significant dermal penetration of titanium dioxide from sunscreen formulations containing nano- and submicron-size TiO2 particles. <em>Toxicol. Sci.</em> 115:156–166 (2010). doi:10.1093/toxsci/kfq041</li>
+<li>Serpone N, Salinaro A, Emeline AV, Horikoshi S, Hidaka H, Zhao J. An in vitro systematic spectroscopic examination of the photostabilities of a random set of commercial sunscreen lotions and their chemical UVB/UVA active agents. <em>Photochem. Photobiol. Sci.</em> 1:970–981 (2002). doi:10.1039/B206338G</li>
+<li>IARC Monograph 93 (2010) — Carbon Black, Titanium Dioxide, and Talc.</li>
+<li>SCCS/1516/13 (2014) — Opinion on Titanium Dioxide (nano form).</li>
+<li>SCCS/1583/17 (2018) — Opinion on Titanium Dioxide (nano form) as UV-Filter in sprays.</li>
+<li>SCCS/1617/20 — Opinion on additional coatings for TiO2 (nano form).</li>
+<li>EU Reg. 2016/1143 — Annex VI amendment, TiO2 (nano) entry 27a.</li>
+<li>EU Reg. 2022/63 — ban of TiO2 (E171) in foods.</li>
+<li>US FDA — 21 CFR 352.10; OTC Monograph M020 final administrative order (2021).</li>
+<li>TGA Australia — Literature review on safety of TiO2 and ZnO nanoparticles in sunscreens (2017 update).</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/inorganic/claims/c002-titanium-dioxide.md</code> · <a href="c002-titanium-dioxide.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

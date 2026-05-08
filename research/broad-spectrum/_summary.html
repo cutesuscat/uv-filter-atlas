@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broad-Spectrum / Mexoryl-Class UV Filters — Comparative Summary — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Broad-Spectrum / Mexoryl-Class UV Filters — Comparative Summary</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="_summary.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="_summary.md">View raw markdown</a> · Path: <code>research/broad-spectrum/_summary.md</code></div>
+<h1 id="broad-spectrum-mexoryl-class-uv-filters-comparative-summary">Broad-Spectrum / Mexoryl-Class UV Filters — Comparative Summary</h1>
+<blockquote>
+<p>Created 2026-05-07. Companion to claim files c001–c006 in <code>claims/</code>.
+All "next-generation" organic UV filters: highly photostable, broad-spectrum or deep-UVA, large MW, negligible skin penetration. Most are EU-approved but <strong>NOT</strong> US-approved (FDA's TEA backlog).</p>
+</blockquote>
+<hr>
+<h2 id="key-reference-table">Key reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>INCI</th>
+<th>CAS</th>
+<th>MW (g/mol)</th>
+<th>Solubility</th>
+<th>UV peak(s)</th>
+<th>ε (M⁻¹·cm⁻¹) at peak</th>
+<th>E(1%, 1cm)</th>
+<th>Photostability (cited)</th>
+<th>EU max</th>
+<th>FDA status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bemotrizinol</strong> (Tinosorb S)</td>
+<td>Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine</td>
+<td>187393-00-6</td>
+<td>627.83</td>
+<td>Oil-soluble</td>
+<td><strong>310 + 340 nm</strong> (dual)</td>
+<td>~50,000 at 340</td>
+<td>~790 at 340</td>
+<td><strong>98.4% after 50 MED</strong>; photostabilizes avobenzone</td>
+<td>10%</td>
+<td><strong>Proposed Order 11 Dec 2025</strong> at 6%; first new TEA filter approved</td>
+</tr>
+<tr>
+<td><strong>Ecamsule</strong> (Mexoryl SX)</td>
+<td>Terephthalylidene Dicamphor Sulfonic Acid</td>
+<td>92761-26-7</td>
+<td>562.69</td>
+<td>Water-soluble (as TEA salt)</td>
+<td><strong>345 nm</strong> (single, UVA2)</td>
+<td>~20,000 (cited 19k–47k)</td>
+<td>~360</td>
+<td>94–99% after 25 MED; reversible photoisomerization</td>
+<td>10%</td>
+<td><strong>NDA-restricted (Anthelios SX 2006)</strong>; not a TEA filter; not OTC monograph</td>
+</tr>
+<tr>
+<td><strong>Drometrizole Trisiloxane</strong> (Mexoryl XL)</td>
+<td>Drometrizole Trisiloxane</td>
+<td>155633-54-8</td>
+<td>501.85</td>
+<td>Oil-soluble (silicone-compatible)</td>
+<td><strong>303 + 344 nm</strong> (dual)</td>
+<td>~17–18,000 at 344</td>
+<td>~340</td>
+<td>≥97% after 50 MED; ESIPT mechanism</td>
+<td>15% (highest of any filter)</td>
+<td>TEA pending; not approved</td>
+</tr>
+<tr>
+<td><strong>Mexoryl 400</strong> (MCE / S87)</td>
+<td>Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate</td>
+<td>1419401-88-9</td>
+<td>322.41</td>
+<td>Oil-soluble (poorly water-soluble)</td>
+<td><strong>385 nm</strong> (deep UVA1)</td>
+<td><strong>~63,000 at 385</strong></td>
+<td>~1956</td>
+<td>"100% intrinsic stability" (sponsor data)</td>
+<td>3%</td>
+<td>Not approved; no TEA submission</td>
+</tr>
+<tr>
+<td><strong>Tinosorb A2B</strong> (TBPT)</td>
+<td>Tris-Biphenyl Triazine</td>
+<td>31274-51-8</td>
+<td>537.66</td>
+<td><strong>Particulate</strong> (microfine aqueous dispersion, ~150–200 nm)</td>
+<td>~310 nm molecular + UVA2 scattering shoulder</td>
+<td>~80,000 (monomer in THF)</td>
+<td>—</td>
+<td>Excellent (no characterized photoproducts)</td>
+<td>10% (incl. nano form)</td>
+<td>Not approved; no TEA submission</td>
+</tr>
+<tr>
+<td><strong>Bisdisulizole</strong> (Neo Heliopan AP)</td>
+<td>Disodium Phenyl Dibenzimidazole Tetrasulfonate</td>
+<td>180898-37-7</td>
+<td>674.55</td>
+<td><strong>Water-soluble</strong> (disodium salt)</td>
+<td><strong>335 nm</strong> (single, UVA2)</td>
+<td>~52,000</td>
+<td>~770–800</td>
+<td>&gt;95% after standard solar dose</td>
+<td>10%</td>
+<td>Not approved; no TEA submission</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="spectral-coverage-map-peak-wavelengths">Spectral coverage map (peak wavelengths)</h2>
+<pre><code>   UVB  |---- UVA2 ----|---- UVA1 ----|
+   290           320            340     360         400 nm
+   |             |              |       |           |
+   ●═════════════●═══════════════════════════════════  Bemotrizinol (BEMT) 310, 340
+                          ●══════════════════════════  Ecamsule 345
+   ●═════════════●═══════════════════════════════════  Drometrizole Trisiloxane 303, 344
+                                            ●═════════ Mexoryl 400 (MCE) 385
+   ●═════════[scattering]═══════════════════════════   Tinosorb A2B 310 + scatter
+                  ●══════════════════════════════════  Bisdisulizole 335
+</code></pre>
+<p><strong>Note on coverage gaps that motivate the modern filter blends:</strong></p>
+<ul>
+<li>Pre-2019 filters left a gap above ~370 nm (the "ultra-long UVA1" band that drives photoaging and pigmentation). MCE (Mexoryl 400) at 385 nm closes that gap.</li>
+<li>No single broad-spectrum filter covers 280–400 nm uniformly. Modern SPF50+ formulae stack 4–7 filters: typically a UVB workhorse (octinoxate/octocrylene/ethylhexyl triazone), a UVA1 anchor (avobenzone/DHHB/MCE), a broadband (BEMT/MBBT/TBPT), and often inorganics.</li>
+<li>Two filters in this list are primarily <em>single-peak</em> UVA2 (ecamsule, bisdisulizole). They MUST be combined with a UVB filter to make any SPF claim.</li>
+</ul>
+<hr>
+<h2 id="fda-tea-status-the-eight-filters-and-ecamsule">FDA TEA status — the eight filters (and ecamsule)</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>TEA submitted?</th>
+<th>Current FDA status (May 2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amiloxate</td>
+<td>Yes (2003)</td>
+<td>Pending; no proposed order</td>
+</tr>
+<tr>
+<td><strong>Bemotrizinol (BEMT)</strong></td>
+<td>Yes (April 2005)</td>
+<td><strong>PROPOSED ORDER 11 Dec 2025 — GRASE at 6% pending; comment period closed 26 Jan 2026; final order expected June 2026</strong></td>
+</tr>
+<tr>
+<td>Bisoctrizole (MBBT, Tinosorb M)</td>
+<td>Yes</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td>Drometrizole trisiloxane</td>
+<td>Yes</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>Ecamsule</strong></td>
+<td>Yes; <strong>but reached US market via NDA route (Anthelios SX, 2006) instead</strong></td>
+<td>NDA-restricted (only for that specific product)</td>
+</tr>
+<tr>
+<td>Enzacamene (4-MBC)</td>
+<td>Yes</td>
+<td>Pending; SCCS endocrine concerns in EU may complicate</td>
+</tr>
+<tr>
+<td>Iscotrizinol</td>
+<td>Yes</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td>Octyl triazone (ethylhexyl triazone)</td>
+<td>Yes</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>MCE (Mexoryl 400)</strong></td>
+<td><strong>NO TEA submission</strong> — too new</td>
+<td>Not approved; no path</td>
+</tr>
+<tr>
+<td><strong>TBPT (Tinosorb A2B)</strong></td>
+<td><strong>NO TEA submission</strong></td>
+<td>Not approved; no path</td>
+</tr>
+<tr>
+<td><strong>Bisdisulizole (Neo Heliopan AP)</strong></td>
+<td><strong>NO TEA submission</strong></td>
+<td>Not approved; no path</td>
+</tr>
+</tbody>
+</table>
+<p>The 2014 Sunscreen Innovation Act (SIA) was supposed to break the TEA logjam but produced no approvals through 2024. The December 2025 proposed order on bemotrizinol is the <strong>first</strong> material progress and may set precedent for the rest of the queue.</p>
+<hr>
+<h2 id="solubility-phase-compatibility">Solubility / phase compatibility</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Filters in this set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oil phase (lipophilic)</td>
+<td>Bemotrizinol, Drometrizole Trisiloxane, Mexoryl 400</td>
+</tr>
+<tr>
+<td>Water phase (hydrophilic)</td>
+<td>Ecamsule (as TEA/disodium salt), Bisdisulizole</td>
+</tr>
+<tr>
+<td>Particulate (dispersed in water phase)</td>
+<td>Tinosorb A2B</td>
+</tr>
+</tbody>
+</table>
+<p>This matters for formulators: a high-SPF, broad-spectrum formula must distribute filters across all phases to maintain a continuous protective film.</p>
+<hr>
+<h2 id="photostability-ranking-qualitative-decreasing">Photostability ranking (qualitative, decreasing)</h2>
+<ol>
+<li><strong>Drometrizole trisiloxane (Mexoryl XL)</strong> — ESIPT class, virtually indestructible.</li>
+<li><strong>Bemotrizinol (Tinosorb S)</strong> — ESIPT-like, 98.4% at 50 MED; photostabilizes avobenzone.</li>
+<li><strong>Tinosorb A2B (TBPT)</strong> — particulate; sub-ps IC; no characterized photoproducts.</li>
+<li><strong>Bisdisulizole (Neo Heliopan AP)</strong> — rigid bis-benzimidazole; &gt;95% retention.</li>
+<li><strong>MCE (Mexoryl 400)</strong> — sponsor data "100% intrinsic stability"; awaits independent verification.</li>
+<li><strong>Ecamsule (Mexoryl SX)</strong> — 94–99% (Loréal/Seite data); some independent studies report 60% at very high doses; reversible isomerization.</li>
+</ol>
+<p>For comparison: avobenzone alone retains ~36% after 1 h sun; oxybenzone ~80%; octinoxate ~80%.</p>
+<hr>
+<h2 id="cross-references">Cross-references</h2>
+<ul>
+<li><code>claims/c001-bemotrizinol.md</code></li>
+<li><code>claims/c002-ecamsule.md</code></li>
+<li><code>claims/c003-drometrizole-trisiloxane.md</code></li>
+<li><code>claims/c004-mexoryl-400-mce.md</code></li>
+<li><code>claims/c005-tinosorb-a2b-tbpt.md</code></li>
+<li><code>claims/c006-bisdisulizole-disodium.md</code></li>
+<li><code>sources.md</code> — full bibliographic list</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/broad-spectrum/_summary.md</code> · <a href="_summary.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

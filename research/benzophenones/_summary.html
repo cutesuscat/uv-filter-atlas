@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benzophenone-class Sunscreen Filters — Summary &amp; Comparison — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Benzophenone-class Sunscreen Filters — Summary &amp; Comparison</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="_summary.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="_summary.md">View raw markdown</a> · Path: <code>research/benzophenones/_summary.md</code></div>
+<h1 id="benzophenone-class-sunscreen-filters-summary-comparison">Benzophenone-class Sunscreen Filters — Summary &amp; Comparison</h1>
+<p>Knowledge base file. Six claim files (c001–c006). Compiled May 2026.</p>
+<h2 id="comparison-table">Comparison table</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Oxybenzone (BP-3)</th>
+<th>Sulisobenzone (BP-4)</th>
+<th>Dioxybenzone (BP-8)</th>
+<th>Trolamine Salicylate</th>
+<th>Benzophenone-1 (BP-1)</th>
+<th>Mexenone (BP-10)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CAS</strong></td>
+<td>131-57-7</td>
+<td>4065-45-6</td>
+<td>131-53-3</td>
+<td>2174-16-5</td>
+<td>131-56-6</td>
+<td>1641-17-4</td>
+</tr>
+<tr>
+<td><strong>Class</strong></td>
+<td>2-OH-benzophenone</td>
+<td>sulfonated 2-OH-benzophenone</td>
+<td>2,2′-diOH-benzophenone</td>
+<td>salicylate (TEA salt)</td>
+<td>2,4-diOH-benzophenone</td>
+<td>2-OH-4-OMe-4′-Me-benzophenone</td>
+</tr>
+<tr>
+<td><strong>MW (g/mol)</strong></td>
+<td>228.25</td>
+<td>308.31</td>
+<td>244.24</td>
+<td>287.31</td>
+<td>214.22</td>
+<td>242.27</td>
+</tr>
+<tr>
+<td><strong>logKow</strong></td>
+<td>~3.79</td>
+<td>~0.4</td>
+<td>~3.8</td>
+<td>~ –1.5 (anion)</td>
+<td>~2.96</td>
+<td>~3.9 (est.)</td>
+</tr>
+<tr>
+<td><strong>Solubility</strong></td>
+<td>oil-soluble</td>
+<td>water-soluble</td>
+<td>oil-soluble</td>
+<td>water-soluble</td>
+<td>sparingly water sol.</td>
+<td>oil-soluble</td>
+</tr>
+<tr>
+<td><strong>λmax 1 (nm)</strong></td>
+<td>287–290</td>
+<td>286–290</td>
+<td>282–285</td>
+<td>~298 (only)</td>
+<td>~287</td>
+<td>~287–290</td>
+</tr>
+<tr>
+<td><strong>λmax 2 (nm)</strong></td>
+<td>322–326</td>
+<td>324–326</td>
+<td>325–352</td>
+<td>—</td>
+<td>~325</td>
+<td>~325</td>
+</tr>
+<tr>
+<td><strong>ε at λmax(UVB) (M⁻¹·cm⁻¹)</strong></td>
+<td>~1.5–2.1 × 10⁴</td>
+<td>~1.4–1.6 × 10⁴</td>
+<td>~1.5 × 10⁴</td>
+<td>~3.0–3.6 × 10³</td>
+<td>~1.6 × 10⁴</td>
+<td>~1.4 × 10⁴ (est.)</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>UVB + UVA-II</td>
+<td>UVB + UVA-II</td>
+<td>UVB + UVA-II</td>
+<td>UVB only</td>
+<td>UVB + UVA-II</td>
+<td>UVB + UVA-II</td>
+</tr>
+<tr>
+<td><strong>Photostability</strong></td>
+<td>good (ESIPT)</td>
+<td>good (ESIPT)</td>
+<td>good (ESIPT)</td>
+<td>very good (low absorption)</td>
+<td>good (ESIPT)</td>
+<td>good (analog)</td>
+</tr>
+<tr>
+<td><strong>Quantum yield Φ_loss</strong></td>
+<td>~10⁻⁴–10⁻³</td>
+<td>~10⁻⁴–10⁻³</td>
+<td>~10⁻⁴–10⁻³ (inf.)</td>
+<td>~10⁻⁴</td>
+<td>~10⁻⁴–10⁻³</td>
+<td>~10⁻⁴–10⁻³ (inf.)</td>
+</tr>
+<tr>
+<td><strong>EU Annex VI status (May 2026)</strong></td>
+<td>Listed; <strong>2.2%</strong> in body, 6% in face/hand/lips</td>
+<td>Listed; <strong>5%</strong></td>
+<td><strong>Not</strong> listed</td>
+<td><strong>Not</strong> listed</td>
+<td><strong>Not</strong> listed</td>
+<td><strong>Not</strong> listed</td>
+</tr>
+<tr>
+<td><strong>FDA OTC monograph</strong></td>
+<td>Listed up to 6%; "insufficient data for GRASE"</td>
+<td>Listed up to 10%; "insufficient data"</td>
+<td>Listed up to <strong>3%</strong>; "insufficient data"</td>
+<td>Listed up to 12%; FDA proposes <strong>NOT GRASE</strong></td>
+<td>Not approved</td>
+<td>Not approved</td>
+</tr>
+<tr>
+<td><strong>Hawaii SB2571 (Act 104) ban</strong></td>
+<td><strong>YES</strong> (banned Jan 2021)</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Estrogenic activity (in vitro)</strong></td>
+<td>Weak (10⁻⁵–10⁻⁶ vs E2)</td>
+<td>Very weak / borderline</td>
+<td>Weak</td>
+<td>None</td>
+<td><strong>Strongest of the set</strong> (~10⁻³–10⁻⁴ vs E2)</td>
+<td>Weak (inferred)</td>
+</tr>
+<tr>
+<td><strong>Skin absorption (max-use plasma)</strong></td>
+<td><strong>High</strong> — Cmax 169–210 ng/mL (Matta JAMA 2019, 2020)</td>
+<td>Low (polar)</td>
+<td>Not measured</td>
+<td>High % absorbed (analgesic context)</td>
+<td>Detected via BP-3 metabolism</td>
+<td>Not measured</td>
+</tr>
+<tr>
+<td><strong>Coral toxicity</strong></td>
+<td><strong>Strong evidence</strong> (Downs 2016)</td>
+<td>Some concern; less acute potency</td>
+<td>Inferred from analogy</td>
+<td>None reported</td>
+<td>Inferred from BP-3 metabolism</td>
+<td>Not studied</td>
+</tr>
+<tr>
+<td><strong>Photoallergen ranking</strong></td>
+<td><strong>#1 in N. America</strong>, #4 in Europe</td>
+<td>Less common</td>
+<td>Less common</td>
+<td>Rare (TEA itself can sensitize)</td>
+<td>Limited data</td>
+<td>Reported</td>
+</tr>
+<tr>
+<td><strong>NHANES detection rate</strong></td>
+<td>≥96% U.S. urine</td>
+<td>Detected, lower freq.</td>
+<td>Low</td>
+<td>n/a</td>
+<td>~80–95% (as BP-3 metabolite)</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Modern commercial relevance</strong></td>
+<td>Declining; restricted in EU; phased out by many brands</td>
+<td>Active; common in aqueous gels and hair products</td>
+<td>Marginal ("forgotten")</td>
+<td>Obsolete as sunscreen; common as analgesic</td>
+<td>Industrial UV-stabilizer; cosmetic colorant aid</td>
+<td>Obsolete</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways-across-the-class">Key takeaways across the class</h2>
+<ol>
+<li><strong>Common photophysical mechanism</strong> — all five benzophenones rely on intramolecular hydrogen bonding (2-OH ↔ C=O) and ultrafast excited-state intramolecular proton transfer (ESIPT, k ≈ 10¹² s⁻¹) to dissipate UV energy non-radiatively. This gives the class moderate-to-good photostability and consistent dual UVB/UVA-II absorption profiles around 287 nm and 325 nm.</li>
+<li><strong>Spectral limitation</strong> — none of the benzophenones in this collection extend meaningfully into UVA-I (&gt;360 nm); they do <strong>not</strong> by themselves provide broad-spectrum (critical wavelength ≥370 nm) protection. They are typically combined with avobenzone, bemotrizinol, ecamsule, or zinc oxide for UVA-I coverage.</li>
+<li><strong>Endocrine concern follows a structural ladder</strong>: BP-1 (the di-hydroxy metabolite) &gt; BP-3 &gt; BP-8 &gt; BP-4 in in-vitro estrogenic potency. Topical BP-3 application produces measurable internal exposure to the more-potent BP-1 metabolite — this is the principal mechanistic basis for concern about sustained BP-3 use.</li>
+<li><strong>Coral-reef toxicity has been demonstrated in primary literature only for BP-3</strong> (Downs 2016 + Vuckovic 2022). Other benzophenones are inferred to be problematic by structural analogy but do not have comparable coral-planula datasets.</li>
+<li><strong>Regulatory trajectory is clearly downward</strong> for the benzophenone class:
+   - EU dropped BP-3 from 10% → 6% → 2.2% (body) over 2017–2022
+   - FDA classes all the listed benzophenones as "insufficient data for GRASE"
+   - Hawaii, USVI, Palau, Aruba, Bonaire, Mexican marine parks have product-level bans naming BP-3
+   - Trolamine salicylate is proposed <strong>not GRASE</strong> outright</li>
+<li><strong>Skin penetration data are striking but their clinical significance is unestablished</strong> — Matta et al. 2019/2020 in JAMA conclusively show BP-3 plasma concentrations exceed the 0.5 ng/mL FDA toxicology-trigger threshold at typical use; the FDA has been clear that exceeding the threshold does not equate to harm but does require additional safety data.</li>
+<li><strong>Trolamine salicylate is in the file for completeness</strong> — it is salicylate-class (not benzophenone), is a weak UVB-only filter, and is essentially obsolete in sunscreens. It survives in OTC topical analgesics.</li>
+<li><strong>Mexenone is essentially a museum specimen</strong> — historical Uvistat formulation only; no modern usage.</li>
+</ol>
+<h2 id="summary-recommendation-hierarchy-by-current-weight-of-evidence">Summary recommendation hierarchy (by current weight of evidence)</h2>
+<p>For a formulator or consumer in May 2026, descending preference among this class:</p>
+<ol>
+<li><strong>Sulisobenzone (BP-4)</strong> — water-soluble UVB+UVA-II filter; the lowest-concern member of the practical-use set; useful where lipid-soluble filters are unsuitable.</li>
+<li><strong>Oxybenzone (BP-3)</strong> — still permitted in EU (2.2% body) and by FDA monograph (6%), but increasingly avoided due to coral-reef bans, photoallergy frequency, and endocrine concerns. Where regulation permits, it remains effective; where reef bans or sensitive-skin claims apply, alternatives are preferred.</li>
+<li><strong>Dioxybenzone (BP-8)</strong> — limited modern usage; effectively replaced by better-characterized broad-spectrum filters.</li>
+<li><strong>Mexenone (BP-10)</strong> — obsolete.</li>
+<li><strong>Trolamine salicylate</strong> — not recommended as a sunscreen primary; FDA proposes "not GRASE."</li>
+<li><strong>Benzophenone-1 (BP-1)</strong> — not approved as a UV filter in any major jurisdiction; relevant only as a metabolite/photoproduct of BP-3, not as a deliberate ingredient.</li>
+</ol>
+<h2 id="cross-references">Cross-references</h2>
+<ul>
+<li>See parent directory <code>/workspace/sunscreen-filters/research/uva-organic/</code> for avobenzone (the natural co-active for BP-3 in many BS sunscreens) and for next-generation UVA-I filters (bemotrizinol, Tinosorb S/M).</li>
+<li>See <code>/workspace/sunscreen-filters/research/photostab/</code> for triplet-quenching photostabilization mechanisms relevant to BP-3 + avobenzone interactions.</li>
+<li>See <code>/workspace/sunscreen-filters/research/inorganic/</code> for ZnO/TiO₂ alternatives recommended in coral-reef regions.</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/_summary.md</code> · <a href="_summary.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

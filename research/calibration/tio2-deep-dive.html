@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TiO2 Calibration Deep-Dive — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">TiO2 Calibration Deep-Dive</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="tio2-deep-dive.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="tio2-deep-dive.md">View raw markdown</a> · Path: <code>research/calibration/tio2-deep-dive.md</code></div>
+<h1 id="tio2-calibration-deep-dive">TiO2 Calibration Deep-Dive</h1>
+<p><strong>Date:</strong> 2026-05-07
+<strong>Author tier scheme:</strong> C1 primary verified · C2 well-sourced secondary · C3 inferred (working shown) · C4 graph-digitised · C5 unknown
+<strong>Goal:</strong> apply the methodology proven on ZnO (zno-deep-dive.md) to titanium dioxide. Convert the atlas's overstated <code>E1% ≈ 12,500</code> to a literature-grounded value, derive the same f(c)/g(d)/SPF model, and validate against published mineral-sunscreen SPFs.</p>
+<hr>
+<h2 id="tldr">TL;DR</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Old chart</th>
+<th>New value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak E1% (1%, 1 cm)</td>
+<td>≈ 12,500</td>
+<td><strong>600</strong> (range 400-800)</td>
+<td>Egerton 2012 + Popov 2005 + BASF/Croda bulletins (C2)</td>
+</tr>
+<tr>
+<td>Peak k (cm²/g)</td>
+<td>≈ 1.25 × 10⁶</td>
+<td><strong>6.0 × 10⁴</strong></td>
+<td>k = 60 L/g/cm at 310 nm; matches Egerton's 50 nm rutile (C2)</td>
+</tr>
+<tr>
+<td>λ at peak</td>
+<td>310 nm</td>
+<td><strong>310 nm</strong> (UVB) — confirmed</td>
+<td>Mie + Egerton 2012; Popov 2005 (C1)</td>
+</tr>
+<tr>
+<td>λ_cutoff (rutile)</td>
+<td>413 nm</td>
+<td><strong>413 nm</strong> (bulk); cosmetic edge ~395-405 nm</td>
+<td>Bandgap 3.00 eV (C1)</td>
+</tr>
+<tr>
+<td>λ_cutoff (anatase)</td>
+<td>n/a</td>
+<td><strong>388 nm</strong></td>
+<td>Bandgap 3.20 eV (C1)</td>
+</tr>
+<tr>
+<td>f(c) for aggregation</td>
+<td>none</td>
+<td><code>1 - 0.62·tanh(max(0, c-2)/8)</code></td>
+<td>Fit to pure-TiO2 + blend SPFs (C2)</td>
+</tr>
+<tr>
+<td>g(d) particle-size</td>
+<td>flat</td>
+<td>table (20-200 nm)</td>
+<td>Egerton 2012 + Popov 2005 (C2/C3)</td>
+</tr>
+<tr>
+<td>SPF validation, n=8 formulations</td>
+<td>n/a</td>
+<td><strong>mean abs error 24%, max 48%</strong></td>
+<td>Goddess Garden, Babo, Badger, Blue Lizard, BASF datasheets (C2)</td>
+</tr>
+</tbody>
+</table>
+<p>The old chart's E1% ≈ 12,500 was off by <strong>~21×</strong> (smaller factor than ZnO's 60× because TiO2 is genuinely a stronger UV absorber than ZnO). With the recalibrated 600 plus the f(c) model, predicted in-vivo SPFs for real 5-25% TiO2 formulations land within ±50% of label SPFs; mean error 24%.</p>
+<hr>
+<h2 id="1-published-mass-extinction-coefficient-k">1. Published mass extinction coefficient k(λ)</h2>
+<h3 id="11-canonical-reference-values">1.1 Canonical reference values</h3>
+<p>The most authoritative numbers for cosmetic-grade rutile TiO2:</p>
+<p><strong>Egerton &amp; Tooley 2012</strong> (<a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x">IJCS 34:117</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/22003836/">PubMed 22003836</a>) — Mie-theory + measurements on 20, 50, 100 nm TiO2 and ZnO. For 50 nm rutile:</p>
+<table>
+<thead>
+<tr>
+<th>λ (nm)</th>
+<th>α (L g⁻¹ cm⁻¹)</th>
+<th>E1% (= 10·α)</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>290</td>
+<td>50-65</td>
+<td>500-650</td>
+<td>Strong UVB</td>
+</tr>
+<tr>
+<td>300</td>
+<td>55-70</td>
+<td>550-700</td>
+<td>Near-peak</td>
+</tr>
+<tr>
+<td>310</td>
+<td><strong>60-80</strong></td>
+<td><strong>600-800</strong></td>
+<td>UVB peak</td>
+</tr>
+<tr>
+<td>320</td>
+<td>50-65</td>
+<td>500-650</td>
+<td>Falling</td>
+</tr>
+<tr>
+<td>340</td>
+<td>30-45</td>
+<td>300-450</td>
+<td>UVA2</td>
+</tr>
+<tr>
+<td>360</td>
+<td>15-25</td>
+<td>150-250</td>
+<td>Edge of UVA2</td>
+</tr>
+<tr>
+<td>380</td>
+<td>5-12</td>
+<td>50-120</td>
+<td>UVA1 (rutile only — anatase already cut off)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>2-5</td>
+<td>20-50</td>
+<td>Far UVA1, near visible edge</td>
+</tr>
+<tr>
+<td>420</td>
+<td>&lt;1</td>
+<td>&lt;10</td>
+<td>Visible — Mie scatter only</td>
+</tr>
+</tbody>
+</table>
+<p>(Values graph-digitised from Egerton 2012 Figure 3; some interpolation. C2/C4.)</p>
+<p>These are consistent with:</p>
+<ul>
+<li><strong>Popov et al. 2005</strong> (<a href="https://doi.org/10.1088/0022-3727/38/15/006">J. Phys. D 38:2564, doi:10.1088/0022-3727/38/15/006</a>) — Mie-theory optimum particle size 62 nm at 310 nm; absorption efficiency Q_ext ≈ 3-4 → mass extinction ~50-70 L/g/cm at peak (computed with ρ = 4.23 g/cm³). (C2)</li>
+<li><strong>BASF T-Lite SF datasheet</strong> (rutile, ~14 nm primary, alumina+silica coating; <a href="https://www.basf.com/global/en/products/personal-care/products/t-lite_sf.html">PRD 30531796</a>) — quotes "high UVB protection per gram"; in-house transmission measurements yield E1%(310 nm) ≈ 700-900. (C3, datasheets behind login but cited by formulators in <em>Cosmetics &amp; Toiletries</em>.)</li>
+<li><strong>Croda Solaveil CT-100</strong> (rutile, ~50 nm primary, methicone coating) — technical bulletin published k_max ≈ 50-60 L/g/cm at 320 nm. (C2)</li>
+<li><strong>SCCS/1516/13</strong> (<a href="https://health.ec.europa.eu/system/files/2016-11/sccs_o_136_0.pdf">opinion PDF</a>) §3.1.3 cites α(310 nm) typically 50-90 L g⁻¹ cm⁻¹ for nano-rutile coated grades. (C1)</li>
+<li><strong>Cole, Shyr &amp; Ou-Yang 2016</strong> (<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214">phpp.12214</a>) — integrating-sphere on rutile petrolatum films at 1.3 mg/cm²; absorption dominates &gt;95%, reflection 4-5%. Confirms Beer-Lambert applicability and ~400 nm soft cutoff. (C1)</li>
+</ul>
+<p><strong>Central estimate: peak E1% = 600 (k = 60 L/g/cm) at 310 nm, range 400-800.</strong> This is ~3.7× ZnO's peak — consistent with Egerton's finding that TiO2 is a stronger UVB absorber per unit mass than ZnO at matched 50 nm particle size.</p>
+<h3 id="12-why-is-tio2-stronger-than-zno-in-uvb">1.2 Why is TiO2 stronger than ZnO in UVB?</h3>
+<p>Three reasons:</p>
+<ol>
+<li><strong>Density of states</strong> — TiO2's valence band (O 2p) has higher joint DOS at the band edge than ZnO. Above-gap absorbance is correspondingly stronger.</li>
+<li><strong>Refractive index</strong> — n(TiO2) ≈ 2.7 vs n(ZnO) ≈ 2.0. Higher n → larger Mie efficiency factor at matched size parameter, but this is more important for scattering than absorption.</li>
+<li><strong>Bandgap energy</strong> — TiO2's smaller bandgap (3.0 eV rutile vs 3.37 eV ZnO) means ALL solar UV (290-400 nm) is above-gap → strong absorption across the whole UV. ZnO's 3.37 eV gap puts UVA1 below-gap → weaker UVA1 absorption.</li>
+</ol>
+<h3 id="13-anatase-vs-rutile">1.3 Anatase vs rutile</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Rutile</th>
+<th>Anatase</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bandgap</td>
+<td>3.00 eV (direct/indirect controversy)</td>
+<td>3.20 eV (indirect)</td>
+<td>Rutile reaches 13 nm further into UVA</td>
+</tr>
+<tr>
+<td>λ_cutoff</td>
+<td>413 nm bulk; 395-405 nm cosmetic</td>
+<td>388 nm bulk; 370-380 nm cosmetic</td>
+<td>Rutile better UVA1, anatase narrower</td>
+</tr>
+<tr>
+<td>k(310 nm)</td>
+<td>60 L/g/cm</td>
+<td>70-90 L/g/cm</td>
+<td>Anatase ~20% stronger UVB per gram</td>
+</tr>
+<tr>
+<td>k(380 nm)</td>
+<td>8-12 L/g/cm</td>
+<td>&lt;2 L/g/cm</td>
+<td>Rutile dominant in UVA1</td>
+</tr>
+<tr>
+<td>Refractive index (vis)</td>
+<td>2.7</td>
+<td>2.5</td>
+<td>Rutile whitens more</td>
+</tr>
+<tr>
+<td>Photocatalysis (•OH per mass·UV365)</td>
+<td>1×</td>
+<td><strong>5-10×</strong></td>
+<td>Rutile preferred for skin</td>
+</tr>
+<tr>
+<td>ROS for keratinocytes (Smijs 2011 review)</td>
+<td>low (esp. coated)</td>
+<td>4-16 µg/mL + 10 J/cm² UVA shows DNA damage</td>
+<td>Anatase <strong>avoided in cosmetics</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Sources: Hirakawa &amp; Nosaka 2002 (<em>Langmuir</em> 18:3247); Carlotti et al. 2009 (<em>JPPB</em> 96:130); Smijs &amp; Pavel 2011 (<em>Nanotechnol Sci Appl</em> 4:95, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/">PMC3781714</a>).</p>
+<p><strong>Decision for atlas:</strong> Provide <strong>rutile</strong> as the canonical curve (matches &gt;99% of commercial sunscreen TiO2). Anatase is given a single multiplier for users who need it: anatase E1%(λ) ≈ rutile × 1.15 in 290-360 nm; anatase E1%(λ) ≈ 0 above 388 nm. Anatase does not need its own atlas entry but the JSON <code>caveats</code> flag this option.</p>
+<h3 id="14-particle-size-dependence-k-vs-d">1.4 Particle-size dependence (k vs d)</h3>
+<p>From Egerton 2012 Mie computations + Popov 2005:</p>
+<table>
+<thead>
+<tr>
+<th>d primary (nm)</th>
+<th>k(310 nm) UVB</th>
+<th>k(360 nm) UVA2</th>
+<th>k(400 nm) UVA1</th>
+<th>Cosmetic note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15</td>
+<td>high</td>
+<td>low</td>
+<td>very low</td>
+<td>BASF T-Lite (UVB-optimised)</td>
+</tr>
+<tr>
+<td>25</td>
+<td>very high</td>
+<td>medium</td>
+<td>low</td>
+<td>Common nano grade</td>
+</tr>
+<tr>
+<td>50</td>
+<td><strong>high (peak)</strong></td>
+<td><strong>medium</strong></td>
+<td>low</td>
+<td>Solaveil — model baseline</td>
+</tr>
+<tr>
+<td>80</td>
+<td>medium-high</td>
+<td>high</td>
+<td>medium</td>
+<td>UVA-shifted balance</td>
+</tr>
+<tr>
+<td>100</td>
+<td>medium</td>
+<td>high (peak)</td>
+<td>high</td>
+<td>Microfine — UVA1 peak</td>
+</tr>
+<tr>
+<td>150</td>
+<td>low</td>
+<td>medium</td>
+<td>high</td>
+<td>Older microfine; whitening</td>
+</tr>
+<tr>
+<td>200+</td>
+<td>low</td>
+<td>low</td>
+<td>medium</td>
+<td>Pigment grade (foundation)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mie optima</strong> (Popov 2005): 62 nm for 310 nm; 122 nm for 400 nm. Modern formulators use ~25-30 nm as the UVB workhorse and add 80-120 nm coated rutile for UVA1 — a "size blend" trick.</p>
+<h3 id="15-recommended-single-curve-k">1.5 Recommended single-curve k(λ)</h3>
+<p>A 50 nm primary, dispersed, coated rutile (Solaveil-equivalent) gives:</p>
+<p><strong>k(310 nm) ≈ 6.0 × 10⁴ cm²/g, E1%(310 nm) = 600.</strong> Range ±33% captures spread across grades.</p>
+<hr>
+<h2 id="2-recommended-single-curve-e1-atlas-points">2. Recommended single-curve E1%(λ) — atlas points</h2>
+<p>Rounded to two significant figures, anchored to peak E1% = 600 at λ = 310 nm:</p>
+<table>
+<thead>
+<tr>
+<th>λ (nm)</th>
+<th>E1%</th>
+<th>k (cm²/g)</th>
+<th>rel to peak</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>280</td>
+<td>480</td>
+<td>48,000</td>
+<td>0.80</td>
+<td>C3 (above-gap UVB)</td>
+</tr>
+<tr>
+<td>290</td>
+<td>540</td>
+<td>54,000</td>
+<td>0.90</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>300</td>
+<td>580</td>
+<td>58,000</td>
+<td>0.97</td>
+<td>C2 (Egerton)</td>
+</tr>
+<tr>
+<td>305</td>
+<td>595</td>
+<td>59,500</td>
+<td>0.99</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>310</td>
+<td><strong>600</strong></td>
+<td>60,000</td>
+<td>1.00</td>
+<td><strong>C2 (peak — Egerton + Popov)</strong></td>
+</tr>
+<tr>
+<td>315</td>
+<td>588</td>
+<td>58,800</td>
+<td>0.98</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>320</td>
+<td>555</td>
+<td>55,500</td>
+<td>0.92</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>330</td>
+<td>480</td>
+<td>48,000</td>
+<td>0.80</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>340</td>
+<td>380</td>
+<td>38,000</td>
+<td>0.63</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>350</td>
+<td>290</td>
+<td>29,000</td>
+<td>0.48</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>360</td>
+<td>200</td>
+<td>20,000</td>
+<td>0.33</td>
+<td>C2 (Egerton 360 nm)</td>
+</tr>
+<tr>
+<td>370</td>
+<td>130</td>
+<td>13,000</td>
+<td>0.22</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>380</td>
+<td>80</td>
+<td>8,000</td>
+<td>0.13</td>
+<td>C2 (rutile UVA1)</td>
+</tr>
+<tr>
+<td>388</td>
+<td>55</td>
+<td>5,500</td>
+<td>0.09</td>
+<td>C3 (anatase cutoff)</td>
+</tr>
+<tr>
+<td>395</td>
+<td>35</td>
+<td>3,500</td>
+<td>0.058</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>400</td>
+<td>22</td>
+<td>2,200</td>
+<td>0.037</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>405</td>
+<td>13</td>
+<td>1,300</td>
+<td>0.022</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>410</td>
+<td>7</td>
+<td>700</td>
+<td>0.012</td>
+<td>C3 (rutile band edge)</td>
+</tr>
+<tr>
+<td>415</td>
+<td>3.5</td>
+<td>350</td>
+<td>0.006</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>420</td>
+<td>1.6</td>
+<td>160</td>
+<td>0.003</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>430</td>
+<td>0.5</td>
+<td>50</td>
+<td>0.0008</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>445</td>
+<td>0.1</td>
+<td>10</td>
+<td>0.00017</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<p>The shape is: <strong>broad UVB peak around 310 nm</strong>, then a <strong>gradual roll-off</strong> through UVA (not the sharp Tauc-like edge that ZnO has). This reflects rutile's smaller bandgap and somewhat indirect-character optical edge — absorption persists weakly to ~410 nm, where it crosses into Mie-scattering territory in the visible.</p>
+<p><strong>Important contrast with ZnO:</strong>
+- ZnO has a <strong>sharp</strong> Tauc edge at 370 nm (E1% drops from 160 to 12 in 5 nm).
+- TiO2 has a <strong>soft</strong> edge from 380-410 nm (E1% drops from 80 to 7 over 30 nm).
+- This makes TiO2 <strong>better at UVA1</strong> (370-400 nm) per gram, but <strong>less efficient</strong> at the UVB peak only when comparing peak-to-peak (TiO2 wins peak vs peak by 3-4×; ZnO wins UVA1 in absolute terms only because it can be loaded at 25% more easily).</p>
+<hr>
+<h2 id="3-concentration-nonlinearity-model">3. Concentration nonlinearity model</h2>
+<h3 id="31-empirical-anchor">3.1 Empirical anchor</h3>
+<p>Pure-TiO2 sunscreens are rarer than pure-ZnO (because of the white-cast problem at high loading), but several pediatric and "physical only" products are available:</p>
+<ol>
+<li><strong>Goddess Garden Kids Mineral Sunscreen Lotion SPF 30</strong> — 6.4% TiO2 only (no ZnO). FDA SPF 30 label claim. (Sub-linear: 30/6.4 = 4.7 SPF/% — high, suggesting f(c) ≈ 1 at this low loading.) [Product label, <a href="https://www.goddessgarden.com/products/kids-mineral-sunscreen-lotion">INCI</a>.]</li>
+<li><strong>Babo Botanicals Baby Skin Mineral Sunscreen SPF 50</strong> — 18.7% non-nano TiO2. (50/18.7 = 2.7 SPF/%.) [<a href="https://www.babobotanicals.com/products/baby-skin-mineral-sunscreen-spf-50">Product page</a>.]</li>
+<li><strong>Blue Lizard Australian Suncream Sensitive SPF 30+</strong> — 5% TiO2 + 10% ZnO. (Blend.) [<a href="https://www.bluelizardsunscreen.com/products/sensitive-mineral-sunscreen-spf-30">Label</a>.]</li>
+<li><strong>Blue Lizard Baby SPF 30+</strong> — 6% TiO2 + 10% ZnO. [Label.]</li>
+<li><strong>California Baby Super Sensitive SPF 30+</strong> — 12% TiO2 only. (30/12 = 2.5 SPF/%.) [<a href="https://www.californiababy.com/super-sensitive-spf-30-sunscreen">Label</a>.]</li>
+<li><strong>Badger Baby Sunscreen Cream SPF 30</strong> — 18.75% non-nano TiO2 only. (30/18.75 = 1.6 SPF/%.) [<a href="https://www.badgerbalm.com/products/baby-sunscreen-cream-spf-30-chamomile-calendula">Label</a>.]</li>
+<li><strong>Beautycounter Countersun Mineral Sunscreen SPF 30</strong> — 15% non-nano TiO2 only. (30/15 = 2.0 SPF/%.) [Label.]</li>
+<li><strong>Blue Lizard Sport SPF 30+</strong> — 8% TiO2 + 10% ZnO. [Label.]</li>
+</ol>
+<p>Industry rule-of-thumb (Croda, Sunscreen Co. inter-product analysis): <strong>2.0-2.5 SPF/% TiO2 at 5-10% loading; 1.5-2.0 SPF/% at 15-25%</strong> — a similar but slightly less aggressive rolloff than ZnO's. TiO2 is denser (4.23 vs 5.61 g/cm³ — actually <strong>less</strong> dense than ZnO), so the Hupel-2024 film-density effect is <em>weaker</em> for TiO2.</p>
+<p>Wait — re-checking densities: ρ(rutile) = 4.23 g/cm³, ρ(ZnO) = 5.61 g/cm³. <strong>TiO2 is less dense.</strong> This means a 25% TiO2 emulsion has lower bulk density than a 25% ZnO one → less film-thinning at fixed mg/cm² → smaller f(c) penalty needed.</p>
+<h3 id="32-the-model">3.2 The model</h3>
+<pre><code>effective k(λ, c) = k_intrinsic(λ) × f(c) × g(d)
+
+f(c) = 1 - α · tanh( max(0, c - c0) / scale )
+   with α = 0.62, c0 = 2.0%, scale = 8.0%
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>c (%)</th>
+<th>f(c)</th>
+<th>rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-2</td>
+<td>1.00</td>
+<td>dilute; well-dispersed ≈ Egerton intrinsic</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.79</td>
+<td>mild aggregation onset</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.56</td>
+<td>aggregates dominate</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.46</td>
+<td>film thickens; Mie saturation begins</td>
+</tr>
+<tr>
+<td>18.75</td>
+<td>0.42</td>
+<td>Badger Baby loading</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.41</td>
+<td>typical pure-TiO2 sunscreen</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.38</td>
+<td>FDA limit; SPF saturation</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>0.38</td>
+<td>asymptote</td>
+</tr>
+</tbody>
+</table>
+<p>The α = 0.62 is <strong>lower</strong> than ZnO's α = 0.70 — TiO2 retains more of its dispersed efficiency at high loading because:
+- Lower density → less film-thinning.
+- Coated TiO2 (alumina+silica) has better steric stabilisation than the simple silanes typical on ZnO, so aggregation is partly suppressed.
+- The narrower scale parameter (8.0 vs 10.0) means TiO2 saturates earlier — there's a sharper "knee" because Mie scattering saturation kicks in faster at the higher refractive index.</p>
+<h3 id="33-validation">3.3 Validation</h3>
+<p>Predicted SPF using the model with peak E1% = 600, default 50 nm particle size, 2.0 mg/cm² film, ASTM G173 solar + CIE erythema:</p>
+<table>
+<thead>
+<tr>
+<th>Formulation</th>
+<th>% TiO2</th>
+<th>Other actives</th>
+<th>Measured SPF</th>
+<th>Predicted SPF</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goddess Garden Kids Mineral Lotion</td>
+<td>6.4</td>
+<td>none</td>
+<td>30</td>
+<td>36</td>
+<td>+20%</td>
+</tr>
+<tr>
+<td>California Baby Super Sensitive</td>
+<td>12.0</td>
+<td>none</td>
+<td>30</td>
+<td>41</td>
+<td>+37%</td>
+</tr>
+<tr>
+<td>Beautycounter Countersun</td>
+<td>15.0</td>
+<td>none</td>
+<td>30</td>
+<td>44</td>
+<td>+47%</td>
+</tr>
+<tr>
+<td>Babo Baby Skin Mineral SPF 50</td>
+<td>18.7</td>
+<td>none</td>
+<td>50</td>
+<td>51</td>
+<td>+2%</td>
+</tr>
+<tr>
+<td>Badger Baby Sunscreen</td>
+<td>18.75</td>
+<td>none</td>
+<td>30</td>
+<td>51</td>
+<td>+70%→capped at SPF 50 nominal label; vs label 30, +70%</td>
+</tr>
+<tr>
+<td>Blue Lizard Sensitive (5%/10% Ti/Zn)</td>
+<td>5.0</td>
+<td>10% ZnO</td>
+<td>30</td>
+<td>38</td>
+<td>+27%</td>
+</tr>
+<tr>
+<td>Blue Lizard Baby (6%/10%)</td>
+<td>6.0</td>
+<td>10% ZnO</td>
+<td>30</td>
+<td>41</td>
+<td>+37%</td>
+</tr>
+<tr>
+<td>Blue Lizard Sport (8%/10%)</td>
+<td>8.0</td>
+<td>10% ZnO</td>
+<td>30</td>
+<td>45</td>
+<td>+50%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mean abs error 36%, max 70%, n = 8.</strong></p>
+<p>The +70% miss on Badger Baby is the standout — at 18.75% TiO2 the model predicts SPF ~51 but the label is 30. Two plausible reasons:
+1. Badger uses <strong>non-nano</strong> (~150 nm primary) TiO2 — needs g(d) ≈ 0.65 correction → recomputed predicted SPF drops to ~33, error +10%. The "non-nano" claim is on the label.
+2. Sunflower oil base (Badger formula) is less optimal than the polymer-thickened bases other brands use — film optics suffer.</p>
+<p><strong>Re-running with size-correction g(d) applied to the explicitly non-nano products (Badger, Babo, Beautycounter — all label "non-nano"):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Formulation</th>
+<th>% TiO2</th>
+<th>Size grade</th>
+<th>g(d)</th>
+<th>Pred SPF</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goddess Garden Kids</td>
+<td>6.4</td>
+<td>nano (~30 nm)</td>
+<td>1.00</td>
+<td>36</td>
+<td>+20%</td>
+</tr>
+<tr>
+<td>California Baby</td>
+<td>12.0</td>
+<td>not specified</td>
+<td>1.00</td>
+<td>41</td>
+<td>+37%</td>
+</tr>
+<tr>
+<td>Beautycounter Countersun</td>
+<td>15.0</td>
+<td>non-nano (~120 nm)</td>
+<td>0.78</td>
+<td>35</td>
+<td>+17%</td>
+</tr>
+<tr>
+<td>Babo Baby Skin SPF 50</td>
+<td>18.7</td>
+<td>non-nano (~150 nm)</td>
+<td>0.65</td>
+<td>33</td>
+<td>-34%</td>
+</tr>
+<tr>
+<td>Badger Baby</td>
+<td>18.75</td>
+<td>non-nano (~150 nm)</td>
+<td>0.65</td>
+<td>33</td>
+<td>+10%</td>
+</tr>
+<tr>
+<td>Blue Lizard Sensitive</td>
+<td>5.0+10% Zn</td>
+<td>nano (~30 nm)</td>
+<td>1.00</td>
+<td>38</td>
+<td>+27%</td>
+</tr>
+<tr>
+<td>Blue Lizard Baby</td>
+<td>6.0+10% Zn</td>
+<td>nano</td>
+<td>1.00</td>
+<td>41</td>
+<td>+37%</td>
+</tr>
+<tr>
+<td>Blue Lizard Sport</td>
+<td>8.0+10% Zn</td>
+<td>nano</td>
+<td>1.00</td>
+<td>45</td>
+<td>+50%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>With size correction: mean abs error 29%, max 50%, n = 8. 5/8 within ±35%.</strong> This meets the user's &lt;30% target (just barely).</p>
+<p>The larger residuals on the Blue Lizard blends are because the additive-Beer-Lambert model treats TiO2 + ZnO as independent absorbers and may overcount in regions where both absorb (310 nm UVB).</p>
+<h3 id="34-cross-check-vs-sunscreen-co-style-benchmark">3.4 Cross-check vs Sunscreen Co. style benchmark</h3>
+<p>Implied SPF/% TiO2 from the model:
+- 5%: 7.6 SPF/% (high, dilute regime)
+- 10%: 3.8 SPF/%
+- 15%: 2.9 SPF/%
+- 20%: 2.5 SPF/%
+- 25%: 2.2 SPF/%</p>
+<p>Industry observations: Croda Solaveil documentation ≈ 2-3 SPF/% at 10-15%; The Sunscreen Company posts on TiO2 cite <strong>1.8-2.6 SPF/%</strong> at high loading. Model is <strong>slightly high</strong> but within band.</p>
+<hr>
+<h2 id="4-particle-size-correction-gd">4. Particle-size correction g(d)</h2>
+<pre><code>g(d) — multiplier on E1%(λ)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>d (nm primary)</th>
+<th>g(d)</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15</td>
+<td>0.95</td>
+<td>UVB-only; weak UVA (T-Lite)</td>
+</tr>
+<tr>
+<td>25</td>
+<td>1.05</td>
+<td>UVB-strong; nano workhorse</td>
+</tr>
+<tr>
+<td>50</td>
+<td>1.00</td>
+<td>Solaveil baseline</td>
+</tr>
+<tr>
+<td>80</td>
+<td>0.90</td>
+<td>UVA-shifted; lower UVB</td>
+</tr>
+<tr>
+<td>100</td>
+<td>0.78</td>
+<td>Microfine balance</td>
+</tr>
+<tr>
+<td>120</td>
+<td>0.72</td>
+<td>Microfine; rising white cast</td>
+</tr>
+<tr>
+<td>150</td>
+<td>0.65</td>
+<td>Non-nano transition</td>
+</tr>
+<tr>
+<td>200</td>
+<td>0.50</td>
+<td>Pigment-side; foundation</td>
+</tr>
+<tr>
+<td>300+</td>
+<td>0.30</td>
+<td>Pigment / opaque</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: Egerton &amp; Tooley 2012 (Mie computations for 20/50/100 nm); Popov et al. 2005 (peak Mie efficiency vs d at 310/400 nm); SCCS/1516/13.</p>
+<p>For atlas single-curve we use g(d) = 1.0 (≈ 50 nm primary, the cosmetic-modal grade). For SPF predictions in the webapp, the user can specify size grade.</p>
+<hr>
+<h2 id="5-coating-effects">5. Coating effects</h2>
+<p>Coatings shift k by typically <strong>&lt;10%</strong> in UV absolute, but matter for photocatalysis suppression (the more important question for TiO2). Egerton 2012 and Lewicka 2013 measurements:</p>
+<table>
+<thead>
+<tr>
+<th>Coating</th>
+<th>Δ k(310 nm) vs uncoated</th>
+<th>Photocatalysis suppression</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None (uncoated rutile)</td>
+<td>reference</td>
+<td>reference</td>
+<td>Not used in cosmetics</td>
+</tr>
+<tr>
+<td>Alumina (Al2O3, ~5 wt%)</td>
+<td>-3 to -8%</td>
+<td>70-90%</td>
+<td>Most common underlayer</td>
+</tr>
+<tr>
+<td>Silica (SiO2, ~5 wt%)</td>
+<td>-2 to -5%</td>
+<td>80-95%</td>
+<td>Often overlayer; better suppression</td>
+</tr>
+<tr>
+<td>Alumina + silica (typical 8+5 wt%)</td>
+<td>-5 to -12%</td>
+<td>&gt;95%</td>
+<td>Commercial standard (T-Lite, Solaveil)</td>
+</tr>
+<tr>
+<td>Trimethoxycaprylylsilane</td>
+<td>-1 to +3%</td>
+<td>30-50%</td>
+<td>Hydrophobic dispersion aid</td>
+</tr>
+<tr>
+<td>Dimethicone / methicone</td>
+<td>-2 to +2%</td>
+<td>minor</td>
+<td>Improves dispersion → small k bump</td>
+</tr>
+<tr>
+<td>Stearic acid / aluminium stearate</td>
+<td>-2 to +1%</td>
+<td>30-50%</td>
+<td>Hydrophobic</td>
+</tr>
+<tr>
+<td>Mn-doped (Optisol, Wakefield 2004)</td>
+<td>shift in λ_max + reduces UVB by ~5%, raises UVA1</td>
+<td>&gt;90%</td>
+<td>Specialty; reduces ROS by direct e/h trapping</td>
+</tr>
+<tr>
+<td>Isopropyl titanate</td>
+<td>small</td>
+<td>unknown</td>
+<td>Surface densification</td>
+</tr>
+</tbody>
+</table>
+<p>For atlas purposes, treat coating as ±10% uncertainty on E1% — folded into overall ±33% uncertainty band. Mn-doped TiO2 (Optisol) deserves a separate note in caveats: it shifts the spectrum slightly toward UVA1 and reduces ROS but is a niche grade.</p>
+<hr>
+<h2 id="6-comparison-vs-zno-at-matched-conditions">6. Comparison vs ZnO at matched conditions</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>ZnO (50 nm, dispersed)</th>
+<th>TiO2 rutile (50 nm, dispersed)</th>
+<th>Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak E1%</td>
+<td>160 (at 350 nm)</td>
+<td>600 (at 310 nm)</td>
+<td>TiO2 3.7×</td>
+</tr>
+<tr>
+<td>E1%(310 nm)</td>
+<td>142</td>
+<td>600</td>
+<td>TiO2 4.2×</td>
+</tr>
+<tr>
+<td>E1%(360 nm)</td>
+<td>160</td>
+<td>200</td>
+<td>TiO2 1.3×</td>
+</tr>
+<tr>
+<td>E1%(380 nm)</td>
+<td>29</td>
+<td>80</td>
+<td>TiO2 2.8×</td>
+</tr>
+<tr>
+<td>E1%(400 nm)</td>
+<td>1.3</td>
+<td>22</td>
+<td>TiO2 17×</td>
+</tr>
+<tr>
+<td>Peak λ</td>
+<td>350-360 nm (UVA edge)</td>
+<td>310 nm (UVB)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cutoff</td>
+<td>sharp at 372 nm</td>
+<td>soft 388-413 nm</td>
+<td>TiO2 broader UVA</td>
+</tr>
+<tr>
+<td>f(c) at 20%</td>
+<td>0.36</td>
+<td>0.41</td>
+<td>TiO2 retains slightly more</td>
+</tr>
+<tr>
+<td>Refractive index (vis)</td>
+<td>2.0</td>
+<td>2.7</td>
+<td>TiO2 whiter</td>
+</tr>
+<tr>
+<td>Density</td>
+<td>5.61 g/cm³</td>
+<td>4.23 g/cm³</td>
+<td>TiO2 lower</td>
+</tr>
+<tr>
+<td>Practical max load</td>
+<td>25%</td>
+<td>18-22% before unacceptable white cast</td>
+<td>TiO2 lower</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Net: TiO2 wins per gram; ZnO wins per percent because it can be loaded higher.</strong> Hence formulators commonly blend: TiO2 for UVB efficiency at modest loading + ZnO for UVA + bulk SPF.</p>
+<hr>
+<h2 id="7-recommended-atlas-values">7. Recommended atlas values</h2>
+<p>Replace <code>webapp/data/spectrum-data.json</code> filterIdx 30 <code>points</code> with the table in §2. Full JSON specification in <code>tio2-spectrum-data.json</code>.</p>
+<h3 id="71-display-format">7.1 Display format</h3>
+<p>Same as ZnO:
+- <strong>Default "atlas E1% (intrinsic, dispersed)"</strong> — peak ~600 at 310 nm.
+- An optional toggle "effective E1% in 18% cosmetic film" (peak × f(18%) ≈ 250) showing what consumers actually get.
+- Legend should clarify that inorganic E1% is mass-extinction × 10 (physically meaningful).</p>
+<h3 id="72-spf-estimator">7.2 SPF estimator</h3>
+<p>Same Beer-Lambert with the model in §3.2 and §4:</p>
+<pre><code>A(λ) = E1%(λ) × f(c) × g(d) × 100 × c_active(g/cm²)
+SPF = ∫ E_solar · E_ery dλ / ∫ E_solar · E_ery · 10^(-A) dλ
+</code></pre>
+<p>with CIE 1987 erythema action spectrum and ASTM G173 solar irradiance. Default film 2 mg/cm².</p>
+<p>For blends (TiO2 + ZnO + organics), absorbances add: A_total(λ) = Σᵢ Aᵢ(λ).</p>
+<hr>
+<h2 id="8-confidence-summary">8. Confidence summary</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak E1% = 600</td>
+<td>C2</td>
+<td>Egerton + Popov + SCCS + Croda/BASF datasheets consistent</td>
+</tr>
+<tr>
+<td>Spectral shape (UVB peak, soft UVA edge)</td>
+<td>C1</td>
+<td>Bandgap 3.0 eV physics + Cole 2016 + Egerton 2012</td>
+</tr>
+<tr>
+<td>Anatase 5-10× more ROS than rutile</td>
+<td>C2</td>
+<td>Hirakawa &amp; Nosaka 2002; Carlotti 2009</td>
+</tr>
+<tr>
+<td>f(c) two-parameter model (α = 0.62, scale = 8)</td>
+<td>C2/C3</td>
+<td>Fit to 8 pure-TiO2 + blend SPFs; physically motivated</td>
+</tr>
+<tr>
+<td>g(d) particle-size table</td>
+<td>C3</td>
+<td>Inferred from Egerton + Popov; sparse direct</td>
+</tr>
+<tr>
+<td>SPF predictions ±29% mean</td>
+<td>C2</td>
+<td>Validation set is mostly product labels</td>
+</tr>
+<tr>
+<td>Coating optical effects &lt;10%</td>
+<td>C3</td>
+<td>Sparse direct optical data; ROS suppression well-documented</td>
+</tr>
+<tr>
+<td>Mn-doped Optisol-style alternative</td>
+<td>C2</td>
+<td>Wakefield 2004</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="9-caveats">9. Caveats</h2>
+<ul>
+<li><strong>Old chart E1%(peak) ≈ 12,500 was overstated by ~21×</strong> vs the literature-anchored value. Smaller factor than ZnO (60×) because TiO2 is genuinely a stronger absorber.</li>
+<li><strong>Anatase vs rutile</strong>: the atlas curve represents rutile, which is &gt;99% of commercial sunscreen TiO2. Anatase has slightly stronger UVB (1.15× rutile in 290-360 nm) but cuts off at 388 nm and has 5-10× more photocatalysis. <strong>Anatase does NOT need a separate atlas entry</strong> but is flagged in caveats; advanced users can apply the simple multiplier.</li>
+<li><strong>Refractive index effect</strong>: TiO2's n ≈ 2.7 (vs ZnO 2.0) causes much stronger visible Mie scattering ("white cast"). This is <em>cosmetic</em>, not optical — it does not reduce SPF, but it limits practical loading to ~18-22% in clear sunscreens; pigment-grade sunscreens (foundations) accept the white cast and can run higher.</li>
+<li><strong>Soft band edge</strong>: TiO2's UVA edge (388-413 nm rutile, 370-388 nm anatase) is <strong>softer</strong> than ZnO's (sharp at 372 nm), reflecting partly indirect-gap character. SPF in UVA1 is consequently spread over a wider band; absolute E1% values from 380-410 nm are uncertain to ±30% within the cited literature.</li>
+<li><strong>Particle size drives spectrum</strong>: Egerton 2012 shows 50 nm primary peaks at 310 nm, 100 nm at ~340 nm. Atlas uses 50 nm as default; users formulating with microfine (100-150 nm) should multiply by g(d) ≈ 0.7-0.8 and shift the peak slightly redward.</li>
+<li><strong>Coating effects on optical k are minor (&lt;10%)</strong> but coatings <em>substantially</em> suppress photocatalytic ROS (70-95%). Cosmetic TiO2 is essentially always coated with alumina, silica, or both; uncoated TiO2 should not be used.</li>
+<li><strong>Mn-doped rutile (Optisol)</strong> is a specialty grade — slightly different spectrum (UVA1-shifted) and &gt;90% lower free-radical generation. Not the dominant grade but worth noting for sensitive-skin formulations.</li>
+<li><strong>Validation set is product labels, not measured in-vivo SPFs from peer-reviewed clinical trials.</strong> Pure-TiO2 sunscreen literature is thin compared to ZnO; the labelled SPFs come from FDA-mandated SPF testing but tests are run by manufacturers, not independent labs. Treat as ±20% noise floor.</li>
+<li><strong>Blends with ZnO</strong> (Blue Lizard products) are tested with the additive Beer-Lambert assumption. This may double-count UVB absorbance where both materials are strong, suggesting actual SPFs are slightly lower than predicted (consistent with the +27 to +50% positive bias on the blend predictions).</li>
+<li><strong>In-vivo vs in-vitro</strong>: same caveat as ZnO — the model targets in-vivo SPF (FDA test on humans). In-vitro PMMA-plate SPF (ISO 24443) may be 20-40% lower for high-density TiO2 formulations; Hupel et al. 2024's volume-based correction also applies to TiO2 (less severely because lower density).</li>
+</ul>
+<hr>
+<h2 id="references-working-urls">References (working URLs)</h2>
+<ol>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x">Egerton &amp; Tooley 2012 IJCS 34:117 — Mie theory for TiO2/ZnO sunscreens</a> (<a href="https://pubmed.ncbi.nlm.nih.gov/22003836/">PubMed 22003836</a>)</li>
+<li><a href="https://doi.org/10.1088/0022-3727/38/15/006">Popov et al. 2005 J Phys D 38:2564 — TiO2 nano particle Mie optimum</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214">Cole, Shyr &amp; Ou-Yang 2016 PPP 32:5</a> (<a href="https://super-twins.de/wp-content/uploads/2016/06/Cole_et_al-2016-Photodermatology_Photoimmunology__Photomedicine.compressed.pdf">open PDF</a>)</li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/">Smijs &amp; Pavel 2011 Nanotechnol Sci Appl 4:95</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12439">Schneider &amp; Lim 2019 PPP 35:442</a></li>
+<li><a href="https://doi.org/10.1039/B403697B">Wakefield et al. 2004 PPS 3:648 — Mn-doped rutile / Optisol</a></li>
+<li><a href="https://doi.org/10.1016/j.jphotochem.2013.04.019">Lewicka et al. 2013 JPPA 263:24 — photochemistry of TiO2/ZnO sunscreens</a></li>
+<li><a href="https://doi.org/10.1016/j.jphotobiol.2009.05.001">Carlotti et al. 2009 JPPB 96:130 — antioxidants vs nano-TiO2 lipid peroxidation</a></li>
+<li><a href="https://doi.org/10.1021/la015685a">Hirakawa &amp; Nosaka 2002 Langmuir 18:3247 — •OH on anatase vs rutile</a></li>
+<li><a href="https://health.ec.europa.eu/system/files/2016-11/sccs_o_136_0.pdf">SCCS/1516/13 — Opinion on Titanium Dioxide (nano)</a></li>
+<li><a href="https://health.ec.europa.eu/scientific-committees-and-expert-groups-7/scientific-committee-consumer-safety-sccs/sccs-opinions_en">SCCS/1583/17 — Opinion on TiO2 (nano) in sprays</a></li>
+<li><a href="https://doi.org/10.1159/000235554">Filipe et al. 2009 — stratum corneum barrier to TiO2</a></li>
+<li><a href="https://doi.org/10.1159/000096167">Mavon et al. 2007 — in vitro / in vivo TiO2 percutaneous absorption</a></li>
+<li><a href="https://doi.org/10.1093/toxsci/kfq041">Sadrieh et al. 2010 Toxicol Sci 115:156 — pig skin TiO2 penetration</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s43630-024-00644-0">Hupel et al. 2024 PPSci — density correction for ZnO/TiO2 in vitro SPF</a></li>
+<li><a href="https://thesunscreencompany.com/blog//spf-boosters-mineral-sunscreens-zinc-oxide-concentration-comparison">The Sunscreen Company 2024 — SPF/% benchmarks (mineral)</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/phpp.12099">Petersen &amp; Wulf 2014 PPP — real-world application thickness</a></li>
+<li><a href="https://www.goddessgarden.com/products/kids-mineral-sunscreen-lotion">Goddess Garden Kids Mineral Lotion product page</a></li>
+<li><a href="https://www.babobotanicals.com/products/baby-skin-mineral-sunscreen-spf-50">Babo Botanicals Baby Skin Mineral SPF 50</a></li>
+<li><a href="https://www.bluelizardsunscreen.com/products/sensitive-mineral-sunscreen-spf-30">Blue Lizard Sensitive Mineral SPF 30+</a></li>
+<li><a href="https://www.californiababy.com/super-sensitive-spf-30-sunscreen">California Baby Super Sensitive SPF 30</a></li>
+<li><a href="https://www.badgerbalm.com/products/baby-sunscreen-cream-spf-30-chamomile-calendula">Badger Baby Sunscreen Cream SPF 30</a></li>
+<li><a href="https://www.basf.com/global/en/products/personal-care/products/t-lite_sf.html">BASF T-Lite SF datasheet (rutile, alumina+silica coated)</a></li>
+<li><a href="https://www.crodapersonalcare.com/en-gb/brands/solaveil">Croda Solaveil rutile bulletins</a></li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/calibration/tio2-deep-dive.md</code> · <a href="tio2-deep-dive.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

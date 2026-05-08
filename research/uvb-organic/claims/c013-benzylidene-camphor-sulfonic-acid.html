@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c013 — Benzylidene Camphor Sulfonic Acid (BCSA / Mexoryl SD / Eusolex HMS) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c013 — Benzylidene Camphor Sulfonic Acid (BCSA / Mexoryl SD / Eusolex HMS)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c013-benzylidene-camphor-sulfonic-acid.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c013-benzylidene-camphor-sulfonic-acid.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c013-benzylidene-camphor-sulfonic-acid.md</code></div>
+<h1 id="c013-benzylidene-camphor-sulfonic-acid-bcsa-mexoryl-sd-eusolex-hms">c013 — Benzylidene Camphor Sulfonic Acid (BCSA / Mexoryl SD / Eusolex HMS)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td><strong>Benzylidene Camphor Sulfonic Acid</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>α-(2-Oxoborn-3-ylidene)toluene-4-sulfonic acid; <strong>(<em>E</em>)-4-((2-oxo-3-bornylidene)methyl)benzenesulfonic acid</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Common synonyms / trade</td>
+<td><strong>Mexoryl SD</strong> (L'Oréal), <strong>Eusolex HMS</strong> (Merck), Eusolex 6300-equivalent (historical), BCSA, "Mexoryl SI" (less common)</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>CAS</strong></td>
+<td><strong>56039-58-8</strong> (free acid)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Salts in commercial use</td>
+<td>TEA salt, Na salt; the acid is most often supplied as the dry sulfonic acid that is neutralised in-formula</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₇H₂₀O₄S</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td><strong>320.40 g·mol⁻¹</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>259-991-1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>PubChem CID</td>
+<td>15349051</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Appearance</td>
+<td>white–pale yellow crystalline solid; readily ionised at typical formulation pH 5–7</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>log Kow (acid form)</td>
+<td>≈ 1.4–2.0 (low; highly polar sulfonate group) — <strong>water-soluble</strong></td>
+<td>C2</td>
+</tr>
+<tr>
+<td>pKa (sulfonic acid)</td>
+<td>≈ −1 to 0 (strong acid; fully deprotonated at pH ≥ 3)</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural relation.</strong> BCSA is a <strong>water-soluble sulfonate analogue of 4-MBC</strong>: instead of a <em>para</em>-methyl group on the benzylidene phenyl ring, BCSA carries a <em>para</em>-sulfonic acid group. The chromophore (α,β-unsaturated camphor-benzylidene enone) is identical to that of 3-BC and 4-MBC; the −SO₃H group acts as a strong electron-withdrawing substituent that:</p>
+<ol>
+<li>blue-shifts λmax slightly to ~294 nm,</li>
+<li>confers water solubility,</li>
+<li>excludes the molecule from the lipid phase of the stratum corneum, dramatically reducing skin penetration vs. its lipophilic camphor cousins,</li>
+<li>moves it out of the "endocrine-active" lipophilic-3-BC family — BCSA has not produced positive estrogenic / thyroid signals in standard assays at biologically relevant doses (see §4).</li>
+</ol>
+<p><strong>Note on Mexoryl branding.</strong> L'Oréal's "Mexoryl" prefix has been applied to <em>several distinct molecules</em>; do not conflate:
+- <strong>Mexoryl SX</strong> = ecamsule = <strong>terephthalylidene dicamphor sulfonic acid</strong> (CAS 92761-26-7, broad-spectrum UVA — see /broad-spectrum/c002).
+- <strong>Mexoryl XL</strong> = drometrizole trisiloxane (CAS 155633-54-8, broad-spectrum — see /broad-spectrum/c003).
+- <strong>Mexoryl SD</strong> = this molecule, BCSA (CAS 56039-58-8) — water-soluble UVB.
+- <strong>Mexoryl 400</strong> = methoxypropylamino cyclohexenylidene ethoxyethylcyanoacetate (MCE — see /broad-spectrum/c004).
+The "SD" stands for "soluble", reflecting its aqueous-phase nature.</p>
+<h3 id="section-11-regulatory-status">Section 1.1 — Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA (FDA)</strong></td>
+<td><strong>Not approved</strong> for OTC sunscreen use; never on TEA; not in Monograph M020</td>
+<td>n/a</td>
+<td>21 CFR 352 silent</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>EU (Annex VI)</strong></td>
+<td><strong>Permitted</strong> as UV filter. Annex VI <strong>entry 18</strong> (post-2024 renumbering note: before the 4-MBC ban (Reg 2024/996), 4-MBC occupied entry 18 and BCSA/derivatives occupied other slots; after 4-MBC was deleted from Annex VI and added to Annex II, entry numbering may shift in consolidated 2026 versions). The maximum authorised concentration is <strong>6 % (expressed as acid)</strong>. <em>Status as of May 2026: still permitted; no SCCS warning opinion in force.</em></td>
+<td><strong>6 %</strong></td>
+<td>Reg. (EC) 1223/2009 Annex VI; Cosmile Europe ingredient page</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>UK</strong></td>
+<td>Aligned with EU Annex VI; permitted at 6 %</td>
+<td>6 %</td>
+<td>UK SI 2019/696</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Listed in <em>Permitted Substances for Sunscreens</em> (ARTG); permitted</td>
+<td>6 %</td>
+<td>TGA / SUSMP</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>Canada</strong></td>
+<td>Permitted (Health Canada Cosmetic Ingredient Hotlist; not restricted)</td>
+<td>6 %</td>
+<td>Hotlist 2025</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>MHLW positive list — UV absorber for quasi-drug</td>
+<td>10 % typical max for Japan-listed UV filters; specific entry C2</td>
+<td>C2</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>South Korea (MFDS)</strong></td>
+<td>Permitted</td>
+<td>6 %</td>
+<td>KFDA UV filter list</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>ASEAN</strong></td>
+<td>Annex VII permitted (aligned with EU)</td>
+<td>6 %</td>
+<td>ASEAN ACD</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>China</strong></td>
+<td>Permitted in IECIC 2021 cosmetic ingredient list</td>
+<td>6 %</td>
+<td>NMPA</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Bottom line.</strong> BCSA remains a <strong>niche but permitted</strong> UVB filter in the EU and most non-US markets in 2026. It is much less commonly used than 4-MBC was — its practical disadvantage (only weak λmax 294 nm; ε lower than OMC) limited commercial uptake even when both were legal.</p>
+</blockquote>
+<p>Typical historical concentration: <strong>2–4 %</strong> in EU formulations, almost always paired with other UVB filters. Often used in shampoo / hair-spray contexts (where its water solubility is an advantage over OMC and 4-MBC).</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (280–320 nm) with single strong band centred at ~294 nm. Slightly blue-shifted vs 3-BC / 4-MBC because the para-SO₃⁻ group is a stronger EW substituent than −CH₃ or −H.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹·cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water (Na salt, pH ~7)</td>
+<td><strong>~294</strong></td>
+<td>~21,000</td>
+<td>~656</td>
+<td>C1</td>
+<td>Sigma 97085 / BASF / Cosmile Europe; Stiehl 1992</td>
+</tr>
+<tr>
+<td>Ethanol</td>
+<td>~294</td>
+<td>~21,000</td>
+<td>~656</td>
+<td>C2</td>
+<td>Cosmile Europe; Eusolex technical data</td>
+</tr>
+<tr>
+<td>50:50 EtOH:water</td>
+<td>295</td>
+<td>~20,000</td>
+<td>~625</td>
+<td>C2</td>
+<td>Beck 2006; Berset 1996 (camphor-class)</td>
+</tr>
+</tbody>
+</table>
+<p>The lower E(1%, 1cm) (656 vs 1130 for avobenzone, 916 for 4-MBC, 1100 for OMC) reflects both the slightly lower ε and the higher MW of the sulfonated derivative — i.e., on a per-mass basis BCSA is somewhat <em>less</em> efficient than 4-MBC, which is one reason it has not displaced more potent UVB actives.</p>
+<h3 id="section-21-in-context">Section 2.1 — In context</h3>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>λmax (EtOH/water) nm</th>
+<th>ε (M⁻¹·cm⁻¹)</th>
+<th>E(1%,1cm)</th>
+<th>Solubility</th>
+<th>EU max (2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3-BC</td>
+<td>298</td>
+<td>22 000</td>
+<td>916</td>
+<td>oil</td>
+<td>banned (Annex II 2015)</td>
+</tr>
+<tr>
+<td>4-MBC</td>
+<td>300</td>
+<td>24 500</td>
+<td>963</td>
+<td>oil</td>
+<td>banned (Annex II from May 2026)</td>
+</tr>
+<tr>
+<td><strong>BCSA</strong></td>
+<td><strong>294</strong></td>
+<td><strong>21 000</strong></td>
+<td><strong>656</strong></td>
+<td><strong>water</strong></td>
+<td><strong>6 %, still permitted</strong></td>
+</tr>
+<tr>
+<td>Ensulizole (PBSA)</td>
+<td>302</td>
+<td>16 000</td>
+<td>528</td>
+<td>water</td>
+<td>— / 8 %</td>
+</tr>
+<tr>
+<td>OMC</td>
+<td>305</td>
+<td>24 000</td>
+<td>833</td>
+<td>oil</td>
+<td>10 %</td>
+</tr>
+</tbody>
+</table>
+<p>BCSA is the <strong>only camphor-derived UV filter still legal in the EU as of 2026</strong> — both 3-BC and 4-MBC are now Annex II prohibited substances, leaving BCSA, Mexoryl SX (ecamsule), and Polyacrylamidomethyl Benzylidene Camphor as the surviving camphor-scaffold actives.</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>Same photochemical class as 3-BC and 4-MBC: reversible <em>E</em> → <em>Z</em> photoisomerisation through twisted-S₁ conical intersection; photostationary mixture is stable; minor irreversible photodegradation.</p>
+<ul>
+<li><strong>Quantum yield of E→Z isomerisation:</strong> Φ ≈ 0.13–0.30 (wavelength-dependent), independent of solvent, concentration, oxygen — mirrors the parent benzylidene-camphor scaffold (Deflandre &amp; Lang 1988; Berset 1996). (C1)</li>
+<li><strong>Photostationary state mixture is itself photostable.</strong> The classic camphor-derivative pattern: small (~5 nm) red-shift after first dose, no further change. (C1)</li>
+<li><strong>Quantum yield of irreversible photodegradation Φ_d ~ 10⁻³ to 10⁻⁴.</strong> (C2 by analogue.)</li>
+<li><strong>% retention vs UV dose</strong> (best-quality data for BCSA specifically is sparser than for 4-MBC because of its smaller commercial footprint):</li>
+<li>Berset 1996 — benzylidene-camphor sulfonates retained ≥ 88 % at 5 MED solar simulator. (C1)</li>
+<li>Couteau 2007 <em>Pharm Res</em> 24:1153 — water-soluble UVB filters as a class (BCSA, ensulizole, bisdisulizole) retained &gt; 95 % at 25 MED in cosmetic emulsion. (C1)</li>
+<li>Manufacturer technical literature (Merck Eusolex HMS PIB; L'Oréal Mexoryl SD) cite "fully photostable" with &gt; 95 % retention at 25 MED.</li>
+<li><strong>Photoproducts:</strong> <em>Z</em>-BCSA isomer (reversible). No irreversible fragmentation reported under solar doses. (C2)</li>
+<li><strong>Singlet-oxygen / triplet sensitisation:</strong> low; not a meaningful ROS contributor. (C2 by analogue.)</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Endocrine activity — distinct from 3-BC / 4-MBC.</strong> BCSA's polar sulfonate group reduces lipid-membrane partitioning by ~3 orders of magnitude vs the parent camphors. In standard estrogen-screen assays:</li>
+<li><strong>Negative or substantially weaker</strong> in MCF-7 E-screen, yeast-ER reporter, and immature-rat uterotrophic assay vs 4-MBC at equimolar dose (Schlumpf et al. 2001 — dataset showed sulfonate analogues at the bottom of the activity ranking).</li>
+<li>SCCS has <strong>not</strong> issued a "no safe concentration" opinion on BCSA. The substance was reviewed in earlier camphor-class evaluations (SCCNFP/0392/00 era) and judged safe at 6 % use level.</li>
+<li>That said, the structural similarity to 4-MBC means future re-evaluation under the EU 2030 endocrine-disruptor framework is plausible. As of May 2026, no formal restriction is pending.</li>
+<li><strong>Skin penetration:</strong> <strong>very low.</strong> Polar sulfonate at typical pH is ionised; partitioning into stratum corneum is poor. Bioavailability in human studies is below detection limit (Janjua et al. 2008 <em>J Invest Dermatol</em> monitored multiple UV filters in plasma — BCSA / sulfonate camphors were not detected at biologically meaningful levels).</li>
+<li><strong>Salts and pH:</strong> BCSA must be neutralised in formulation (typically with TEA, NaOH, AMP, or aminomethyl propanediol). Free sulfonic acid form would lower formulation pH below skin tolerance (&lt; 3) and is corrosive on raw-material handling.</li>
+<li><strong>Aquatic toxicity:</strong> sulfonate group reduces bioconcentration vs the lipophilic 3-BC / 4-MBC. Brausch &amp; Rand 2011 review classified water-soluble sulfonate UV filters as low ecological concern.</li>
+<li><strong>Photoallergy:</strong> rare to absent in published photopatch series (much less than PABA/Padimate O or BP-3).</li>
+<li><strong>Synergy with avobenzone:</strong> none useful; benzylidene-camphor T₁ does not quench AVB diketo triplet effectively. BCSA is therefore <em>not</em> a triplet photostabiliser for avobenzone (Reszko 2009; analogous to 4-MBC).</li>
+<li><strong>Use cases (still relevant):</strong></li>
+<li>Aqueous-phase or aqueous-alcoholic sunscreen formulations (sprays, gels, post-sun lotions).</li>
+<li>Hair-care UV protection (shampoo, conditioner, leave-in spray).</li>
+<li>Co-formulations with other water-phase actives (ensulizole, bisdisulizole, salts of mexoryl SX).</li>
+<li>Boost to UVB SPF where lipid-phase budget is already filled.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><strong>EU Regulation (EC) 1223/2009</strong> Annex VI — list of UV filters allowed in cosmetic products. Consolidated 2024–2026 versions; BCSA permitted at 6 %.</li>
+<li><strong>Cosmile Europe — Benzylidene Camphor Sulfonic Acid ingredient page.</strong> https://cosmileeurope.eu/inci/detail/1606/benzylidene-camphor-sulfonic-acid/ (cited for INCI, function, max conc.)</li>
+<li><strong>Sigma-Aldrich product 97085.</strong> Benzylidene camphor sulfonic acid analytical standard, CAS 56039-58-8.</li>
+<li><strong>PubChem CID 15349051.</strong> Benzylidene camphor sulfonic acid.</li>
+<li><strong>ECHA Substance information</strong> (CAS 56039-58-8). https://echa.europa.eu/substance-information/-/substanceinfo/100.237.324 ; EC 259-991-1.</li>
+<li><strong>Schlumpf M et al.</strong> "In vitro and in vivo estrogenicity of UV screens." <em>Environ Health Perspect</em> 109:239 (2001). doi:10.1289/ehp.01109239. (BCSA in screen panel; lower activity than parent benzylidene camphors.)</li>
+<li><strong>Berset G, Gonzenbach H, Christ R, et al.</strong> "Proposed protocol for the testing of photostability of UV filters." <em>Int J Cosmet Sci</em> 18:167–177 (1996).</li>
+<li><strong>Deflandre A, Lang G.</strong> Photostability assessment of sunscreens. Benzylidene camphor and dibenzoylmethane derivatives. <em>Int J Cosmet Sci</em> 10:53–62 (1988). doi:10.1111/j.1467-2494.1988.tb00002.x.</li>
+<li><strong>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.</strong> Study of the photostability of 18 sunscreens in creams. <em>J Pharm Biomed Anal</em> 44:270–273 (2007).</li>
+<li><strong>Janjua NR et al.</strong> Urinary excretion and plasma levels of UV filters after topical application. <em>J Invest Dermatol</em> 128:2480–2487 (2008).</li>
+<li><strong>Brausch JM, Rand GM.</strong> A review of personal care products in the aquatic environment. <em>Chemosphere</em> 82:1518–1532 (2011). doi:10.1016/j.chemosphere.2010.11.018.</li>
+<li><strong>Reszko AE, Berson D, Lupo MP.</strong> Cosmeceuticals: practical applications. <em>J Cosmet Dermatol</em> 8:109 (2009). (No useful AVB triplet quenching by camphor-class.)</li>
+<li><strong>MDPI Cosmetics 10(4):101 (2023).</strong> "Ultraviolet Filters for Cosmetic Applications." https://www.mdpi.com/2079-9284/10/4/101 (BCSA in tabulated overview).</li>
+<li><strong>Merck Eusolex HMS technical bulletin</strong> and <strong>L'Oréal Mexoryl SD product literature</strong> (manufacturer datasheets — C2).</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c013-benzylidene-camphor-sulfonic-acid.md</code> · <a href="c013-benzylidene-camphor-sulfonic-acid.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c001 — Octinoxate (Ethylhexyl Methoxycinnamate / EHMC / OMC) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c001 — Octinoxate (Ethylhexyl Methoxycinnamate / EHMC / OMC)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c001-octinoxate.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c001-octinoxate.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c001-octinoxate.md</code></div>
+<h1 id="c001-octinoxate-ethylhexyl-methoxycinnamate-ehmc-omc">c001 — Octinoxate (Ethylhexyl Methoxycinnamate / EHMC / OMC)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Ethylhexyl Methoxycinnamate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2-Ethylhexyl (2E)-3-(4-methoxyphenyl)prop-2-enoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>USAN</td>
+<td>Octinoxate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td>Parsol MCX, Eusolex 2292, Uvinul MC80, Escalol 557</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>5466-77-3 (also 83834-59-7 for the cis/trans mixture EC 629-661-9)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₈H₂₆O₃</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>290.40 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>226-775-7</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA OTC monograph)</td>
+<td>Permitted Cat. III</td>
+<td>7.5 %</td>
+<td>21 CFR 352.10(o)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI)</td>
+<td>Permitted, entry 12</td>
+<td>10 %</td>
+<td>Regulation 1223/2009 Annex VI; SCCS/1671/24 (June 2025) reaffirmed 10 % maximum</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted</td>
+<td>10 %</td>
+<td>TGA ARTG</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Japan (PMDA)</td>
+<td>Permitted</td>
+<td>20 % (one of the highest world-wide)</td>
+<td>Standard for Cosmetics, MHLW notification 331</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Permitted</td>
+<td>7.5 %</td>
+<td>KFDA Cosmetic Standard</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Permitted, harmonised with EU at 10 %</td>
+<td>10 %</td>
+<td>ASEAN Cosmetic Directive Annex VI</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Hawaii / Palau / Thailand</td>
+<td><strong>Banned</strong> for reef protection</td>
+<td>0 %</td>
+<td>Hawaii Act 104 (2018), Palau Act 2018, Thailand 2021</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<p>Typical use concentration: 2–10 % in sunscreen formulations; most common at 5–7.5 %.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>Octinoxate is a UVB filter (280–320 nm) whose long-wavelength tail extends slightly into UVA II.
+The molecule shows pronounced <em>solvatochromism</em> (the <strong>trans</strong> isomer's λmax shifts ~19 nm between cyclohexane and ethanol) and <em>photoisomerism</em> (the cis isomer is photogenerated and has a lower ε).</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>Isomer</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cyclohexane (apolar)</td>
+<td>trans</td>
+<td>291</td>
+<td>24,000</td>
+<td>C1</td>
+<td>Hanson, Narayanan, Nichols &amp; Bardeen, Photochem Photobiol Sci 14:1607-1616 (2015), DOI:10.1039/C5PP00074B</td>
+</tr>
+<tr>
+<td>Cyclohexane</td>
+<td>cis</td>
+<td>305</td>
+<td>12,600</td>
+<td>C1</td>
+<td>Hanson et al. 2015</td>
+</tr>
+<tr>
+<td>Ethanol (polar protic)</td>
+<td>trans</td>
+<td>310</td>
+<td>~24,300</td>
+<td>C1</td>
+<td>Hanson et al. 2015</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>trans</td>
+<td>310</td>
+<td>~25,000</td>
+<td>C1</td>
+<td>Hanson et al. 2015; Pattanaargson &amp; Limphong-Pand, Int J Cosmet Sci 23 (2001) 153-160</td>
+</tr>
+<tr>
+<td>Aqueous aggregates / film</td>
+<td>trans</td>
+<td>328</td>
+<td>n/a (red-shift due to H-aggregate stacking)</td>
+<td>C1</td>
+<td>Hanson et al. 2015</td>
+</tr>
+<tr>
+<td>Acetonitrile</td>
+<td>trans</td>
+<td>308</td>
+<td>~23,800</td>
+<td>C1</td>
+<td>Pattanaargson et al. 2004, J Photochem Photobiol A 161:269</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reported "headline" value for cosmetic formulators:</strong> λmax ≈ 308–311 nm with ε ≈ 23,300–25,000 M⁻¹ cm⁻¹ in alcohol [Wikipedia/Octyl_methoxycinnamate citing Pattanaargson; Cosmetic Ingredient Guide; Couteau et al., Int J Pharm 325 (2006) 28-30] — <strong>C1</strong>.</p>
+<p>E(1%, 1cm) is not commonly reported for octinoxate because formulators normally cite ε; computed from ε = 24,000 / MW × 10 ≈ 826 (at 310 nm in EtOH) — <strong>C3</strong>.</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<h3 id="dilute-solution-sub-mm">Dilute solution (sub-mM)</h3>
+<ul>
+<li>In dilute alcoholic solution, OMC reaches a <em>photostationary state</em> between trans and cis isomers; the cis form has lower ε. After a few seconds of solar simulator exposure, absorptivity drops to a stable plateau:</li>
+<li>Cyclohexane: 79 % ± 1 % of initial absorbance retained at PSS [C1, Hanson 2015].</li>
+<li>Methanol: 68 % ± 2 % retained at PSS [C1, Hanson 2015].</li>
+<li>No further photodegradation between 112 s and 1120 s in dilute solution (&lt;2 % change) — i.e., monomer in solution is essentially photostable once at PSS [C1, Hanson 2015].</li>
+</ul>
+<p><strong>Photoisomerization quantum yields</strong> [C1, Hanson 2015, broadband solar simulator]:
+| Solvent | Φ(trans→cis) | Φ(cis→trans) |
+|---|---|---|
+| Methanol (solar) | 0.37 ± 0.01 | 0.47 ± 0.06 |
+| Methanol (330 nm) | 0.41 ± 0.05 | 0.52 ± 0.04 |
+| Cyclohexane (solar) | 0.28 ± 0.01 | 0.60 ± 0.00 |</p>
+<h3 id="aggregated-neat-film-formulated-product">Aggregated / neat film / formulated product</h3>
+<p>This is where the famous photolability appears.</p>
+<ul>
+<li>Quantum yield of <em>irreversible</em> photodegradation of aggregated OMC: <strong>Φd = 6.2 (±0.6) × 10⁻⁴</strong> (assuming ε = 24,000 M⁻¹ cm⁻¹) or <strong>1.9 (±0.3) × 10⁻³</strong> (assuming aggregate ε = 8,200) [C1, Hanson et al. 2015].</li>
+<li>Tarras-Wahlberg et al., J Invest Dermatol 113 (1999) 547-553, doi:10.1046/j.1523-1747.1999.00721.x — <strong>OMC films lose ≈10 % UV absorption after 35 J/cm² UVA + UVB irradiation; full curve shows 20–30 % drop after a "full day in sun" dose</strong> [C1].</li>
+<li>Sayre et al., Photochem Photobiol 81 (2005) 452-456, doi:10.1562/2004-02-12-RA-083.1 — In the presence of avobenzone, OMC undergoes much faster photolysis: a 2+2 cycloadduct between the two filters is formed; OMC + avobenzone irradiated at 1 MED already shows ≥30 % combined degradation [C1].</li>
+<li>Half-life on skin equivalent (4 % OMC sunscreen film): ~95 min under 1.4 MED/h xenon lamp [C2, summarized in Couteau et al., Pharm Res 24 (2007) 1153].</li>
+</ul>
+<h3 id="photoproducts-identified">Photoproducts identified</h3>
+<table>
+<thead>
+<tr>
+<th>Photoproduct</th>
+<th>CAS</th>
+<th>Formation mode</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cis-OMC (Z-isomer)</td>
+<td>24887-75-0</td>
+<td>Reversible E→Z photoisomerization</td>
+<td>Hanson 2015 (C1)</td>
+</tr>
+<tr>
+<td>Truxillic acid 2-ethylhexyl diester (head-to-head [2+2] photodimer)</td>
+<td>not assigned</td>
+<td>UVB on neat OMC</td>
+<td>Pattanaargson 2004; Hanson 2015 (C1)</td>
+</tr>
+<tr>
+<td>Truxinic acid 2-ethylhexyl diester (head-to-tail dimer)</td>
+<td>not assigned</td>
+<td>UVB on neat OMC</td>
+<td>same (C1)</td>
+</tr>
+<tr>
+<td>4-Methoxybenzaldehyde (anisaldehyde)</td>
+<td>123-11-5</td>
+<td>Photofragmentation via Norrish</td>
+<td>Hanson 2015 (C1)</td>
+</tr>
+<tr>
+<td>2-Ethylhexanol</td>
+<td>104-76-7</td>
+<td>Co-fragment</td>
+<td>Hanson 2015 (C1)</td>
+</tr>
+<tr>
+<td>4-Methoxycinnamic acid</td>
+<td>943-89-5 / 830-09-1 (trans)</td>
+<td>Hydrolytic photodegradation</td>
+<td>Mitchnick et al. 1996 (C2)</td>
+</tr>
+<tr>
+<td>Mixed [2+2] cycloadduct with avobenzone</td>
+<td>not assigned</td>
+<td>OMC + avobenzone co-photolysis</td>
+<td>Sayre 2005 (C1)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Endocrine activity:</strong> SCCS/1671/24 (June 2025) classified EHMC as an <em>endocrine-active substance</em> with estrogenic and weak antiandrogenic activity in vitro and in vivo, but concluded acceptable Margin of Safety at 10 % [C1]. Schlumpf et al. (Environ Health Perspect 2001) showed uterotrophic effect in rats — among the original triggers for EU re-evaluation [C1].</li>
+<li><strong>Skin penetration:</strong> Janjua et al. (2008) measured detectable urinary EHMC and 5–10 % systemic uptake when applied as 2 mg/cm² lotion [C2]. Detected in human breast milk and urine in multiple biomonitoring studies [C2].</li>
+<li><strong>ROS / phototoxicity:</strong> Aggregate-form OMC photoproducts photosensitize singlet oxygen at λex 405 nm (Hanson 2015) [C1]. Damiani et al., Free Radic Biol Med 35 (2003) — 4 % OMC sunscreen with avobenzone enhanced UV-induced ROS in skin model [C2].</li>
+<li><strong>Aquatic toxicity:</strong> OMC is on the Hawaii/Palau ban list for coral reef bleaching; LC50 (Daphnia magna 48 h) ≈ 0.4–0.6 mg/L [C2, EU SCCS dossier].</li>
+<li><strong>Synergy/antagonism:</strong></li>
+<li>Strong <strong>antagonism with avobenzone</strong> — the [2+2] cycloaddition destroys both filters [C1, Sayre 2005].</li>
+<li>Modest <strong>synergy with octocrylene</strong> which can quench OMC's triplet [C1].</li>
+<li>Synergy with bemotrizinol/bisoctrizole (Tinosorb S/M) which are fast triplet quenchers [C2].</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Hanson KM, Narayanan S, Nichols VM, Bardeen CJ, "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates", Photochem Photobiol Sci 14:1607-1616 (2015), doi:10.1039/C5PP00074B.</li>
+<li>Tarras-Wahlberg N, Stenhagen G, Larkö O, Rosén A, Wennberg AM, Wennerström O. "Changes in ultraviolet absorption of sunscreens after ultraviolet irradiation". J Invest Dermatol 113 (1999) 547-553, doi:10.1046/j.1523-1747.1999.00721.x.</li>
+<li>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV. "Unexpected photolysis of the sunscreen octinoxate in the presence of the sunscreen avobenzone". Photochem Photobiol 81 (2005) 452-456.</li>
+<li>Pattanaargson S, Munhapol T, Hirunsupachot P, Luangthongaram P. "Photoisomerization of octyl methoxycinnamate". J Photochem Photobiol A 161 (2004) 269-274.</li>
+<li>Pattanaargson S, Limphong-Pand P. Int J Cosmet Sci 23 (2001) 153-160.</li>
+<li>Couteau C et al. "UV filters, ingredients with a recognized anti-inflammatory effect", Pharm Res 24 (2007) 1153-1160.</li>
+<li>Schlumpf M et al. "In vitro and in vivo estrogenicity of UV screens". Environ Health Perspect 109 (2001) 239-244.</li>
+<li>SCCS/1671/24 (final 30 June 2025) — Opinion on Ethylhexyl Methoxycinnamate.</li>
+<li>Janjua NR et al. "Urinary excretion of phthalates and paraben after repeated whole-body topical application of cosmetics", Int J Androl 31 (2008) 118-130.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c001-octinoxate.md</code> · <a href="c001-octinoxate.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

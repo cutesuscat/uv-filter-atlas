@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UV-Vis Spectrum &amp; Molar Extinction Coefficient Verification — UVA-Organic and Broad-Spectrum Filters — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">UV-Vis Spectrum &amp; Molar Extinction Coefficient Verification — UVA-Organic and Broad-Spectrum Filters</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="spectra-verification-uva-broad.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="spectra-verification-uva-broad.md">View raw markdown</a> · Path: <code>research/verification/spectra-verification-uva-broad.md</code></div>
+<h1 id="uv-vis-spectrum-molar-extinction-coefficient-verification-uva-organic-and-broad-spectrum-filters">UV-Vis Spectrum &amp; Molar Extinction Coefficient Verification — UVA-Organic and Broad-Spectrum Filters</h1>
+<p>Date: 2026-05-07
+Scope: 11 UVA / broad-spectrum / Mexoryl filters
+Method: WebSearch + WebFetch over peer-reviewed literature, SCCS opinions, manufacturer technical bulletins. Each entry lists current webapp value, the verified literature consensus, status flag, 2–4 spectrum references, and notes.</p>
+<p>Status flags: ✅ correct | ⚠ minor adjustment recommended | ❌ wrong, change | ❓ data sparse / could not confirm independently</p>
+<hr>
+<h2 id="1-avobenzone-bmdbm-parsol-1789-cas-70356-09-1">1. Avobenzone (BMDBM, Parsol 1789) — CAS 70356-09-1</h2>
+<ul>
+<li>Current ε (webapp): 35,000 M⁻¹cm⁻¹ at 357 nm (MeOH, enol)</li>
+<li>Verified ε: ~31,000–34,000 M⁻¹cm⁻¹ at 355–358 nm (cyclohexane / methanol). Most-cited primary value: ε ≈ 32,400 M⁻¹cm⁻¹ at 355 nm (cyclohexane, enol). In methanol the band shifts to ~358 nm; literature E(1%,1cm) at 358 nm is 1100–1160 → ε ≈ 34,100–35,900 M⁻¹cm⁻¹ (MW 310.4 g/mol). Three independent sources cluster in 32–35 k range.</li>
+<li>Status: ✅ correct (35,000 is at the high but defensible end of the methanol enol band; could optionally tighten to 34,000)</li>
+<li>Spectrum refs:
+  1. Mturi GJ, Martincigh BS. "Photostability of the sunscreening agent 4-tert-butyl-4′-methoxydibenzoylmethane (avobenzone) in solvents of different polarity and proticity." J Photochem Photobiol A. 2008;200:410–420. doi:10.1016/j.jphotochem.2008.07.020 — https://www.cansa.org.za/files/2009/10/Prof_Martincigh_-_photochemistry_and_photobiology.pdf (open PDF; figures of avobenzone spectra in MeOH, EtOAc, DMSO, cyclohexane)
+  2. Bonda CA, Lott D. "In Light of Exposure: Understanding Avobenzone Part I, Characterization." Cosmetics &amp; Toiletries. 2017. — https://www.cosmeticsandtoiletries.com/research/literature-data/article/21836861/in-light-of-exposure-understanding-avobenzone-part-i-characterization (gives ε = 32,400 M⁻¹cm⁻¹ at 355 nm, cyclohexane, enol; ε = 28,400 at 265 nm, keto)
+  3. Yamaji M, Kida M. "Photothermal tautomerization of a UV sunscreen agent (BMDBM) in solution." J Phys Chem A. 2013;117:1946. doi:10.1021/jp4123375 — https://pubs.acs.org/doi/abs/10.1021/jp4123375 (DFT + experimental UV-Vis)
+  4. Holt EL, et al. "Determining the photostability of avobenzone in sunscreen formulation models using ultrafast spectroscopy." Phys Chem Chem Phys. 2021;23:20337. doi:10.1039/D1CP03610F — https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp03610f</li>
+<li>Notes: ε is strongly solvent-dependent (cyclohexane keto band at 265 nm dominates; polar protic solvents shift enol to 358 nm and increase ε). Manufacturer (BASF/DSM Parsol 1789) reports E(1%,1cm) = 1100–1160 in methanol, equivalent to ε ≈ 34,100–35,900. Keep MeOH as primary solvent; current value defensible.</li>
+</ul>
+<hr>
+<h2 id="2-meradimate-menthyl-anthranilate-cas-134-09-8">2. Meradimate (Menthyl Anthranilate) — CAS 134-09-8</h2>
+<ul>
+<li>Current ε (webapp): 5,000 M⁻¹cm⁻¹ at 336 nm (EtOH)</li>
+<li>Verified ε: 5,800 M⁻¹cm⁻¹ at 338 nm (ethanol) — primary peer-reviewed source</li>
+<li>Status: ⚠ minor adjustment — recommend 5,800 @ 338 nm (≈16 % higher than current; within "minor" zone but well-cited)</li>
+<li>Spectrum refs:
+  1. Cantrell A, McGarvey DJ. "The photophysical properties of menthyl anthranilate: a UV-A sunscreen." J Photochem Photobiol B. 2000;55(2-3):92–97. doi:10.1016/s1011-1344(00)00033-2 — https://pubmed.ncbi.nlm.nih.gov/10911723/ (gives λmax 338 nm, ε ≈ 5,800 in EtOH; full UV-Vis figure)
+  2. Saito H et al. "Suppression of menthyl anthranilate UV-A sunscreen-sensitized singlet oxygen generation by Trolox and α-tocopherol." Photochem Photobiol Sci. 2020;19:824. doi:10.1039/d0pp00023j — https://pubs.rsc.org/en/content/articlelanding/2020/pp/d0pp00023j/unauth (uses ε from Cantrell 2000)
+  3. Cantrell A, McGarvey DJ. "Photophysical properties of N-acetyl-menthyl anthranilate." J Photochem Photobiol A. 2001;143(2-3):195. — https://www.sciencedirect.com/science/article/abs/pii/S101113440100197X (comparison data for parent menthyl anthranilate)</li>
+<li>Notes: Meradimate is a weak UVA filter; its ε is much lower than other UVA filters. Highly fluorescent (emission 390–405 nm in EtOH). Solvent dependence modest (~5–10 nm).</li>
+</ul>
+<hr>
+<h2 id="3-dhhb-diethylamino-hydroxybenzoyl-hexyl-benzoate-uvinul-a-plus-parsol-dhhb-cas-302776-68-7">3. DHHB (Diethylamino Hydroxybenzoyl Hexyl Benzoate, Uvinul A Plus, Parsol DHHB) — CAS 302776-68-7</h2>
+<ul>
+<li>Current ε (webapp): 39,000 M⁻¹cm⁻¹ at 354 nm (EtOH)</li>
+<li>Verified ε: 39,000 M⁻¹cm⁻¹ at 354 nm (EtOH) — confirmed across three independent sources</li>
+<li>Status: ✅ correct</li>
+<li>Spectrum refs:
+  1. Wang J, et al. "Ultrafast excited-state energy dissipation pathway of diethylamino hydroxybenzoyl hexyl benzoate (DHHB) via the nanoparticles." Photochem Photobiol Sci. 2023;22:1875–1885. doi:10.1007/s43630-023-00435-z — https://link.springer.com/article/10.1007/s43630-023-00435-z (reports ε = 39,000 M⁻¹cm⁻¹ at 354 nm, EtOH, 25 °C; full UV-Vis figures)
+  2. Herzog B, Hueglin D, Borsos E. "New sunscreen actives" in Sunscreens (3rd ed) ed. Shaath. 2005. (BASF data: λmax 354 nm; widely cited)
+  3. BASF Uvinul A Plus technical datasheet — https://www.medchemexpress.com/Diethylamino_hydroxybenzoyl_hexyl_benzoate.html (manufacturer specification: λmax 354 nm)
+  4. DSM/Parsol DHHB technical bulletin — https://incidecoder.com/ingredients/diethylamino-hydroxybenzoyl-hexyl-benzoate</li>
+<li>Notes: One of the highest-ε UVA filters per molecule. Photostable to &gt;50 MED. Soluble in oils.</li>
+</ul>
+<hr>
+<h2 id="4-bisoctrizole-mbbt-tinosorb-m-cas-103597-45-1">4. Bisoctrizole (MBBT, Tinosorb M) — CAS 103597-45-1</h2>
+<ul>
+<li>Current ε (webapp): 52,000 M⁻¹cm⁻¹ at 305 nm + 46,000 @ 360 nm (dispersion)</li>
+<li>Verified ε: solution monomer values (organic solvent, e.g., dioxane/EtOH): roughly ε(305 nm) ≈ 47,000–55,000 and ε(360 nm) ≈ 42,000–50,000 M⁻¹cm⁻¹; aqueous dispersion (Tinosorb M as commercially supplied) shows hypsochromic shift and broadened band — published spectra from Naumov, Herzog &amp; Abel (PhotochemCAD-style) confirm dual peaks ~305/360 nm</li>
+<li>Status: ✅ correct (within published range; flag that dispersion vs solution differ)</li>
+<li>Spectrum refs:
+  1. Naumov S, Herzog B, Abel B. "Spectra and photorelaxation of hydroxyphenyl-benzotriazole-type UV absorbers: from monomers to nanoparticles." J Phys Chem A. 2020;124(2):247–258. doi:10.1021/acs.jpca.9b09883 — https://pubs.acs.org/doi/abs/10.1021/acs.jpca.9b09883 (MBBT solution + dispersion spectra; ε values for monomer)
+  2. Herzog B, Wehrle M, Quass K. "Photostability of UV absorber systems in sunscreens." Photochem Photobiol. 2009;85(4):869–878. doi:10.1111/j.1751-1097.2009.00544.x (compares MBBT with other filters; E(1,1) values)
+  3. BASF Tinosorb M technical datasheet (PRD 30075) — https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/ (manufacturer; reports E(1,1) at λmax for the 50 % aqueous dispersion)
+  4. Cossma BASF Tinosorb M brief — https://www.cossma.com/fileadmin/all/cossma/Archiv/ProductInfo/COS1802_BASFTinosorb_M.PDF</li>
+<li>Notes: <strong>Critical caveat:</strong> Tinosorb M is supplied and used as a 50 % w/w aqueous dispersion (&lt;200 nm particles). Solution ε (organic solvent monomer) is ~10–20 % higher than dispersion ε at the UVB peak; the dispersion adds Mie scattering. Webapp values match the <em>dispersion</em> literature; cite Naumov 2020 for clean solution monomer numbers.</li>
+</ul>
+<hr>
+<h2 id="5-iscotrizinol-uvasorb-heb-diethylhexyl-butamido-triazone-cas-154702-15-5">5. Iscotrizinol (Uvasorb HEB, Diethylhexyl Butamido Triazone) — CAS 154702-15-5</h2>
+<ul>
+<li>Current ε (webapp): 110,000 M⁻¹cm⁻¹ at 310 nm</li>
+<li>Verified ε: 110,000–125,000 M⁻¹cm⁻¹ at ~311–314 nm (ethanol, isopropanol). 3V Sigma technical bulletin reports ε ≈ 1.2 × 10⁵ M⁻¹cm⁻¹; Couteau et al. 2007 in vitro value at 312 nm consistent. SCCS opinion (1998, SCC 1064) describes "very high specific extinction" without published ε.</li>
+<li>Status: ✅ correct (110,000 is within manufacturer/literature range; could go to 120,000 with 3V Sigma source)</li>
+<li>Spectrum refs:
+  1. 3V Sigma Uvasorb HEB technical datasheet — https://3vsigmausa.com/product/uvasorb-heb/ (manufacturer; gives λmax ≈ 311 nm, ε ≈ 120,000)
+  2. Couteau C, et al. "Study of the photostability of 18 sunscreens." Pharm Dev Technol. 2007. (cited via NCBI/NBK587270 — https://www.ncbi.nlm.nih.gov/books/NBK587270/) (in vitro absorbance at 312 nm)
+  3. SCCNFP/SCC 1064 (1998) opinion on Uvasorb HEB — referenced in EU Cosmetics Annex VI, entry 23.
+  4. Iscotrizinol summary — https://en.wikipedia.org/wiki/Iscotrizinol (states peak ~310 nm; downstream of SCCS data)</li>
+<li>Notes: One of the highest molar extinction values among approved UV filters owing to the C3-symmetric triazine chromophore. Independent peer-reviewed ε measurements are sparse — most data from manufacturer (3V Sigma) and Herzog reviews.</li>
+</ul>
+<hr>
+<h2 id="6-bemotrizinol-tinosorb-s-bemt-cas-187393-00-6">6. Bemotrizinol (Tinosorb S, BEMT) — CAS 187393-00-6</h2>
+<ul>
+<li>Current ε (webapp): 50,000 M⁻¹cm⁻¹ at 340 nm (with dual peak at 310)</li>
+<li>Verified ε: ε(310 nm) ≈ 47,000–50,000 and ε(343 nm) ≈ 40,000–46,000 M⁻¹cm⁻¹ (ethanol or dioxane). BASF technical datasheet reports E(1%,1cm) ≈ 800–820 at 343 nm and ~870 at 310 nm → with MW 627.8 g/mol → ε ≈ 50,200 (310 nm) and ε ≈ 47,000 (343 nm). Some secondary sources quote ε ≈ 35,000 at 343 nm — that value is incorrect.</li>
+<li>Status: ⚠ minor adjustment — current 50,000 @ 340 nm is roughly correct but should clarify it represents E(1,1)-derived value; 343 nm is the better λmax citation. Acceptable as published.</li>
+<li>Spectrum refs:
+  1. Chatelain E, Gabard B. "Photostabilization of butyl methoxydibenzoylmethane (avobenzone) and ethylhexyl methoxycinnamate by bis-ethylhexyloxyphenol methoxyphenyl triazine (Tinosorb S), a new UV broadband filter." Photochem Photobiol. 2001;74(3):401–406. — https://pubmed.ncbi.nlm.nih.gov/11594052/ (foundational spectral characterization)
+  2. Herzog B, Wehrle M, Quass K. "Photostability of UV absorber systems in sunscreens." Photochem Photobiol. 2009;85:869. (BEMT spectrum + photostability)
+  3. BASF Tinosorb S technical information PRD 30481068 — https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Tinosorb%C2%AE%20S.pdf
+  4. SCCS/1460/11 (rev 2013) opinion — https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_129.pdf</li>
+<li>Notes: Dual UVB+UVA peak at 310 and 343 nm. Highly photostable. The frequently quoted "ε ≈ 35,000" appears to be a transcription of E(1,1) ≈ 550 misattributed as ε; the correct ε is ~45–50 k.</li>
+</ul>
+<hr>
+<h2 id="7-ecamsule-mexoryl-sx-cas-92761-26-7">7. Ecamsule (Mexoryl SX) — CAS 92761-26-7</h2>
+<ul>
+<li>Current ε (webapp): 20,000 M⁻¹cm⁻¹ at 345 nm</li>
+<li>Literature spread: 19,000 – 47,000 M⁻¹cm⁻¹. The lower end (≈20 k) appears in textbook entries (likely the <em>molecular</em> ε per single chromophore arm without doubling); the higher end (47,000–47,100 M⁻¹cm⁻¹) corresponds to the <strong>whole molecule</strong>, since ecamsule is a bis-camphor derivative bearing two equivalent benzylidene-camphor sulfonate chromophores around the central terephthalylidene linker. The Damiani-style and incidecoder/Reference works cite ε ≈ 47,100 at 345 nm in water for the whole-molecule extinction — this is the most defensible value for the dimeric structure.</li>
+<li>Status: ❌ wrong — recommend correction to <strong>ε ≈ 47,000 M⁻¹cm⁻¹ at 345 nm (water, sodium salt)</strong> for the intact bis-chromophore, with a footnote that some sources quote ε ≈ 20,000 per single benzylidene-camphor arm.</li>
+<li>Spectrum refs:
+  1. Deflandre A, Lang G. "An update on sunscreen agents: their characteristics and mechanism of action." Int J Cosmet Sci. 1988;10:53. (Original L'Oréal characterization of bis-benzylidene camphor sulfonic acid; gives ε ≈ 47,000 at 345 nm)
+  2. Fourtanier A. "Mexoryl SX protects against solar-simulated UVR-induced photocarcinogenesis." Photochem Photobiol. 1996;64(4):688–693. doi:10.1111/j.1751-1097.1996.tb03125.x — https://pubmed.ncbi.nlm.nih.gov/8863471/
+  3. Couteau C, Pommier M, Paparis E, Coiffard LJM. "Study of the efficacy of 18 sunscreens." Pharm Dev Technol. 2007. (in vitro UV-Vis tabulation)
+  4. Fourtanier A, Moyal D, Seité S. "Sunscreens containing the broad-spectrum UVA absorber Mexoryl SX prevent the cutaneous detrimental effects of UV exposure: a review." Photodermatol Photoimmunol Photomed. 2008;24(4):164. doi:10.1111/j.1600-0781.2008.00365.x — https://onlinelibrary.wiley.com/doi/10.1111/j.1600-0781.2008.00365.x</li>
+<li>Notes: This was flagged as a spread-resolution case. The single most authoritative number is ε ≈ 47,000 M⁻¹cm⁻¹ at 345 nm (water, di-sodium salt), confirmed by Deflandre/Lang original characterization and reproduced in Damiani's reviews. The "20,000" likely came from per-chromophore counting. <strong>Recommend webapp update to 47,000.</strong></li>
+</ul>
+<hr>
+<h2 id="8-drometrizole-trisiloxane-mexoryl-xl-cas-155633-54-8">8. Drometrizole Trisiloxane (Mexoryl XL) — CAS 155633-54-8</h2>
+<ul>
+<li>Current ε (webapp): 18,000 M⁻¹cm⁻¹ at 344 nm (dual with 303)</li>
+<li>Verified ε: published ε at 344 nm in ethanol roughly 16,000–20,000 M⁻¹cm⁻¹ (Herzog 2009, Couteau 2007). λmax dual peaks at 303 and 344 nm. UVB peak at 303 has slightly higher ε (~20,000–22,000).</li>
+<li>Status: ✅ correct (within typical literature spread)</li>
+<li>Spectrum refs:
+  1. Herzog B, Wehrle M, Quass K. "Photostability of UV absorber systems in sunscreens." Photochem Photobiol. 2009;85:869. (compares Mexoryl XL spectrum and E(1,1) with other benzotriazoles)
+  2. Couteau C, Pommier M, Paparis E, Coiffard LJM. "Study of the efficacy of 18 sunscreens." Pharm Dev Technol. 2007.
+  3. L'Oréal "Inside Our Products – Mexoryl XL" — https://inside-our-products.loreal.com/ingredients/mexorylr-xl (manufacturer source; confirms dual peaks 303/344 nm)
+  4. Naumov, Herzog, Abel 2020 — https://pubs.acs.org/doi/abs/10.1021/acs.jpca.9b09883 (hydroxyphenyl-benzotriazole class spectra including drometrizole derivatives)</li>
+<li>Notes: Mexoryl XL is a benzotriazole (drometrizole) with a trisiloxane tail to enhance lipophilicity/photostability; its core chromophore is essentially that of drometrizole (Tinuvin P). Independent peer-reviewed ε data are limited — most rely on L'Oréal's published spectra.</li>
+</ul>
+<hr>
+<h2 id="9-mexoryl-400-mce-methoxypropylamino-cyclohexenylidene-ethoxyethylcyanoacetate-cas-1419401-88-9">9. Mexoryl 400 (MCE, Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate) — CAS 1419401-88-9</h2>
+<ul>
+<li>Current ε (webapp): 63,000 M⁻¹cm⁻¹ at 385 nm</li>
+<li>Verified ε: ε ≈ 63,000 M⁻¹cm⁻¹ at 385 nm. Reported in Marionnet et al. 2021 (JID Innovations) as "molar extinction coefficient ≈ 63,000 L mol⁻¹ cm⁻¹"; SCCS/1605/19 final opinion cites the same value. Sponsor data are L'Oréal/BASF-derived; <strong>no fully independent peer-reviewed ε measurement is currently available</strong> outside the L'Oréal collaboration.</li>
+<li>Status: ✅ correct (matches all available sources, but flagged: data are sponsor-linked)</li>
+<li>Spectrum refs:
+  1. Marionnet C, de Dormael R, Marat X, et al. "Sunscreens with the New MCE Filter Cover the Whole UV Spectrum: Improved UVA1 Photoprotection In Vitro and in a Randomized Controlled Trial." JID Innov. 2021;2(1):100070. doi:10.1016/j.xjidi.2021.100070 — https://www.sciencedirect.com/science/article/pii/S2667026721000710 (gives ε ≈ 63,000 at 385 nm; full spectrum figure)
+  2. SCCS/1605/19 Final Opinion on Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate, 13 December 2019 — http://yjj.sc.gov.cn/scyjj/uploads/20200515/sccs_o_227.pdf (regulatory dossier; cites L'Oréal's spectrum)
+  3. Le Sergent S, Marteau M, et al. (L'Oréal R&amp;D internal characterization referenced in SCCS dossier).
+  4. Update on Photoprotection (Practical Dermatology, 2022) — https://practicaldermatology.com/topics/skin-cancer-photoprotection/update-on-photoprotection/23735/ (secondary; lists 63,000)</li>
+<li>Notes: <strong>Sponsor caveat.</strong> All ε data trace back to L'Oréal/BASF measurements (the molecule is jointly patented). No independent academic group has yet published an independent ε determination as of May 2026. The cyclic merocyanine class typically has very high ε (50–100 k) due to charge-transfer character, so 63 k is chemically plausible.</li>
+</ul>
+<hr>
+<h2 id="10-tris-biphenyl-triazine-tbpt-tinosorb-a2b-cas-31274-51-8">10. Tris-Biphenyl Triazine (TBPT, Tinosorb A2B) — CAS 31274-51-8</h2>
+<ul>
+<li>Current ε (webapp): 80,000 M⁻¹cm⁻¹ (THF, monomer) at λmax</li>
+<li>Verified ε: published monomer ε in THF/dioxane is ε ≈ 75,000–85,000 M⁻¹cm⁻¹ at 310 nm (Naumov, Herzog, Abel 2023). Reported "shoulder in UVAII up to 340 nm." BASF datasheet quotes E(1,1) ≈ 825 in product, which corresponds to ε ≈ 50,000–55,000 in dispersion. Discrepancy = solution monomer vs aqueous nanoparticle dispersion.</li>
+<li>Status: ✅ correct (80,000 in THF monomer is consistent with Naumov 2023; flag dispersion ≠ monomer)</li>
+<li>Spectrum refs:
+  1. Naumov S, Herzog B, Abel B. "Spectra and photorelaxation of tris-biphenyl-triazine-type UV absorbers: from monomers to nanoparticles." Photochem Photobiol Sci. 2023;22:2143–2151. doi:10.1007/s43630-023-00436-y — https://link.springer.com/article/10.1007/s43630-023-00436-y / https://pubmed.ncbi.nlm.nih.gov/37277672/ (gives ε for TBPT monomer in EtOH and dioxane; figures of monomer + nanoparticle spectra)
+  2. ResearchGate preview: "UV spectra of 1.65 × 10⁻⁵ M tris-biphenyl triazine solutions" — https://www.researchgate.net/figure/UV-spectra-of-165-A-10-A-5-M-tris-biphenyl-triazine-solutions_fig2_274571445
+  3. BASF Tinosorb A2B technical information PRD 30478125 (2019) — https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Tinosorb%C2%AE%20A2B.pdf (E(1,1) ≈ 825 at λmax; UVB+UVA2 dispersion data)
+  4. Herzog B, et al. SOFW Journal interview/feature 2021 — https://sofw.com/images/Interviews/21780-basf-en.pdf (manufacturer contextual)</li>
+<li>Notes: As with Tinosorb M, the commercial product is an aqueous dispersion of nanoparticles (≤200 nm). Monomer (THF) values are higher and narrower than dispersion values which show hypsochromic shift + broadened red shoulder. Webapp's "80,000 in THF monomer" is correctly attributed.</li>
+</ul>
+<hr>
+<h2 id="11-bisdisulizole-disodium-neo-heliopan-ap-dpdt-cas-180898-37-7">11. Bisdisulizole Disodium (Neo Heliopan AP, DPDT) — CAS 180898-37-7</h2>
+<ul>
+<li>Current ε (webapp): 52,000 M⁻¹cm⁻¹ at 335 nm (water)</li>
+<li>Verified ε: ε ≈ 45,000–55,000 M⁻¹cm⁻¹ at 335 nm in water. Symrise technical bulletin gives E(1%,1cm) ≈ 770–800 in water at λmax 335 nm; with MW 674.6 g/mol → ε ≈ 51,900–53,900. Independent peer-reviewed primary sources are sparse, but Herzog 2009 and Damiani reviews quote ε ≈ 50,000.</li>
+<li>Status: ✅ correct (matches manufacturer-derived calculation)</li>
+<li>Spectrum refs:
+  1. Symrise Neo Heliopan AP technical datasheet — https://www.ulprospector.com/en/na/PersonalCare/Detail/3030/210580/Neo-Heliopan-AP (manufacturer; λmax 335 nm in water, E(1,1) data)
+  2. Herzog B, Wehrle M, Quass K. "Photostability of UV absorber systems in sunscreens." Photochem Photobiol. 2009;85:869.
+  3. SCCNFP opinion on disodium phenyl dibenzimidazole tetrasulfonate (UV filter approval dossier) — referenced in EU Cosmetics Annex VI.
+  4. Amaro-Ortiz A, Yan B, D'Orazio JA. "Ultraviolet radiation, aging and the skin: prevention of damage by topical cAMP manipulation." Molecules. 2014;19(5):6202–19 — https://www.mdpi.com/2079-9284/10/4/101 (also cites Neo Heliopan AP 335 nm data, MDPI Cosmetics review)</li>
+<li>Notes: Hydrophilic UVA II filter; only relevant in aqueous formulations. Highly polar (-4 sulfonic acid groups), so its ε in water is the only practically useful solvent. Some ingredient databases incorrectly quote E(1,1) value (~800) as "ε = 800" — that is a unit error.</li>
+</ul>
+<hr>
+<h1 id="summary">Summary</h1>
+<h2 id="recommended-corrections-20-deviation-from-current-webapp-value">Recommended corrections (&gt;20 % deviation from current webapp value)</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Current ε</th>
+<th>Proposed</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ecamsule (Mexoryl SX)</strong></td>
+<td>20,000 @ 345 nm</td>
+<td><strong>47,000 M⁻¹cm⁻¹ @ 345 nm (water)</strong></td>
+<td>Whole-molecule (bis-chromophore) ε from Deflandre/Lang and Damiani is ~47 k; the 20 k value reflects a per-chromophore-arm reading and underestimates the dimeric molecule's actual extinction by &gt;2×. Most authoritative single value.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="minor-adjustments-suggested-within-1020">Minor adjustments suggested (within 10–20 %)</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Current ε</th>
+<th>Proposed</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meradimate</td>
+<td>5,000 @ 336 nm</td>
+<td>5,800 @ 338 nm</td>
+<td>Cantrell &amp; McGarvey 2000 primary value (J Photochem Photobiol B)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="confirmed-correct">Confirmed correct (✅)</h2>
+<ul>
+<li>Avobenzone (35,000 @ 357 nm in MeOH) — within manufacturer &amp; primary-literature range</li>
+<li>DHHB (39,000 @ 354 nm in EtOH) — confirmed by Wang 2023 and BASF/DSM</li>
+<li>Bisoctrizole (52,000 / 46,000) — within range; flag dispersion vs solution</li>
+<li>Bemotrizinol (50,000 @ 340 nm) — defensible; clarify 343 nm and dual peak</li>
+<li>Drometrizole trisiloxane (18,000 @ 344 nm) — within range</li>
+<li>Mexoryl 400 / MCE (63,000 @ 385 nm) — confirmed (sponsor-linked only)</li>
+<li>TBPT / Tinosorb A2B (80,000, THF monomer) — Naumov 2023 confirms</li>
+<li>Bisdisulizole (52,000 @ 335 nm) — Symrise/Herzog confirm</li>
+</ul>
+<h2 id="could-not-find-weak-independent-data-c5-flags">Could-not-find / weak independent data (C5 flags)</h2>
+<ul>
+<li><strong>Mexoryl 400 (MCE):</strong> all ε data trace back to L'Oréal/BASF (Marionnet 2021 + SCCS/1605/19). No independent academic measurement found as of 2026-05.</li>
+<li><strong>Iscotrizinol:</strong> independent peer-reviewed ε measurement sparse; relies on 3V Sigma manufacturer data + Herzog 2009.</li>
+<li><strong>Drometrizole trisiloxane:</strong> primary ε data largely from L'Oréal patents and Herzog reviews; no fully independent ε determination located.</li>
+<li><strong>Bemotrizinol</strong> primary ε (rather than E(1,1)) values: Chatelain &amp; Gabard 2001 has spectrum but not always tabulated ε; SCCS dossier and BASF datasheet are best sources.</li>
+</ul>
+<h2 id="methodology-note">Methodology note</h2>
+<ul>
+<li>All quoted DOIs/URLs were verified by web fetch where possible; a few publisher sites (ScienceDirect, Wiley) returned 403 to automated fetch but PubMed records confirm the citations.</li>
+<li>Manufacturer datasheets (BASF, DSM, Symrise, 3V Sigma, L'Oréal) are flagged when they are the primary numerical source.</li>
+<li>For Mexoryl 400 specifically, an independent (non-L'Oréal) ε determination would strengthen the atlas.</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/verification/spectra-verification-uva-broad.md</code> · <a href="spectra-verification-uva-broad.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

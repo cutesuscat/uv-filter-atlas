@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c009 — Octyl Triazone (Ethylhexyl Triazone / EHT / Uvinul T 150) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c009 — Octyl Triazone (Ethylhexyl Triazone / EHT / Uvinul T 150)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c009-octyl-triazone.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c009-octyl-triazone.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c009-octyl-triazone.md</code></div>
+<h1 id="c009-octyl-triazone-ethylhexyl-triazone-eht-uvinul-t-150">c009 — Octyl Triazone (Ethylhexyl Triazone / EHT / Uvinul T 150)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Ethylhexyl Triazone</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2,4,6-Tris[<em>N</em>-(4-(2-ethylhexyloxycarbonyl)anilino)]-1,3,5-triazine; or full: 4-[[4,6-bis[[4-(2-ethylhexoxy-oxomethyl)phenyl]amino]-1,3,5-triazin-2-yl]amino]benzoic acid 2-ethylhexyl ester</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>USAN</td>
+<td>Octyl Triazone</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td><strong>Uvinul T 150</strong> (BASF), Parsol EHT (DSM-Firmenich)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>88122-99-0</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₄₈H₆₆N₆O₆</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td><strong>823.07 g·mol⁻¹</strong> (one of the largest commercially-used UV filters)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>402-070-1</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td><strong>Not approved</strong> (TEA application withdrawn)</td>
+<td>n/a</td>
+<td>21 CFR 352</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI, entry 19)</td>
+<td>Permitted</td>
+<td><strong>5 %</strong></td>
+<td>Reg. 1223/2009</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted</td>
+<td>5 %</td>
+<td>TGA ARTG</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Permitted</td>
+<td>5 %</td>
+<td>MHLW</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Permitted</td>
+<td>5 %</td>
+<td>KFDA</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Permitted</td>
+<td>5 %</td>
+<td>ASEAN ACD</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Typical concentration 0.5–5 %. Used for very high SPF (50+) and water-resistant formulations because of high ε, large MW (low skin penetration), and excellent photostability.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (280–340 nm) with high molar absorptivity due to the symmetric tris-aniline-triazine chromophore (extended conjugation across three diaryl-amine arms).</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>314</strong></td>
+<td>~135,000</td>
+<td>~1,500 (manufacturer min spec)</td>
+<td>C1</td>
+<td>BASF Uvinul T 150 technical data sheet; Couteau 2007</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>314</td>
+<td>~134,000</td>
+<td>1,490</td>
+<td>C2</td>
+<td>Pattanaargson 2004</td>
+</tr>
+<tr>
+<td>Cyclohexane</td>
+<td>311</td>
+<td>~125,000</td>
+<td>1,400</td>
+<td>C2</td>
+<td>Berset 1988</td>
+</tr>
+<tr>
+<td>Acetonitrile</td>
+<td>314</td>
+<td>~133,000</td>
+<td>1,485</td>
+<td>C2</td>
+<td>Wong et al., J Phys Chem Lett 8 (2017) 2054, doi:10.1021/acs.jpclett.7b00633</td>
+</tr>
+</tbody>
+</table>
+<p>EHT has the <strong>highest molar extinction coefficient of any commercial UV filter</strong> (ε ≈ 135,000 vs ~24,000 for OMC, 28,000 for padimate O). On a per-percent-mass basis it is still very efficient (E(1%,1cm) ≈ 1,500) despite the high MW.</p>
+<p>Two independent λmax sources: BASF/Uvinul technical literature (1980s–present); Wong et al. J Phys Chem Lett 2017 — both 314 nm [C1].</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>EHT is <strong>the gold-standard photostable UVB filter</strong>. The triazine-aniline core relaxes via ultrafast internal conversion.</p>
+<ul>
+<li>Wong et al. 2017 (ultrafast TA spectroscopy): excited-state lifetime is dominated by <strong>picosecond internal conversion (~3 ps)</strong> with no measurable triplet yield → no ROS [C1].</li>
+<li>Fluorescence quantum yield: <strong>&lt;0.01</strong> (essentially non-fluorescent) [C1, Wong 2017].</li>
+<li>Triplet yield: &lt;0.01 → does not sensitize singlet oxygen [C1].</li>
+<li>Φ(degradation): &lt;10⁻⁵ — among the most photostable filters known [C2, derived].</li>
+</ul>
+<h3 id="remaining-vs-uv-dose">% remaining vs UV dose</h3>
+<ul>
+<li>Couteau 2007: &gt;98 % remaining at 25 MED (1 MED ≈ 1 J/cm² UVB) in cosmetic emulsion. Classified "fully photostable" [C1].</li>
+<li>Kockler et al., J Photochem Photobiol C 13 (2012) 91-110 (review of UV filter photostability): Octyl triazone listed as "photostable, no measurable degradation under simulated solar exposure up to 1 MJ/m² UVA + 50 kJ/m² UVB" [C1].</li>
+<li>Hojerová et al., Int J Pharm 408 (2011) 27 — formulation-level: 95 % EHT remaining after 8 h xenon arc (60 W/m²) [C2].</li>
+<li>Industry summary: "&gt;95 % retention after 8 hours and Photostability &gt;95 % after 2 hours UV" [C2, manufacturer claims corroborated by independent studies].</li>
+</ul>
+<h3 id="half-life">Half-life</h3>
+<ul>
+<li>Half-life under continuous solar simulator at 1.4 MED/h: <strong>&gt;50 hours</strong> in alcoholic solution (effectively immeasurable on cosmetic timescales) [C2].</li>
+<li>No first-order rate constant published — degradation curves are flat.</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<ul>
+<li><strong>None identified</strong> in peer-reviewed photodegradation studies under typical UV doses [C1].</li>
+<li>Under UVC and chlorinated water (Negreira et al., Chemosphere 90, 2013): minor chlorinated byproducts including dechlorinated triazine and chloroaniline derivatives [C2].</li>
+<li>Recently characterised disinfection-byproducts in chlorinated swimming-pool water: Negreira N et al., 2024 (Sci Total Environ) found chlorinated EHT-derived species at ng/L levels [C2].</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Photostability:</strong> Outstanding; widely used to rescue avobenzone in high-SPF formulations [C1].</li>
+<li><strong>Triplet quenching of avobenzone:</strong> EHT <em>does not</em> directly quench avobenzone's triplet — its excited state lifetime is too short and not at the right energy. However, used together they don't antagonize [C2].</li>
+<li><strong>Skin penetration:</strong> Very large MW (823 Da, well above 500 Da Lipinski cut-off) → <strong>negligible skin penetration</strong>. SCCS dossier shows in vitro dermal absorption &lt;0.1 % [C1].</li>
+<li><strong>Endocrine activity:</strong> Negligible. SCCS reviewed — does not bind ER, AR, or TR in screens [C1].</li>
+<li><strong>Solubility:</strong> Very poorly soluble in water and ethanol; requires high-boiling cosmetic oils (C12-15 alkyl benzoate, ethylhexyl methoxycinnamate as co-solvent) — this <strong>forces use with OMC</strong>, which can be a concern.</li>
+<li><strong>ROS:</strong> Not generated (triplet yield ~0) [C1].</li>
+<li><strong>Aquatic toxicity:</strong> Low — high MW, log Kow ~7, low bioavailability. Bioaccumulation potential exists but acute toxicity LC50 &gt;10 mg/L (limit of solubility) [C2].</li>
+<li><strong>Synergy:</strong></li>
+<li><strong>Excellent UVB synergy with octocrylene + avobenzone</strong> for high-SPF photostable formulations.</li>
+<li><strong>Antagonism: none</strong> documented.</li>
+<li>Solubility forces co-formulation with OMC or BMDM, which sometimes complicates avobenzone photoprotection.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Wong NHM et al. "Ultrafast Transient Absorption Spectroscopy of the Sunscreen Constituent Ethylhexyl Triazone". J Phys Chem Lett 8 (2017) 2054-2058, doi:10.1021/acs.jpclett.7b00633.</li>
+<li>Couteau C et al. Pharm Res 24 (2007) 1153-1160.</li>
+<li>Kockler J, Oelgemöller M, Robertson S, Glass BD. "Photostability of sunscreens". J Photochem Photobiol C 13 (2012) 91-110.</li>
+<li>Hojerová J, Medovcíková A, Mikula M. "Photoprotective efficacy and photostability of fifteen sunscreen products having the same label SPF subjected to natural sunlight". Int J Pharm 408 (2011) 27-38.</li>
+<li>SCCNFP/0145/99 (1999) — Initial Opinion on Octyl Triazone (this remains the principal SCCS evaluation; subsequent transfer to Annex VI without modification).</li>
+<li>BASF Uvinul T 150 technical product information (multiple revisions 1990s–2024).</li>
+<li>Negreira N, López de Alda M, Barceló D. "Cosmetic UV filters in environmental waters". Chemosphere 90 (2013) 122-130.</li>
+<li>Pattanaargson S et al. J Photochem Photobiol A 161 (2004) 269-274.</li>
+<li>Berset G, Gonzenbach H, Christ R, et al. "Proposed protocol for determination of photostability ... cosmetic UV filters". Int J Cosmet Sci 18 (1996) 167-177.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c009-octyl-triazone.md</code> · <a href="c009-octyl-triazone.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

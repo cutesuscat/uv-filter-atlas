@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adversarial Critique — Sunscreen Filters Knowledge Base — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Adversarial Critique — Sunscreen Filters Knowledge Base</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="critique-2026-05-07.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="critique-2026-05-07.md">View raw markdown</a> · Path: <code>verification/critique-2026-05-07.md</code></div>
+<h1 id="adversarial-critique-sunscreen-filters-knowledge-base">Adversarial Critique — Sunscreen Filters Knowledge Base</h1>
+<p><strong>Reviewer role:</strong> independent adversarial verifier
+<strong>Target:</strong> <code>MASTER-SYNTHESIS.md</code> + 6 area <code>_summary.md</code> + spot-checked claim files
+<strong>Date:</strong> 2026-05-07
+<strong>Method:</strong> WebSearch / WebFetch verification of citations, cross-doc consistency check, regulatory date verification, mechanism sanity-checking</p>
+<hr>
+<h2 id="a-overall-assessment">A. Overall assessment</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uvb-organic/</code></td>
+<td>Good (one bad citation discovered)</td>
+</tr>
+<tr>
+<td><code>uva-organic/</code></td>
+<td>Good (avobenzone file is comprehensive; minor page-number error)</td>
+</tr>
+<tr>
+<td><code>broad-spectrum/</code></td>
+<td>Fair (one fabricated citation; one wrong regulatory date)</td>
+</tr>
+<tr>
+<td><code>benzophenones/</code></td>
+<td>Good</td>
+</tr>
+<tr>
+<td><code>inorganic/</code></td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td><code>photostab/</code></td>
+<td>Good</td>
+</tr>
+<tr>
+<td><code>MASTER-SYNTHESIS.md</code></td>
+<td>Good with caveats — the regulatory matrix has a notable date error</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overall reliability:</strong> Moderate-to-high. Approximately 8 out of 10 spot-checked citations were verified as real and substantively accurate. The corpus has clear C-tier discipline, primary sources for mechanism claims, and honest C5 "unknown" lists. <strong>Two citation problems are non-trivial</strong> (one likely fabricated, one wrong-page), and <strong>one regulatory date in the master table is wrong by ~4 years</strong>. None of these undermine the technical conclusions, but they would embarrass on close inspection. Fit for webapp publication only after the items in §C-critical are fixed.</p>
+<hr>
+<h2 id="b-verified-citations-spot-checked-confirmed-real-and-substantively-cited-correctly">B. Verified citations (spot-checked, confirmed real and substantively cited correctly)</h2>
+<ol>
+<li><strong>Sayre, Dowdy, Gerwig, Shields, Lloyd 2005</strong> — <em>Photochem Photobiol</em> 81(2):452–456, doi:10.1562/2004-02-12-RA-083.1 — confirmed exact volume/page/DOI via PubMed 15560736.</li>
+<li><strong>Downs, DiNardo, Stien, Rodrigues, Lebaron 2021</strong> — <em>Chem Res Toxicol</em> 34(4):1046–1054, doi:10.1021/acs.chemrestox.0c00461 — confirmed via PubMed 33682414.</li>
+<li><strong>Mturi &amp; Martincigh 2008</strong> — <em>J Photochem Photobiol A</em> 200:410–420, doi:10.1016/j.jphotochem.2008.09.001 — confirmed.</li>
+<li><strong>Chatelain &amp; Gabard 2001</strong> — <em>Photochem Photobiol</em> 74(3):401–406, PMID 11594052 — confirmed.</li>
+<li><strong>Schwack &amp; Rudolph 1995</strong> — <em>J Photochem Photobiol B</em> 28(3):229–234, doi:10.1016/1011-1344(95)07118-L — confirmed exists.</li>
+<li><strong>Cole, Shyr, Ou-Yang 2016</strong> — <em>Photodermatol Photoimmunol Photomed</em> 32(1):5–10, doi:10.1111/phpp.12214 — confirmed.</li>
+<li><strong>Tarras-Wahlberg et al. 1999</strong> — <em>J Invest Dermatol</em> 113:547–553 — confirmed.</li>
+<li><strong>Vuckovic et al. 2022</strong> — <em>Science</em> 376:644–648, doi:10.1126/science.abn2600 — confirmed.</li>
+<li><strong>Holt et al. 2021 PCCP</strong> paper exists at the cited DOI (D1CP03610F).</li>
+<li><strong>EU Regulation 2022/1176</strong> restricting BP-3 to 2.2% body / 6% face — confirmed.</li>
+<li><strong>Hawaii Act 104 (SB2571 of 2018), effective 1 Jan 2021</strong> — confirmed.</li>
+<li><strong>EU Regulation 2024/996</strong> banning 4-MBC effective 1 May 2026 — confirmed.</li>
+<li><strong>FDA Proposed Order OTC000039 on bemotrizinol</strong> issued 11–12 Dec 2025 at proposed 6% GRASE — confirmed (Federal Register 2025-22649).</li>
+</ol>
+<hr>
+<h2 id="c-issues-found">C. Issues found</h2>
+<h3 id="c-critical-1-high-severity-likely-fabricated-citation">C-critical-1 (HIGH severity — likely fabricated citation)</h3>
+<ul>
+<li><strong>Location:</strong> <code>research/uvb-organic/claims/c001-octinoxate.md</code>, Section 2 ("UV Absorption Spectrum") and Section 3 (multiple rows), and again in <code>Sources [1]</code>.</li>
+<li><strong>Issue:</strong> The corpus repeatedly attributes octinoxate photochemistry to "<strong>Stange et al., Photochem Photobiol Sci 14 (2015) 1701-1709, doi:10.1039/C5PP00074B</strong>". The DOI <strong>does</strong> correspond to a 2015 PPS paper, but its actual authors are <strong>Hanson, Narayanan, Nichols &amp; Bardeen</strong> and the actual page range is <strong>1607–1616</strong>, not 1701–1709. There appears to be no "Stange" co-author on this paper. The quantum yields (Φd = 6.2 × 10⁻⁴, Φ(trans→cis) = 0.37 etc.) are then presented at C1 confidence with this fabricated attribution.</li>
+<li><strong>Evidence:</strong> WebFetch of <code>pubs.rsc.org/en/content/articlehtml/2015/pp/c5pp00074b</code> returned authors Hanson, Narayanan, Nichols, Bardeen; pages 1607–1616.</li>
+<li><strong>Fix:</strong> Replace every occurrence of "Stange et al. 2015" in <code>c001-octinoxate.md</code> with <strong>"Hanson KM, Narayanan S, Nichols VM, Bardeen CJ. <em>Photochem Photobiol Sci</em> 14(9):1607–1616 (2015), doi:10.1039/C5PP00074B"</strong>. Re-verify that the specific numerical values (Φ(trans→cis) = 0.37, Φd = 6.2×10⁻⁴, "79% retained at PSS in cyclohexane", "68% in methanol") are actually in that paper before keeping them at C1. If not directly checkable, downgrade to C2/C3.</li>
+</ul>
+<h3 id="c-critical-2-high-severity-wrong-primary-citation">C-critical-2 (HIGH severity — wrong primary citation)</h3>
+<ul>
+<li><strong>Location:</strong> <code>research/broad-spectrum/claims/c001-bemotrizinol.md</code>, Citations section, item Hamzavi.</li>
+<li><strong>Issue:</strong> Cited as "<strong>Hamzavi I, Rohrer T, Yeh J, et al.</strong> <em>Regul Toxicol Pharmacol</em> 138:105328 (2023). PMID 36738872." The actual paper at PMID 36738872 is <strong>D'Ruiz CD et al., <em>Regul Toxicol Pharmacol</em> 139:105344 (2023)</strong>. Both first author and volume/article number are wrong.</li>
+<li><strong>Evidence:</strong> WebFetch of PubMed 36738872 returned Carl D D'Ruiz et al. Volume 139, article 105344. Multiple corroborating links (Ovid, ScienceDirect, ResearchGate) agree.</li>
+<li><strong>Fix:</strong> Replace with correct citation: <strong>D'Ruiz CD, Plautz JR, Schuetz R, Forbes PD, Walters RM, Maibach HI. (2023) Preliminary clinical pharmacokinetic evaluation of bemotrizinol — a new sunscreen active ingredient being considered for inclusion under FDA's OTC sunscreen monograph. <em>Regul Toxicol Pharmacol</em> 139:105344. doi:10.1016/j.yrtph.2023.105344. PMID 36738872.</strong> Also remove the line "FDA pharmacokinetic study (Hamzavi et al. 2023)" in §4 of c001-bemotrizinol; this was an industry-sponsored study by the BASF/DSM consortium, not an FDA study.</li>
+</ul>
+<h3 id="c-critical-3-high-severity-wrong-regulatory-year-in-headline-table">C-critical-3 (HIGH severity — wrong regulatory year in headline table)</h3>
+<ul>
+<li><strong>Location:</strong> <code>MASTER-SYNTHESIS.md</code>, Section 6 "Regulatory Matrix", Mexoryl 400 row: "3% (2024)". Also Section 7.5 says "Mexoryl 400 was approved EU 2024".</li>
+<li><strong>Issue:</strong> EU approval (entry to Annex VI) was <strong>Commission Regulation (EU) 2020/1684, adopted 12 November 2020</strong>, based on SCCS/1605/19 opinion of December 2019. This is correctly stated in <code>c004-mexoryl-400-mce.md</code> (which says "Approved 2019 via Regulation 2020/1684") but contradicted by the master synthesis. 2024 was the year of broad commercial rollout (UVMune 400), not regulatory approval.</li>
+<li><strong>Evidence:</strong> EUR-Lex Reg 2020/1684; SCCS/1605/19; corroborated multiple sources.</li>
+<li><strong>Fix:</strong> In master synthesis Section 6 row, change "(2024)" → "(2020)". In Section 7.5 change "Mexoryl 400 (λmax 385 nm) was approved in EU 2024" → "approved in EU 2020 (Reg 2020/1684); broadly commercialized 2022–2024".</li>
+</ul>
+<h3 id="c-medium-1-medium-wrong-page-numbers">C-medium-1 (MEDIUM — wrong page numbers)</h3>
+<ul>
+<li><strong>Location:</strong> <code>research/uva-organic/claims/c001-avobenzone.md</code>, Section 3 ("Quantum yields"), citation: "Holt et al. 2021, <em>PCCP</em> 23, <strong>24373</strong>".</li>
+<li><strong>Issue:</strong> Actual page range of Holt et al. 2021 PCCP D1CP03610F is <strong>24439–24448</strong>, not 24373.</li>
+<li><strong>Evidence:</strong> WebFetch of pubs.rsc.org confirmed page 24439–24448.</li>
+<li><strong>Fix:</strong> Correct to "PCCP 23(42):24439–24448 (2021)".</li>
+</ul>
+<h3 id="c-medium-2-medium-synthesis-vs-claim-file-inconsistency-on-avobenzone-e1">C-medium-2 (MEDIUM — synthesis vs claim file inconsistency on avobenzone ε / E1%)</h3>
+<ul>
+<li><strong>Location:</strong> <code>MASTER-SYNTHESIS.md</code> master table row Avobenzone vs <code>c001-avobenzone.md</code> Section 2.</li>
+<li><strong>Issue:</strong> Master table lists avobenzone "ε = 35,000 (MeOH), E(1%, 1cm) = 1,130". The claim file gives "E(1%, 1cm) = 1100–1160 in MeOH" and "ε ≈ 34,000–35,000 (computed)". Numbers reconcile, but the master synthesis presents 35,000 / 1130 as if a primary measurement; in the claim file these are explicitly <strong>C3 computed values from E1%</strong>. The C-tier label drops in the master table.</li>
+<li><strong>Fix:</strong> Either footnote master table that "ε computed from E(1%) per ε = E1% × MW / 10" or carry the C3 mark.</li>
+</ul>
+<h3 id="c-medium-3-medium-for-ecamsule-presented-inconsistently">C-medium-3 (MEDIUM — ε for ecamsule presented inconsistently)</h3>
+<ul>
+<li><strong>Location:</strong> Master table says "ε = 20,000 (19–47k range)"; <code>c002-ecamsule.md</code> flags this as <strong>C5 unresolved</strong> with values spanning 19,000–47,000 across studies. Master synthesis Section 3.2 says "Mexoryl SX (Ecamsule) | 94–99% / 25 MED" (C1).</li>
+<li><strong>Issue:</strong> The master table picks 20,000 as the headline value but the underlying claim is C3/C5 — the literature genuinely disagrees by 2.5×. This is fine if flagged; currently it's not flagged in the master table.</li>
+<li><strong>Fix:</strong> In master table, mark ε with a "‡" footnote: "ecamsule ε at 345 nm reported variously 19–47k across literature; see c002 §2".</li>
+</ul>
+<h3 id="c-medium-4-medium-internal-inconsistency-on-triplet-energy-of-omc">C-medium-4 (MEDIUM — internal inconsistency on triplet energy of OMC)</h3>
+<ul>
+<li><strong>Location:</strong> <code>MASTER-SYNTHESIS.md</code> Section 4 triplet energy ladder lists "OMC (cinnamate) T1 ~50 kcal/mol"; <code>photostab/_summary.md</code> lists "OMC ~50 kcal/mol". <code>c001-avobenzone.md</code> Section 4 doesn't explicitly state OMC T1 but discusses [2+2]. The synthesis says "instead of quenching, undergoes [2+2]" — but a triplet energy below the BMDBM diketo T1 (~60–66) would normally be predicted to quench. The actual reason cinnamates don't behave as triplet quenchers is that their excited-state pathway funnels into productive [2+2] photochemistry with the BMDBM, not into vibrational relaxation. The synthesis is hand-wavy here.</li>
+<li><strong>Fix:</strong> In Section 4 of master synthesis, add a sentence: "OMC's triplet is energetically a candidate quencher, but its olefin reactivity preempts triplet relaxation — the cinnamate C=C undergoes [2+2] cycloaddition with BMDBM faster than physical quenching can dissipate energy."</li>
+</ul>
+<h3 id="c-low-1-low-terminology-drift">C-low-1 (LOW — terminology drift)</h3>
+<ul>
+<li>"Photostable" / "photostability" sometimes refers to the chromophore alone, sometimes to the in-formulation product. E.g. octocrylene is "officially classified photostable" (c004) yet "degrades to benzophenone" — meaning chemically not photostable on shelf-life timescales, just photostable per regulatory test. Worth a one-paragraph definition box at the top of <code>MASTER-SYNTHESIS.md</code>.</li>
+</ul>
+<h3 id="c-low-2-low-missing-solvent-on-some-max-values">C-low-2 (LOW — missing solvent on some λmax values)</h3>
+<ul>
+<li>Master table column "λmax (nm)" mostly states value without solvent. Most sunscreen literature defaults to ethanol, but the avobenzone claim file shows 8 nm of solvent-dependent variation. Best practice: add column header "λmax (nm; solvent)" or footnote "ethanol unless noted".</li>
+</ul>
+<h3 id="c-low-3-low-confidence-tier-abuse">C-low-3 (LOW — confidence-tier abuse)</h3>
+<ul>
+<li><code>c001-bemotrizinol.md</code> reports "98.4% BEMT remaining after 50 MED" at <strong>C1</strong> but cites this "via Wikipedia from Ciba/BASF datasets". A manufacturer-supplied retention figure, even if widely cited, is C2 at best. Same critique applies to: Mexoryl 400 "100% intrinsic" (correctly flagged C2 sponsor); DHHB "&gt;95–98%" (correctly flagged C2 BASF); but the BEMT 98.4% at C1 is over-confident.</li>
+<li><strong>Fix:</strong> Demote BEMT 98.4% to <strong>C2 (manufacturer-derived)</strong> unless the Chatelain &amp; Gabard 2001 paper independently reports that exact figure.</li>
+</ul>
+<h3 id="c-low-4-low-pre-2010-sources-cited-as-current-state">C-low-4 (LOW — pre-2010 sources cited as current state)</h3>
+<ul>
+<li>Schwack &amp; Rudolph 1995, Tarras-Wahlberg 1999, Beck/Deflandre 1981/1988, Cuderman &amp; Heath 2007 are all cited as primary sources for current claims. They're all real papers and the underlying photochemistry hasn't changed, so this is acceptable — but readers should be flagged that the <em>modern</em> primary references for avobenzone photoproducts now exist (Holt 2021, Mocci 2025 mentioned in c004). One-line note in master synthesis "many photoproduct identifications come from 1990s primary literature; mechanisms have been re-confirmed but not re-quantified" would help.</li>
+</ul>
+<h3 id="c-low-5-low-single-source-reliance-for-two-key-numbers">C-low-5 (LOW — single-source reliance for two key numbers)</h3>
+<ul>
+<li>Octocrylene → benzophenone retro-aldol: only Downs 2021 cited in primary corpus. The ACS Comment by Surber rebutting magnitude is cited (good) but no independent replication is mentioned. There has since been at least one corroborating study (Stien et al. and follow-ups in <em>Chemosphere</em>, <em>Sci Total Environ</em> 2022–2024). Adding one independent confirmation would harden the claim.</li>
+<li>Cole, Shyr &amp; Ou-Yang 2016 is the sole basis for the "metal oxide sunscreens absorb 10:1 over scatter" claim. This is now widely accepted but originally a single 2016 paper; Lab Muffin Beauty Science (2024) and JAAD 2024 review both cite the same single source.</li>
+</ul>
+<hr>
+<h2 id="d-missing-topics">D. Missing topics</h2>
+<ol>
+<li>
+<p><strong>Amiloxate (isoamyl methoxycinnamate, CAS 71617-10-2)</strong> — listed in the bemotrizinol claim file as one of the 8 TEA-pending filters; mentioned in the broad-spectrum summary's TEA table; but <strong>no claim file exists</strong> under <code>uvb-organic/</code> or anywhere else. Given that its TEA was submitted in 2003 and it remains on the FDA pending list, it deserves its own short claim file (λmax 308 nm; ε similar to OMC; EU approved up to 10%; structurally a cinnamate analog of OMC with isoamyl ester instead of 2-ethylhexyl).</p>
+</li>
+<li>
+<p><strong>Phenylbenzimidazole-5-sulfonic acid</strong> is covered (= Ensulizole / PBSA, c007). Good.</p>
+</li>
+<li>
+<p><strong>DESM (Diethylhexyl Syringylidenemalonate)</strong> is in <code>photostab/c007</code> as a stabilizer but is NOT given its own filter file in any spectral category. It is <strong>not</strong> an EU-listed UV filter (it's a formulation aid, not an SPF active), so this is correct — but a one-line note "DESM is photostabilizer, not a primary UV filter; no Annex VI listing" would prevent confusion.</p>
+</li>
+<li>
+<p><strong>Polyglyceryl-2 Dipolyhydroxystearate-ε for nano filters in Korea/China</strong>: probably out of scope but flagged as one of the recently added Asia-only filters not in the master matrix.</p>
+</li>
+<li>
+<p><strong>TEA-3 / TEA-2 trolamine status in Asia</strong> — Trolamine salicylate has FDA "proposed not GRASE" in the matrix but no entry for Korea/Japan/Mexico. Since it's effectively obsolete, low priority.</p>
+</li>
+<li>
+<p><strong>DHHB (Uvinul A Plus) DnHexP phthalate impurity</strong> is mentioned briefly in c003-dhhb.md but not in the master synthesis. SCCS 2025 (S83) opinion is non-trivial — a sentence in §6 would be appropriate given the scope of this work.</p>
+</li>
+<li>
+<p><strong>No mention of "after-sun" / repair products mechanism</strong> but this is correctly out of scope (filters only).</p>
+</li>
+</ol>
+<hr>
+<h2 id="e-strengths">E. Strengths</h2>
+<ol>
+<li>
+<p><strong>C-tier discipline is real, not theatre.</strong> Out of ~15 claim sections sampled, every C5 ("unknown") I checked was a genuine literature gap, not a hidden weakness. The "C5 / unresolved items" sections at the end of each claim file are unusually honest.</p>
+</li>
+<li>
+<p><strong>Mechanism explanations are correct and well-organized.</strong> ESIPT in benzophenones and Tinosorbs, β-diketone keto-enol tautomerism in avobenzone, [2+2] cycloaddition for OMC+AVB, retro-aldol for octocrylene→benzophenone, and Mie scattering vs absorption physics for ZnO/TiO₂ — all are technically accurate as far as I could verify.</p>
+</li>
+<li>
+<p><strong>Triplet energy ladder in §4 of master synthesis</strong> is a genuinely useful synthesis — the kind of cross-source figure that would not appear in any single paper.</p>
+</li>
+<li>
+<p><strong>The ZnO file (c001-inorganic) is exemplary.</strong> Bond 1965 for refractive index, Egerton 2012 for mass extinction (correctly flagged C4 graph-derived), Cole 2016 for absorption-vs-scattering, Filipe/Mavon/Gulson primary skin-penetration studies. Confidence tiers map honestly to source quality.</p>
+</li>
+<li>
+<p><strong>The avobenzone solvent-dependence section</strong> (master synthesis §5 and avobenzone claim c001) correctly emphasizes that this is the most under-cited variable in sunscreen literature — a synthesis insight the reader would not get from any single paper.</p>
+</li>
+<li>
+<p><strong>The "trilemma" framing in §7.2</strong> (avobenzone-octocrylene-benzophenone) is exactly the kind of cross-source synthesis the meta-prompt asks for: integrating Schwack 1995 (avobenzone photolability) + Bonda 2008 (octocrylene rescue) + Downs 2021 (octocrylene → benzophenone) + IARC classification into a coherent regulatory argument.</p>
+</li>
+<li>
+<p><strong>Honest framing of "physical vs chemical" sunscreen as marketing.</strong> Section 7.4 is a genuine corrective to a popular misconception.</p>
+</li>
+<li>
+<p><strong>Regulatory matrix is detailed and mostly correct.</strong> EU 2.2%/6% BP-3 split, the December 2025 bemotrizinol Proposed Order at 6%, Hawaii/Palau/USVI bans, and the FDA "stayed indefinitely" status of the legacy benzophenones all check out.</p>
+</li>
+</ol>
+<hr>
+<h2 id="f-final-verdict">F. Final verdict</h2>
+<p><strong>Fit-for-purpose with three blocking corrections required before webapp publication.</strong></p>
+<p>Required fixes (all in §C-critical above):
+1. <strong>Replace the "Stange et al. 2015" attribution</strong> in <code>c001-octinoxate.md</code> with the correct authors (Hanson et al.) and verify the Φ values are actually in that paper.
+2. <strong>Replace the "Hamzavi 2023" citation</strong> in <code>c001-bemotrizinol.md</code> with the correct D'Ruiz et al. 2023 reference.
+3. <strong>Correct the Mexoryl 400 EU approval year</strong> from "2024" to "2020" in two places in MASTER-SYNTHESIS.md.</p>
+<p>Recommended secondary fixes (§C-medium): Holt page numbers; ecamsule ε footnote; BEMT 98.4% C1→C2 demotion; OMC triplet/[2+2] explanation in §4.</p>
+<p>Optional improvements (§C-low + §D): solvent-on-λmax labeling, an amiloxate claim file, a one-paragraph "photostability" terminology box.</p>
+<p>The fundamental science is correct, the regulatory landscape is correctly mapped to within a few months, and the C-tier confidence system is used honestly. This is a credible reference document, <strong>not</strong> a "looks plausible but full of fabricated citations" AI artifact — but the two fabricated/wrong author attributions are exactly the failure mode the meta-prompt warns about, and need fixing before this goes public. After those edits, my recommendation is <strong>publish</strong>.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>verification/critique-2026-05-07.md</code> · <a href="critique-2026-05-07.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

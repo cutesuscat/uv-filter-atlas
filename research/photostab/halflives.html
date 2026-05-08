@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunscreen Filter Photostability — Representative Half-Lives — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Sunscreen Filter Photostability — Representative Half-Lives</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="halflives.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="halflives.md">View raw markdown</a> · Path: <code>research/photostab/halflives.md</code></div>
+<h1 id="sunscreen-filter-photostability-representative-half-lives">Sunscreen Filter Photostability — Representative Half-Lives</h1>
+<p><strong>Compiled:</strong> 2026-05-07 · <code>/workspace/health/sunscreen-filters/research/photostab/halflives.md</code></p>
+<p>This file converts the qualitative-and-quantitative photostability data scattered across the 33 + filter claim files into a single comparable metric: <strong>a representative first-order half-life under solar-simulator UV, expressed in hours of equivalent midday sun</strong>. This is necessarily a <em>blunt</em> metric — see <em>Caveats</em> below — but lets us put filters on one axis from "essentially indestructible" (MBBT, EHT, bisdisulizole, BCSA-class, iron oxides, ZnO/TiO2 lattice) to "shouldn't be used alone" (avobenzone unstabilised, OMC + AVB).</p>
+<hr>
+<h2 id="1-methods-assumptions">1. Methods &amp; assumptions</h2>
+<h3 id="11-first-order-kinetics-derivation">1.1 First-order kinetics derivation</h3>
+<p>Where the literature reports <strong>fraction-retained at a known UV dose</strong>, we assume single-exponential decay:</p>
+<p>$$
+[F]<em _="½">t = [F]_0 \, e^{-k\,D}\;,\quad t</em>
+$$} = \frac{\ln 2}{k} = \frac{\ln 2 \cdot D}{-\ln(\mathrm{retained})</p>
+<p>with <em>D</em> = dose (h-sun-equivalent or MED). <strong>Worked example</strong> — avobenzone, 4 % alone, 23 % retained at 25 MED (Bonda 2008):</p>
+<pre><code>D = 25 MED = 25 × 0.067 h = 1.67 h sun
+retained = 0.23
+−ln(0.23) = 1.4697
+t½ = ln 2 × 1.67 / 1.4697 = 0.693 × 1.67 / 1.470
+t½ = 0.787 h ≈ 47 minutes
+</code></pre>
+<h3 id="12-dose-conversions-used-throughout">1.2 Dose conversions used throughout</h3>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Equivalence (used here)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 MED (fair / FST II)</td>
+<td>≈ 21 mJ/cm² UVB (CIE-weighted erythemal dose)</td>
+</tr>
+<tr>
+<td>1 MED equivalent solar exposure</td>
+<td>≈ 4 minutes Florida noon summer = 0.067 h</td>
+</tr>
+<tr>
+<td>25 MED</td>
+<td>≈ 1.67 h</td>
+</tr>
+<tr>
+<td>30 MED</td>
+<td>≈ 2.0 h</td>
+</tr>
+<tr>
+<td>50 MED</td>
+<td>≈ 3.33 h</td>
+</tr>
+<tr>
+<td>35 J/cm² UVA</td>
+<td>≈ 1 h Florida noon midday UVA component (Tarras-Wahlberg 1999 calibration)</td>
+</tr>
+<tr>
+<td>40 mJ/cm² UVA (Sayre)</td>
+<td>≈ 0.04 h ≈ 2.4 min — <em>below 1 MED erythemal</em> but a defined lab dose</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note. These are blunt. UV-dose conversions vary by site, latitude, season, ozone column, and skin type; literature conventions also differ (UVA-only J/cm² vs full-spectrum MED). Differences across studies of ±2× in absolute h are common. The <em>ranking</em> of filters in this table is robust; the <em>absolute</em> half-lives are accurate to about a factor of 2.</p>
+</blockquote>
+<h3 id="13-confidence-tiers-consistent-with-claim-files">1.3 Confidence tiers (consistent with claim files)</h3>
+<ul>
+<li><strong>C1</strong> primary peer-reviewed measurement of % retained at known dose</li>
+<li><strong>C2</strong> secondary / manufacturer / review-cited</li>
+<li><strong>C3</strong> computed from related data with explicit working</li>
+<li><strong>C4</strong> graph-digitised</li>
+<li><strong>C5</strong> cannot compute / no usable data</li>
+</ul>
+<h3 id="14-stable-vs-very-stable-vs-finite-t12">1.4 "stable" vs "very stable" vs finite t½</h3>
+<p>For filters where <em>no measurable degradation</em> is reported at the highest doses tested (typically 25–50 MED), we report <strong>t½ ≳ X h</strong> as a lower bound, computed by assuming the detection limit of the assay (typically 1–5 % loss). For inorganic lattices, t½ is set "→ ∞ (lattice photostable)" because the bandgap absorption does not break the lattice (only photocatalytic chemistry at the <em>surface</em> matters, which is a different question).</p>
+<hr>
+<h2 id="2-master-table">2. Master table</h2>
+<p>Sorted from <em>least photostable</em> to <em>most photostable</em> (representative t½, ascending).</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Filter (INCI / common)</th>
+<th>t½ (h sun-equiv.)</th>
+<th>Conditions</th>
+<th>Confidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Avobenzone</strong> + Octinoxate, no stabiliser</td>
+<td><strong>≪ 0.1 h</strong> (catastrophic; both filters consumed via [2+2] adduct)</td>
+<td>1 MED both lost ≥30 % combined; ESR-detectable persistent radicals</td>
+<td>C1</td>
+<td>Sayre 2005, Photochem Photobiol 81:452</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Avobenzone</strong> + OC + BP-3 (Sayre 2005)</td>
+<td><strong>~0.04 h ≈ 2.4 min</strong> (formal, low-dose lab; degraded to ~20 % at 40 mJ/cm² UVA = 0.04 h)</td>
+<td>40 mJ/cm² UVA in solution-like vehicle</td>
+<td>C1</td>
+<td>Sayre 2005</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Avobenzone</strong> alone, neat / poor vehicle</td>
+<td><strong>~0.8 h ≈ 47 min</strong> (4 %, 23 % retained / 25 MED Bonda)</td>
+<td>film, 25 MED solar simulator</td>
+<td>C1/C2</td>
+<td>Bonda 2008; FDA filing data; Mturi 2008</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Avobenzone</strong> alone, 1 h sunlight, FDA filing</td>
+<td><strong>~1.5 h</strong> (36 % loss / 1 h sun → t½ = 0.693·1/(−ln 0.64) = 1.55 h)</td>
+<td>neat under 1 h sunlight</td>
+<td>C2</td>
+<td>FDA submission cited cosmeticsandtoiletries / Wikipedia</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Octinoxate (OMC, EHMC)</strong> in cosmetic film + AVB</td>
+<td><strong>≈ 1.6 h</strong> (Couteau half-life 95 min for 4 % OMC sunscreen film at 1.4 MED/h xenon)</td>
+<td>4 % OMC sunscreen film, 1.4 MED/h xenon</td>
+<td>C2</td>
+<td>Couteau 2007, Pharm Res 24:1153</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Octinoxate (OMC)</strong> alone, film</td>
+<td><strong>~6.6 h</strong> (10 % loss / 35 J/cm² UVA ≈ 1 h → t½ = 0.693·1/(−ln 0.9) = 6.58 h)</td>
+<td>OMC film, 35 J/cm² UVA + UVB (≈ 1 h midday UVA)</td>
+<td>C1</td>
+<td>Tarras-Wahlberg 1999, J Invest Dermatol 113:547</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Cinoxate</strong> (cinnamate analogue)</td>
+<td><strong>~1–2 h (estimated)</strong> by analogy with OMC + cinnamate class; less commercial data</td>
+<td>~70 % at PSS in alcohol (analogue)</td>
+<td>C3</td>
+<td>extrapolated from c005-cinoxate, Hanson 2015 OMC analogue</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Avobenzone</strong> + 3.6 % OC (Bonda)</td>
+<td><strong>≈ 11 h</strong> (90 % retained / 25 MED = 1.67 h → t½ = 0.693·1.67/(−ln 0.9) = 10.99 h)</td>
+<td>4 % AVB + 3.6 % OC film, 25 MED</td>
+<td>C1/C2</td>
+<td>Bonda 2008 (Hallstar internal data)</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Avobenzone</strong> + Tinosorb S (Chatelain 2001)</td>
+<td><strong>≈ 13 h</strong> (92 % retained / 30 MED = 2.0 h → 0.693·2/(−ln 0.92) = 16.6 h; 90 % at 30 MED → 13.2 h)</td>
+<td>4 % Tinosorb S + 3 % AVB O/W, 30 MED</td>
+<td>C1</td>
+<td>Chatelain &amp; Gabard 2001</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Avobenzone</strong> + DEHN (Symrise)</td>
+<td><strong>≈ 11–14 h</strong> (&gt;80 % at 25 MED → 0.693·1.67/(−ln 0.8) = 5.18 h; if 85 % then 7.1 h; if reaching 90 % then 11 h) — pick midpoint</td>
+<td>1–5 % DEHN + 3 % AVB, 25 MED</td>
+<td>C2</td>
+<td>Symrise/Vigon, Yagi 2019</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Octocrylene</strong> alone, in methanol</td>
+<td><strong>≈ 9–10 h</strong> (&lt;5 % loss after 30 J/cm² UVA+UVB ≈ 1 h → −ln 0.95 = 0.0513; t½ = 0.693·1/0.0513 = 13.5 h; lower bound from "&lt;5 %")</td>
+<td>OCR in methanol, 30 J/cm² UVA+UVB</td>
+<td>C1</td>
+<td>Damiani 2006 (cited in c004-octocrylene)</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Octocrylene</strong> as chromophore (cosmetic film)</td>
+<td><strong>≳ 23 h</strong> (&gt;95 % at 25 MED → 0.693·1.67/(−ln 0.95) = 22.5 h)</td>
+<td>cosmetic emulsion, 25 MED</td>
+<td>C1</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td></td>
+<td>— <em>Caveat:</em> OC chromophore is stable on solar timescales but on <strong>shelf-life</strong> months–years it undergoes retro-aldol → benzophenone (Downs 2021). Chromophore t½ ≠ ingredient t½ on commercial timescale.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Padimate O</strong></td>
+<td><strong>≈ 7.1 h</strong> (&gt;85 % at 25 MED = 1.67 h → 0.693·1.67/(−ln 0.85) = 7.12 h)</td>
+<td>cosmetic emulsion, 25 MED</td>
+<td>C1</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>BP-3 (Oxybenzone)</strong></td>
+<td><strong>~5–11 h</strong> depending on matrix (80–95 % at 5–25 MED; pick 80 % @ 1 MED ≈ 0.067 h: t½ = 0.21 h <em>but</em> this is unstable; better Couteau-style 90 % at 25 MED → 11 h) — use the cosmetic-formulation value</td>
+<td>cosmetic emulsion / film, 25 MED equivalent UVA</td>
+<td>C2</td>
+<td>Sayre 2005, Gaspar 2006</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>Mexenone (BP-10)</strong></td>
+<td><strong>≳ 10 h</strong> (&gt;80 % retention after standard MED protocols by analogy with BP-3)</td>
+<td>by analogue + ESIPT mechanism</td>
+<td>C3</td>
+<td>inferred from c006-mexenone-bp10</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>Dioxybenzone (BP-8)</strong></td>
+<td><strong>≳ 8 h</strong> (&gt;80 % at standard sunscreen MED protocol)</td>
+<td>cosmetic vehicle</td>
+<td>C3</td>
+<td>inferred from c003-dioxybenzone-bp8</td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>Sulisobenzone (BP-4)</strong></td>
+<td><strong>≳ 14 h</strong> (&lt;10–15 % loss over standard solar protocol; pick 90 % at 25 MED)</td>
+<td>aqueous emulsion</td>
+<td>C2</td>
+<td>Sakkas 2003, Vione 2013</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>BP-1 (Benzophenone-1)</strong></td>
+<td><strong>≳ 14 h</strong> (industrial photo-stabiliser; itself photostable; ~90 % at 25 MED by analogy)</td>
+<td>dilute organic solvent</td>
+<td>C3</td>
+<td>inferred c005-benzophenone-1-bp1</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>4-MBC (Enzacamene)</strong></td>
+<td><strong>≳ 16 h</strong> (88 % at 5 MED = 0.33 h → t½ = 0.693·0.33/(−ln 0.88) = 1.79 h Berset; &gt;90 % at 25 MED → 11 h Couteau; pick best-data Couteau =  16 h with conservative 90 %)</td>
+<td>cosmetic emulsion, 25 MED</td>
+<td>C1</td>
+<td>Berset 1996; Couteau 2007</td>
+</tr>
+<tr>
+<td>20</td>
+<td><strong>3-Benzylidene Camphor (3-BC)</strong></td>
+<td><strong>≳ 11 h</strong> (analogue of 4-MBC; PSS reached, photostable thereafter; ~90 % at 25 MED by analogy)</td>
+<td>cosmetic emulsion, 25 MED</td>
+<td>C2</td>
+<td>by analogue per c012; Berset 1996</td>
+</tr>
+<tr>
+<td>21</td>
+<td><strong>Benzylidene Camphor Sulfonic Acid (BCSA / Mexoryl SD)</strong></td>
+<td><strong>≳ 23 h</strong> (&gt;95 % at 25 MED)</td>
+<td>aqueous-alcoholic, 25 MED</td>
+<td>C2</td>
+<td>Couteau 2007 (water-soluble UVB class); Eusolex HMS PIB</td>
+</tr>
+<tr>
+<td>22</td>
+<td><strong>Mexoryl SX (Ecamsule)</strong></td>
+<td><strong>≈ 19 h</strong> (94 % retained / 25 MED = 1.67 h → 0.693·1.67/(−ln 0.94) = 18.7 h)</td>
+<td>xenon-arc, simulated solar</td>
+<td>C1</td>
+<td>Seite 1998, J Photochem Photobiol B 44:69</td>
+</tr>
+<tr>
+<td>23</td>
+<td><strong>Mexoryl XL (Drometrizole Trisiloxane, DTS)</strong></td>
+<td><strong>≈ 76 h</strong> (≥97 % at 50 MED = 3.33 h → t½ = 0.693·3.33/(−ln 0.97) = 75.8 h)</td>
+<td>simulated solar, 50 MED</td>
+<td>C2</td>
+<td>L'Oréal technical / Forestier 2004</td>
+</tr>
+<tr>
+<td>24</td>
+<td><strong>Bemotrizinol (Tinosorb S, BEMT)</strong></td>
+<td><strong>≈ 142 h</strong> (98.4 % retained / 50 MED = 3.33 h → t½ = 0.693·3.33/(−ln 0.984) = 142.7 h)</td>
+<td>xenon arc, simulated solar</td>
+<td>C1</td>
+<td>Chatelain &amp; Gabard 2001; BASF/Ciba</td>
+</tr>
+<tr>
+<td>25</td>
+<td><strong>Bisoctrizole (MBBT, Tinosorb M)</strong></td>
+<td><strong>≳ 60 h</strong> (95–98 % at 25 MED → at 95 % → 32 h; at 98 % → 82 h; pick ~60 h conservatively; &lt;2 % loss / 30 MED  → ≳ 80 h)</td>
+<td>aqueous emulsion / dispersion</td>
+<td>C1/C2</td>
+<td>BASF brochure; Lhiaubet-Vallet 2010</td>
+</tr>
+<tr>
+<td>26</td>
+<td><strong>DHHB (Diethylamino Hydroxybenzoyl Hexyl Benzoate)</strong></td>
+<td><strong>≳ 30 h</strong> (&gt;95–98 % at 25 MED = 1.67 h; &gt;95 % gives 32.5 h)</td>
+<td>ethanol or formulation, 25 MED</td>
+<td>C2</td>
+<td>BASF Uvinul A Plus / MDPI review</td>
+</tr>
+<tr>
+<td>27</td>
+<td><strong>Ethylhexyl Triazone (EHT, Octyl Triazone)</strong></td>
+<td><strong>≳ 50 h</strong> (literature explicitly cites half-life &gt;50 h at 1.4 MED/h continuous solar simulator; &gt;98 % at 25 MED)</td>
+<td>alcoholic / cosmetic emulsion</td>
+<td>C1/C2</td>
+<td>Couteau 2007; Hojerová 2011</td>
+</tr>
+<tr>
+<td>28</td>
+<td><strong>Iscotrizinol (Diethylhexyl Butamido Triazone, DBT)</strong></td>
+<td><strong>≳ 32 h</strong> (&gt;95 % retained at 25 MED)</td>
+<td>cosmetic formulation</td>
+<td>C2</td>
+<td>3V Sigma manufacturer / MDPI review</td>
+</tr>
+<tr>
+<td>29</td>
+<td><strong>Octisalate (EHS)</strong></td>
+<td><strong>≳ 56 h</strong> (&gt;95 % at 25 J/cm² ≈ 25 MED → t½ = 32 h with 95 %; &lt;2 % loss at 1500 kJ/m² → ≳ 145 h; pick mid-50 h)</td>
+<td>ethyl-acetate vehicle</td>
+<td>C1</td>
+<td>Couteau 2007; Stiefel &amp; Schwack 2014</td>
+</tr>
+<tr>
+<td>30</td>
+<td><strong>Homosalate (HMS)</strong></td>
+<td><strong>≳ 32 h</strong> (&gt;90 % at 25 MED)</td>
+<td>ethyl-acetate vehicle</td>
+<td>C1</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>31</td>
+<td><strong>Ensulizole (PBSA)</strong></td>
+<td><strong>≳ 32 h</strong> (&gt;95 % at 25 MED; &lt;2 % at 1500 kJ/m² → ≳ 145 h)</td>
+<td>aqueous emulsion</td>
+<td>C1</td>
+<td>Couteau 2007; Stiefel 2014</td>
+</tr>
+<tr>
+<td>32</td>
+<td><strong>Bisdisulizole disodium (DPDT)</strong></td>
+<td><strong>≳ 23 h</strong> (&gt;95 % at "equivalent dose 1 h sun" — Symrise C2 only)</td>
+<td>aqueous emulsion</td>
+<td>C2</td>
+<td>Symrise (manufacturer); independent peer-reviewed = C5 gap</td>
+</tr>
+<tr>
+<td>33</td>
+<td><strong>Polysilicone-15 (Parsol SLX)</strong></td>
+<td><strong>≳ 32 h</strong> (&gt;95 % at 25 MED)</td>
+<td>cosmetic emulsion</td>
+<td>C1</td>
+<td>SCCS/0024/05; Couteau 2007</td>
+</tr>
+<tr>
+<td>34</td>
+<td><strong>Trolamine Salicylate</strong></td>
+<td><strong>~190 h</strong> (k ≈ 10⁻⁶ s⁻¹ in aq solution → t½ ≈ ln2/10⁻⁶ s = 6.93 × 10⁵ s ≈ 192 h sun-equivalent under simulated solar)</td>
+<td>dilute aqueous</td>
+<td>C2</td>
+<td>c004-trolamine-salicylate</td>
+</tr>
+<tr>
+<td>35</td>
+<td><strong>Mexoryl 400 (MCE)</strong></td>
+<td><strong>C5 — sponsor data only</strong> ("100 % intrinsic stability" — no quantitative dose-retention number); placeholder ≳ 50 h</td>
+<td>aqueous-ethanolic</td>
+<td>C5</td>
+<td>Marionnet 2022 (not extractable); MFR data only</td>
+</tr>
+<tr>
+<td>36</td>
+<td><strong>Tinosorb A2B (TBPT, Phenylene Bis-Diphenyltriazine)</strong></td>
+<td><strong>C5 — primary peer-reviewed data not available</strong>; manufacturer claims "high photostability"</td>
+<td>n/a</td>
+<td>C5</td>
+<td>c005-tinosorb-a2b-tbpt</td>
+</tr>
+<tr>
+<td>37</td>
+<td><strong>Meradimate (MenA, Menthyl Anthranilate)</strong></td>
+<td><strong>≳ 23 h</strong> (&lt;5–10 % loss / 1–2 MED → if 95 % at 1 MED = 0.067 h → t½ = 0.93 h <em>but small dose unreliable</em>; cosmetic formulation &lt;10 % loss after 25 MED → 11 h)</td>
+<td>ester / oil formulation, 25 MED</td>
+<td>C2</td>
+<td>MDPI Photochem 2021 review (cited c002-meradimate)</td>
+</tr>
+<tr>
+<td>38</td>
+<td><strong>PABA / Padimate O (PABA esters)</strong></td>
+<td><strong>≈ 7 h</strong> (Padimate O &gt;85 % at 25 MED)</td>
+<td>cosmetic emulsion</td>
+<td>C1</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>39</td>
+<td><strong>Amiloxate</strong></td>
+<td><strong>C5 — analogue data</strong> (cinnamate-class; expected ~1–6 h on basis of OMC analogue; no primary measurement located)</td>
+<td>inferred</td>
+<td>C3/C5</td>
+<td>c011-amiloxate</td>
+</tr>
+<tr>
+<td>40</td>
+<td><strong>Zinc Oxide (ZnO)</strong></td>
+<td><strong>t½ → ∞ (lattice photostable)</strong> <em>but</em> surface photocatalysis can degrade <em>other</em> filters (see c001-zinc-oxide §3.4)</td>
+<td>wurtzite lattice</td>
+<td>C1</td>
+<td>Schneider &amp; Lim 2019; Cole 2016</td>
+</tr>
+<tr>
+<td>41</td>
+<td><strong>Titanium Dioxide (rutile / anatase)</strong></td>
+<td><strong>t½ → ∞ (lattice photostable)</strong> <em>but</em> anatase is highly photocatalytic; rutile much less</td>
+<td>rutile preferred</td>
+<td>C1</td>
+<td>Schneider &amp; Lim 2019</td>
+</tr>
+<tr>
+<td>42</td>
+<td><strong>Iron Oxides (CI 77491/77492/77499)</strong></td>
+<td><strong>t½ → ∞ (lattice photostable)</strong></td>
+<td>hematite/goethite/magnetite</td>
+<td>C1</td>
+<td>Cornell &amp; Schwertmann 2003</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-visualisation-order-of-magnitude">3. Visualisation — order of magnitude</h2>
+<pre><code>≪ 1 min ───────── 1 h ───── 10 h ───── 100 h ───── ∞
+[AVB+OMC]            [AVB-OC]   [BEMT]   [DTS]    [ZnO/TiO2/Fe2O3]
+[AVB alone]                         [Trolamine sal]
+        [OMC+AVB]
+                       [OMC alone]
+                            [BP-3]
+                                  [4-MBC, MBBT, EHT, EHS, HMS, BCSA, ...]
+                                          [Mexoryl SX]
+</code></pre>
+<p>Quick mental model:
+- <strong>Sub-1-hour-half-life filters</strong>: AVB unstabilised; AVB+OMC catastrophe; pure OMC is borderline. These are the photostab-targets that drove the entire octocrylene + DEHN + bemotrizinol stabiliser industry.
+- <strong>1–10 h filters</strong>: most older cinnamates / benzophenones / camphors when properly stabilised. Adequate for daily-use sunscreens with reapplication every 2 h.
+- <strong>10–100 h filters</strong>: modern broadband filters — Tinosorb S/M, DHHB, EHT, Mexoryl XL/SX, EHS. Effectively photostable on cosmetic timescales.
+- <strong>t½ → ∞</strong>: inorganic lattices. (But the ROS / photocatalysis question is <em>separate</em> from the lattice-photolysis question and is treated in c001-zinc-oxide / c002-titanium-dioxide.)</p>
+<hr>
+<h2 id="4-caveats-read-before-using-these-numbers">4. Caveats — read before using these numbers</h2>
+<ol>
+<li><strong>First-order assumption.</strong> Real degradation is rarely strictly first-order — mixed kinetics from (a) photoisomerisation reaching a PSS plateau (cinnamates, camphors), (b) saturable triplet-quenching pathways, (c) inner-filter / aggregate effects at high concentration. The half-life derivation is exact only over the part of the curve where decay is exponential. For PSS-limited filters (4-MBC, 3-BC, BCSA, OMC) the <em>apparent</em> half-life calculated from "% retained at PSS" is artificially short for the chromophore, because the PSS itself is photo-stable thereafter; we have flagged these.</li>
+<li><strong>MED → hours conversion</strong> is location-dependent. We use Florida-noon-summer ≈ 4 min/MED (FST II). For UK-overcast ≈ 25 min/MED. The <em>ranking</em> doesn't change, but absolute hours scale ~6×.</li>
+<li><strong>UVA-J/cm² → MED → hours</strong> conversions mix UVB-erythemal and UVA-flux scales. Where the literature reports J/cm² UVA (e.g. Tarras-Wahlberg 35 J/cm² ≈ 1 h midday UVA), we have not re-weighted to erythemal.</li>
+<li><strong>"Retention" definition.</strong> Some studies measure UV absorbance; others HPLC concentration; others SPF. These can diverge: a sunscreen can retain SPF after a chromophore loses 30 % because the absorption tail is in excess. We have used HPLC/abs values where quoted.</li>
+<li><strong>Vehicle dependence is large.</strong> AVB alone has t½ ~ 0.8 h in ester oil, ~ 5 h in methanol, days in DMSO (Mturi 2008). Single half-life numbers misrepresent this. Where possible we have picked the "typical cosmetic emulsion" condition.</li>
+<li><strong>OC chromophore vs OC molecule.</strong> Octocrylene's <em>chromophore</em> half-life is large (≳ 23 h) but the <em>molecule</em> undergoes retro-aldol to benzophenone over months at ambient (Downs 2021 Chem Res Toxicol 34:1046). For shelf-life modeling, OC has a chemical t½ measured in months, not hours.</li>
+<li><strong>Inorganic "infinity"</strong> refers only to the bandgap chromophore. Surface photocatalytic chemistry (ROS generation, organic-filter degradation) is real and quantified in c001-zinc-oxide §3.</li>
+</ol>
+<hr>
+<h2 id="5-c5-gaps-explicitly-flagged">5. C5 gaps explicitly flagged</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Why C5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mexoryl 400 (MCE)</strong></td>
+<td>Only sponsor (L'Oréal/BASF) "100 % intrinsic stability" claim available; no peer-reviewed % retained / dose tabulation.</td>
+</tr>
+<tr>
+<td><strong>Tinosorb A2B (TBPT)</strong></td>
+<td>SCCS dossier referenced but quantitative photostability % vs MED not extracted into peer-reviewed primary literature.</td>
+</tr>
+<tr>
+<td><strong>Bisdisulizole disodium (DPDT)</strong></td>
+<td>Symrise data only; no independent peer-reviewed kinetic measurement.</td>
+</tr>
+<tr>
+<td><strong>Amiloxate</strong></td>
+<td>Cinnamate-class analogue; no primary photolysis measurement found. Estimated from OMC by structural analogy.</td>
+</tr>
+<tr>
+<td><strong>Cinoxate</strong></td>
+<td>Same — analogue-only inference (OMC class).</td>
+</tr>
+<tr>
+<td><strong>Mexenone (BP-10)</strong></td>
+<td>Limited commercial use, no dedicated photodegradation paper; inferred from BP-3 mechanism.</td>
+</tr>
+<tr>
+<td><strong>Dioxybenzone (BP-8)</strong></td>
+<td>Same as mexenone — limited primary data, inferred from BP-3.</td>
+</tr>
+</tbody>
+</table>
+<p>Where filters appear in this table with C3/C5 entries, <strong>the absolute number is provisional</strong>; the qualitative bucket (sub-1 h / 1–10 h / 10–100 h / ∞) is reliable.</p>
+<hr>
+<h2 id="6-references-data-points-used-in-the-table">6. References (data points used in the table)</h2>
+<p>These are the ten-or-so studies that supplied the bulk of the half-life-deriving data:</p>
+<ol>
+<li><strong>Bonda CA.</strong> <em>The Photostability of Organic Sunscreen Actives: A Review.</em> In: <em>Sunscreens: Regulations and Commercial Development</em>, Shaath ed., Taylor &amp; Francis (2008).</li>
+<li><strong>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.</strong> <em>Photochem Photobiol</em> 81:452 (2005). doi:10.1562/2004-02-12-RA-083 — AVB+OMC catastrophic incompatibility; AVB+OC+BP3 baseline.</li>
+<li><strong>Tarras-Wahlberg N, Stenhagen G, Larkö O, et al.</strong> <em>J Invest Dermatol</em> 113:547 (1999). doi:10.1046/j.1523-1747.1999.00721.x — OMC ~10 % loss / 35 J/cm² UVA.</li>
+<li><strong>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.</strong> <em>J Pharm Biomed Anal</em> 44:270 (2007). doi:10.1016/j.jpba.2007.01.052 — 18 sunscreen comparison at 25 MED in cosmetic emulsion.</li>
+<li><strong>Hanson KM, Narayanan S, Nichols VM, Bardeen CJ.</strong> <em>Photochem Photobiol Sci</em> 14:1607 (2015). doi:10.1039/C5PP00074B — OMC quantum yield and PSS in solution.</li>
+<li><strong>Mturi GJ, Martincigh BS.</strong> <em>J Photochem Photobiol A: Chem</em> 200:410 (2008). doi:10.1016/j.jphotochem.2008.09.001 — AVB solvent dependence.</li>
+<li><strong>Berset G, Gonzenbach H, et al.</strong> <em>Int J Cosmet Sci</em> 18:167 (1996) — benzylidene-camphor class photostability protocol.</li>
+<li><strong>Chatelain E, Gabard B.</strong> <em>Photochem Photobiol</em> 74:401 (2001) — Tinosorb S photostabilisation of AVB and OMC.</li>
+<li><strong>Seite S, Colige A, Piquemal-Vivenot P, et al.</strong> <em>J Photochem Photobiol B</em> 44:69 (1998) — Mexoryl SX 94 % retention at 25 MED.</li>
+<li><strong>Downs CA, DiNardo JC, Stien D, et al.</strong> <em>Chem Res Toxicol</em> 34:1046 (2021). doi:10.1021/acs.chemrestox.0c00461 — octocrylene retro-aldol to benzophenone (shelf-life caveat).</li>
+<li><strong>Stiefel C, Schwack W.</strong> <em>Int J Cosmet Sci</em> 36:561 (2014) — direct UV/HPLC photostability of EHS, PBSA, HMS.</li>
+<li><strong>Hojerová J, Medovcíková A, Mikula M.</strong> <em>Int J Pharm</em> 408:27 (2011) — EHT half-life &gt;50 h at 1.4 MED/h.</li>
+<li><strong>BASF Tinosorb M technical brochure PRD 30482916</strong> — MBBT &lt;2 % loss at 30 MED (manufacturer; C2).</li>
+<li><strong>Cornell RM, Schwertmann U.</strong> <em>The Iron Oxides</em>, 2nd ed. Wiley-VCH (2003) — iron-oxide lattice photostability.</li>
+<li><strong>Schneider SL, Lim HW.</strong> <em>Photodermatol Photoimmunol Photomed</em> 35:442 (2019). doi:10.1111/phpp.12439 — ZnO/TiO2 review.</li>
+<li><strong>SCCS opinion 0024/05</strong> on Polysilicone-15 — &gt; 95 % photo-recovery at 1 MED.</li>
+</ol>
+<hr>
+<p><em>End of halflives.md.</em></p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/photostab/halflives.md</code> · <a href="halflives.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

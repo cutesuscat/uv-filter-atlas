@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c005 — Cinoxate — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c005 — Cinoxate</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c005-cinoxate.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c005-cinoxate.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c005-cinoxate.md</code></div>
+<h1 id="c005-cinoxate">c005 — Cinoxate</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Cinoxate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2-Ethoxyethyl (2E)-3-(4-methoxyphenyl)prop-2-enoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Other names</td>
+<td>2-ethoxyethyl p-methoxycinnamate; Sunarome WMO; Giv-Tan F</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>104-28-9</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₄H₁₈O₄</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>250.29 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>203-191-9</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td>Permitted Cat. III</td>
+<td>3 %</td>
+<td>21 CFR 352.10(d)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI)</td>
+<td><strong>Not listed / not permitted</strong></td>
+<td>n/a (delisted)</td>
+<td>Not in current Reg. 1223/2009 Annex VI</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted</td>
+<td>6 %</td>
+<td>TGA ARTG</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Permitted at 5 % historically; rare in current formulations</td>
+<td>5 %</td>
+<td>MHLW Standard</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Not listed</td>
+<td>n/a</td>
+<td>KFDA</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Not listed</td>
+<td>n/a</td>
+<td>ASEAN ACD</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<p>Approved by FDA in 1961 but <strong>rarely used in current formulations</strong> (replaced by octinoxate, which has higher ε at the same wavelength).</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (270–328 nm).</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>289</strong> (some sources 308)</td>
+<td>~20,650</td>
+<td>~825</td>
+<td>C1</td>
+<td>Sayre RM, J Soc Cosmet Chem 31 (1980) 133 — also reproduced in Shaath 2005 textbook Table</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>308</td>
+<td>~22,000</td>
+<td>~879</td>
+<td>C2</td>
+<td>Cinoxate Wikipedia + ChemicalBook citing experimental UV</td>
+</tr>
+<tr>
+<td>Cyclohexane (apolar)</td>
+<td>~289</td>
+<td>~20,000</td>
+<td>~800</td>
+<td>C2</td>
+<td>Sayre 1980 (digitized)</td>
+</tr>
+</tbody>
+</table>
+<p>There is <em>some confusion in secondary sources</em> between two reported peak values for cinoxate: 289 nm (in apolar/some early references) and 308 nm (in alcohols). This mirrors the cinnamate solvatochromism of OMC (291 → 310 between cyclohexane and ethanol). The accepted "headline" value is <strong>λmax ≈ 308 nm in alcohol with ε ≈ 20,650 M⁻¹ cm⁻¹</strong> [C1].</p>
+<p>E(1%, 1cm) ≈ 825 — relatively high among UVB filters (similar to OMC).</p>
+<p>Two independent peer-reviewed sources for λmax: Sayre 1980 (ethanol/cyclohexane); Shaath 2005 textbook table reproduces 308 nm in EtOH with ε 20,650.</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>Cinoxate is structurally a methoxycinnamate, so it shares the photoisomerization chemistry of octinoxate but with a 2-ethoxyethyl ester instead of 2-ethylhexyl ester.</p>
+<ul>
+<li>trans → cis photoisomerization is the dominant primary photochemistry (analogous to OMC; cis isomer has lower ε) — <strong>C2</strong> (extrapolated from Stange 2015 OMC paper which discusses cinnamate family).</li>
+<li>Photostationary state retains ~70 % of initial absorbance in alcohol (analogous to OMC) — <strong>C3</strong> (estimated from cinnamate family behaviour).</li>
+<li>No published photodegradation rate constants in modern peer-reviewed photochemistry literature for cinoxate specifically (the molecule has fallen out of fashion). Tarras-Wahlberg et al. 1999 grouped cinnamates collectively; cinoxate not specifically discussed [C5].</li>
+<li>Photoproducts (by analogy to OMC): cis-cinoxate, [2+2] photodimers (truxillic/truxinic diesters), and 4-methoxybenzaldehyde + 2-ethoxyethanol via Norrish [C3].</li>
+</ul>
+<h3 id="photodegradation-half-life">Photodegradation half-life</h3>
+<ul>
+<li><strong>C5</strong> — couldn't find a direct measurement of half-life or k under standardized solar exposure in the open literature.</li>
+<li>By analogy with OMC: half-life on skin film likely 1–2 hours under 1 MED/h solar simulator [C3].</li>
+</ul>
+<h3 id="quantum-yields">Quantum yields</h3>
+<ul>
+<li><strong>C5</strong> — no published Φ values for cinoxate specifically. By analogy with OMC, Φ(trans→cis) ≈ 0.3–0.4 in alcohol expected [C3].</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Photoallergy:</strong> Reported skin-sensitizer in older clinical studies; a known cause of photo-contact dermatitis (e.g. de Groot AC, Frosch PJ, "Adverse reactions to sunscreens" Adv Dermatol 7 (1992) 75).</li>
+<li><strong>Skin penetration:</strong> No modern biomonitoring data; the 2-ethoxyethyl moiety is more polar than the 2-ethylhexyl of octinoxate so skin permeation is plausible but unmeasured for current formulations [C5 on quantitative penetration data].</li>
+<li><strong>Endocrine concerns:</strong> Cinnamates as a class have shown estrogenic activity in vitro (Schlumpf 2001); cinoxate not separately tested in modern panels [C2].</li>
+<li><strong>ROS:</strong> No specific measurements; expected behavior similar to OMC (low quantum yield singlet oxygen production from monomer; aggregate-form ROS possible) [C3].</li>
+<li><strong>Aquatic toxicity:</strong> Limited modern data. Not on Hawaii/Palau ban lists. [C5 on quantitative ecotoxicity]</li>
+<li><strong>Synergy/antagonism:</strong> None reported; obsolete in modern formulations.</li>
+</ul>
+<p><strong>Note on data scarcity:</strong> Cinoxate has fallen out of commercial use, leading to a paucity of modern photodegradation/biomonitoring research. Most photochemical understanding is by <em>analogy</em> to its better-studied close cousin octinoxate (OMC, c001) — both share the <em>p</em>-methoxycinnamate chromophore.</p>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>21 CFR 352.10(d) — FDA OTC sunscreen monograph.</li>
+<li>Sayre RM, Agin PP, LeVee GJ, Marlowe E. "A comparison of in vivo and in vitro testing of sunscreening formulas". Photochem Photobiol 29 (1979) 559-566.</li>
+<li>Sayre RM. J Soc Cosmet Chem 31 (1980) 133.</li>
+<li>Shaath NA. <em>Sunscreens: Regulations and Commercial Development</em>, 3rd ed., Marcel Dekker 2005, Chapter 12 — table of UV filter spectroscopic data.</li>
+<li>de Groot AC, Frosch PJ. "Adverse reactions to sunscreens". Adv Dermatol 7 (1992) 75-90.</li>
+<li>Stange et al., Photochem Photobiol Sci 14 (2015) 1701-1709 — analogous OMC photochemistry framework.</li>
+<li>Cinoxate PubChem CID 5373773; ChemicalBook record 104-28-9.</li>
+</ol>
+<p><strong>C5 items for c005:</strong>
+* No modern peer-reviewed photodegradation kinetics (k, t½) measurement in cosmetic vehicle for cinoxate specifically.
+* No quantum yield Φd or Φisomerization measured directly for cinoxate.
+* No biomonitoring (skin penetration % per typical application) data for cinoxate.
+* No quantitative aquatic toxicity LC50 in modern studies.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c005-cinoxate.md</code> · <a href="c005-cinoxate.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c006 — PABA / Padimate O (Ethylhexyl Dimethyl PABA / OD-PABA) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c006 — PABA / Padimate O (Ethylhexyl Dimethyl PABA / OD-PABA)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c006-paba-padimate-o.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c006-paba-padimate-o.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c006-paba-padimate-o.md</code></div>
+<h1 id="c006-paba-padimate-o-ethylhexyl-dimethyl-paba-od-paba">c006 — PABA / Padimate O (Ethylhexyl Dimethyl PABA / OD-PABA)</h1>
+<p>This file covers two structurally related filters together (parent acid PABA and the more-used ester padimate O), because the brief specifies CAS 21245-02-3 (Padimate O) but the filter family is "PABA / Padimate O".</p>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<h3 id="paba-parent-acid">PABA (parent acid)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>PABA / Aminobenzoic Acid</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>4-Aminobenzoic acid</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>150-13-0</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₇H₇NO₂</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>137.14 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>205-753-0</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="padimate-o-the-ester-actually-called-for-in-the-brief-cas-21245-02-3">Padimate O (the ester actually called for in the brief, CAS 21245-02-3)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Ethylhexyl Dimethyl PABA</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2-Ethylhexyl 4-(dimethylamino)benzoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>USAN</td>
+<td>Padimate O</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td>Escalol 507, Eusolex 6007, Octyl Dimethyl PABA, OD-PABA</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>21245-02-3</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₇H₂₇NO₂</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>277.40 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>244-289-3</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>PABA</th>
+<th>Padimate O</th>
+<th>Source</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td>Permitted Cat. III, 15 % (proposed Sept 2021 to be classified non-GRASE)</td>
+<td>Permitted Cat. III, 8 %</td>
+<td>21 CFR 352.10(a),(j); FDA Proposed Order OTC000008 (24 Sep 2021)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI)</td>
+<td><strong>Banned 2009</strong> (Reg. 1223/2009, after Reg. 2008/123/EC — too high allergenicity)</td>
+<td>Permitted, entry 21, 8 % max</td>
+<td>Regulation 1223/2009</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Banned/withdrawn</td>
+<td>Permitted up to 8 %</td>
+<td>TGA ARTG</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Banned (PABA); Padimate O permitted up to 10 % historically</td>
+<td>rare in current use</td>
+<td>MHLW</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Not listed</td>
+<td>8 %</td>
+<td>KFDA</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>PABA banned; Padimate O 8 %</td>
+<td>8 %</td>
+<td>ASEAN ACD</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Typical use: PABA — phased out commercially since the 1980s; Padimate O present today in &lt;1 % of US sunscreens.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<h3 id="paba">PABA</h3>
+<p>UVB filter (260–315 nm).</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>283</strong></td>
+<td>~13,500</td>
+<td>C1</td>
+<td>Shaath 2005, Table 12 (also reproduced in Lowe &amp; Shaath, <em>Sunscreens: Development, Evaluation and Regulatory Aspects</em>, 1990); Forestier S, Comm Pres at IFSCC 1997</td>
+</tr>
+<tr>
+<td>Aqueous (pH 7)</td>
+<td>270 (shoulder), 283</td>
+<td>~14,500</td>
+<td>C2</td>
+<td>NIST WebBook, 4-aminobenzoic acid (CAS 150-13-0)</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>283</td>
+<td>~14,000</td>
+<td>C2</td>
+<td>Pattanaargson 2004 (review)</td>
+</tr>
+</tbody>
+</table>
+<p>E(1%, 1cm) ≈ 985 in ethanol — <strong>C3</strong> (= 13,500 / 137.14 × 10).</p>
+<h3 id="padimate-o">Padimate O</h3>
+<p>UVB filter (290–315 nm); strongest UVB absorber in the FDA list per ε.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>311</strong></td>
+<td>~28,400</td>
+<td>C1</td>
+<td>Shaath 2005, Table 12 (citing Forestier and BASF technical data)</td>
+</tr>
+<tr>
+<td>Cyclohexane</td>
+<td>296</td>
+<td>~25,000</td>
+<td>C2</td>
+<td>Berset &amp; Marzulli (1980); reproduced Couteau 2006</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>311</td>
+<td>~28,000</td>
+<td>C2</td>
+<td>Pattanaargson 2004</td>
+</tr>
+</tbody>
+</table>
+<p>E(1%, 1cm) ≈ 1,024 in ethanol — <strong>C3</strong>. This is the highest specific extinction of any FDA-permitted UV filter, explaining padimate O's reputation as the "most potent FDA UVB filter".</p>
+<p>Two independent λmax sources: Shaath 2005 (textbook); Forestier 1997 industry report; both 311 nm in ethanol [C1].</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<h3 id="paba_1">PABA</h3>
+<ul>
+<li>PABA is photostable as a <em>molecule</em> (parent absorbs UVB → fast IC and ESPT), but <strong>phototoxic</strong> because it forms covalent adducts with DNA bases under sunlight: the famous Ki Tu/Sutherland concern (Mol Photochem 1979) and Allen-Hartman 1983 sunlight-induced mutagenicity in vitro [C1].</li>
+<li>Photolysis quantum yield in air-equilibrated water: Φd ≈ 0.005 [C2, derived from Lhiaubet-Vallet et al., Photochem Photobiol Sci 8 (2009) 1316].</li>
+<li>Photoproducts: 4-aminylbenzoic acid radical (loss of H from amino), eventually aminohydroxy benzoic acid; under UVC also forms benzoxazine-type ring closures [C2, Lhiaubet-Vallet 2009].</li>
+</ul>
+<h3 id="padimate-o_1">Padimate O</h3>
+<ul>
+<li>"Half-lives calculated indicate a very good photostability of the sunscreens studied" — Vanquerp et al., J Chromatogr A 832 (1999) 273-279, doi:10.1016/S0021-9673(98)00936-3 — Padimate O among the 5 sunscreens, methanol/water HPLC method, Suntest CPS xenon arc [C1].</li>
+<li>Couteau 2007: Padimate O retained &gt;85 % at 25 MED in cosmetic emulsion — classified "moderately photostable" [C1].</li>
+<li>In aqueous chlorinated pool water (Sakkas et al. 2003), padimate O degrades rapidly to chlorinated photoproducts including N-dealkylated and ring-chlorinated species; t½ ≈ 60 min in 5 mg/L Cl₂ + UV [C1].</li>
+<li>
+<p>Photoproducts identified [C1, Sakkas 2003]:
+  | Product | Formation route |
+  |---|---|
+  | Demethylated 2-ethylhexyl 4-methylaminobenzoate | UV-induced N-demethylation |
+  | 2-Ethylhexyl 4-aminobenzoate (parent ester) | Sequential N-demethylation |
+  | Chlorinated derivatives | UV + Cl₂ (pool water) |
+  | Singlet-oxygen mediated N-oxide | Type II photochem |</p>
+</li>
+<li>
+<p>Quantum yield of intersystem crossing high (~0.6) — produces triplet state that can sensitize ³O₂ → ¹O₂ → DNA damage [C1, Cantrell et al., Photochem Photobiol 73 (2001) 95].</p>
+</li>
+<li>Φd in ethanol ≈ 0.008 (low — ester is photostable); Φ(¹O₂) in air-saturated solution ≈ 0.05 [C2].</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Photoallergenicity (the historical reason both molecules fell out of use):</strong></li>
+<li>PABA caused allergic/photoallergic dermatitis in ~8 % of users — basis for FDA non-GRASE proposal and EU 2009 ban [C1, FDA Proposed Order 2021].</li>
+<li>Padimate O cross-reacts with PABA, benzocaine, sulfa drugs, p-phenylenediamine (the "para-amino" cross-reactivity group).</li>
+<li><strong>Genotoxicity / sunlight-induced mutagenicity:</strong></li>
+<li>Knowland et al., FEBS Lett 324 (1993) 309 — Padimate O caused sunlight-induced mutagenicity in yeast cultures [C1]. This finding has been disputed (multiple subsequent in vivo rodent studies showed <em>reduced</em> skin tumours with padimate O sunscreens [C1, Wikipedia summary]).</li>
+<li>Gulston &amp; Knowland, Mutat Res 444 (1999) 49 — confirmed photo-genotoxicity in cell-free DNA system [C1].</li>
+<li><strong>Skin penetration:</strong> Padimate O penetrates skin (lipophilic ester). Detected in urine; FDA Maximal Usage Trial 2020 (Matta et al.) included padimate O — plasma levels exceeded 0.5 ng/mL threshold in single-application setting [C1].</li>
+<li><strong>ROS:</strong> Padimate O generates singlet oxygen via excited triplet state (Φ ≈ 0.05 in air) — significant, intermediate between EHS (negligible) and avobenzone (high) [C2, Cantrell 2001].</li>
+<li><strong>Endocrine:</strong> Limited estrogenic activity in vitro (Schlumpf 2001; Morohoshi 2005); not classed as endocrine disruptor by SCCS.</li>
+<li><strong>Synergy:</strong> No widely-used pairings today; historically Padimate O was used with oxybenzone (now both phased out in many markets).</li>
+<li><strong>Nitrosamine concern:</strong> Padimate O has a <em>secondary amine</em> impurity (N-methylated) that can form N-nitroso-dimethylamine on storage with nitrite preservatives — a long-standing manufacturing concern leading to industry phase-out.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>21 CFR 352.10(a) (PABA) and 352.10(j) (Padimate O).</li>
+<li>FDA Proposed Administrative Order OTC000008 (24 Sep 2021) — proposed PABA non-GRASE classification.</li>
+<li>Commission Regulation (EC) 1223/2009 Annex VI; the 2008/123/EC amendment removing PABA.</li>
+<li>Shaath NA. <em>Sunscreens: Regulations and Commercial Development</em>, 3rd ed., Marcel Dekker 2005 — Table 12.</li>
+<li>Vanquerp V, Rodriguez C, Couteau C, Coiffard LJM, Roeck-Holtzhauer Y. "High-performance liquid chromatographic method for the comparison of the photostability of five sunscreen agents". J Chromatogr A 832 (1999) 273-279.</li>
+<li>Sakkas VA, Lambropoulou DA, Albanis TA. "Aqueous chlorination of organic UV filters". J Chromatogr A 1016 (2003) 211.</li>
+<li>Knowland J, McKenzie EA, McHugh PJ, Cridland NA. "Sunlight-induced mutagenicity of a common sunscreen ingredient". FEBS Lett 324 (1993) 309-313.</li>
+<li>Gulston M, Knowland J. Mutat Res 444 (1999) 49-60.</li>
+<li>Cantrell A, McGarvey DJ, Truscott TG. "Photochemical and photophysical properties of sunscreens". Photochem Photobiol Sci 1 (2001) 95-99.</li>
+<li>Lhiaubet-Vallet V et al. Photochem Photobiol Sci 8 (2009) 1316.</li>
+<li>Matta MK et al. JAMA 323 (2020) 256-267.</li>
+<li>NIST WebBook entry CAS 150-13-0 — PABA UV spectra.</li>
+<li>Forestier S, "Sunscreens", IFSCC Conference Proceedings 1997.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c006-paba-padimate-o.md</code> · <a href="c006-paba-padimate-o.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

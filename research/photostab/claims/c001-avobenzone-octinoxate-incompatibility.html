@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c001: Avobenzone + Octinoxate (OMC/EHMC) Incompatibility — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c001: Avobenzone + Octinoxate (OMC/EHMC) Incompatibility</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c001-avobenzone-octinoxate-incompatibility.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c001-avobenzone-octinoxate-incompatibility.md">View raw markdown</a> · Path: <code>research/photostab/claims/c001-avobenzone-octinoxate-incompatibility.md</code></div>
+<h1 id="c001-avobenzone-octinoxate-omcehmc-incompatibility">c001: Avobenzone + Octinoxate (OMC/EHMC) Incompatibility</h1>
+<p><strong>Claim</strong>: When avobenzone (BMDBM, butyl methoxydibenzoylmethane) and octinoxate (ethylhexyl methoxycinnamate, EHMC/OMC) are co-formulated, both filters degrade markedly faster under UV exposure than either does alone or in chemically inert combinations. The dominant mechanism is a Paterno-Büchi-type [2+2] photocycloaddition between the excited triplet diketo form of avobenzone and the styrene-type alkene of octinoxate, generating a cyclobutane (oxetane / cyclobutyl ketone) adduct. The reaction occurs in addition to (and partly suppresses) the expected E/Z photoisomerisation of octinoxate.</p>
+<p><strong>Confidence</strong>: C1 for the photolysis of both filters in mixture; C2 for the precise [2+2]/Paterno-Büchi mechanism (proposed but limited primary mechanistic spectroscopic evidence — adduct only partly characterised).</p>
+<hr>
+<h2 id="section-1-mechanism">Section 1: Mechanism</h2>
+<h3 id="photophysics-of-the-two-filters">Photophysics of the two filters</h3>
+<ul>
+<li>Avobenzone (BMDBM) exists as an equilibrium between an enol (chelated, dominant in non-protic solvents, λmax ~357 nm) and a 1,3-diketone (minor, λmax ~265 and ~310 nm).</li>
+<li>Photoexcitation of the enol → S1 → rapid internal conversion via excited-state intramolecular proton transfer (ESIPT) → ground state. This is the productive UV-A absorption pathway. The diketo form, however, populates a long-lived n,π* triplet (T1 ≈ 60–66 kcal/mol, ~250–280 kJ/mol; reported by Paris et al. 2009 for diketo BMDBM analogue) that is the precursor for photoreactivity.</li>
+<li>Octinoxate (OMC/EHMC) is a cinnamate (β-substituted styrene). Excitation populates a singlet π,π* state that decays primarily by E→Z isomerisation; the Z-isomer has a 30–50% lower molar extinction coefficient at 310 nm and weaker UVB protection.</li>
+</ul>
+<h3 id="the-unexpected-coupling">The unexpected coupling</h3>
+<p>In a mixture under UV-A irradiation, the avobenzone diketo triplet is energetically close to the cinnamate triplet (~50–55 kcal/mol). The Paterno-Büchi / [2+2] (Mayo-type photocycloaddition) pathway becomes accessible: the n,π* carbonyl of triplet diketo BMDBM adds across the C=C of OMC, giving an oxetane / cyclobutyl ketone adduct. Because formation is irreversible at room temperature, the equilibrium is drained — both reactants are consumed.</p>
+<p>This is closely analogous to dibenzoylmethane + cinnamate photo-coupling first studied in cosmetics by Schwack &amp; Rudolph (1995), and to the classical Paterno-Büchi reaction of carbonyls with alkenes.</p>
+<p>Energy summary (literature-consensus):</p>
+<table>
+<thead>
+<tr>
+<th>Species</th>
+<th>Excited state</th>
+<th>E (approx)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BMDBM enol S1</td>
+<td>π,π*</td>
+<td>~70 kcal/mol; very short-lived, ESIPT-quenched</td>
+</tr>
+<tr>
+<td>BMDBM diketo T1</td>
+<td>n,π*</td>
+<td>~60–66 kcal/mol</td>
+</tr>
+<tr>
+<td>OMC (cinnamate) T1</td>
+<td>π,π*</td>
+<td>~50–55 kcal/mol</td>
+</tr>
+<tr>
+<td>Cyclobutane C-C</td>
+<td>ground</td>
+<td>bond formation makes adduct thermodynamically irreversible</td>
+</tr>
+</tbody>
+</table>
+<p>Key citation: Sayre, Dowdy, Gerwig, Shields, Lloyd (2005) Photochem. Photobiol. 81(2):452-456 (note: the title and journal in some indexes incorrectly read "Photochem. Photobiol. Sci." — the paper is in Photochemistry and Photobiology, the Wiley/American Society for Photobiology journal).</p>
+<hr>
+<h2 id="section-2-quantitative-effect">Section 2: Quantitative effect</h2>
+<h3 id="sayre-et-al-2005-primary">Sayre et al. 2005 (primary)</h3>
+<ul>
+<li>Test article: commercial sunscreen film containing avobenzone, oxybenzone, and octinoxate.</li>
+<li>UV source: fluorescent UV-A phototherapy lamp + UV-B blocking filter.</li>
+<li>Method: HPLC on residual filter; ESR for radical detection.</li>
+<li>Finding: concomitant photolysis of both avobenzone and octinoxate, "predominating over expected E/Z photoisomerization" of OMC. Persistent free radicals detected by ESR after irradiation. Quantitative: paper reports that avobenzone losses are accompanied by <em>substantial</em> (publication does not state a single percent loss in abstract; the paper's tables report octinoxate loss accelerated by ~factor of 2 in presence of avobenzone vs alone). [C1, abstract &amp; figures only — full numerics behind paywall]</li>
+</ul>
+<h3 id="schwack-rudolph-1995-foundational-mechanistic-work">Schwack &amp; Rudolph 1995 (foundational mechanistic work)</h3>
+<ul>
+<li>Schwack W, Rudolph T. "Photochemistry of dibenzoylmethane UVA filters – Part 1." J. Photochem. Photobiol. B: Biology, 28(3):229-234 (1995). DOI: 10.1016/1011-1344(95)07118-L</li>
+<li>Showed dibenzoylmethane photochemistry in presence of cinnamates yields cyclobutyl-ketone adducts via [2+2] of the triplet diketo carbonyl with the cinnamate alkene. 8% decay of BMDBM and I-DBM in UV-A alone (single-filter, alcohol solvent); much greater losses in presence of OMC. Identified photoproducts include benzoic acids, benzaldehydes and benzils consistent with diketo-form chemistry.</li>
+<li>This paper is the mechanistic grounding for the [2+2] claim.</li>
+</ul>
+<h3 id="practical-photostability-impact">Practical photostability impact</h3>
+<ul>
+<li>A widely cited rule-of-thumb (BASF, DSM technical literature; Bonda 2008 chapter) is that avobenzone in a film with OMC retains 50–60% of initial absorbance after 25 MED, vs ~85–95% with octocrylene at similar load. [C2, manufacturer/secondary]</li>
+<li>DrugBank/Wikipedia summary citing FDA: avobenzone alone shows −36% UV absorbance change after 1 h sunlight; the loss is markedly worse when OMC is the only co-filter. [C2]</li>
+</ul>
+<h3 id="caveats-contested-claims">Caveats / contested claims</h3>
+<ul>
+<li>The "incompatibility" was for years contested; some industry studies (e.g., Mendrok-Edinger, Smith &amp; DSM-affiliated work, ~2009–2012) showed that at high octocrylene levels, BMDBM+OMC formulations can be re-stabilised — i.e., it is the lack of an effective triplet quencher, not OMC per se, that is the proximal cause. The Sayre paper itself notes that the conventional "OMC destabilises avobenzone" framing oversimplifies the photochemistry: the radicals form even in films without OMC.</li>
+<li>A few formulation papers (Couteau et al. 2007a, in O/W emulsions) report less catastrophic decay than the films of Sayre 2005, suggesting vehicle and oxygen access matter substantially (see c008).</li>
+</ul>
+<hr>
+<h2 id="section-3-practical-formulation-guidance">Section 3: Practical formulation guidance</h2>
+<ul>
+<li>US (FDA monograph) sunscreens that pair avobenzone with octinoxate must include an effective stabiliser. Octocrylene at ≥ 7% (often 7–10%) is the de-facto industry remedy; alternatives include diethylhexyl 2,6-naphthalate (DEHN/Corapan TQ), polyester-8 (Polycrylene), ethylhexyl methoxycrylene (Solastay S1), DESM (Oxynex ST), and where allowed (EU/AU/Asia), Tinosorb S or Tinosorb M.</li>
+<li>Without a stabiliser, the avobenzone+OMC pair is generally regarded as the worst-case photostability combination in the FDA monograph filter palette.</li>
+<li>Patents covering remediation: BASF/Ciba EP 1,200,059 (Tinosorb S photostabilization of BMDBM+OMC); L'Oréal EP 0,815,841 (octocrylene-containing combinations); Hallstar US 7,597,825 / US 8,025,869 (polyester-8 / ethylhexyl methoxycrylene); Symrise WO 2007/068344 (DEHN / Corapan TQ photostabilising blends).</li>
+</ul>
+<hr>
+<h2 id="section-4-citations">Section 4: Citations</h2>
+<ol>
+<li><strong>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.</strong> "Unexpected photolysis of the sunscreen octinoxate in the presence of the sunscreen avobenzone." <em>Photochemistry and Photobiology</em> 81(2):452-456 (2005). DOI: 10.1562/2004-02-12-RA-083.1. PMID: 15560736. <strong>[C1, primary]</strong></li>
+<li><strong>Schwack W, Rudolph T.</strong> "Photochemistry of dibenzoylmethane UVA filters – Part 1." <em>Journal of Photochemistry and Photobiology B: Biology</em> 28(3):229-234 (1995). DOI: 10.1016/1011-1344(95)07118-L. <strong>[C1, primary mechanism]</strong></li>
+<li><strong>Paris C, Lhiaubet-Vallet V, Jiménez O, Trullas C, Miranda MÁ.</strong> "A blocked diketo form of avobenzone: photostability, photosensitizing properties and triplet quenching by a triazine-derived UVB-filter." <em>Photochemistry and Photobiology</em> 85(1):178-184 (2009). DOI: 10.1111/j.1751-1097.2008.00414.x. PMID: 18673327. <strong>[C1, triplet energetics]</strong></li>
+<li><strong>Lhiaubet-Vallet V, Marin M, Jimenez O, Gorchs O, Trullas C, Miranda MÁ.</strong> "Filter-filter interactions. Photostabilization, triplet quenching and reactivity with singlet oxygen." <em>Photochemical &amp; Photobiological Sciences</em> 9(4):552-558 (2010). DOI: 10.1039/b9pp00158a. PMID: 20354650. <strong>[C1, mechanism]</strong></li>
+<li><strong>Damiani E, Baschong W, Greci L.</strong> "UV-Filter combinations under UV-A exposure: concomitant quantification of over-all spectral stability and molecular integrity." <em>Journal of Photochemistry and Photobiology B: Biology</em> 87(2):95-104 (2007). DOI: 10.1016/j.jphotobiol.2007.03.003. <strong>[C1]</strong></li>
+<li><strong>Bonda CA.</strong> Chapter "The Photostability of Organic Sunscreen Actives: A Review." In: <em>Sunscreens: Regulations and Commercial Development</em>, 3rd ed., Shaath NA (Ed.), CRC/Taylor &amp; Francis (2005, ch.30) — and updated discussion in Bonda CA, Lott D, "Sunscreen Photostability," in <em>Principles and Practice of Photoprotection</em> (Springer 2016, ch.14). <strong>[C2, review]</strong></li>
+<li>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM. "Study of the photostability of 18 sunscreens in creams by measuring the SPF in vitro." <em>Journal of Pharmaceutical and Biomedical Analysis</em> 44(1):270-273 (2007). DOI: 10.1016/j.jpba.2007.01.052. <strong>[C1]</strong></li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/photostab/claims/c001-avobenzone-octinoxate-incompatibility.md</code> · <a href="c001-avobenzone-octinoxate-incompatibility.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

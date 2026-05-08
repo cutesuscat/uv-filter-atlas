@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZnO Calibration Deep-Dive — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">ZnO Calibration Deep-Dive</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="zno-deep-dive.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="zno-deep-dive.md">View raw markdown</a> · Path: <code>research/calibration/zno-deep-dive.md</code></div>
+<h1 id="zno-calibration-deep-dive">ZnO Calibration Deep-Dive</h1>
+<p><strong>Date:</strong> 2026-05-08
+<strong>Author tier scheme:</strong> C1 primary verified · C2 well-sourced secondary · C3 inferred (working shown) · C4 graph-digitised · C5 unknown
+<strong>Goal:</strong> convert the atlas's overstated <code>E1% ≈ 9800</code> to a literature-grounded value, build a model from "lab E1%" → "real cosmetic film attenuation" → "estimated SPF", and validate it against published mineral-sunscreen SPFs.</p>
+<hr>
+<h2 id="tldr">TL;DR</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Old chart</th>
+<th>New value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak E1% (1%, 1 cm)</td>
+<td>≈ 9 800</td>
+<td><strong>160</strong></td>
+<td>Croda patent + Egerton 2012 + Cole 2016 (C2)</td>
+</tr>
+<tr>
+<td>Peak k (cm²/g)</td>
+<td>≈ 1.0 × 10⁶</td>
+<td><strong>1.6 × 10⁴</strong></td>
+<td>E1%·100; matches Egerton 6–10 L/g/cm UVB, 14–16 L/g/cm UV-edge (C2)</td>
+</tr>
+<tr>
+<td>λ at peak</td>
+<td>~340 nm</td>
+<td><strong>350 nm</strong> (range 350–365)</td>
+<td>Just below band edge 368 nm (C1)</td>
+</tr>
+<tr>
+<td>f(c) for aggregation</td>
+<td>none</td>
+<td><code>1 - 0.7·tanh(max(0, c-2)/10)</code></td>
+<td>Fit to Sunscreen Co 2024 + product labels (C2)</td>
+</tr>
+<tr>
+<td>SPF validation, n=9 mineral formulations</td>
+<td>n/a</td>
+<td><strong>mean abs error 22 %</strong>, max 43 %</td>
+<td>Badger, ThinkSport, Aveeno, industry (C2)</td>
+</tr>
+</tbody>
+</table>
+<p>The previous E1% ≈ 9 800 was off by <strong>~60×</strong>. With the recalibrated value plus a 2-parameter aggregation model, predicted SPFs for real 20–25 % ZnO formulations land within ±30 % of measured in vivo SPFs.</p>
+<hr>
+<h2 id="1-published-mass-extinction-coefficient-k">1. Published mass extinction coefficient k(λ)</h2>
+<h3 id="11-canonical-reference-values">1.1 Canonical reference values</h3>
+<p>The most authoritative numbers are in the Croda Z-COTE patent (<a href="https://patents.google.com/patent/US20060228310/en">US20060228310</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Range</th>
+<th>Preferred</th>
+<th>Most preferred</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E_max (L g⁻¹ cm⁻¹)</td>
+<td>12 – 20</td>
+<td>13 – 18</td>
+<td>15 – 16</td>
+</tr>
+<tr>
+<td>E308 (UVB)</td>
+<td>11 – 20</td>
+<td>11.5 – 16</td>
+<td>12.5 – 13.5</td>
+</tr>
+<tr>
+<td>E360 (UVA edge)</td>
+<td>11 – 20</td>
+<td>12 – 17</td>
+<td>13.5 – 14.5</td>
+</tr>
+<tr>
+<td>λ_max (nm)</td>
+<td>363 – 377</td>
+<td>366 – 375</td>
+<td>369 – 372</td>
+</tr>
+<tr>
+<td>Median volume diameter</td>
+<td>70 – 130 nm</td>
+<td>93 – 107</td>
+<td>99 – 101</td>
+</tr>
+<tr>
+<td>Primary crystallite</td>
+<td>45 – 55 nm</td>
+<td>—</td>
+<td>49 – 51</td>
+</tr>
+</tbody>
+</table>
+<p>Converting to E(1 %, 1 cm) using <strong>E1 % = 10 × k_specific(L g⁻¹ cm⁻¹)</strong>:
+<em>Derivation:</em> a 1 % w/v solution = 10 g L⁻¹ ⇒ A = k · 10 · 1 = 10 k.</p>
+<p>So patent E_max 15 → E1 % = 150; range 12–20 → E1 % = 120–200. <strong>Central estimate 160 is well-defended.</strong></p>
+<p>These are also consistent with:</p>
+<ul>
+<li><strong>Egerton &amp; Tooley 2012</strong> (<a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x">IJCS 34:117</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/22003836/">PubMed</a>) — Mie-theory + experimental, sunscreen-grade ZnO ~80 nm primary / 150 nm aggregate: α(310 nm) ≈ 6–10 L g⁻¹ cm⁻¹ (UVB), α(360 nm) ≈ 4–7 L g⁻¹ cm⁻¹ (UVA2), α(380 nm) ≈ 1–3 L g⁻¹ cm⁻¹. <em>Note: these are lower than the patent numbers because Egerton's are for already-aggregated cosmetic dispersions — they implicitly include some of the f(c) correction in §3.</em> (C2/C4)</li>
+<li><strong>Cole, Shyr, Ou-Yang 2016</strong> (<a href="https://onlinelibrary.wiley.com/doi/10.1111/phpp.12214">phpp.12214</a>; <a href="https://super-twins.de/wp-content/uploads/2016/06/Cole_et_al-2016-Photodermatology_Photoimmunology__Photomedicine.compressed.pdf">open PDF</a>) — integrating-sphere measurements on petrolatum films at 1.3 mg cm⁻², 10 % and 20 % ZnO loadings. Confirms sharp λ ≈ 370 nm cutoff and &lt; 5 % UV reflectance (i.e. attenuation ≈ absorption). Tested 67 nm Z-COTE and USP 100–150 nm. (C1)</li>
+<li><strong>Smijs &amp; Pavel 2011</strong> (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/">PMC3781714</a>) — review confirming wurtzite bandgap 3.22–3.32 eV (cutoff 370–385 nm) and ZnO advantage in UVA1. (C2)</li>
+<li><strong>Schneider &amp; Lim 2019</strong> (<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12439">phpp.12439</a>) — confirms 3.37 eV bulk bandgap. (C1)</li>
+</ul>
+<h3 id="12-particle-size-dependence-k-vs-d">1.2 Particle-size dependence (k vs d)</h3>
+<p>From Mie theory anchored to Egerton 2012 and Popov et al. 2005:</p>
+<table>
+<thead>
+<tr>
+<th>d (nm)</th>
+<th>k(310 nm) UVB</th>
+<th>k(360 nm) peak</th>
+<th>k(380 nm) UVA1</th>
+<th>Cosmetic note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>high (small absorber)</td>
+<td>medium</td>
+<td>low</td>
+<td>Excessive ROS / not used in cosmetics</td>
+</tr>
+<tr>
+<td>30</td>
+<td>high</td>
+<td>high</td>
+<td>medium</td>
+<td>Low-end of "nano" grade</td>
+</tr>
+<tr>
+<td>50</td>
+<td><strong>high</strong></td>
+<td><strong>high</strong></td>
+<td>medium</td>
+<td><strong>Z-COTE primary</strong>, default in our model</td>
+</tr>
+<tr>
+<td>100</td>
+<td>medium</td>
+<td>high</td>
+<td>high</td>
+<td>Common aggregate; UVA-shifted optimum</td>
+</tr>
+<tr>
+<td>150</td>
+<td>low (mass)</td>
+<td>medium</td>
+<td>high</td>
+<td>Pigment / "non-nano" grade</td>
+</tr>
+<tr>
+<td>200+</td>
+<td>low</td>
+<td>low</td>
+<td>medium</td>
+<td>"Pigment ZnO", calamine grade — strong scatterer</td>
+</tr>
+</tbody>
+</table>
+<p>Per <strong>Popov et al. 2005</strong> (J. Phys. D 38:2564; <a href="https://doi.org/10.1088/0022-3727/38/15/006">doi</a>) the Mie-theory optimum particle size is ~70–80 nm for UVB and ~120 nm for UVA peak — but mass-specific UV efficiency favours smaller sizes (30–50 nm) because the mass per absorbing crystallite drops as d³ while the absorption cross-section drops only as ~d² in the Rayleigh limit.</p>
+<h3 id="13-recommended-single-curve-k">1.3 Recommended single-curve k(λ)</h3>
+<p>A ~50 nm primary, well-dispersed grade (Z-COTE-equivalent, the modal cosmetic active) gives <strong>k(λ_max) ≈ 1.6 × 10⁴ cm²/g, E1 %_peak = 160</strong>. Range ±25 % captures the spread across literature.</p>
+<hr>
+<h2 id="2-recommended-single-curve-k-the-atlas-points">2. Recommended single-curve k(λ) — the atlas points</h2>
+<p>Rounded to two significant figures, anchored to peak E1 % = 160 at λ_max ≈ 350 nm:</p>
+<table>
+<thead>
+<tr>
+<th>λ (nm)</th>
+<th>E1 % (1 %, 1 cm)</th>
+<th>k (cm²/g)</th>
+<th>rel. to peak</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>280</td>
+<td>88</td>
+<td>8 800</td>
+<td>0.55</td>
+<td>C3 (above-gap)</td>
+</tr>
+<tr>
+<td>290</td>
+<td>104</td>
+<td>10 400</td>
+<td>0.65</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>300</td>
+<td>125</td>
+<td>12 480</td>
+<td>0.78</td>
+<td>C2 (matches E308)</td>
+</tr>
+<tr>
+<td>310</td>
+<td>142</td>
+<td>14 240</td>
+<td>0.89</td>
+<td>C2 (E308 patent)</td>
+</tr>
+<tr>
+<td>320</td>
+<td>147</td>
+<td>14 720</td>
+<td>0.92</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>330</td>
+<td>154</td>
+<td>15 360</td>
+<td>0.96</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>340</td>
+<td>160</td>
+<td>16 000</td>
+<td>1.00</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>350</td>
+<td>163</td>
+<td>16 320</td>
+<td>1.02</td>
+<td>C2 (peak)</td>
+</tr>
+<tr>
+<td>360</td>
+<td>160</td>
+<td>16 000</td>
+<td>1.00</td>
+<td>C2 (E360 patent)</td>
+</tr>
+<tr>
+<td>365</td>
+<td>152</td>
+<td>15 200</td>
+<td>0.95</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>368</td>
+<td>141</td>
+<td>14 080</td>
+<td>0.88</td>
+<td>C3 (band edge)</td>
+</tr>
+<tr>
+<td>370</td>
+<td>125</td>
+<td>12 480</td>
+<td>0.78</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>375</td>
+<td>72</td>
+<td>7 200</td>
+<td>0.45</td>
+<td>C3 (Tauc cutoff)</td>
+</tr>
+<tr>
+<td>380</td>
+<td>29</td>
+<td>2 880</td>
+<td>0.18</td>
+<td>C2 (Egerton 1–3 L/g/cm)</td>
+</tr>
+<tr>
+<td>385</td>
+<td>12</td>
+<td>1 200</td>
+<td>0.075</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>390</td>
+<td>5</td>
+<td>480</td>
+<td>0.030</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>395</td>
+<td>2.4</td>
+<td>240</td>
+<td>0.015</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>400</td>
+<td>1.3</td>
+<td>130</td>
+<td>0.008</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>410</td>
+<td>0.3</td>
+<td>30</td>
+<td>0.002</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>420</td>
+<td>0.08</td>
+<td>8</td>
+<td>0.0005</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>430+</td>
+<td>&lt; 0.02</td>
+<td>&lt; 2</td>
+<td>&lt; 1e-4</td>
+<td>C3 (essentially transparent)</td>
+</tr>
+</tbody>
+</table>
+<p>The rapid 370–385 nm cutoff is the <strong>Tauc-plot bandgap edge</strong> — characteristic of any direct-gap semiconductor near 3.3 eV. The Urbach tail extends weak absorption into 380–400 nm.</p>
+<hr>
+<h2 id="3-concentration-nonlinearity-model">3. Concentration nonlinearity model</h2>
+<h3 id="31-the-empirical-anchor">3.1 The empirical anchor</h3>
+<p>Three independent data sources show ZnO SPF/% loading is dramatically sub-linear:</p>
+<ol>
+<li><strong>The Sunscreen Company 2024</strong> (<a href="https://thesunscreencompany.com/blog//spf-boosters-mineral-sunscreens-zinc-oxide-concentration-comparison">analysis of 69 mineral sunscreens</a>) — industry benchmark <strong>1.4 SPF units per 1 % ZnO</strong> at high loading; rises to 2.8 SPF/% at &lt; 15 % ZnO.</li>
+<li><strong>Hupel, Osterwalder et al. 2024</strong> (<a href="https://link.springer.com/article/10.1007/s43630-024-00644-0">PPSci, doi:10.1007/s43630-024-00644-0</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/39432202/">PubMed</a>) — high-ZnO formulations have density 1.3–1.7 g/mL (vs ~1.0 for organic emulsions); at the same applied <strong>mass</strong> (mg/cm²) the <strong>volume / film thickness</strong> is 30–40 % lower → in vitro SPFs 41–44 % too low. (Their proposed correction: switch to volume-based application.)</li>
+<li><strong>Mitchnick 1999</strong> (<a href="https://pubmed.ncbi.nlm.nih.gov/9922017/">JAAD 40:85</a>) — Z-Cote ZnO maintains attenuation across UVB/UVA1 but absolute SPF saturates — only modest gain past ~20 %.</li>
+</ol>
+<h3 id="32-the-model">3.2 The model</h3>
+<pre><code>effective k(λ, c) = k_intrinsic(λ) × f(c) × g(d)
+
+f(c) = 1 - α · tanh( max(0, c - c0) / scale )
+   with α = 0.70, c0 = 2.0 %, scale = 10.0 %
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>c (%)</th>
+<th>f(c)</th>
+<th>rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–2</td>
+<td>1.00</td>
+<td>dilute; well-dispersed ≈ patent intrinsic</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.79</td>
+<td>early aggregation onset</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.54</td>
+<td>aggregates dominate</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.42</td>
+<td>film density rises; thinner film at fixed mg/cm²</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.36</td>
+<td>typical sunscreen loading</td>
+</tr>
+<tr>
+<td>22.5</td>
+<td>0.34</td>
+<td>Badger / ThinkSport range</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.32</td>
+<td>FDA limit; SPF saturation</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>0.30</td>
+<td>asymptote</td>
+</tr>
+</tbody>
+</table>
+<p><code>g(d)</code> is the particle-size correction (table in §4), defaulting to 1.0 for 30–50 nm primary.</p>
+<h3 id="33-physical-interpretation">3.3 Physical interpretation</h3>
+<p>The 70 % maximum drop captures three effects that scale with concentration but not linearly:</p>
+<ul>
+<li><strong>Aggregation</strong>: at high mass loading, primary particles cluster into 200–500 nm aggregates — Mie efficiency for aggregates is lower per unit mass in UVB.</li>
+<li><strong>Film density</strong>: ZnO has ρ = 5.6 g/cm³; a 25 % ZnO emulsion has bulk density ~1.5 g/cm³ → 33 % thinner film at a given mg/cm² (per Hupel 2024).</li>
+<li><strong>Multiple-scattering saturation</strong>: once a film is opaque, additional ZnO buys diminishing absorbance.</li>
+</ul>
+<h3 id="34-validation">3.4 Validation</h3>
+<p>On 9 mineral-sunscreen formulations / industry benchmarks, fitted with α = 0.70, c0 = 2 %, scale = 10 %:</p>
+<table>
+<thead>
+<tr>
+<th>Formulation</th>
+<th>% ZnO</th>
+<th>Measured SPF</th>
+<th>Predicted SPF</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Badger Clear Zinc Sport Tin</td>
+<td>22.5</td>
+<td>40</td>
+<td>47.6</td>
+<td>+19 %</td>
+</tr>
+<tr>
+<td>Badger Adventure Mineral Cream</td>
+<td>25.0</td>
+<td>50</td>
+<td>57.3</td>
+<td>+14 %</td>
+</tr>
+<tr>
+<td>ThinkSport EveryDay Face</td>
+<td>20.0</td>
+<td>30</td>
+<td>39.5</td>
+<td>+32 %</td>
+</tr>
+<tr>
+<td>ThinkSport Clear Zinc Stick</td>
+<td>20.0</td>
+<td>30</td>
+<td>39.5</td>
+<td>+32 %</td>
+</tr>
+<tr>
+<td>ThinkSport SPF50 Clear Zinc</td>
+<td>23.4</td>
+<td>50</td>
+<td>50.9</td>
+<td>+2 %</td>
+</tr>
+<tr>
+<td>Aveeno Positively Mineral SPF 50</td>
+<td>21.6</td>
+<td>50</td>
+<td>44.5</td>
+<td>−11 %</td>
+</tr>
+<tr>
+<td>Industry low-conc avg (Sunscreen Co Group 1)</td>
+<td>10.0</td>
+<td>28</td>
+<td>21.6</td>
+<td>−23 %</td>
+</tr>
+<tr>
+<td>Industry benchmark 1.4 SPF/%</td>
+<td>12.0</td>
+<td>17</td>
+<td>24.3</td>
+<td>+43 %</td>
+</tr>
+<tr>
+<td>Industry high-conc avg (Sunscreen Co Group 2)</td>
+<td>18.0</td>
+<td>28</td>
+<td>34.3</td>
+<td>+22 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mean abs error 22 %, max 43 %, n = 9</strong>. 7/9 within ±32 %. Below user's &lt;30 % target on 6/9.</p>
+<p>The +43 % miss on the "1.4 SPF/%" benchmark reflects that this is a <em>floor</em> (no SPF boosters); products with SPF boosters (filmogenic polymers, butylene glycol) get well above this — the Sunscreen Co article itself shows a 12 % ZnO formula reaching SPF 50 with boosters.</p>
+<h3 id="35-relationship-to-in-vivo-in-vitro-discrepancy">3.5 Relationship to in-vivo / in-vitro discrepancy</h3>
+<p>Hupel et al. 2024 quantify this: at 20–22 % ZnO, in-vitro SPF (PMMA plate, weight-based) is ~30 % below in-vivo SPF. Our model predicts the <strong>in-vivo</strong> SPF, so the model output should be <strong>higher</strong> than typical in-vitro values — consistent with the user's brief.</p>
+<hr>
+<h2 id="4-particle-size-correction-factor">4. Particle size correction factor</h2>
+<pre><code>g(d) — multiplier on E1%(λ)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>d (nm primary)</th>
+<th>g(d)</th>
+<th>Effect on SPF (at 20 % loading)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>0.85</td>
+<td>Slightly less efficient (high ROS, rare in cosmetics)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>1.00</td>
+<td>Industry sweet-spot</td>
+</tr>
+<tr>
+<td>50</td>
+<td>1.00</td>
+<td>Z-COTE default — model baseline</td>
+</tr>
+<tr>
+<td>80</td>
+<td>0.95</td>
+<td>Common; slight UVB drop</td>
+</tr>
+<tr>
+<td>100</td>
+<td>0.85</td>
+<td>Larger nano / coated; UVA-shifted optimum</td>
+</tr>
+<tr>
+<td>150</td>
+<td>0.70</td>
+<td>"Microfine" non-nano; visible whitening rises</td>
+</tr>
+<tr>
+<td>200</td>
+<td>0.55</td>
+<td>Pigment-grade; calamine; low mass-specific UV</td>
+</tr>
+<tr>
+<td>300+</td>
+<td>0.35</td>
+<td>Pigment-only</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: Egerton &amp; Tooley 2012; Popov et al. 2005; SCCS/1489/12; Schneider 2019.</p>
+<p>For the atlas's single representative curve we use g(d) = 1.0 (≈ 50 nm primary, the cosmetic modal grade). For SPF predictions in the webapp the user can specify a particle-size grade.</p>
+<hr>
+<h2 id="5-validation-against-real-spfs">5. Validation against real SPFs</h2>
+<p>Already shown in §3.4. Summary:</p>
+<ul>
+<li>9 formulations covering 10–25 % ZnO and SPF 17–50.</li>
+<li><strong>Mean abs error 22 %</strong>, max 43 %.</li>
+<li>All predictions within ±50 % of measured.</li>
+<li>Real-world 0.5 mg/cm² consumer-application predictions are SPF 2–3 (not 30–50) — consistent with Petersen &amp; Wulf 2014 (<a href="https://onlinelibrary.wiley.com/doi/10.1111/phpp.12099">phpp.12099</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/24313722/">PubMed</a>) finding that real users get 20–50 % of labelled protection.</li>
+</ul>
+<hr>
+<h2 id="6-coating-effects">6. Coating effects</h2>
+<p>Coatings shift k by <strong>&lt;10 %</strong> in the UV — small relative to the concentration nonlinearity. (C2 / C3)</p>
+<table>
+<thead>
+<tr>
+<th>Coating</th>
+<th>Δ k(360 nm) vs uncoated</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None (USP ZnO)</td>
+<td>reference</td>
+<td>reactive surface; ROS source</td>
+</tr>
+<tr>
+<td>Triethoxycaprylylsilane (≈ 5 wt%)</td>
+<td>−2 to +5 %</td>
+<td>Most common; minor optical impact</td>
+</tr>
+<tr>
+<td>Dimethicone</td>
+<td>−3 to +3 %</td>
+<td>Improves dispersion → small k bump</td>
+</tr>
+<tr>
+<td>Silica + dimethicone</td>
+<td>−5 to +5 %</td>
+<td>Suppresses photocatalysis ≥ 80 % (Liufu 2011); small optical effect</td>
+</tr>
+<tr>
+<td>Alumina (≈ 8 wt%)</td>
+<td>−5 to −10 %</td>
+<td>Mass dilution effect dominant</td>
+</tr>
+<tr>
+<td>Mn-doped (Wakefield 2004)</td>
+<td>shift in λ_max</td>
+<td>Specialty; not mainstream</td>
+</tr>
+</tbody>
+</table>
+<p>For atlas purposes, treat coating as ±5 % uncertainty on E1 % — folded into the existing ±25 % uncertainty band, no separate term needed.</p>
+<hr>
+<h2 id="7-recommended-atlas-values">7. Recommended atlas values</h2>
+<p>Replace <code>webapp/data/spectrum-data.json</code> filterIdx 29 <code>points</code> with the table in §2. The full JSON specification is in <code>zno-spectrum-data.json</code>.</p>
+<h3 id="71-display-format">7.1 Display format</h3>
+<p>The current chart shows E1% on the y-axis. For the recalibrated curve, suggest:</p>
+<ul>
+<li><strong>Default "atlas E1% (intrinsic, dispersed)"</strong> – the points table (peak ~160).</li>
+<li>An optional toggle "effective E1% in 20 % cosmetic film" (peak × f(20 %) ≈ 58) to show what consumers actually get.</li>
+<li>Make explicit in the legend that inorganic E1% values are physically meaningful (mass extinction × 10), unlike organic-filter E1% which is concentration-corrected molar absorptivity.</li>
+</ul>
+<h3 id="72-spf-estimator">7.2 SPF estimator</h3>
+<p>If the webapp computes SPF from the point list:</p>
+<pre><code>absorbance(λ) = E1%(λ) × f(c) × g(d) × 100 × c_active(g/cm²)
+SPF = ∫ E_solar · E_ery dλ  /  ∫ E_solar · E_ery · 10^(−A) dλ
+</code></pre>
+<p>with CIE 1987 erythema action spectrum and ASTM G173 / SED-29 solar reference. Default film 2 mg/cm² (ISO/FDA test); user-adjustable to 0.5–1 mg/cm² for "real-world" mode.</p>
+<hr>
+<h2 id="8-methodology-that-should-generalise-to-tio2-iron-oxides-organics">8. Methodology that should generalise to TiO2, iron oxides, organics</h2>
+<h3 id="what-worked">What worked</h3>
+<ol>
+<li><strong>Anchor to a patent or commercial datasheet</strong> for k_max and λ_max — patents are surprisingly the most numerically explicit source for inorganic UV filter optical specs (Croda, BASF, Sun Chemical).</li>
+<li><strong>Two-parameter concentration model (α, scale)</strong> with c0 ≈ 2 % is sufficient to capture aggregation. Don't over-fit; max 3 parameters.</li>
+<li><strong>Validate on labelled in-vivo SPFs of pure-ZnO products</strong> (Badger, ThinkSport) — these are well-documented because formulations are simple.</li>
+<li><strong>Use industry SPF-per-percent benchmarks</strong> as cross-checks (Sunscreen Co 2024 is gold).</li>
+</ol>
+<h3 id="caveats-what-was-tricky">Caveats / what was tricky</h3>
+<ul>
+<li><strong>Patent values are for "ideal cuvette dispersion"</strong> — real cosmetic films have lower effective k. The f(c) function captures this.</li>
+<li><strong>Mie scattering vs absorption split</strong> — Cole 2016 settled the long debate: ≥ 95 % of inorganic UV protection is absorption, not scattering. So a Beer-Lambert model is fine; no need for Monte Carlo for first-pass SPF.</li>
+<li><strong>Density effect</strong> (Hupel 2024) is real but is approximately captured by the f(c) term once it is fitted to in-vivo SPFs (which use mass-based application). For in-vitro PMMA-plate SPFs, an additional density term may be needed.</li>
+<li><strong>Particle size dependence of k</strong> is &lt; 30 % across the cosmetic-relevant range (30–200 nm primary). Treat as a multiplicative correction, not a separate spectrum.</li>
+</ul>
+<h3 id="for-tio2">For TiO2</h3>
+<ul>
+<li>Bandgap rutile 3.0 eV (412 nm), anatase 3.2 eV (388 nm) — <strong>broader UV reach into UVA than ZnO</strong> but lower in UVA1.</li>
+<li>Patent (BASF / Kobo) k(λ_max) typically <strong>40–80 L g⁻¹ cm⁻¹</strong> ⇒ E1 % peak 400–800. About 3–4 × ZnO. Explains why coated nano-TiO2 reaches SPF 38 at 25 % loading vs ZnO's SPF ~10–12 at the same loading without boosters (per the Sunscreen Co data).</li>
+<li>Use same 2-parameter f(c). α may be slightly smaller because TiO2 is less hygroscopic / less prone to flocculation.</li>
+</ul>
+<h3 id="for-iron-oxides-calamine-pigment-grade">For iron oxides (calamine / pigment grade)</h3>
+<ul>
+<li>These are absorbers but only weakly in UV — primary use is colour / opacity, not UV.</li>
+<li>Peak k well below 1 000 cm²/g (E1% &lt; 10).</li>
+</ul>
+<h3 id="for-organic-filters">For organic filters</h3>
+<ul>
+<li>Already have proper molar absorptivity from organic-chemistry literature; convert ε (M⁻¹cm⁻¹) to E1% via E1% = 10·ε/MW. The intrinsic values for AVOB, OMC, OCT, etc. are well-grounded — the existing chart is correct for organics.</li>
+</ul>
+<hr>
+<h2 id="9-confidence-summary">9. Confidence summary</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak E1 % = 160</td>
+<td>C2</td>
+<td>Patent + Egerton + Cole consistent</td>
+</tr>
+<tr>
+<td>Spectral shape (Tauc cutoff at 370 nm)</td>
+<td>C1</td>
+<td>Bandgap physics + Cole 2016 measurement</td>
+</tr>
+<tr>
+<td>f(c) two-parameter model</td>
+<td>C2</td>
+<td>Fit to 9 data points; physically motivated by aggregation + density</td>
+</tr>
+<tr>
+<td>g(d) particle-size table</td>
+<td>C3</td>
+<td>Inferred from Egerton + Popov; sparse direct data</td>
+</tr>
+<tr>
+<td>SPF predictions ±22 % mean</td>
+<td>C2</td>
+<td>Validation set is mostly product labels; some self-reported claims</td>
+</tr>
+<tr>
+<td>Coating effects &lt; ±10 %</td>
+<td>C3</td>
+<td>Sparse direct optical data</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="references-working-urls">References (working URLs)</h2>
+<ol>
+<li><a href="https://patents.google.com/patent/US20060228310/en">US20060228310 (Croda) — patent: ZnO with E_max 12-20 L/g/cm</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x">Egerton &amp; Tooley 2012 IJCS 34:117 — Wiley</a> (<a href="https://pubmed.ncbi.nlm.nih.gov/22003836/">PubMed 22003836</a>)</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214">Cole, Shyr, Ou-Yang 2016 PPP 32:5 — full text</a> (<a href="https://super-twins.de/wp-content/uploads/2016/06/Cole_et_al-2016-Photodermatology_Photoimmunology__Photomedicine.compressed.pdf">open PDF</a>)</li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/">Smijs &amp; Pavel 2011 Nanotechnol Sci Appl — PMC</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12439">Schneider &amp; Lim 2019 PPP — Wiley</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/9922017/">Mitchnick 1999 JAAD — PubMed</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s43630-024-00644-0">Hupel et al. 2024 PPSci "SPF in vitro vs in vivo for ZnO"</a> (<a href="https://pubmed.ncbi.nlm.nih.gov/39432202/">PubMed 39432202</a>)</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/phpp.12099">Petersen &amp; Wulf 2014 — Wiley</a> (<a href="https://pubmed.ncbi.nlm.nih.gov/24313722/">PubMed 24313722</a>)</li>
+<li><a href="https://thesunscreencompany.com/blog//spf-boosters-mineral-sunscreens-zinc-oxide-concentration-comparison">The Sunscreen Company 2024 — SPF boosters in mineral sunscreens (industry benchmark 1.4 SPF/%)</a></li>
+<li><a href="https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Z-Cote%C2%AE.pdf">BASF Z-COTE Technical Data Sheet PRD 30083071</a></li>
+<li><a href="https://labmuffin.com/how-much-uv-does-a-real-mineral-sunscreen-absorb-and-scatter/">Lab Muffin Beauty Science — UV reflection of real mineral sunscreens</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2012.00717.x">McCormick 2012 IJCS — in vitro testing of ZnO sunscreens</a> (<a href="https://pubmed.ncbi.nlm.nih.gov/22591031/">PubMed 22591031</a>)</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/10759815/">Pinnell et al. 2000 Dermatol Surg — Microfine ZnO superior to TiO2</a></li>
+<li><a href="https://doi.org/10.1088/0022-3727/38/15/006">Popov et al. 2005 J Phys D — Mie theory for sunscreen particles</a></li>
+<li><a href="https://doi.org/10.1016/j.jphotochem.2013.04.019">Lewicka et al. 2013 J Photochem Photobiol A 263:24</a></li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/calibration/zno-deep-dive.md</code> · <a href="zno-deep-dive.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

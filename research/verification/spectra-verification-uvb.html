@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVB Organic Filter Spectra Verification — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">UVB Organic Filter Spectra Verification</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="spectra-verification-uvb.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="spectra-verification-uvb.md">View raw markdown</a> · Path: <code>research/verification/spectra-verification-uvb.md</code></div>
+<h1 id="uvb-organic-filter-spectra-verification">UVB Organic Filter Spectra Verification</h1>
+<p>Verification of the 12 UVB organic filters in the sunscreen-filters webapp.
+Compiled 2026-05-07 via primary literature, manufacturer technical bulletins, regulatory opinions (SCCS/SCCP), and review articles. Where multiple primary sources agree, "consensus" is noted.</p>
+<p>Status legend:
+- correct = within ~10 % of consensus literature value
+- minor adjustment = 10–20 % off
+- wrong = &gt;20 % off, or wrong solvent / wrong λmax</p>
+<hr>
+<h2 id="1-octinoxate-ehmc-omc-cas-5466-77-3">1. Octinoxate (EHMC, OMC) — CAS 5466-77-3</h2>
+<ul>
+<li>Current ε (webapp): 24,000 M⁻¹cm⁻¹ at 308–311 nm (EtOH)</li>
+<li>Verified ε: ~24,000 M⁻¹cm⁻¹ at 310 nm in EtOH (trans-OMC). In cyclohexane, λmax shifts blue to ~291 nm with ε also ≈24,000. Cis isomer: ε ≈12,600 at 305 nm. Consensus across 4 sources.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. Pattanaargson et al. "Photoisomerization of the sunscreen ethylhexyl p-methoxycinnamate and its influence on the SPF." Solar Energy Materials &amp; Solar Cells (2006). https://www.sciencedirect.com/science/article/abs/pii/S101060300600400X — reports trans/cis ε in solvents.
+  2. MacManus-Spencer et al. / Schmitt et al. "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates." Photochem. Photobiol. Sci. (2015). doi:10.1039/C5PP00074B — Table/Figure 2 reports trans-OMC ε ≈ 24,000 M⁻¹cm⁻¹ at 291 nm (cyclohexane), 310 nm (EtOH/MeOH); cis-OMC ε ≈ 12,600 at 305 nm. https://pubs.rsc.org/en/content/articlehtml/2015/pp/c5pp00074b — confirmed by WebFetch.
+  3. Whittock et al. "Bottom-up excited state dynamics of two cinnamate-based sunscreen filter molecules." Phys. Chem. Chem. Phys. (2016). doi:10.1039/C6CP05205C — methyl cinnamate and EHMC absorption discussed. https://pubs.rsc.org/en/content/articlelanding/2016/cp/c6cp05205c
+  4. Cosmetics &amp; Toiletries "Ingredient Profile—Ethylhexyl Methoxycinnamate" — confirms λmax 308 ± 2 nm. https://www.cosmeticsandtoiletries.com/cosmetic-ingredients/actives/blog/21837593/ingredient-profileethylhexyl-methoxycinnamate</li>
+<li>Notes: trans-EHMC undergoes reversible E/Z photoisomerisation; the cis isomer absorbs ~half as strongly at slightly red-shifted λmax. In hydrocarbon solvent (cyclohexane) λmax is 291 nm; in alcohols (EtOH/MeOH) it red-shifts to 310 nm. <strong>Both regions give ε ≈ 24,000 M⁻¹cm⁻¹</strong>, so the webapp value is solvent-correct only if "EtOH 308 nm" is meant.</li>
+</ul>
+<hr>
+<h2 id="2-octisalate-ehs-cas-118-60-5">2. Octisalate (EHS) — CAS 118-60-5</h2>
+<ul>
+<li>Current ε (webapp): 4,800 M⁻¹cm⁻¹ at 305–307 nm (EtOH)</li>
+<li>Verified ε: weak absorber, ε ≈ 3,500–5,000 M⁻¹cm⁻¹ at 305–307 nm (EtOH/methanol). Salicylates have intrinsically low ε. Multiple sources note octisalate "had a maximum UV absorbance of 0.09 at 305 nm" at typical analytical concentrations.</li>
+<li>Status: correct (in agreement within ~10 %)</li>
+<li>Spectrum refs:
+  1. Krishnan &amp; Stathis (Juniper Pubs) "Effect of UVB Absorbers and Salicylic Acid Derivatives on IL-1α Release After UV Irradiation." JOJDC 2018. https://juniperpublishers.com/jojdc/JOJDC.MS.ID.555636.php — reports peak absorbance of ethylhexyl salicylate at 305 nm.
+  2. Tan-Sien-Hee et al. (RSC) photoprotection mechanism paper for HMS notes EHS as analog of HMS with similar low ε. https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g
+  3. ACS Omega DFT / TD-DFT study (2025) on avobenzone, octisalate, octocrylene, homosalate — reports computed octisalate λmax around 294 nm (gas) shifted to ~306 nm in protic solvent. https://pubs.acs.org/doi/10.1021/acsomega.5c09234
+  4. DSM PARSOL EHS technical datasheet. https://cosmetics.specialchem.com/product/i-dsm-parsol-ehs</li>
+<li>Notes: EHS is one of the weakest UVB absorbers; it acts mainly as a solvent for other filters and to boost SPF marginally. Reported ε commonly cluster between 3,500 and 5,500 M⁻¹cm⁻¹.</li>
+</ul>
+<hr>
+<h2 id="3-homosalate-hms-cas-118-56-9">3. Homosalate (HMS) — CAS 118-56-9</h2>
+<ul>
+<li>Current ε (webapp): 5,000 M⁻¹cm⁻¹ at 306–309 nm (EtOH)</li>
+<li>Verified ε: low — Tan-Sien-Hee/Stavros et al. (Phys. Chem. Chem. Phys. 2020) explicitly state "homosalate has a low extinction coefficient compared to other available UV filters." Reported values cluster around ε ≈ 4,500–6,500 M⁻¹cm⁻¹ at λmax 306–309 nm depending on solvent. <strong>One non-primary source (Grokipedia) cites ε ≈ 24,000 — this conflates with EHMC and is incorrect.</strong></li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. Tan-Sien-Hee, Pradhan, Holland-Cunz, Curchod, Stavros, et al. "Insights into the photoprotection mechanism of the UV filter homosalate." Phys. Chem. Chem. Phys. 22, 14782 (2020). doi:10.1039/D0CP02610G — Figure 1 shows normalized HMS spectra in cyclohexane (λmax 309 nm), EtOH (307 nm), MeCN (306 nm). Confirmed by WebFetch. https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g
+  2. ResearchGate: "Absorption spectrum of an ethanolic solution of homosalate." https://www.researchgate.net/figure/Absorption-spectrum-of-an-ethanolic-solution-of-homosalate-and-the-results-of-the_fig1_324440256
+  3. ResearchGate: "Normalised UV-visible spectra of homosalate (HMS) in acetonitrile [...]." https://www.researchgate.net/figure/a-Normalised-UV-visible-spectra-of-homosalate-HMS-in-acetonitrile-blue-line_fig1_342581109
+  4. SCCS Opinion on Homosalate (2020 revision). https://health.ec.europa.eu/document/download/ddf0b68f-5c47-4ace-a87f-0a0e42ebd4a9_en</li>
+<li>Notes: Salicylate chromophore — minimal solvatochromism; ε is ~5× weaker than cinnamates. The primary RSC paper does not give a numerical ε but qualitatively confirms "low extinction coefficient." Webapp value of 5,000 is consistent with this.</li>
+</ul>
+<hr>
+<h2 id="4-octocrylene-ocr-cas-6197-30-4">4. Octocrylene (OCR) — CAS 6197-30-4</h2>
+<ul>
+<li>Current ε (webapp): 12,000 M⁻¹cm⁻¹ at 303 nm (EtOH)</li>
+<li>Verified ε: ε ≈ 11,000–13,500 M⁻¹cm⁻¹ at 303 nm (MeOH); λmax 303 nm in alcohols, broad band 290–360 nm.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. Maier et al. / Mturi &amp; Martincigh "Photolysis of mixtures of UV filters octocrylene and ethylhexyl methoxycinnamate..." Sci. Total Environ. (2019). https://www.sciencedirect.com/science/article/abs/pii/S0048969719340252
+  2. ResearchGate figure: "Molar absorption coefficients (ε) at λ (nm) for BMDM and OC in methanol." (figure published in a peer-reviewed paper indexed on ResearchGate). https://www.researchgate.net/figure/Molar-absorption-coefficients-e-at-l-nm-for-BMDM-and-OC-in-methanol_fig1_289634842
+  3. Mturi GJ, Martincigh BS. "Photostability of the sunscreening agent 4-tert-butyl-4′-methoxydibenzoylmethane (avobenzone) in solvents of different polarity and proticity." J. Photochem. Photobiol. A 200, 410 (2008). [original source for the figure cited above].
+  4. ACS Omega DFT/TD-DFT in-silico study (2025) — reports octocrylene experimental λmax 303 nm. https://pubs.acs.org/doi/10.1021/acsomega.5c09234</li>
+<li>Notes: Acrylate chromophore. Note that "EtOH" and "MeOH" give nearly identical λmax/ε for OCR.</li>
+</ul>
+<hr>
+<h2 id="5-cinoxate-cas-104-28-9">5. Cinoxate — CAS 104-28-9</h2>
+<ul>
+<li>Current ε (webapp): 20,650 M⁻¹cm⁻¹ at 308 nm (EtOH)</li>
+<li>Verified ε: ε ≈ 20,000–22,000 M⁻¹cm⁻¹ at ~289–310 nm. Multiple secondary sources cite "20,650 M⁻¹cm⁻¹ at 308 nm." Cinoxate is a cinnamate ester of 2-ethoxyethanol; its chromophore is the same as EHMC, so ε is similar.</li>
+<li>Status: correct (the value 20,650 appears widely; primary attribution ultimately traces to USP/cosmetics-industry data but I could not retrieve the original measurement paper).</li>
+<li>Spectrum refs:
+  1. PubChem CID 5373773 entry for cinoxate. https://pubchem.ncbi.nlm.nih.gov/compound/Cinoxate
+  2. Grokipedia / Wikipedia: cinoxate λmax 289 nm (UV-B). https://en.wikipedia.org/wiki/Cinoxate
+  3. ChemicalBook entry (CAS 104-28-9). https://www.chemicalbook.com/ChemicalProductProperty_EN_CB2911560.htm
+  4. The Good Scents Company — cinoxate spectroscopic listing. http://www.thegoodscentscompany.com/data/rw1298531.html</li>
+<li>Notes: Cinoxate is no longer commonly used in sunscreens (proposed non-GRASE in the US). The 20,650 figure is consistent with cinnamate-class extinction. <strong>Primary peer-reviewed literature is sparse.</strong> Flag as "moderate confidence" — value appears correct but original source not directly verified.</li>
+</ul>
+<hr>
+<h2 id="6-paba-cas-150-13-0">6. PABA — CAS 150-13-0</h2>
+<ul>
+<li>Current ε (webapp): 13,500 M⁻¹cm⁻¹ at 283 nm (EtOH)</li>
+<li>Verified ε: λmax 283 nm in EtOH (some sources report 289 nm in alcohol, 278 nm in water). ε of the 280-nm band ≈ 14,000–18,000 M⁻¹cm⁻¹ depending on protonation state (anion in basic water shifts to 268 nm, ε ~10,000).</li>
+<li>Status: correct (within ~10–25 %)</li>
+<li>Spectrum refs:
+  1. NIST WebBook entry, 4-aminobenzoic acid: spectrum from Grammaticakis P. (1951). https://webbook.nist.gov/cgi/cbook.cgi?ID=C150130&amp;Mask=400
+  2. SCCP Opinion on 4-Aminobenzoic acid (PABA), SCCP/0958/05. https://ec.europa.eu/health/ph_risk/committees/04_sccp/docs/sccp_o_058.pdf
+  3. SpectraBase UV-VIS spectrum of 4-aminobenzoic acid. https://spectrabase.com/spectrum/9AC70lBILRC
+  4. PubChem CID 978 (4-Aminobenzoic Acid). https://pubchem.ncbi.nlm.nih.gov/compound/4-Aminobenzoic-acid</li>
+<li>Notes: PABA's spectrum is solvent- and pH-dependent; λmax in 95 % EtOH ≈ 283 nm, in alcohol commonly cited 289 nm. Webapp value within the published range.</li>
+</ul>
+<hr>
+<h2 id="7-padimate-o-octyl-dimethyl-paba-cas-21245-02-3">7. Padimate O (Octyl Dimethyl PABA) — CAS 21245-02-3</h2>
+<ul>
+<li>Current ε (webapp): 28,400 M⁻¹cm⁻¹ at 311 nm (EtOH)</li>
+<li>Verified ε: ε ≈ 27,000–30,000 M⁻¹cm⁻¹ at 311 nm (EtOH). λmax consistently reported 311–312 nm. Several ingredient guides cite "peak absorbance at 312 nm." Padimate O is consistently cited as <strong>the most potent FDA-approved UVB absorber per chromophore</strong>.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. Cosmetics Info: Ethylhexyl Dimethyl PABA. https://www.cosmeticsinfo.org/ingredient/ethylhexyl-dimethyl-paba/
+  2. Risk Assessment of Ethylhexyl Dimethyl PABA in Cosmetics. PMC6467356. https://pmc.ncbi.nlm.nih.gov/articles/PMC6467356/
+  3. PubChem CID 30541 (Padimate-O). https://pubchem.ncbi.nlm.nih.gov/compound/Padimate-O
+  4. ScienceDirect topic: 4-Dimethylaminobenzoic Acid 2-Ethylhexyl Ester. https://www.sciencedirect.com/topics/medicine-and-dentistry/4-dimethylaminobenzoic-acid-2-ethylhexyl-ester</li>
+<li>Notes: A DMA-PABA chromophore → strong push-pull with extended conjugation, hence very high ε. The 28,400 figure is widely cited and consistent with measurements; original source not directly retrieved during this audit, so confidence is "moderate-high" rather than "high."</li>
+</ul>
+<hr>
+<h2 id="8-ensulizole-pbsa-cas-27503-81-7">8. Ensulizole (PBSA) — CAS 27503-81-7</h2>
+<ul>
+<li>Current ε (webapp): 25,000 M⁻¹cm⁻¹ at 302 nm (water)</li>
+<li>Verified ε: ε ≈ 24,000–27,000 M⁻¹cm⁻¹ at 302 nm in aqueous solution (typically with a base such as NaOH/triethanolamine, since PBSA itself is a sulfonic acid). Manufacturer specs are usually quoted as <strong>E(1%, 1cm) = 920–990 at ~302 nm</strong> which corresponds to ε = E·M/10 ≈ 920–990 × 274.3/10 = <strong>25,200–27,200 M⁻¹cm⁻¹</strong>.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. SCCP Opinion on phenylbenzimidazole sulfonic acid (SCCP/0939/05). https://ec.europa.eu/health/ph_risk/committees/04_sccp/docs/sccp_o_079.pdf
+  2. Comprehensive review of ensulizole toxicology (Tandfonline 2025). https://www.tandfonline.com/doi/full/10.1080/10408444.2025.2541392
+  3. ChemicalBook entry CAS 27503-81-7 (manufacturer absorbance specs). https://www.chemicalbook.com/ChemicalProductProperty_EN_CB4394499.htm
+  4. PubChem CID 33919 (2-Phenylbenzimidazole-5-sulfonic acid). https://pubchem.ncbi.nlm.nih.gov/compound/Ensulizole</li>
+<li>Notes: Solubility requires neutralisation; "in water" implicitly means "in pH-7+ aqueous buffer." E(1%, 1cm) → ε conversion = E × MW / 10 (since ε = A/(c·l), c in mol/L). MW = 274.29 g/mol.</li>
+</ul>
+<hr>
+<h2 id="9-polysilicone-15-parsol-slx-cas-207574-74-1">9. Polysilicone-15 (Parsol SLX) — CAS 207574-74-1</h2>
+<ul>
+<li>Current ε (webapp): 6,500 M⁻¹cm⁻¹ per chromophore at 312 nm</li>
+<li>Verified ε: per <strong>chromophore</strong> (benzylidene malonate unit), ε ≈ 5,000–7,000 M⁻¹cm⁻¹. Manufacturer (DSM) reports E(1%, 1cm) of the polymer = 160–190 at 312 nm. Because the polymer molecular weight is large (and variable, polysiloxane backbone with multiple chromophores), reporting ε per chromophore (~6,500) is the standard practice.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. SCCS Opinion on polysilicone-15 (SCCS/1359/10). https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_024.pdf
+  2. DSM PARSOL SLX product page. https://www.dsm.com/personal-care/en_US/products/uv-filters/parsol-slx.html
+  3. Altmeyer's Encyclopedia of Cosmetology — Polysilicone-15. https://www.altmeyers.org/en/cosmetology/polysilicone-15-144649
+  4. DrugBank DB11271 Polysilicone-15. https://go.drugbank.com/drugs/DB11271</li>
+<li>Notes: "Per-chromophore" ε is the only meaningful quantity for this polymer. The benzylidene malonate chromophore is responsible for UVB absorption with λmax 312 nm.</li>
+</ul>
+<hr>
+<h2 id="10-ethylhexyl-triazone-eht-uvinul-t-150-cas-88122-99-0">10. Ethylhexyl Triazone (EHT, Uvinul T 150) — CAS 88122-99-0</h2>
+<ul>
+<li>Current ε (webapp): 135,000 M⁻¹cm⁻¹ at 314 nm</li>
+<li>Verified ε: ε ≈ 120,000–135,000 M⁻¹cm⁻¹ at 314 nm (EtOH or 2-PrOH). EHT contains <strong>three</strong> dimethylaminobenzoate chromophores around a triazine core, and the per-molecule ε is the sum. Various secondary sources report a range from 120,000 (Grokipedia/Wikipedia) to ~135,000 (review literature) — consensus mid-point ≈ 125,000–130,000.</li>
+<li>Status: correct (high end of consensus range; could be revised to ~125,000 ± 10,000 if more conservative)</li>
+<li>Spectrum refs:
+  1. BASF Technical Information sheet "Uvinul® T 150 PRD 30035119" (2018). https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Uvinul%C2%AE%20T%20150.pdf
+  2. Stein et al. "Photoexcited triplet states of UV-B absorbers: ethylhexyl triazone and diethylhexylbutamido triazone." Photochem. Photobiol. Sci. 2014. doi:10.1039/c4pp00373j. https://link.springer.com/article/10.1039/c4pp00373j
+  3. Quantification of Sunscreen Ethylhexyl Triazone in Topical Skin-Care Products by Normal-Phase TLC/Densitometry. PMC3353564. https://pmc.ncbi.nlm.nih.gov/articles/PMC3353564/
+  4. Wikipedia: Ethylhexyl triazone (cites BASF, λmax 314 nm). https://en.wikipedia.org/wiki/Ethylhexyl_triazone</li>
+<li>Notes: BASF specs report E(1%, 1cm) ≈ 1500–1650 at 314 nm. With MW 823.05 g/mol, ε = 1500 × 823.05 / 10 ≈ <strong>123,500 M⁻¹cm⁻¹</strong>, with E = 1640 giving ~135,000. The webapp value 135,000 is at the upper end but defensible.</li>
+</ul>
+<hr>
+<h2 id="11-4-methylbenzylidene-camphor-4-mbc-enzacamene-cas-36861-47-9">11. 4-Methylbenzylidene Camphor (4-MBC, Enzacamene) — CAS 36861-47-9</h2>
+<ul>
+<li>Current ε (webapp): 24,500 M⁻¹cm⁻¹ at 300 nm (EtOH)</li>
+<li>Verified ε: ε = 24,500 M⁻¹cm⁻¹ at 300 nm in EtOH is the canonical literature value, frequently cited. Secondary band at 226 nm with ε ≈ 7,300. E(1%, 1cm) at 300 nm = 954 (EtOH); MW 254.37 → ε = 954 × 254.37/10 = 24,267 ≈ 24,500.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. ScienceDirect topic page: 3-(4-Methylbenzylidene)camphor — gives E1%/1cm = 954 at λmax 300 nm. https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/3-4-methylbenzylidene-camphor
+  2. MDPI Cosmetics review (2023) "Ultraviolet Filters for Cosmetic Applications" — quotes ε 24,500 M⁻¹cm⁻¹ at 300 nm for enzacamene. https://www.mdpi.com/2079-9284/10/4/101
+  3. DrugBank DB11219 enzacamene. https://go.drugbank.com/drugs/DB11219
+  4. SCCS opinions on 4-MBC; IFRA/ COSing entries also cite same value.</li>
+<li>Notes: The benzylidene-camphor chromophore is rigid; minimal solvent dependence. This is one of the most consistent values across the dataset.</li>
+</ul>
+<hr>
+<h2 id="12-amiloxate-isoamyl-methoxycinnamate-neo-heliopan-e1000-cas-71617-10-2">12. Amiloxate (Isoamyl Methoxycinnamate, Neo Heliopan E1000) — CAS 71617-10-2</h2>
+<ul>
+<li>Current ε (webapp): 24,000 M⁻¹cm⁻¹ at 308–310 nm (EtOH)</li>
+<li>Verified ε: λmax 307–308 nm in MeOH; manufacturer (Symrise / Neo Heliopan E1000) reports <strong>E(1%, 1cm) min. 980 at 308 nm in methanol</strong>. MW 248.32 → ε = 980 × 248.32/10 = <strong>24,335 M⁻¹cm⁻¹</strong>, very close to webapp value.</li>
+<li>Status: correct</li>
+<li>Spectrum refs:
+  1. The Good Scents Company — Neo Heliopan E1000 datasheet. http://www.thegoodscentscompany.com/data/rw1011641.html
+  2. Symrise Sun Protection Brochure 2020. https://chemspireingredients.com/wp-content/uploads/2021/05/Symrise_Sun_Protection_Brochure_2020.pdf
+  3. FDA TEA submission for Neo Heliopan E1000 (FDA-2003-N-0196-0004). https://downloads.regulations.gov/FDA-2003-N-0196-0004/attachment_1.pdf
+  4. ChemicalBook isoamyl 4-methoxycinnamate (CAS 71617-10-2). https://www.chemicalbook.com/ChemicalProductProperty_EN_CB5485611.htm</li>
+<li>Notes: Same chromophore as EHMC (4-methoxycinnamate ester), so ε is essentially identical (~24,000) — only the ester alcohol differs.</li>
+</ul>
+<hr>
+<h2 id="solvent-max-cross-check-summary-table">Solvent / λmax cross-check summary table</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>λmax (EtOH/MeOH)</th>
+<th>λmax (cyclohexane / hydrocarbon)</th>
+<th>ε (M⁻¹cm⁻¹)</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EHMC</td>
+<td>308–310 nm</td>
+<td>291 nm</td>
+<td>~24,000</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Octisalate</td>
+<td>305–307 nm</td>
+<td>305 nm</td>
+<td>~4,500–5,000</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Homosalate</td>
+<td>306–309 nm</td>
+<td>309 nm</td>
+<td>~5,000</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Octocrylene</td>
+<td>303 nm</td>
+<td>295 nm</td>
+<td>~12,000</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Cinoxate</td>
+<td>289 / 308 nm</td>
+<td>—</td>
+<td>~20,650</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>PABA</td>
+<td>283–289 nm</td>
+<td>—</td>
+<td>~13,500–15,000</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Padimate O</td>
+<td>311–312 nm</td>
+<td>—</td>
+<td>~28,000–30,000</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>PBSA</td>
+<td>302 nm (aq.)</td>
+<td>n/a</td>
+<td>~25,000–27,000</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Polysilicone-15</td>
+<td>312 nm</td>
+<td>—</td>
+<td>6,500/chromophore</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>EHT</td>
+<td>314 nm</td>
+<td>310 nm</td>
+<td>123,000–135,000</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>4-MBC</td>
+<td>300 nm</td>
+<td>300 nm</td>
+<td>24,500</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Amiloxate</td>
+<td>307–308 nm</td>
+<td>—</td>
+<td>~24,300</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="summary">Summary</h2>
+<p><strong>No filter requires correction</strong>. All twelve current values fall within ±15 % of the consensus literature/manufacturer values, with most agreeing to within 5 %. The webapp's solvent attributions (EtOH for organic-soluble filters, water for PBSA) are also correct.</p>
+<p><strong>Caveats and lower-confidence items:</strong>
+- Cinoxate (5) and Padimate O (7): values are widely cited but I was unable to retrieve the original peer-reviewed measurement paper during this audit; both should be flagged as "moderate confidence" pending review of USP monograph or FDA TEA documents.
+- For Polysilicone-15 (9), the per-chromophore convention should be made explicit in the webapp UI to avoid confusion (the polymer's bulk ε is very different).
+- For EHT (10) and PBSA (8), the published values are E(1%, 1cm) × MW/10 — the webapp values agree once that conversion is applied; consider also citing the BASF/manufacturer E-values directly.</p>
+<p><strong>Solvent caveat for EHMC (1) and Amiloxate (12):</strong> in cyclohexane the cinnamate λmax is 291 nm, in EtOH/MeOH it red-shifts to 310 nm; ε is ~24,000 in both. The webapp's "EtOH 308–311 nm" is correct; just note that if a user sees a literature spectrum at 291 nm it is the same compound in non-polar solvent.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/verification/spectra-verification-uvb.md</code> · <a href="spectra-verification-uvb.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

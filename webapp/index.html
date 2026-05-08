@@ -140,61 +140,128 @@
   .section-title{ font-size: 1.05rem; text-transform: uppercase; letter-spacing: 2.2px; font-weight: 700 }
   .section-sub{ grid-column: 2; color: var(--muted); font-size: 0.95rem; max-width: 70ch; margin-top: 6px }
 
-  /* "Main things you need to know" key-facts */
+  /* "Main things you need to know" — FAQ-styled key-facts */
   .key-facts{
     display: flex; flex-direction: column; gap: 10px;
   }
   .key-fact{
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: 6px;
     background: var(--bg-2);
     overflow: hidden;
-    transition: border-color .2s var(--ease);
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
   }
-  .key-fact[open]{ border-color: var(--accent) }
+  .key-fact:hover{ box-shadow: 0 4px 14px rgba(15,13,20,0.06) }
+  .key-fact[open]{ border-color: var(--accent); box-shadow: 0 6px 20px rgba(107,31,110,0.08) }
   .key-fact summary{
-    cursor: pointer; user-select: none;
-    padding: 16px 20px;
+    cursor: default;     /* not pointer everywhere — only on the toggle area */
+    padding: 18px 20px;
     list-style: none;
-    display: grid; grid-template-columns: 50px 1fr; gap: 14px;
-    align-items: baseline;
+    display: grid; grid-template-columns: 48px 1fr 28px; gap: 16px;
+    align-items: start;
   }
   .key-fact summary::-webkit-details-marker{ display: none }
+  /* Make the chevron + icon area the actual click target so text remains selectable */
+  .kf-icon, .kf-toggle{ cursor: pointer }
+  .kf-icon{
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    transition: background .2s var(--ease);
+  }
+  .key-fact[open] .kf-icon{ background: var(--accent); color: var(--bg-2) }
+  .kf-icon svg{ width: 24px; height: 24px; stroke-width: 1.6; fill: none; stroke: currentColor }
+  .kf-text{ user-select: text }
   .kf-num{
-    font: 700 0.72rem var(--mono); color: var(--accent);
-    letter-spacing: 1.4px;
+    font: 700 0.66rem var(--mono); color: var(--accent);
+    letter-spacing: 1.6px; display: block; margin-bottom: 3px;
+    text-transform: uppercase;
   }
   .kf-headline{
-    font: 700 1rem var(--serif); color: var(--ink);
+    font: 700 1.05rem var(--serif); color: var(--ink);
     line-height: 1.3; margin-bottom: 6px;
-    display: flex; gap: 10px; align-items: baseline;
+    letter-spacing: -0.005em;
   }
-  .kf-headline::after{
-    content: "▸"; color: var(--muted);
-    font-size: 0.85rem; transition: transform .2s var(--ease);
-    margin-left: auto;
-  }
-  .key-fact[open] .kf-headline::after{ transform: rotate(90deg) }
   .kf-short{
     font: 500 0.92rem/1.6 var(--serif); color: var(--ink-soft);
-    max-width: 80ch;
+    max-width: 78ch;
   }
   .kf-short strong{ color: var(--ink); font-weight: 600 }
+  .kf-toggle{
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    transition: transform .25s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    align-self: center;
+    user-select: none;
+  }
+  .kf-toggle:hover{ background: var(--accent-soft); color: var(--accent) }
+  .key-fact[open] .kf-toggle{ transform: rotate(90deg); color: var(--accent) }
   .kf-long{
-    padding: 0 20px 20px 84px;
+    padding: 0 20px 22px 84px;
     border-top: 1px dashed var(--line-soft);
-    margin-top: 4px; padding-top: 14px;
-    color: var(--ink-soft); font-size: 0.9rem; line-height: 1.7;
+    margin-top: 4px; padding-top: 16px;
+    color: var(--ink-soft); font-size: 0.92rem; line-height: 1.7;
     max-width: 88ch;
   }
-  .kf-long p{ margin: 0 0 10px }
+  .kf-long p{ margin: 0 0 12px }
   .kf-long p:last-child{ margin-bottom: 0 }
   .kf-long strong{ color: var(--ink); font-weight: 600 }
   .kf-long em{ color: var(--accent); font-style: italic }
   @media (max-width: 600px){
-    .key-fact summary{ grid-template-columns: 40px 1fr; gap: 10px; padding: 14px 14px }
+    .key-fact summary{ grid-template-columns: 36px 1fr 24px; gap: 12px; padding: 14px 14px }
+    .kf-icon{ width: 32px; height: 32px } .kf-icon svg{ width: 20px; height: 20px }
     .kf-long{ padding-left: 14px }
   }
+
+  /* Inline diagram inside F·01 (UV intensity vs wavelength) */
+  .uv-intensity-diagram{
+    margin: 14px 0;
+    padding: 16px; background: var(--bg);
+    border: 1px solid var(--line-soft); border-radius: 6px;
+  }
+  .uv-intensity-diagram svg{ width: 100%; height: 220px; display: block }
+  .uv-intensity-diagram .uv-band{ font: 600 9px var(--mono); fill: var(--muted); letter-spacing: 1px; text-transform: uppercase }
+  .uv-intensity-diagram .uv-axis{ stroke: var(--rule); stroke-width: 1.5 }
+  .uv-intensity-diagram .uv-tick{ stroke: var(--line); stroke-width: 1 }
+  .uv-intensity-diagram .uv-label{ font: 500 9px var(--mono); fill: var(--muted) }
+  .uv-intensity-diagram .uv-grid{ stroke: var(--line-soft); stroke-width: 1; stroke-dasharray: 2 3 }
+  .uv-intensity-diagram .uv-solar-fill{ fill: var(--accent); opacity: 0.18 }
+  .uv-intensity-diagram .uv-solar-line{ fill: none; stroke: var(--accent); stroke-width: 2 }
+  .uv-intensity-diagram .uv-ery-line{ fill: none; stroke: var(--warn); stroke-width: 2; stroke-dasharray: 4 3 }
+  .uv-intensity-diagram .uv-legend{
+    display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px;
+    font: 500 0.72rem var(--mono); color: var(--muted);
+  }
+  .uv-intensity-diagram .uv-legend span{ display: inline-flex; align-items: center; gap: 6px }
+  .uv-intensity-diagram .uv-legend .swatch{
+    width: 22px; height: 2px; display: inline-block;
+  }
+
+  /* Jump-link cards under Spectrum Builder */
+  .builder-jump{
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 12px 0 18px;
+    padding: 10px 0;
+  }
+  .builder-jump-label{
+    font: 500 0.72rem var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.3px;
+    align-self: center; padding-right: 4px;
+  }
+  .builder-jump a{
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    font: 500 0.78rem var(--mono);
+    background: var(--bg); border: 1px solid var(--line);
+    color: var(--accent); border-radius: 999px;
+    text-decoration: none;
+    transition: all .2s var(--ease);
+  }
+  .builder-jump a:hover{ background: var(--accent-soft); border-color: var(--accent) }
+  .builder-jump a::before{ content: "↑"; opacity: 0.7 }
 
   /* Stats */
   .stats-grid{
@@ -639,9 +706,42 @@
   .preset-src:hover{
     background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
   }
+  .builder-active-row{
+    display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    align-items: start; margin-bottom: 18px;
+  }
   .builder-active{
-    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
+    display: flex; flex-wrap: wrap; gap: 8px;
     min-height: 0;
+  }
+  .active-compact-toggle{
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--bg); border: 1px solid var(--line);
+    color: var(--muted); cursor: pointer; font-size: 0.95rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s var(--ease);
+    flex-shrink: 0;
+  }
+  .active-compact-toggle:hover{
+    background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+  }
+  .active-compact-toggle.active{
+    background: var(--accent); border-color: var(--accent); color: var(--bg-2);
+  }
+  /* Compact mode for selected-filters list — small text, no sliders */
+  .builder-active.compact{ gap: 4px; align-items: center }
+  .builder-active.compact .active-pill{
+    padding: 3px 8px; font-size: 0.74rem; gap: 4px;
+    background: transparent; border-color: var(--line-soft);
+  }
+  .builder-active.compact .ap-color{ width: 7px; height: 7px }
+  .builder-active.compact .ap-name{ font-weight: 500; font-size: 0.74rem }
+  .builder-active.compact .ap-conc input[type="range"]{ display: none }
+  .builder-active.compact .ap-conc{ padding-left: 4px; margin-left: 0; border-left: none }
+  .builder-active.compact .ap-conc-val{ font-size: 0.72rem; min-width: 0 }
+  .builder-active.compact .ap-fc{ display: none }
+  .builder-active.compact .ap-remove{
+    width: 14px; height: 14px; line-height: 1; font-size: 0.85rem; margin-left: 2px;
   }
   .builder-active:empty::before{
     content: "No filters selected. Pick a preset above, or expand 'Add another filter' below.";
@@ -1008,39 +1108,56 @@
     </div>
   </header>
 
-  <!-- Section 01: Main things you need to know — short answers, long-form on click -->
+  <!-- Section 01: Main things you need to know — FAQ-style with icons + UV diagram -->
   <section class="section">
     <div class="section-head">
       <div class="section-num">01</div>
       <div>
         <div class="section-title">Main Things You Need to Know</div>
-        <div class="section-sub">Eight short answers. Each card expands to the longer technical version. Read these first to make sense of the rest of the atlas — especially if some of the chart numbers are surprising you.</div>
+        <div class="section-sub">Eight short answers, FAQ-style. Click the chevron on any card to expand the longer technical version. Read these first to make sense of the rest of the atlas — especially if some of the chart numbers seem surprising.</div>
       </div>
     </div>
     <div class="key-facts">
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-01">
         <summary>
-          <div class="kf-num">F·01</div>
-          <div>
-            <div class="kf-headline">What solar UV reaches your skin</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2.1 2.1M17.4 17.4l2.1 2.1M4.5 19.5l2.1-2.1M17.4 6.6l2.1-2.1"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·01 — what reaches your skin</span>
+            <div class="kf-headline">How much of solar UV gets to ground level, and why does the small UVB fraction matter so much?</div>
             <div class="kf-short">~95% of solar UV at sea level is <strong>UVA</strong> (320–400 nm); only ~5% is <strong>UVB</strong> (290–320 nm). UVC (&lt;280 nm) is fully blocked by atmospheric ozone. The 5% UVB punches above its weight because the erythema action spectrum peaks at 297 nm.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>Solar irradiance at the top of the atmosphere extends from extreme UVC through near-IR, but ozone removes essentially all UVC and ~70% of UVB before it reaches sea level. UVA passes through nearly unattenuated.</p>
           <p>At noon equator under clear sky (AM 1.5), total solar UV is roughly 30–40 W/m²: UVB ~1–2 W/m², UVA ~28–38 W/m², visible ~500 W/m², near-IR ~700 W/m². So in absolute energy terms, <strong>visible and IR dominate the solar load</strong>; UV is a small slice.</p>
           <p>Biological relevance comes from <em>action spectra</em> — different wavelengths have very different per-photon damage. The CIE 1987 erythema action spectrum (the FDA SPF standard) peaks at 297 nm and drops by ~10× every 30 nm into UVA. So the small UVB fraction does most of the direct DNA damage, even though UVA is far more abundant.</p>
+
+          <div class="uv-intensity-diagram" id="uvIntensityDiagram">
+            <svg viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet"></svg>
+            <div class="uv-legend">
+              <span><span class="swatch" style="background:var(--accent)"></span>Solar irradiance at sea level (AM 1.5)</span>
+              <span><span class="swatch" style="background:var(--warn);border-top:2px dashed"></span>CIE 1987 erythema action spectrum (×10⁵, normalized)</span>
+            </div>
+            <p style="font-size:0.78rem;color:var(--muted);margin-top:8px">The action spectrum × solar irradiance product peaks ~305 nm — explaining why erythemal SPF is dominated by 290–315 nm even though UVA is far more energetically abundant.</p>
+          </div>
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-02">
         <summary>
-          <div class="kf-num">F·02</div>
-          <div>
-            <div class="kf-headline">What UV does to skin</div>
-            <div class="kf-short"><strong>UVB</strong> damages DNA directly (sunburn → mutation → skin cancer). <strong>UVA-2</strong> (320–340 nm) drives immediate pigment darkening and indirect DNA damage via reactive oxygen species. <strong>UVA-1</strong> (340–400 nm) penetrates deepest and causes photoaging — collagen breakdown, elastosis. <strong>HEV blue light</strong> (400–500 nm) contributes to melasma and post-inflammatory hyperpigmentation, especially in skin of color.</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18M3 11h18M3 16h18M3 21h18"/><path d="M8 4l-2 2M14 4l-3 3M19 4l-5 5"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·02 — biological effect</span>
+            <div class="kf-headline">What does each UV band actually do to skin?</div>
+            <div class="kf-short"><strong>UVB</strong> damages DNA directly (sunburn → mutation → skin cancer). <strong>UVA-2</strong> (320–340 nm) drives immediate pigment darkening and indirect DNA damage via reactive oxygen species. <strong>UVA-1</strong> (340–400 nm) penetrates deepest and causes photoaging — collagen breakdown, elastosis. <strong>HEV blue light</strong> (400–500 nm) contributes to melasma, especially in skin of color.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p><strong>Penetration depth</strong>: UVB is ~70% absorbed by the stratum corneum; UVA-2 reaches the basal epidermis; UVA-1 penetrates 1–2 mm into the dermis where collagen and elastin fibers live.</p>
@@ -1050,29 +1167,37 @@
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-03">
         <summary>
-          <div class="kf-num">F·03</div>
-          <div>
-            <div class="kf-headline">What "SPF" actually measures</div>
-            <div class="kf-short">SPF is the ratio of <strong>minimum erythema dose</strong> on protected vs unprotected skin. Because erythema action peaks in UVB, SPF dominantly measures UVB protection. <strong>UVA-PF</strong> is the parallel UVA metric (PA+/++/+++/++++ in Japan, etc.). FDA <strong>"broad spectrum"</strong> requires critical wavelength ≥370 nm.</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 9.4 8 10 4.5-.6 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·03 — what SPF measures</span>
+            <div class="kf-headline">What does an "SPF 50" label actually represent?</div>
+            <div class="kf-short">SPF is the ratio of <strong>minimum erythema dose</strong> on protected vs unprotected skin. Because erythema action peaks in UVB, SPF dominantly measures UVB protection. <strong>UVA-PF</strong> is the parallel UVA metric (PA+/++/+++/++++ in Japan). FDA <strong>"broad spectrum"</strong> requires critical wavelength ≥370 nm.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>Test method: a panel of subjects, sunscreen applied at <strong>2 mg/cm²</strong>, exposed to a calibrated UV source. The dose at which erythema appears 16–24 h later, divided by the same dose unprotected, gives SPF. Higher SPF = bigger ratio.</p>
           <p>Diminishing returns: SPF 30 blocks ~97%, SPF 50 blocks ~98%, SPF 100 blocks ~99% of erythemal UV. The marginal gain from "50 → 100" is only 1 percentage point at the standard test thickness — but that 1 pp doubles your safe outdoor time at peak sun if you've applied perfectly.</p>
           <p>UVA-PF (PPD method) is the same kind of ratio for UVA-induced persistent pigment darkening. Japan's PA system: PA+ ≈ UVA-PF 2–4, PA++ ≈ 4–8, PA+++ ≈ 8–16, PA++++ ≥ 16. EU labels broad-spectrum if UVA-PF ≥ SPF/3.</p>
-          <p>FDA "broad spectrum" uses the <strong>critical wavelength</strong> instead — the wavelength below which 90% of the absorbance area lies. ≥370 nm earns the label. (The Spectrum Builder shows this metric live.)</p>
+          <p>FDA "broad spectrum" uses the <strong>critical wavelength</strong> instead — the wavelength below which 90% of the absorbance area lies. ≥370 nm earns the label. The Spectrum Builder shows this metric live.</p>
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-04">
         <summary>
-          <div class="kf-num">F·04</div>
-          <div>
-            <div class="kf-headline">What the chart Y-axis means (and doesn't)</div>
-            <div class="kf-short"><strong>E(1%, 1cm)</strong> is the absorbance you'd measure in a 1 cm spectrophotometer cuvette at 1% w/w concentration — the cosmetics-industry-standard reporting metric (BASF/DSM/Symrise datasheets all use it). Real cosmetic films are ~14 µm thick, <strong>500× thinner</strong> than the cuvette, so the chart's "10⁵" peaks correspond to real-film absorbances of ~10² ≈ 99% blockage at λmax. Switch the Spectrum Builder to "Lab test" or "Real-world" mode for direct % transmittance.</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="6" y="3" width="9" height="18" rx="1"/><path d="M6 14h9"/><path d="M18 7l3 3M21 7l-3 3"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·04 — chart units</span>
+            <div class="kf-headline">What does the chart's Y-axis number mean (and not mean)?</div>
+            <div class="kf-short"><strong>E(1%, 1cm)</strong> is the absorbance you'd measure in a 1 cm spectrophotometer cuvette at 1% w/w concentration — the cosmetics-industry-standard reporting metric. Real cosmetic films are ~14 µm thick, <strong>500× thinner</strong>, so the chart's "10⁵" peaks correspond to real-film absorbances of ~10² ≈ 99% blockage at λmax. Switch the Spectrum Builder to "Lab test" or "Real-world" mode for direct % transmittance.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>Beer-Lambert: A = ε × c × ℓ. In cosmetics convention, E(1%, 1cm) = ε × 10/MW. So if you see ε = 35,000 M⁻¹cm⁻¹ for avobenzone (MW 310), you can convert: E1% = 35,000 × 10 / 310 = 1,130. At 3% in a 1 cm cuvette, you'd measure A = 1,130 × 3 × 1 = 3,390 (off-scale; in practice diluted further to ~0.001% to fit a real instrument).</p>
@@ -1082,13 +1207,17 @@
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-05">
         <summary>
-          <div class="kf-num">F·05</div>
-          <div>
-            <div class="kf-headline">The real-world application gap</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2c-3 5-5 8-5 11a5 5 0 0 0 10 0c0-3-2-6-5-11z"/><path d="M9 13a3 3 0 0 0 3 3"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·05 — application gap</span>
+            <div class="kf-headline">Why do real users get less protection than the SPF on the label?</div>
             <div class="kf-short">The FDA SPF test applies <strong>2 mg/cm²</strong> of formulation. Most consumers apply <strong>0.5–1 mg/cm²</strong> (a quarter to half), and Beer-Lambert is linear in path length. Realised SPF is roughly 25–50% of the labeled value. SPF 50 at half-thickness ≈ effective SPF 12–18.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>2 mg/cm² is the dose used in clinical SPF testing — it's about 35 ml of sunscreen for a full body. Empirical measurements (Petersen &amp; Wulf 2014; Cole 2010) consistently find consumers apply 0.5–1 mg/cm² in real conditions. The "more reapplication, not higher SPF" mantra is grounded in this gap.</p>
@@ -1098,13 +1227,17 @@
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-06">
         <summary>
-          <div class="kf-num">F·06</div>
-          <div>
-            <div class="kf-headline">"Physical" vs "chemical" sunscreen is mostly marketing</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 12l5-5 5 5-5 5z"/><path d="M13 7l5-5M13 7l5 5M13 17l5-5M13 17l5 5"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·06 — physical vs chemical</span>
+            <div class="kf-headline">Is "mineral sunscreen" really physical, or is that a marketing story?</div>
             <div class="kf-short">Both organic and inorganic UV filters work primarily by <strong>absorption</strong>. Cole et al. 2016 measured only 4–5% UV reflection from ZnO/TiO₂ films — the other 95% is absorbed via electronic band-gap transitions (semiconductors) or π→π* / n→π* transitions (organic chromophores). The "mineral reflects, chemical absorbs" framing is a marketing convenience, not physics.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>Inorganic UV filters (ZnO, TiO₂) are wide-bandgap semiconductors. Below their bandgap energy (Eg ~ 3 eV for both), they're transparent. Above the bandgap, electrons get excited from the valence to conduction band, dissipating the energy as heat. ZnO bandgap 3.37 eV → cutoff 368 nm; rutile TiO₂ 3.0 eV → 413 nm. Mie scattering by the particles contributes a few percent of total attenuation but is small.</p>
@@ -1113,13 +1246,17 @@
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-07">
         <summary>
-          <div class="kf-num">F·07</div>
-          <div>
-            <div class="kf-headline">Iron oxides for HEV / visible-light protection</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="4"/><circle cx="15" cy="13" r="4"/><circle cx="11" cy="17" r="4"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·07 — iron oxides for HEV</span>
+            <div class="kf-headline">Why do iron oxides show up in tinted sunscreens, if they're not UV filters?</div>
             <div class="kf-short">Iron oxides (CI 77491/77492/77499) are FDA <strong>color additives</strong>, not regulated UV filters. They appear in tinted mineral sunscreens because their bandgaps fall <em>inside the visible spectrum</em> (Fe₂O₃ 2.1 eV, FeOOH 2.5 eV). 1–3% iron-oxide loading blocks 60–70% of HEV (400–500 nm) vs 10–20% untinted — clinically relevant for melasma, post-inflammatory hyperpigmentation, and idiopathic photodermatoses.</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>Three pigments are typically blended: red hematite (α-Fe₂O₃, CI 77491, bandgap 2.1 eV → cutoff ~590 nm), yellow goethite (α-FeOOH, CI 77492, 2.5 eV → ~496 nm), and black magnetite (Fe₃O₄, CI 77499, semi-metallic broadband absorber). A 3:1 yellow:red blend at ~3% gives a skin-tone-neutral tint that absorbs across UV plus the entire 400–500 nm HEV band.</p>
@@ -1128,13 +1265,17 @@
         </div>
       </details>
 
-      <details class="key-fact">
+      <details class="key-fact" id="fact-08">
         <summary>
-          <div class="kf-num">F·08</div>
-          <div>
-            <div class="kf-headline">Photodegradation: avobenzone is the canonical case</div>
+          <span class="kf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 11-12h-7z"/></svg>
+          </span>
+          <div class="kf-text">
+            <span class="kf-num">F·08 — photodegradation</span>
+            <div class="kf-headline">Why does avobenzone need a "stabilizer" — and what's the catch with the most common one?</div>
             <div class="kf-short"><strong>Avobenzone</strong> — the only FDA-approved UVA-I filter — degrades ~36% in 1 hour of sun unless stabilized, typically by <strong>octocrylene</strong>. Octocrylene then decomposes to <em>benzophenone</em> (an IARC 2B carcinogen) over shelf life. Most newer EU/JP filters (Tinosorb M/S, DHHB, Mexoryl SX/XL/400, EHT) are intrinsically photostable via <strong>ESIPT</strong> (excited-state intramolecular proton transfer).</div>
           </div>
+          <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
           <p>Avobenzone exists in two tautomers: enol (357 nm UV-A peak, photostable in protic solvent like methanol) and keto (265 nm UV-B peak, photoreactive). The diketo triplet state undergoes [2+2] cycloaddition with the cinnamate alkene of octinoxate, irreversibly destroying both filters — which is why avobenzone + octinoxate is a known formulation incompatibility.</p>
@@ -1254,7 +1395,18 @@
         <button class="chip" data-preset="all-uvb">All UVB workhorses</button>
         <button class="chip" data-preset="clear">Clear</button>
       </div>
-      <div class="builder-active" id="builderActive"></div>
+      <div class="builder-active-row">
+        <div class="builder-active" id="builderActive"></div>
+        <button class="active-compact-toggle" id="activeCompactToggle" aria-label="Toggle compact view of selected filters" title="Toggle compact view">▤</button>
+      </div>
+
+      <div class="builder-jump">
+        <span class="builder-jump-label">Learn more:</span>
+        <a href="#fact-02" data-fact="02">How important is UVA-1?</a>
+        <a href="#fact-07" data-fact="07">What about HEV / visible light?</a>
+        <a href="#fact-04" data-fact="04">What does this Y-axis really mean?</a>
+        <a href="#fact-05" data-fact="05">Real-world vs lab SPF?</a>
+      </div>
 
       <div class="builder-metrics" id="builderMetrics">
         <div class="metrics-row">
@@ -3394,6 +3546,167 @@ function renderScatter(){
   svg.addEventListener('mouseleave', clearInfo);
 }
 renderScatter();
+
+// =========================================
+// Section 01 polish: clickable chevron + selectable text + UV-intensity SVG
+// =========================================
+
+// Allow text selection inside <summary> without triggering the toggle.
+// If the user has actively selected text, intercept the click that would
+// have opened/closed the details element. Also restrict toggle to clicks
+// on .kf-icon and .kf-toggle (the explicit click-target zones).
+document.querySelectorAll('.key-fact > summary').forEach(summary => {
+  summary.addEventListener('click', (e) => {
+    // If text is selected, don't toggle
+    if (window.getSelection && window.getSelection().toString().length > 0){
+      e.preventDefault();
+      return;
+    }
+    // If the click landed on text content (not the icon or chevron), don't toggle
+    const target = e.target;
+    if (target.closest('.kf-icon') || target.closest('.kf-toggle')) {
+      // explicit toggle target — let it open
+      return;
+    }
+    // Click on text area — block toggle, but allow if it's a double-click or after a delay
+    e.preventDefault();
+  });
+});
+
+// Render the UV intensity diagram inside F·01 when first opened
+let uvDiagramRendered = false;
+function renderUVIntensityDiagram(){
+  if (uvDiagramRendered) return;
+  const container = document.getElementById('uvIntensityDiagram');
+  if (!container) return;
+  const svg = container.querySelector('svg');
+  if (!svg) return;
+
+  const W = 600, H = 220, padL = 50, padR = 16, padT = 16, padB = 36;
+  const innerW = W - padL - padR, innerH = H - padT - padB;
+  const xMin = 250, xMax = 700;
+  const xAt = lam => padL + ((lam - xMin) / (xMax - xMin)) * innerW;
+  const yAt = v => padT + (1 - v) * innerH;   // v: 0..1 normalized
+
+  // Solar AM 1.5 sea-level irradiance (W/m²/nm), normalized to peak ~480 nm = 1.0
+  // From ASTM G173 reference; coarse table for visualization.
+  const SOLAR = [
+    [250, 0.000], [280, 0.000], [290, 0.0001], [295, 0.005], [300, 0.05],
+    [305, 0.10], [310, 0.18], [315, 0.27], [320, 0.33], [330, 0.40],
+    [340, 0.43], [350, 0.46], [360, 0.49], [370, 0.50], [380, 0.52],
+    [390, 0.54], [400, 0.56], [420, 0.62], [440, 0.68], [460, 0.78],
+    [480, 0.85], [500, 0.92], [520, 0.96], [540, 1.00], [560, 0.96],
+    [580, 0.93], [600, 0.91], [620, 0.88], [640, 0.85], [660, 0.81], [700, 0.74]
+  ];
+
+  // CIE 1987 erythema action spectrum (normalized, peak = 1.0 at λ≤298 nm)
+  function ery(lam){
+    if (lam <= 298) return 1.0;
+    if (lam <= 328) return Math.pow(10, 0.094 * (298 - lam));
+    if (lam <= 400) return Math.pow(10, 0.015 * (139 - lam));
+    return 0;
+  }
+
+  // Bands (only span up to 500 nm; visible+ is just labelled)
+  const bands = [
+    {x1: 250, x2: 280, color: '#9b8fff', label: 'UV-C'},
+    {x1: 280, x2: 315, color: '#5e3aa3', label: 'UV-B'},
+    {x1: 315, x2: 340, color: '#b04a8a', label: 'UV-A2'},
+    {x1: 340, x2: 400, color: '#c98a3a', label: 'UV-A1'},
+    {x1: 400, x2: 500, color: '#4d80b8', label: 'HEV'},
+    {x1: 500, x2: 700, color: '#928aa0', label: 'Visible'},
+  ];
+
+  const parts = [];
+  // Band rectangles (very faint)
+  bands.forEach(b => {
+    const x1 = xAt(b.x1), x2 = xAt(b.x2);
+    parts.push(`<rect x="${x1}" y="${padT}" width="${x2-x1}" height="${innerH}" fill="${b.color}" opacity="0.07"/>`);
+    parts.push(`<text class="uv-band" x="${(x1+x2)/2}" y="${padT+10}" text-anchor="middle" fill="${b.color}">${b.label}</text>`);
+  });
+
+  // Solar irradiance — filled curve below the line
+  let solarPath = 'M ';
+  let solarFill = '';
+  SOLAR.forEach(([lam, v], i) => {
+    const x = xAt(lam), y = yAt(v);
+    solarPath += (i === 0 ? '' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+  });
+  const baselineY = padT + innerH;
+  solarFill = solarPath + `L ${xAt(700).toFixed(1)} ${baselineY} L ${xAt(250).toFixed(1)} ${baselineY} Z`;
+  parts.push(`<path class="uv-solar-fill" d="${solarFill}"/>`);
+  parts.push(`<path class="uv-solar-line" d="${solarPath}"/>`);
+
+  // Erythema action spectrum — log-scaled and clipped to visible range
+  let eryPath = '';
+  for (let lam = 250; lam <= 410; lam += 2){
+    const v = ery(lam);
+    if (v < 1e-5) continue;
+    const x = xAt(lam), y = yAt(v);
+    eryPath += (eryPath === '' ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+  }
+  parts.push(`<path class="uv-ery-line" d="${eryPath}"/>`);
+
+  // Y-axis (relative intensity)
+  parts.push(`<line class="uv-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${baselineY}"/>`);
+  parts.push(`<line class="uv-axis" x1="${padL}" y1="${baselineY}" x2="${padL+innerW}" y2="${baselineY}"/>`);
+  // Y ticks at 0, 0.5, 1.0
+  [0, 0.5, 1.0].forEach(v => {
+    const y = yAt(v);
+    parts.push(`<line class="uv-tick" x1="${padL-3}" y1="${y}" x2="${padL}" y2="${y}"/>`);
+    parts.push(`<text class="uv-label" x="${padL-6}" y="${y+3}" text-anchor="end">${v.toFixed(1)}</text>`);
+  });
+  parts.push(`<text class="uv-label" x="${padL+innerW/2}" y="${H-10}" text-anchor="middle">Wavelength (nm)</text>`);
+  parts.push(`<text class="uv-label" x="12" y="${padT+innerH/2}" text-anchor="middle" transform="rotate(-90 12 ${padT+innerH/2})">Relative intensity</text>`);
+  // X ticks every 50 nm
+  [250, 300, 350, 400, 500, 600, 700].forEach(lam => {
+    const x = xAt(lam);
+    parts.push(`<line class="uv-tick" x1="${x}" y1="${baselineY}" x2="${x}" y2="${baselineY+3}"/>`);
+    parts.push(`<text class="uv-label" x="${x}" y="${baselineY+15}" text-anchor="middle">${lam}</text>`);
+  });
+
+  svg.innerHTML = parts.join('');
+  uvDiagramRendered = true;
+}
+
+// Render the diagram once F·01 is opened (lazy)
+const fact01 = document.getElementById('fact-01');
+if (fact01){
+  fact01.addEventListener('toggle', () => {
+    if (fact01.open) renderUVIntensityDiagram();
+  });
+  // Also pre-render if the fragment hash is #fact-01
+  if (location.hash === '#fact-01') renderUVIntensityDiagram();
+}
+
+// Jump-link buttons under Spectrum Builder — open + scroll to the target fact
+document.querySelectorAll('.builder-jump a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const factEl = document.getElementById('fact-' + link.dataset.fact);
+    if (factEl){
+      factEl.open = true;
+      // If F·01, render the diagram now since the toggle event fires on close too
+      if (link.dataset.fact === '01') renderUVIntensityDiagram();
+      // Smooth scroll to the fact card
+      factEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Compact-view toggle for the active-pill list in Spectrum Builder
+(function wireCompactToggle(){
+  const btn = document.getElementById('activeCompactToggle');
+  const box = document.getElementById('builderActive');
+  if (!btn || !box) return;
+  let compact = false;
+  btn.addEventListener('click', () => {
+    compact = !compact;
+    box.classList.toggle('compact', compact);
+    btn.classList.toggle('active', compact);
+    btn.title = compact ? 'Switch to full sliders' : 'Switch to compact view';
+  });
+})();
 
 // "Show all spectra" corner toggle — reveals every filter's Gaussian-faded
 // smear bar AND its vertical uncertainty bracket at once, so users can

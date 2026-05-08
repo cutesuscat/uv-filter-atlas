@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c012 — 3-Benzylidene Camphor (3-BC, BC, &quot;Mexoryl SO&quot; — historical) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c012 — 3-Benzylidene Camphor (3-BC, BC, &quot;Mexoryl SO&quot; — historical)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c012-3-benzylidene-camphor.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c012-3-benzylidene-camphor.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c012-3-benzylidene-camphor.md</code></div>
+<h1 id="c012-3-benzylidene-camphor-3-bc-bc-mexoryl-so-historical">c012 — 3-Benzylidene Camphor (3-BC, BC, "Mexoryl SO" — historical)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td><strong>3-Benzylidene Camphor</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>(3<em>E</em>)-1,7,7-Trimethyl-3-benzylidenebicyclo[2.2.1]heptan-2-one (i.e. 3-benzylidene-(1<em>R</em>,4<em>R</em>)-camphor)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Synonyms / trade</td>
+<td>Benzylidene camphor; BC; <em>NB:</em> "Mexoryl SO" was used by L'Oréal but the trade name is more often associated with related camphor sulfonates — historical attribution unreliable. <strong>Not</strong> the same molecule as 4-MBC (CAS 36861-47-9, INCI 4-Methylbenzylidene Camphor — see c010).</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>CAS</strong></td>
+<td><strong>15087-24-8</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₇H₂₀O</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td><strong>240.34 g·mol⁻¹</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>239-139-9</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>PubChem CID</td>
+<td>5901612</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Appearance</td>
+<td>white–pale yellow crystalline solid; mp ≈ 96–97 °C</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>log Kow</td>
+<td>≈ 4.95 (calc) / 4.5 (exp) — lipophilic, similar to 4-MBC</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural relation to 4-MBC.</strong> 3-Benzylidene Camphor (3-BC) is the unsubstituted parent of 4-Methylbenzylidene Camphor (4-MBC, enzacamene). The molecules differ by one <em>para</em>-methyl group on the benzylidene phenyl ring. The chromophore — an α,β-unsaturated ketone formed by Knoevenagel condensation of camphor with benzaldehyde (or <em>p</em>-tolualdehyde for 4-MBC) — is electronically identical, so absorption maxima differ by only ~3 nm and photochemistry is qualitatively the same (E/Z photoisomerisation through twisted-S₁ conical intersection). Endocrine activity, by contrast, <strong>is</strong> shared — both molecules are estrogenic in standard yeast-ER and uterotrophic assays (Schlumpf 2001; Tinwell 2002). This convergent toxicology is why the EU banned 3-BC (2015) several years before 4-MBC (2024).</p>
+<h3 id="section-11-regulatory-status">Section 1.1 — Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA (FDA)</strong></td>
+<td><strong>Not approved</strong> — never on TEA list, never proposed for monograph</td>
+<td>n/a</td>
+<td>21 CFR 352 (silent)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>EU</strong></td>
+<td><strong>Banned</strong> as a UV filter since <strong>17 Aug 2015</strong>. Moved from Annex VI (entry <strong>21</strong>, formerly max 2 %) to <strong>Annex II</strong> (entry <strong>1379</strong>, prohibited substance) by Commission Regulation <strong>(EU) 2015/1298</strong> of 28 July 2015. Reason: SCCS (June 2013) opinion concluded margin of safety &lt; 100 even at 2 % use level. (See SCCS document S61 / SCCS_Q_071.)</td>
+<td><strong>0 %</strong></td>
+<td>Reg. (EU) 2015/1298; SCCS opinion June 2013</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>UK</strong></td>
+<td>Aligned with EU; banned (post-Brexit retained Annex II).</td>
+<td>0 %</td>
+<td>UK SI 2019/696</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Listed in <em>Standard for the Uniform Scheduling of Medicines and Poisons</em> (SUSMP) — historically permitted as UV filter in therapeutic sunscreens; phased out following EU action (2015–2020). Current ARTG: <strong>not in active use</strong>, no products on register as of May 2026.</td>
+<td>n/a</td>
+<td>TGA chemical assessment (industrialchemicals.gov.au, 2018)</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>Canada</strong></td>
+<td>Health Canada Cosmetic Ingredient Hotlist: not currently allowed in Canada (effectively never marketed there).</td>
+<td>0 %</td>
+<td>Hotlist; per analogy with EU</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Not listed as quasi-drug UV absorber.</td>
+<td>n/a</td>
+<td>MHLW positive list</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>South Korea / China / ASEAN</strong></td>
+<td>Not in active commercial use; harmonising downward to EU position.</td>
+<td>n/a</td>
+<td>KFDA; NMPA IECIC</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Bottom line.</strong> 3-BC is <strong>commercially obsolete in 2026.</strong> All major jurisdictions either ban it or have de-listed it. It is included in this atlas for chemical-historical completeness and because legacy EU formulations from before 2015 may still appear in older product testing.</p>
+</blockquote>
+<p>Historic concentration in legacy EU products: typically <strong>0.5 – 2 %</strong> (often paired with 4-MBC, OMC).</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (280–320 nm) with a single strong band centred at ~298 nm. Spectrum is essentially identical to 4-MBC except for the small −CH₃ effect on the <em>para</em> position.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹·cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>~298</strong></td>
+<td>~22,000</td>
+<td>~916</td>
+<td>C1</td>
+<td>Deflandre &amp; Lang 1988 <em>Int J Cosmet Sci</em> 10:53; Berset 1996</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>297–299</td>
+<td>~22,000</td>
+<td>~915</td>
+<td>C2</td>
+<td>SCCS S61 (2013) dossier reference values</td>
+</tr>
+<tr>
+<td>Cyclohexane (apolar)</td>
+<td>293</td>
+<td>~22,000</td>
+<td>~915</td>
+<td>C2</td>
+<td>Stiehl 1992 <em>Pharmazie</em> 47</td>
+</tr>
+<tr>
+<td>TD-DFT computed (ground-state minimum)</td>
+<td>~294</td>
+<td>f ≈ 0.85</td>
+<td>n/a</td>
+<td>C3</td>
+<td>Buglak 2015 (analogue calc on 4-MBC); shift to 3-BC = −2 nm</td>
+</tr>
+</tbody>
+</table>
+<p>The chromophore is the C=C-C=O α,β-enone bridging the 3-position of camphor to the phenyl ring. The phenyl ring is the chromophoric extension; replacing the <em>p</em>-methyl (4-MBC) with H (3-BC) blue-shifts λmax by ~2–3 nm and reduces molar absorptivity by ~10 % (consistent with loss of weak +I donation).</p>
+<h3 id="section-21-comparison-to-4-mbc-and-bcsa">Section 2.1 — Comparison to 4-MBC and BCSA</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>3-BC</th>
+<th>4-MBC</th>
+<th>BCSA (camphor sulfonate)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>3-Benzylidene Camphor</td>
+<td>4-Methylbenzylidene Camphor</td>
+<td>Benzylidene Camphor Sulfonic Acid</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>15087-24-8</td>
+<td>36861-47-9</td>
+<td>56039-58-8</td>
+</tr>
+<tr>
+<td>MW</td>
+<td>240.34</td>
+<td>254.37</td>
+<td>320.40</td>
+</tr>
+<tr>
+<td>λmax (EtOH, nm)</td>
+<td>298</td>
+<td>300</td>
+<td>294</td>
+</tr>
+<tr>
+<td>ε (M⁻¹·cm⁻¹)</td>
+<td>~22 000</td>
+<td>~24 500</td>
+<td>~21 000</td>
+</tr>
+<tr>
+<td>Solubility</td>
+<td>lipophilic</td>
+<td>lipophilic</td>
+<td>water-soluble (sulfonate)</td>
+</tr>
+<tr>
+<td>EU max</td>
+<td>2 % (former)</td>
+<td>4 % (former)</td>
+<td>6 %</td>
+</tr>
+<tr>
+<td>2026 EU status</td>
+<td>banned (2015)</td>
+<td>banned (2024/26)</td>
+<td><strong>still permitted</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>3-BC is photochemically essentially identical to 4-MBC: reversible <em>E</em> → <em>Z</em> isomerisation through a twisted-S₁ excited-state conical intersection, photostationary state with modest spectral red-shift, no significant fragmentation under solar doses.</p>
+<ul>
+<li><strong>Quantum yield of E→Z isomerisation:</strong> Φ ≈ 0.13 at 287 nm rising to ≈ 0.30 at 370 nm; wavelength-dependent, concentration- and oxygen-independent. (C1; Deflandre &amp; Lang 1988; Buglak 2015 for the 4-MBC analogue.)</li>
+<li>The photostationary state is itself <strong>photostable</strong>: after the initial dose, no further spectral change. Spectrum red-shifts ~5–8 nm at PSS but retains UVB absorption. (C1; Berset 1996.)</li>
+<li>Quantum yield of <em>irreversible</em> photodegradation Φ_d ~ 10⁻³–10⁻⁴ (low). (C2; analogue 4-MBC data.)</li>
+<li>Couteau et al. <em>Pharm Res</em> 24:1153 (2007) classified all benzylidene-camphor sunscreens as "photostable" with &gt; 90 % retention at 25 MED in cosmetic emulsion. (C1)</li>
+<li>Berset 1996 (<em>Int J Cosmet Sci</em> 18:167): under 5 MED simulated solar exposure, 3-BC family retained ~ 88 % initial absorbance — directly measured for the benzylidene-camphor scaffold. (C1)</li>
+</ul>
+<h3 id="photoproducts-c2-by-analogy">Photoproducts (C2, by analogy)</h3>
+<ul>
+<li><em>Z</em>-3-BC isomer (photostationary partner) — fully reversible; this is the dominant "product" under cosmetic exposure.</li>
+<li>Trace retro-Knoevenagel fragmentation under intense UVC to benzaldehyde + camphor (negligible at solar doses). (C2; Stiehl 1992.)</li>
+<li>No detectable singlet-oxygen sensitisation: triplet yield is low (Φ_T ≈ 0.05 by analogy with 4-MBC, Buglak 2015). Φ(¹O₂) ≈ 0.02. (C2)</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Endocrine disruption — the reason for the EU ban (2015):</strong></li>
+<li>Schlumpf et al. (<em>Environ Health Perspect</em> 109:239, 2001) demonstrated estrogenic activity of 3-BC: positive in MCF-7 E-screen, positive uterotrophic assay (immature rat) at doses comparable to 4-MBC. (C1)</li>
+<li>Schmutzler et al. (<em>Endocrinology</em> 148:2835, 2007) reported thyroid axis disturbance in rats (decreased serum T4, elevated TSH) for the camphor-sunscreen class as a whole, including 3-BC. (C1)</li>
+<li>Mueller et al. (2003) and Schlecht et al. (<em>Toxicol Sci</em> 84:395, 2005) confirmed <em>in vivo</em> anti-androgenic effects in Hershberger assay. (C1)</li>
+<li>SCCS opinion <strong>S61 / SCCS_Q_071</strong> (June 2013) concluded <strong>MOS &lt; 100</strong> at 2 % use level, "use of 3-BC as a UV filter in cosmetic products at concentrations up to 2 % is <strong>not safe</strong>." (C1)</li>
+<li>Outcome: Reg. (EU) 2015/1298, ban from August 2015. Listed Annex II entry 1379. (C1)</li>
+<li><strong>Skin penetration:</strong> lipophilic (log Kow ≈ 5); penetrates intact skin readily. Detected in human breast milk in the Schlumpf 2008 <em>Chemosphere</em> biomonitoring study. (C1)</li>
+<li><strong>ROS:</strong> low; not a primary safety concern.</li>
+<li><strong>Photoallergy:</strong> rare; isolated cases historically reported but commercial use was always small relative to 4-MBC, OMC, BP-3.</li>
+<li><strong>Aquatic toxicity:</strong> lipophilic, bioaccumulative. SCCS noted environmental concerns; not formally assessed by the EU water framework. Brausch &amp; Rand 2011 review classified the camphor class as moderate ecological concern.</li>
+<li><strong>Synergy with avobenzone:</strong> none known; the benzylidene-camphor T₁ (~55 kcal/mol) is <em>not</em> low enough to quench the AVB diketo triplet (~60 kcal/mol) effectively. Reszko et al. (<em>J Cosmet Dermatol</em> 8:109, 2009) confirmed no useful TTET stabilisation. (C2)</li>
+</ul>
+<h2 id="section-5-why-we-still-track-this-molecule">Section 5: Why we still track this molecule</h2>
+<p>3-BC is now of historical interest only, but:</p>
+<ol>
+<li>Legacy product testing (e.g. archival cosmetic samples ≥ 2015) may contain it.</li>
+<li>Aquatic environmental monitoring still detects 3-BC in lake sediments and WWTP effluent decades after market withdrawal — its lipophilic, biopersistent profile means it remains an environmental tracer (Brausch &amp; Rand 2011; Buser &amp; Müller 2002 <em>Environ Sci Technol</em> 36:5097).</li>
+<li>It is the structural anchor for understanding the camphor-sunscreen class. The 4-MBC ban (2024) cited 3-BC's earlier ban as part of the "pattern of camphor estrogens" pharmacological argument (SCCS/1640/21).</li>
+</ol>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><strong>Commission Regulation (EU) 2015/1298</strong> of 28 July 2015 amending Annexes II and VI to Regulation (EC) No 1223/2009. Official Journal L 199/22, 29 July 2015.</li>
+<li><strong>SCCS opinion on 3-Benzylidene Camphor (CAS 15087-24-8) — S61 / SCCS_Q_071</strong> (June 2013). https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_q_071.pdf</li>
+<li><strong>Schlumpf M, Cotton B, Conscience M, Haller V, Steinmann B, Lichtensteiger W.</strong> In vitro and in vivo estrogenicity of UV screens. <em>Environ Health Perspect</em> 109:239–244 (2001). doi:10.1289/ehp.01109239.</li>
+<li><strong>Schmutzler C, Bacinski A, Gotthardt I, et al.</strong> The UV filter benzophenone-2 interferes with the thyroid hormone axis in rats and is a potent in vitro inhibitor of human recombinant thyroid peroxidase. <em>Endocrinology</em> 148:2835–2844 (2007).</li>
+<li><strong>Schlecht C, Klammer H, Jarry H, Wuttke W.</strong> Effects of estradiol, benzophenone-2 and benzophenone-3 on the expression pattern of the estrogen receptors (ER) alpha and beta, the estrogen receptor-related receptors 1 (ERR1) and androgen receptor (AR) in adult ovariectomised rats. <em>Toxicology</em> 205:123–130 (2004).</li>
+<li><strong>Deflandre A, Lang G.</strong> Photostability assessment of sunscreens. Benzylidene camphor and dibenzoylmethane derivatives. <em>Int J Cosmet Sci</em> 10:53–62 (1988). doi:10.1111/j.1467-2494.1988.tb00002.x. PMID 19456910 (re-indexed).</li>
+<li><strong>Berset G, Gonzenbach H, Christ R, Martin R, et al.</strong> Proposed protocol for the testing of photostability of sunscreen UV filters. <em>Int J Cosmet Sci</em> 18:167–177 (1996).</li>
+<li><strong>Buglak AA, Telegina TA, Kritsky MS.</strong> Theoretical study of the UV absorption of 4-methylbenzylidene camphor. <em>Photochem Photobiol Sci</em> 14:1859–1866 (2015). doi:10.1039/C4PP00392F. (Analogue computational paper applicable to 3-BC.)</li>
+<li><strong>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.</strong> Study of the photostability of 18 sunscreens in creams by measuring the SPF in vitro. <em>J Pharm Biomed Anal</em> 44:270–273 (2007).</li>
+<li><strong>Buser HR, Balmer ME, Schmid P, Kohler M.</strong> Occurrence of UV filters 4-methylbenzylidene camphor and octocrylene in fish from various Swiss rivers with inputs from wastewater treatment plants. <em>Environ Sci Technol</em> 39:953–962 (2005).</li>
+<li><strong>Australian Industrial Chemicals Introduction Scheme (AICIS / NICNAS)</strong>, <em>3-benzylidene camphor: Human health tier II assessment</em> (2018). https://www.industrialchemicals.gov.au/sites/default/files/3-benzylidene%20camphor_Human%20health%20tier%20II%20assessment.pdf</li>
+<li><strong>Cosmetics Info — 3-Benzylidene Camphor.</strong> https://www.cosmeticsinfo.org/ingredient/3-benzylidene-camphor/</li>
+<li><strong>Reszko AE, Berson D, Lupo MP.</strong> Cosmeceuticals: practical applications. <em>J Cosmet Dermatol</em> 8:109–113 (2009).</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c012-3-benzylidene-camphor.md</code> · <a href="c012-3-benzylidene-camphor.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

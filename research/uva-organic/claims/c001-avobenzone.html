@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C001 — Avobenzone (Butyl Methoxydibenzoylmethane / BMDBM / Parsol 1789) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">C001 — Avobenzone (Butyl Methoxydibenzoylmethane / BMDBM / Parsol 1789)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c001-avobenzone.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c001-avobenzone.md">View raw markdown</a> · Path: <code>research/uva-organic/claims/c001-avobenzone.md</code></div>
+<h1 id="c001-avobenzone-butyl-methoxydibenzoylmethane-bmdbm-parsol-1789">C001 — Avobenzone (Butyl Methoxydibenzoylmethane / BMDBM / Parsol 1789)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INCI</strong></td>
+<td>Butyl Methoxydibenzoylmethane</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>USAN</strong></td>
+<td>Avobenzone</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>IUPAC</strong></td>
+<td>1-(4-tert-Butylphenyl)-3-(4-methoxyphenyl)propane-1,3-dione (also: 3-(4-tert-Butylphenyl)-1-(4-methoxyphenyl)propane-1,3-dione)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Common abbreviations</strong></td>
+<td>BMDBM, BMDM, AVB, AVOB, t-BMDBM</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Trade names</strong></td>
+<td>Parsol 1789 (DSM/Hoffmann-La Roche), Eusolex 9020 (Merck), Neo Heliopan 357 (Symrise), Escalol 517 (Ashland)</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>CAS</strong></td>
+<td>70356-09-1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular formula</strong></td>
+<td>C₂₀H₂₂O₃</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular weight</strong></td>
+<td>310.39 g/mol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Appearance</strong></td>
+<td>Whitish-yellow crystalline powder; mp 81–86 °C</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max concentration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA (FDA)</strong></td>
+<td>Category I (currently allowed under stayed monograph M020) but FDA proposed in 2019 that GRASE status is "insufficient data"; remains in commerce pending further safety data</td>
+<td><strong>3%</strong></td>
+</tr>
+<tr>
+<td><strong>EU (Annex VI)</strong></td>
+<td>Annex VI entry — approved</td>
+<td><strong>5%</strong></td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Approved (AICIS / TGA permitted sunscreen active)</td>
+<td><strong>5%</strong></td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Approved (highest cap globally)</td>
+<td><strong>10%</strong></td>
+</tr>
+<tr>
+<td><strong>South Korea, ASEAN, Mercosur, Canada, China</strong></td>
+<td>Approved</td>
+<td>5% (Korea, China, ASEAN, Mercosur); 3% (Canada)</td>
+</tr>
+<tr>
+<td><strong>Palau</strong></td>
+<td>Banned (2020) — reef toxicity concerns</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Source: avobenzone Wikipedia entry; OTC Monograph M020; reanalysis confirms 3% (US) / 5% (EU) / 10% (Japan) caps. C1.</p>
+<h3 id="typical-formulation-use">Typical formulation use</h3>
+<p>Avobenzone is almost always blended at 1–3% in US OTC products and 2–5% in EU products, <strong>paired with photostabilizers</strong> (octocrylene most common; see §4). It is rarely used alone above ~1.5% because of photolability.</p>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>Avobenzone exists as a <strong>keto–enol tautomeric equilibrium</strong> (β-diketone). The two tautomers have radically different spectra:</p>
+<table>
+<thead>
+<tr>
+<th>Tautomer</th>
+<th>λmax (nm)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chelated enol (CE)</strong> — predominant in ground state, intramolecular H-bond</td>
+<td><strong>355–360</strong> (depends on solvent)</td>
+<td>Active UVA absorber; π→π* of enol-chelate</td>
+</tr>
+<tr>
+<td><strong>Diketo (DK)</strong> — minor, but populated under irradiation</td>
+<td><strong>~265</strong></td>
+<td>UVB region; DK is the photochemically reactive form</td>
+</tr>
+</tbody>
+</table>
+<h3 id="max-by-solvent-for-the-enol-band">λmax by solvent (for the enol band)</h3>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>Source / Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cyclohexane (nonpolar, aprotic)</td>
+<td>355</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Cyclohexane (DK form, ~265 band)</td>
+<td>265</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Ethyl acetate (aprotic, moderate polar)</td>
+<td>356</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Methanol (protic, polar)</td>
+<td>358</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>DMSO (aprotic, polar)</td>
+<td>363</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Ethanol (typical pharm reference)</td>
+<td>~357</td>
+<td>Cosmetics &amp; Toiletries / wikipedia composite — C2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important caveat:</strong> Increasing solvent polarity and H-bond accepting ability red-shifts the enol band; protic solvents that stabilize the enol form <em>decrease</em> photodegradation (see §3).</p>
+<h3 id="molar-absorption-coefficient-and-e1-1cm">Molar absorption coefficient (ε) and E(1%, 1cm)</h3>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+<th>Solvent</th>
+<th>Source / Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>E(1%, 1cm)</strong> at 357–358 nm</td>
+<td><strong>1100–1160</strong></td>
+<td>Methanol (EU pharmacopeial reference)</td>
+<td>EU spec / Cosmetics &amp; Toiletries — C1</td>
+</tr>
+<tr>
+<td><strong>ε (molar absorptivity)</strong></td>
+<td>~34,000 M⁻¹cm⁻¹ at λmax</td>
+<td>Methanol (calculated from E1% via ε = E1%·MW/10 ≈ 1130·310.39/10 ≈ 35,000)</td>
+<td>C3 (computed)</td>
+</tr>
+<tr>
+<td>ε (literature reported)</td>
+<td>31,000–36,000 M⁻¹cm⁻¹</td>
+<td>Various organic solvents</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Conversion check: ε = E(1%,1cm) × MW / 10 = 1130 × 310.39 / 10 ≈ <strong>35,070 M⁻¹cm⁻¹</strong>. This high ε is the basis for avobenzone's reputation as the strongest UVA absorber per gram among organic filters approved in the US.</p>
+<h3 id="bandwidth-spectral-range">Bandwidth / spectral range</h3>
+<ul>
+<li>Effective absorption: <strong>310–400 nm</strong> (covers UVA-I and UVA-II); peak in UVA-I</li>
+<li>FWHM ~50 nm at λmax</li>
+<li>Critical wavelength reported ~380 nm (when stabilized)</li>
+</ul>
+<hr>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>Avobenzone is <strong>the most notoriously photolabile of the major organic UV filters</strong>. The neat compound and dilute solutions degrade dramatically; degradation is solvent-, oxygen-, and formulation-dependent.</p>
+<h3 id="primary-mechanism">Primary mechanism</h3>
+<ol>
+<li>UV absorption populates S₁ of enol → fast H-transfer / IC mostly back to ground state</li>
+<li>A fraction undergoes excited-state intramolecular H-transfer to populate <strong>diketo (DK)</strong> form</li>
+<li>DK form has <strong>long-lived triplet state</strong> → undergoes <strong>Norrish Type I α-cleavage</strong> between the carbonyl and α-carbon</li>
+<li>Radical fragments recombine, oxidize, or abstract H → photoproducts</li>
+</ol>
+<p>This is why DK quenchers (octocrylene) and protic solvents (which stabilize enol) protect avobenzone.</p>
+<h3 id="quantitative-degradation-data">Quantitative degradation data</h3>
+<table>
+<thead>
+<tr>
+<th>Conditions</th>
+<th>% loss / remaining</th>
+<th>UV dose / time</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avobenzone neat under 1 h sunlight (FDA filing data)</td>
+<td><strong>~36% loss</strong> of UV absorbance</td>
+<td>1 h sunlight</td>
+<td>FDA submission, cited in Wikipedia / cosmeticsandtoiletries — C2</td>
+</tr>
+<tr>
+<td>Avobenzone in cyclohexane</td>
+<td>"appreciable" photodegradation; major route</td>
+<td>Sunlight-equivalent UVA</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Avobenzone in ethyl acetate</td>
+<td>Photoisomerisation + photodegradation, similar extent</td>
+<td>UVA</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Avobenzone in methanol</td>
+<td><strong>Essentially photostable</strong> (protic stabilizes enol)</td>
+<td>UVA</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Avobenzone in DMSO</td>
+<td>Photoisomerisation only (no photodegradation); requires O₂</td>
+<td>UVA</td>
+<td>Mturi &amp; Martincigh 2008 — C1</td>
+</tr>
+<tr>
+<td>Avobenzone 4% alone (in vehicle)</td>
+<td>~23% remaining after 25 MED</td>
+<td>25 MED</td>
+<td>cited in Bonda 2008 / cosmeticsandtoiletries — C2</td>
+</tr>
+<tr>
+<td>Avobenzone + octinoxate (typical formulation)</td>
+<td>rapid concomitant degradation, free radicals persist</td>
+<td>UVA exposure</td>
+<td>Sayre, Dowdy, Gerwig, Shields, Lloyd 2005, <em>Photochem Photobiol</em> — C1</td>
+</tr>
+<tr>
+<td>Avobenzone + octocrylene + BP-3 (Sayre 2005)</td>
+<td><strong>~20%</strong> avobenzone remaining</td>
+<td>40 mJ/cm² UVA</td>
+<td>Sayre 2005 — C1</td>
+</tr>
+<tr>
+<td>Avobenzone + octocrylene 4% (Bonda 2008)</td>
+<td><strong>~90%</strong> remaining</td>
+<td>25 MED</td>
+<td>Bonda 2008 / cosmeticsandtoiletries — C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="oxygen-dependence">Oxygen dependence</h3>
+<ul>
+<li><strong>Photoisomerisation (enol ↔ keto + cis/trans of cinnamoyl-like fragments): O₂-dependent</strong></li>
+<li><strong>Photodegradation (Norrish cleavage to small molecules): O₂-independent</strong> — proceeds in degassed solvent</li>
+</ul>
+<p>(Mturi &amp; Martincigh 2008, <em>J Photochem Photobiol A</em> <strong>200</strong>:410–420)</p>
+<h3 id="quantum-yields">Quantum yields (Φ)</h3>
+<p>Reported quantum yield for photoreactivity (formation of DK and downstream products) is small but non-negligible: Φ_total photoproduct ≈ 10⁻³–10⁻² depending on solvent (C2 from various ultrafast / steady-state studies). Specific Φ for cleavage in cyclohexane reported on the order of 10⁻³ — <strong>C5 for exact value</strong> without primary numerical access.</p>
+<p>Ultrafast TEAS studies (Holt et al. 2021, <em>PCCP</em> 23(42):24439–24448; D1CP03610F) report excited-state lifetimes:
+- τ₁ ≈ 150–235 fs (Franck-Condon evolution)
+- τ₂ ≈ 0.7–1.2 ps (S₁ stimulated emission)
+- τ₃ ≈ 7.7–8.4 ps (vibrational cooling)
+- τ₄ &gt; 2.5 ns (incomplete bleach recovery — productive photochemistry channel)
+Confidence C1.</p>
+<h3 id="photoproducts-schwack-rudolph-1995-j-photochem-photobiol-b-z-lebensm-unters-forsch-cited-in-wiley">Photoproducts (Schwack &amp; Rudolph 1995, <em>J Photochem Photobiol B</em> / Z. Lebensm.-Unters. Forsch. cited in Wiley)</h3>
+<p>In cyclohexane, <strong>14 photoproducts</strong> identified, grouped as:</p>
+<ol>
+<li><strong>Benzaldehydes</strong> — 4-tert-butylbenzaldehyde, 4-methoxybenzaldehyde (anisaldehyde)</li>
+<li><strong>Benzoic acids</strong> — 4-tert-butylbenzoic acid, 4-methoxybenzoic acid (anisic acid)</li>
+<li><strong>Phenylglyoxals (arylglyoxals)</strong> — 4-tert-butylphenylglyoxal, 4-methoxyphenylglyoxal — <strong>photosensitizers, generate singlet oxygen</strong></li>
+<li><strong>Acetophenones</strong> — 4-tert-butylacetophenone, 4-methoxyacetophenone</li>
+<li><strong>Benzils</strong> — 4,4'-disubstituted benzils (1,2-diketones) — also photosensitizers</li>
+<li><strong>Dibenzoylmethanes</strong> (parent and degraded analogues)</li>
+<li><strong>Dibenzoylethane</strong> (recombination product)</li>
+<li><strong>t-Butylbenzene</strong> (after decarbonylation)</li>
+</ol>
+<p>Sensitizer photoproducts (arylglyoxals, benzils) raise toxicology concerns: they generate ¹O₂, may cause photoallergy, and have been implicated in reactive species formation.</p>
+<p>Mechanism: α-cleavage of DK form → benzoyl + arylacetyl radicals → recombination/oxidation/disproportionation pathways.</p>
+<p>C1 (Schwack &amp; Rudolph) → secondary review citations; primary not directly accessed in this work — flag as <strong>C1/C2 hybrid</strong>.</p>
+<h3 id="effect-of-vehicle-formulation">Effect of vehicle / formulation</h3>
+<ul>
+<li><strong>Esters / oils (ethylhexyl benzoate, C12-15 alkyl benzoate, isopropyl myristate)</strong> — moderate stability, similar to cyclohexane; standard sunscreen oil bases</li>
+<li><strong>Polar protic vehicles</strong> — better stability but rare in cosmetic formulations</li>
+<li><strong>Silicones (cyclomethicone)</strong> — moderate stability, common</li>
+<li><strong>Encapsulation (β-cyclodextrin, polymer microspheres, lipid nanoparticles)</strong> — can dramatically improve stability (&gt;80% remaining after extended UV exposure) — C2</li>
+</ul>
+<hr>
+<h2 id="section-4-photostabilization">Section 4: Photostabilization</h2>
+<p>Avobenzone alone is <strong>not viable</strong> in modern sunscreens. The industry has developed multiple stabilization strategies.</p>
+<h3 id="triplet-quenchers-most-effective-quench-dk-triplet-state-via-energy-transfer-et-56-kcalmol">Triplet quenchers (most effective; quench DK triplet state via energy transfer, ET ≈ 56 kcal/mol)</h3>
+<table>
+<thead>
+<tr>
+<th>Stabilizer</th>
+<th>INCI / trade name</th>
+<th>Mechanism</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Octocrylene (OC)</strong></td>
+<td>2-Ethylhexyl 2-cyano-3,3-diphenylacrylate</td>
+<td>Triplet–triplet energy transfer; quenches AVB(³DK)</td>
+<td>Most common; "consistently performed best" — Bonda 2008</td>
+</tr>
+<tr>
+<td><strong>DEHN / Corapan TQ</strong></td>
+<td>Diethylhexyl 2,6-naphthalate</td>
+<td>Triplet–triplet energy transfer (T₁ of DEHN ≈ 60 kcal/mol)</td>
+<td>Hallstar; established mechanism in Photochem Photobiol Sci 2018, c8pp00204e</td>
+</tr>
+<tr>
+<td><strong>Polyester-8 (Polycrylene)</strong></td>
+<td>Cyanodiphenyl-propenoate-terminated polyester</td>
+<td>Same chromophore family as OC; polymeric → less penetration</td>
+<td>Hallstar; synergizes with DEHN</td>
+</tr>
+<tr>
+<td><strong>MBC (Enzacamene, 4-methylbenzylidene camphor)</strong></td>
+<td>4-Methylbenzylidene Camphor</td>
+<td>Triplet quencher</td>
+<td>EU-approved (Annex VI), banned in some markets; restricted use</td>
+</tr>
+<tr>
+<td><strong>Bemotrizinol (Tinosorb S)</strong></td>
+<td>Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine</td>
+<td>Triplet quencher + own UVA absorber</td>
+<td>Not FDA-approved, but EU-approved at 10%</td>
+</tr>
+<tr>
+<td><strong>Mexoryl SX (Ecamsule)</strong></td>
+<td>Terephthalylidene Dicamphor Sulfonic Acid</td>
+<td>Photostable UVA filter; stabilizes AVB</td>
+<td>L'Oréal proprietary; FDA-approved only in specific products</td>
+</tr>
+<tr>
+<td><strong>DESM</strong></td>
+<td>Diethylhexyl Syringylidenemalonate (Oxynex ST)</td>
+<td>Triplet quencher + ¹O₂ quencher</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Ethylhexyl Methoxycrylene (Solastay S1)</strong></td>
+<td>Octocrylene-related</td>
+<td>Triplet quencher, fluorescent</td>
+<td>Hallstar</td>
+</tr>
+<tr>
+<td><strong>Oxybenzone (BP-3)</strong></td>
+<td>Benzophenone-3</td>
+<td>Modest triplet quenching + own absorption</td>
+<td>Use declining due to hormone/reef concerns</td>
+</tr>
+</tbody>
+</table>
+<h3 id="singlet-oxygen-radical-scavengers-secondary-stabilization">Singlet oxygen / radical scavengers (secondary stabilization)</h3>
+<ul>
+<li>α-Tocopherol (Vit E), tocopheryl acetate</li>
+<li>Ascorbyl tetraisopalmitate</li>
+<li>Trolox (research)</li>
+<li>BHT</li>
+<li>These reduce damage from photoproducts (arylglyoxals, benzils) more than they prevent primary degradation.</li>
+</ul>
+<h3 id="encapsulation">Encapsulation</h3>
+<ul>
+<li>β-cyclodextrin inclusion complexes (Scalia et al.)</li>
+<li>Lipid nanoparticles (NLC, SLN)</li>
+<li>Silica microspheres</li>
+<li>Polymer microcapsules</li>
+<li>Often improve photostability ≥30 percentage points.</li>
+</ul>
+<h3 id="known-negative-interactions-critical">Known Negative Interactions (CRITICAL)</h3>
+<h4 id="1-avobenzone-octinoxate-octyl-methoxycinnamate-omc-ethylhexyl-methoxycinnamate">1. Avobenzone + Octinoxate (Octyl Methoxycinnamate, OMC, Ethylhexyl Methoxycinnamate)</h4>
+<p><strong>Both filters degrade faster together than alone.</strong> Mechanism (Sayre, Dowdy, Gerwig, Shields, Lloyd 2005, <em>Photochem Photobiol</em> <strong>81</strong>(2):452–456; doi:10.1562/2004-02-12-RA-083):</p>
+<ul>
+<li>Octinoxate's cinnamate C=C undergoes <strong>[2+2] photocycloaddition</strong> with carbonyl/alkene moieties of avobenzone (Paterno-Büchi-like or olefin–olefin cyclobutane formation)</li>
+<li>Concomitant photolysis predominates over expected E/Z isomerization</li>
+<li>ESR-detectable persistent free radicals form</li>
+<li>Result: both filters degrade faster, and free radicals damage skin</li>
+</ul>
+<p>Many regulators / formulators now <strong>avoid this pairing</strong>. Despite this, octinoxate + avobenzone combos persist in some legacy products. C1.</p>
+<h4 id="2-octocrylene-degrades-to-benzophenone-downs-2021">2. Octocrylene degrades to benzophenone (Downs 2021)</h4>
+<p>Downs CA, DiNardo JC, Stien D, Rodrigues AMS, Lebaron P. (2021). <em>Benzophenone Accumulates over Time from the Degradation of Octocrylene in Commercial Sunscreen Products</em>. <strong>Chem Res Toxicol</strong> 34(4):1046–1054. doi:10.1021/acs.chemrestox.0c00461.</p>
+<ul>
+<li>Mechanism: <strong>retro-aldol condensation</strong> of octocrylene → benzophenone + 2-ethylhexyl cyanoacetate</li>
+<li>16 octocrylene-containing products: avg 39 mg/kg benzophenone (range 6–186)</li>
+<li>After FDA-accelerated stability (1 year @ 40 °C): avg 75 mg/kg (max 435)</li>
+<li>Benzophenone is a 2B IARC carcinogen, endocrine disruptor, strict EU restriction</li>
+<li>Implication: while OC stabilizes avobenzone, OC itself is unstable on shelf-life timescales (months–years), generating benzophenone</li>
+</ul>
+<p>This is a <strong>paradoxical regulatory situation</strong>: the stabilizer used to make avobenzone-containing products viable is itself producing a problem ingredient over shelf life. ACS published a Comment/response (doi:10.1021/acs.chemrestox.1c00265) disputing magnitude but not mechanism. C1.</p>
+<h4 id="3-avobenzone-uv-filters-with-overlapping-triplet-energies">3. Avobenzone + UV filters with overlapping triplet energies</h4>
+<p>Some triazine filters can over-quench, dropping protective effect.</p>
+<hr>
+<h2 id="confidence-summary">Confidence summary</h2>
+<ul>
+<li>§1 Identity: C1</li>
+<li>§2 Spectrum (λmax by solvent): C1; ε computed C3, literature confirmed C2</li>
+<li>§3 Photodegradation:</li>
+<li>Mturi &amp; Martincigh solvent data: C1</li>
+<li>Schwack &amp; Rudolph photoproduct list: C1 via secondary</li>
+<li>Quantum yield (numerical): <strong>C5</strong></li>
+<li>In-formulation % remaining: C2</li>
+<li>§4 Stabilizers: mechanism C1, comparative effectiveness C2; Downs 2021 C1</li>
+</ul>
+<h2 id="key-references">Key references</h2>
+<ol>
+<li>Mturi GJ, Martincigh BS. <em>J Photochem Photobiol A: Chem</em> <strong>200</strong>(2008):410–420. doi:10.1016/j.jphotochem.2008.09.001</li>
+<li>Schwack W, Rudolph T. <em>J Photochem Photobiol B</em> (1995) 28:229–234 (avobenzone photoproducts in cyclohexane)</li>
+<li>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV. <em>Photochem Photobiol</em> (2005) 81:452–456. doi:10.1562/2004-02-12-RA-083</li>
+<li>Bonda CA. (2008) "The Photostability of Organic Sunscreen Actives: A Review." In: <em>Sunscreens: Regulations and Commercial Development</em>, Shaath ed., Taylor &amp; Francis.</li>
+<li>Downs CA et al. <em>Chem Res Toxicol</em> (2021) 34:1046–1054. doi:10.1021/acs.chemrestox.0c00461</li>
+<li>Holt EL, Krokidi KM, Turner MAP et al. <em>Phys Chem Chem Phys</em> (2021) 23(42):24439–24448. doi:10.1039/D1CP03610F</li>
+<li>Karpkird T et al. <em>Photochem Photobiol Sci</em> (2018) — DEHN photophysics. doi:10.1039/c8pp00204e</li>
+<li>SCCS opinions on UV filters — health.ec.europa.eu</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uva-organic/claims/c001-avobenzone.md</code> · <a href="c001-avobenzone.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

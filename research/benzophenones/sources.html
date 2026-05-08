@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sources — Benzophenone-class sunscreen filter research — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Sources — Benzophenone-class sunscreen filter research</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="sources.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="sources.md">View raw markdown</a> · Path: <code>research/benzophenones/sources.md</code></div>
+<h1 id="sources-benzophenone-class-sunscreen-filter-research">Sources — Benzophenone-class sunscreen filter research</h1>
+<p>Compiled May 2026 to support claim files c001–c006 in this directory.</p>
+<h2 id="primary-peer-reviewed-literature-cited-in-claim-files">Primary peer-reviewed literature (cited in claim files)</h2>
+<h3 id="skin-absorption-pharmacokinetics">Skin absorption / pharmacokinetics</h3>
+<ol>
+<li><strong>Matta MK, Zusterzeel R, Pilli NR, et al.</strong> "Effect of Sunscreen Application Under Maximal Use Conditions on Plasma Concentration of Sunscreen Active Ingredients: A Randomized Clinical Trial." <em>JAMA</em> 2019;321(21):2082-2091. doi:10.1001/jama.2019.5586. PMID 31058986.</li>
+<li><strong>Matta MK, Florian J, Zusterzeel R, et al.</strong> "Effect of Sunscreen Application on Plasma Concentration of Sunscreen Active Ingredients: A Randomized Clinical Trial." <em>JAMA</em> 2020;323(3):256-267. doi:10.1001/jama.2019.20747. PMID 31961417.</li>
+<li><strong>Janjua NR, Kongshoj B, Andersson AM, Wulf HC.</strong> "Sunscreens in human plasma and urine after repeated whole-body topical application." <em>J Invest Dermatol</em> 2008;128(10):2503-2509. doi:10.1038/jid.2008.83.</li>
+<li><strong>Roberts MS, Cross SE, Anissimov YG.</strong> Penetration of topical salicylates: percutaneous absorption studies. <em>Br J Clin Pharmacol</em> 1998;46:355-363.</li>
+</ol>
+<h3 id="endocrine-reproductive">Endocrine / reproductive</h3>
+<ol start="5">
+<li><strong>Schlumpf M, Cotton B, Conscience M, et al.</strong> "In vitro and in vivo estrogenicity of UV screens." <em>Environ Health Perspect</em> 2001;109(3):239-244. doi:10.1289/ehp.01109239.</li>
+<li><strong>Park J, Kim S, Park Y, et al.</strong> "Benzophenone-1 stimulated the growth of BG-1 ovarian cancer cells by cell cycle regulation via an estrogen receptor alpha-mediated signaling pathway in cellular and xenograft mouse models." <em>Toxicology</em> 2013;305:41-48. doi:10.1016/j.tox.2013.01.003.</li>
+<li><strong>Yamasaki K et al.</strong> "Estrogenic potency of benzophenone and its metabolites in juvenile female rats." <em>Toxicol Lett</em> 2003;146:111-120.</li>
+<li><strong>Kunz PY, Fent K.</strong> "Multiple hormonal activities of UV filters and comparison of in vivo and in vitro estrogenic activity of ethyl-4-aminobenzoate in fish." <em>Aquat Toxicol</em> 2006;79:305-324. doi:10.1016/j.aquatox.2006.06.016.</li>
+<li><strong>Mustieles V, et al.</strong> "Benzophenone-3: Comprehensive review of the toxicological and human evidence with meta-analysis of human biomonitoring studies." <em>Environ Int</em> 2023;173:107739. doi:10.1016/j.envint.2023.107739. PMID 36805158.</li>
+<li><strong>Yan H, et al.</strong> "Benzophenone-type ultraviolet filters inhibit human and rat placental 3β-hydroxysteroid dehydrogenases." <em>Toxicol Appl Pharmacol</em> 2023.</li>
+<li><strong>Morohoshi K et al.</strong> "Estrogenic activity of 37 components of commercial sunscreen lotions evaluated by in vitro assays." <em>Food Chem Toxicol</em> 2005;43:555-559.</li>
+</ol>
+<h3 id="biomonitoring-nhanes-etc">Biomonitoring (NHANES, etc.)</h3>
+<ol start="12">
+<li><strong>Calafat AM, Wong LY, Ye X, Reidy JA, Needham LL.</strong> "Concentrations of the sunscreen agent benzophenone-3 in residents of the United States: National Health and Nutrition Examination Survey 2003-2004." <em>Environ Health Perspect</em> 2008;116(7):893-897. doi:10.1289/ehp.11269.</li>
+<li><strong>Han C et al.</strong> "Self-reported sunscreen use and urinary benzophenone-3 concentrations in the United States: NHANES 2003-2006 and 2009-2012." <em>Environ Res</em> 2016;148:153-163. doi:10.1016/j.envres.2016.03.029.</li>
+<li><strong>Asimakopoulos AG, Thomaidis NS, Kannan K.</strong> "Widespread occurrence of bisphenol A diglycidyl ethers, benzophenones, and bisphenol A in serum samples." <em>Sci Total Environ</em> 2014;470-471:1243-1249.</li>
+<li><strong>Zhang T, et al.</strong> "Ten-year trends in urinary concentrations of triclosan and benzophenone-3 in the general U.S. population from 2003 to 2012." <em>Environ Pollut</em> 2015. PMID 26602792.</li>
+</ol>
+<h3 id="coral-aquatic-toxicity">Coral / aquatic toxicity</h3>
+<ol start="16">
+<li><strong>Downs CA, Kramarsky-Winter E, Segal R, et al.</strong> "Toxicopathological effects of the sunscreen UV filter, oxybenzone (benzophenone-3), on coral planulae and cultured primary cells and its environmental contamination in Hawaii and the U.S. Virgin Islands." <em>Arch Environ Contam Toxicol</em> 2016;70(2):265-288. doi:10.1007/s00244-015-0227-7. PMID 26487337.</li>
+<li><strong>Vuckovic D, Tinoco AI, Ling L, et al.</strong> "Conversion of oxybenzone sunscreen to phototoxic glucoside conjugates by sea anemones and corals." <em>Science</em> 2022;376(6594):644-648. doi:10.1126/science.abn2600.</li>
+<li><strong>Tsui MM, Leung HW, Wai TC, et al.</strong> "Occurrence, distribution and ecological risk assessment of multiple classes of UV filters in surface waters from different countries." <em>Water Res</em> 2014;67:55-65. doi:10.1016/j.watres.2014.09.013.</li>
+<li><strong>NOAA Technical Memorandum, "The Effects of Ultraviolet Filters and Sunscreen on Corals and Aquatic Ecosystems"</strong> (NOAA Coral Reef Conservation Program review).</li>
+</ol>
+<h3 id="photochemistry-photodegradation">Photochemistry / photodegradation</h3>
+<ol start="20">
+<li><strong>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.</strong> "Unexpected photolysis of the sunscreen octinoxate in the presence of the sunscreen avobenzone." <em>Photochem Photobiol</em> 2005;81(2):452-456.</li>
+<li><strong>Cuderman P, Heath E.</strong> "Determination of UV filters and antimicrobial agents in environmental water samples." <em>Anal Bioanal Chem</em> 2007;387:1343-1350.</li>
+<li><strong>Baker LA, Stavros VG, et al.</strong> "Broadband ultrafast photoprotection by oxybenzone across the UVB and UVC spectral regions." <em>Photochem Photobiol Sci</em> 2015;14:1814. doi:10.1039/C5PP00217F.</li>
+<li><strong>Vione D, et al.</strong> "Photochemical fate of benzophenone-3 in surface waters." Multiple publications 2010–2014.</li>
+<li><strong>Liu YS, Ying GG, Shareef A, Kookana RS.</strong> "Photolysis of UV filters in chlorinated water." <em>Sci Total Environ</em> 2014;487:117-126. doi:10.1016/j.scitotenv.2014.04.025.</li>
+<li><strong>Aerosol-phase photodegradation of oxybenzone.</strong> <em>ACS ES&amp;T Air</em> 2024. doi:10.1021/acsestair.4c00149.</li>
+<li><strong>Sakkas VA, Giokas DL, Lambropoulou DA, Albanis TA.</strong> "Aqueous photolysis of the sunscreen agent octyl dimethyl-p-aminobenzoic acid: Formation of disinfection byproducts in chlorinated swimming pool water." <em>J Chromatogr A</em> 2003;1016(2):211-222.</li>
+</ol>
+<h3 id="allergenicity">Allergenicity</h3>
+<ol start="27">
+<li><strong>Bryden AM, Moseley H, Ibbotson SH, et al.</strong> "Photopatch testing of 1155 patients: results of the U.K. multicentre photopatch study group." <em>Br J Dermatol</em> 2006;155:737-747.</li>
+<li><strong>Scheuer E, Warshaw E.</strong> "Sunscreen allergy: A review of epidemiology, clinical characteristics, and responsible allergens." <em>Dermatitis</em> 2006;17:3-11.</li>
+<li><strong>Schauder S, Ippen H.</strong> "Contact and photocontact sensitivity to sunscreens. Review of a 15-year experience and of the literature." <em>Contact Dermatitis</em> 1997;37:221-232.</li>
+<li><strong>Collins P, Ferguson J.</strong> "Photoallergic contact dermatitis to oxybenzone." <em>Br J Dermatol</em> 1994;131:124-129. PMID 8043404.</li>
+</ol>
+<h3 id="carcinogenicity">Carcinogenicity</h3>
+<ol start="31">
+<li><strong>IARC Monograph Vol. 101 (2013), Benzophenone</strong> — Group 2B "possibly carcinogenic to humans." https://publications.iarc.fr/Book-And-Report-Series/Iarc-Monographs-On-The-Identification-Of-Carcinogenic-Hazards-To-Humans/</li>
+</ol>
+<h2 id="regulatory-documents">Regulatory documents</h2>
+<ol start="32">
+<li><strong>SCCS Final Opinion on Benzophenone-3, SCCS/1625/20</strong>, adopted 30–31 March 2021. https://health.ec.europa.eu/system/files/2022-08/sccs_o_247.pdf</li>
+<li><strong>EU Regulation 2022/1176</strong> (Commission Regulation amending Annex VI of 1223/2009; in force 28 July 2022). New limits for BP-3 (2.2% in body products) and octocrylene.</li>
+<li><strong>EU Cosmetics Regulation (EC) No 1223/2009</strong>, Annex VI — list of permitted UV filters.</li>
+<li><strong>U.S. FDA OTC Monograph M020 — Sunscreen Drug Products for Over-the-Counter Human Use, Final Administrative Order OTC000006</strong> (issued under CARES Act 2020 deemed-final mechanism). https://www.accessdata.fda.gov/drugsatfda_docs/omuf/Order/Final%20Administrative%20Order%20OTC000006_M020-Sunscreen%20Drug%20Products%20for%20OTC%20Human%20Use.pdf</li>
+<li><strong>U.S. FDA Proposed Order OTC000008</strong> (24 Sept 2021) — Amending OTC Monograph M020. https://www.accessdata.fda.gov/drugsatfda_docs/omuf/Order/Proposed%20Administrative%20Order%20OTC000008_Amending%20M020_Sunscreen_Signed24Sept2021.pdf</li>
+<li><strong>U.S. FDA Proposed Rule, <em>Federal Register</em> 84 FR 6204</strong> (26 Feb 2019), "Sunscreen Drug Products for Over-the-Counter Human Use" — proposed not-GRASE for trolamine salicylate and PABA; insufficient-data status for 12 actives including oxybenzone. https://www.federalregister.gov/documents/2019/02/26/2019-03019/</li>
+<li><strong>21 CFR Part 352 — Sunscreen Drug Products for Over-the-Counter Human Use [Stayed Indefinitely]</strong>. https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-352</li>
+<li><strong>Hawaii SB 2571 / Act 104 (2018)</strong> — sunscreen ban (oxybenzone, octinoxate). https://www.capitol.hawaii.gov/sessions/session2018/bills/SB2571_CD1_.HTM</li>
+<li><strong>U.S. Virgin Islands Act 8185 (2019/2020)</strong> — ban on sunscreens containing oxybenzone, octinoxate, octocrylene.</li>
+<li><strong>Palau Responsible Tourism Education Act 2018</strong> — reef-toxic sunscreen ban effective 1 Jan 2020.</li>
+<li><strong>CIR Amended Safety Assessment of Benzophenones as Used in Cosmetics, March 2021.</strong> https://www.cir-safety.org/sites/default/files/benzop032021FAR.pdf</li>
+</ol>
+<h2 id="reference-databases-consulted">Reference databases consulted</h2>
+<ul>
+<li><strong>PubChem</strong> — compound IDs and physicochemical data:</li>
+<li>Oxybenzone CID 4632</li>
+<li>Sulisobenzone CID 19988</li>
+<li>Dioxybenzone CID 9588 (DrugBank DB11221)</li>
+<li>Trolamine salicylate CID 25213</li>
+<li>Benzophenone-1 CID 7475</li>
+<li>Mexenone CID 17347</li>
+<li><strong>DrugBank</strong> — DB11185 (sulisobenzone), DB11221 (dioxybenzone)</li>
+<li><strong>NIST WebBook</strong> — benzophenone reference UV-Vis (CID 119619); oxybenzone (CID 131577).</li>
+<li><strong>CosIng (EU CosIng)</strong> — Annex VI permitted UV filter listings.</li>
+<li><strong>Cosmetics Info / SpecialChem INCI</strong> — INCI cross-references and historical use levels.</li>
+<li><strong>PhotoChemCAD</strong> — benzophenone reference spectra.</li>
+</ul>
+<h2 id="search-strategy-used-may-2026">Search strategy used (May 2026)</h2>
+<ul>
+<li>PubMed terms: "oxybenzone photostability", "benzophenone-3 molar extinction coefficient", "BP-3 absorption spectrum", "oxybenzone photodegradation kinetics", "benzophenone-3 photoproducts", "oxybenzone endocrine disruption", "BP-3 coral toxicity Downs", "Matta sunscreen plasma JAMA", "trolamine salicylate UVB monograph", "benzophenone-1 estrogenic activity"</li>
+<li>SCCS document portal — opinions on benzophenone derivatives</li>
+<li>FDA OTC Drug Review docket — Sunscreen Drug Products</li>
+<li>EU Commission cosmetics ingredient regulation history (Annex VI revisions 2017, 2022)</li>
+</ul>
+<h2 id="notes-on-confidence-assignment">Notes on confidence assignment</h2>
+<p>Following the user's tier specification:
+- <strong>C1 — Primary</strong> = peer-reviewed primary literature, regulatory documents (FDA orders, SCCS opinions, EU regulations), or official biomonitoring (NHANES) data.
+- <strong>C2 — Secondary</strong> = review articles, secondary tabulations, ingredient-database compilations citing primary work.
+- <strong>C3 — Inferred</strong> = values not directly measured for the compound but inferred by structural analogy from a closely related compound.
+- <strong>C4 — Graph-digitized</strong> = values read off a published spectrum/graph rather than tabulated. (Not used in this set — see C5 list in the cover summary.)
+- <strong>C5 — Unknown</strong> = the literature does not contain the specific value at the resolution requested.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/sources.md</code> · <a href="sources.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

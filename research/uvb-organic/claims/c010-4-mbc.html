@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c010 — 4-Methylbenzylidene Camphor (4-MBC / Enzacamene) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c010 — 4-Methylbenzylidene Camphor (4-MBC / Enzacamene)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c010-4-mbc.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c010-4-mbc.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c010-4-mbc.md</code></div>
+<h1 id="c010-4-methylbenzylidene-camphor-4-mbc-enzacamene">c010 — 4-Methylbenzylidene Camphor (4-MBC / Enzacamene)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>4-Methylbenzylidene Camphor</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>(3E)-1,7,7-Trimethyl-3-[(4-methylphenyl)methylene]-2-norbornanone</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>USAN</td>
+<td>Enzacamene</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td><strong>Eusolex 6300</strong> (Merck), Parsol 5000 (DSM-Firmenich, discontinued); 3-(4-methylbenzylidene)camphor; MBC</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>36861-47-9 (and 38102-62-4 for the racemic)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₈H₂₂O</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>254.37 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>253-242-6</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td><strong>Not approved</strong></td>
+<td>n/a</td>
+<td>Not on FDA monograph; never gained TEA acceptance</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI, entry 18)</td>
+<td><strong>Banned</strong> by Commission Regulation (EU) 2024/996 (3 April 2024) — placement on market prohibited from <strong>1 May 2025</strong>, availability prohibited from <strong>1 May 2026</strong></td>
+<td>0 % from 1 May 2026</td>
+<td>Reg. (EU) 2024/996; SCCS/1640/21 — "no safe concentration could be established"</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>UK</td>
+<td><strong>Banned</strong> from 15 July 2026</td>
+<td>0 %</td>
+<td>UK SAG-CS Opinion 18 (2025)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>China</td>
+<td>Banned as of 12 January 2026 (previously allowed at 4 %)</td>
+<td>0 %</td>
+<td>NMPA notification 2025</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted (in therapeutic sunscreens only) at 4 % — under review following EU action; Australian Sunscreen Council submitted for removal Jan 2025</td>
+<td>4 %</td>
+<td>TGA ARTG; pending re-evaluation</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>Permitted</td>
+<td>4 %</td>
+<td>Health Canada Cosmetic Ingredient Hotlist (still allowed as of May 2026)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Not permitted</td>
+<td>n/a</td>
+<td>MHLW</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>Not listed</td>
+<td>n/a</td>
+<td>KFDA</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Permitted at 4 % historically; under EU-led re-harmonisation review</td>
+<td>4 % (transitional)</td>
+<td>ASEAN ACD</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Typical historic concentration 1–4 %.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (280–320 nm) with a single strong band centred at ~300 nm.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ethanol</td>
+<td><strong>300</strong></td>
+<td><strong>24,500</strong></td>
+<td>~963</td>
+<td>C1</td>
+<td>Beck et al., Int J Cosmet Sci 28 (2006) 339; Berset 1996</td>
+</tr>
+<tr>
+<td>Methanol</td>
+<td>301</td>
+<td>~24,000</td>
+<td>~944</td>
+<td>C2</td>
+<td>Pattanaargson 2004</td>
+</tr>
+<tr>
+<td>Cyclohexane</td>
+<td>295</td>
+<td>~24,500</td>
+<td>~963</td>
+<td>C2</td>
+<td>Stiehl et al., Pharmazie 47 (1992) — historical; Sayre 1988</td>
+</tr>
+<tr>
+<td>TD-DFT computed</td>
+<td>296</td>
+<td>f = 0.85</td>
+<td>n/a</td>
+<td>C3</td>
+<td>Buglak et al., Photochem Photobiol Sci 14 (2015) 1859, doi:10.1039/C4PP00392F</td>
+</tr>
+</tbody>
+</table>
+<p>Two independent sources for ε at 300 nm in EtOH: Berset 1996 (Int J Cosmet Sci) and Beck 2006 (also Int J Cosmet Sci) — both 24,500 ± 500 M⁻¹ cm⁻¹.</p>
+<p>ε is comparable to OMC's (~24,000) but the molecule is conformationally constrained and so undergoes much less photoisomerization fragmentation.</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>The benzylidene-camphor chromophore undergoes reversible E/Z photoisomerization (analogous to the cinnamate's, but conformationally restricted by the bicyclic camphor scaffold).</p>
+<ul>
+<li>Quantum yield of E→Z isomerization: <strong>Φ(E→Z) = 0.13 at 287 nm to 0.30 at 370 nm</strong> (wavelength-dependent) [C1, Buglak et al. 2015 PPS; Deflandre &amp; Lang 1988, Int J Cosmet Sci 10:53].</li>
+<li>The photostationary state mixture is itself photostable; spectrum red-shifts modestly after irradiation (~5–10 nm shift, with isosbestic point near 290 nm) but retains UVB absorption capacity [C1].</li>
+<li>Quantum yield of <em>irreversible</em> photodegradation Φd ≈ 10⁻³ to 10⁻⁴ [C2, derived from Berset 1996 stability data].</li>
+</ul>
+<h3 id="remaining-vs-uv-dose">% remaining vs UV dose</h3>
+<ul>
+<li>Berset et al. 1996 (Int J Cosmet Sci 18:167): under simulated solar exposure (5 MED), 4-MBC retained <strong>88 % of initial absorbance</strong> [C1].</li>
+<li>Couteau 2007: &gt;90 % retention at 25 MED in cosmetic emulsion — classified photostable [C1].</li>
+<li>Kockler et al. 2012 review: 4-MBC "regarded as photostable" with caveat that the photostationary cis-form has slightly lower ε (~5 % spectrum shift) [C1].</li>
+<li>Reszko et al., J Cosmet Dermatol 8 (2009): in commercial sunscreens with avobenzone + 4-MBC: 4-MBC retained 92 % at 1 MED but appeared to <em>not</em> stabilize avobenzone (no triplet quench) [C2].</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<ul>
+<li>Cis-MBC isomer (photostationary partner) — fully reversible.</li>
+<li>Minor: thermal/photo-induced retro-Michael fragmentation to <em>p</em>-methylbenzaldehyde + camphor under UVC/intense UVB, but negligible at solar doses [C2, Stiehl 1992].</li>
+</ul>
+<h3 id="photochemistry-mechanism">Photochemistry mechanism</h3>
+<ul>
+<li>Computational study (Buglak 2015) shows ultrafast IC through conical intersection at twisted excited-state geometry → heat dissipation. Triplet yield small (~0.05) [C1].</li>
+<li>Singlet oxygen: low Φ(¹O₂) ~0.02 — does not significantly photosensitize ROS [C1, Buglak 2015].</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>Endocrine disruption — the reason for EU ban:</strong></li>
+<li>Schlumpf et al. (Environ Health Perspect 109, 2001) — <strong>uterotrophic assay</strong> showed 4-MBC produced significant uterine weight gain in immature rats at 33 mg/kg/day; effect comparable to estradiol benzoate at 100 µg/kg [C1].</li>
+<li>Tinwell et al. (Toxicol Sci 70, 2002) — confirmed estrogenic activity in vivo [C1].</li>
+<li>Schmutzler et al. (Endocrinology, presented at European Congress of Endocrinology 2008): 4-MBC at ≥33 mg/kg/day caused <strong>decreased serum T4</strong> and <strong>elevated TSH</strong> in rats — pattern characteristic of primary hypothyroidism [C1].</li>
+<li>SCCS/1640/21 (final opinion 2022) concluded: "No safe concentration of 4-MBC for cosmetic use can be established", citing thyroid + estrogen receptor effects + insufficient genotoxicity data [C1]. This led to the EU ban (Reg 2024/996).</li>
+<li><strong>Skin penetration:</strong> Significant — 4-MBC detected in human breast milk and urine biomonitoring (Schlumpf 2008, Chemosphere 81; Janjua 2008 J Invest Dermatol). Plasma concentrations measurable at ng/mL after typical sunscreen application [C1].</li>
+<li><strong>ROS:</strong> Low; not a primary concern.</li>
+<li><strong>Aquatic toxicity:</strong> High lipophilicity (log Kow 5.5) → bioaccumulates in fish; detected in surface waters and lake sediments. SCCS 2022 explicitly noted environmental concerns [C1].</li>
+<li><strong>Photoallergy:</strong> Reported but rare — Schauder &amp; Ippen historical cases; less of an issue than PABA.</li>
+<li><strong>Synergy:</strong></li>
+<li><strong>No useful synergy with avobenzone</strong> — does not quench BMDM triplet effectively [C1, Reszko 2009].</li>
+<li>Sometimes paired with octinoxate for boosted UVB (sum of overlapping bands).</li>
+<li>Often co-formulated with terephthalylidene dicamphor sulfonic acid (Mexoryl SX) in older European formulations.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>SCCS/1640/21 — Final Opinion on 4-Methylbenzylidene Camphor (4-MBC), 25 January 2022.</li>
+<li>Commission Regulation (EU) 2024/996 (3 April 2024) — banning 4-MBC.</li>
+<li>UK SAG-CS Opinion 18 — 4-MBC as a UV filter in cosmetic products (2025).</li>
+<li>Schlumpf M et al. "In vitro and in vivo estrogenicity of UV screens". Environ Health Perspect 109 (2001) 239-244.</li>
+<li>Tinwell H et al. Toxicol Sci 70 (2002) 224-232.</li>
+<li>Schmutzler C et al. "The UV filter benzophenone-2 interferes with the thyroid hormone axis ..." (also covers 4-MBC). Endocrinology 148 (2007) 2835.</li>
+<li>Berset G, Gonzenbach H, Christ R, et al. "Proposed protocol for the testing of photostability". Int J Cosmet Sci 18 (1996) 167-177.</li>
+<li>Buglak AA et al. "Theoretical study of the UV absorption of 4-methylbenzylidene camphor: from the UVB to the UVA region". Photochem Photobiol Sci 14 (2015) 1859, doi:10.1039/C4PP00392F.</li>
+<li>Beck K et al. Int J Cosmet Sci 28 (2006) 339-345.</li>
+<li>Couteau C et al. Pharm Res 24 (2007) 1153-1160.</li>
+<li>Kockler J et al. J Photochem Photobiol C 13 (2012) 91-110.</li>
+<li>Reszko AE et al. J Cosmet Dermatol 8 (2009) 109-113.</li>
+<li>Janjua NR et al. J Invest Dermatol 128 (2008) 2480-2487.</li>
+<li>Schlumpf M et al. Chemosphere 81 (2010) 1171-1183.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c010-4-mbc.md</code> · <a href="c010-4-mbc.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

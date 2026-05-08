@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c003: Polyester-8 / Polycrylene — Polymeric Photostabilizer — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c003: Polyester-8 / Polycrylene — Polymeric Photostabilizer</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c003-polyester-8-polycrylene.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c003-polyester-8-polycrylene.md">View raw markdown</a> · Path: <code>research/photostab/claims/c003-polyester-8-polycrylene.md</code></div>
+<h1 id="c003-polyester-8-polycrylene-polymeric-photostabilizer">c003: Polyester-8 / Polycrylene — Polymeric Photostabilizer</h1>
+<p><strong>Claim</strong>: Polyester-8 (trade name Polycrylene, Hallstar) is a polymeric ester of adipic acid and neopentyl glycol terminated with cyanodiphenyl-propenoic acid (the same chromophore as octocrylene, end-grafted onto a polymeric backbone). It functions as a triplet quencher of avobenzone in the same mechanistic class as octocrylene, with the practical advantages of (i) no skin penetration (high MW), (ii) film-forming/water-resistance behaviour, and (iii) lower irritation/allergy potential than free OC. Reported efficacy is somewhat lower than free OC at equal mass but adequate in well-formulated systems.</p>
+<p><strong>Confidence</strong>: C2 — primary efficacy data are largely in Hallstar technical brochures and one or two industry-affiliated trade-press articles. Independent academic confirmation exists but is sparse (Polycrylene appears as a comparator in Imhof &amp; Damiani-style studies and in the 2023 SPF50 commercial sunscreen study).</p>
+<hr>
+<h2 id="section-1-mechanism">Section 1: Mechanism</h2>
+<h3 id="chromophore-grafted-octocrylene">Chromophore = grafted octocrylene</h3>
+<ul>
+<li>Polycrylene is a random copolymer of adipic acid + neopentyl glycol with terminal cyanodiphenyl-propenoate (CDPA) groups; INCI: Polyester-8. Molecular weight is in the thousands (commercial spec lists Mn ≈ 1500–3000), which precludes percutaneous absorption.</li>
+<li>The CDPA chromophore is identical to the absorbing/quenching motif of octocrylene. Its T1 energy is therefore approximately the same as OC, and lies below the BMDBM diketo T1.</li>
+<li>Mechanism: TTET from BMDBM diketo T1 to a CDPA pendant on Polycrylene, followed by non-radiative relaxation. Identical photophysical mechanism to free OC.</li>
+</ul>
+<h3 id="why-a-polymer">Why a polymer</h3>
+<ul>
+<li>Eliminates the systemic-absorption concern that has driven regulatory scrutiny of free OC.</li>
+<li>Polymer film-forms during evaporation of cosmetic vehicle, contributing to water-resistance.</li>
+<li>"Solubilises" oil-soluble UV filters (acts as polymeric emollient).</li>
+<li>Trade-off: each CDPA group is on a heavy backbone, so the molar density of quencher per gram of additive is lower than in free OC. A factor-of-2 to factor-of-3 higher use level is often needed for equivalent triplet quenching.</li>
+</ul>
+<hr>
+<h2 id="section-2-quantitative-effect">Section 2: Quantitative effect</h2>
+<h3 id="manufacturer-hallstar-claims">Manufacturer (Hallstar) claims</h3>
+<ul>
+<li>Recommended use level 1–4% w/w. At 4%, retains ≥85% of avobenzone after typical UV-A challenge in a 4% AVB / 7.5% OMC O/W formulation [C2, Hallstar product information bulletin / SpecialChem datasheet].</li>
+<li>Stated to "retain octocrylene's ability to photostabilize avobenzone via a triplet quenching mechanism, albeit with somewhat lower, but still impressive, efficiency" [Hallstar PIB / Cosmetics &amp; Toiletries 2012-vintage trade article].</li>
+<li>Minimal direct UV-B contribution at 1–4%, so does not appreciably elevate SPF on its own.</li>
+</ul>
+<h3 id="independent-comparator-data">Independent comparator data</h3>
+<ul>
+<li>A 2023 study (International Journal of Scientific Reports; Polycrylene as comparator in commercial SPF 50 photostability after 120 min sun exposure) found Polycrylene less effective than the singlet-quencher Solastay S1 (ethylhexyl methoxycrylene); the optimal Solastay-containing formulation retained 50.6% AVB after 120 min sun, with Polycrylene formulations retaining a lower fraction. [C2, journal indexed but lower impact]</li>
+<li>This is consistent with Polycrylene acting on the <em>triplet</em> pathway only, while singlet-state quenchers (Solastay) intervene earlier in the photodegradation cascade.</li>
+</ul>
+<h3 id="allergy-contact-dermatitis">Allergy / contact dermatitis</h3>
+<ul>
+<li>A 2022 case report (de Groot et al., Contact Dermatitis / PMC9644762) documents allergic contact dermatitis to Polycrylene; this is the first reported case and remains rare. [C1 case report]</li>
+</ul>
+<hr>
+<h2 id="section-3-practical-formulation-guidance">Section 3: Practical formulation guidance</h2>
+<ul>
+<li>Use level: 1–4% w/w (oil phase).</li>
+<li>Compatible with typical sunscreen oils, esters, dimethicones; do not over-heat (&gt;80°C) for prolonged periods.</li>
+<li>Often combined with low-level OC (3–5%) for maximum stabilisation while reducing total free OC.</li>
+<li>Trademark: Polycrylene® (Hallstar). Distribution: Glenn Corp / Azelis, DeWolf, Ross Organic.</li>
+<li>Patents: Hallstar US 7,597,825 (2009) and US 8,025,869 (2011) cover polymeric cyanodiphenyl propenoate photostabilisers; later IP covers Polycrylene S1 (singlet-quenching variant).</li>
+</ul>
+<hr>
+<h2 id="section-4-citations">Section 4: Citations</h2>
+<ol>
+<li><strong>Hallstar BPC.</strong> "Polycrylene® Product Information Bulletin." (Available at hallstarbeauty.com/product/polycrylene/ and via SpecialChem and Glenn Corp.) <strong>[C2, manufacturer]</strong></li>
+<li><strong>De Groot AC, et al.</strong> "Allergic Contact Dermatitis to Polycrylene." Open access case report archived at PMC9644762 (2022). <strong>[C1, isolated case]</strong></li>
+<li><strong>(Multiple authors)</strong> "Photostability of avobenzone in a commercial sunscreen SPF 50 with the addition of quencher upon sun exposure." <em>International Journal of Scientific Reports</em> 9(?):1237 (2023). [Polycrylene vs Solastay vs OC vs Sinoxyl HSS in commercial sunscreen]. <strong>[C2, peer-reviewed but lower-impact]</strong></li>
+<li><strong>Hallstar / Cosmetics &amp; Toiletries.</strong> "Polycrylene for Photostabilization and Water Resistance." Trade-press feature (2012). <strong>[C3, industry trade press]</strong></li>
+<li><strong>Hallstar US 7,597,825 B2</strong> "Photo-stable cosmetic compositions" (2009) and <strong>US 8,025,869 B2</strong> (2011). <strong>[Patent]</strong></li>
+<li><strong>Cosmetics &amp; Toiletries.</strong> "The Quest for Avobenzone Stabilizers and Sunscreen Photostability" — overview citing Polycrylene comparator data. <strong>[C2, review]</strong></li>
+</ol>
+<h3 id="bias-caveat">Bias caveat</h3>
+<p>A large fraction of Polycrylene efficacy data are produced by, or quoted from, the manufacturer (Hallstar). Independent academic head-to-head studies are scarce; the reported "retains octocrylene's mechanism" claim should be treated as plausible (chromophore identity strongly supports it) but the magnitude of efficacy (e.g., "85% retention at 4% use level") is partly C2 industry-self-reported.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/photostab/claims/c003-polyester-8-polycrylene.md</code> · <a href="c003-polyester-8-polycrylene.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

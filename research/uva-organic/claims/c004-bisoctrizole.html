@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C004 — Bisoctrizole (Methylene Bis-Benzotriazolyl Tetramethylbutylphenol / Tinosorb M / MBBT) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">C004 — Bisoctrizole (Methylene Bis-Benzotriazolyl Tetramethylbutylphenol / Tinosorb M / MBBT)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c004-bisoctrizole.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c004-bisoctrizole.md">View raw markdown</a> · Path: <code>research/uva-organic/claims/c004-bisoctrizole.md</code></div>
+<h1 id="c004-bisoctrizole-methylene-bis-benzotriazolyl-tetramethylbutylphenol-tinosorb-m-mbbt">C004 — Bisoctrizole (Methylene Bis-Benzotriazolyl Tetramethylbutylphenol / Tinosorb M / MBBT)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INCI</strong></td>
+<td>Methylene Bis-Benzotriazolyl Tetramethylbutylphenol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>USAN/proposed</strong></td>
+<td>Bisoctrizole</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Common abbreviation</strong></td>
+<td>MBBT</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>IUPAC</strong></td>
+<td>2,2'-Methylenebis[6-(2H-1,2,3-benzotriazol-2-yl)-4-(2,4,4-trimethylpentan-2-yl)phenol]</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Trade names</strong></td>
+<td><strong>Tinosorb M</strong> (BASF; aqueous dispersion); <strong>Parsol Max</strong> (DSM); <strong>Eversorb M</strong> (Everlight); <strong>Milestab 360</strong> (MPI); <strong>UV-360</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>CAS</strong></td>
+<td><strong>103597-45-1</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular formula</strong></td>
+<td>C₄₁H₅₀N₆O₂</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular weight</strong></td>
+<td>658.88 g/mol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Appearance / form</strong></td>
+<td>Pure: yellow-cream powder, mp 195.7 °C. Commercial: <strong>50% w/w aqueous dispersion</strong> (Tinosorb M) of microfine particles &lt;200 nm stabilized by decyl glucoside + xanthan gum + propylene glycol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Particle nature</strong></td>
+<td><strong>Organomineral / particulate organic UV filter</strong> — molecular substance but used as suspended particles (200 nm range)</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<p>This particulate nature is unique: MBBT is <em>insoluble in cosmetic oils and water</em> but is delivered as a stable nanodispersion. It therefore acts as a <strong>hybrid organic–particulate filter</strong>, combining molecular absorption with particle-level scattering.</p>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max concentration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA (FDA)</strong></td>
+<td><strong>Not approved</strong> as sunscreen active. BASF submitted TEA 2002–2009; FDA Sept 3, 2014 feedback letter requested clarifications. As of 2026 still <strong>pending GRASE determination</strong>.</td>
+<td>(TEA pending)</td>
+</tr>
+<tr>
+<td><strong>EU (Annex VI, entry 23)</strong></td>
+<td>Approved (both nano and non-nano forms)</td>
+<td><strong>10%</strong></td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>South Korea, ASEAN, Mercosur, China, Canada</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<p>EU SCCS opinion SCCS/1546/15 (rev. 25 June 2015), reconfirmed January 2018: nano-MBBT at up to 10% in dermally applied cosmetics on healthy intact skin <strong>does not pose a risk</strong>. C1.</p>
+<h3 id="typical-use-concentration">Typical use concentration</h3>
+<ul>
+<li>1–10% in EU/AU/JP products; 2–6% common</li>
+<li>Almost always combined with other filters for synergistic broad-spectrum coverage</li>
+<li>Particularly common in "mineral-feel" hybrid formulations and in combination with avobenzone (which it strongly stabilizes)</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>MBBT is a <strong>broad-spectrum filter</strong> covering UVB and UVA (~280–400 nm) with two characteristic absorption bands. Spectrum differs between dissolved (rare/unrealistic for cosmetics) and dispersed/particulate forms.</p>
+<h3 id="in-solution-eg-chloroform-thf-for-spectroscopic-characterization">In solution (e.g., chloroform, THF — for spectroscopic characterization)</h3>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>λmax (nm)</th>
+<th>Assignment</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short-wavelength</td>
+<td><strong>305</strong></td>
+<td>Local π→π* of benzotriazole moiety</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Long-wavelength</td>
+<td><strong>350</strong></td>
+<td>π→π* charge transfer (CT) state involving the phenol-benzotriazole donor-acceptor system</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="in-aqueous-particulate-dispersion-tinosorb-m-200-nm-particles-actual-cosmetic-state">In aqueous particulate dispersion (Tinosorb M, 200-nm particles — actual cosmetic state)</h3>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>λmax (nm)</th>
+<th>Notes</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short-wavelength</td>
+<td><strong>305</strong></td>
+<td>Roughly preserved</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Long-wavelength (red-shifted)</td>
+<td><strong>360</strong></td>
+<td>Bathochromic shift from 350 → 360 due to aggregation</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Shoulder</td>
+<td><strong>~380</strong></td>
+<td>Particle-induced extension (aggregation effect — H- or J-aggregate spectroscopy)</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="molar-absorption-coefficient">Molar absorption coefficient</h3>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+<th>Solvent</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ε at 305 nm</td>
+<td><strong>~52,000 M⁻¹cm⁻¹</strong></td>
+<td>Chloroform/THF (solution)</td>
+<td>C2 (cited in BASF material; comparative literature on MBBT)</td>
+</tr>
+<tr>
+<td>ε at 350 nm</td>
+<td><strong>~46,000 M⁻¹cm⁻¹</strong></td>
+<td>Solution</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Effective ε in aqueous dispersion</td>
+<td>Similar magnitude per chromophore but spectrum broadened</td>
+<td>aq dispersion</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>E(1%, 1cm)</td>
+<td>computed ≈ 700–790 at 350 nm using ε=46,000, MW=658.88 → E1% ≈ 698</td>
+<td>calc</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bandwidth-spectral-coverage">Bandwidth / spectral coverage</h3>
+<ul>
+<li>Effective from ~280 to 400 nm (full UVB + UVA)</li>
+<li>Critical wavelength reported ~388 nm</li>
+<li>UVA/UVB ratio ~1:1 (balanced broad-spectrum)</li>
+<li>Particle-form absorption supplemented by <strong>light scattering</strong>: contributes 5–10% to attenuation in formulations, especially at higher concentrations</li>
+<li>Some absorption extends marginally into visible/blue light (~400–410 nm) — relevant for HEV protection claims</li>
+</ul>
+<p>References: SCCS/1546/15; BASF Tinosorb M technical info PRD 30482916; reviews in <em>Cosmetics</em> MDPI 10(4):101 (2023); ChemicalBook entry 3283802.</p>
+<hr>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>MBBT/Tinosorb M is one of the <strong>most photostable UV filters</strong> known — typically cited as &gt;95–99% remaining after extended UV exposure that would deplete avobenzone by 30–80%.</p>
+<h3 id="photoprotection-mechanism">Photoprotection mechanism</h3>
+<p>The benzotriazole-phenol scaffold dissipates absorbed UV through <strong>excited-state intramolecular proton transfer (ESIPT)</strong>, similar to bemotrizinol/DHHB family:</p>
+<ol>
+<li>Ground-state enol stabilized by intramolecular H-bond (phenol-OH to benzotriazole N)</li>
+<li>UV absorption → S₁ enol*</li>
+<li>Sub-ps proton transfer → S₁ keto*</li>
+<li>Internal conversion → S₀ keto</li>
+<li>Reverse H-transfer → S₀ enol (closed cycle)</li>
+</ol>
+<p>Quantum yield of photochemical reaction: very small (estimated &lt;10⁻⁴), making the filter effectively a catalyst converting UV to heat.</p>
+<h3 id="quantitative-data">Quantitative data</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Conditions</th>
+<th>Source / Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>% remaining after 25 MED in formulation</td>
+<td><strong>&gt;95–98%</strong></td>
+<td>typical sunscreen emulsion</td>
+<td>BASF / SCCS dossier — C1/C2</td>
+</tr>
+<tr>
+<td>% remaining after extended UV (Sayre-type 40 mJ/cm²)</td>
+<td><strong>~99%</strong></td>
+<td>aq dispersion</td>
+<td>BASF — C2</td>
+</tr>
+<tr>
+<td>Triplet yield Φ_T</td>
+<td>Very low</td>
+<td>aq dispersion</td>
+<td>C2 (inferred from ESIPT dominance)</td>
+</tr>
+<tr>
+<td>Singlet oxygen yield Φ_Δ</td>
+<td>Negligible (&lt;0.02)</td>
+<td>C3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="particle-aspects">Particle aspects</h3>
+<ul>
+<li>Particle size &lt;200 nm: stable on cosmetic shelf life and in emulsions</li>
+<li>Particles do <strong>not penetrate intact skin</strong> (SCCS conclusion based on skin penetration studies)</li>
+<li>Photostability of particle is excellent; no measurable degradation under typical sunscreen testing regimens</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<p>No significant photoproducts identified in the cosmetic-relevant UV dose range. Under harsh photolysis (deep UV / prolonged irradiation), trace amounts of:
+- Aldehydes from oxidation at the methylene bridge
+- Are not detected at cosmetic doses</p>
+<hr>
+<h2 id="section-4-photostabilization">Section 4: Photostabilization</h2>
+<p>MBBT not only requires no stabilization but <strong>stabilizes other filters</strong>, particularly avobenzone:</p>
+<h3 id="mbbt-as-a-stabilizer">MBBT as a stabilizer</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>Effect</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MBBT + avobenzone</td>
+<td>Increased avobenzone retention to &gt;85–90% after 25 MED</td>
+<td>Triplet energy transfer (MBBT particles act as triplet sink) + direct competition for UV absorption</td>
+</tr>
+<tr>
+<td>MBBT + octinoxate</td>
+<td>Compatible; reduced cinnamate degradation</td>
+<td>Particulate UV competition</td>
+</tr>
+<tr>
+<td>MBBT + DHHB</td>
+<td>Compatible; both ESIPT-based, same protective mechanism class</td>
+<td></td>
+</tr>
+<tr>
+<td>MBBT + Tinosorb S (bemotrizinol)</td>
+<td>Compatible; complementary peaks at 305/360 vs 310/340</td>
+<td></td>
+</tr>
+<tr>
+<td>MBBT + zinc oxide / titanium dioxide</td>
+<td>Compatible; pure mineral + organic-particulate combination</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="negative-interactions">Negative interactions</h3>
+<ul>
+<li>None reported in peer-reviewed literature</li>
+<li>MBBT is also among the <strong>most reef-safe organic filters</strong> in available studies (no measurable coral toxicity at relevant concentrations)</li>
+<li>Lack of skin penetration of nano-MBBT was the basis of EU 2018 reconfirmation</li>
+</ul>
+<hr>
+<h2 id="confidence-summary">Confidence summary</h2>
+<ul>
+<li>§1 Identity: C1</li>
+<li>§2 Spectrum: dual peaks 305/360 in dispersion C1; ε values C2; E(1%,1cm) C3</li>
+<li>§3 Photodegradation: %remaining C2; ESIPT mechanism C2</li>
+<li>§4 Stabilization synergies: C2</li>
+</ul>
+<h2 id="key-references">Key references</h2>
+<ol>
+<li>SCCS Opinion <strong>SCCS/1546/15</strong> (rev. 25 June 2015) — "Methylene Bis-Benzotriazolyl Tetramethylbutylphenol (nano)" — health.ec.europa.eu</li>
+<li>SCCS reconfirmation, January 2018</li>
+<li>BASF Technical Information <em>Tinosorb M</em> PRD 30482916 (2019)</li>
+<li>EU Regulation (EC) 1223/2009 Annex VI entry 23</li>
+<li>BASF press release July 2018 — EU approval of nano UV filter</li>
+<li><em>Cosmetics</em> (MDPI) <strong>10</strong>(4):101 (2023) — UV filters review</li>
+<li>ChemicalBook entry 3283802 (CAS 103597-45-1) — physical properties</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uva-organic/claims/c004-bisoctrizole.md</code> · <a href="c004-bisoctrizole.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

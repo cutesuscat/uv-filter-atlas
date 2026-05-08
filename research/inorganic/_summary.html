@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inorganic / Mineral UV Filters — Summary — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Inorganic / Mineral UV Filters — Summary</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="_summary.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="_summary.md">View raw markdown</a> · Path: <code>research/inorganic/_summary.md</code></div>
+<h1 id="inorganic-mineral-uv-filters-summary">Inorganic / Mineral UV Filters — Summary</h1>
+<p><strong>Filters covered:</strong> Zinc Oxide (ZnO) [c001] · Titanium Dioxide (TiO2) [c002]
+<strong>Date:</strong> 2026-05-07</p>
+<p>These are the only two inorganic UV filters that have GRASE status with FDA (21 CFR 352) and are listed in EU Annex VI (entries 30/30a for ZnO, 27/27a for TiO2). Their physics is fundamentally different from organic UV filters: they are <strong>wide-bandgap semiconductors</strong> that absorb UV via valence-to-conduction band transitions, with secondary contributions from Mie scattering. The historical narrative of "physical sunscreen reflects UV" is <strong>demonstrably wrong</strong> — Cole, Shyr &amp; Ou-Yang (2016) measured only 4–5 % UV reflection; absorption dominates by &gt;10:1.</p>
+<hr>
+<h2 id="side-by-side-comparison">Side-by-side comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>ZnO (c001)</th>
+<th>TiO2 — Rutile (c002)</th>
+<th>TiO2 — Anatase (c002)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAS</td>
+<td>1314-13-2</td>
+<td>1317-80-2 (general TiO2 13463-67-7)</td>
+<td>1317-70-0</td>
+</tr>
+<tr>
+<td>MW (g/mol)</td>
+<td>81.38</td>
+<td>79.866</td>
+<td>79.866</td>
+</tr>
+<tr>
+<td>Density (g/cm³)</td>
+<td>5.61</td>
+<td>4.23</td>
+<td>3.78</td>
+</tr>
+<tr>
+<td>Crystal structure</td>
+<td>Wurtzite (hexagonal)</td>
+<td>Tetragonal P4₂/mnm</td>
+<td>Tetragonal I4₁/amd</td>
+</tr>
+<tr>
+<td><strong>Bandgap E_g (eV)</strong></td>
+<td><strong>3.37</strong> (direct)</td>
+<td><strong>3.00</strong> (direct/indirect)</td>
+<td><strong>3.20</strong> (indirect)</td>
+</tr>
+<tr>
+<td><strong>λ_cutoff (calc 1240/E)</strong></td>
+<td><strong>368 nm</strong></td>
+<td><strong>413 nm</strong></td>
+<td><strong>387 nm</strong></td>
+</tr>
+<tr>
+<td>Practical edge (nm)</td>
+<td>370–380</td>
+<td>395–410</td>
+<td>370–380</td>
+</tr>
+<tr>
+<td><strong>Spectral coverage</strong></td>
+<td>UVB + UVA1 to ~380 nm — broadest</td>
+<td>UVB + full UVA1 to ~400 nm</td>
+<td>UVB + UVA2; cuts off earlier</td>
+</tr>
+<tr>
+<td>Refractive index (visible)</td>
+<td>~2.0</td>
+<td>~2.7</td>
+<td>~2.5</td>
+</tr>
+<tr>
+<td><strong>Whitening risk at equal load</strong></td>
+<td><strong>Low</strong> (low n)</td>
+<td><strong>High</strong> (highest n of common oxides)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Typical primary particle (nano)</td>
+<td>30–80 nm</td>
+<td>10–50 nm</td>
+<td>not used in sunscreen</td>
+</tr>
+<tr>
+<td><strong>Photocatalytic activity</strong></td>
+<td><strong>Intermediate</strong></td>
+<td><strong>Low</strong></td>
+<td><strong>High</strong> (avoided in cosmetics)</td>
+</tr>
+<tr>
+<td>Scattering : absorption ratio in UV</td>
+<td>~1:10 (absorption dominates)</td>
+<td>~1:10 (absorption dominates)</td>
+<td>~1:10</td>
+</tr>
+<tr>
+<td>Common coatings</td>
+<td>Triethoxycaprylylsilane, dimethicone, silica</td>
+<td>Alumina, silica, stearate, trimethoxycaprylyl­silane, +Mn-doping (Optisol)</td>
+<td>(anatase rarely cosmetic)</td>
+</tr>
+<tr>
+<td>Coating ROS suppression efficacy</td>
+<td>60–80 %+ (less complete than TiO2)</td>
+<td>70–95 %+</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Ionic dissolution (skin/water)</td>
+<td><strong>Yes</strong> — partial Zn²⁺ release</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="regulatory-status">Regulatory status</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>FDA (USA)</th>
+<th>EU Annex VI</th>
+<th>Australia (TGA)</th>
+<th>Japan</th>
+<th>IARC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZnO</td>
+<td>GRASE Cat I, ≤ 25 % (21 CFR 352.10(s))</td>
+<td>Entry 30 (non-nano) / 30a (nano), ≤ 25 %, no spray</td>
+<td>Listed, ≤ 25 %</td>
+<td>Quasi-drug, listed</td>
+<td>Not classified</td>
+</tr>
+<tr>
+<td>TiO2</td>
+<td>GRASE Cat I, ≤ 25 % (21 CFR 352.10(t))</td>
+<td>Entry 27 (non-nano) / 27a (nano), ≤ 25 %, no spray</td>
+<td>Listed, ≤ 25 %</td>
+<td>Quasi-drug, listed</td>
+<td><strong>Group 2B</strong> (inhalation only)</td>
+</tr>
+</tbody>
+</table>
+<p>Key SCCS opinions:</p>
+<ul>
+<li><strong>ZnO:</strong> SCCS/1489/12 (2012, base) · SCCS/1518/13 (2014, coatings) · subsequent revisions through 2024.</li>
+<li><strong>TiO2:</strong> SCCS/1516/13 (2014, base) · SCCS/1583/17 (2018, sprays unsafe) · SCCS/1617/20 (additional coatings).</li>
+</ul>
+<p>Both: spray products with nano forms prohibited in EU; nano restrictions absent from FDA monograph but inhalation cautions general.</p>
+<hr>
+<h2 id="photocatalytic-ranking">Photocatalytic ranking</h2>
+<p><strong>Anatase TiO2 ≫ ZnO &gt; Rutile TiO2 ≈ Mn-doped rutile (Optisol)</strong></p>
+<ul>
+<li>Anatase produces 5–10× more •OH than rutile per matched UV dose (Hirakawa &amp; Nosaka 2002).</li>
+<li>ZnO sits intermediate; in commercial sunscreen extracts (Lewicka et al. 2013) ZnO produced more ROS than TiO2 — implying industry coatings are tuned better on TiO2.</li>
+<li>Mn-doping (Wakefield 2004) reduces TiO2 free-radical generation by &gt;90 %.</li>
+<li>Coatings (silica, alumina) suppress 70–95 % of photocatalysis on TiO2; ZnO coatings less effective due to surface dissolution.</li>
+</ul>
+<p><strong>Practical formulation rules (industry consensus):</strong>
+1. Always use <strong>rutile</strong> TiO2; never anatase.
+2. Always use <strong>coated</strong> grades for both ZnO and TiO2.
+3. Avoid mixing uncoated/poorly-coated TiO2 or ZnO with avobenzone — bleaching is documented.
+4. No nano forms in sprays/aerosols (regulatory + IARC concern).</p>
+<hr>
+<h2 id="skin-penetration-consensus-across-sccs-tga-fda">Skin penetration (consensus across SCCS, TGA, FDA)</h2>
+<p>Both ZnO and TiO2 nanoparticles, in coated form, do not significantly penetrate beyond the stratum corneum on intact skin (Filipe 2009, Mavon 2007, Sadrieh 2010, Lademann 1999). Trace ⁶⁸Zn detected in blood after ZnO sunscreen application (Gulson 2010) is interpreted as ionic dissolution, not particulate penetration, and is &lt; 1/1000 of total body Zn. Damaged skin remains an explicit unknown noted by SCCS.</p>
+<hr>
+<h2 id="reef-safe-status">"Reef-safe" status</h2>
+<p>ZnO and TiO2 are commonly marketed as alternatives to Hawaii-banned organic filters (oxybenzone, octinoxate). However:</p>
+<ul>
+<li>Uncoated nano-ZnO bleaches coral at 300 μg/L (Corinaldesi 2018).</li>
+<li>Coated, larger-particle grades are less toxic but not zero.</li>
+<li>"Reef safe" is <strong>not a regulatory term</strong> (FDA, EU, TGA do not define it).</li>
+</ul>
+<hr>
+<h2 id="key-gaps-open-questions">Key gaps / open questions</h2>
+<ul>
+<li><strong>Long-term chronic exposure</strong> of coated nano forms — limited human longitudinal data.</li>
+<li><strong>Damaged-skin penetration</strong> — explicitly noted by SCCS as unknown.</li>
+<li><strong>Coating durability</strong> in formulation over shelf life and after UV exposure — sparse data.</li>
+<li><strong>Combined effects</strong> with organic filters (photostability of avobenzone, OMC) require formulator attention.</li>
+<li><strong>Aquatic chronic toxicity</strong> of leached nano-ZnO/TiO2 in real-world bathing concentrations.</li>
+</ul>
+<hr>
+<h2 id="file-index">File index</h2>
+<ul>
+<li><code>claims/c001-zinc-oxide.md</code> — ZnO full claim file</li>
+<li><code>claims/c002-titanium-dioxide.md</code> — TiO2 full claim file</li>
+<li><code>sources.md</code> — consolidated bibliography</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/inorganic/_summary.md</code> · <a href="_summary.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c005 — Tinosorb A2B (Tris-Biphenyl Triazine, TBPT) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c005 — Tinosorb A2B (Tris-Biphenyl Triazine, TBPT)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c005-tinosorb-a2b-tbpt.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c005-tinosorb-a2b-tbpt.md">View raw markdown</a> · Path: <code>research/broad-spectrum/claims/c005-tinosorb-a2b-tbpt.md</code></div>
+<h1 id="c005-tinosorb-a2b-tris-biphenyl-triazine-tbpt">c005 — Tinosorb A2B (Tris-Biphenyl Triazine, TBPT)</h1>
+<blockquote>
+<p>Status: Active research file. Created 2026-05-07.
+Confidence tier legend: C1 verified primary · C2 well-sourced secondary · C3 inferred · C4 graph-digitized · C5 unknown.
+<strong>Note:</strong> TBPT exists in two forms — <em>molecular/dissolved</em> (sometimes called "monomer") with very different absorption from the <em>micronized particulate dispersion</em> used in cosmetics. Cosmetic Tinosorb A2B is the particulate form.</p>
+</blockquote>
+<hr>
+<h2 id="section-1-identity">Section 1 — Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Tris-Biphenyl Triazine</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>INCI (nano form)</td>
+<td>Tris-Biphenyl Triazine (nano)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Synonyms</td>
+<td>TBPT; 2,4,6-tris(biphenyl-4-yl)-1,3,5-triazine</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade name</td>
+<td>Tinosorb A2B (BASF)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2,4,6-Tris(4-phenylphenyl)-1,3,5-triazine</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>31274-51-8</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₃₉H₂₇N₃</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>537.66 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Physical state</td>
+<td>White solid; melting point 281.3 °C; supplied to formulators as a <strong>microfine aqueous dispersion</strong> (~150–200 nm primary particle size)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Class</td>
+<td>Particulate organic UV absorber (POUA) — same supramolecular concept as Tinosorb M (MBBT)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>GHS classification</td>
+<td>H413 (long-term aquatic)</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EU (Annex VI #29 nano + non-nano entries)</td>
+<td>Approved (nano form approved via 2014 amendment; non-nano "S86" added in 2022)</td>
+<td><strong>10%</strong></td>
+<td>SCCS/1429/11 (Dec 2011) opinion supported nano form at 10%; updated SCCS work in 2020s for non-nano TBPT supports 10%</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Approved</td>
+<td>10%</td>
+<td>ARGS list</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Status partially listed; check regional CTFA listings</td>
+<td>—</td>
+<td>C5 confirmation</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>Status partially listed</td>
+<td>—</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>USA (FDA)</td>
+<td><strong>Not approved.</strong> No TEA submission. Not in foreseeable U.S. market.</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Inhalation restriction:</strong> Per SCCS/1429/11, TBPT (nano) cannot be used in applications that may lead to lung exposure by inhalation (e.g., sprayable powder formats prohibited).</p>
+</blockquote>
+<h3 id="typical-use-concentrations">Typical use concentrations</h3>
+<ul>
+<li>Sunscreen creams and lotions: 1–5% (w/w as active TBPT) typical; up to 10% maximum.</li>
+<li>Marketed as "Tinosorb A2B" by BASF since c. 2019, distinct from Tinosorb S (BEMT) and Tinosorb M (MBBT).</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2 — UV absorption spectrum</h2>
+<p>TBPT is a <strong>dual-action particulate organic UV filter</strong> that combines true molecular absorption (UVB peak) with light scattering by submicron particles (UVA contribution).</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Solvent / form</th>
+<th>Tier</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>λmax (molecular, monomer)</td>
+<td>~310 nm (single peak)</td>
+<td>THF / dilute organic solvent</td>
+<td>C2</td>
+<td>Naumov, Herzog &amp; Abel 2023</td>
+</tr>
+<tr>
+<td>λmax (microfine dispersion in cosmetic)</td>
+<td><strong>~310 nm primary peak (UVB) + broadened shoulder extending into UVA2 (~340 nm)</strong></td>
+<td>Aqueous dispersion</td>
+<td>C1</td>
+<td>BASF Tinosorb A2B TDS; Couteau 2015</td>
+</tr>
+<tr>
+<td>Apparent λmax of microfine dispersion</td>
+<td>Slight hypsochromic shift relative to monomer with long-wavelength tail (scattering contribution)</td>
+<td>—</td>
+<td>C1</td>
+<td>Naumov 2023</td>
+</tr>
+<tr>
+<td>ε of monomer at λmax</td>
+<td>~80,000 M⁻¹·cm⁻¹ (very high — three biphenyl arms in conjugation)</td>
+<td>THF</td>
+<td>C2</td>
+<td>Naumov 2023 (graph-digitized)</td>
+</tr>
+<tr>
+<td>Coverage profile</td>
+<td>UVB (280–320 nm) with absorption + UVA2 (320–340 nm) by molecular absorption + scattering enhancing apparent UVA protection</td>
+<td>—</td>
+<td>C1</td>
+<td>BASF; Couteau 2015</td>
+</tr>
+<tr>
+<td>Particle size (microfine)</td>
+<td>150–200 nm primary (sub-micron), per BASF</td>
+<td>—</td>
+<td>C2</td>
+<td>BASF TDS</td>
+</tr>
+<tr>
+<td>Critical wavelength</td>
+<td>~370 nm (in formulation, with scattering)</td>
+<td>—</td>
+<td>C2</td>
+<td>Couteau 2015</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key conceptual point:</strong> TBPT in solution is a <em>UVB-only</em> absorber. The dispersion form in cosmetics gains apparent broad-spectrum protection because the 150–200 nm particles <strong>scatter</strong> UVA light (Mie scattering), in addition to molecularly absorbing UVB. Naumov et al. 2023 explicitly explores how the spectrum changes from monomer to nanoparticle.</p>
+</blockquote>
+<hr>
+<h2 id="section-3-photostability">Section 3 — Photostability</h2>
+<p>TBPT is reported as essentially photostable in cosmetic dispersion form, similar to its triazine cousin Tinosorb M.</p>
+<table>
+<thead>
+<tr>
+<th>Test condition</th>
+<th>Result</th>
+<th>Tier</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispersion in O/W formulation, simulated solar</td>
+<td>"Excellent photostability" — no significant absorbance loss</td>
+<td>C2</td>
+<td>BASF TDS; SCCS/1429/11 dossier</td>
+</tr>
+<tr>
+<td>Couteau 2015 in vitro photoprotective efficacy</td>
+<td>Stable SPF performance under irradiation</td>
+<td>C1</td>
+<td>Couteau 2015</td>
+</tr>
+<tr>
+<td>Photoproducts</td>
+<td>None characterized</td>
+<td>C5</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ultrafast photophysics</td>
+<td>Sub-ps internal conversion in monomer; deactivation in nanoparticle form involves both excitonic delocalization and inter-molecule energy transfer</td>
+<td>C1</td>
+<td>Naumov 2023</td>
+</tr>
+</tbody>
+</table>
+<p>The triazine core with three biphenyl arms is geometrically rigid and electron-rich. Naumov et al. demonstrated by ultrafast spectroscopy that the singlet excited state decays in &lt;10 ps via internal conversion both as monomer and as aggregate. No long-lived triplet, no detectable singlet oxygen yield in their measurements.</p>
+<hr>
+<h2 id="section-4-mechanism-unique-properties">Section 4 — Mechanism / unique properties</h2>
+<ul>
+<li><strong>Photophysics:</strong> Symmetric C₃ triazine with three biphenyl chromophores. Excited singlet decays via fast IC (&lt; 10 ps) involving twisting of biphenyl arms relative to the triazine core. In particle form, exciton delocalization across multiple TBPT molecules adds an additional fast deactivation path.</li>
+<li><strong>Particulate UV filter rationale:</strong> Three benefits over molecular filters:<ol>
+<li><strong>Molecular absorption</strong> of UVB (high ε ~ 8 × 10⁴).</li>
+<li><strong>Mie scattering</strong> of UVA from sub-micron particles (similar in concept to TiO₂/ZnO).</li>
+<li><strong>Zero skin penetration</strong> — particles cannot cross stratum corneum.</li>
+</ol>
+</li>
+<li><strong>Comparison to Tinosorb M (MBBT, methylene bis-benzotriazolyl tetramethylbutylphenol):</strong> Same particulate-organic concept; MBBT covers UVB + UVA1 (peaks ~305 + 360 nm), while TBPT covers UVB + UVA2 (peaks ~310 + scattering shoulder to ~340–350 nm). The two are positioned as complementary in the BASF Tinosorb portfolio.</li>
+<li><strong>"Next generation" rationale:</strong> Hybrid molecular-absorber + particulate-scatterer; very low skin uptake; broad UVB+UVA2 coverage; can replace need for high inorganic loadings; combined with BEMT and bisoctrizole gives complete UVB+UVA1+UVA2 coverage with fully photostable filters.</li>
+<li><strong>Inhalation safety constraint:</strong> Because the molecule is in particulate form, SCCS prohibits formulations leading to end-user lung exposure (i.e., no aerosol spray products). This is identical to the constraint on Tinosorb M and on TiO₂ nano.</li>
+</ul>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>Naumov S, Herzog B, Abel B. <strong>Spectra and photorelaxation of tris-biphenyl-triazine-type UV absorbers: from monomers to nanoparticles.</strong> <em>Photochem. Photobiol. Sci.</em> 2023; 22(9):2143–2151. DOI: 10.1007/s43630-023-00436-y. PMID 37277672. <strong>[C1 — primary photophysics]</strong></li>
+<li>Couteau C, Paparis E, Chauvet C, Coiffard L. <strong>Tris-biphenyl triazine, a new ultraviolet filter studied in terms of photoprotective efficacy.</strong> <em>Int. J. Pharm.</em> 2015; 487(1–2):120–123. DOI: 10.1016/j.ijpharm.2015.03.077. PMID 25843762. <strong>[C1]</strong></li>
+<li>SCCS (Scientific Committee on Consumer Safety). <strong>Opinion on 1,3,5-Triazine, 2,4,6-tris[1,1'-biphenyl]-4-yl- (S79 / S86 entries). SCCS/1429/11</strong>, revision adopted 13–14 Dec 2011. <strong>[C1 regulatory]</strong></li>
+<li>BASF. <strong>Technical Information Tinosorb® A2B. PRD 30478125</strong> (valid since 12 March 2019). BASF Care Creations / Personal Care.</li>
+<li>European Commission. <strong>Commission Regulation (EU) on Annex VI of Regulation (EC) No 1223/2009</strong> — entries adding tris-biphenyl triazine in nano (2014) and non-nano (2022) form, max 10%.</li>
+<li>Bernerd F, Passeron T, Castiel I, Marionnet C. <strong>The damaging effects of long UVA (UVA1) rays.</strong> <em>Int. J. Mol. Sci.</em> 2022; 23(15):8243. DOI: 10.3390/ijms23158243.</li>
+</ul>
+<hr>
+<h2 id="c5-unresolved-items">C5 / unresolved items</h2>
+<ul>
+<li>Quantitative photostability data (% remaining vs MED dose) in primary peer-reviewed sources. SCCS dossier referenced but not extracted. <strong>C5.</strong></li>
+<li>Numerical ε in monomer form at 310 nm, peer-reviewed value. <strong>C3 (graph-digitized).</strong></li>
+<li>Exact particle-size distribution of commercial Tinosorb A2B dispersion. <strong>C2.</strong></li>
+<li>Singlet oxygen quantum yield Φ(¹O₂). <strong>C5.</strong></li>
+<li>Confirmed Korea / Japan regulatory listing. <strong>C5.</strong></li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/broad-spectrum/claims/c005-tinosorb-a2b-tbpt.md</code> · <a href="c005-tinosorb-a2b-tbpt.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

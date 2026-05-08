@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broad-Spectrum / Mexoryl-Class UV Filters — Sources — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Broad-Spectrum / Mexoryl-Class UV Filters — Sources</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="sources.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="sources.md">View raw markdown</a> · Path: <code>research/broad-spectrum/sources.md</code></div>
+<h1 id="broad-spectrum-mexoryl-class-uv-filters-sources">Broad-Spectrum / Mexoryl-Class UV Filters — Sources</h1>
+<blockquote>
+<p>Created 2026-05-07. Aggregated, verified citation list across c001–c006 claim files.
+Each source listed once with full bibliographic data and DOI/PMID where applicable. NO fabricated DOIs — all checked against PubMed/CrossRef/journal landing pages during research.</p>
+</blockquote>
+<hr>
+<h2 id="primary-peer-reviewed-literature">Primary peer-reviewed literature</h2>
+<h3 id="bemotrizinol-tinosorb-s">Bemotrizinol (Tinosorb S)</h3>
+<ul>
+<li><strong>Chatelain E, Gabard B.</strong> Photostabilization of butyl methoxydibenzoylmethane (avobenzone) and ethylhexyl methoxycinnamate by bis-ethylhexyloxyphenol methoxyphenyl triazine (Tinosorb S), a new UV broadband filter. <em>Photochem. Photobiol.</em> 2001; 74(3):401–406. DOI: 10.1562/0031-8655(2001)074&lt;0401:POBMAA&gt;2.0.CO;2. PMID: 11594052.</li>
+<li><strong>Ashby J, Tinwell H, Plautz J, Twomey K, Lefevre PA.</strong> Lack of binding to isolated estrogen or androgen receptors, and inactivity in the immature rat uterotrophic assay, of the ultraviolet sunscreen filters Tinosorb M-active and Tinosorb S. <em>Regul. Toxicol. Pharmacol.</em> 2001; 34(3):287–291. DOI: 10.1006/rtph.2001.1511.</li>
+<li><strong>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.</strong> Study of the efficacy of 18 sun filters authorized in European Union tested in vitro. <em>Pharmazie</em> 2007; 62(6):449–452. DOI: 10.1691/ph.2007.6.6247.</li>
+<li><strong>Vielhaber G, Grether-Beck S, Koch O, Johncock W, Krutmann J.</strong> Sunscreens with an absorption maximum of ≥360 nm provide optimal protection against UVA1-induced expression of matrix metalloproteinase-1, interleukin-1, and interleukin-6 in human dermal fibroblasts. <em>Photochem. Photobiol. Sci.</em> 2006; 5(3):275–282. DOI: 10.1039/b516702g.</li>
+<li><strong>Sohn M, Baptiste L, Quass K, Settels V, Herzog B.</strong> Photokinetics of oil soluble 1,3,5-triazine UV filters in combination with butyl methoxydibenzoylmethane or with diethylamino hydroxybenzoyl hexyl benzoate. <em>J. Photochem. Photobiol.</em> 2021; 8:100058. DOI: 10.1016/j.jpap.2021.100058.</li>
+<li><strong>D'Ruiz CD, Plautz JR, Schuetz R, Forbes PD, Walters RM, Maibach HI.</strong> Preliminary clinical pharmacokinetic evaluation of bemotrizinol — a new sunscreen active ingredient being considered for inclusion under FDA's OTC sunscreen monograph. <em>Regul. Toxicol. Pharmacol.</em> 2023; 139:105344. DOI: 10.1016/j.yrtph.2023.105344. PMID 36738872.</li>
+<li><strong>Osterwalder U, Luther H, Herzog B.</strong> Über den Lichtschutzfaktor hinaus — neue effiziente und photostabile UVA-Filter. <em>Bundesgesundheitsblatt</em> 2001; 44(5):463–470. DOI: 10.1007/s001030170019.</li>
+</ul>
+<h3 id="ecamsule-mexoryl-sx">Ecamsule (Mexoryl SX)</h3>
+<ul>
+<li><strong>Beck I, Deflandre A, Lang G, Arnaud R, Lemaire J.</strong> Sur la photoisomerization des derives benzylidenecamphre. <em>J. Photochem.</em> 1981; 17:131–144. (Foundational benzylidene-camphor photochemistry.)</li>
+<li><strong>Deflandre A, Lang G.</strong> Photostability assessment of sunscreens. Benzylidene camphor and dibenzoylmethane derivatives. <em>Int. J. Cosmet. Sci.</em> 1988; 10(2):53–62. DOI: 10.1111/j.1467-2494.1988.tb00002.x. PMID 19456910.</li>
+<li><strong>Fourtanier A, Labat-Robert J, Kern P, Berrebi C, Gracia AM, Boyer B.</strong> In vivo evaluation of photoprotection against chronic ultraviolet-A irradiation by a new sunscreen Mexoryl SX. <em>Photochem. Photobiol.</em> 1992; 55(4):549–560. DOI: 10.1111/j.1751-1097.1992.tb04277.x. PMID 1320278.</li>
+<li><strong>Seite S, Moyal D, Verdier MP, Hourseau C, Fourtanier A.</strong> Mexoryl SX: a broad absorption UVA filter protects human skin from the effects of repeated suberythemal doses of UVA. <em>J. Photochem. Photobiol. B</em> 1998; 44(1):69–76. DOI: 10.1016/S1011-1344(98)00122-5. PMID 9745729.</li>
+<li><strong>Seite S, Colige A, Piquemal-Vivenot P, et al.</strong> A full-UV-spectrum absorbing daily-use cream protects human skin against biological changes occurring in photoaging. <em>Photodermatol. Photoimmunol. Photomed.</em> 2000; 16(4):147–155.</li>
+<li><strong>Tarras-Wahlberg N, Stenhagen G, Lárkö O, Rosén A, Wennberg AM, Wennerström O.</strong> Changes in ultraviolet absorption of sunscreens after ultraviolet irradiation. <em>J. Invest. Dermatol.</em> 1999; 113(4):547–553. DOI: 10.1046/j.1523-1747.1999.00721.x. PMID 10504439.</li>
+<li><strong>Fourtanier A, Moyal D, Seité S.</strong> Sunscreens containing the broad-spectrum UVA absorber, Mexoryl SX, prevent the cutaneous detrimental effects of UV exposure: a review of clinical study results. <em>Photodermatol. Photoimmunol. Photomed.</em> 2008; 24(4):164–174. DOI: 10.1111/j.1600-0781.2008.00365.x. PMID 18717958.</li>
+<li><strong>Moyal D.</strong> Prevention of ultraviolet-induced skin pigmentation. <em>Photodermatol. Photoimmunol. Photomed.</em> 2004; 20(5):243–247. DOI: 10.1111/j.1600-0781.2004.00111.x. PMID 15379874.</li>
+</ul>
+<h3 id="drometrizole-trisiloxane-mexoryl-xl">Drometrizole Trisiloxane (Mexoryl XL)</h3>
+<ul>
+<li><strong>Forestier S, Ortiz S, Jitsukawa S.</strong> Mexoryl XL: a new UV protective agent. <em>Fragrance J.</em> 2004; 32(4):59–64. (L'Oréal-affiliated technical paper.)</li>
+<li><strong>Damiani E, Rosati L, Castagna R, Carloni P, Greci L.</strong> Changes in ultraviolet absorbance and hence in protective efficacy against lipid peroxidation of organic sunscreens after UVA irradiation. <em>J. Photochem. Photobiol. B</em> 2006; 82(3):204–213. DOI: 10.1016/j.jphotobiol.2005.11.005.</li>
+</ul>
+<h3 id="mexoryl-400-mce-s87">Mexoryl 400 (MCE / S87)</h3>
+<ul>
+<li><strong>Winkler B, Hoeffken HW, Eichin K, Houy W.</strong> A cyclic merocyanine UV-A absorber: mechanism of formation and crystal structure. <em>Tetrahedron Lett.</em> 2014; 55(10):1749–1751. DOI: 10.1016/j.tetlet.2014.01.113.</li>
+<li><strong>Marionnet C, de Dormael R, Marat X, et al.</strong> Sunscreens with the new MCE filter cover the whole UV spectrum: improved UVA1 photoprotection in vitro and in a randomized controlled trial. <em>JID Innov.</em> 2021; 2(1):100070. DOI: 10.1016/j.xjidi.2021.100070. PMID 35072138.</li>
+<li><strong>de Dormael R, Marionnet C, Bastien P, et al.</strong> Improvement of photoprotection with sunscreen formulas containing the cyclic merocyanine UVA1 absorber MCE: in vivo demonstration under simulated and real sun exposure conditions in three randomised controlled trials. <em>JEADV Clin. Pract.</em> 2022; 1(3):229–239. DOI: 10.1002/jvc2.38.</li>
+<li><strong>Bernerd F, Passeron T, Castiel I, Marionnet C.</strong> The damaging effects of long UVA (UVA1) rays: a major challenge to preserve skin health and integrity. <em>Int. J. Mol. Sci.</em> 2022; 23(15):8243. DOI: 10.3390/ijms23158243. PMC 9368482.</li>
+<li><strong>Flament F, Bourokba N, Nouveau S, et al.</strong> The impact of methoxypropylamino cyclohexenylidene ethoxyethylcyanoacetate (MCE) UVA1 filter on pigmentary and ageing signs: an outdoor prospective 8-week randomized intra-individual comparative study in two populations of different genetic background. <em>J. Eur. Acad. Dermatol. Venereol.</em> 2024; 38(1):214–222. DOI: 10.1111/jdv.19486. PMID 37655436.</li>
+<li><strong>Aguilera J, Gracia-Cazaña T, Gilaberte Y.</strong> New developments in sunscreens. <em>Photochem. Photobiol. Sci.</em> 2023; 22(10):2473–2482. DOI: 10.1007/s43630-023-00453-x. PMID 37543534.</li>
+<li><strong>Loretan A, Spring P, Christen-Zaech S, Bonnet A.</strong> Severe allergic contact dermatitis caused by methoxypropylamino cyclohexenylidene ethoxyethylcyanoacetate. <em>Contact Dermatitis</em> 2025. DOI: 10.1111/cod.14700. PMID 39305114.</li>
+</ul>
+<h3 id="tinosorb-a2b-tbpt">Tinosorb A2B (TBPT)</h3>
+<ul>
+<li><strong>Naumov S, Herzog B, Abel B.</strong> Spectra and photorelaxation of tris-biphenyl-triazine-type UV absorbers: from monomers to nanoparticles. <em>Photochem. Photobiol. Sci.</em> 2023; 22(9):2143–2151. DOI: 10.1007/s43630-023-00436-y. PMID 37277672.</li>
+<li><strong>Couteau C, Paparis E, Chauvet C, Coiffard L.</strong> Tris-biphenyl triazine, a new ultraviolet filter studied in terms of photoprotective efficacy. <em>Int. J. Pharm.</em> 2015; 487(1–2):120–123. DOI: 10.1016/j.ijpharm.2015.03.077. PMID 25843762.</li>
+</ul>
+<h3 id="bisdisulizole-neo-heliopan-ap">Bisdisulizole (Neo Heliopan AP)</h3>
+<ul>
+<li>(Primary literature is sparse for this specific molecule. The Osterwalder, Luther &amp; Herzog 2001 paper covers it.)</li>
+<li><strong>Osterwalder U, Luther H, Herzog B.</strong> Über den Lichtschutzfaktor hinaus — neue effiziente und photostabile UVA-Filter. <em>Bundesgesundheitsblatt</em> 2001; 44(5):463–470. DOI: 10.1007/s001030170019.</li>
+</ul>
+<hr>
+<h2 id="regulatory-documents">Regulatory documents</h2>
+<ul>
+<li><strong>SCCS/1429/11</strong>, revision adopted 13–14 Dec 2011: Opinion on 1,3,5-Triazine, 2,4,6-tris[1,1'-biphenyl]-4-yl- (TBPT, Tinosorb A2B). European Commission, Scientific Committee on Consumer Safety.</li>
+<li><strong>SCCS/1605/19</strong>, final opinion adopted 13 Dec 2019: Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate (S87) — Submission II. European Commission, SCCS.</li>
+<li><strong>Commission Regulation (EU) 2020/1684</strong> (12 Nov 2020): amending Annex VI to Regulation (EC) No 1223/2009 — adds MCE at 3% max.</li>
+<li><strong>Council Directive 76/768/EEC</strong> as amended; later <strong>Regulation (EC) No 1223/2009</strong> Annex VI — current EU UV filter positive list.</li>
+<li><strong>US FDA. Drugs@FDA, NDA 21-502</strong> (Anthelios SX moisturizer with sunscreen). Approved 24 July 2006.</li>
+<li><strong>US FDA. Proposed Administrative Order OTC000039</strong>: Amending Over-the-Counter Monograph M020 (Sunscreen Drug Products for OTC Human Use) — proposes bemotrizinol GRASE at 6%. Federal Register Doc. 2025-22649, published 12 Dec 2025.</li>
+<li><strong>US FDA. TEA (Time and Extent Application) docket FDA-2005-N-0453</strong> for bemotrizinol; original submission April 2005.</li>
+<li><strong>US Sunscreen Innovation Act, Pub. L. 113-195</strong>, signed 26 Nov 2014.</li>
+</ul>
+<hr>
+<h2 id="manufacturer-technical-literature-used-as-c2-secondary-technical-sources">Manufacturer technical literature (used as C2 secondary technical sources)</h2>
+<ul>
+<li><strong>BASF.</strong> Technical Information Tinosorb® S (PRD), Bemotrizinol product portfolio. BASF Care Creations / Personal Care.</li>
+<li><strong>BASF.</strong> Technical Information Tinosorb® A2B PRD 30478125 (valid since 12 Mar 2019). BASF Personal Care.</li>
+<li><strong>L'Oréal / Chimex.</strong> Mexoryl SX and Mexoryl XL product literature; "Inside Our Products" public ingredient pages (inside-our-products.loreal.com).</li>
+<li><strong>Symrise.</strong> Neo Heliopan AP technical data sheet; Symrise Sun Protection Brochure 2020.</li>
+</ul>
+<hr>
+<h2 id="review-articles-consulted">Review articles consulted</h2>
+<ul>
+<li><strong>Aguilera J, Gracia-Cazaña T, Gilaberte Y.</strong> New developments in sunscreens. <em>Photochem. Photobiol. Sci.</em> 2023; 22(10):2473–2482. DOI: 10.1007/s43630-023-00453-x. PMID 37543534.</li>
+<li><strong>Stiefel C, Schwack W.</strong> Photoprotection in changing times — UV filter efficacy and safety, sensitization processes and regulatory aspects. <em>Int. J. Cosmet. Sci.</em> 2015; 37(1):2–30. DOI: 10.1111/ics.12165.</li>
+<li><strong>A Survey of UV Filters Used in Sunscreen Cosmetics.</strong> <em>Applied Sciences (MDPI)</em> 2024; 14(8):3302. DOI: 10.3390/app14083302.</li>
+<li><strong>Ultraviolet Filters for Cosmetic Applications.</strong> <em>Cosmetics (MDPI)</em> 2023; 10(4):101. DOI: 10.3390/cosmetics10040101.</li>
+</ul>
+<hr>
+<h2 id="notes-on-verification">Notes on verification</h2>
+<ul>
+<li>Every DOI listed above was either (a) returned by PubMed/CrossRef during the research session, or (b) printed in the citing Wikipedia/journal references with full metadata. <strong>No DOI was synthesized from a guess.</strong></li>
+<li>Source quality: C1 sources (peer-reviewed primary, regulatory) preferred. Where only sponsor (BASF, L'Oréal, Symrise) data was available, cited as C2 with explicit note.</li>
+<li>Two sources are German-language (Osterwalder 2001; SCCS dossiers). Translations are summary in nature.</li>
+<li>All wavelength values cross-checked between at least two independent sources before assignment to C1.</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/broad-spectrum/sources.md</code> · <a href="sources.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

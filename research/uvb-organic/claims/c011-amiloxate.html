@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amiloxate (Isoamyl Methoxycinnamate) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Amiloxate (Isoamyl Methoxycinnamate)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c011-amiloxate.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c011-amiloxate.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c011-amiloxate.md</code></div>
+<h1 id="amiloxate-isoamyl-methoxycinnamate">Amiloxate (Isoamyl Methoxycinnamate)</h1>
+<h2 id="identity">Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Isoamyl p-Methoxycinnamate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>3-methylbutyl (2E)-3-(4-methoxyphenyl)prop-2-enoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td>Neo Heliopan E1000 (Symrise)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>71617-10-2</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₅H₂₀O₃</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>248.32 g/mol</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="regulatory-status">Regulatory status</h2>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FDA (USA)</td>
+<td>TEA pending (filed 2003); not approved on monograph</td>
+</tr>
+<tr>
+<td>EU</td>
+<td>Annex VI #62; max 10%</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted up to 10%</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Permitted (quasi-drug)</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>Permitted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uv-absorption-spectrum">UV absorption spectrum</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>λmax</td>
+<td>308–310 nm</td>
+<td>C1</td>
+<td>Symrise technical bulletin; SCCS/1521/13</td>
+</tr>
+<tr>
+<td>Solvent</td>
+<td>EtOH</td>
+<td>C1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>ε at λmax</td>
+<td>~24,000 M⁻¹cm⁻¹</td>
+<td>C2</td>
+<td>Couteau et al. 2007 (analogous cinnamate; specific Neo Heliopan E1000 datasheet)</td>
+</tr>
+<tr>
+<td>E(1%, 1cm)</td>
+<td>~960</td>
+<td>C2</td>
+<td>Symrise</td>
+</tr>
+<tr>
+<td>Spectral coverage</td>
+<td>280–325 nm (UVB)</td>
+<td>C1</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Amiloxate is a structural isomer of octinoxate — same p-methoxycinnamate chromophore, isoamyl ester instead of 2-ethylhexyl. Spectroscopically very close to octinoxate.</p>
+<h2 id="photodegradation">Photodegradation</h2>
+<ul>
+<li><strong>Photostability</strong>: rated <strong>moderate-to-poor</strong> (cinnamate class). Like octinoxate, undergoes trans → cis photoisomerization to a less-absorbing cis isomer at PSS, plus [2+2] photodimerization in concentrated form. Quantum yields of trans → cis are likely in the same 0.20–0.40 range as OMC. <strong>C2 — by analogy; specific primary measurement not located</strong>.</li>
+<li>In combination with avobenzone, expected to undergo the same [2+2] cycloaddition reported for OMC+BMDBM (Sayre 2005) — <strong>C3 by mechanistic analogy; not directly studied</strong>.</li>
+<li><strong>Photoproducts</strong>: cis-amiloxate (Z-isomer); diester truxillic-type photodimer; trace 4-methoxybenzaldehyde — <strong>C3 by analogy to OMC photochemistry (Hanson et al. 2015)</strong>.</li>
+<li><strong>C5 — direct primary photodegradation kinetic measurements not located</strong> in literature search.</li>
+</ul>
+<h2 id="notable">Notable</h2>
+<ul>
+<li>Amiloxate is essentially an OMC variant. Its commercial appeal is largely the Symrise supply chain and a marginally different INCI label; photochemically very similar.</li>
+<li>Has been on the FDA TEA pending list since 2003 with no sign of imminent approval.</li>
+<li><strong>Endocrine concern by structural analogy to octinoxate</strong> — likely subject to the same SCCS scrutiny if reviewed.</li>
+<li>Skin penetration: detectable in plasma in human max-use trials (Matta-style FDA studies); concentrations comparable to OMC.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM. <strong>Study of the efficacy of 18 sun filters authorized in European Union tested in vitro.</strong> <em>Pharmazie</em> 2007; 62(6):449–452.</li>
+<li>Hanson KM, Narayanan S, Nichols VM, Bardeen CJ. (2015) <em>Photochem Photobiol Sci</em> 14:1607–1616. (Mechanistic basis by analogy.)</li>
+<li>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV. (2005) <em>Photochem Photobiol Sci</em> 4:699–705.</li>
+<li>EU Cosmetics Regulation (EC) 1223/2009 Annex VI #62.</li>
+<li>SCCS/1521/13 — opinion on amiloxate.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c011-amiloxate.md</code> · <a href="c011-amiloxate.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c002: Avobenzone + Octocrylene — Photostabilization via Triplet Quenching — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c002: Avobenzone + Octocrylene — Photostabilization via Triplet Quenching</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c002-avobenzone-octocrylene-stabilization.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c002-avobenzone-octocrylene-stabilization.md">View raw markdown</a> · Path: <code>research/photostab/claims/c002-avobenzone-octocrylene-stabilization.md</code></div>
+<h1 id="c002-avobenzone-octocrylene-photostabilization-via-triplet-quenching">c002: Avobenzone + Octocrylene — Photostabilization via Triplet Quenching</h1>
+<p><strong>Claim</strong>: Octocrylene (2-ethylhexyl 2-cyano-3,3-diphenylacrylate, OC) substantially stabilises avobenzone in sunscreen formulations. The dominant mechanism is triplet–triplet energy transfer from the diketo T1 of avobenzone to the lower-lying triplet of octocrylene, which then dissipates the energy non-radiatively. Reported gains: from ≈23% residual avobenzone after 25 MED (alone) to ≈90% residual when 3.6% OC is added (Bonda/Hallstar; consistent with Damiani 2007 and Lhiaubet-Vallet 2010).</p>
+<p><strong>Confidence</strong>: C1 for the existence and approximate magnitude of the stabilisation effect; C1 for the triplet-quenching mechanism; C2 for specific percentages (multiple sources cite, but original primary references are partly behind paywalls or in industry-affiliated venues).</p>
+<hr>
+<h2 id="section-1-mechanism">Section 1: Mechanism</h2>
+<h3 id="triplet-triplet-energy-transfer-ttet">Triplet-triplet energy transfer (TTET)</h3>
+<ul>
+<li>Avobenzone (BMDBM) on UV-A excitation populates the diketo T1 (n,π*, ~60–66 kcal/mol). This triplet is the photoreactive species responsible for both (a) cyclobutyl/oxetane adduct formation with cinnamate alkenes (see c001) and (b) homolysis of the α-C–C bond yielding phenacyl + arylacyl radicals (Norrish type I from the triplet diketo) → cascade to benzils, benzaldehydes, benzoic acids (Schwack &amp; Rudolph 1995).</li>
+<li>Octocrylene's chromophore is a cyano-diphenylacrylate. Its T1 is reported in the range ~50–55 kcal/mol — <em>below</em> that of BMDBM diketo T1 — making TTET exothermic. The OC triplet decays by internal conversion + vibrational relaxation, returning OC unchanged to its ground state. The net effect: BMDBM is photochemically rescued.</li>
+</ul>
+<h3 id="why-not-singlet-quenching">Why not singlet quenching</h3>
+<ul>
+<li>BMDBM enol S1 deactivates by ESIPT in &lt;ps timescales; bimolecular singlet quenching is too slow to compete. OC is therefore primarily a <em>triplet</em> quencher of BMDBM.</li>
+<li>OC has minimal effect on the singlet pathway (ESIPT) that dominates productive UV-A absorption; this is why OC does not blue-shift or quench the BMDBM absorption spectrum.</li>
+</ul>
+<h3 id="diffusion-limited-rate">Diffusion-limited rate</h3>
+<ul>
+<li>Lhiaubet-Vallet et al. 2010 measured triplet quenching rate constants of BMDBM diketo by various co-filters via laser flash photolysis. Octocrylene, MBC (4-methylbenzylidene camphor) and Tinosorb S all quench at near-diffusion-limited rates: kq ≈ 1–5 × 10^9 M⁻¹ s⁻¹ in acetonitrile / ethanol [C1; exact value varies by source]. At a typical formulation OC concentration (7–10% w/w in oil phase, ~0.2–0.3 M), every BMDBM triplet is quenched in &lt;ns.</li>
+</ul>
+<hr>
+<h2 id="section-2-quantitative-effect">Section 2: Quantitative effect</h2>
+<h3 id="headline-numbers-multiple-sources">Headline numbers (multiple sources)</h3>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Residual avobenzone</th>
+<th>Dose</th>
+<th>Vehicle</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4% AVB alone</td>
+<td>23%</td>
+<td>25 MED</td>
+<td>film/cream</td>
+<td>Bonda C&amp;T 2008 (citing Hallstar internal data)</td>
+</tr>
+<tr>
+<td>4% AVB + 3.6% OC</td>
+<td>90%</td>
+<td>25 MED</td>
+<td>film/cream</td>
+<td>same</td>
+</tr>
+<tr>
+<td>AVB only, sunlight 1 h</td>
+<td>−36% absorbance</td>
+<td>1 h sun</td>
+<td>film</td>
+<td>FDA / CTFA cited in Wikipedia</td>
+</tr>
+<tr>
+<td>AVB + OC in O/W</td>
+<td>typically &gt;70% retained at 25 MED</td>
+<td>25 MED</td>
+<td>O/W</td>
+<td>Damiani 2007; Couteau 2007</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lhiaubet-vallet-2010-photochem-photobiol-sci">Lhiaubet-Vallet 2010 (Photochem. Photobiol. Sci.)</h3>
+<ul>
+<li>Compared OC, MBC, Tinosorb S, octinoxate, octisalate, homosalate as quenchers of the BMDBM diketo triplet.</li>
+<li>OC and MBC were the strongest quenchers in solution. OC retained ≈90% of BMDBM in mixtures vs ≈30% alone after equivalent UV-A doses (acetonitrile, deaerated).</li>
+<li>Singlet-oxygen reactivity of OC is low; OC does not generate significant 1O2 itself, and does not strongly quench it — its protective role is overwhelmingly triplet quenching.</li>
+</ul>
+<h3 id="damiani-2007-j-photochem-photobiol-b">Damiani 2007 (J Photochem Photobiol B)</h3>
+<ul>
+<li>Quantitative HPLC monitoring under UV-A for binary and ternary sunscreen filter mixtures in cream. AVB+OC retained spectral integrity well beyond the MED required to bleach AVB alone; AVB+OMC degraded fastest.</li>
+</ul>
+<h3 id="huong-et-al-2008-j-photochem-photobiol-a">Huong et al. 2008 (J Photochem Photobiol A)</h3>
+<ul>
+<li>Note: the topic prompt cites "Huong et al. 2008" on AVB+OC; the most commonly cited 2008-vintage primary photostability paper in this space is Mturi &amp; Martincigh 2008 (J Photochem Photobiol A 200:410-420). I was unable to locate a Huong 2008 J Photochem Photobiol A paper — possible mis-attribution. Treating the AVB+OC pairwise photostability as established by Damiani 2007, Lhiaubet-Vallet 2010, and Bonda 2008 (review).</li>
+</ul>
+<h3 id="caveats">Caveats</h3>
+<ul>
+<li>OC itself degrades, generating benzophenone via retro-aldol cleavage on storage and under UV (Downs et al. 2021, Chem Res Toxicol — see c008). Average benzophenone in commercial OC-containing sunscreens before accelerated aging: 39 mg/kg; after 6-week FDA accelerated aging: 75 mg/kg (max 435). This raises a secondary safety concern but does not invalidate the photostability story for AVB.</li>
+<li>OC at ≥7% may need pairing with additional emollients due to crystalline texture; some formulators report slight reduction of in-vivo SPF if film integrity is compromised.</li>
+</ul>
+<hr>
+<h2 id="section-3-practical-formulation-guidance">Section 3: Practical formulation guidance</h2>
+<ul>
+<li>Typical OC use level for AVB stabilisation: 5–10% w/w (max 10% in US OTC monograph; max 10% in EU; max 10% Australia). At &lt;3% OC, stabilisation is incomplete.</li>
+<li>AVB/OC ratio: roughly 1:1 to 1:3 (mass) is industry consensus; molar ratio ≥2:1 OC:AVB ensures triplet quenching dominates.</li>
+<li>OC dissolves AVB well, so it doubles as a solvent — practically convenient.</li>
+<li>Patents: L'Oréal EP 0,895,776 (1998); Symrise patents on related cinnamate-acrylate combinations; numerous BASF, DSM and Hallstar IP describing OC + secondary stabilisers.</li>
+<li>Reformulation note: post-Hawaii reef-safe regulations and the Downs 2021 benzophenone story have driven some formulators to substitute Tinosorb S or DESM for octocrylene.</li>
+</ul>
+<hr>
+<h2 id="section-4-citations">Section 4: Citations</h2>
+<ol>
+<li><strong>Damiani E, Baschong W, Greci L.</strong> "UV-Filter combinations under UV-A exposure: concomitant quantification of over-all spectral stability and molecular integrity." <em>J. Photochem. Photobiol. B: Biology</em> 87(2):95-104 (2007). DOI: 10.1016/j.jphotobiol.2007.03.003. <strong>[C1]</strong></li>
+<li><strong>Lhiaubet-Vallet V, Marin M, Jimenez O, Gorchs O, Trullas C, Miranda MÁ.</strong> "Filter-filter interactions. Photostabilization, triplet quenching and reactivity with singlet oxygen." <em>Photochem. Photobiol. Sci.</em> 9(4):552-558 (2010). DOI: 10.1039/b9pp00158a. PMID: 20354650. <strong>[C1, mechanism + kq]</strong></li>
+<li><strong>Bonda CA, Lott D.</strong> "Sunscreen Photostability." Chapter 14 in <em>Principles and Practice of Photoprotection</em> (Wang &amp; Lim eds.), Springer (2016). DOI: 10.1007/978-3-319-29382-0_14. <strong>[C2, review — quotes Hallstar internal data]</strong></li>
+<li><strong>Mturi GJ, Martincigh BS.</strong> "Photostability of the sunscreening agent 4-tert-butyl-4'-methoxydibenzoylmethane (avobenzone) in solvents of different polarity and proticity." <em>J. Photochem. Photobiol. A: Chemistry</em> 200(2-3):410-420 (2008). DOI: 10.1016/j.jphotochem.2008.09.007. <strong>[C1, AVB photochemistry baseline]</strong></li>
+<li><strong>Schwack W, Rudolph T.</strong> "Photochemistry of dibenzoylmethane UVA filters – Part 1." <em>J. Photochem. Photobiol. B: Biology</em> 28(3):229-234 (1995). DOI: 10.1016/1011-1344(95)07118-L. <strong>[C1]</strong></li>
+<li><strong>Paris C, Lhiaubet-Vallet V, Jiménez O, Trullas C, Miranda MÁ.</strong> "A blocked diketo form of avobenzone: photostability, photosensitizing properties and triplet quenching by a triazine-derived UVB-filter." <em>Photochem. Photobiol.</em> 85(1):178-184 (2009). DOI: 10.1111/j.1751-1097.2008.00414.x. <strong>[C1]</strong></li>
+<li><strong>Downs CA, DiNardo JC, Stien D, Rodrigues AMS, Lebaron P.</strong> "Benzophenone Accumulates over Time from the Degradation of Octocrylene in Commercial Sunscreen Products." <em>Chemical Research in Toxicology</em> 34(4):1046-1054 (2021). DOI: 10.1021/acs.chemrestox.0c00461. PMID: 33682414. <strong>[C1, secondary safety]</strong></li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/photostab/claims/c002-avobenzone-octocrylene-stabilization.md</code> · <a href="c002-avobenzone-octocrylene-stabilization.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

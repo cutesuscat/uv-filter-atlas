@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c005 — Benzophenone-1 (BP-1, 2,4-Dihydroxybenzophenone) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c005 — Benzophenone-1 (BP-1, 2,4-Dihydroxybenzophenone)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c005-benzophenone-1-bp1.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c005-benzophenone-1-bp1.md">View raw markdown</a> · Path: <code>research/benzophenones/claims/c005-benzophenone-1-bp1.md</code></div>
+<h1 id="claim-file-c005-benzophenone-1-bp-1-24-dihydroxybenzophenone">Claim File c005 — Benzophenone-1 (BP-1, 2,4-Dihydroxybenzophenone)</h1>
+<p>CAS 131-56-6</p>
+<blockquote>
+<p>Context: BP-1 is the <strong>major in-vivo metabolite of BP-3</strong> (oxybenzone) in humans and aquatic organisms, and is also a primary photodegradation product of BP-3. It is also used as an industrial UV absorber (UV-0) in plastics and fragrance/color stabilization. It is <strong>not approved as a UV filter</strong> for sunscreens in any major jurisdiction. This file documents BP-1 because exposure to BP-1 is intrinsic to BP-3 use, and because BP-1 is more potent biologically than its parent.</p>
+</blockquote>
+<hr>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<ul>
+<li><strong>INCI:</strong> Benzophenone-1 [C1]</li>
+<li><strong>IUPAC:</strong> (2,4-Dihydroxyphenyl)(phenyl)methanone — i.e. 2,4-dihydroxybenzophenone (DHB) [C1]</li>
+<li><strong>Synonyms:</strong> BP-1, UV-0, 2,4-DHB, DOB, Uvinul 400, Cyasorb UV-9 (some industrial designations) [C1]</li>
+<li><strong>CAS:</strong> 131-56-6 [C1]</li>
+<li><strong>Molecular formula:</strong> C13H10O3 [C1]</li>
+<li><strong>Molecular weight:</strong> 214.22 g/mol [C1]</li>
+<li><strong>Physical:</strong> white-to-pale-yellow crystalline powder; mp 144.5–147 °C; bp ~194 °C / 1 mmHg; density ~0.7 g/mL [C1]</li>
+<li><strong>Solubility:</strong> sparingly soluble in water; soluble in alcohols, esters, glacial acetic acid, methyl ethyl ketone; logKow ≈ 2.96 [C1]</li>
+</ul>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU Annex VI (UV filters)</strong></td>
+<td><strong>Not listed</strong> — BP-1 is <strong>not</strong> an approved cosmetic UV filter. Listed in Annex II as <strong>prohibited</strong> in cosmetics in some interpretations / pending listings (CMR concerns under CLP Regulation considered for several "BP-x" entries since 2021). [C2]</td>
+</tr>
+<tr>
+<td><strong>USA FDA OTC sunscreen monograph</strong></td>
+<td><strong>Not</strong> an approved sunscreen active. May appear in non-sunscreen cosmetics as a fragrance/color stabilizer at low % subject to general cosmetic safety law. [C1]</td>
+</tr>
+<tr>
+<td><strong>Industrial / plastics use</strong></td>
+<td>Widely used as a UV absorber for clear plastics, coatings, and as a stabilizer in cosmetic colorants — these uses are governed by REACH/TSCA, not cosmetics regulations. [C1]</td>
+</tr>
+<tr>
+<td><strong>Hawaii / Florida bans</strong></td>
+<td>Not specifically named in current statutes.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Use level (when present in cosmetics as colorant/fragrance stabilizer):</strong> typically &lt;0.5%. Not used as a UV filter on label. [C2]</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<ul>
+<li><strong>λmax #1:</strong> ~287 nm (UVB)</li>
+<li><strong>λmax #2:</strong> ~325 nm (UVA-II)</li>
+<li><strong>Spectral coverage:</strong> ~280–340 nm (UVB + short UVA-II) — comparable to BP-3</li>
+<li><strong>Molar absorption coefficient:</strong></li>
+<li>At ~287 nm in ethanol: ε ≈ 1.6 × 10⁴ M⁻¹·cm⁻¹ [C2]</li>
+<li>At ~325 nm in ethanol: ε ≈ 1.5 × 10⁴ M⁻¹·cm⁻¹ [C2]</li>
+<li><strong>E(1%, 1 cm)</strong> at ~287 nm: ≈ 750 (computed) [C3]</li>
+<li><strong>Solvent / pH dependence:</strong> like BP-3 the molecule has an ortho-OH/C=O ESIPT motif; the extra 4-OH increases polar-solvent solubility and shifts the bands slightly compared with BP-3. The 4-OH (para to the C=O) is sufficiently acidic (pKa ≈ 7.6) that under cosmetic-pH conditions the molecule sits near the protonation threshold; ionized form is red-shifted.</li>
+<li><strong>Function:</strong> efficient UV-absorber/quencher used industrially as plastic stabilizer; photophysics dominated by ESIPT (similar to BP-3) — relatively good non-radiative dissipation.</li>
+</ul>
+<hr>
+<h2 id="section-3-photodegradation">Section 3: Photodegradation</h2>
+<ul>
+<li>BP-1 is itself photostable in plastic-stabilizer service (this is its industrial purpose).</li>
+<li>In aqueous environmental matrices, BP-1 photodegrades with rate constants of similar order to BP-3 (k ≈ 10⁻⁵ s⁻¹ under simulated sunlight). It is a frequently detected transformation product in studies of BP-3 photolysis in surface waters.</li>
+<li><strong>As a photoproduct/metabolite of BP-3:</strong></li>
+<li>Generated by O-demethylation of BP-3</li>
+<li>Found in urine of humans applying BP-3-containing sunscreens (often at concentrations ~1–10% of parent BP-3) [C1]</li>
+<li>Generated in coral and sea anemone tissues from BP-3 (Vuckovic et al. 2022 <em>Science</em> — though those animals primarily form 2-O-glucosides and BP-1 does not feature as strongly)</li>
+<li><strong>Photoproducts of BP-1 itself:</strong> further hydroxylated trihydroxybenzophenones (e.g., 2,3,4-trihydroxybenzophenone), ring-opened carboxylic acids in advanced oxidation studies. [C2]</li>
+</ul>
+<hr>
+<h2 id="section-4-notable-issues">Section 4: Notable issues</h2>
+<h3 id="41-endocrine-activity-the-dominant-concern">4.1 Endocrine activity (the dominant concern)</h3>
+<ul>
+<li><strong>More potent than BP-3 in standard estrogenic-activity assays.</strong></li>
+<li>Yeast estrogen screen / E-screen MCF-7 proliferation: BP-1 EC50 in the <strong>low µM</strong> range (often reported ~0.1–1 µM for half-maximal proliferation), versus BP-3 typically ~5–50 µM in the same assays — i.e. <strong>~10–50× more potent</strong>. [C1 — Schlumpf et al. 2001, 2004; Morohoshi et al. 2005]</li>
+<li>Stimulates BG-1 ovarian-cancer cell proliferation via ER-α and induces cyclin D1 — both in vitro and in xenograft mouse models (Park et al. 2013 <em>Toxicology</em> 305:41-48). [C1]</li>
+<li>Also induces epithelial-mesenchymal transition / metastasis-related markers in ER+ cells (Shin et al. 2016) and Wnt/β-catenin activation (Park et al. 2021). [C2]</li>
+<li><strong>In-vivo:</strong> uterotrophic activity in immature rodent assay at oral doses (Yamasaki et al. 2003 <em>Toxicol Lett</em>); inhibits placental 3β-HSD activity (steroidogenesis disruption) at micromolar concentrations (Yan et al. 2023). [C1]</li>
+<li><strong>Anti-androgenic activity</strong> in AR reporter assays at micromolar concentrations.</li>
+<li><strong>Why it matters for BP-3 users:</strong> BP-1 forms in vivo from BP-3, has a longer biological half-life than its parent, and bioaccumulates — meaning topical BP-3 application produces measurable BP-1 internal exposure at potencies higher than the parent compound itself.</li>
+</ul>
+<h3 id="42-skin-penetration-human-exposure">4.2 Skin penetration / human exposure</h3>
+<ul>
+<li>BP-1 detected in <strong>&gt;80–95% of urine samples</strong> in U.S. and European biomonitoring studies, almost always co-detected with BP-3. Concentrations typically 10–100× lower than urinary BP-3. [C1 — Calafat 2008, Asimakopoulos 2014]</li>
+<li>Some BP-1 environmental exposure also occurs from food-contact plastics and household dust.</li>
+</ul>
+<h3 id="43-aquatic-ecological">4.3 Aquatic / ecological</h3>
+<ul>
+<li>BP-1 is detected in surface waters at low ng/L concentrations; persistence and bioaccumulation potential moderate.</li>
+<li>Aquatic ecotoxicity: zebrafish developmental endpoints, fish steroidogenesis disruption reported at µg/L. Estrogenic activity reproducible across organisms. [C2]</li>
+</ul>
+<h3 id="44-allergenicity">4.4 Allergenicity</h3>
+<ul>
+<li>Limited dedicated patch-test data; cross-reactivity with BP-3 expected. Not a top-listed allergen because of low direct application exposure.</li>
+</ul>
+<h3 id="45-carcinogenicity-classification">4.5 Carcinogenicity / classification</h3>
+<ul>
+<li>The closely related parent ketone <strong>benzophenone</strong> (CAS 119-61-9, not BP-1) is classified by IARC as Group 2B "possibly carcinogenic to humans" (IARC Monograph 101, 2013). BP-1 itself has not been separately classified by IARC. The structure–activity inference and the in-vitro genotoxicity data have led the EU to consider regulatory action on several "BP-x" derivatives under CLP/CMR rules. [C1 — IARC Mono 101]</li>
+</ul>
+<hr>
+<h2 id="confidence">Confidence</h2>
+<ul>
+<li>Identity → C1</li>
+<li>Spectrum λmax / ε → C2</li>
+<li>Endocrine in-vitro potency vs BP-3 → C1</li>
+<li>In-vivo / metabolite role → C1</li>
+<li>Carcinogenicity (parent benzophenone IARC 2B) → C1; BP-1 specifically → C3 (extrapolated)</li>
+</ul>
+<h2 id="key-citations">Key citations</h2>
+<ol>
+<li>Park J et al. <em>Toxicology</em> 2013;305:41-48. doi:10.1016/j.tox.2013.01.003</li>
+<li>Schlumpf M et al. <em>Environ Health Perspect</em> 2001;109:239-244.</li>
+<li>Yamasaki K et al. <em>Toxicol Lett</em> 2003;146:111-120.</li>
+<li>Yan H et al. <em>Toxicol Appl Pharmacol</em> 2023 — placental 3β-HSD inhibition by benzophenone UV filters.</li>
+<li>Calafat AM et al. <em>Environ Health Perspect</em> 2008;116:893-897.</li>
+<li>Asimakopoulos AG et al. <em>Sci Total Environ</em> 2014;470-471:1243-1249.</li>
+<li>Vuckovic D et al. <em>Science</em> 2022;376:644-648. doi:10.1126/science.abn2600</li>
+<li>IARC Monographs Vol. 101 (2013), Benzophenone — Group 2B.</li>
+<li>Morohoshi K et al. <em>Food Chem Toxicol</em> 2005;43:555-559.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/claims/c005-benzophenone-1-bp1.md</code> · <a href="c005-benzophenone-1-bp1.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

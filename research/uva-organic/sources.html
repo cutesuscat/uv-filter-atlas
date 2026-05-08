@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sources — UVA Organic Sunscreen Filters Research — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Sources — UVA Organic Sunscreen Filters Research</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="sources.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="sources.md">View raw markdown</a> · Path: <code>research/uva-organic/sources.md</code></div>
+<h1 id="sources-uva-organic-sunscreen-filters-research">Sources — UVA Organic Sunscreen Filters Research</h1>
+<h2 id="primary-peer-reviewed-literature">Primary peer-reviewed literature</h2>
+<h3 id="avobenzone">Avobenzone</h3>
+<ol>
+<li>
+<p><strong>Mturi GJ, Martincigh BS.</strong> "Photostability of the sunscreening agent 4-tert-butyl-4'-methoxydibenzoylmethane (avobenzone) in solvents of different polarity and proticity." <em>Journal of Photochemistry and Photobiology A: Chemistry</em> <strong>200</strong> (2-3): 410–420 (2008). doi: 10.1016/j.jphotochem.2008.09.001.
+   - https://www.sciencedirect.com/science/article/abs/pii/S1010603008003870
+   - PDF copy: https://www.cansa.org.za/files/2009/10/Prof_Martincigh_-_photochemistry_and_photobiology.pdf</p>
+</li>
+<li>
+<p><strong>Schwack W, Rudolph T.</strong> "Photochemistry of dibenzoyl methane UVA filters Part 1." <em>Journal of Photochemistry and Photobiology B: Biology</em> <strong>28</strong>: 229–234 (1995). [Identification of 14 photoproducts of avobenzone in cyclohexane.]</p>
+</li>
+<li>
+<p><strong>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.</strong> "Unexpected Photolysis of the Sunscreen Octinoxate in the Presence of the Sunscreen Avobenzone." <em>Photochemistry and Photobiology</em> <strong>81</strong>(2): 452–456 (2005). doi:10.1562/2004-02-12-RA-083.
+   - https://pubmed.ncbi.nlm.nih.gov/15560736/</p>
+</li>
+<li>
+<p><strong>Holt EL, Krokidi KM, Turner MAP et al.</strong> "Determining the photostability of avobenzone in sunscreen formulation models using ultrafast spectroscopy." <em>Phys Chem Chem Phys</em> <strong>23</strong>(42): 24439–24448 (2021). doi:10.1039/D1CP03610F.
+   - https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp03610f</p>
+</li>
+<li>
+<p><strong>Downs CA, DiNardo JC, Stien D, Rodrigues AMS, Lebaron P.</strong> "Benzophenone Accumulates over Time from the Degradation of Octocrylene in Commercial Sunscreen Products." <em>Chemical Research in Toxicology</em> <strong>34</strong>(4): 1046–1054 (2021). doi:10.1021/acs.chemrestox.0c00461.
+   - https://pubs.acs.org/doi/10.1021/acs.chemrestox.0c00461</p>
+</li>
+<li>
+<p><strong>Karpkird T et al.</strong> "Photophysical properties of diethylhexyl 2,6-naphthalate (Corapan TQ), a photostabilizer for sunscreens." <em>Photochemical &amp; Photobiological Sciences</em> (2018). doi:10.1039/c8pp00204e.
+   - https://pubs.rsc.org/en/content/articlelanding/2018/pp/c8pp00204e</p>
+</li>
+<li>
+<p><strong>Bonda CA.</strong> "The Photostability of Organic Sunscreen Actives: A Review." (2008). In: Shaath NA (ed.) <em>Sunscreens: Regulations and Commercial Development</em>, 3rd ed. Taylor &amp; Francis. [Foundational review of avobenzone stabilization mechanisms.]</p>
+</li>
+<li>
+<p><strong>Comprehensive review of avobenzone toxicology.</strong> Personal Care Products Council / <em>Critical Reviews in Toxicology</em> (2025). doi:10.1080/10408444.2025.2535394.
+   - https://www.tandfonline.com/doi/full/10.1080/10408444.2025.2535394</p>
+</li>
+<li>
+<p><strong>Drug Delivery Strategies for Avobenzone: A Case Study of Photostabilization.</strong> <em>Pharmaceutics</em> <strong>15</strong>(3): 1008 (2023).
+   - https://pmc.ncbi.nlm.nih.gov/articles/PMC10059943/</p>
+</li>
+</ol>
+<h3 id="meradimate-menthyl-anthranilate">Meradimate / Menthyl Anthranilate</h3>
+<ol start="10">
+<li>
+<p><strong>Cantrell A, McGarvey DJ.</strong> "The photophysical properties of menthyl anthranilate: a UV-A sunscreen." <em>J Photochem Photobiol B</em> <strong>64</strong>(2-3): 117–122 (2001). PMID 10911723.</p>
+</li>
+<li>
+<p><strong>Yamaji M, Kida M.</strong> "Suppression of menthyl anthranilate (UV-A sunscreen)-sensitized singlet oxygen generation by Trolox and α-tocopherol." <em>Photochem Photobiol Sci</em> <strong>19</strong>: 992 (2020). doi:10.1039/d0pp00023j. PMID 32484499.</p>
+</li>
+<li>
+<p><strong>Baker LA, Marchetti B, Karsili TNV et al.</strong> "Wavepacket insights into the photoprotection mechanism of the UV filter methyl anthranilate." <em>Nature Communications</em> <strong>9</strong>: 5095 (2018). doi:10.1038/s41467-018-07681-1.</p>
+<ul>
+<li>https://www.nature.com/articles/s41467-018-07681-1</li>
+</ul>
+</li>
+<li>
+<p><strong>Whittock AL, Marchetti B, Karsili TNV.</strong> "Photophysics of the sunscreen ingredient menthyl anthranilate and its precursor methyl anthranilate: A bottom-up approach to photoprotection." <em>J Photochem Photobiol A</em> <strong>350</strong> (2017). doi:10.1016/j.jphotochem.2017.09.058.</p>
+</li>
+</ol>
+<h3 id="dhhb-diethylamino-hydroxybenzoyl-hexyl-benzoate">DHHB (Diethylamino Hydroxybenzoyl Hexyl Benzoate)</h3>
+<ol start="14">
+<li><strong>Tan et al.</strong> "Ultrafast excited-state energy dissipation pathway of diethylamino hydroxybenzoyl hexyl benzoate (DHHB) via the nanoparticles." <em>Photochem Photobiol Sci</em> (2023). doi:10.1007/s43630-023-00435-z.<ul>
+<li>https://link.springer.com/article/10.1007/s43630-023-00435-z</li>
+</ul>
+</li>
+</ol>
+<h3 id="mbbt-bisoctrizole-tinosorb-m">MBBT / Bisoctrizole / Tinosorb M</h3>
+<ol start="15">
+<li>
+<p><strong>SCCS (Scientific Committee on Consumer Safety).</strong> Opinion on Methylene Bis-Benzotriazolyl Tetramethylbutylphenol (nano form). <strong>SCCS/1546/15</strong>, revised 25 June 2015; reconfirmed January 2018.</p>
+<ul>
+<li>https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_168.pdf</li>
+</ul>
+</li>
+<li>
+<p><strong>SCCS.</strong> Opinion on MBBT — earlier reviews <strong>SCCS/1460/11</strong> (2013).</p>
+<ul>
+<li>https://ec.europa.eu/health/scientific_committees/consumer_safety/docs/sccs_o_129.pdf</li>
+</ul>
+</li>
+<li>
+<p><strong>BASF Technical Information Tinosorb M PRD 30482916</strong> (2019).</p>
+<ul>
+<li>https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Protecci%C3%B3n%20Solar/Tinosorb%C2%AE%20M.pdf</li>
+</ul>
+</li>
+</ol>
+<h3 id="iscotrizinol-uvasorb-heb">Iscotrizinol / Uvasorb HEB</h3>
+<ol start="18">
+<li><strong>3V Sigma USA Inc.</strong> <em>Uvasorb HEB</em> technical product literature (UL Prospector listing 1584/128630).<ul>
+<li>https://www.ulprospector.com/en/na/PersonalCare/Detail/1584/128630/Uvasorb-HEB</li>
+</ul>
+</li>
+</ol>
+<h2 id="regulatory-documents">Regulatory documents</h2>
+<ol start="19">
+<li>
+<p><strong>U.S. FDA OTC Monograph M020</strong> — Sunscreen Drug Products for OTC Human Use. Final administrative order (Sept 24, 2021), stayed indefinitely.</p>
+<ul>
+<li>https://www.accessdata.fda.gov/drugsatfda_docs/omuf/monographs/OTCMonograph_M020-SunscreenDrugProductsforOTCHumanUse09242021.pdf</li>
+</ul>
+</li>
+<li>
+<p><strong>EU Cosmetic Regulation (EC) No 1223/2009 — Annex VI</strong> (List of UV filters allowed in cosmetic products).</p>
+<ul>
+<li>Avobenzone — entry 8 (5%)</li>
+<li>MBBT/Bisoctrizole — entry 23 (10%, nano + non-nano)</li>
+<li>Iscotrizinol — entry 26 (10%)</li>
+<li>DHHB — entry 28 (10%)</li>
+<li>Meradimate — NOT listed (not approved in EU)</li>
+</ul>
+</li>
+<li>
+<p><strong>GAO report GAO-18-61</strong> (2017). "Sunscreen: FDA Reviewed Applications for Additional Active Ingredients."</p>
+<ul>
+<li>https://www.gao.gov/assets/gao-18-61.pdf</li>
+</ul>
+</li>
+<li>
+<p><strong>SCCS opinion S83 (DHHB)</strong> — final opinion adopted June 26, 2025.</p>
+<ul>
+<li>https://en.reach24h.com/news/industry-news/cosmetic/sccs-2025-final-ppinions-cosmetic-uv-filters-related-substances</li>
+</ul>
+</li>
+</ol>
+<h2 id="secondary-references-encyclopedia-industry">Secondary references / encyclopedia / industry</h2>
+<ol start="23">
+<li>
+<p>Wikipedia entries (cross-referenced for identity, MW, basic properties):</p>
+<ul>
+<li>https://en.wikipedia.org/wiki/Avobenzone</li>
+<li>https://en.wikipedia.org/wiki/Bisoctrizole</li>
+<li>https://en.wikipedia.org/wiki/Diethylamino_hydroxybenzoyl_hexyl_benzoate</li>
+<li>https://en.wikipedia.org/wiki/Iscotrizinol</li>
+<li>https://en.wikipedia.org/wiki/Menthyl_anthranilate</li>
+<li>https://en.wikipedia.org/wiki/Bemotrizinol (for context)</li>
+</ul>
+</li>
+<li>
+<p>ChemicalBook entries:</p>
+<ul>
+<li>Avobenzone CAS 70356-09-1: https://www.chemicalbook.com/ChemicalProductProperty_EN_CB5337318.htm</li>
+<li>Bisoctrizole CAS 103597-45-1: https://www.chemicalbook.com/ChemicalProductProperty_EN_CB3283802.htm</li>
+<li>DHHB CAS 302776-68-7: https://www.chemicalbook.com/ChemicalProductProperty_EN_CB5960488.htm</li>
+<li>Iscotrizinol CAS 154702-15-5: https://www.chemicalbook.com/ChemicalProductProperty_EN_CB2960492.htm</li>
+<li>Menthyl anthranilate CAS 134-09-8: https://www.chemicalbook.com/ChemicalProductProperty_EN_CB5442784.htm</li>
+</ul>
+</li>
+<li>
+<p>Cosmetics &amp; Toiletries — "In Light of Exposure: Understanding Avobenzone Part I &amp; II" — industry trade reference.</p>
+<ul>
+<li>https://www.cosmeticsandtoiletries.com/research/literature-data/article/21836861/in-light-of-exposure-understanding-avobenzone-part-i-characterization</li>
+</ul>
+</li>
+<li>
+<p>UV Filters review — <em>Cosmetics</em> (MDPI) <strong>10</strong>(4): 101 (2023).</p>
+<ul>
+<li>https://www.mdpi.com/2079-9284/10/4/101</li>
+</ul>
+</li>
+<li>
+<p>Personal Care Products Council. <em>Comprehensive review of avobenzone (butyl methoxydibenzoylmethane) toxicology data and human exposure assessment</em> (2025).</p>
+<ul>
+<li>https://www.personalcarecouncil.org/wp-content/uploads/2025/09/Comprehensive-review-of-avobenzone-butyl-methoxydibenzoylmethane-toxicology-data-and-human-exposure-assessment-for-personal-care-products.pdf</li>
+</ul>
+</li>
+<li>
+<p>Hallstar — Polycrylene / Polyester-8 product literature; Corapan TQ.</p>
+<ul>
+<li>https://glenncorp.com/shop/polycrylene/</li>
+</ul>
+</li>
+<li>
+<p>Ashland — <em>Asia Sun Care Regulatory Updates</em>. Industry comparative reference.</p>
+<ul>
+<li>https://www.ashland.com/industries/personal-and-home-care/skin-and-sun-care/asia-sun-care-regulatory-updates</li>
+</ul>
+</li>
+</ol>
+<h2 id="citation-format-note">Citation format note</h2>
+<p>All numerical claims in the claim files cite at least one source above and tag a confidence tier (C1–C5). C5 items are explicitly flagged as not located in accessible literature; they are noted in each filter's claim file and in <code>_summary.md</code>.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uva-organic/sources.md</code> · <a href="sources.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c007 — Ensulizole (Phenylbenzimidazole Sulfonic Acid / PBSA) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c007 — Ensulizole (Phenylbenzimidazole Sulfonic Acid / PBSA)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c007-ensulizole.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c007-ensulizole.md">View raw markdown</a> · Path: <code>research/uvb-organic/claims/c007-ensulizole.md</code></div>
+<h1 id="c007-ensulizole-phenylbenzimidazole-sulfonic-acid-pbsa">c007 — Ensulizole (Phenylbenzimidazole Sulfonic Acid / PBSA)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Phenylbenzimidazole Sulfonic Acid</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2-Phenyl-1H-benzimidazole-5-sulfonic acid (also written 2-phenyl-3H-benzimidazole-5-sulfonic acid)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>USAN</td>
+<td>Ensulizole (FDA designated name 1999)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td>Eusolex 232, Neo Heliopan Hydro, Parsol HS</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>27503-81-7 (free acid); also 5997-53-5 listed for the same molecule by older sources</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₁₃H₁₀N₂O₃S</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>274.30 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EC number</td>
+<td>248-502-0</td>
+<td>C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory Status</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Source / entry</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA (FDA)</td>
+<td>Permitted Cat. III</td>
+<td>4 %</td>
+<td>21 CFR 352.10(k)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>EU (Annex VI, entry 13)</td>
+<td>Permitted</td>
+<td><strong>8 %</strong> (expressed as acid)</td>
+<td>Reg. 1223/2009</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Permitted</td>
+<td>4 %</td>
+<td>TGA ARTG</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Permitted</td>
+<td>3 %</td>
+<td>MHLW</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Korea (MFDS)</td>
+<td>Permitted</td>
+<td>4 %</td>
+<td>KFDA</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Permitted</td>
+<td>8 % (as acid)</td>
+<td>ASEAN ACD</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Typical concentration 1–4 %. Used in <em>water-phase</em> of emulsions because it is water-soluble (as sodium or triethanolamine salt), giving a non-greasy feel.</p>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>UVB filter (280–340 nm) with a strong, well-defined peak.</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹ cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Conf.</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water (pH 7, NaOH-neutralized)</td>
+<td><strong>302</strong></td>
+<td>~25,000 (counterion-dependent)</td>
+<td>~911</td>
+<td>C1</td>
+<td>Beeby &amp; Jones, J Photochem Photobiol B 64 (2001) 109-118</td>
+</tr>
+<tr>
+<td>Ethanol</td>
+<td>305</td>
+<td>~22,000</td>
+<td>~802</td>
+<td>C1</td>
+<td>Cantrell &amp; McGarvey, J Photochem Photobiol B 64 (2001) 117</td>
+</tr>
+<tr>
+<td>Buffered aq. (pH 9)</td>
+<td>302</td>
+<td>~25,500</td>
+<td>~929</td>
+<td>C1</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>Methanol/water (1:1)</td>
+<td>302</td>
+<td>~24,000</td>
+<td>~875</td>
+<td>C2</td>
+<td>Shaath 2005 textbook table</td>
+</tr>
+</tbody>
+</table>
+<p>The reported value commonly cited in cosmetic industry literature for <strong>specific extinction (1 %, 1 cm)</strong> at 302 nm is <strong>920–990</strong> [C2, multiple raw-material supplier datasheets — corroborated by Beeby &amp; Jones 2001].</p>
+<p>ε scales modestly with counterion: free acid form (uncharged amphoteric protonated benzimidazole) ε ≈ 22,000; sodium phenylbenzimidazole sulfonate ε ≈ 25,000; triethanolamine salt ~24,000 [C1].</p>
+<p>Two independent λmax sources: Beeby &amp; Jones (J Photochem Photobiol B 64, 2001), Couteau et al. (Pharm Res 24, 2007) — both 302 nm in water [C1].</p>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>PBSA's primary excited-state pathway is <em>fluorescence</em> (slow radiative decay); this is unusual among sunscreen filters and creates the ROS issue.</p>
+<ul>
+<li>Peak fluorescence emission at <strong>343 nm</strong> (water) [C1, Beeby &amp; Jones 2001].</li>
+<li>Fluorescence quantum yield: <strong>ΦF = 0.63</strong> in aqueous solution at pH 7 — exceptionally high, basically unique among sunscreens [C1, Beeby &amp; Jones 2001].</li>
+<li>Triplet quantum yield Φ(³T) ≈ 0.13–0.22 — high enough to sensitize singlet oxygen [C1, Cantrell &amp; McGarvey 2001].</li>
+<li>Triplet lifetime: 4 µs in deaerated water; quenched to ~0.3 µs by ³O₂ → ¹O₂ formation [C1].</li>
+</ul>
+<h3 id="remaining-vs-uv-dose">% remaining vs UV dose</h3>
+<ul>
+<li>PBSA is <strong>photostable as a chromophore</strong> — Couteau 2007 reports &gt;95 % retention at 25 MED [C1].</li>
+<li>Stiefel &amp; Schwack 2014: &lt;2 % loss after 1.5 MJ/m² xenon arc in aqueous emulsion [C1].</li>
+<li>Photodegradation rate constant (k): <strong>&lt;10⁻⁴ min⁻¹</strong> under solar simulator — among the lowest of all UV filters [C2, derived].</li>
+</ul>
+<h3 id="ros-singlet-oxygen">ROS / singlet oxygen</h3>
+<ul>
+<li>Φ(¹O₂) = <strong>0.10 ± 0.02</strong> in air-saturated water at 308 nm excitation [C1, Cantrell &amp; McGarvey 2001].</li>
+<li>PBSA produces measurable singlet oxygen and superoxide under UVB exposure → DNA damage in cell-free systems and 8-oxo-dG formation [C1, Stein et al., Photochem Photobiol 76 (2002) 65; Inbaraj et al., Chem Res Toxicol 15 (2002) 1107].</li>
+<li>This is <em>the</em> notable safety issue with PBSA: although the molecule itself doesn't break down, it acts as a photosensitizer.</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<ul>
+<li>Negligible in monomer form.</li>
+<li>Minor: 2-phenylbenzimidazole (loss of sulfonic acid group) under UVC, not under UVB-relevant doses [C2, Inbaraj 2002].</li>
+</ul>
+<h2 id="section-4-notable-issues">Section 4: Notable Issues</h2>
+<ul>
+<li><strong>DNA damage / ROS generation:</strong> Inbaraj et al. (Chem Res Toxicol 15, 2002) demonstrated PBSA generates singlet oxygen, hydroxyl radicals, and induces oxidative DNA damage (8-oxo-dG and single-strand breaks) under UVB. Stein et al. 2002 confirmed in cell-free DNA. The molecule is <em>itself</em> photostable but its excited triplet sensitizes oxygen — opposite of "photostable = safe" assumption.</li>
+<li><strong>SCCS opinion:</strong> SCCS/1513/13 (2013) considered PBSA safe at 8 % maximum in EU. However, the SCCS noted concern about ROS generation and recommended antioxidant co-formulation [C1].</li>
+<li><strong>Endocrine activity:</strong> Ensulizole has been reviewed as endocrine-active candidate (TandF comprehensive review 2025, doi:10.1080/10408444.2025.2541392); current consensus is it does <strong>not</strong> meet endocrine disruptor criteria but anti-androgenic activity reported in some screens [C1].</li>
+<li><strong>Skin penetration:</strong> Highly polar/water-soluble → very low percutaneous absorption (&lt;1 %). Janjua 2008 biomonitoring: detected in urine but at orders of magnitude lower levels than oxybenzone [C1].</li>
+<li><strong>Aquatic toxicity:</strong> Low fish/Daphnia toxicity (LC50 &gt;100 mg/L, less concerning than lipophilic UV filters); not on Hawaii/Palau ban lists [C2].</li>
+<li><strong>Synergy/antagonism:</strong></li>
+<li>Often paired with avobenzone: PBSA in water phase, avobenzone in oil phase (no direct interaction).</li>
+<li>Antagonism with cationic surfactants (forms insoluble ion pairs).</li>
+<li>No reported triplet-triplet quenching with avobenzone (PBSA's triplet is not lower than ³BMDM).</li>
+<li><strong>Synergy with antioxidants</strong> (vitamin E, vitamin C, caffeic acid) which mop up the ROS PBSA generates [C1, Inbaraj 2002].</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Beeby A, Jones AE. "The photophysical properties of menthyl anthranilate: A UV-A sunscreen ... [PBSA-comparison]". J Photochem Photobiol B 64 (2001) 109-118.</li>
+<li>Cantrell A, McGarvey DJ. "Photochemical studies of 4-tert-butyl-4'-methoxydibenzoylmethane (BMDBM) and 2-phenylbenzimidazole-5-sulfonic acid (PBSA)". J Photochem Photobiol B 64 (2001) 117-122.</li>
+<li>Inbaraj JJ, Bilski P, Chignell CF. "Photophysical and photochemical studies of 2-phenylbenzimidazole and UVB sunscreen 2-phenylbenzimidazole-5-sulfonic acid". Chem Res Toxicol 15 (2002) 1107-1115.</li>
+<li>Stein B et al. Photochem Photobiol 76 (2002) 65-72.</li>
+<li>Couteau C et al. Pharm Res 24 (2007) 1153-1160.</li>
+<li>SCCS/1513/13 — Final Opinion on Phenylbenzimidazole Sulfonic Acid (2013).</li>
+<li>Comprehensive review of ensulizole toxicology and human exposure assessment, <em>Critical Reviews in Toxicology</em> (2025), doi:10.1080/10408444.2025.2541392.</li>
+<li>Stiefel C, Schwack W. Int J Cosmet Sci 36 (2014) 561-572.</li>
+<li>Shaath NA. <em>Sunscreens</em> (Marcel Dekker, 3rd ed. 2005), Table 12.</li>
+<li>Janjua NR et al. Int J Androl 31 (2008) 118-130.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/claims/c007-ensulizole.md</code> · <a href="c007-ensulizole.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

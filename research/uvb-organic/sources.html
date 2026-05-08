@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sources / Bibliography — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Sources / Bibliography</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="sources.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="sources.md">View raw markdown</a> · Path: <code>research/uvb-organic/sources.md</code></div>
+<h1 id="sources-bibliography">Sources / Bibliography</h1>
+<p>This file lists every primary, secondary, and regulatory source cited across the UVB organic sunscreen filter claim files (c001–c010). Compiled 2026-05-07.</p>
+<h2 id="a-photochemistry-spectroscopy-primary-literature">A. Photochemistry / spectroscopy primary literature</h2>
+<ol>
+<li><strong>Hanson KM, Narayanan S, Nichols VM, Bardeen CJ.</strong> "Photochemical degradation of the UV filter octyl methoxycinnamate in solution and in aggregates". <em>Photochem. Photobiol. Sci.</em> 14:1607–1616 (2015). doi:10.1039/C5PP00074B. — Primary λmax/ε/quantum-yield data for OMC.</li>
+<li><strong>Tarras-Wahlberg N, Stenhagen G, Larkö O, Rosén A, Wennberg AM, Wennerström O.</strong> "Changes in ultraviolet absorption of sunscreens after ultraviolet irradiation". <em>J. Invest. Dermatol.</em> 113 (1999) 547–553. doi:10.1046/j.1523-1747.1999.00721.x. — Foundational photodegradation paper.</li>
+<li><strong>Sayre RM, Dowdy JC, Gerwig AJ, Shields WJ, Lloyd RV.</strong> "Unexpected photolysis of the sunscreen octinoxate in the presence of the sunscreen avobenzone". <em>Photochem. Photobiol.</em> 81 (2005) 452–456. doi:10.1562/2004-02-12-RA-083.1.</li>
+<li><strong>Pattanaargson S, Munhapol T, Hirunsupachot P, Luangthongaram P.</strong> "Photoisomerization of octyl methoxycinnamate". <em>J. Photochem. Photobiol. A</em> 161 (2004) 269–274.</li>
+<li><strong>Pattanaargson S, Limphong-Pand P.</strong> "UV-absorbing efficacy of trans/cis-octyl methoxycinnamate". <em>Int. J. Cosmet. Sci.</em> 23 (2001) 153–160.</li>
+<li><strong>Krokidi KM, Turner MAP, Pearcy PAJ, Stavros VG.</strong> "Insights into the photoprotection mechanism of the UV filter homosalate". <em>Phys. Chem. Chem. Phys.</em> 22 (2020) 18044. doi:10.1039/D0CP02610G. — Also covers ESIPT in salicylates.</li>
+<li><strong>Wong NHM, Marsh NL, Anstöter CS, Stavros VG, et al.</strong> "Photostability of the deprotonated forms of the UV filters homosalate and octyl salicylate". <em>Phys. Chem. Chem. Phys.</em> 24 (2022) 18101. doi:10.1039/D2CP00718E.</li>
+<li><strong>Wong NHM et al.</strong> "Ultrafast Transient Absorption Spectroscopy of the Sunscreen Constituent Ethylhexyl Triazone". <em>J. Phys. Chem. Lett.</em> 8 (2017) 2054–2058. doi:10.1021/acs.jpclett.7b00633.</li>
+<li><strong>Damiani E, Astolfi P, Carloni P, Stipa P, Greci L.</strong> "Changes in ultraviolet absorbance and hence in protective efficacy against lipid peroxidation of organic sunscreens after UVA irradiation". <em>J. Photochem. Photobiol. B</em> 82 (2006) 204–210.</li>
+<li><strong>Mturi GJ, Martincigh BS.</strong> "Photostability of the sunscreening agent 4-tert-butyl-4'-methoxydibenzoylmethane (avobenzone) in solvents of different polarity and proticity". <em>J. Photochem. Photobiol. A</em> 200 (2008) 410–420. — Also reports OCR data.</li>
+<li><strong>Buglak AA, Koroleva DA, Shibalovich AS, Mareev EI, Shik MA, Kulinich AV, Telegin GG, Kononov AI.</strong> "Theoretical study of the UV absorption of 4-methylbenzylidene camphor: from the UVB to the UVA region". <em>Photochem. Photobiol. Sci.</em> 14 (2015) 1859. doi:10.1039/C4PP00392F.</li>
+<li><strong>Cantrell A, McGarvey DJ, Truscott TG.</strong> "Photochemical and photophysical properties of sunscreens". <em>Photochem. Photobiol. Sci.</em> 1 (2001) 95–99. — Padimate O triplet/¹O₂.</li>
+<li><strong>Cantrell A, McGarvey DJ.</strong> "Photochemical studies of 4-tert-butyl-4'-methoxydibenzoylmethane (BMDBM) and 2-phenylbenzimidazole-5-sulfonic acid (PBSA)". <em>J. Photochem. Photobiol. B</em> 64 (2001) 117–122.</li>
+<li><strong>Beeby A, Jones AE.</strong> "The photophysical properties of menthyl anthranilate". <em>J. Photochem. Photobiol. B</em> 64 (2001) 109–118. — Comparative PBSA data.</li>
+<li><strong>Inbaraj JJ, Bilski P, Chignell CF.</strong> "Photophysical and photochemical studies of 2-phenylbenzimidazole and UVB sunscreen 2-phenylbenzimidazole-5-sulfonic acid". <em>Chem. Res. Toxicol.</em> 15 (2002) 1107–1115.</li>
+<li><strong>Stein B et al.</strong> "Phototoxicity of phenylbenzimidazole sulfonic acid in vitro". <em>Photochem. Photobiol.</em> 76 (2002) 65–72.</li>
+<li><strong>Hanson KM, Gratton E, Bardeen CJ.</strong> "Sunscreen enhancement of UV-induced reactive oxygen species in the skin". <em>Free Radic. Biol. Med.</em> 41 (2006) 1205–1212.</li>
+<li><strong>Lhiaubet-Vallet V, Marin M, Jimenez O, Gomis O, Pérez-Prieto J, Miranda MA.</strong> "Filter–filter interactions. Photostabilization, triplet quenching and reactivity with singlet oxygen". <em>Photochem. Photobiol. Sci.</em> 9 (2010) 552–558.</li>
+<li><strong>Mocci F, Sàrrias EA, Castiñeira-Reis M, et al.</strong> "In Silico Perspective on Avobenzone, Octisalate, Octocrylene, Homosalate, and Bemotrizinol as Organic UV Filters Using DFT, TD-DFT, and Molecular Dynamics". <em>ACS Omega</em> (2025) doi:10.1021/acsomega.5c09234.</li>
+<li><strong>Berset G, Gonzenbach H, Christ R, Martin R, Deflandre A, Mascotto RE, Jolley JD, Lowell W, Pelzer R, Stiehm T.</strong> "Proposed protocol for the testing of photostability of cosmetic UV filters". <em>Int. J. Cosmet. Sci.</em> 18 (1996) 167–177.</li>
+</ol>
+<h2 id="b-cosmetic-formulation-reviews">B. Cosmetic / formulation reviews</h2>
+<ol start="21">
+<li><strong>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.</strong> "Study of the photostability of 18 sunscreens in creams by measuring the SPF in vitro as a function of UV-doses". <em>Pharm. Res.</em> 24 (2007) 1153–1160.</li>
+<li><strong>Kockler J, Oelgemöller M, Robertson S, Glass BD.</strong> "Photostability of sunscreens". <em>J. Photochem. Photobiol. C</em> 13 (2012) 91–110.</li>
+<li><strong>Stiefel C, Schwack W.</strong> "Photoprotection in changing times — UV filter efficacy and safety, sensitization processes and regulatory aspects". <em>Int. J. Cosmet. Sci.</em> 36 (2014) 561–572.</li>
+<li><strong>Hojerová J, Medovcíková A, Mikula M.</strong> "Photoprotective efficacy and photostability of fifteen sunscreen products having the same label SPF subjected to natural sunlight". <em>Int. J. Pharm.</em> 408 (2011) 27–38.</li>
+<li><strong>Serpone N, Dondi D, Albini A.</strong> "Inorganic and organic UV filters: Their role and efficacy in sunscreens and suncare products". <em>Inorg. Chim. Acta</em> 360 (2007) 794–802.</li>
+<li><strong>Gonzalez H, Tarras-Wahlberg N, Strömdahl B, Juzeniene A, Moan J, Larkö O, Rosén A, Wennberg AM.</strong> "Photostability of commercial sunscreens upon sun exposure and irradiation by ultraviolet lamps". <em>BMC Dermatology</em> 7 (2007) 1. PMC1831786.</li>
+<li><strong>Gaspar LR, Maia Campos PMBG.</strong> "Evaluation of the photostability of different UV filter combinations in a sunscreen". <em>Int. J. Pharm.</em> 307 (2006) 123–128.</li>
+<li><strong>Bonda C.</strong> "The Photostability of Organic Sunscreen Actives: A Review", in <em>Sunscreens: Regulations and Commercial Development</em> (3rd ed., Shaath NA ed.), Marcel Dekker 2005, Ch. 14.</li>
+<li><strong>Shaath NA.</strong> "The Chemistry of Sunscreens" in <em>Sunscreens: Regulations and Commercial Development</em> (3rd ed.), Marcel Dekker 2005, Ch. 12. — Main industry-textbook source for λmax / ε tables.</li>
+<li><strong>Allen JM, Engenolf S, Allen SK.</strong> "Rapid measurement of singlet oxygen by sunscreen agents". <em>J. Photochem. Photobiol. A</em> 97 (1996) 37–43.</li>
+<li><strong>Beck K et al.</strong> UV filter spectroscopy review. <em>Int. J. Cosmet. Sci.</em> 28 (2006) 339–345.</li>
+<li><strong>Reszko AE et al.</strong> "Photostability of organic UV-filters in commercial sunscreens". <em>J. Cosmet. Dermatol.</em> 8 (2009) 109–113.</li>
+</ol>
+<h2 id="c-toxicology-endocrinology-biomonitoring">C. Toxicology / endocrinology / biomonitoring</h2>
+<ol start="33">
+<li><strong>Schlumpf M, Cotton B, Conscience M, Haller V, Steinmann B, Lichtensteiger W.</strong> "In vitro and in vivo estrogenicity of UV screens". <em>Environ. Health Perspect.</em> 109 (2001) 239–244.</li>
+<li><strong>Schlumpf M et al.</strong> "Endocrine active UV filters: developmental toxicity and exposure through breast milk". <em>Chemosphere</em> 81 (2010) 1171–1183.</li>
+<li><strong>Tinwell H, Lefevre PA, Moffat GJ, et al.</strong> "Confirmation of uterotrophic activity of 3-(4-methylbenzylidene)camphor in the immature rat". <em>Toxicol. Sci.</em> 70 (2002) 224–232.</li>
+<li><strong>Schmutzler C et al.</strong> "The UV filter benzophenone-2 interferes with the thyroid hormone axis ..." (also covers 4-MBC). <em>Endocrinology</em> 148 (2007) 2835–2844.</li>
+<li><strong>Janjua NR, Mogensen B, Andersson AM, et al.</strong> "Systemic absorption of the sunscreens benzophenone-3, octyl methoxycinnamate, and 3-(4-methyl-benzylidene) camphor after whole-body topical application and reproductive hormone levels in humans". <em>J. Invest. Dermatol.</em> 128 (2008) 2480–2487.</li>
+<li><strong>Janjua NR et al.</strong> "Urinary excretion of phthalates and paraben after repeated whole-body topical application of cosmetics". <em>Int. J. Androl.</em> 31 (2008) 118–130.</li>
+<li><strong>Matta MK, Florian J, Zusterzeel R, Pilli NR, et al.</strong> "Effect of sunscreen application on plasma concentration of sunscreen active ingredients: a randomized clinical trial". <em>JAMA</em> 323 (2020) 256–267. doi:10.1001/jama.2019.20747. — FDA Maximal Usage Trial.</li>
+<li><strong>Knowland J, McKenzie EA, McHugh PJ, Cridland NA.</strong> "Sunlight-induced mutagenicity of a common sunscreen ingredient (Padimate-O)". <em>FEBS Lett.</em> 324 (1993) 309–313.</li>
+<li><strong>Gulston M, Knowland J.</strong> "Illumination of human skin by sunlight in the presence of a sunscreen ingredient produces extra DNA damage". <em>Mutat. Res.</em> 444 (1999) 49–60.</li>
+<li><strong>Downs CA, DiNardo JC, Stien D, Rodrigues AMS, Lebaron P.</strong> "Benzophenone Accumulates over Time from the Degradation of Octocrylene in Commercial Sunscreen Products". <em>Chem. Res. Toxicol.</em> 34 (2021) 1046–1052. doi:10.1021/acs.chemrestox.0c00461.</li>
+<li><strong>Stien D, Clergeaud F, Rodrigues AMS, Lebaron K, Pillot R, Romans P, Fagervold S, Lebaron P.</strong> "Metabolomics reveal that octocrylene accumulates in <em>Pocillopora damicornis</em> tissues as fatty acid conjugates and triggers mitochondrial dysfunction". <em>Anal. Chem.</em> 91 (2019) 990–995.</li>
+<li>"Comprehensive review of ensulizole toxicology data and human exposure assessment for personal care products". <em>Crit. Rev. Toxicol.</em> (2025) doi:10.1080/10408444.2025.2541392.</li>
+<li><strong>Lhiaubet-Vallet V et al.</strong> PABA photochemistry. <em>Photochem. Photobiol. Sci.</em> 8 (2009) 1316.</li>
+</ol>
+<h2 id="d-regulatory-and-government-documents">D. Regulatory and government documents</h2>
+<ol start="46">
+<li><strong>U.S. FDA, 21 CFR 352</strong> — Sunscreen Drug Products for Over-the-Counter Human Use.</li>
+<li><strong>U.S. FDA Proposed Administrative Order OTC000008</strong> (24 Sep 2021) — Amending OTC Sunscreen Monograph (M020).</li>
+<li><strong>European Parliament &amp; Council, Regulation (EC) 1223/2009</strong> on cosmetic products — Annex VI, List of UV Filters Allowed in Cosmetic Products. Lex 32009R1223.</li>
+<li><strong>Commission Regulation (EU) 2022/1176</strong> — amending Annex VI re octocrylene &amp; homosalate (July 2022).</li>
+<li><strong>Commission Regulation (EU) 2024/996</strong> (3 April 2024) — banning 4-Methylbenzylidene Camphor.</li>
+<li><strong>SCCS/0024/05</strong> — Opinion on Polysilicone-15, 10 May 2005.</li>
+<li><strong>SCCS/1513/13</strong> — Opinion on Phenylbenzimidazole Sulfonic Acid (PBSA), 2013.</li>
+<li><strong>SCCS/1622/20</strong> — Opinion on Homosalate, final 2020.</li>
+<li><strong>SCCS/1627/21</strong> — Opinion on Octocrylene, March 2021.</li>
+<li><strong>SCCS/1640/21</strong> — Opinion on 4-Methylbenzylidene Camphor (4-MBC), 2022.</li>
+<li><strong>SCCS/1671/24</strong> — Opinion on Ethylhexyl Methoxycinnamate (EHMC), 30 June 2025.</li>
+<li><strong>SCCNFP/0145/99</strong> (1999) — Initial Opinion on Octyl Triazone.</li>
+<li><strong>TGA (Australia)</strong> — Therapeutic Goods Order No. 92 (Standard for sunscreens) and ARTG entries.</li>
+<li><strong>Health Canada Cosmetic Ingredient Hotlist</strong> (continuously updated).</li>
+<li><strong>MHLW (Japan)</strong> — Standards for Cosmetics (告示331), most recent revision.</li>
+<li><strong>NMPA (China)</strong> — Safety and Technical Standards for Cosmetics 2015 (and 2025/2026 amendments).</li>
+<li><strong>UK SAG-CS Opinion 18 — 4-MBC as a UV Filter in Cosmetic Products</strong> (2025).</li>
+<li><strong>ECHA REACH registration dossiers</strong> for individual filters (2024 updates).</li>
+<li><strong>Hawaii Act 104 (2018), Palau Responsible Tourism Education Act 2018, Thailand 2021 ban order</strong> — reef-protection bans.</li>
+</ol>
+<h2 id="e-online-compendia-databases">E. Online compendia / databases</h2>
+<ol start="65">
+<li><strong>PubChem</strong> entries — CID 5355130 (Octinoxate), CID 7459 (Octisalate), CID 8362 (Homosalate), CID 22571 (Octocrylene), CID 5373773 (Cinoxate), CID 978 (PABA), CID 13571 (Padimate O), CID 33919 (Ensulizole), CID 32021 (4-MBC), CID 11505948 (Polysilicone-15).</li>
+<li><strong>NIST WebBook</strong> entry CAS 150-13-0 (PABA) — UV-Vis reference spectra.</li>
+<li><strong>Wikipedia</strong> (cross-checked against primary sources): Octyl_methoxycinnamate, 2-Ethylhexyl_salicylate, Homosalate, Octocrylene, Cinoxate, Padimate_O, 4-Aminobenzoic_acid, Ensulizole, Polysilicone-15, Ethylhexyl_triazone, Enzacamene.</li>
+<li><strong>ChemicalBook</strong> entries for individual CAS numbers — physical properties cross-check.</li>
+<li><strong>Cosmetics Europe / COSlaw / CosmeticOBS</strong> — consolidated regulatory tracking 2025.</li>
+</ol>
+<h2 id="f-manufacturer-technical-documentation">F. Manufacturer technical documentation</h2>
+<ol start="70">
+<li><strong>DSM/dsm-firmenich Parsol® SLX (Polysilicone-15)</strong> technical data sheet (multiple revisions, 1998–2024).</li>
+<li><strong>DSM Parsol® 340 (Octocrylene)</strong> TDS.</li>
+<li><strong>DSM Parsol® EHT (Ethylhexyl Triazone)</strong> TDS.</li>
+<li><strong>BASF Uvinul® T 150 (Octyl Triazone)</strong> technical product information (multiple revisions).</li>
+<li><strong>Merck Eusolex® 6300 (4-MBC)</strong> product information.</li>
+</ol>
+<h2 id="g-aqueous-photochemistry-environmental-fate">G. Aqueous photochemistry / environmental fate</h2>
+<ol start="75">
+<li><strong>Sakkas VA, Lambropoulou DA, Albanis TA.</strong> "Aqueous chlorination of organic UV filters". <em>J. Chromatogr. A</em> 1016 (2003) 211.</li>
+<li><strong>Negreira N, López de Alda M, Barceló D.</strong> "Cosmetic UV filters in environmental waters". <em>Chemosphere</em> 90 (2013) 122–130.</li>
+</ol>
+<hr>
+<p>End of bibliography. Total entries: 76.</p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uvb-organic/sources.md</code> · <a href="sources.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

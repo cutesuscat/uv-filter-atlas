@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c001 — Oxybenzone (Benzophenone-3, BP-3) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c001 — Oxybenzone (Benzophenone-3, BP-3)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c001-oxybenzone-bp3.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c001-oxybenzone-bp3.md">View raw markdown</a> · Path: <code>research/benzophenones/claims/c001-oxybenzone-bp3.md</code></div>
+<h1 id="claim-file-c001-oxybenzone-benzophenone-3-bp-3">Claim File c001 — Oxybenzone (Benzophenone-3, BP-3)</h1>
+<p>CAS 131-57-7</p>
+<hr>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<ul>
+<li><strong>INCI name:</strong> Benzophenone-3 [C1]</li>
+<li><strong>USAN / FDA name:</strong> Oxybenzone (used in U.S. OTC monograph) [C1]</li>
+<li><strong>IUPAC:</strong> (2-Hydroxy-4-methoxyphenyl)(phenyl)methanone [C1]</li>
+<li><strong>Synonyms / trade names:</strong> BP-3, MBPH, Eusolex 4360, Escalol 567, Uvinul M40, Uvasorb MET, 2-hydroxy-4-methoxybenzophenone (HMB) [C1]</li>
+<li><strong>CAS:</strong> 131-57-7 [C1]</li>
+<li><strong>EC No.:</strong> 205-031-5 [C1]</li>
+<li><strong>Molecular formula:</strong> C14H12O3 [C1]</li>
+<li><strong>Molecular weight:</strong> 228.247 g/mol [C1]</li>
+<li><strong>Physical:</strong> pale-yellow crystalline powder; mp 62–65 °C; bp ~226 °C / 14 mmHg [C1]</li>
+<li><strong>Solubility:</strong> lipophilic; very poorly soluble in water (~0.0037 g/L at 25 °C); soluble in ethanol, acetone, oils, esters; logKow ≈ 3.79 [C1]</li>
+</ul>
+<h3 id="regulatory-status-current-as-of-may-2026">Regulatory status (current as of May 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status / max concentration</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU</strong> (Annex VI #4, Cosmetics Reg 1223/2009)</td>
+<td>Originally 10%; lowered to <strong>6%</strong> in 2017 (Reg 2017/238) when used as UV filter; further lowered to <strong>2.2%</strong> in body products (creams, propellant sprays, pump sprays) by Regulation <strong>2022/1176</strong> (in force 28 July 2022; full transition by 28 July 2023). When used at ≤0.5% as formulation protector, UV-filter level capped at 1.7%. Also restricted to <strong>6%</strong> in face creams, hand creams and lipsticks. Mandatory label warning "Contains Benzophenone-3" required when used solely as formulation protector at &gt;0.5%.</td>
+<td>[C1] SCCS/1625/20 (2021); EU Reg 2022/1176</td>
+</tr>
+<tr>
+<td><strong>USA (FDA OTC monograph M020)</strong></td>
+<td>Listed at up to <strong>6%</strong>; FDA 2019/2021 proposed orders class oxybenzone as <strong>"insufficient data to support GRASE"</strong>, requested additional safety data (skin absorption, endocrine, carcinogenicity); status remains "stayed indefinitely" under 21 CFR 352.</td>
+<td>[C1] FDA Proposed Order OTC000008 (2021)</td>
+</tr>
+<tr>
+<td><strong>Hawaii</strong> (Act 104, SB2571 of 2018)</td>
+<td>Sale/distribution of OTC sunscreens containing oxybenzone (or octinoxate) <strong>banned</strong> without prescription, effective 1 January 2021.</td>
+<td>[C1] Hawaii SB2571 (2018)</td>
+</tr>
+<tr>
+<td><strong>Florida — Key West</strong></td>
+<td>Local ordinance (passed Feb 2019, effective 1 Jan 2021) banning sale of sunscreens with oxybenzone or octinoxate; <strong>preempted/repealed</strong> by Florida HB 113 in 2020 prohibiting local cosmetics regulation, currently no statewide ban.</td>
+<td>[C2] Local press; FL HB 113 (2020)</td>
+</tr>
+<tr>
+<td><strong>U.S. Virgin Islands</strong></td>
+<td>Ban on sunscreens containing oxybenzone, octinoxate, octocrylene effective Mar 2020.</td>
+<td>[C1] V.I. Act 8185</td>
+</tr>
+<tr>
+<td><strong>Palau</strong></td>
+<td>Ban on "reef-toxic" sunscreens including BP-3 effective 1 Jan 2020.</td>
+<td>[C1] Palau Responsible Tourism Education Act 2018</td>
+</tr>
+<tr>
+<td><strong>Aruba, Bonaire, Mexico (some marine parks), Thailand (national parks)</strong></td>
+<td>Various restrictions.</td>
+<td>[C2]</td>
+</tr>
+<tr>
+<td><strong>Australia (TGA AAN)</strong></td>
+<td>Permitted up to 10% in sunscreens (no recent restriction).</td>
+<td>[C1]</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Permitted as quasi-drug UV filter; common limit 5%.</td>
+<td>[C2]</td>
+</tr>
+<tr>
+<td><strong>South Korea (MFDS)</strong></td>
+<td>Permitted up to 5%.</td>
+<td>[C2]</td>
+</tr>
+<tr>
+<td><strong>Canada</strong></td>
+<td>Permitted up to 6% (NHPID).</td>
+<td>[C2]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Typical formulation use levels:</strong> historically 2–6% in sunscreens; in EU products since 2023 typically ≤2.2% in body products [C1]</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<ul>
+<li><strong>λmax #1 (UVB):</strong> 287–290 nm (commonly reported as 288 nm) [C1]</li>
+<li><strong>λmax #2 (UVA-II):</strong> 322–326 nm (commonly reported as 325 nm) [C1]</li>
+<li><strong>Spectral coverage:</strong> ~270–350 nm; full-width at half-max envelope crosses UVB and short UVA-II [C1]</li>
+<li><strong>Molar absorption coefficient (ε):</strong></li>
+<li>At ~287–290 nm in ethanol: <strong>ε ≈ 1.5–2.1 × 10⁴ M⁻¹·cm⁻¹</strong> (commonly cited 20,381 M⁻¹·cm⁻¹ at 290 nm) [C2]</li>
+<li>At ~325 nm in ethanol: <strong>ε ≈ 1.2–1.5 × 10⁴ M⁻¹·cm⁻¹</strong> [C2]</li>
+<li><strong>E(1%, 1 cm)</strong> (specific absorbance, 10 g/L): ≈ 880–920 at 287 nm; ≈ 540–660 at 325 nm (computed from MW 228.25 and ε above) [C3]</li>
+<li><strong>Critical wavelength:</strong> ~352 nm (boundary of broad-spectrum claim is ≥370 nm — BP-3 alone does not meet this) [C2]</li>
+<li><strong>Solvent dependence (keto-enol / ESIPT effects):</strong> BP-3 exists predominantly as the <strong>enol tautomer</strong> (intramolecular H-bond between 2-OH and adjacent C=O); the ortho-OH/C=O motif drives ultrafast Excited-State Intramolecular Proton Transfer (ESIPT, k ≈ 2 × 10¹² s⁻¹) which is the principal energy-dissipation channel. In nonpolar solvents (hexane, isooctane) the enol is heavily favored and the long-wavelength band sharpens around 325 nm; in polar protic solvents (water, methanol) hydrogen-bond competition can shift the equilibrium, broaden bands, and very slightly red-shift λmax. Adsorption to skin proteins or oil phases of formulations broadens both bands. [C2 — Baker et al. 2015 <em>Photochem Photobiol Sci</em> 14:1814]</li>
+<li><strong>Classification:</strong> moderate UVB absorber + weak-to-moderate UVA-II absorber; <strong>not</strong> a strong UVA-I filter (essentially no absorption beyond 360 nm). Often used historically as a photostabilizer/synergist for avobenzone rather than as the principal UVA active. [C2]</li>
+</ul>
+<hr>
+<h2 id="section-3-photodegradation">Section 3: Photodegradation</h2>
+<ul>
+<li><strong>Photostability:</strong> BP-3 is comparatively photostable as benzophenones go (clearly more stable than avobenzone). Reported retention after standard sunscreen-irradiation protocols (MED 5–25 J/cm² UVA equivalent in vehicle): typically <strong>80–95% intact</strong>, depending on matrix. [C2 — Sayre et al. 2005; Gaspar &amp; Maia Campos 2006]</li>
+<li><strong>Photodegradation kinetics:</strong> Pseudo-first-order under continuous irradiation. Reported environmental rate constants:</li>
+<li>In ultrapure water (simulated solar irradiation, ~765 W/m²): k ≈ 10⁻⁵–10⁻⁴ s⁻¹, half-life on the order of hours [C2 — Vione et al. 2013]</li>
+<li>In atmospheric aerosol phase: J_eff ≈ 10⁻³–10⁻² s⁻¹, half-life ~1 day [C1 — ACS ES&amp;T Air 2024; Kennedy/Nizkorodov]</li>
+<li>In seawater/freshwater (Sakkas / Vione): k_photo of order 10⁻⁵ s⁻¹, half-life ~1–10 h depending on dissolved organic matter and salt content [C2]</li>
+<li><strong>Quantum yield (Φ_loss):</strong> Direct photolysis quantum yield in aqueous solution reported at Φ ≈ 10⁻⁴ to 10⁻³ (i.e. low — ESIPT is dominant non-radiative deactivation; only a small fraction leads to bond breakage). [C2 — published estimates vary by 1 order of magnitude]</li>
+<li><strong>Primary photochemical pathway:</strong> ultrafast ESIPT (enol → keto) → vibrational cooling → ground state recovery. Minor pathway (Φ ≈ 10⁻⁴): O–H bond homolysis producing phenoxyl radical → secondary chemistry.</li>
+<li><strong>Photoproducts identified (LC-MS / GC-MS):</strong></li>
+<li><strong>Benzophenone-1 (BP-1, 2,4-dihydroxybenzophenone)</strong> — major demethylation product (also a metabolite in vivo) [C1]</li>
+<li><strong>2,3,4-trihydroxybenzophenone (THB)</strong> — hydroxylation product [C1]</li>
+<li><strong>Benzophenone-8 (DHMB, 2,2′-dihydroxy-4-methoxybenzophenone)</strong> — minor [C2]</li>
+<li><strong>Benzaldehyde, benzoic acid, benzophenone (parent ketone)</strong> — chain-cleavage products, more abundant in aerosol/atmospheric phase [C1 — ACS ES&amp;T Air 2024]</li>
+<li><strong>Hydroxylated and dimeric products</strong> in chlorinated water (treatment plants) — including chlorinated BP-3 derivatives with elevated genotoxicity reported. [C1 — Liu et al. 2014, <em>Sci Total Environ</em>]</li>
+<li><strong>Behavior in sunscreen formulation:</strong> in oil-based or emulsion vehicles BP-3 is reasonably stable. It can act as a <strong>triplet quencher / photostabilizer</strong> for avobenzone in some formulations, although it is itself a photosensitizer in others (mixed evidence). In presence of TiO2 or ZnO photocatalysts BP-3 photodegradation is accelerated. [C2]</li>
+<li><strong>ROS generation:</strong> BP-3 generates singlet oxygen (¹O₂) and superoxide upon UV excitation at higher quantum yields than next-generation filters such as bemotrizinol or Tinosorb S. Reported ¹O₂ quantum yield Φ_Δ ≈ 0.04–0.06 in organic solvents (compared with Φ_Δ &lt; 0.01 for bemotrizinol). [C2 — Wood et al. 2006; Allen et al. 1996]</li>
+<li><strong>Notable interaction:</strong> BP-3 + octinoxate combinations — BP-3 can mildly destabilize octinoxate; with avobenzone, BP-3 can be either stabilizing or destabilizing depending on solvent and presence of triplet quenchers (octocrylene). [C2 — Sayre et al. 2005 <em>Photochem Photobiol</em> 81:452]</li>
+</ul>
+<hr>
+<h2 id="section-4-notable-issues-factual-not-alarmist">Section 4: Notable issues (factual, not alarmist)</h2>
+<h3 id="41-endocrine-activity">4.1 Endocrine activity</h3>
+<ul>
+<li><strong>In-vitro:</strong> BP-3 is weakly estrogenic via ER-α (E-Screen, MCF-7 proliferation, yeast ER assays); relative estrogenic potency vs 17β-estradiol ≈ 10⁻⁵–10⁻⁶. <strong>BP-1, the primary metabolite, is more potent</strong> (~10⁻³–10⁻⁴ relative to E2 in some assays). BP-3 also exhibits weak anti-androgenic activity in AR reporter assays. [C1 — Schlumpf et al. 2001 <em>Environ Health Perspect</em> 109:239; Kunz &amp; Fent 2006]</li>
+<li><strong>Animal studies:</strong> uterotrophic (uterine weight gain) reported in immature rats at high oral doses (Schlumpf 2001 found ~1500 mg/kg/day to triple uterine weight). At orally-administered or dermally-applied doses in standard 28/90-day studies, NOAELs typically 200–500 mg/kg/day. [C1]</li>
+<li><strong>Human / clinical evidence:</strong> Epidemiological associations are inconsistent. Meta-analysis by Ghazipura et al. 2017 of human biomonitoring studies and reproductive outcomes found mixed associations (e.g., shortened anogenital distance in some male infant cohorts; alterations in pubertal timing in some girl cohorts; null associations in others). <strong>No single high-quality clinical study has demonstrated a clinically meaningful endocrine effect at typical use exposures</strong>, but the SCCS 2021 explicitly stated evidence "warrants further investigation". [C1 — SCCS/1625/20; Mustieles et al. 2023 <em>Environ Int</em> 173:107739 meta-analysis]</li>
+<li><strong>SCCS final opinion (2021):</strong> "While there are indications from some studies to suggest that BP-3 may have endocrine effects, the overall evidence is not conclusive enough for the SCCS to ascertain whether or not BP-3 is an endocrine disrupting substance, and this warrants further investigations." Concluded <strong>2.2% in body products is safe</strong> with the stated MoS calculation. [C1 — SCCS/1625/20]</li>
+</ul>
+<h3 id="42-skin-penetration-systemic-absorption">4.2 Skin penetration &amp; systemic absorption</h3>
+<ul>
+<li><strong>FDA Matta et al. 2019 JAMA</strong> (single-product, max-use, single-day): plasma C_max for oxybenzone exceeded 0.5 ng/mL FDA threshold within 2 h and reached up to ~180 ng/mL at end of day for sprays; geometric-mean AUC 4.0–5.0 ng·h/mL/day. [C1 — Matta et al. JAMA 2019;321:2082, doi:10.1001/jama.2019.5586]</li>
+<li><strong>FDA Matta et al. 2020 JAMA</strong> (4-day, multiple products): geometric-mean C_max for oxybenzone <strong>209.6 ng/mL (spray 1), 194.9 (spray 2), 169.3 (lotion), 199.9 (pump spray)</strong>. Plasma &gt;0.5 ng/mL maintained 21 days post-application in some subjects. [C1 — Matta et al. JAMA 2020;323:256, doi:10.1001/jama.2019.20747]</li>
+<li><strong>Population biomonitoring (NHANES):</strong> BP-3 detected in ≥96% of urine samples in U.S. NHANES cycles 2003–2014; concentrations higher in women, lighter-skinned individuals, and summer months; 95th percentile ~1000–4000 ng/mL urine. [C1 — Calafat et al. 2008 <em>EHP</em> 116:893; Han et al. 2016]</li>
+<li><strong>Implication:</strong> systemic exposure is unequivocal; <strong>clinical consequences of measured plasma levels remain unestablished</strong> (FDA 2019/2021 explicitly states absorption above threshold does not equate to harm but triggers requirement for additional toxicology data). [C1]</li>
+</ul>
+<h3 id="43-coral-aquatic-toxicity">4.3 Coral / aquatic toxicity</h3>
+<ul>
+<li><strong>Downs et al. 2016</strong> <em>Arch Environ Contam Toxicol</em> 70:265–288, doi:10.1007/s00244-015-0227-7. In <em>Stylophora pistillata</em> coral planulae:</li>
+<li>LC50 (light, 24 h): ~139 µg/L</li>
+<li>EC20 for deformity: ~6.5 µg/L</li>
+<li>Genotoxicity (DNA-AP lesions) dose-dependent</li>
+<li>Skeletal endocrine disruption: ossification of planulae in their own skeleton</li>
+<li>Photo-toxicity: effects exacerbated under UV</li>
+<li><strong>Environmental concentrations:</strong> USVI 75 µg/L–1.4 mg/L at heavily-used snorkel sites; Hawaii 0.8–19.2 µg/L. [C1 — Downs 2016]</li>
+<li><strong>Mechanistic update:</strong> Vuckovic et al. 2022 <em>Science</em> 376:644 showed sea anemones and corals <strong>glycosylate</strong> BP-3 to form 2-O-glucosides that are <strong>more phototoxic</strong> than parent BP-3 (loss of ESIPT pathway when 2-OH is masked) — supports a mechanistic basis for coral toxicity. [C1 — doi:10.1126/science.abn2600]</li>
+<li><strong>Caveats:</strong> Downs 2016 used some artificial-laboratory exposures with DMSO carrier; environmental relevance debated. NOAA 2022 review concluded oxybenzone is "of concern" but is not the sole driver of reef decline; climate change, nutrients, and disease remain dominant stressors. [C2]</li>
+</ul>
+<h3 id="44-allergenicity-contact-dermatitis">4.4 Allergenicity / contact dermatitis</h3>
+<ul>
+<li><strong>Most common photoallergen</strong> in U.S. and Canadian photopatch series; 4th most common in Europe. Both contact urticaria (immediate) and delayed Type IV photoallergy reported. [C1 — Bryden et al. 2006 <em>Contact Dermatitis</em>; Scheuer &amp; Warshaw 2006]</li>
+<li><strong>Estimated prevalence</strong> in patch-test populations: ~1–3% positive among photopatch-tested patients (selected populations). General-population prevalence of clinically relevant allergy is &lt;0.5%. [C2]</li>
+</ul>
+<h3 id="45-photoproduct-toxicity">4.5 Photoproduct toxicity</h3>
+<ul>
+<li><strong>BP-1</strong>, the major metabolite/photoproduct, has greater estrogenic potency in vitro (relative EC50 in MCF-7 ~10× more potent than parent). Bioaccumulates and has longer half-life. [C1 — Park et al. 2013]</li>
+<li>Chlorinated transformation products in pool water reported to have elevated genotoxicity (Ames, comet) vs parent. [C1 — Liu et al. 2014]</li>
+</ul>
+<hr>
+<h2 id="confidence">Confidence</h2>
+<ul>
+<li>Section 1 identity &amp; regulatory → C1</li>
+<li>Spectrum λmax → C1; ε values → C2 (compiled secondary)</li>
+<li>Photodegradation kinetics → C2 (range across studies)</li>
+<li>Endocrine in-vitro → C1; human relevance → C2</li>
+<li>FDA absorption studies → C1 (peer-reviewed JAMA primary)</li>
+<li>Coral toxicity → C1 (Downs primary; mechanism C1 Vuckovic 2022)</li>
+</ul>
+<h2 id="key-citations-full-dois">Key citations (full DOIs)</h2>
+<ol>
+<li>SCCS/1625/20 Final Opinion on Benzophenone-3, adopted 30–31 March 2021. https://health.ec.europa.eu/system/files/2022-08/sccs_o_247.pdf</li>
+<li>Matta MK et al. <em>JAMA</em> 2019;321(21):2082-2091. doi:10.1001/jama.2019.5586</li>
+<li>Matta MK et al. <em>JAMA</em> 2020;323(3):256-267. doi:10.1001/jama.2019.20747</li>
+<li>Downs CA et al. <em>Arch Environ Contam Toxicol</em> 2016;70:265-288. doi:10.1007/s00244-015-0227-7</li>
+<li>Schlumpf M et al. <em>Environ Health Perspect</em> 2001;109:239. doi:10.1289/ehp.01109239</li>
+<li>Vuckovic D et al. <em>Science</em> 2022;376:644-648. doi:10.1126/science.abn2600</li>
+<li>Calafat AM et al. <em>Environ Health Perspect</em> 2008;116:893-897. doi:10.1289/ehp.11269</li>
+<li>Mustieles V et al. <em>Environ Int</em> 2023;173:107739. doi:10.1016/j.envint.2023.107739</li>
+<li>Hawaii SB2571 / Act 104 (2018). https://www.capitol.hawaii.gov/sessions/session2018/bills/SB2571_CD1_.HTM</li>
+<li>EU Regulation 2022/1176 (8 July 2022) amending Annex VI of 1223/2009.</li>
+<li>FDA Proposed Order OTC000008 (24 Sept 2021), Amending OTC Monograph M020 — Sunscreen Drug Products.</li>
+<li>Sayre RM et al. <em>Photochem Photobiol</em> 2005;81:452-456.</li>
+<li>Liu YS et al. <em>Sci Total Environ</em> 2014;487:117. doi:10.1016/j.scitotenv.2014.04.025</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/claims/c001-oxybenzone-bp3.md</code> · <a href="c001-oxybenzone-bp3.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

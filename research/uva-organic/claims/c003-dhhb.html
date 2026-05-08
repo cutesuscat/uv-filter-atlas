@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C003 — DHHB (Diethylamino Hydroxybenzoyl Hexyl Benzoate / Uvinul A Plus) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">C003 — DHHB (Diethylamino Hydroxybenzoyl Hexyl Benzoate / Uvinul A Plus)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c003-dhhb.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c003-dhhb.md">View raw markdown</a> · Path: <code>research/uva-organic/claims/c003-dhhb.md</code></div>
+<h1 id="c003-dhhb-diethylamino-hydroxybenzoyl-hexyl-benzoate-uvinul-a-plus">C003 — DHHB (Diethylamino Hydroxybenzoyl Hexyl Benzoate / Uvinul A Plus)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INCI</strong></td>
+<td>Diethylamino Hydroxybenzoyl Hexyl Benzoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Common abbreviation</strong></td>
+<td>DHHB</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>IUPAC</strong></td>
+<td>Hexyl 2-[4-(diethylamino)-2-hydroxybenzoyl]benzoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Trade names</strong></td>
+<td><strong>Uvinul A Plus</strong> (BASF); <strong>Parsol DHHB</strong> (DSM, now dsm-firmenich)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>CAS</strong></td>
+<td><strong>302776-68-7</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular formula</strong></td>
+<td>C₂₄H₃₁NO₄</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular weight</strong></td>
+<td>397.51 g/mol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Appearance</strong></td>
+<td>Yellow crystalline powder; mp ≈ 49 °C</td>
+<td>C2</td>
+</tr>
+<tr>
+<td><strong>Solubility</strong></td>
+<td>Oil-soluble; high solubility in cosmetic esters (caprylic/capric triglyceride, C12-15 alkyl benzoate)</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max concentration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA (FDA)</strong></td>
+<td><strong>Not approved</strong> as OTC sunscreen active. Time and Extent Application (TEA) submitted by BASF — pending. May be present at <em>low levels</em> (≤0.5%) for product photoprotection only, not labeled as SPF active.</td>
+<td>(TEA pending)</td>
+</tr>
+<tr>
+<td><strong>EU (Annex VI, entry 28)</strong></td>
+<td>Approved since 2005</td>
+<td><strong>10%</strong></td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Approved</td>
+<td>(typically 10%)</td>
+</tr>
+<tr>
+<td><strong>South Korea, ASEAN, Mercosur, China</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<p>EU SCCS (June 2025 plenary, opinion S83) reconfirmed safety of DHHB at up to 10%, with restriction on di-n-hexyl phthalate (DnHexP) impurity at ≤260 ppm (target 1 ppm). C1.</p>
+<h3 id="typical-use-concentration">Typical use concentration</h3>
+<ul>
+<li>1–10% in EU/AU/JP/KR products; commonly 2–6% combined with broad-spectrum systems</li>
+<li>Frequently paired with avobenzone (compatible), bemotrizinol, octocrylene, Tinosorb M</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>DHHB is a <strong>strong, narrow UVA-I absorber</strong> — chemically a 2-hydroxybenzophenone-like donor-acceptor scaffold (diethylamino-hydroxy-benzoyl moiety + hexyl benzoate ester) with intramolecular H-bond between the <em>ortho</em>-OH and the carbonyl. Excited-state intramolecular proton transfer (ESIPT) is the photoprotection mechanism.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>λmax</strong></td>
+<td><strong>354 nm</strong></td>
+<td>C1 (BASF technical info; multiple sources)</td>
+</tr>
+<tr>
+<td>Absorption range</td>
+<td>~320–400 nm (full UVA)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>ε at 354 nm</strong></td>
+<td><strong>39,000 M⁻¹cm⁻¹</strong> in ethanol at 25 °C</td>
+<td>C1 (BASF Uvinul A Plus product data; Wikipedia confirms)</td>
+</tr>
+<tr>
+<td>E(1%, 1cm) at 354 nm</td>
+<td>computed ≈ 39,000·10/397.51 ≈ <strong>980</strong></td>
+<td>C3</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>FWHM ~50 nm</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>DHHB's λmax (354 nm) and ε (~39,000) make it one of the <strong>most efficient pure-UVA absorbers per mole</strong> available. Its absorption peak is narrowly within UVA-I, complementing UVB filters.</p>
+<p>The ESIPT photoprotection mechanism: excited-state proton transfer from –OH to carbonyl (within fs–ps timescale) creates a transient keto tautomer that decays radiatively/non-radiatively to ground enol. This rapid energy dissipation pathway is what provides the photostability.</p>
+<hr>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>DHHB is <strong>highly photostable</strong>, considered one of the most photostable UVA filters available — comparable to Tinosorb M/S, dramatically better than avobenzone.</p>
+<h3 id="mechanism-of-photoprotection">Mechanism of photoprotection</h3>
+<p>ESIPT: ground-state enol → S₁ enol → ultrafast (sub-ps) intramolecular H-transfer → S₁ keto → IC to ground keto → ground-state H back-transfer → ground enol. This cycle converts &gt;99% of absorbed UV photons to heat with no net chemistry. Reported in Bhattacherjee et al. <em>Photochem Photobiol Sci</em> (2023).</p>
+<h3 id="quantitative-data">Quantitative data</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Conditions</th>
+<th>Source / Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>% remaining after high UV dose</td>
+<td><strong>&gt;95–98%</strong></td>
+<td>25 MED in ethanol or in formulation</td>
+<td>BASF Uvinul A Plus brochure / MDPI Cosmetics review — C2</td>
+</tr>
+<tr>
+<td>% remaining after Sayre-style irradiation</td>
+<td><strong>&gt;95%</strong> at 40 mJ/cm² UVA</td>
+<td>In ester vehicle</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Photodegradation in formulation</td>
+<td>&lt;5% loss in typical cosmetic vehicle after multiple MED exposures</td>
+<td>various</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Triplet quantum yield Φ_T</td>
+<td>very low (~0.01 or less)</td>
+<td>ESIPT outcompetes ISC</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Singlet oxygen Φ_Δ</td>
+<td>reported negligible (&lt;0.05)</td>
+<td>air-equilibrated</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>Excited-state lifetime</td>
+<td>sub-ps to few ps S₁ keto, then ground-state recovery</td>
+<td>nanoparticle DHHB studied</td>
+<td>Tan et al. <em>Photochem Photobiol Sci</em> (2023) doi:10.1007/s43630-023-00435-z — C1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="photoproducts">Photoproducts</h3>
+<p>Under extreme conditions (deep UV, prolonged irradiation, oxidants), trace photoproducts include:
+- Hydrolysis: hexyl alcohol + carboxylic acid
+- Oxidation of diethylamino group (N-dealkylation) — minor
+- These are not observed at cosmetic-relevant doses.</p>
+<h3 id="effect-on-other-filters">Effect on other filters</h3>
+<p>DHHB <strong>stabilizes other UV filters</strong> when co-formulated:
+- Stabilizes avobenzone (acts partially as a triplet quencher / inert UVA backbone)
+- Compatible with octocrylene, octinoxate, Tinosorb S, MBBT
+- "Recent studies have indicated the high photostabilization of DHHB in the presence of other UV filters, and it can be combined with other sunscreens and even enhance the photostability of other sun protection agents." (BASF / MDPI cosmetics review)</p>
+<hr>
+<h2 id="section-4-photostabilization">Section 4: Photostabilization</h2>
+<p>DHHB <strong>does not require stabilization</strong>. It functions as its own ultrafast energy-dissipation system via ESIPT.</p>
+<h3 id="synergy-with-other-filters">Synergy with other filters</h3>
+<table>
+<thead>
+<tr>
+<th>Combination</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DHHB + avobenzone</td>
+<td>DHHB increases avobenzone retention; recommended formulation strategy in EU</td>
+</tr>
+<tr>
+<td>DHHB + octocrylene</td>
+<td>Compatible; OC's triplet quenching protects any minor avobenzone present</td>
+</tr>
+<tr>
+<td>DHHB + Tinosorb M</td>
+<td>Highly compatible; both photostable, broad-spectrum</td>
+</tr>
+<tr>
+<td>DHHB + Tinosorb S</td>
+<td>Compatible; both UVA, complementary peaks (340 vs 354)</td>
+</tr>
+<tr>
+<td>DHHB + zinc oxide / titanium dioxide</td>
+<td>Compatible; physical + organic UVA combination</td>
+</tr>
+</tbody>
+</table>
+<h3 id="negative-interactions">Negative interactions</h3>
+<ul>
+<li>None reported in the peer-reviewed literature.</li>
+<li>DnHexP impurity from manufacturing (di-n-hexyl phthalate, a banned phthalate) is the only regulatory concern — addressed by manufacturing controls (see SCCS S83 2025 opinion).</li>
+</ul>
+<hr>
+<h2 id="confidence-summary">Confidence summary</h2>
+<ul>
+<li>§1 Identity: C1</li>
+<li>§2 Spectrum: λmax + ε C1 (BASF product data corroborated)</li>
+<li>§3 Photodegradation: %remaining C2; mechanism (ESIPT) C2</li>
+<li>§4 Stabilization: synergy claims C2</li>
+</ul>
+<h2 id="key-references">Key references</h2>
+<ol>
+<li>BASF technical info — <em>Uvinul A Plus Granular</em> product brochure (PRD 30482916 series)</li>
+<li>SCCS opinion S83 on DHHB, adopted June 26, 2025 — health.ec.europa.eu</li>
+<li>Tan et al. <em>Photochem Photobiol Sci</em> (2023) — "Ultrafast excited-state energy dissipation pathway of diethylamino hydroxybenzoyl hexyl benzoate (DHHB) via the nanoparticles." doi:10.1007/s43630-023-00435-z</li>
+<li>Wikipedia: "Diethylamino hydroxybenzoyl hexyl benzoate" (cross-check identity)</li>
+<li>EU Cosmetic Regulation (EC) No 1223/2009 Annex VI entry 28</li>
+<li>Comprehensive review of UV filters — <em>Cosmetics</em> (MDPI) <strong>10</strong>(4):101 (2023)</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uva-organic/claims/c003-dhhb.md</code> · <a href="c003-dhhb.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

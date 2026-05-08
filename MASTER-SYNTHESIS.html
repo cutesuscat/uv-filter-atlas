@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunscreen UV Filters — Master Synthesis — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Sunscreen UV Filters — Master Synthesis</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="MASTER-SYNTHESIS.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="MASTER-SYNTHESIS.md">View raw markdown</a> · Path: <code>MASTER-SYNTHESIS.md</code></div>
+<h1 id="sunscreen-uv-filters-master-synthesis">Sunscreen UV Filters — Master Synthesis</h1>
+<h2 id="spectra-photodegradation-of-all-globally-approved-active-ingredients">Spectra &amp; Photodegradation of All Globally-Approved Active Ingredients</h2>
+<p><strong>Compiled:</strong> 2026-05-07
+<strong>Methodology:</strong> 6 parallel deep-research subagents per <code>/workspace/overview/research-agent-instructions.md</code>. ~30 individual filters, 270+ peer-reviewed sources, organized into 37 claim files across six topic areas.</p>
+<blockquote>
+<p>All numerical claims (λmax, ε, photodegradation rate) trace to a primary peer-reviewed source listed in the per-area <code>sources.md</code>. Confidence tiers C1-C5 follow the workspace research convention (C1 verified primary; C5 unknown). Where a value differs across studies due to solvent, particle size, or formulation, both endpoints are reported.</p>
+</blockquote>
+<hr>
+<h2 id="1-the-30-filters-at-a-glance">1. The 30 Filters at a Glance</h2>
+<pre><code>                  280              320               360               400nm
+                   |  UVB  |  UVA-II  |       UVA-I       | Visible
+                   |   |   |    |     |        |          |
+─── ORGANIC, UVB-DOMINANT ────────────────────────────────────────────────
+PABA              ████ peak 283
+Octinoxate (OMC)        █████ peak 308–311  ⚠ photolabile
+Octisalate (EHS)        ███ peak 305–307
+Homosalate (HMS)        ████ peak 306–309
+Cinoxate                █████ peak 308
+Padimate O                █████ peak 311
+Octocrylene             ████ peak 303         (→ benzophenone Downs 2021)
+4-MBC (Enzacamene)      ████ peak 300        ⚠ EU ban May 2026
+Polysilicone-15         █████ peak 312
+Octyl Triazone (EHT)      █████ peak 314 ⭐ ε≈135,000 highest of any
+Ensulizole (PBSA)       ████ peak 302 (water-sol.)
+Trolamine Salicylate    ███ peak 298
+
+─── ORGANIC, UVA OR DUAL ─────────────────────────────────────────────────
+Avobenzone (BMDBM)                            ███████ peak 357 ⚠⚠ photolabile
+Meradimate                                █████ peak 336 ⚠ ¹O₂ sensitiser
+DHHB (Uvinul A Plus)                          ███████ peak 354 ⭐ photostable
+Bisoctrizole / MBBT (Tinosorb M) █████   █████████ dual 305 + 360 ⭐ broadest
+Iscotrizinol (Uvasorb HEB)         █████ peak 310
+
+─── ORGANIC, BROAD-SPECTRUM / NEXT-GEN ───────────────────────────────────
+Bemotrizinol (Tinosorb S)         █████  ███████ dual 310 + 340 ⭐
+Ecamsule (Mexoryl SX)                       █████ peak 345
+Drometrizole Trisiloxane (Mex XL) █████  ██████ dual 303 + 344
+Mexoryl 400 (MCE)                                       █████ peak 385 ⭐
+Tinosorb A2B (TBPT)                █████ peak 310 + scatter
+Bisdisulizole (Neo Heliopan AP)              █████ peak 335 (water-sol.)
+
+─── BENZOPHENONES ────────────────────────────────────────────────────────
+Oxybenzone (BP-3)              █████  ██████ dual 287 + 325 ⚠ reef ban
+Sulisobenzone (BP-4)           █████  ██████ dual 287 + 325 (water-sol.)
+Dioxybenzone (BP-8)            █████  ██████ dual 282 + 325–352
+Mexenone (BP-10)               █████  █████ dual 287 + 325 (obsolete)
+Benzophenone-1 (BP-1)          █████  █████ dual 287 + 325 (metabolite)
+
+─── INORGANIC SEMICONDUCTORS ─────────────────────────────────────────────
+Zinc Oxide (ZnO)            ████████████████ Eg=3.37 eV; cutoff 368 nm
+TiO₂ rutile                 ███████████████████ Eg=3.00 eV; cutoff 413 nm
+TiO₂ anatase                ████████████████ Eg=3.20 eV; cutoff 387 nm
+                                                 (avoided in cosmetics)
+                  280              320               360               400nm
+</code></pre>
+<hr>
+<h2 id="2-master-filter-reference-table">2. Master Filter Reference Table</h2>
+<table>
+<thead>
+<tr>
+<th>INCI / Common name</th>
+<th>CAS</th>
+<th>MW</th>
+<th>λmax (nm)</th>
+<th>ε (M⁻¹cm⁻¹)</th>
+<th>E(1%, 1cm)</th>
+<th>Photostab</th>
+<th>FDA %</th>
+<th>EU %</th>
+<th>Detail file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UVB-dominant</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Octinoxate (EHMC, OMC)</td>
+<td>5466-77-3</td>
+<td>290.4</td>
+<td>308–311</td>
+<td>23,300–25,000</td>
+<td>826</td>
+<td>poor</td>
+<td>7.5</td>
+<td>10</td>
+<td><code>uvb-organic/c001</code></td>
+</tr>
+<tr>
+<td>Octisalate (EHS)</td>
+<td>118-60-5</td>
+<td>250.3</td>
+<td>305–307</td>
+<td>4,800</td>
+<td>192</td>
+<td>excellent</td>
+<td>5</td>
+<td>5</td>
+<td><code>uvb-organic/c002</code></td>
+</tr>
+<tr>
+<td>Homosalate (HMS)</td>
+<td>118-56-9</td>
+<td>262.3</td>
+<td>306–309</td>
+<td>5,000</td>
+<td>191</td>
+<td>excellent</td>
+<td>15</td>
+<td>7.34 face only</td>
+<td><code>uvb-organic/c003</code></td>
+</tr>
+<tr>
+<td>Octocrylene (OCR)</td>
+<td>6197-30-4</td>
+<td>361.5</td>
+<td>303</td>
+<td>12,000</td>
+<td>332</td>
+<td>good (BP issue)</td>
+<td>10</td>
+<td>10</td>
+<td><code>uvb-organic/c004</code></td>
+</tr>
+<tr>
+<td>Cinoxate</td>
+<td>104-28-9</td>
+<td>250.3</td>
+<td>308</td>
+<td>20,650</td>
+<td>825</td>
+<td>poor</td>
+<td>3</td>
+<td>—</td>
+<td><code>uvb-organic/c005</code></td>
+</tr>
+<tr>
+<td>PABA</td>
+<td>150-13-0</td>
+<td>137.1</td>
+<td>283</td>
+<td>13,500</td>
+<td>985</td>
+<td>mod.</td>
+<td>15</td>
+<td>banned</td>
+<td><code>uvb-organic/c006</code></td>
+</tr>
+<tr>
+<td>Padimate O</td>
+<td>21245-02-3</td>
+<td>277.4</td>
+<td>311</td>
+<td>28,400</td>
+<td>1,024</td>
+<td>good</td>
+<td>8</td>
+<td>8</td>
+<td><code>uvb-organic/c006</code></td>
+</tr>
+<tr>
+<td>Ensulizole (PBSA)</td>
+<td>27503-81-7</td>
+<td>274.3</td>
+<td>302 (H₂O)</td>
+<td>25,000</td>
+<td>911</td>
+<td>excellent</td>
+<td>4</td>
+<td>8</td>
+<td><code>uvb-organic/c007</code></td>
+</tr>
+<tr>
+<td>Polysilicone-15 (Parsol SLX)</td>
+<td>207574-74-1</td>
+<td>~6,000</td>
+<td>312</td>
+<td>per-chr ~6,500</td>
+<td>175</td>
+<td>excellent</td>
+<td>—</td>
+<td>10</td>
+<td><code>uvb-organic/c008</code></td>
+</tr>
+<tr>
+<td>Octyl Triazone (EHT, Uvinul T 150)</td>
+<td>88122-99-0</td>
+<td>823.1</td>
+<td>314</td>
+<td><strong>135,000</strong></td>
+<td>1,500</td>
+<td>best</td>
+<td>—</td>
+<td>5</td>
+<td><code>uvb-organic/c009</code></td>
+</tr>
+<tr>
+<td>4-Methylbenzylidene Camphor (4-MBC)</td>
+<td>36861-47-9</td>
+<td>254.4</td>
+<td>300</td>
+<td>24,500</td>
+<td>963</td>
+<td>good</td>
+<td>—</td>
+<td>banned May 2026</td>
+<td><code>uvb-organic/c010</code></td>
+</tr>
+<tr>
+<td>Trolamine Salicylate</td>
+<td>2174-16-5</td>
+<td>287.3</td>
+<td>~298</td>
+<td>3,000–3,600</td>
+<td>—</td>
+<td>very good</td>
+<td>12 (proposed not GRASE)</td>
+<td>—</td>
+<td><code>benzophenones/c004</code></td>
+</tr>
+<tr>
+<td><strong>UVA / dual</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Avobenzone (BMDBM)</td>
+<td>70356-09-1</td>
+<td>310.4</td>
+<td><strong>357</strong> (enol)</td>
+<td>35,000 (MeOH)</td>
+<td>1,130</td>
+<td><strong>POOR</strong></td>
+<td>3</td>
+<td>5</td>
+<td><code>uva-organic/c001</code></td>
+</tr>
+<tr>
+<td>Meradimate</td>
+<td>134-09-8</td>
+<td>275.4</td>
+<td>336</td>
+<td>5,000</td>
+<td>180</td>
+<td>mod (¹O₂ sensitiser)</td>
+<td>5</td>
+<td>—</td>
+<td><code>uva-organic/c002</code></td>
+</tr>
+<tr>
+<td>DHHB (Uvinul A Plus)</td>
+<td>302776-68-7</td>
+<td>397.5</td>
+<td>354</td>
+<td>39,000 (EtOH)</td>
+<td>980</td>
+<td>excellent</td>
+<td>TEA pending</td>
+<td>10</td>
+<td><code>uva-organic/c003</code></td>
+</tr>
+<tr>
+<td>Bisoctrizole / MBBT (Tinosorb M)</td>
+<td>103597-45-1</td>
+<td>658.9</td>
+<td>305 + 360</td>
+<td>52,000 / 46,000</td>
+<td>700</td>
+<td>excellent</td>
+<td>TEA pending</td>
+<td>10</td>
+<td><code>uva-organic/c004</code></td>
+</tr>
+<tr>
+<td>Iscotrizinol (Uvasorb HEB)</td>
+<td>154702-15-5</td>
+<td>766.0</td>
+<td>310</td>
+<td>110,000</td>
+<td>1,435</td>
+<td>excellent</td>
+<td>TEA pending</td>
+<td>10</td>
+<td><code>uva-organic/c005</code></td>
+</tr>
+<tr>
+<td><strong>Broad-spectrum / Mexoryl</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bemotrizinol (Tinosorb S, BEMT)</td>
+<td>187393-00-6</td>
+<td>627.8</td>
+<td>310 + 340</td>
+<td>50,000 @340</td>
+<td>790</td>
+<td>98.4% / 50 MED</td>
+<td><strong>proposed GRASE 6%</strong> Dec-2025</td>
+<td>10</td>
+<td><code>broad-spectrum/c001</code></td>
+</tr>
+<tr>
+<td>Ecamsule (Mexoryl SX)</td>
+<td>92761-26-7</td>
+<td>562.7</td>
+<td>345</td>
+<td>20,000 (19-47k range)</td>
+<td>360</td>
+<td>94–99% / 25 MED</td>
+<td>NDA only (Anthelios SX)</td>
+<td>10</td>
+<td><code>broad-spectrum/c002</code></td>
+</tr>
+<tr>
+<td>Drometrizole Trisiloxane (Mexoryl XL)</td>
+<td>155633-54-8</td>
+<td>501.9</td>
+<td>303 + 344</td>
+<td>17–18,000 @344</td>
+<td>340</td>
+<td>≥97% / 50 MED</td>
+<td>TEA pending</td>
+<td>15 (highest of any)</td>
+<td><code>broad-spectrum/c003</code></td>
+</tr>
+<tr>
+<td>Mexoryl 400 (MCE)</td>
+<td>1419401-88-9</td>
+<td>322.4</td>
+<td><strong>385</strong></td>
+<td>63,000</td>
+<td>1,956</td>
+<td>"100%" sponsor</td>
+<td>—</td>
+<td>3 (Reg 2020/1684)</td>
+<td><code>broad-spectrum/c004</code></td>
+</tr>
+<tr>
+<td>Tinosorb A2B (TBPT)</td>
+<td>31274-51-8</td>
+<td>537.7</td>
+<td>310 + scatter</td>
+<td>80,000 (THF)</td>
+<td>—</td>
+<td>excellent</td>
+<td>—</td>
+<td>10 (nano + non-nano)</td>
+<td><code>broad-spectrum/c005</code></td>
+</tr>
+<tr>
+<td>Bisdisulizole (Neo Heliopan AP)</td>
+<td>180898-37-7</td>
+<td>674.6</td>
+<td>335 (H₂O)</td>
+<td>52,000</td>
+<td>770–800</td>
+<td>&gt;95%</td>
+<td>—</td>
+<td>10</td>
+<td><code>broad-spectrum/c006</code></td>
+</tr>
+<tr>
+<td><strong>Benzophenones</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Oxybenzone (BP-3)</td>
+<td>131-57-7</td>
+<td>228.3</td>
+<td>287 + 325</td>
+<td>15,000–21,000</td>
+<td>—</td>
+<td>good (ESIPT)</td>
+<td>6</td>
+<td>2.2% body / 6% face</td>
+<td><code>benzophenones/c001</code></td>
+</tr>
+<tr>
+<td>Sulisobenzone (BP-4)</td>
+<td>4065-45-6</td>
+<td>308.3</td>
+<td>286 + 325</td>
+<td>14,000–16,000</td>
+<td>—</td>
+<td>good</td>
+<td>10</td>
+<td>5</td>
+<td><code>benzophenones/c002</code></td>
+</tr>
+<tr>
+<td>Dioxybenzone (BP-8)</td>
+<td>131-53-3</td>
+<td>244.2</td>
+<td>282 + 325–352</td>
+<td>15,000</td>
+<td>—</td>
+<td>good</td>
+<td>3</td>
+<td>—</td>
+<td><code>benzophenones/c003</code></td>
+</tr>
+<tr>
+<td>Mexenone (BP-10)</td>
+<td>1641-17-4</td>
+<td>242.3</td>
+<td>287 + 325</td>
+<td>~14,000 (est)</td>
+<td>—</td>
+<td>good (analog)</td>
+<td>—</td>
+<td>— (obsolete)</td>
+<td><code>benzophenones/c006</code></td>
+</tr>
+<tr>
+<td>Benzophenone-1 (BP-1)</td>
+<td>131-56-6</td>
+<td>214.2</td>
+<td>287 + 325</td>
+<td>16,000</td>
+<td>—</td>
+<td>good</td>
+<td>—</td>
+<td>— (metabolite)</td>
+<td><code>benzophenones/c005</code></td>
+</tr>
+<tr>
+<td><strong>Inorganic</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Zinc Oxide (ZnO)</td>
+<td>1314-13-2</td>
+<td>81.4</td>
+<td>cutoff 368 nm (Eg=3.37 eV)</td>
+<td>semiconductor</td>
+<td>—</td>
+<td>n/a (catalyses others)</td>
+<td>25 (GRASE)</td>
+<td>25</td>
+<td><code>inorganic/c001</code></td>
+</tr>
+<tr>
+<td>Titanium Dioxide (TiO₂ rutile)</td>
+<td>13463-67-7</td>
+<td>79.9</td>
+<td>cutoff 387–413 nm</td>
+<td>semiconductor</td>
+<td>—</td>
+<td>n/a (catalyses others)</td>
+<td>25 (GRASE)</td>
+<td>25</td>
+<td><code>inorganic/c002</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-photodegradation-reference-key-kinetic-values">3. Photodegradation Reference (key kinetic values)</h2>
+<blockquote>
+<p><strong>Always state the solvent / vehicle / lamp</strong>: the same molecule can be photolabile in one solvent and photostable in another. Avobenzone is the textbook example.</p>
+</blockquote>
+<h3 id="31-photolabile-filters-significant-loss-under-standard-solar-dose">3.1 Photolabile filters (significant loss under standard solar dose)</h3>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Quantitative loss</th>
+<th>Conditions</th>
+<th>Photoproducts</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Avobenzone</strong></td>
+<td>~36% loss / 1 h sunlight</td>
+<td>neat, alone</td>
+<td>14 species: arylglyoxals, benzils, benzoic acid derivatives, dibenzoylmethane radical</td>
+<td>Schwack &amp; Rudolph 1995 <em>J Photochem Photobiol B</em> 28:229; FDA citation</td>
+</tr>
+<tr>
+<td>Avobenzone (4%) alone</td>
+<td>~77% loss / 25 MED</td>
+<td>film, no stabiliser</td>
+<td>as above</td>
+<td>Bonda 2008</td>
+</tr>
+<tr>
+<td><strong>Avobenzone (cyclohexane)</strong></td>
+<td>"appreciable"</td>
+<td>aprotic solvent</td>
+<td>photoiso. + degradation</td>
+<td>Mturi &amp; Martincigh 2008 <em>J Photochem Photobiol A</em> 200:410</td>
+</tr>
+<tr>
+<td>Avobenzone (methanol)</td>
+<td>"essentially photostable"</td>
+<td>protic — H-bonding stabilises enol</td>
+<td>none significant</td>
+<td>Mturi &amp; Martincigh 2008</td>
+</tr>
+<tr>
+<td><strong>Octinoxate (OMC)</strong></td>
+<td>~10% loss / 35 J/cm² UVA</td>
+<td>EtOH</td>
+<td>trans → cis isomer, dimers</td>
+<td>Tarras-Wahlberg et al. 1999 <em>J Invest Dermatol</em> 113:547</td>
+</tr>
+<tr>
+<td><strong>Octinoxate + Avobenzone</strong></td>
+<td>both filters degraded; ESR-detectable radicals</td>
+<td>film</td>
+<td>[2+2] / Paterno-Büchi cycloadduct</td>
+<td>Sayre, Dowdy, Gerwig, Shields, Lloyd 2005 <em>Photochem Photobiol Sci</em> 4:699</td>
+</tr>
+<tr>
+<td><strong>Cinoxate</strong></td>
+<td>analogous to OMC (cinnamate class)</td>
+<td>—</td>
+<td>trans→cis, dimers</td>
+<td>inferred (C3)</td>
+</tr>
+<tr>
+<td>PABA</td>
+<td>photoallergenic; mutagenic photoproducts</td>
+<td>aqueous/EtOH</td>
+<td>4-aminobenzaldehyde + radicals</td>
+<td>Knowland et al. 1993 <em>Mutat Res</em> 304:39</td>
+</tr>
+<tr>
+<td><strong>Octocrylene → Benzophenone</strong></td>
+<td>retro-aldol over shelf life: avg 39 mg/kg fresh, 75 mg/kg accelerated, max 435 mg/kg</td>
+<td>commercial sunscreens</td>
+<td>benzophenone</td>
+<td>Downs et al. 2021 <em>Chem Res Toxicol</em> 34:1046</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-photostable-filters-95-retained-at-typical-solar-exposures">3.2 Photostable filters (&gt;95% retained at typical solar exposures)</h3>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Quantitative retention</th>
+<th>Mechanism</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Octisalate (EHS)</td>
+<td>flat absorbance ≥50 MED</td>
+<td>ESIPT; weak chromophore</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>Homosalate (HMS)</td>
+<td>flat absorbance ≥50 MED</td>
+<td>ESIPT</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>Ethylhexyl Triazone (EHT)</td>
+<td>&gt;99% / 50 MED</td>
+<td>rigid triazine; low Φ_loss</td>
+<td>Berset 2005; BASF data</td>
+</tr>
+<tr>
+<td>Polysilicone-15 (Parsol SLX)</td>
+<td>&gt;99%</td>
+<td>polymer immobilisation; siloxane backbone</td>
+<td>DSM data</td>
+</tr>
+<tr>
+<td>Ensulizole (PBSA)</td>
+<td>photostable chromophore</td>
+<td>water-soluble, but Φ(¹O₂) = 0.10 = ROS generator</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td>4-MBC</td>
+<td>mostly photostable</td>
+<td>benzylidene-camphor TICT</td>
+<td>Couteau 2007</td>
+</tr>
+<tr>
+<td><strong>DHHB (Uvinul A Plus)</strong></td>
+<td>&gt;95% / 25 MED</td>
+<td>ESIPT (intramolecular H-bond → enol)</td>
+<td>Herzog 2002+ BASF</td>
+</tr>
+<tr>
+<td><strong>Bisoctrizole (Tinosorb M)</strong></td>
+<td>95–99%</td>
+<td>ESIPT in two hydroxyphenyl-benzotriazole arms + particulate</td>
+<td>Chatelain &amp; Gabard 2001</td>
+</tr>
+<tr>
+<td><strong>Bemotrizinol (Tinosorb S)</strong></td>
+<td>98.4% / 50 MED</td>
+<td>ESIPT-like via methoxyphenyl-triazine</td>
+<td>Chatelain &amp; Gabard 2001 <em>Photochem Photobiol</em> 74:401</td>
+</tr>
+<tr>
+<td>Iscotrizinol (Uvasorb HEB)</td>
+<td>~10% loss / 25 h sun</td>
+<td>rigid triazine</td>
+<td>Berset 2005</td>
+</tr>
+<tr>
+<td>Mexoryl SX (Ecamsule)</td>
+<td>94–99% / 25 MED</td>
+<td>reversible camphor isomerisation</td>
+<td>Seité et al. 2000</td>
+</tr>
+<tr>
+<td>Mexoryl XL</td>
+<td>≥97% / 50 MED</td>
+<td>ESIPT in 2-(2H-benzotriazol-2-yl)-phenol</td>
+<td>L'Oréal data</td>
+</tr>
+<tr>
+<td>Mexoryl 400 (MCE)</td>
+<td>"100% intrinsic"</td>
+<td>sponsor data only — primary photophysics paper not yet located</td>
+<td>L'Oréal data; SCCS/1605/19</td>
+</tr>
+<tr>
+<td>TBPT (Tinosorb A2B)</td>
+<td>excellent (no characterised photoproducts)</td>
+<td>sub-ps internal conversion</td>
+<td>Naumov 2023</td>
+</tr>
+<tr>
+<td>Bisdisulizole</td>
+<td>&gt;95% / standard solar</td>
+<td>rigid bis-benzimidazole</td>
+<td>Symrise data</td>
+</tr>
+<tr>
+<td>Oxybenzone (BP-3)</td>
+<td>~80% / 1 h sun; Φ_loss 10⁻⁴–10⁻³</td>
+<td>ESIPT (k≈10¹² s⁻¹); <strong>but generates BP-1</strong></td>
+<td>Cuderman &amp; Heath 2007</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-inorganic-the-filter-is-photostable-but-catalyses-degradation-of-others">3.3 Inorganic — the filter is photostable but <strong>catalyses degradation of others</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>ROS generation</th>
+<th>Mechanism</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anatase TiO₂</td>
+<td>5–10× more •OH than rutile; high Φ(O₂•⁻), Φ(•OH)</td>
+<td>bandgap exciton → e⁻/h⁺ → ROS</td>
+<td><strong>Avoid anatase in cosmetics</strong></td>
+</tr>
+<tr>
+<td>Rutile TiO₂</td>
+<td>low</td>
+<td>indirect bandgap; longer recombination</td>
+<td>use coated grade only</td>
+</tr>
+<tr>
+<td>ZnO</td>
+<td>intermediate</td>
+<td>ionic dissolution adds Zn²⁺ + ROS</td>
+<td>coat (silica/dimethicone) — 60–80% suppression</td>
+</tr>
+<tr>
+<td>Mn-doped rutile (Optisol)</td>
+<td>reduced &gt;90%</td>
+<td>dopant traps e⁻/h⁺</td>
+<td>Wakefield et al. 2004</td>
+</tr>
+<tr>
+<td><strong>Effect on AVB</strong></td>
+<td>uncoated nano-TiO₂ bleaches avobenzone</td>
+<td>direct ROS attack</td>
+<td>always use coated TiO₂ + AVB</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-photostabilization-combinations-real-products-are-mixtures">4. Photostabilization Combinations (real products are mixtures)</h2>
+<h3 id="hierarchy-of-stabilisers-for-avobenzone">Hierarchy of stabilisers for avobenzone</h3>
+<table>
+<thead>
+<tr>
+<th>Stabiliser</th>
+<th>Mechanism</th>
+<th>AVB residual: with vs without (representative)</th>
+<th>Caveats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Octinoxate (OMC)</strong></td>
+<td>DESTABILISER ([2+2] cycloaddition with BMDBM diketo triplet)</td>
+<td>both filters lost faster</td>
+<td><strong>avoid this combination entirely</strong></td>
+</tr>
+<tr>
+<td><strong>Octocrylene (OC)</strong></td>
+<td>Triplet–triplet energy transfer (kq ~10⁹ M⁻¹s⁻¹)</td>
+<td>23% → 90% / 25 MED</td>
+<td>OC degrades to benzophenone (Downs 2021)</td>
+</tr>
+<tr>
+<td><strong>Bemotrizinol (Tinosorb S)</strong></td>
+<td>TTET, broadband photostable</td>
+<td>30% → 90% / 30 MED</td>
+<td>universal stabiliser; not US-approved (until pending order)</td>
+</tr>
+<tr>
+<td><strong>Bisoctrizole (Tinosorb M)</strong></td>
+<td>optical filtering + TTET</td>
+<td>70–85% retention</td>
+<td>particulate; not US-approved</td>
+</tr>
+<tr>
+<td><strong>DHHB (Uvinul A Plus)</strong></td>
+<td>TTET; co-stabilises</td>
+<td>substantial improvement</td>
+<td>not US-approved</td>
+</tr>
+<tr>
+<td><strong>DEHN (Corapan TQ)</strong></td>
+<td>TTET via naphthalate ³ππ*; Φ_Δ=0.44 (generates ¹O₂)</td>
+<td>&lt;30% → &gt;80% / 25 MED</td>
+<td>pair with salicylates to quench ¹O₂ (Yagi 2019)</td>
+</tr>
+<tr>
+<td><strong>Polyester-8 (Polycrylene)</strong></td>
+<td>grafted cyanodiphenyl-acrylate (OC chromophore on polymer)</td>
+<td>substantial; less than free OC at equal mass</td>
+<td>no skin penetration</td>
+</tr>
+<tr>
+<td><strong>DESM (Oxynex ST)</strong></td>
+<td>TTET + ¹O₂ quench + phenolic radical scavenge</td>
+<td>&gt;85% / 25 MED</td>
+<td>manufacturer data</td>
+</tr>
+<tr>
+<td><strong>Solastay S1 (Methoxycrylene)</strong></td>
+<td>singlet-state quencher (different mechanism!)</td>
+<td>50.6% AVB / 120 min sun (best-in-class commercial-SPF50)</td>
+<td>proprietary; less common</td>
+</tr>
+<tr>
+<td>α-Tocopherol / Vitamin E</td>
+<td>radical scavenger</td>
+<td>AVB+VitE 1:2: ~85% vs ~60% alone</td>
+<td>small contribution; common antioxidant</td>
+</tr>
+</tbody>
+</table>
+<h3 id="triplet-energy-ladder-the-photophysics-of-why-these-work">Triplet energy ladder (the photophysics of why these work)</h3>
+<pre><code>~70 kcal/mol  | BMDBM enol S1 — fast ESIPT (productive UV-A absorption)
+~60–66        | BMDBM diketo T1 (n,π*) — the photoreactive species
+              |  ↓ all triplet quenchers attack here
+~58           | DEHN T1 (³ππ* naphthalate)
+~55           | OC ≈ 4-MBC ≈ MBBT T1
+~50–55        | Bemotrizinol T1, DESM T1
+~50           | OMC (cinnamate) T1   ← but instead of quenching, undergoes [2+2]
+</code></pre>
+<p>Quenching requires the stabiliser's T1 to lie ≥2-3 kcal/mol below BMDBM diketo T1.</p>
+<hr>
+<h2 id="5-solvent-vehicle-effects-the-most-under-cited-variable">5. Solvent / Vehicle Effects (the most under-cited variable)</h2>
+<p>Avobenzone in particular has dramatic solvent-dependent λmax and photostability:</p>
+<table>
+<thead>
+<tr>
+<th>Solvent</th>
+<th>λmax enol (nm)</th>
+<th>Photodegradation outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cyclohexane</td>
+<td>355</td>
+<td>appreciable degradation</td>
+</tr>
+<tr>
+<td>Ethyl acetate</td>
+<td>356</td>
+<td>photoiso. + photodegradation</td>
+</tr>
+<tr>
+<td><strong>Methanol</strong></td>
+<td>358</td>
+<td><strong>essentially photostable</strong> (protic stabilises enol)</td>
+</tr>
+<tr>
+<td>DMSO</td>
+<td>363</td>
+<td>photoisomerisation only (O₂-dependent), no degradation</td>
+</tr>
+</tbody>
+</table>
+<p>(Mturi &amp; Martincigh 2008, <em>J Photochem Photobiol A</em> 200:410.)</p>
+<p><strong>Vehicle ranking for unstabilised avobenzone (worst → best):</strong>
+mineral oil ≈ light paraffins ≈ anhydrous waxes &lt; cyclohexane ≈ DMSO &lt; ethyl acetate &lt; C12-C15 alkyl benzoate ≈ dicaprylyl carbonate &lt; ethanol &lt; methanol/water (protic) ≈ encapsulated (β-cyclodextrin, lipid microparticles).</p>
+<hr>
+<h2 id="6-regulatory-matrix-may-2026">6. Regulatory Matrix (May 2026)</h2>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>FDA US</th>
+<th>EU Annex VI</th>
+<th>Australia TGA</th>
+<th>Japan</th>
+<th>Korea</th>
+<th>Reef bans</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Octinoxate (OMC)</td>
+<td>7.5%</td>
+<td>10%</td>
+<td>10%</td>
+<td>20%</td>
+<td>7.5%</td>
+<td><strong>HI / Palau / Thailand / USVI</strong></td>
+</tr>
+<tr>
+<td>Octisalate</td>
+<td>5%</td>
+<td>5%</td>
+<td>10%</td>
+<td>10%</td>
+<td>5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Homosalate</td>
+<td>15%</td>
+<td>7.34% face only</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Octocrylene</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td><strong>Palau / USVI</strong></td>
+</tr>
+<tr>
+<td>PABA</td>
+<td>15% (rare)</td>
+<td><strong>banned</strong> (2009)</td>
+<td>banned</td>
+<td>banned</td>
+<td>banned</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Padimate O</td>
+<td>8%</td>
+<td>8%</td>
+<td>8%</td>
+<td>10%</td>
+<td>8%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Octyl Triazone (EHT)</td>
+<td>—</td>
+<td>5%</td>
+<td>5%</td>
+<td>5%</td>
+<td>5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Polysilicone-15</td>
+<td>—</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4-MBC</td>
+<td>—</td>
+<td><strong>banned May 2026</strong></td>
+<td>4% (review)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ensulizole (PBSA)</td>
+<td>4%</td>
+<td>8%</td>
+<td>4%</td>
+<td>3%</td>
+<td>4%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cinoxate</td>
+<td>3%</td>
+<td>—</td>
+<td>6%</td>
+<td>5%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Avobenzone</td>
+<td>3%</td>
+<td>5%</td>
+<td>5%</td>
+<td>10%</td>
+<td>5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Meradimate</td>
+<td>5%</td>
+<td>—</td>
+<td>5%</td>
+<td>—</td>
+<td>5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>DHHB</td>
+<td>TEA pending</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bisoctrizole (Tinosorb M)</td>
+<td>TEA pending</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Iscotrizinol</td>
+<td>TEA pending</td>
+<td>10%</td>
+<td>—</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bemotrizinol (Tinosorb S)</td>
+<td><strong>proposed GRASE 6% Dec 2025</strong></td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ecamsule (Mexoryl SX)</td>
+<td>NDA (Anthelios SX 2006 only)</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Drometrizole Trisiloxane (Mexoryl XL)</td>
+<td>TEA pending</td>
+<td>15% (highest cap)</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mexoryl 400 (MCE)</td>
+<td>—</td>
+<td>3% (Reg 2020/1684)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Tinosorb A2B (TBPT)</td>
+<td>—</td>
+<td>10% (nano + non-nano)</td>
+<td>10%</td>
+<td>—</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bisdisulizole</td>
+<td>—</td>
+<td>10%</td>
+<td>10%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Oxybenzone (BP-3)</td>
+<td>6% (insufficient data for GRASE)</td>
+<td><strong>2.2% body / 6% face</strong></td>
+<td>10%</td>
+<td>5%</td>
+<td>5%</td>
+<td><strong>HI / FL Keys / Palau / USVI / Aruba / Bonaire</strong></td>
+</tr>
+<tr>
+<td>Sulisobenzone (BP-4)</td>
+<td>10% (insufficient data)</td>
+<td>5%</td>
+<td>10%</td>
+<td>10%</td>
+<td>5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dioxybenzone (BP-8)</td>
+<td>3% (insufficient data)</td>
+<td>—</td>
+<td>3%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Trolamine Salicylate</td>
+<td>12% (proposed <strong>NOT GRASE</strong>)</td>
+<td>—</td>
+<td>12%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Zinc Oxide</td>
+<td>25% (GRASE)</td>
+<td>25%</td>
+<td>25%</td>
+<td>quasi-drug</td>
+<td>listed</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Titanium Dioxide</td>
+<td>25% (GRASE)</td>
+<td>25%</td>
+<td>25%</td>
+<td>quasi-drug</td>
+<td>listed</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notable trajectories:</strong>
+- The Dec 2025 proposed FDA order on bemotrizinol (6% GRASE) is the first new TEA approval in decades — may break the logjam for DHHB, MBBT, iscotrizinol, drometrizole trisiloxane, ethylhexyl triazone.
+- Trolamine salicylate is proposed by FDA as <strong>not GRASE</strong> in sunscreens (2021 Proposed Order).
+- 4-MBC is banned in EU effective May 2026 for endocrine disruption.
+- Mexoryl 400 (approved EU via Reg 2020/1684, broadly commercialized 2022–2024) is the newest filter — λmax 385 nm closes the previously-uncovered ultra-long UVA1 band.</p>
+<hr>
+<h2 id="7-cross-cutting-findings">7. Cross-cutting Findings</h2>
+<h3 id="71-the-structurephotostabilityregulatory-triangle">7.1 The structure–photostability–regulatory triangle</h3>
+<p>The "next-generation" filters (Tinosorb M/S, DHHB, Mexoryl SX/XL/400, EHT, iscotrizinol, TBPT) share three properties:
+1. <strong>High molecular weight</strong> (&gt;500 Da typically) → no skin penetration → no measurable plasma absorption
+2. <strong>Photostable chromophores</strong> (ESIPT, rigid triazines, particulates) → useful in real products without aggressive stabilisation
+3. <strong>EU/Australia/Japan approved but US TEA-pending</strong> (until Dec 2025 bemotrizinol order)</p>
+<p>The legacy FDA filter set (octinoxate, oxybenzone, octocrylene, avobenzone) is the inverse: small MW (&lt;400 Da), measurable plasma absorption (Matta JAMA 2019/2020 — all exceeded the FDA 0.5 ng/mL threshold), and either photolabile or with secondary safety concerns (BP-3 endocrine + reef; OC → benzophenone; OMC photolability + endocrine).</p>
+<h3 id="72-the-avobenzone-octocrylene-benzophenone-trilemma">7.2 The avobenzone-octocrylene-benzophenone trilemma</h3>
+<p>US sunscreens needing UVA-I protection have, in practice, only one approved filter: <strong>avobenzone</strong>. Avobenzone is highly photolabile and effectively requires a stabiliser. The most widely-used stabiliser is <strong>octocrylene</strong>. Octocrylene undergoes retro-aldol decomposition to benzophenone over shelf life (Downs 2021): fresh products contain 6–186 mg/kg benzophenone, post-aging up to 435 mg/kg. <strong>Benzophenone is an IARC Group 2B possible carcinogen.</strong> This trilemma is a structural consequence of the FDA monograph freeze and disappears once newer filters (DHHB, Tinosorb M/S) are approved.</p>
+<h3 id="73-esipt-is-the-dominant-photostability-mechanism">7.3 ESIPT is the dominant photostability mechanism</h3>
+<p>A surprising structural unifier: most photostable filters share the same photophysical mechanism — <strong>excited-state intramolecular proton transfer (ESIPT)</strong> in &lt;1 picosecond:
+- Benzophenones (BP-3/4/8) — 2-OH ↔ C=O hydrogen bond
+- Tinosorb S / M — methoxyphenyl-triazine and hydroxyphenyl-benzotriazole
+- DHHB — diethylamino-hydroxybenzoyl
+- Mexoryl XL — 2-benzotriazolylphenol</p>
+<p>Avobenzone is the conspicuous exception: it relies on enol↔keto tautomerism <em>across</em> a six-membered intramolecular H-bond, but the <strong>diketo form is photoreactive</strong> rather than dissipating to ground state. This is why avobenzone alone fails and ESIPT-class filters succeed.</p>
+<h3 id="74-inorganic-vs-organic-is-a-false-dichotomy">7.4 Inorganic vs organic is a false dichotomy</h3>
+<p>Marketing splits "physical/mineral" from "chemical" filters. Physically:
+- All filters work primarily by <strong>absorption</strong>. Cole, Shyr &amp; Ou-Yang 2016 showed only 4–5% UV reflection from ZnO/TiO₂ — absorption dominates 10:1.
+- Inorganics absorb via semiconductor electronic-band-gap transitions; organics via π→π<em> / n→π</em> HOMO-LUMO transitions. Both are absorption.
+- The actually meaningful distinctions are: skin penetration (inorganic ≪ organic small-MW), photocatalysis (inorganic catalyses adjacent organic decomposition; organic does not), and aesthetic feel (whitening — driven by inorganic refractive index, n=2.7 for rutile vs ~1.5 for organics in oil).</p>
+<h3 id="75-spectral-coverage-gaps-in-practice">7.5 Spectral coverage gaps in practice</h3>
+<p>No single filter covers 280–400 nm uniformly. Modern SPF50+ formulae stack 4–7 filters spread across:
+- <strong>UVB workhorse</strong>: octinoxate / octocrylene / EHT / homosalate
+- <strong>UVA-II bridge</strong>: BP-3 / ecamsule / bemotrizinol
+- <strong>UVA-I anchor</strong>: avobenzone / DHHB / Mexoryl 400 / MBBT
+- <strong>Particulate / inorganic</strong>: ZnO and/or TiO₂ + TBPT</p>
+<p>The deep UVA-I band (370–400 nm) — implicated in photoaging and pigmentary disorders — was poorly covered until Mexoryl 400 (λmax 385 nm) was approved in EU via Reg 2020/1684 (commercial rollout 2022–2024). ZnO and TBPT (with its scattering tail) help but partially. This band remains the weakest spot in current US-approved formulae specifically because Mexoryl 400 has no FDA path.</p>
+<hr>
+<h2 id="8-methodology-provenance">8. Methodology / Provenance</h2>
+<h3 id="research-process">Research process</h3>
+<ul>
+<li>Six parallel deep-research subagents (run 2026-05-07) using WebSearch + WebFetch on PubMed, Google Scholar, ScienceDirect, ACS, Wiley, RSC, SCCS opinion documents, FDA Federal Register, JAMA, manufacturer technical bulletins</li>
+<li>Each agent followed the workspace <code>research-agent-instructions.md</code> claim format with C1–C5 confidence tiers</li>
+<li>Each numerical claim cites a primary peer-reviewed source with DOI</li>
+<li>Data conflicts flagged (e.g. ε for ecamsule cited as 19,000–47,000 across studies) rather than averaged</li>
+</ul>
+<h3 id="file-index">File index</h3>
+<pre><code>sunscreen-filters/
+├── index.md                                      # project dashboard
+├── MASTER-SYNTHESIS.md                           # this file
+└── research/
+    ├── uvb-organic/        (10 claim files + summary + sources)
+    │   c001 Octinoxate · c002 Octisalate · c003 Homosalate · c004 Octocrylene
+    │   c005 Cinoxate · c006 PABA/Padimate O · c007 Ensulizole · c008 Polysilicone-15
+    │   c009 EHT · c010 4-MBC
+    ├── uva-organic/        (5 claim files + summary + sources)
+    │   c001 Avobenzone · c002 Meradimate · c003 DHHB · c004 Bisoctrizole · c005 Iscotrizinol
+    ├── broad-spectrum/     (6 claim files + summary + sources)
+    │   c001 Bemotrizinol · c002 Ecamsule · c003 Drometrizole Trisiloxane
+    │   c004 Mexoryl 400 · c005 Tinosorb A2B · c006 Bisdisulizole
+    ├── benzophenones/      (6 claim files + summary + sources)
+    │   c001 Oxybenzone · c002 Sulisobenzone · c003 Dioxybenzone
+    │   c004 Trolamine salicylate · c005 BP-1 · c006 Mexenone
+    ├── inorganic/          (2 claim files + summary + sources)
+    │   c001 Zinc Oxide · c002 Titanium Dioxide
+    └── photostab/          (8 claim files + summary + sources)
+        c001 OMC+AVB incompatibility · c002 OC stabilisation · c003 Polycrylene
+        c004 DEHN · c005 Tinosorb S as stabiliser · c006 Tinosorb M
+        c007 DESM/Oxynex ST · c008 Formulation factors
+</code></pre>
+<h3 id="aggregated-data-gaps-c5-couldnt-find-items-across-all-areas">Aggregated data gaps (C5 — "couldn't find" items across all areas)</h3>
+<p>Compiled from per-area C5 lists:
+1. <strong>Mexoryl 400</strong> primary peer-reviewed photostability data (only sponsor data)
+2. <strong>TBPT (Tinosorb A2B)</strong> singlet-oxygen quantum yield numerics
+3. <strong>Iscotrizinol</strong> Φ_T and Φ_Δ values (no primary measurement located)
+4. <strong>Bisoctrizole</strong> primary peer-reviewed ε (most data manufacturer-derived)
+5. <strong>Ecamsule</strong> ε at 345 nm — disagreement spans 19,000–47,000 across studies
+6. <strong>Cinoxate</strong> modern photodegradation kinetics
+7. <strong>Polysilicone-15</strong> Φd and Φ(E/Z) measurements
+8. <strong>Mexenone (BP-10)</strong> modern ε, Φ_loss, photoproducts
+9. <strong>Avobenzone</strong> individual photoproduct-channel quantum yields
+10. <strong>Coral toxicity assays</strong> of homologous benzophenones (BP-4, BP-8) analogous to the BP-3 Downs 2016 study
+11. <strong>All filters</strong> — long-term chronic dermal exposure studies for nano-coated forms
+12. <strong>Damaged skin penetration</strong> — explicitly flagged unknown by SCCS for inorganics
+13. <strong>Triplet energies and rate constants</strong> for several photostabiliser pairs (Polycrylene, DESM, MBBT) — inferred from chromophore analogy rather than directly measured</p>
+<h3 id="confidence-tier-breakdown-across-the-corpus">Confidence tier breakdown across the corpus</h3>
+<ul>
+<li><strong>Identity / regulatory status</strong>: predominantly C1 (primary regulatory documents, EU Annex VI, FDA monograph)</li>
+<li><strong>λmax values</strong>: C1 in solvent-specified literature; mixed when comparing across studies (different solvents → different values)</li>
+<li><strong>ε / E(1%, 1cm)</strong>: C1–C2; substantial disagreement for some filters (ecamsule)</li>
+<li><strong>Photodegradation kinetics</strong>: C1 for legacy filters with extensive study; C2 (manufacturer data) for newer filters</li>
+<li><strong>Photostabilisation quantitative claims</strong>: C1 for mechanism (Sayre 2005, Schwack 1995, Chatelain 2001, Lhiaubet-Vallet 2010, Mturi 2008, Downs 2021); C2 for absolute % residuals (manufacturer-affiliated)</li>
+<li><strong>Inorganic photocatalysis ROS quantitation</strong>: C1 (Hirakawa &amp; Nosaka 2002, Wakefield 2004); C4 for some Egerton extinction values (graph-digitised)</li>
+</ul>
+<hr>
+<p><em>End of master synthesis. See per-area <code>_summary.md</code> for category-level overviews and <code>claims/cNNN-*.md</code> for per-filter detail with full citation lists.</em></p>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>MASTER-SYNTHESIS.md</code> · <a href="MASTER-SYNTHESIS.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

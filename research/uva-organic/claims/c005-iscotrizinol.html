@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C005 — Iscotrizinol (Diethylhexyl Butamido Triazone / Uvasorb HEB) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">C005 — Iscotrizinol (Diethylhexyl Butamido Triazone / Uvasorb HEB)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c005-iscotrizinol.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c005-iscotrizinol.md">View raw markdown</a> · Path: <code>research/uva-organic/claims/c005-iscotrizinol.md</code></div>
+<h1 id="c005-iscotrizinol-diethylhexyl-butamido-triazone-uvasorb-heb">C005 — Iscotrizinol (Diethylhexyl Butamido Triazone / Uvasorb HEB)</h1>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INCI</strong></td>
+<td>Diethylhexyl Butamido Triazone</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>USAN</strong></td>
+<td>Iscotrizinol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>IUPAC</strong></td>
+<td>Bis(2-ethylhexyl) 4,4'-[(6-{[4-(<em>tert</em>-butylcarbamoyl)phenyl]amino}-1,3,5-triazine-2,4-diyl)bis(azanediyl)]dibenzoate</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Trade name</strong></td>
+<td><strong>Uvasorb HEB</strong> (3V Sigma)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>CAS</strong></td>
+<td><strong>154702-15-5</strong></td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular formula</strong></td>
+<td>C₄₄H₅₉N₇O₅</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Molecular weight</strong></td>
+<td>765.98 g/mol</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>Appearance</strong></td>
+<td>White-to-cream powder; oil-soluble</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Iscotrizinol is a <strong>UVB filter with some UVA-II overlap</strong> — it is included in this UVA-organic claim set per the requested research scope, but technically its strongest absorption is UVB (peak 310 nm). It does not contribute meaningfully to UVA-I (340–400 nm) protection.</p>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max concentration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA (FDA)</strong></td>
+<td><strong>Not approved</strong> as OTC sunscreen active. TEA submitted; FDA 2014/2017 determination requested more safety data; <strong>GRASE pending</strong></td>
+<td>(TEA pending)</td>
+</tr>
+<tr>
+<td><strong>EU (Annex VI, entry 26)</strong></td>
+<td>Approved</td>
+<td><strong>10%</strong></td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>South Korea, ASEAN, Mercosur, Brazil</strong></td>
+<td>Approved</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<p>Wikipedia notes "approved by US FDA, SCCS, TGA" but this is misleading: <strong>FDA has not approved iscotrizinol as a GRASE OTC sunscreen active</strong>. The TEA remains pending. Distinguishing between EU/AU approval and US OTC approval is important. C2.</p>
+<h3 id="typical-use-concentration">Typical use concentration</h3>
+<ul>
+<li>1–10% in EU/AU/JP/KR products; 2–6% common</li>
+<li>Often combined with avobenzone, DHHB, MBBT for broad-spectrum coverage</li>
+<li>Selected when high SPF and excellent photostability are required at moderate cost</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<p>Iscotrizinol is a <strong>strong UVB absorber</strong> with high specific extinction. The chromophore is a triazine-bridged tris-aryl system (similar topology to ethylhexyl triazone and bemotrizinol).</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>λmax</strong></td>
+<td><strong>310 nm</strong> (UVB)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Absorption range</td>
+<td>~280–340 nm (UVB + edge of UVA-II)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td><strong>ε at λmax</strong></td>
+<td><strong>~110,000 M⁻¹cm⁻¹</strong> (very high; "highest specific extinction among approved UVB filters per molecule" — 3V Sigma technical claim)</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>E(1%, 1cm) at 310 nm</td>
+<td>computed: 110,000·10/766 ≈ <strong>1435</strong> (per 3V Sigma claim of "high specific extinction")</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>FWHM ~30 nm (narrow, UVB only)</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<p>The high ε per molecule combined with very high MW (~766 g/mol) means the <strong>ε per gram is moderate</strong> (per gram extinction is what dictates SPF efficiency in formulation real estate). However, in absolute SPF contribution, iscotrizinol delivers strong UVB protection at low concentrations.</p>
+<p>There is <strong>negligible absorption above 360 nm</strong> — iscotrizinol does not protect UVA-I.</p>
+<hr>
+<h2 id="section-3-photodegradation-kinetics">Section 3: Photodegradation Kinetics</h2>
+<p>Iscotrizinol is <strong>exceptionally photostable</strong>. Often cited as one of the most photostable UV filters in commercial use.</p>
+<h3 id="photoprotection-mechanism">Photoprotection mechanism</h3>
+<p>Triazine-anilinobenzoate scaffold with multiple amide N-H bonds creates a network of intramolecular H-bonds and rapid non-radiative deactivation pathways. Likely mechanisms include:
+- Ultrafast IC via amide N-H torsional / inversion modes
+- Excited-state proton-transfer between amide N-H and triazine N
+- High vibrational coupling in the rigid fused chromophore lattice</p>
+<p>Empirically: behavior consistent with high Φ_IC, very low Φ_T, very low Φ_chemistry.</p>
+<h3 id="quantitative-data">Quantitative data</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Conditions</th>
+<th>Source / Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>% SPF retained after 25 hours sunlight equivalent</td>
+<td><strong>~90% (only ~10% loss)</strong></td>
+<td>Cited by manufacturer / multiple secondary sources</td>
+<td>C2 (manufacturer claim, repeated in independent reviews)</td>
+</tr>
+<tr>
+<td>% remaining after 25 MED</td>
+<td><strong>&gt;95%</strong></td>
+<td>typical sunscreen formulation</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Triplet yield Φ_T</td>
+<td>Very low (&lt;0.05)</td>
+<td>C3</td>
+<td></td>
+</tr>
+<tr>
+<td>Singlet oxygen Φ_Δ</td>
+<td>Negligible</td>
+<td>C3</td>
+<td></td>
+</tr>
+<tr>
+<td>Photoproducts</td>
+<td>None identified at cosmetic-relevant doses</td>
+<td>C2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The "loses only 10% over 25 hours" figure is repeated across product literature (3V Sigma Uvasorb HEB brochure, INCIDecoder, derm-approved.com, Typology, MDPI Cosmetics review). The original measurement appears to derive from manufacturer accelerated stability testing — independent peer-reviewed verification of this <em>exact</em> number is sparse, but qualitative photostability rankings consistently place iscotrizinol in the top tier alongside MBBT, bemotrizinol, and ethylhexyl triazone.</p>
+<h3 id="effect-of-vehicle-formulation">Effect of vehicle / formulation</h3>
+<ul>
+<li>Highly stable in oils, esters, silicone vehicles</li>
+<li>Compatible with all common emulsifiers</li>
+<li>Does not require encapsulation</li>
+</ul>
+<h3 id="photoproducts">Photoproducts</h3>
+<p>No photoproducts of practical concern at cosmetic UV doses. Under extreme deep-UV irradiation, trace amide bond cleavage products would be expected but are not characterized in commonly cited literature.</p>
+<hr>
+<h2 id="section-4-photostabilization">Section 4: Photostabilization</h2>
+<h3 id="iscotrizinol-stabilizes-other-filters">Iscotrizinol stabilizes other filters</h3>
+<ul>
+<li>Acts as a UVB "screening" filter, reducing UV reaching avobenzone, indirectly stabilizing the latter</li>
+<li>No evidence of triplet-triplet energy transfer to/from avobenzone</li>
+<li>Compatible across the formulator palette</li>
+</ul>
+<h3 id="synergistic-combinations">Synergistic combinations</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iscotrizinol + avobenzone</td>
+<td>Compatible; enhances overall photostability via UV competition</td>
+</tr>
+<tr>
+<td>Iscotrizinol + DHHB</td>
+<td>Highly complementary (UVB peak 310 + UVA peak 354)</td>
+</tr>
+<tr>
+<td>Iscotrizinol + MBBT (Tinosorb M)</td>
+<td>Highly complementary; full broad-spectrum</td>
+</tr>
+<tr>
+<td>Iscotrizinol + bemotrizinol (Tinosorb S)</td>
+<td>Complementary peaks (310 vs 310/340); can both be present</td>
+</tr>
+<tr>
+<td>Iscotrizinol + octocrylene</td>
+<td>Compatible</td>
+</tr>
+<tr>
+<td>Iscotrizinol + octinoxate</td>
+<td>Compatible (no [2+2] issues — iscotrizinol has no cinnamate)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="negative-interactions">Negative interactions</h3>
+<ul>
+<li>None reported in the peer-reviewed literature</li>
+</ul>
+<hr>
+<h2 id="confidence-summary">Confidence summary</h2>
+<ul>
+<li>§1 Identity: C1</li>
+<li>§2 Spectrum: λmax 310 nm C1; ε C2 (manufacturer-derived, widely repeated); E(1%,1cm) computed C3</li>
+<li>§3 Photodegradation: 10%/25h figure C2 (manufacturer + secondary citations; primary Φ values <strong>C5 — exact quantum yields not in accessed literature</strong>)</li>
+<li>§4 Stabilization: C2</li>
+</ul>
+<h2 id="key-references">Key references</h2>
+<ol>
+<li>3V Sigma. <em>Uvasorb HEB Technical Information</em> — ulprospector / 3V Sigma product literature</li>
+<li>EU Regulation (EC) 1223/2009 Annex VI entry 26</li>
+<li>Wikipedia: "Iscotrizinol" (cross-check identity)</li>
+<li>PubChem CID 9810816 — chemical identity</li>
+<li><em>Cosmetics</em> MDPI <strong>10</strong>(4):101 (2023) — UV filter review</li>
+<li>SCCS opinions — health.ec.europa.eu</li>
+</ol>
+<h2 id="c5-unknown-items-flagged">C5 / Unknown items flagged</h2>
+<ul>
+<li>Primary peer-reviewed Φ_T and Φ_Δ for iscotrizinol — <strong>C5</strong> (not located in available open literature; manufacturer claims used)</li>
+<li>Specific solvent-by-solvent λmax variation — <strong>C5</strong> (only ethanol value commonly reported)</li>
+<li>Mechanism of photoprotection (ultrafast spectroscopy on iscotrizinol specifically) — <strong>C5</strong> (analogous mechanisms inferred from related triazine filters)</li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/uva-organic/claims/c005-iscotrizinol.md</code> · <a href="c005-iscotrizinol.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

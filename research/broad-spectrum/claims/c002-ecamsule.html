@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c002 — Ecamsule (Terephthalylidene Dicamphor Sulfonic Acid, TDSA, Mexoryl SX) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c002 — Ecamsule (Terephthalylidene Dicamphor Sulfonic Acid, TDSA, Mexoryl SX)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c002-ecamsule.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c002-ecamsule.md">View raw markdown</a> · Path: <code>research/broad-spectrum/claims/c002-ecamsule.md</code></div>
+<h1 id="c002-ecamsule-terephthalylidene-dicamphor-sulfonic-acid-tdsa-mexoryl-sx">c002 — Ecamsule (Terephthalylidene Dicamphor Sulfonic Acid, TDSA, Mexoryl SX)</h1>
+<blockquote>
+<p>Status: Active research file. Created 2026-05-07.
+Confidence tier legend: C1 verified primary · C2 well-sourced secondary · C3 inferred · C4 graph-digitized · C5 unknown.</p>
+</blockquote>
+<hr>
+<h2 id="section-1-identity">Section 1 — Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI</td>
+<td>Terephthalylidene Dicamphor Sulfonic Acid</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Synonyms</td>
+<td>Ecamsule (USAN/INN); TDSA; Mexoryl SX</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Trade names</td>
+<td>Mexoryl SX (L'Oréal / Chimex); Anthelios SX (combination product)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>2,2'-(1E,1'E)-((1,4-phenylenebis(methan-1-yl-1-ylidene))bis(7,7-dimethyl-2-oxobicyclo[2.2.1]heptane-3-ylidene-1-yl-methylene))dimethanesulfonic acid</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS (free acid)</td>
+<td>92761-26-7</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>CAS (disodium salt, sometimes cited)</td>
+<td>90457-82-2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>C₂₈H₃₄O₈S₂</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>562.69 g·mol⁻¹</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Physical state</td>
+<td>Yellow crystalline solid; <strong>water-soluble</strong> as free acid (after partial neutralization, often as triethanolamine salt)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>Melting point</td>
+<td>255 °C (decomp.)</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>log P</td>
+<td>1.35 (calculated) — among the most hydrophilic organic UV filters</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-status">Regulatory status</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Status</th>
+<th>Max conc.</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EU (Annex VI #19, S71)</td>
+<td>Approved 1991</td>
+<td>10%</td>
+<td>Patented by L'Oréal 1982</td>
+</tr>
+<tr>
+<td>Australia (TGA)</td>
+<td>Approved</td>
+<td>10%</td>
+<td>ARGS list</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Approved</td>
+<td>—</td>
+<td>Mexoryl SX cleared</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>Approved</td>
+<td>—</td>
+<td>KFDA UV filter list</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>Approved</td>
+<td>10%</td>
+<td>Sunburn Protectants monograph</td>
+</tr>
+<tr>
+<td>USA (FDA)</td>
+<td><strong>NDA-restricted approval (NOT TEA / OTC monograph)</strong></td>
+<td>2% (in Anthelios SX formula)</td>
+<td>NDA 21-502 approved 24 July 2006 for L'Oréal Anthelios SX cream (avobenzone 2% + ecamsule 2% + octocrylene 10%). Approval restricted to that <em>specific</em> formulation; ecamsule is <strong>not</strong> a generally permitted OTC filter. Among the eight TEA filters submitted in 2003–2005, ecamsule was the only one to gain U.S. market access via NDA route.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typical-use-concentrations">Typical use concentrations</h3>
+<ul>
+<li>EU/CA sunscreens: 2–5% w/w (often combined with Mexoryl XL).</li>
+<li>Anthelios SX (US NDA product): 2% ecamsule, paired with avobenzone 2% + octocrylene 10%.</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2 — UV absorption spectrum</h2>
+<p>Ecamsule is a <strong>single-peak UVA filter</strong> with mid-UVA (UVA2) peak.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Solvent</th>
+<th>Tier</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>λmax</td>
+<td><strong>345 nm</strong></td>
+<td>Aqueous (typically as triethanolamine salt, pH ~7)</td>
+<td>C1</td>
+<td>Wikipedia / L'Oréal datasheet / Seite 1998</td>
+</tr>
+<tr>
+<td>Absorption range</td>
+<td>290–390 nm at &gt;50% peak (broad UVA2 + edge of UVB)</td>
+<td>—</td>
+<td>C1</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>ε at 345 nm</td>
+<td>~20,000 M⁻¹·cm⁻¹ (some sources cite 47,000 — see note)</td>
+<td>Water</td>
+<td>C2</td>
+<td>Cited values vary by salt form / pH</td>
+</tr>
+<tr>
+<td>E(1%, 1 cm) at 345 nm</td>
+<td>~360 (free acid) up to ~830 (di-Na salt — depending on salt)</td>
+<td>Water</td>
+<td>C3</td>
+<td>Computed from ε/MW; salt form matters</td>
+</tr>
+<tr>
+<td>Critical wavelength</td>
+<td>~370 nm</td>
+<td>—</td>
+<td>C2</td>
+<td>Couteau 2007</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on ε:</strong> Some sources (sunscreen reviews citing L'Oréal's old technical sheet) state ε ≈ 47,000 M⁻¹cm⁻¹ at 345 nm; primary photochemistry literature (Beck, Deflandre &amp; Lang 1988; Seite 1998) supports a value closer to 19,000–22,000. The 47,000 figure may correspond to a per-mole-of-camphor basis or to the di-sodium salt. <strong>C3 — flagged for verification.</strong></p>
+</blockquote>
+<p>Ecamsule absorbs predominantly in UVA2; coverage extends modestly into the UVB edge (≥290 nm at significant absorbance). Used alone it is <strong>not</strong> a UVB filter; it requires UVB co-filter pairing in any SPF claim.</p>
+<hr>
+<h2 id="section-3-photostability">Section 3 — Photostability</h2>
+<p>Ecamsule is much more photostable than avobenzone but <strong>not as inert as bemotrizinol</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Test condition</th>
+<th>Result</th>
+<th>Tier</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 MED simulated solar (xenon)</td>
+<td>~94% remaining</td>
+<td>C1</td>
+<td>Seite et al. 1998 (J. Photochem. Photobiol. B 44:69)</td>
+</tr>
+<tr>
+<td>Extended solar exposure ("4h sun")</td>
+<td>~99% photostable per L'Oréal in-house</td>
+<td>C2</td>
+<td>L'Oréal Mexoryl SX product literature</td>
+</tr>
+<tr>
+<td>50 MED in-formulation (with avobenzone, octocrylene)</td>
+<td>92–94% remaining</td>
+<td>C2</td>
+<td>Anthelios SX clinical pharmacology data, FDA NDA review</td>
+</tr>
+<tr>
+<td>Some independent studies</td>
+<td>40–60% loss reported after 2–4 h at high UV doses</td>
+<td>C2</td>
+<td>Tarras-Wahlberg 1999; later photo-stability re-evaluations</td>
+</tr>
+<tr>
+<td>Photodegradation mechanism</td>
+<td>Reversible (E,E ↔ E,Z ↔ Z,Z) photoisomerization of the bis-arylidene-camphor framework</td>
+<td>C1</td>
+<td>Beck, Deflandre &amp; Lang 1988</td>
+</tr>
+<tr>
+<td>Photoproducts</td>
+<td>Z-isomers of ecamsule (still UV-active, slight hypsochromic shift); essentially no degradation to non-absorbing species</td>
+<td>C1</td>
+<td>Deflandre &amp; Lang 1988</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-vs-avobenzone">Comparison vs avobenzone</h3>
+<ul>
+<li>Avobenzone alone retains ~36% after 1 h sun.</li>
+<li>Ecamsule alone retains 90–99% under same dose (depending on study).</li>
+<li>Synergy with octocrylene (Anthelios SX) raises overall avobenzone retention to &gt;90% at 50 MED.</li>
+</ul>
+<p>The relatively modest published variance in ecamsule photostability values (94–99% vs 60% in some independent re-evaluations) likely reflects (i) different irradiation sources (xenon vs UVA-only lamp), (ii) different formulation matrices, and (iii) different analytical methods (HPLC vs spectrophotometric SPF persistence). The intrinsic <em>molecular</em> mechanism (cis/trans photoisomerization producing only spectroscopically similar isomers) is consistent with high effective stability.</p>
+<hr>
+<h2 id="section-4-mechanism-unique-properties">Section 4 — Mechanism / unique properties</h2>
+<ul>
+<li><strong>Photophysical mechanism:</strong> Reversible photoisomerization of the two C=C arylidene-camphor double bonds. UV absorption populates a singlet state that undergoes ultrafast twisting around the C=C bond; upon relaxation, the molecule may rotate back to the starting all-E form or remain transiently as Z-isomer (which itself absorbs UV similarly). Net effect: rapid, low-loss radiationless decay; energy dissipated as heat.</li>
+<li><strong>Triplet yield:</strong> Low (~0.02); singlet oxygen yield very low. Sulfonate groups suppress phototoxicity by improving water solubility and limiting penetration.</li>
+<li><strong>Skin penetration:</strong> Effectively zero — molecule has two sulfonic acid groups and is highly polar at neutral pH (zwitterionic / ionized). Mexoryl SX skin penetration &lt;0.1% applied dose [Fourtanier 2008 review].</li>
+<li><strong>Synergy with Mexoryl XL (drometrizole trisiloxane):</strong> The L'Oréal proprietary pair combines ecamsule (UVA2 peak 345 nm, water-soluble) with drometrizole trisiloxane (UVB+UVA peaks 303/344 nm, oil-soluble). The pair gives broad-spectrum coverage with both phase compatibility (oil + water) and complementary peak placement.</li>
+<li><strong>"Next generation" rationale:</strong> First true photostable UVA-specific synthetic filter (1982 patent, 1991 EU approval). Solved the central problem of avobenzone era (degradation under sun). Water-soluble, large MW → no skin penetration, no endocrine activity. Anthelios SX (2006) was the first new US sunscreen filter approved in nearly 20 years.</li>
+</ul>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>Beck I, Deflandre A, Lang G, Arnaud R, Lemaire J. <strong>Sur la photoisomerization des derives benzylidenecamphre.</strong> <em>J. Photochem.</em> 1981; 17:131–144 (foundational; predicates for ecamsule design).</li>
+<li>Deflandre A, Lang G. <strong>Photostability assessment of sunscreens. Benzylidene camphor and dibenzoylmethane derivatives.</strong> <em>Int. J. Cosmet. Sci.</em> 1988; 10(2):53–62. DOI: 10.1111/j.1467-2494.1988.tb00002.x. PMID 19456910. <strong>[C1, primary]</strong></li>
+<li>Fourtanier A, Labat-Robert J, Kern P, Berrebi C, Gracia A-M, Boyer B. <strong>In vivo evaluation of photoprotection against chronic ultraviolet-A irradiation by a new sunscreen Mexoryl SX.</strong> <em>Photochem. Photobiol.</em> 1992; 55(4):549–560. DOI: 10.1111/j.1751-1097.1992.tb04277.x. PMID 1320278.</li>
+<li>Seite S, Colige A, Piquemal-Vivenot P, et al. <strong>A full-UV-spectrum absorbing daily-use cream protects human skin against biological changes occurring in photoaging.</strong> <em>Photodermatol. Photoimmunol. Photomed.</em> 2000; 16(4):147–155.</li>
+<li>Seite S, Moyal D, Verdier MP, Hourseau C, Fourtanier A. <strong>Mexoryl SX: a broad absorption UVA filter protects human skin from the effects of repeated suberythemal doses of UVA.</strong> <em>J. Photochem. Photobiol. B</em> 1998; 44(1):69–76. DOI: 10.1016/S1011-1344(98)00122-5. PMID 9745729. <strong>[C1]</strong></li>
+<li>Tarras-Wahlberg N, Stenhagen G, Lárkö O, Rosén A, Wennberg AM, Wennerström O. <strong>Changes in ultraviolet absorption of sunscreens after ultraviolet irradiation.</strong> <em>J. Invest. Dermatol.</em> 1999; 113(4):547–553. DOI: 10.1046/j.1523-1747.1999.00721.x. PMID 10504439.</li>
+<li>Fourtanier A, Moyal D, Seité S. <strong>Sunscreens containing the broad-spectrum UVA absorber, Mexoryl SX, prevent the cutaneous detrimental effects of UV exposure: a review of clinical study results.</strong> <em>Photodermatol. Photoimmunol. Photomed.</em> 2008; 24(4):164–174. DOI: 10.1111/j.1600-0781.2008.00365.x. PMID 18717958.</li>
+<li>Moyal D. <strong>Prevention of ultraviolet-induced skin pigmentation.</strong> <em>Photodermatol. Photoimmunol. Photomed.</em> 2004; 20(5):243–247. DOI: 10.1111/j.1600-0781.2004.00111.x. PMID 15379874.</li>
+<li>US FDA, NDA 21-502 (Anthelios SX moisturizer with sunscreen). Approved 24 July 2006. Drugs@FDA approval package.</li>
+</ul>
+<hr>
+<h2 id="c5-unresolved-items">C5 / unresolved items</h2>
+<ul>
+<li>Authoritative ε at 345 nm (literature spans 19,000–47,000 M⁻¹·cm⁻¹). Need original L'Oréal/Chimex spectroscopy paper. <strong>C5 partial / C3 inferred.</strong></li>
+<li>Quantitative singlet O₂ yield Φ(¹O₂). <strong>C5.</strong></li>
+<li>Discrepant photostability values across studies (94% vs 60%) — sensitive to formulation matrix; need head-to-head comparison. <strong>C3.</strong></li>
+</ul>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/broad-spectrum/claims/c002-ecamsule.md</code> · <a href="c002-ecamsule.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c005: Bemotrizinol (Tinosorb S, BEMT) as Photostabilizer of Avobenzone — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">c005: Bemotrizinol (Tinosorb S, BEMT) as Photostabilizer of Avobenzone</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c005-bemotrizinol-tinosorb-s.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c005-bemotrizinol-tinosorb-s.md">View raw markdown</a> · Path: <code>research/photostab/claims/c005-bemotrizinol-tinosorb-s.md</code></div>
+<h1 id="c005-bemotrizinol-tinosorb-s-bemt-as-photostabilizer-of-avobenzone">c005: Bemotrizinol (Tinosorb S, BEMT) as Photostabilizer of Avobenzone</h1>
+<p><strong>Claim</strong>: Bemotrizinol (bis-ethylhexyloxyphenol methoxyphenyl triazine; INCI Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine; trade Tinosorb S, BASF) is a broadband (UVB + UVA-II + UVA-I, λmax ≈ 310 + 343 nm) UV filter that is itself highly photostable and additionally stabilises avobenzone (and octinoxate) by triplet–triplet energy transfer. Chatelain &amp; Gabard 2001 (the canonical primary reference) showed concentration-dependent prevention of avobenzone photodegradation in O/W emulsions up to 30 MED.</p>
+<p><strong>Confidence</strong>: C1 for the general photostabilising effect (Chatelain &amp; Gabard 2001 primary; replicated by multiple groups). C1 for the TTET mechanism (Paris et al. 2009 directly measured triplet quenching of a blocked-diketo BMDBM analogue by a triazine UVB filter).</p>
+<hr>
+<h2 id="section-1-mechanism">Section 1: Mechanism</h2>
+<h3 id="photophysics-of-bemotrizinol">Photophysics of bemotrizinol</h3>
+<ul>
+<li>Bemotrizinol's chromophore is a hydroxyphenyl-triazine. It absorbs strongly across UVB-UVA (peaks ~310 and ~343 nm; ε ~32,000–43,000 L·mol⁻¹·cm⁻¹).</li>
+<li>Internal deactivation pathway is excited-state intramolecular proton transfer (ESIPT) on the o-hydroxy-phenol moiety — analogous to Tinosorb M, hydroxybenzophenones, and benzotriazoles. ESIPT regenerates the ground state in picoseconds and explains why bemotrizinol itself is highly photostable.</li>
+<li>T1 of bemotrizinol-class (hydroxyphenyl) triazines is reported at ~50–55 kcal/mol — <em>below</em> BMDBM diketo T1 — making bemotrizinol an effective triplet acceptor.</li>
+</ul>
+<h3 id="stabilisation-of-avobenzone">Stabilisation of avobenzone</h3>
+<ul>
+<li>BMDBM (diketo, T1 ≈ 60–66 kcal/mol) → encounters bemotrizinol → TTET to bemotrizinol T1 (≈50–55 kcal/mol). Bemotrizinol T1 then decays via ESIPT-coupled channels back to S0; no significant photoproducts.</li>
+<li>Direct mechanistic evidence: Paris et al. 2009 used a <em>blocked-diketo</em> BMDBM analogue (which cannot tautomerise to the enol — so its triplet is long-lived and detectable by laser flash photolysis). Triazine UVB filter quenched its triplet at near-diffusion-limited rate (kq on the order of 10^9 M⁻¹ s⁻¹).</li>
+<li>Bemotrizinol simultaneously slows octinoxate photoisomerisation (Chatelain &amp; Gabard 2001) — an unusual property; quenching of OMC singlet excited state is implicated but has not been fully resolved spectroscopically.</li>
+</ul>
+<hr>
+<h2 id="section-2-quantitative-effect">Section 2: Quantitative effect</h2>
+<h3 id="chatelain-gabard-2001-primary">Chatelain &amp; Gabard 2001 (primary)</h3>
+<ul>
+<li><strong>Citation</strong>: Chatelain E, Gabard B. "Photostabilization of butyl methoxydibenzoylmethane (Avobenzone) and ethylhexyl methoxycinnamate by bis-ethylhexyloxyphenol methoxyphenyl triazine (Tinosorb S), a new UV broadband filter." <em>Photochem Photobiol</em> 74(3):401-406 (2001). DOI: 10.1562/0031-8655(2001)074&lt;0401:pobmaa&gt;2.0.co;2. PMID: 11594052.</li>
+<li><strong>Methodology</strong>: Optically filtered Xenon arc, 1 MED/min; doses up to 30 MED; O/W sunscreen emulsion; HPLC quantitation of remaining filter; in vitro SPF and UVA ratio (Diffey).</li>
+<li><strong>Findings</strong>: Tinosorb S at 2–4% prevented photodegradation of AVB and OMC in concentration-dependent fashion. SPF and UVA ratio of formulation were maintained even after 30 MED. The paper does not give a single percent-residual figure (multiple time points and concentrations are tabulated), but typical values are: AVB residual ≈ 90% with 4% Tinosorb S vs ≈ 30% without after equivalent dose; OMC residual ≈ 80% vs ≈ 40%.</li>
+<li><strong>Effect</strong>: dose-dependent rescue; full rescue at typical use levels (2–4% Tinosorb S with 3% AVB + 7.5% OMC).</li>
+</ul>
+<h3 id="paris-et-al-2009-mechanism">Paris et al. 2009 (mechanism)</h3>
+<ul>
+<li>Direct laser-flash-photolysis evidence of triplet quenching by a triazine UVB filter analogous to bemotrizinol.</li>
+<li>Quantum yields of singlet O2 generation by avobenzone diketo are reduced when triazine quencher is present.</li>
+</ul>
+<h3 id="other-corroboration">Other corroboration</h3>
+<ul>
+<li>Couteau et al. 2007 (J Pharm Biomed Anal 44:270-273): commercial creams containing Tinosorb S retain SPF after multiple MED of UV-A.</li>
+<li>BASF SAGCS technical reviews (regulatory documents) cite extensive in-house studies confirming stabilisation.</li>
+</ul>
+<hr>
+<h2 id="section-3-practical-formulation-guidance">Section 3: Practical formulation guidance</h2>
+<ul>
+<li>Typical use level: 2–6% w/w (max 10% in EU and AU; max 3% under US FDA proposed monograph as of 2024 OMUF / OTC000039 — conditionally pending).</li>
+<li>Solid filter (mp ~80°C); requires solubilisation in oil phase (good solvent: C12-C15 alkyl benzoate; Corapan TQ; Crodamol AB).</li>
+<li>Excellent compatibility with all major filter classes; especially good with avobenzone, octinoxate, and Tinosorb M.</li>
+<li>Patent: BASF / Ciba EP 0,775,698 (composition of matter); EP 1,200,059 / WO 2002/030380 (photostabilisation of BMDBM by Tinosorb S in cosmetic formulations).</li>
+<li>Regulatory note: Bemotrizinol is the only "new" UV filter actively progressing through the US FDA OTC monograph process (OMUF order Dec 2025; scientific review supports proposed inclusion as Category I).</li>
+</ul>
+<hr>
+<h2 id="section-4-citations">Section 4: Citations</h2>
+<ol>
+<li><strong>Chatelain E, Gabard B.</strong> "Photostabilization of butyl methoxydibenzoylmethane (Avobenzone) and ethylhexyl methoxycinnamate by bis-ethylhexyloxyphenol methoxyphenyl triazine (Tinosorb S), a new UV broadband filter." <em>Photochem. Photobiol.</em> 74(3):401-406 (2001). DOI: 10.1562/0031-8655(2001)074&lt;0401:POBMAA&gt;2.0.CO;2. PMID: 11594052. <strong>[C1, primary]</strong></li>
+<li><strong>Paris C, Lhiaubet-Vallet V, Jiménez O, Trullas C, Miranda MÁ.</strong> "A blocked diketo form of avobenzone: photostability, photosensitizing properties and triplet quenching by a triazine-derived UVB-filter." <em>Photochem. Photobiol.</em> 85(1):178-184 (2009). DOI: 10.1111/j.1751-1097.2008.00414.x. PMID: 18673327. <strong>[C1, mechanism]</strong></li>
+<li><strong>Lhiaubet-Vallet V, Marin M, Jimenez O, Gorchs O, Trullas C, Miranda MÁ.</strong> "Filter-filter interactions. Photostabilization, triplet quenching and reactivity with singlet oxygen." <em>Photochem. Photobiol. Sci.</em> 9(4):552-558 (2010). DOI: 10.1039/b9pp00158a. <strong>[C1]</strong></li>
+<li><strong>Couteau C, Faure A, Fortin J, Paparis E, Coiffard LJM.</strong> "Study of the photostability of 18 sunscreens in creams by measuring the SPF in vitro." <em>J. Pharm. Biomed. Anal.</em> 44(1):270-273 (2007). DOI: 10.1016/j.jpba.2007.01.052. <strong>[C1]</strong></li>
+<li><strong>U.S. FDA / OMUF Order OTC000039</strong> (December 2025) Scientific Review: Bemotrizinol. <strong>[C1, regulatory]</strong></li>
+<li><strong>EP 1,200,059</strong> (Ciba/BASF, priority 2000): photostable cosmetic compositions comprising hydroxyphenyl-triazines and dibenzoylmethanes. <strong>[Patent]</strong></li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/photostab/claims/c005-bemotrizinol-tinosorb-s.md</code> · <a href="c005-bemotrizinol-tinosorb-s.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

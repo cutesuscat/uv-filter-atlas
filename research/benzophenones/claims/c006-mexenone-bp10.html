@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c006 — Mexenone (Benzophenone-10, BP-10) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c006 — Mexenone (Benzophenone-10, BP-10)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c006-mexenone-bp10.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c006-mexenone-bp10.md">View raw markdown</a> · Path: <code>research/benzophenones/claims/c006-mexenone-bp10.md</code></div>
+<h1 id="claim-file-c006-mexenone-benzophenone-10-bp-10">Claim File c006 — Mexenone (Benzophenone-10, BP-10)</h1>
+<p>CAS 1641-17-4</p>
+<blockquote>
+<p>Mexenone is an older benzophenone-class UV filter, structurally a methyl analog of oxybenzone (BP-3). Its commercial relevance is largely historical — it was the active in the once-popular UK product <strong>Uvistat</strong>. It is essentially obsolete in modern sunscreen formulations.</p>
+</blockquote>
+<hr>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<ul>
+<li><strong>INCI:</strong> Benzophenone-10 [C1]</li>
+<li><strong>USAN:</strong> Mexenone [C1]</li>
+<li><strong>Trade names (historical):</strong> Uvistat (Windsor Healthcare, UK), Spectrasorb UV-9 (industrial, distinct from Cyasorb UV-9) [C2]</li>
+<li><strong>IUPAC:</strong> (2-Hydroxy-4-methoxyphenyl)(4-methylphenyl)methanone — equivalent to "2-Hydroxy-4-methoxy-4′-methylbenzophenone" [C1]</li>
+<li><strong>CAS:</strong> 1641-17-4 [C1]</li>
+<li><strong>Molecular formula:</strong> C15H14O3 [C1]</li>
+<li><strong>Molecular weight:</strong> 242.27 g/mol [C1]</li>
+<li><strong>Physical:</strong> pale yellow crystalline solid; mp ~70 °C [C2]</li>
+<li><strong>Solubility:</strong> lipophilic; insoluble in water; soluble in ethanol, oils — similar handling to BP-3 [C2]</li>
+</ul>
+<h3 id="regulatory-status-current-as-of-may-2026">Regulatory status (current as of May 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU</strong> Annex VI</td>
+<td><strong>Not listed</strong> as a permitted UV filter (delisted long ago) [C1]</td>
+</tr>
+<tr>
+<td><strong>USA</strong> OTC Monograph</td>
+<td><strong>Not listed</strong> as an approved sunscreen active [C1]</td>
+</tr>
+<tr>
+<td><strong>UK / Australia / Japan / Korea</strong></td>
+<td>Not used in modern marketed sunscreens; effectively obsolete [C2]</td>
+</tr>
+<tr>
+<td><strong>Cosmetics outside sunscreen</strong></td>
+<td>Limited use; CIR has reviewed benzophenones generally (CIR 2021 amended report) but Benzophenone-10 has minimal current commercial use.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Historical typical use level:</strong> 4% (in Uvistat and some 1970s–1980s formulations) [C2]</li>
+<li><strong>Discontinuation note:</strong> Uvistat reformulated decades ago; mexenone has not been a regulated UV filter in mainstream markets for many years.</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<ul>
+<li>Structurally a 4′-methyl-substituted analog of BP-3 — the para-methyl on the second ring is electron-donating but does not substantially alter the chromophore.</li>
+<li><strong>λmax #1 (UVB):</strong> ~287–290 nm</li>
+<li><strong>λmax #2 (UVA-II):</strong> ~325 nm</li>
+<li><strong>Spectral coverage:</strong> ~270–350 nm — virtually identical to BP-3</li>
+<li><strong>Molar absorption coefficient:</strong> ε at long-wavelength λmax ≈ 1.2–1.5 × 10⁴ M⁻¹·cm⁻¹ (estimated from BP-3 analogy; methyl substitution typically increases UVB ε slightly) [C3 — inferred]</li>
+<li><strong>E(1%, 1 cm)</strong> at 290 nm: ≈ 700–800 (computed) [C3]</li>
+<li><strong>Solvent dependence:</strong> intramolecular H-bond and ESIPT mechanism identical to BP-3; ortho substitution rules → UVA absorption (Beyer/Crounse rule for benzophenone-derivatives), para substitution → UVB absorption — so this 2-OH/4-OMe/4'-Me structure gives both bands.</li>
+<li><strong>Functional classification:</strong> moderate UVB / weak-to-moderate UVA-II filter — same general profile as BP-3 with marginally higher SPF efficiency per gram in some formulations (the methyl gives slightly higher molar absorptivity in UVB).</li>
+</ul>
+<hr>
+<h2 id="section-3-photodegradation">Section 3: Photodegradation</h2>
+<ul>
+<li><strong>No widely cited modern photodegradation kinetic dataset specific to mexenone</strong> (its commercial obsolescence has limited research interest).</li>
+<li>By close structural analogy with BP-3:</li>
+<li>Photostable in the same range as BP-3 (&gt;80% retention after standard sunscreen-irradiation protocols) — expected by mechanism (ESIPT)</li>
+<li>Photoproducts: para-methyl-substituted analogs of BP-1 (e.g., 2,4-dihydroxy-4'-methylbenzophenone), demethylation, hydroxylation products. <strong>Not characterized in detail in the published literature.</strong> [C3 — inferred]</li>
+<li>Quantum yield Φ_loss expected ≈ 10⁻⁴–10⁻³ (analogous to BP-3) [C3 — inferred]</li>
+</ul>
+<hr>
+<h2 id="section-4-notable-issues">Section 4: Notable issues</h2>
+<h3 id="41-endocrine-activity">4.1 Endocrine activity</h3>
+<ul>
+<li>Limited specific data. By analogy to BP-3 and other benzophenones, weak estrogenic activity in vitro is expected. Few dedicated published studies. [C3 — inferred]</li>
+<li>The CIR 2021 amended safety assessment of benzophenones reviewed mexenone alongside ~20 other benzophenones and found no specific concerns at typical historical use levels — but data are sparse. [C2 — CIR 2021]</li>
+</ul>
+<h3 id="42-skin-penetration">4.2 Skin penetration</h3>
+<ul>
+<li>No published maximum-use plasma absorption study (analogous to FDA Matta studies) exists for mexenone. By lipophilicity and structural similarity to BP-3, comparable percutaneous absorption is expected. [C3 — inferred]</li>
+</ul>
+<h3 id="43-allergenicity-contact-dermatitis">4.3 Allergenicity / contact dermatitis</h3>
+<ul>
+<li>Reported as a contact allergen and photoallergen; cross-reactivity with BP-3 is documented in older photopatch series (Schauder &amp; Ippen 1997). Skin-Safe and other allergen databases list mexenone as a relevant photo-contact allergen. [C2]</li>
+</ul>
+<h3 id="44-aquatic-coral-toxicity">4.4 Aquatic / coral toxicity</h3>
+<ul>
+<li>No dedicated coral or aquatic toxicity dataset for mexenone (overwhelmed by interest in BP-3). Structural analogy suggests similar concerns in principle but commercial use is so low that environmental loads are negligible. [C3]</li>
+</ul>
+<h3 id="45-phototoxicity-photo-genotoxicity">4.5 Phototoxicity / photo-genotoxicity</h3>
+<ul>
+<li>Historically used at 4% in Uvistat for many years without major dermatologic incident reports beyond expected photoallergy frequency.</li>
+</ul>
+<h3 id="46-why-it-fell-out-of-use">4.6 Why it fell out of use</h3>
+<ul>
+<li>Mexenone provided no photoprotective advantage over BP-3 / oxybenzone, and its supply chain advantages were not compelling. With consolidation of UV-filter approvals around the BP-3 / BP-4 / BP-8 trio in the 1980s, BP-10 was effectively dropped from Annex VI / CFR listings and from active formulation use. [C3]</li>
+</ul>
+<hr>
+<h2 id="confidence">Confidence</h2>
+<ul>
+<li>Identity → C1</li>
+<li>Regulatory status (not currently listed) → C1</li>
+<li>Spectrum → C2 (close analog of BP-3)</li>
+<li>ε values → C3 (inferred)</li>
+<li>Photodegradation kinetics → C3/C5 (no directly tabulated values)</li>
+<li>Endocrine and tox endpoints → C3 (inferred from class)</li>
+</ul>
+<h2 id="key-citations">Key citations</h2>
+<ol>
+<li>CIR Amended Safety Assessment of Benzophenones (2021): https://www.cir-safety.org/sites/default/files/benzop032021FAR.pdf</li>
+<li>Mexenone monograph, Wikipedia (general physico-chemical reference); SkinSafe ingredient database.</li>
+<li>Schauder S, Ippen H. <em>Contact Dermatitis</em> 1997;37:221-232 — reviews of UV-filter photoallergens including mexenone.</li>
+<li>Lautenschlager S et al. <em>Lancet</em> 2007;370:528 — review of sunscreen filters including history of BP-class compounds.</li>
+<li>Diffey BL — historical UK UV-filter literature describing Uvistat formulations.</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/claims/c006-mexenone-bp10.md</code> · <a href="c006-mexenone-bp10.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c002 — Sulisobenzone (Benzophenone-4, BP-4) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c002 — Sulisobenzone (Benzophenone-4, BP-4)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c002-sulisobenzone-bp4.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c002-sulisobenzone-bp4.md">View raw markdown</a> · Path: <code>research/benzophenones/claims/c002-sulisobenzone-bp4.md</code></div>
+<h1 id="claim-file-c002-sulisobenzone-benzophenone-4-bp-4">Claim File c002 — Sulisobenzone (Benzophenone-4, BP-4)</h1>
+<p>CAS 4065-45-6</p>
+<hr>
+<h2 id="section-1-identity">Section 1: Identity</h2>
+<ul>
+<li><strong>INCI name:</strong> Benzophenone-4 [C1]</li>
+<li><strong>USAN / FDA name:</strong> Sulisobenzone [C1]</li>
+<li><strong>IUPAC:</strong> 5-Benzoyl-4-hydroxy-2-methoxybenzenesulfonic acid [C1]</li>
+<li><strong>Synonyms:</strong> BP-4, Uvinul MS40, Cyasorb UV-284, Spectra-Sorb UV284, Escalol 577 [C1]</li>
+<li><strong>CAS:</strong> 4065-45-6 [C1]</li>
+<li><strong>EC No.:</strong> 223-772-2 [C1]</li>
+<li><strong>Molecular formula:</strong> C14H12O6S [C1]</li>
+<li><strong>Molecular weight:</strong> 308.31 g/mol [C1]</li>
+<li><strong>Physical:</strong> light-tan to off-white crystalline powder, mp ~145 °C [C1]</li>
+<li><strong>Solubility:</strong> <strong>water-soluble</strong> (~250 g/L; 1 g/4 mL in some specs) — the sulfonic acid group makes BP-4 hydrophilic; logKow ≈ 0.37 (much lower than BP-3); typically formulated after partial neutralization with NaOH or triethanolamine to give the sulfonate salt <strong>Benzophenone-5</strong> (sodium salt). Soluble in alcohols and aqueous-alcoholic vehicles. [C1]</li>
+<li>Note: a closely related INCI "Benzophenone-5" denotes the <strong>sodium salt</strong> of BP-4 (CAS 6628-37-1) — sometimes used interchangeably in formulations. [C1]</li>
+</ul>
+<h3 id="regulatory-status-current-as-of-may-2026">Regulatory status (current as of May 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status / max concentration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU</strong> Annex VI #22</td>
+<td>up to <strong>5%</strong> (expressed as acid) [C1]</td>
+</tr>
+<tr>
+<td><strong>USA</strong> OTC Monograph M020 (sulisobenzone)</td>
+<td>up to <strong>10%</strong>; FDA 2021 Proposed Order classes as "insufficient data for GRASE" pending additional safety data, similar status as oxybenzone [C1]</td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Permitted; up to 10% [C2]</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>Permitted as quasi-drug filter; commonly limited to 10% [C2]</td>
+</tr>
+<tr>
+<td><strong>South Korea (MFDS)</strong></td>
+<td>up to 5% [C2]</td>
+</tr>
+<tr>
+<td><strong>Hawaii reef bans</strong></td>
+<td><strong>Not</strong> included in SB2571 (only oxybenzone + octinoxate banned) [C1]</td>
+</tr>
+<tr>
+<td><strong>Palau / USVI</strong></td>
+<td>Various local sunscreen regulations — BP-4 sometimes covered, sometimes not</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Typical use levels:</strong> 1–5% in aqueous gel sunscreens, sprays, hair-care UV protection, lip products, and as a <strong>photostabilizer</strong> in fragrance and color-cosmetic formulations [C2]</li>
+</ul>
+<hr>
+<h2 id="section-2-uv-absorption-spectrum">Section 2: UV Absorption Spectrum</h2>
+<ul>
+<li><strong>λmax #1 (UVB):</strong> ~286–290 nm [C2]</li>
+<li><strong>λmax #2 (UVA-II):</strong> ~324–326 nm [C2]</li>
+<li><strong>Spectral coverage:</strong> ~260–340 nm — UVB and short UVA-II. <strong>Does not extend into long UVA-I (&gt;360 nm)</strong>. [C1]</li>
+<li><strong>Molar absorption coefficient (in water at neutral pH):</strong></li>
+<li>At ~286 nm: ε ≈ 1.4–1.6 × 10⁴ M⁻¹·cm⁻¹ [C2]</li>
+<li>At ~324 nm: ε ≈ 1.0–1.2 × 10⁴ M⁻¹·cm⁻¹ [C2]</li>
+<li>Sodium-salt form (BP-5) shows similar profile, slightly red-shifted in highly alkaline solution</li>
+<li><strong>E(1%, 1 cm)</strong> at 286 nm: ≈ 450–520 (computed from MW 308 and ε above) [C3]</li>
+<li><strong>Solvent / pH dependence:</strong> As with all 2-hydroxy-benzophenones, spectrum is governed by the keto-enol equilibrium of the 2-OH/4'-CO motif (intramolecular H-bond → enol form). In aqueous neutral-pH solution the sulfonate is fully ionized but the 2-OH is undissociated (pKa of 2-OH ≈ 9.5–10), so the chromophore behaves like BP-3. At pH &gt; 10, deprotonation of the 2-OH causes a marked red-shift and broadening of the long-wavelength band. [C2]</li>
+<li><strong>Functional classification:</strong> moderate UVB + weak UVA-II filter, structurally analogous to BP-3 but <strong>water-phase soluble</strong>, useful where lipid-soluble filters cannot be incorporated (clear gels, leave-on hair products). [C1]</li>
+</ul>
+<hr>
+<h2 id="section-3-photodegradation">Section 3: Photodegradation</h2>
+<ul>
+<li><strong>Photostability:</strong> generally regarded as photostable in formulation (similar profile to BP-3 — the ESIPT route dominates de-excitation). Reported losses under simulated solar irradiation are typically &lt;10–15% over standard sunscreen-irradiation protocols. [C2 — Sakkas et al. 2003; Vione 2013]</li>
+<li><strong>Aqueous photodegradation kinetics (direct photolysis under simulated sunlight):</strong></li>
+<li>k ≈ 5 × 10⁻⁶ – 5 × 10⁻⁵ s⁻¹; half-life in pure water several hours to &gt;1 day</li>
+<li>Faster in presence of dissolved organic matter / nitrate (indirect photolysis via •OH) [C2]</li>
+<li><strong>Quantum yield (Φ_loss, aqueous):</strong> ≈ 10⁻⁴–10⁻³ (low, similar to BP-3) [C2]</li>
+<li><strong>Photoproducts (UV/H2O2, UV/persulfate, simulated sunlight studies):</strong></li>
+<li>Hydroxylated derivatives, demethylated species, ring-opened products and small carboxylic-acid fragments</li>
+<li>Some chlorinated by-products in pool/treated water</li>
+<li>Less well characterized than BP-3 photoproducts</li>
+<li><strong>Wastewater / environmental:</strong> BP-4 is among the <strong>most frequently detected sunscreen filters in wastewater effluents and surface waters</strong> because of its water solubility and resistance to conventional treatment. Concentrations of 0.1–10 µg/L commonly reported in WWTP effluent; up to ~10 µg/L in receiving rivers. [C1 — Tsui et al. 2014; Ramos et al. 2015]</li>
+</ul>
+<hr>
+<h2 id="section-4-notable-issues">Section 4: Notable issues</h2>
+<h3 id="41-endocrine-activity">4.1 Endocrine activity</h3>
+<ul>
+<li><strong>Lower estrogenic potency than BP-3 in standard yeast-ER and MCF-7 assays</strong>: relative potency to E2 reported as ~10⁻⁶ to &lt;10⁻⁷; in some assays BP-4 is <strong>inactive at testable concentrations</strong> (the sulfonate group reduces membrane permeation and ER binding) [C2 — Kunz &amp; Fent 2006; Molina-Molina 2008]</li>
+<li>However, BP-4 has been reported to have weak androgen-receptor antagonism and altered thyroid endpoints in zebrafish at µg/L concentrations [C2 — Zucchi 2011]</li>
+<li>SCCS has not produced a dedicated recent opinion specific to BP-4 (assessed as part of historical Annex VI listings)</li>
+</ul>
+<h3 id="42-skin-penetration">4.2 Skin penetration</h3>
+<ul>
+<li><strong>Very low skin penetration</strong> owing to ionic/polar character — in vitro Franz-cell studies typically report &lt;1–2% of applied dose crosses skin within 24 h, vs much higher for BP-3. [C2 — Jiang et al. 1998 <em>Aust J Dermatol</em>; Janjua et al. 2008]</li>
+<li><strong>Not</strong> included in the FDA Matta JAMA 2019/2020 absorption studies (those were oxybenzone, avobenzone, octocrylene, ecamsule, octinoxate, octisalate, homosalate). No comparable plasma-absorption data exists at this level of rigor for sulisobenzone.</li>
+<li>Detected in human urine in biomonitoring studies, generally at lower frequencies and concentrations than BP-3.</li>
+</ul>
+<h3 id="43-aquatic-coral-toxicity">4.3 Aquatic / coral toxicity</h3>
+<ul>
+<li>BP-4 is a frequent contaminant of coastal waters because of its water solubility — environmental persistence concern is more about exposure ubiquity than acute potency.</li>
+<li>Acute toxicity values reported on freshwater organisms (e.g., <em>Daphnia magna</em> 48-h EC50 ~50 mg/L) and zebrafish embryos (LC50 in mg/L range) — orders of magnitude above environmentally measured concentrations. [C2]</li>
+<li><strong>Coral planulae studies</strong> (Downs and others) have not shown BP-4 to produce the same severity of bleaching/ossification as BP-3 at comparable concentrations, though direct comparative data are limited. BP-4 is <strong>not</strong> named in the Hawaii SB2571 ban.</li>
+</ul>
+<h3 id="44-allergenicity-contact-dermatitis">4.4 Allergenicity / contact dermatitis</h3>
+<ul>
+<li>BP-4 sensitization is reported but is <strong>less common than BP-3</strong> in patch-test populations. May cross-react with other benzophenones.</li>
+<li>Photo-contact dermatitis less frequent than for BP-3; the polar sulfonate likely reduces dermal residence time.</li>
+</ul>
+<h3 id="45-photoproduct-toxicity">4.5 Photoproduct toxicity</h3>
+<ul>
+<li>Limited published data; no major toxic photoproducts reported analogous to BP-1.</li>
+</ul>
+<hr>
+<h2 id="confidence">Confidence</h2>
+<ul>
+<li>Identity / regulatory → C1</li>
+<li>Spectrum λmax → C1; ε values → C2</li>
+<li>Photodegradation kinetics → C2/C3 (less data than BP-3)</li>
+<li>Endocrine in vitro → C2</li>
+<li>Skin penetration → C2</li>
+<li>Coral toxicity → C3 (sparse direct data)</li>
+</ul>
+<h2 id="key-citations">Key citations</h2>
+<ol>
+<li>EU Cosmetics Regulation 1223/2009 Annex VI #22 (Benzophenone-4 / Benzophenone-5).</li>
+<li>FDA OTC Monograph M020 — Sunscreen Drug Products (sulisobenzone listed at up to 10%).</li>
+<li>Kunz PY, Fent K. <em>Aquat Toxicol</em> 2006;79:305-324. doi:10.1016/j.aquatox.2006.06.016</li>
+<li>Tsui MM et al. <em>Water Res</em> 2014;67:55-65. doi:10.1016/j.watres.2014.09.013</li>
+<li>Sakkas VA et al. <em>J Chromatogr A</em> 2003;1016:211. doi:10.1016/S0021-9673(03)01331-1</li>
+<li>Janjua NR et al. <em>J Invest Dermatol</em> 2008;128:2503. doi:10.1038/jid.2008.83</li>
+<li>Ramos S et al. <em>J Hazard Mater</em> 2015;306:354. doi:10.1016/j.jhazmat.2015.12.026</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/benzophenones/claims/c002-sulisobenzone-bp4.md</code> · <a href="c002-sulisobenzone-bp4.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>

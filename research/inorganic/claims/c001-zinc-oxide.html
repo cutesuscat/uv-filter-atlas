@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim File c001 — Zinc Oxide (ZnO) — UV Filter Atlas</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+  --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+  --accent: #6b1f6e; --accent-soft: #f4e8f4;
+  --warn: #b94a3c; --warn-soft: #f7e7e3;
+  --ok: #2d6b3f; --ok-soft: #e3efe6;
+  --serif: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+    --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+    --accent: #d6a4d8; --accent-soft: #2c1d2e;
+    --warn: #e8806f; --warn-soft: #36211d;
+    --ok: #87c697; --ok-soft: #1d2c22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+  --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+  --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+  --ok:#87c697; --ok-soft:#1d2c22;
+}
+html{ scroll-behavior:smooth }
+body{
+  font-family: var(--serif); background: var(--bg); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+.topbar{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  align-items:center; gap: 24px;
+  padding: 20px 0; margin-top: 8px;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--muted);
+}
+.topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+.topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+.back{ color: var(--accent); text-decoration:none }
+.back:hover{ text-decoration:underline }
+.theme-toggle{
+  background:none; border:1px solid var(--line); color: var(--ink-soft);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+}
+.raw-link{ color: var(--accent); text-decoration:none }
+.raw-link:hover{ text-decoration:underline }
+
+article#content{ padding: 50px 0 80px; max-width: 75ch }
+article#content h1{
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+article#content h2{
+  font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+article#content strong{ color: var(--ink); font-weight: 600 }
+article#content em{ color: var(--accent); font-style: italic }
+article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+article#content a:hover{ color: var(--ink) }
+article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+article#content li{ margin: 4px 0 }
+article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+article#content blockquote{
+  border-left: 3px solid var(--accent); padding: 4px 16px;
+  margin: 16px 0; color: var(--muted); font-style: italic;
+}
+article#content table{
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.92rem; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+article#content th, article#content td{
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft); vertical-align: top;
+}
+article#content th{
+  font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border-bottom: 1.5px solid var(--rule);
+  background: var(--bg);
+}
+article#content tr:hover{ background: var(--accent-soft) }
+article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+.doc-meta{
+  font: 500 0.78rem var(--mono); color: var(--muted);
+  padding: 14px 0; border-bottom: 1px dashed var(--line);
+  margin-bottom: 28px;
+}
+.doc-meta a{ color: var(--accent) }
+footer{
+  padding: 24px 0; border-top: 1.5px solid var(--rule);
+  font: 500 0.7rem var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+footer a{ color: var(--accent); text-decoration: none }
+footer a:hover{ text-decoration:underline }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="../../../webapp/index.html">← Atlas</a></span>
+    <span class="topbar-mid">Claim File c001 — Zinc Oxide (ZnO)</span>
+    <span class="topbar-right">
+      <a class="raw-link" href="c001-zinc-oxide.md">View raw markdown</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content">
+    <div class="doc-meta">📄 <a href="c001-zinc-oxide.md">View raw markdown</a> · Path: <code>research/inorganic/claims/c001-zinc-oxide.md</code></div>
+<h1 id="claim-file-c001-zinc-oxide-zno">Claim File c001 — Zinc Oxide (ZnO)</h1>
+<p><strong>Class:</strong> Inorganic / mineral UV filter (wide-bandgap II-VI semiconductor)
+<strong>Research date:</strong> 2026-05-07
+<strong>Author tier scheme:</strong> C1 primary verified · C2 well-sourced secondary · C3 inferred (working shown) · C4 graph-digitized · C5 unknown</p>
+<hr>
+<h2 id="1-identity-physical-chemistry">1. Identity &amp; Physical Chemistry</h2>
+<h3 id="11-identifiers-c1">1.1 Identifiers (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCI name</td>
+<td>Zinc Oxide</td>
+</tr>
+<tr>
+<td>IUPAC</td>
+<td>Zinc oxide / Zinc(II) oxide</td>
+</tr>
+<tr>
+<td>Common synonyms</td>
+<td>Calamine (with Fe2O3), Chinese white, zincite (mineral)</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>1314-13-2</td>
+</tr>
+<tr>
+<td>EC / EINECS</td>
+<td>215-222-5</td>
+</tr>
+<tr>
+<td>Molecular formula</td>
+<td>ZnO</td>
+</tr>
+<tr>
+<td>Molecular weight</td>
+<td>81.38 g·mol⁻¹</td>
+</tr>
+<tr>
+<td>Density (bulk)</td>
+<td>5.606 g·cm⁻³</td>
+</tr>
+<tr>
+<td>Melting point</td>
+<td>1975 °C (decomposes ~1975 °C in air)</td>
+</tr>
+<tr>
+<td>Appearance</td>
+<td>White / yellowish-white powder, odourless</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: PubChem CID 14806; Sigma-Aldrich product 255750; ChemicalBook CB3853034; NIST WebBook (C1314132).</p>
+<h3 id="12-crystal-structure-c1">1.2 Crystal structure (C1)</h3>
+<p>ZnO crystallises in three structures:
+- <strong>Wurtzite</strong> (hexagonal P6₃mc, a = 0.3296 nm, c = 0.5207 nm) — thermodynamically stable at ambient T/P; the form used in cosmetics. (C1)
+- <strong>Zinc-blende</strong> (cubic) — only on cubic substrates.
+- <strong>Rocksalt</strong> (B1, NaCl structure) — only at high pressure (&gt;10 GPa).</p>
+<p>The Zn²⁺ is tetrahedrally coordinated with O²⁻ in the wurtzite lattice, giving rise to a strong polar c-axis. <em>Source:</em> Özgür et al., <em>J. Appl. Phys.</em> 98, 041301 (2005); SCCS/1489/12 §3.1.</p>
+<h3 id="13-bandgap-cutoff-wavelength-c1-c3">1.3 Bandgap &amp; cutoff wavelength (C1 / C3)</h3>
+<ul>
+<li><strong>Bulk wurtzite ZnO direct bandgap, 300 K: E_g = 3.37 eV.</strong> (C1; multiple sources — Özgür et al. 2005; Schneider &amp; Lim 2019; Klingshirn 2007 <em>Phys. Stat. Sol. B</em> 244:3027.)</li>
+<li>Some authors cite 3.20–3.30 eV for nanoparticles depending on size / quantum confinement (Smijs &amp; Pavel 2011 cite 3.22 eV at 77 K for wurtzite, 3.32 eV zinc-blende).</li>
+<li><strong>Cutoff wavelength λ_g (C3):</strong> Using λ(nm) = 1240 / E_g(eV) → 1240 / 3.37 = <strong>368 nm.</strong> Note: the "absorption edge" experimentally is broader; Smijs &amp; Pavel and other reviews quote ~370 nm; nano-ZnO can show absorption out to ≈ 380 nm because of band-tail states / size dispersion. So the <em>useful sunscreen edge</em> is reported variously as 370 nm (theoretical) up to 380 nm (broad-spectrum claim covers UVA1).</li>
+</ul>
+<h3 id="14-refractive-index-c1">1.4 Refractive index (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>λ</th>
+<th>n (ordinary)</th>
+<th>n (extraordinary)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>370 nm (just above gap)</td>
+<td>~2.10–2.30</td>
+<td>~2.10–2.30</td>
+</tr>
+<tr>
+<td>500 nm (visible)</td>
+<td>2.00–2.05</td>
+<td>2.02–2.07</td>
+</tr>
+<tr>
+<td>800 nm</td>
+<td>~1.95</td>
+<td>~1.97</td>
+</tr>
+</tbody>
+</table>
+<p>Standard reference value n ≈ 2.0 in the visible. (Bond, <em>J. Appl. Phys.</em> 36:1674 (1965); refractiveindex.info, Bond-o tabulation.) Lower n than TiO2 → less Mie scattering at any given size → less white-cast for the same particle size. This is the principal cosmetic advantage of ZnO over TiO2 at equal coverage.</p>
+<h3 id="15-particle-sizes-used-in-sunscreen-c1">1.5 Particle sizes used in sunscreen (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>d50 typical</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pigment-grade ZnO</td>
+<td>200–300 nm</td>
+<td>Older opaque sunscreens, calamine, zinc paste</td>
+</tr>
+<tr>
+<td>"Microfine" / submicron</td>
+<td>~100–200 nm</td>
+<td>Non-nano labels in EU; partial transparency</td>
+</tr>
+<tr>
+<td>Nano-ZnO</td>
+<td>30–80 nm primary; agglomerates 100–200 nm</td>
+<td>Modern transparent broad-spectrum sunscreens</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regulatory threshold (EU):</strong> 50 % (number distribution) of particles ≤ 100 nm = "nano". (EU Cosmetic Reg. 1223/2009 Art. 2.1(k); refined definition in Recommendation 2022/C 229/01.) (C1)</p>
+<p>SCCS/1489/12 (and 2024 revision) considers safe nano-ZnO <strong>only</strong> if D50 (volume) &gt; 30 nm and D1 &gt; 20 nm — i.e. very small particles (&lt;20 nm) excluded. (C1)</p>
+<p>Wakefield-style commercial dispersions (Croda Z-Cote, BASF, Symrise) commonly specify primary crystallite ~30–50 nm with stabilised aggregates 100–200 nm. (Patent US20060228310 specifies 70–130 nm volume-median.)</p>
+<h3 id="16-surface-coatings-c1-c2">1.6 Surface coatings (C1 / C2)</h3>
+<p>ZnO is chemically reactive (slightly amphoteric, soluble in mild acid, and photocatalytic). Cosmetic-grade ZnO is virtually always coated. SCCS/1518/13 (revision 2014) lists coatings deemed safe at the time:</p>
+<ul>
+<li><strong>Triethoxycaprylylsilane</strong> (the most common — C8 silane)</li>
+<li><strong>Dimethicone</strong> (PDMS)</li>
+<li><strong>Dimethoxydiphenylsilanetriethoxycaprylylsilane crosspolymer</strong></li>
+<li><strong>Octyl triethoxy silane</strong></li>
+</ul>
+<p>Subsequent SCCS opinions (SCCS/1625/20, SCCS/1654/23) extended approvals to silica and additional silanes.</p>
+<p><strong>Function of coatings:</strong>
+1. <strong>Suppress photocatalysis</strong> (silica, alumina; see §3).
+2. <strong>Improve dispersion in oil/water phase</strong> (silanes, dimethicone, stearate, isopropyl titanate).
+3. <strong>Reduce ionic Zn²⁺ release</strong> (which can otherwise photo-degrade organic filters and cause skin irritation at high load).
+4. <strong>Improve sensory feel</strong> (reduce drag).</p>
+<p>Loading: typical surface treatments are 2–8 wt% relative to ZnO. (Croda technical bulletin "Z-Cote HP1"; BASF Z-Cote.)</p>
+<h3 id="17-regulatory-status-c1">1.7 Regulatory status (C1)</h3>
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Status</th>
+<th>Limit</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USA — FDA</strong></td>
+<td>OTC monograph M020 (deemed final order 2021); also 21 CFR 352.10(s)</td>
+<td>≤ 25 %</td>
+<td>GRASE Category I. No nano restriction in monograph.</td>
+</tr>
+<tr>
+<td><strong>EU</strong></td>
+<td>Cosmetic Reg. 1223/2009 Annex VI <strong>entry 30</strong> (non-nano) and <strong>entry 30a</strong> (nano)</td>
+<td>≤ 25 %</td>
+<td>Added to Annex VI for nano in 2016 (Reg. 2016/1143). Spray products prohibited (lung exposure). Coatings restricted to SCCS-approved list.</td>
+</tr>
+<tr>
+<td><strong>Australia (TGA)</strong></td>
+<td>Listed sunscreen active</td>
+<td>≤ 25 %</td>
+<td>TGA 2013/2016/2017 reviews concluded safe topically.</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>MHLW positive list — UV absorber for quasi-drug</td>
+<td>up to 25 % typical max</td>
+<td>Approved without nano-specific restriction; quasi-drug review for SPF claims.</td>
+</tr>
+<tr>
+<td><strong>ASEAN / Korea (MFDS)</strong></td>
+<td>Annex VII permitted UV filter</td>
+<td>≤ 25 %</td>
+<td>Aligned with EU.</td>
+</tr>
+<tr>
+<td><strong>IARC</strong></td>
+<td>Not classified for ZnO. (Distinct from TiO2 Group 2B.)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Key SCCS opinions: SCCS/1489/12 (Sept 2012, base opinion on nano-ZnO as UV filter ≤ 25 % safe except spray); SCCS/1518/13 (April 2014, addendum on coatings); SCCS/1625/20 and revisions through 2024 (S76 revision, expanded coatings).</p>
+<hr>
+<h2 id="2-uv-attenuation-spectrum">2. UV Attenuation Spectrum</h2>
+<h3 id="21-mechanism-c1">2.1 Mechanism (C1)</h3>
+<p>Inorganic UV filters are <strong>wide-bandgap semiconductors</strong>, <em>not</em> π→π* chromophores. Two physical processes contribute to attenuation:</p>
+<ol>
+<li><strong>Electronic absorption</strong> above the bandgap — photons with E &gt; E_g promote a valence-band electron to the conduction band. Below the gap, the crystal is essentially transparent.</li>
+<li><strong>Mie scattering</strong> — wavelength-comparable particles scatter light. Cross-section depends on size parameter x = πd/λ and refractive-index contrast (n_particle / n_medium).</li>
+</ol>
+<p>Cole, Shyr &amp; Ou-Yang (<em>Photodermatol. Photoimmunol. Photomed.</em> 32:5–10, 2016, doi:10.1111/phpp.12214) measured reflection of typical mineral sunscreen films across UV with an integrating sphere: <strong>average reflection 4–5 %</strong> through the UV — i.e. &lt; SPF 2 from scattering alone. Conclusion: "Metal oxide sunscreens protect skin by absorption, not by reflection or scattering." Reflection rises to ~60 % above the bandgap (visible), which is why thick layers look white. (C1)</p>
+<h3 id="22-cutoff-c1-c3">2.2 Cutoff (C1 / C3)</h3>
+<ul>
+<li>Bandgap-derived sharp cutoff: 1240/3.37 ≈ <strong>368 nm</strong> (C3 calculation).</li>
+<li>Practical absorption edge in cosmetics: often quoted <strong>370–380 nm</strong> because of (a) particle-size distribution producing band-tail absorption, (b) Mie scattering at the long-UVA end. Smijs &amp; Pavel 2011, Schneider &amp; Lim 2019 both note "broad UVA-UVB absorption" with rolloff ~380 nm. (C2)</li>
+<li>This places ZnO <strong>deeper into UVA1 than TiO2</strong> — a key clinical advantage. UVA1 = 340–400 nm.</li>
+</ul>
+<h3 id="23-particle-size-dependence-c1-mie-theory">2.3 Particle size dependence (C1, Mie theory)</h3>
+<p>Popov, Priezzhev, Lademann, Myllylä (<em>J. Phys. D: Appl. Phys.</em> 38:2564–2570, 2005, doi:10.1088/0022-3727/38/15/006) used Mie theory + Monte Carlo simulation in stratum corneum:</p>
+<ul>
+<li>For 310 nm (UVB) light, <strong>optimal TiO2 size = 62 nm</strong> (extrapolation to ZnO with lower n shifts optimum slightly larger, ≈ 70–80 nm for UVB).</li>
+<li>For 400 nm (UVA), <strong>optimal TiO2 size = 122 nm</strong>.</li>
+</ul>
+<p>Egerton &amp; Tooley (<em>Int. J. Cosmet. Sci.</em> 34:117–122, 2012, doi:10.1111/j.1468-2494.2011.00689.x) compared 20, 50, 100 nm TiO2 — same physics applies to ZnO with shifted indices: smaller particles (~30 nm) give the highest <em>mass-specific</em> UVB attenuation but minimal UVA attenuation; ~100–150 nm particles give the highest UVA attenuation but visible whitening rises sharply because Mie scattering peak moves into the visible.</p>
+<p><strong>Trade-off summary (C2):</strong></p>
+<table>
+<thead>
+<tr>
+<th>ZnO particle size</th>
+<th>UVB attenuation</th>
+<th>UVA1 attenuation</th>
+<th>Visible whitening</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20–30 nm</td>
+<td>High (absorption-dominated)</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>60–80 nm</td>
+<td>High</td>
+<td>Medium</td>
+<td>Low–medium</td>
+</tr>
+<tr>
+<td>100–150 nm</td>
+<td>Medium</td>
+<td>High (Mie peak in UVA)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>&gt; 200 nm</td>
+<td>Lower (mass)</td>
+<td>High</td>
+<td>High (white cast)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-mass-extinction-coefficient-c2">2.4 Mass extinction coefficient (C2)</h3>
+<p>Unlike organic chromophores (where ε is intrinsic), the mass extinction coefficient α (L·g⁻¹·cm⁻¹) of ZnO depends on <em>particle size and dispersion quality</em>. Egerton 2012 reports for typical sunscreen-grade ZnO (~80 nm primary, 150 nm aggregate):</p>
+<ul>
+<li>α(310 nm) ≈ 6–10 L·g⁻¹·cm⁻¹ (UVB)</li>
+<li>α(360 nm) ≈ 4–7 L·g⁻¹·cm⁻¹ (UVA2)</li>
+<li>α(380 nm) ≈ 1–3 L·g⁻¹·cm⁻¹ (UVA1 edge)</li>
+</ul>
+<p>(These are roughly half the equivalent figures for nano-TiO2 in the UVB; ZnO holds attenuation longer into UVA.) Caveat C4 — Egerton's figures are graph-derived from Mie computation; actual sunscreen formulas vary widely depending on dispersion.</p>
+<h3 id="25-zno-vs-tio2-spectral-comparison-c1">2.5 ZnO vs TiO2 spectral comparison (C1)</h3>
+<ul>
+<li><strong>TiO2 (rutile, ~20–50 nm)</strong>: peak attenuation ~280–340 nm; sharply drops above 360 nm because rutile bandgap ≈ 3.0 eV and its higher refractive index means Mie scattering dominates the long-UVA, but mass-specific.</li>
+<li><strong>ZnO</strong>: more uniform attenuation across UVB and UVA, extending to ~380 nm. Superior in UVA1 (340–400 nm).</li>
+<li>Hence "broadest spectrum" claim of ZnO. Combination ZnO + TiO2 is common for true broad-spectrum mineral sunscreens. Smijs &amp; Pavel 2011 and Schneider &amp; Lim 2019 both emphasise this complementarity.</li>
+</ul>
+<hr>
+<h2 id="3-photocatalytic-activity">3. Photocatalytic activity</h2>
+<h3 id="31-mechanism-c1">3.1 Mechanism (C1)</h3>
+<p><strong>Critical distinction:</strong> ZnO does <em>not</em> photodegrade in the way organic UV filters do. The crystal lattice is stable under UV. However, photogenerated electron–hole pairs (lifetime ~ns–μs) at the particle surface drive redox reactions in adjacent species, <em>catalysing</em> degradation of organic molecules and producing reactive oxygen species (ROS):</p>
+<ul>
+<li><strong>Conduction-band electron + O₂ → O₂•⁻ (superoxide)</strong> (E°(O₂/O₂•⁻) = -0.33 V vs NHE; ZnO CB ~ -0.5 V → thermodynamically allowed).</li>
+<li><strong>Valence-band hole + H₂O / OH⁻ → •OH (hydroxyl radical)</strong> (E°(•OH/H₂O) = +2.27 V; ZnO VB ~ +2.7 V → allowed).</li>
+<li><strong>Energy transfer to ³O₂ → ¹O₂ (singlet oxygen)</strong> (less efficient than charge transfer for ZnO).</li>
+</ul>
+<p>Wood, Scaiano et al. (<em>J. Phys. Chem. C</em> 120:2916–2926, 2016; doi:10.1021/acs.jpcc.5b11456) compared ZnO and ZnS — ZnO is more efficient at •OH and ¹O₂ generation; ZnS more efficient at O₂•⁻.</p>
+<h3 id="32-quantitative-ros-generation-c1-c2">3.2 Quantitative ROS generation (C1 / C2)</h3>
+<ul>
+<li>Lewicka, Hsiao, Yu, Colvin et al. (<em>J. Photochem. Photobiol. A</em> 263:24–33, 2013; doi:10.1016/j.jphotochem.2013.04.019) — "Photochemical behavior of nanoscale TiO2 and ZnO sunscreen ingredients". 8 commercial sunscreens compared. <strong>ZnO derived from commercial sunscreens produced substantial ROS upon UVA illumination</strong>, indicating coatings on ZnO products are <em>less</em> effective than on TiO2.</li>
+<li>Smijs &amp; Pavel (<em>Nanotechnol. Sci. Appl.</em> 4:95–112, 2011): keratinocyte viability fell at ZnO ≥ 15 μg·mL⁻¹ in vitro; Zn²⁺ dissolution is part of the toxicity mechanism (a feature <em>unique</em> to ZnO vs TiO2).</li>
+<li>ZnO is <strong>intermediate</strong> between anatase TiO2 (most catalytic) and rutile TiO2 (least). Ranking (C2 consensus): anatase TiO2 &gt; ZnO &gt; rutile TiO2.</li>
+</ul>
+<h3 id="33-effect-of-coatings-c1">3.3 Effect of coatings (C1)</h3>
+<ul>
+<li><strong>Silica coating</strong> is the most effective. Sonochemically synthesised silica-coated ZnO showed &gt;80 % reduction in methylene-blue degradation rate vs uncoated, but exact reduction depends on shell thickness. (Liufu et al., <em>Ultrason. Sonochem.</em> 18:893 (2011).) (C2)</li>
+<li>For TiO2, alumina/silica coatings have been reported to suppress photocatalysis by <strong>&gt;90 %</strong> (Carlotti et al., <em>J. Photochem. Photobiol. B</em> 96:130 (2009); Egerton review 2012). (C2)</li>
+<li>ZnO coatings are generally <strong>less effective than TiO2 coatings</strong> because (a) ZnO partially dissolves at slightly acidic pH releasing Zn²⁺ and exposing fresh surface, (b) the coating chemistry is harder to anchor on ZnO than on TiO2.</li>
+<li>SCCS/1518/13 reaffirmed that triethoxycaprylylsilane, dimethicone, dimethoxydiphenylsilanetriethoxycaprylylsilane crosspolymer, and octyl triethoxy silane on nano-ZnO yield acceptable safety. SCCS does <strong>not</strong> specifically quantify ROS suppression; it considers downstream toxicology.</li>
+</ul>
+<h3 id="34-bleaching-of-co-formulated-organic-filters-c1">3.4 Bleaching of co-formulated organic filters (C1)</h3>
+<p>A direct, formulation-relevant consequence: uncoated/poorly-coated nano-ZnO and nano-TiO2 can accelerate degradation of avobenzone, octinoxate and other organic filters. Documented examples:</p>
+<ul>
+<li>Lewicka et al. 2013 measured ROS generation in commercial sunscreens — ZnO-containing products generated detectable ROS that correlated with degradation of dye markers.</li>
+<li>Tampucci, Burgalassi, Chetoni et al. (<em>Photochem. Photobiol. Sci.</em> 20:1593, 2021; doi:10.1007/s43630-021-00101-2) — "Zinc oxide-induced changes to sunscreen ingredient efficacy and toxicity under UV irradiation" — quantified loss of avobenzone and OMC in O/W emulsions co-formulated with ZnO.</li>
+<li>Avobenzone loss in TiO2/ZnO formulations can exceed 50 % after 2 MED of UV unless stabilisers (octocrylene, DEHN, polycrylene) are present, <em>and</em> the inorganics are well coated.</li>
+</ul>
+<h3 id="35-implications-for-skin-c1-c2-consensus">3.5 Implications for skin (C1 / C2 consensus)</h3>
+<ul>
+<li><em>In vitro</em> keratinocyte / fibroblast studies show ROS-mediated cytotoxicity at ZnO ≥ 10–30 μg·mL⁻¹ (uncoated, nano).</li>
+<li><em>In vivo</em> coated nano-ZnO does not reach viable keratinocytes (see §4) — therefore intracellular ROS damage is unlikely under intact-skin use.</li>
+<li>SCCS, TGA, and FDA agree that <strong>coated nano-ZnO at ≤ 25 % is safe on intact skin</strong>; uncertainty remains for damaged skin and chronic / spray exposure.</li>
+</ul>
+<hr>
+<h2 id="4-safety-regulatory">4. Safety / Regulatory</h2>
+<h3 id="41-skin-penetration-c1">4.1 Skin penetration (C1)</h3>
+<ul>
+<li>Filipe, Silva, Steiner, Cardoso et al. <em>Skin Pharmacol. Physiol.</em> 22:266–275, 2009 (doi:10.1159/000235554) — nuclear microscopy of human skin biopsies after 2 h sunscreen application: ZnO and TiO2 detectable only on surface and outermost stratum corneum, even after 48 h occluded exposure. (C1)</li>
+<li>Cross, Innes, Roberts, Tsuzuki et al. <em>Skin Pharmacol. Physiol.</em> 20:148, 2007 — coated nano-ZnO (26–30 nm) penetration through human epidermis &lt; 0.03 % over 24 h. (C1)</li>
+<li>Gulson, McCall, Korsch et al. <em>Toxicol. Sci.</em> 118:140–149, 2010 (doi:10.1093/toxsci/kfq243) — used isotope-labelled ⁶⁸ZnO sunscreen (19 nm) on humans for 5 days; detected trace ⁶⁸Zn in blood/urine — but at ~1/1000 of total Zn body load. The authors interpret this as <em>partial dissolution to ionic Zn²⁺</em>, not particulate penetration. (C1)</li>
+<li>Mavon, Miquel, Lejeune et al. <em>Skin Pharmacol. Physiol.</em> 20:10–20, 2007 — 20 nm TiO2 in decyl-glucoside vehicle: 83 % in stratum corneum (15 strippings), 5 % in viable epidermis, ~0.1 % in dermis (after exhaustive analytical methods). Largely consistent with "no significant penetration." (C1)</li>
+</ul>
+<p><strong>Consensus:</strong> intact stratum corneum is an effective barrier; both SCCS and TGA accept this for coated material at typical particle sizes. Damaged or flexed skin is an uncertain area.</p>
+<h3 id="42-inhalation-hazard-c1">4.2 Inhalation hazard (C1)</h3>
+<ul>
+<li>IARC Monograph 93 (2010): <strong>TiO2 = Group 2B</strong> (possibly carcinogenic by inhalation, based on chronic rat studies). ZnO is <strong>not</strong> classified by IARC as a carcinogen.</li>
+<li>However, both ZnO and TiO2 nanoparticles can cause pulmonary inflammation by inhalation. SCCS/1489/12 explicitly states nano-ZnO <strong>must not</strong> be used in spray products — same restriction for nano-TiO2 (SCCS/1583/17).</li>
+<li>EU Annex VI entries 30/30a and 27/27a for non-spray formats only. (C1)</li>
+</ul>
+<h3 id="43-coral-aquatic-safety-c1-c2">4.3 Coral / aquatic safety (C1 / C2)</h3>
+<ul>
+<li>Hawaii Act 104 (effective 2021) bans <strong>organic</strong> filters oxybenzone &amp; octinoxate (not ZnO/TiO2). Subsequent Act 15 (2021) bans avobenzone &amp; octocrylene from 2023. ZnO is sometimes marketed as the "reef-safe" alternative — but this is partial:</li>
+<li>Corinaldesi, Marcellini, Nepote et al. <em>Sci. Total Environ.</em> 637:1279, 2018 (doi:10.1016/j.scitotenv.2018.05.108) — uncoated nano-ZnO induced rapid coral bleaching at 300 μg·L⁻¹; coated ZnO substantially less toxic.</li>
+<li>Tang, Liu, Wang et al. (<em>J. Hazard. Mater.</em> 2024) — transcriptomic effects on <em>Galaxea fascicularis</em> at sub-mg/L nZnO and nTiO2.</li>
+<li>Surface-coated, larger-particle ZnO is the preferred "reef safer" option but not zero-impact. The label "reef safe" has no FDA/EU regulatory definition.</li>
+</ul>
+<h3 id="44-other-regulatory-observations">4.4 Other regulatory observations</h3>
+<ul>
+<li><strong>California Prop 65</strong> lists "Titanium dioxide (airborne, unbound particles of respirable size)"; ZnO not listed.</li>
+<li><strong>OSHA / NIOSH</strong> have inhalation REL/PEL for ZnO fume (0.5–10 mg·m⁻³), distinct from cosmetic use.</li>
+</ul>
+<hr>
+<h2 id="5-confidence-summary">5. Confidence summary</h2>
+<table>
+<thead>
+<tr>
+<th>Datum</th>
+<th>Tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAS, MW, density</td>
+<td>C1</td>
+<td>Multiple primary refs</td>
+</tr>
+<tr>
+<td>Wurtzite structure</td>
+<td>C1</td>
+<td>Universal consensus</td>
+</tr>
+<tr>
+<td>Bandgap 3.37 eV</td>
+<td>C1</td>
+<td>Bulk; can vary 3.2–3.4 with size</td>
+</tr>
+<tr>
+<td>Cutoff 368 nm (calc) / ~370–380 nm (observed)</td>
+<td>C3 / C2</td>
+<td>1240/3.37 calc shown</td>
+</tr>
+<tr>
+<td>Refractive index ~2.0</td>
+<td>C1</td>
+<td>Bond 1965</td>
+</tr>
+<tr>
+<td>Particle sizes 30–200 nm</td>
+<td>C1</td>
+<td>Patents + SCCS</td>
+</tr>
+<tr>
+<td>Coating list</td>
+<td>C1</td>
+<td>SCCS/1518/13</td>
+</tr>
+<tr>
+<td>FDA GRASE ≤ 25 %</td>
+<td>C1</td>
+<td>21 CFR 352 + final administrative order</td>
+</tr>
+<tr>
+<td>EU Annex VI 30/30a</td>
+<td>C1</td>
+<td>Reg. 1223/2009 + 2016/1143</td>
+</tr>
+<tr>
+<td>ROS generation rates</td>
+<td>C2</td>
+<td>Lewicka 2013; Tampucci 2021</td>
+</tr>
+<tr>
+<td>Coating ROS suppression %</td>
+<td>C2</td>
+<td>Liufu 2011; Carlotti 2009 (specific % varies)</td>
+</tr>
+<tr>
+<td>Skin penetration &lt; 0.1 % to dermis</td>
+<td>C1</td>
+<td>Filipe 2009; Mavon 2007; Gulson 2010</td>
+</tr>
+<tr>
+<td>Coral bleaching threshold 300 μg/L (uncoated nano-ZnO)</td>
+<td>C1</td>
+<td>Corinaldesi 2018</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-key-references-full-list-in-sourcesmd">6. Key references (full list in /sources.md)</h2>
+<ol>
+<li>Schneider SL, Lim HW. A review of inorganic UV filters zinc oxide and titanium dioxide. <em>Photodermatol. Photoimmunol. Photomed.</em> 35:442–446 (2019). doi:10.1111/phpp.12439</li>
+<li>Smijs TG, Pavel S. Titanium dioxide and zinc oxide nanoparticles in sunscreens: focus on their safety and effectiveness. <em>Nanotechnol. Sci. Appl.</em> 4:95–112 (2011). doi:10.2147/NSA.S19419</li>
+<li>Cole C, Shyr T, Ou-Yang H. Metal oxide sunscreens protect skin by absorption, not by reflection or scattering. <em>Photodermatol. Photoimmunol. Photomed.</em> 32:5–10 (2016). doi:10.1111/phpp.12214</li>
+<li>Popov AP, Priezzhev AV, Lademann J, Myllylä R. TiO2 nanoparticles as an effective UV-B radiation skin-protective compound in sunscreens. <em>J. Phys. D: Appl. Phys.</em> 38:2564–2570 (2005). doi:10.1088/0022-3727/38/15/006</li>
+<li>Lewicka ZA, Yu WW, Oliva BL, Contreras EQ, Colvin VL. Photochemical behavior of nanoscale TiO2 and ZnO sunscreen ingredients. <em>J. Photochem. Photobiol. A</em> 263:24–33 (2013). doi:10.1016/j.jphotochem.2013.04.019</li>
+<li>Egerton TA, Tooley IR. UV absorption and scattering properties of inorganic-based sunscreens. <em>Int. J. Cosmet. Sci.</em> 34:117–122 (2012). doi:10.1111/j.1468-2494.2011.00689.x</li>
+<li>Filipe P, Silva JN, Silva R, et al. Stratum corneum is an effective barrier to TiO2 and ZnO nanoparticle percutaneous absorption. <em>Skin Pharmacol. Physiol.</em> 22:266–275 (2009). doi:10.1159/000235554</li>
+<li>Mavon A, Miquel C, Lejeune O, et al. In vitro percutaneous absorption and in vivo stratum corneum distribution of an organic and a mineral sunscreen. <em>Skin Pharmacol. Physiol.</em> 20:10–20 (2007). doi:10.1159/000096167</li>
+<li>Gulson B, McCall M, Korsch M, et al. Small amounts of zinc from zinc oxide particles in sunscreens applied outdoors are absorbed through human skin. <em>Toxicol. Sci.</em> 118:140–149 (2010). doi:10.1093/toxsci/kfq243</li>
+<li>Tampucci S, Burgalassi S, Chetoni P, et al. Zinc oxide-induced changes to sunscreen ingredient efficacy and toxicity under UV irradiation. <em>Photochem. Photobiol. Sci.</em> 20:1593–1606 (2021). doi:10.1007/s43630-021-00101-2</li>
+<li>Corinaldesi C, Marcellini F, Nepote E, Damiani E, Danovaro R. Impact of inorganic UV filters contained in sunscreen products on tropical stony corals. <em>Sci. Total Environ.</em> 637–638:1279–1285 (2018). doi:10.1016/j.scitotenv.2018.05.108</li>
+<li>SCCS/1489/12 (2012) — Opinion on Zinc Oxide (nano form) as UV-filter.</li>
+<li>SCCS/1518/13 (2014) — Addendum on coatings for nano-ZnO.</li>
+<li>EU Reg. 2016/1143 — Annex VI amendment, ZnO (nano) entry 30a.</li>
+<li>US FDA — 21 CFR 352.10; OTC Monograph M020 final administrative order (2021).</li>
+<li>TGA Australia — Literature review on safety of TiO2 and ZnO nanoparticles in sunscreens (2017 update).</li>
+<li>Özgür Ü, Alivov YI, Liu C, et al. A comprehensive review of ZnO materials and devices. <em>J. Appl. Phys.</em> 98:041301 (2005). doi:10.1063/1.1992666</li>
+</ol>
+  </article>
+
+  <footer>
+    <span>UV Filter Atlas · <code>research/inorganic/claims/c001-zinc-oxide.md</code> · <a href="c001-zinc-oxide.md">raw .md</a></span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+if (modeIndex < 0) modeIndex = 0;
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  if (tbtn) tbtn.textContent = labels[m];
+}
+if (tbtn) tbtn.addEventListener('click', () => {
+  modeIndex = (modeIndex + 1) % modes.length; applyTheme();
+});
+applyTheme();
+</script>
+</body>
+</html>
