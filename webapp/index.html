@@ -1165,10 +1165,77 @@
           <span class="kf-toggle" aria-label="Expand">▸</span>
         </summary>
         <div class="kf-long">
-          <p><strong>Penetration depth</strong>: UVB is ~70% absorbed by the stratum corneum; UVA-2 reaches the basal epidermis; UVA-1 penetrates 1–2 mm into the dermis where collagen and elastin fibers live.</p>
-          <p><strong>Mechanism</strong>: UVB → cyclobutane pyrimidine dimers (CPDs) and 6-4 photoproducts in DNA → base substitutions → mutation. The signature C→T transition at adjacent pyrimidines is the molecular fingerprint of UVB damage in skin tumors.</p>
-          <p>UVA-driven damage is mostly indirect — UVA generates singlet oxygen and superoxide, which produce 8-oxoguanine lesions, lipid peroxidation, and matrix metalloproteinase activation. The dermal fibroblast response to chronic UVA-1 is the canonical photoaging pathway.</p>
-          <p>HEV (visible) damage is most clearly demonstrated for pigmentation: Mahmoud 2010 showed visible light induces sustained erythema and pigmentation in Fitzpatrick IV–VI skin (much less in I–III). Action spectrum for melanogenesis extends to ~440 nm. <strong>Vitamin D</strong> synthesis: peak around 295–300 nm UVB — exactly where SPF blocks hardest, which is why a small dose of unprotected exposure is metabolically meaningful.</p>
+          <p><strong>Penetration depth</strong>: UVB is ~70% absorbed by the stratum corneum; UVA-2 reaches the basal epidermis; UVA-1 penetrates 1–2 mm into the dermis where collagen and elastin fibers live; HEV passes through into the dermis as well.</p>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Effects by band, at a glance</h4>
+          <div style="overflow-x:auto;margin:8px 0 14px">
+          <table style="width:100%;border-collapse:collapse;font-size:0.84rem;background:var(--bg);border:1px solid var(--line);border-radius:4px;min-width:560px">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:8px 10px;font:700 0.66rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;border-bottom:1.5px solid var(--rule)">Band</th>
+                <th style="padding:8px 10px;font:700 0.66rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;border-bottom:1.5px solid var(--rule)">Burning</th>
+                <th style="padding:8px 10px;font:700 0.66rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;border-bottom:1.5px solid var(--rule)">Photoaging</th>
+                <th style="padding:8px 10px;font:700 0.66rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;border-bottom:1.5px solid var(--rule)">Skin cancer</th>
+                <th style="padding:8px 10px;font:700 0.66rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;border-bottom:1.5px solid var(--rule)">Pigmentation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--line-soft)">
+                <td style="padding:8px 10px"><strong>UVB</strong> 290–315 nm</td>
+                <td style="padding:8px 10px;color:var(--warn);font-weight:600">PRIMARY</td>
+                <td style="padding:8px 10px;color:var(--muted)">minor (epidermal only)</td>
+                <td style="padding:8px 10px;color:var(--warn);font-weight:600">PRIMARY (direct DNA damage)</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">delayed tan (2–3 days)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--line-soft)">
+                <td style="padding:8px 10px"><strong>UVA-2</strong> 315–340 nm</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">minor (~1/100 UVB potency)</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">moderate</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">indirect via ROS</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">immediate pigment darkening</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--line-soft)">
+                <td style="padding:8px 10px"><strong>UVA-1</strong> 340–400 nm</td>
+                <td style="padding:8px 10px;color:var(--muted)">minimal direct erythema</td>
+                <td style="padding:8px 10px;color:var(--warn);font-weight:600">PRIMARY (dermal collagen breakdown)</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">indirect; accumulates with chronic exposure</td>
+                <td style="padding:8px 10px;color:var(--warn);font-weight:600">persistent darkening; melasma driver</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 10px"><strong>HEV</strong> 400–500 nm</td>
+                <td style="padding:8px 10px;color:var(--muted)">delayed only (skin of color, Mahmoud 2010)</td>
+                <td style="padding:8px 10px;color:var(--ink-soft)">emerging evidence (ROS pathway)</td>
+                <td style="padding:8px 10px;color:var(--muted)">minor</td>
+                <td style="padding:8px 10px;color:var(--warn);font-weight:600">strong driver in Fitzpatrick IV–VI</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Burning (erythema)</h4>
+          <p>Sunburn is dominated by UVB. The CIE 1987 erythema action spectrum peaks at 297 nm and drops by ~10× per 30 nm into UVA. So even though UVA is ~20× more abundant than UVB at sea level, UVB does ~80–90% of the erythemal work. UVA-1 alone struggles to produce visible erythema in fair skin even at high doses. SPF testing weights the UV dose by this action spectrum, which is why <strong>SPF essentially measures UVB protection</strong>.</p>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Photoaging (wrinkles, elastosis, leathery texture)</h4>
+          <p>Photoaging is dominated by UVA-1. UVB stays mostly in the epidermis (the upper 0.1 mm, dead and constantly turning over); UVA-1 penetrates to the dermis (1–2 mm) where collagen and elastin live, and where you can't replace damaged structural proteins easily. UVA-1 generates singlet oxygen and superoxide, which activates matrix metalloproteinase-1 (MMP-1, collagenase) and elastase, gradually digesting the extracellular matrix. The clinical signature is solar elastosis — the leathery, deeply wrinkled appearance of chronically sun-exposed skin in lighter complexions.</p>
+          <p>Practical implication: <strong>SPF doesn't tell you about photoaging</strong>. A high-SPF sunscreen with poor UVA-1 coverage (bare-bones US formulations with low avobenzone, no Mexoryl 400 / Tinosorb / DHHB) will let through most of the photoaging-relevant UV even when it stops sunburn. The UVA-PF rating (PA+ to PA++++) and FDA "broad spectrum" critical-wavelength claim exist specifically to distinguish anti-burn from anti-aging coverage.</p>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Skin cancer</h4>
+          <p>UVB is the main driver of basal-cell and squamous-cell carcinomas. Direct UVB absorption by DNA produces cyclobutane pyrimidine dimers (CPDs) and 6-4 photoproducts at adjacent pyrimidines, and the C→T transition at TT or CC dipyrimidine sites is the well-known UVB mutational signature seen in tumor sequencing. UVA contributes via indirect oxidative DNA damage (8-oxoguanine), and chronic UVA exposure is increasingly implicated in melanoma — UVA penetrates to the basal melanocyte layer and accumulates over decades. Most epidemiological evidence still points to UVB as the dominant carcinogenic component, but UVA's contribution to melanoma risk is non-zero and is the reason "broad-spectrum" claims have grown stricter over time.</p>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Pigmentation and melasma (especially in skin of color)</h4>
+          <p>This is where HEV (visible) light becomes clinically important — and it's a relatively recent realisation in dermatology. Three pigmentation responses with different drivers:</p>
+          <ul>
+            <li><strong>Immediate pigment darkening (IPD)</strong>: appears within minutes of exposure, fades within an hour. Caused mostly by UVA-2 (315–340 nm). Photo-oxidation of pre-formed melanin.</li>
+            <li><strong>Persistent pigment darkening (PPD)</strong>: appears within hours, persists for days. Driven by UVA-1 (340–400 nm). The basis of the UVA-PF / PA-rating test method.</li>
+            <li><strong>Delayed tanning + melasma</strong>: develops over days to weeks; sustained pigmentation. Driven by UVB (delayed tan) and HEV/visible (melasma in Fitzpatrick IV–VI). Mahmoud 2010 (<em>J Invest Dermatol</em> 130:2092) was the canonical demonstration that visible light alone induces sustained erythema and pigmentation in dark skin types but not in fair ones — which is why tinted mineral sunscreens with iron oxides became the recommended approach for melasma in skin of color (Castanedo-Cazares 2014).</li>
+          </ul>
+          <p>The action spectrum for melanogenesis extends to ~440 nm — well into visible light, beyond what any UV filter alone can block. This is the case for tinted sunscreens specifically: they do something pure-UV sunscreens cannot.</p>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Vitamin D — the inverse case</h4>
+          <p>Vitamin D synthesis peaks around 295–300 nm UVB — almost exactly where the erythema action spectrum peaks, and exactly where SPF blocks hardest. Hence the perennial concern: high-SPF sunscreens block the same UVB that makes vitamin D. In practice, a few minutes of incidental sun exposure on incidental skin (hands, face during a walk) is enough for most people; sunscreen use does not reliably cause vitamin D deficiency in healthy populations who get any outdoor exposure at all. But it's worth knowing the chemistry maps onto a real biological tradeoff.</p>
+
+          <h4 style="font:700 0.74rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin:18px 0 8px">Bottom line for sunscreen choice</h4>
+          <p>If your concern is <strong>burning + skin cancer</strong>, SPF and UVB coverage matter most — most US-monograph organic stacks do this well. If your concern is <strong>photoaging</strong>, look for high UVA-PF and ideally Mexoryl 400 or Tinosorb-class coverage extending to 380–400 nm — newer EU/JP formulations dominate here. If your concern is <strong>melasma or post-inflammatory hyperpigmentation in darker skin</strong>, you also need a tinted formulation (iron oxides) — pure UV sunscreens, no matter how high the SPF, won't address visible-light-driven pigmentation.</p>
         </div>
       </details>
 
@@ -2312,17 +2379,17 @@ function regBadge(key, val){
 // =========================================
 const SPECTRUM_REFS = {
   1: [
-    {label:"Schmitt 2015 (RSC)",url:"https://pubs.rsc.org/en/content/articlehtml/2015/pp/c5pp00074b",citation:"Hanson, Narayanan, Nichols & Bardeen. Photochem Photobiol Sci 14:1607–1616 — full UV-Vis figure of trans/cis OMC in cyclohexane, EtOH, MeOH."},
+    {label:"Schmitt 2015 (RSC)",url:"https://pubs.rsc.org/en/content/articlehtml/2015/pp/c5pp00074b",figure_url:"https://www.rsc.org/image/article/2015/PP/c5pp00074b/c5pp00074b-f2.gif",citation:"Hanson, Narayanan, Nichols & Bardeen. Photochem Photobiol Sci 14:1607–1616 — full UV-Vis figure of trans/cis OMC in cyclohexane, EtOH, MeOH."},
     {label:"Pattanaargson 2006",url:"https://www.sciencedirect.com/science/article/abs/pii/S101060030600400X",citation:"Solar Energy Mat & Solar Cells. Trans/cis ε measurements across solvents."},
     {label:"Whittock 2016 PCCP",url:"https://pubs.rsc.org/en/content/articlelanding/2016/cp/c6cp05205c",citation:"Phys Chem Chem Phys. Cinnamate-class excited-state dynamics + steady-state UV-Vis."}
   ],
   2: [
-    {label:"Krishnan 2018 JOJDC",url:"https://juniperpublishers.com/jojdc/JOJDC.MS.ID.555636.php",citation:"Reports peak absorbance of EHS at 305 nm with figure."},
-    {label:"Pradhan & Stavros 2020 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",citation:"Phys Chem Chem Phys. Salicylate UV-Vis spectra (HMS/EHS analog)."},
+    {label:"Krishnan 2018 JOJDC",url:"https://juniperpublishers.com/jojdc/JOJDC.MS.ID.555636.php",figure_url:"https://juniperpublishers.com/jojdc/images/JOJDC.MS.ID.555636.G005.png",citation:"Reports peak absorbance of EHS at 305 nm with figure."},
+    {label:"Pradhan & Stavros 2020 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",figure_url:"https://www.rsc.org/image/article/2020/CP/d0cp02610g/d0cp02610g-f1.gif",citation:"Phys Chem Chem Phys. Salicylate UV-Vis spectra (HMS/EHS analog)."},
     {label:"ACS Omega 2025 DFT",url:"https://pubs.acs.org/doi/10.1021/acsomega.5c09234",citation:"TD-DFT + experimental λmax for octisalate, octocrylene, AVB, HMS."}
   ],
   3: [
-    {label:"Tan-Sien-Hee 2020 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",citation:"Phys Chem Chem Phys 22:14782. Fig 1: HMS spectra in cyclohexane (309 nm), EtOH (307), MeCN (306)."},
+    {label:"Tan-Sien-Hee 2020 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2020/cp/d0cp02610g",figure_url:"https://www.rsc.org/image/article/2020/CP/d0cp02610g/d0cp02610g-f1.gif",citation:"Phys Chem Chem Phys 22:14782. Fig 1: HMS spectra in cyclohexane (309 nm), EtOH (307), MeCN (306)."},
     {label:"ResearchGate spectrum (HMS in EtOH)",url:"https://www.researchgate.net/figure/Absorption-spectrum-of-an-ethanolic-solution-of-homosalate-and-the-results-of-the_fig1_324440256",citation:"Published HMS ethanol absorption figure."},
     {label:"SCCS 2020 HMS",url:"https://health.ec.europa.eu/document/download/ddf0b68f-5c47-4ace-a87f-0a0e42ebd4a9_en",citation:"SCCS opinion on homosalate (2020 revision)."}
   ],
@@ -2355,7 +2422,7 @@ const SPECTRUM_REFS = {
   10: [
     {label:"BASF Uvinul T 150 datasheet",url:"https://promo.basf.com/campaign/Projetos/CaringForYou/Documentos/Geral/Uvinul%C2%AE%20T%20150.pdf",citation:"BASF technical info: E1%(1cm) ≈ 1500–1650 at 314 nm; published spectrum."},
     {label:"Stein 2014 PPS",url:"https://link.springer.com/article/10.1039/c4pp00373j",citation:"Photochem Photobiol Sci. Triplet states + ground-state UV-Vis of EHT."},
-    {label:"PMC3353564",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3353564/",citation:"TLC/densitometry of EHT in topical products."}
+    {label:"PMC3353564",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3353564/",figure_url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3353564/figure/fig5/",citation:"TLC/densitometry of EHT in topical products."}
   ],
   11: [
     {label:"ScienceDirect 3-(4-MeBz)camphor",url:"https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/3-4-methylbenzylidene-camphor",citation:"ε = 24,500 M⁻¹cm⁻¹ at 300 nm (E1%=954, MW 254)."},
@@ -2372,8 +2439,8 @@ const SPECTRUM_REFS = {
   ],
   14: [
     {label:"Mturi & Martincigh 2008",url:"https://www.cansa.org.za/files/2009/10/Prof_Martincigh_-_photochemistry_and_photobiology.pdf",citation:"J Photochem Photobiol A 200:410. Solvent-dependence figures (cyclohexane / MeOH / EtOAc / DMSO)."},
-    {label:"Bonda & Lott 2017 C&T",url:"https://www.cosmeticsandtoiletries.com/research/literature-data/article/21836861/in-light-of-exposure-understanding-avobenzone-part-i-characterization",citation:"Cosmetics & Toiletries. ε = 32,400 at 355 nm (cyclohexane, enol); ε = 28,400 at 265 nm (keto)."},
-    {label:"Holt 2021 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp03610f",citation:"Phys Chem Chem Phys 23:24439. Ultrafast TEAS + steady-state UV-Vis in 4 vehicles."},
+    {label:"Bonda & Lott 2017 C&T",url:"https://www.cosmeticsandtoiletries.com/research/literature-data/article/21836861/in-light-of-exposure-understanding-avobenzone-part-i-characterization",figure_url:"https://commons.wikimedia.org/wiki/File:Absorbance_of_0.01_g-L_avobenzone_in_DMSO.pdf",citation:"Cosmetics & Toiletries. ε = 32,400 at 355 nm (cyclohexane, enol); ε = 28,400 at 265 nm (keto)."},
+    {label:"Holt 2021 PCCP",url:"https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp03610f",figure_url:"https://www.rsc.org/image/article/2021/CP/d1cp03610f/d1cp03610f-f1_hi-res.gif",citation:"Phys Chem Chem Phys 23:24439. Ultrafast TEAS + steady-state UV-Vis in 4 vehicles."},
     {label:"Yamaji & Kida 2013 JPCA",url:"https://pubs.acs.org/doi/abs/10.1021/jp4123375",citation:"J Phys Chem A 117:1946. DFT + experimental UV-Vis of BMDBM tautomers."}
   ],
   15: [
@@ -2391,7 +2458,7 @@ const SPECTRUM_REFS = {
   ],
   18: [
     {label:"3V Sigma Uvasorb HEB",url:"https://3vsigmausa.com/product/uvasorb-heb/",citation:"Manufacturer datasheet: λmax ≈ 311 nm, ε ≈ 120,000."},
-    {label:"NCBI NBK587270 (Couteau 2007)",url:"https://www.ncbi.nlm.nih.gov/books/NBK587270/",citation:"Pharm Dev Technol. In-vitro absorbance comparison of 18 sunscreens."},
+    {label:"NCBI NBK587270 (Couteau 2007)",url:"https://www.ncbi.nlm.nih.gov/books/NBK587270/",figure_url:"https://www.ncbi.nlm.nih.gov/books/NBK587270/figure/pz43-2/",citation:"Pharm Dev Technol. In-vitro absorbance comparison of 18 sunscreens."},
     {label:"Wikipedia Iscotrizinol",url:"https://en.wikipedia.org/wiki/Iscotrizinol",citation:"Summary of regulatory + spectral data."}
   ],
   19: [
@@ -2409,7 +2476,7 @@ const SPECTRUM_REFS = {
     {label:"L'Oréal Mexoryl XL ingredient page",url:"https://inside-our-products.loreal.com/ingredients/mexorylr-xl",citation:"Manufacturer source: dual peaks 303/344 nm."}
   ],
   22: [
-    {label:"Marionnet 2021 JID Innovations",url:"https://www.sciencedirect.com/science/article/pii/S2667026721000710",citation:"JID Innov 2:100070. ε ≈ 63,000 at 385 nm; full UV-Vis spectrum figure. Note: data is L'Oréal-affiliated."},
+    {label:"Marionnet 2021 JID Innovations",url:"https://www.sciencedirect.com/science/article/pii/S2667026721000710",figure_url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC8762479/figure/fig1/",citation:"JID Innov 2:100070. ε ≈ 63,000 at 385 nm; full UV-Vis spectrum figure. Note: data is L'Oréal-affiliated."},
     {label:"SCCS/1605/19 MCE opinion",url:"http://yjj.sc.gov.cn/scyjj/uploads/20200515/sccs_o_227.pdf",citation:"EU regulatory dossier with reference spectrum."}
   ],
   23: [
@@ -2440,7 +2507,7 @@ const SPECTRUM_REFS = {
   29: [
     {label:"Cole, Shyr, Ou-Yang 2016",url:"https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",citation:"Photodermatol Photoimmunol Photomed 32:5. Transmission/reflectance spectra of ZnO + TiO₂; absorption dominates 10:1 over scattering."},
     {label:"Egerton & Tooley 2012",url:"https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2494.2011.00689.x",citation:"Int J Cosmet Sci 34:117. Mie-theory mass extinction calculations for 20/50/100 nm ZnO + TiO₂."},
-    {label:"Smijs & Pavel 2011 (PMC)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/",citation:"Nanotechnol Sci Appl 4:95. Optical properties review of ZnO/TiO₂ nanoparticles in sunscreens."}
+    {label:"Smijs & Pavel 2011 (PMC)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/",figure_url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3781714/figure/f3-nsa-4-095/",citation:"Nanotechnol Sci Appl 4:95. Optical properties review of ZnO/TiO₂ nanoparticles in sunscreens."}
   ],
   30: [
     {label:"Cole, Shyr, Ou-Yang 2016",url:"https://onlinelibrary.wiley.com/doi/full/10.1111/phpp.12214",citation:"Photodermatol Photoimmunol Photomed 32:5. TiO₂ absorbs >95% of UVB; reflection only 4-5%."},
@@ -2448,7 +2515,7 @@ const SPECTRUM_REFS = {
     {label:"ACS Acc Mater Res 2024",url:"https://pubs.acs.org/doi/10.1021/accountsmr.4c00004",citation:"Standardising white-cast potential of metal-oxide UV filters."}
   ],
   31: [
-    {label:"Wang 2022 Molecules (PMC)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9737593/",citation:"Substituent effects on UV absorption of 2,4-dihydroxybenzophenone (BP-1) — published spectrum + ε."},
+    {label:"Wang 2022 Molecules (PMC)",url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9737593/",figure_url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9737593/figure/molecules-27-08169-f003/",citation:"Substituent effects on UV absorption of 2,4-dihydroxybenzophenone (BP-1) — published spectrum + ε."},
     {label:"Kumasaka 2014 Photochem Photobiol",url:"https://onlinelibrary.wiley.com/doi/abs/10.1111/php.12257",citation:"Benzophenone derivatives spectra including BP-1."},
     {label:"Jiang 2021 J Mol Liq",url:"https://www.sciencedirect.com/science/article/abs/pii/S0167732221030890",citation:"ε(λmax) for BP-1 and analogs in 3D-QSAR study."}
   ],
