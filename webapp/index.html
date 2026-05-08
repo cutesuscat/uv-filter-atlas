@@ -628,6 +628,17 @@
     border-bottom: 1px dashed var(--line);
   }
   .builder-presets .chip{ background: var(--bg) }
+  .preset-with-src{ display: inline-flex; align-items: center; gap: 4px }
+  .preset-src{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 999px;
+    text-decoration: none; font-size: 0.78rem;
+    background: var(--bg); border: 1px solid var(--line); color: var(--muted);
+    transition: all .2s var(--ease);
+  }
+  .preset-src:hover{
+    background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+  }
   .builder-active{
     display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
     min-height: 0;
@@ -1228,8 +1239,14 @@
     <div class="builder-card">
       <div class="builder-presets">
         <span class="group-label">Presets</span>
-        <button class="chip" data-preset="uvmune-400">UVMune 400 (LRP Anthelios)</button>
-        <button class="chip" data-preset="skinaqua">Skin Aqua Super UV Moisture Milk (JP hybrid)</button>
+        <span class="preset-with-src">
+          <button class="chip" data-preset="uvmune-400">UVMune 400 (LRP Anthelios)</button>
+          <a class="preset-src" href="md.html?path=research/sources/uvmune-400-source.md" target="_blank" rel="noopener" title="View source document with ingredient list and concentration inference">📄</a>
+        </span>
+        <span class="preset-with-src">
+          <button class="chip" data-preset="skinaqua">Skin Aqua Super UV Moisture Milk (JP hybrid)</button>
+          <a class="preset-src" href="md.html?path=research/sources/skinaqua-source.md" target="_blank" rel="noopener" title="View source document with ingredient list and concentration inference">📄</a>
+        </span>
         <button class="chip" data-preset="eu-broad">EU broad-spectrum (Tinosorb M+S+DHHB+EHT)</button>
         <button class="chip" data-preset="us-classic">US classic (AVB+OC)</button>
         <button class="chip" data-preset="mineral">Mineral (ZnO+TiO₂)</button>
@@ -1447,17 +1464,81 @@
         <li><strong>C4</strong> — graph-digitised or estimated</li>
         <li><strong>C5</strong> — not located</li>
       </ul>
-      <h4>Source repository</h4>
-      <p>The full claim files, sources lists, and master synthesis live at <code>/workspace/health/sunscreen-filters/</code> with the primary reference at <code>MASTER-SYNTHESIS.md</code>. Each filter category has its own <code>research/&lt;category&gt;/</code> directory with claim files and a sources.md.</p>
+      <h4>About this atlas</h4>
+      <p>This is an AI-generated reference compendium. Background on how it was built — and on the broader experiment of sharing Claude Code outputs publicly — is at <a href="https://blog.sus.cat/p/share-your-claude-code-outputs" target="_blank" rel="noopener">blog.sus.cat / share-your-claude-code-outputs</a>. Source markdown files (claim files, verification docs, calibration deep-dives, preset-source documentation) are browsable via the document viewer: <a href="md.html?path=MASTER-SYNTHESIS.md">MASTER-SYNTHESIS</a>, <a href="md.html?path=research/sources/skinaqua-source.md">SkinAqua source</a>, <a href="md.html?path=research/sources/uvmune-400-source.md">UVMune 400 source</a>, and any other <code>.md</code> file via <code>md.html?path=...</code>.</p>
       <h4>AI disclosure</h4>
-      <p>This page was AI-generated and primarily AI fact-checked, not personally verified by the author. Numerical values, citations, and regulatory statuses should be re-verified against primary sources before any clinical, regulatory, or product-formulation use. An adversarial critique pass was run against fabricated-citation and sycophancy failure modes; results are recorded in <code>verification/</code>.</p>
-      <h4>Known data gaps</h4>
+      <p>Researched, synthesized, and rendered by AI agents. Primarily AI fact-checked, not personally verified by the author. Citations were spot-checked against PubMed and publisher pages — <strong>2 misattributed citations were corrected</strong> in an adversarial critique pass (Stange→Hanson; Hamzavi→D'Ruiz). Numerical values, regulatory statuses, and SPF predictions should be re-verified against primary sources before any clinical, regulatory, or product-formulation use.</p>
+
+      <h4>Limitations — model and math</h4>
       <ul>
-        <li>Mexoryl 400 photostability — only sponsor data; no independent peer-reviewed values located</li>
-        <li>Iscotrizinol / TBPT singlet-oxygen quantum yields — no primary measurement located</li>
-        <li>Bisoctrizole molar extinction — most data manufacturer-derived</li>
+        <li>Beer-Lambert assumes uniform homogeneous solution; real cosmetic films have particle aggregation, film-thickness inhomogeneity, finger-ridge gaps</li>
+        <li>Concentration nonlinearity f(c) is per-filter; <strong>double-counts when many organics share the load</strong> (US classic stack under-predicted ~3×); may under-correct for very high inorganic loadings</li>
+        <li>Spectrum curves are linear interpolation between literature data points (with exponential 4 nm decay past the data range); could miss sub-nm absorption features</li>
+        <li>No explicit Mie scattering correction for inorganics — assumed lumped into the calibrated effective E1%</li>
+        <li>Photodegradation kinetics shown in §06 are simplified single-pass first-order — no formulation matrix effects, no oxygen dependence, no wavelength-resolved photoproduct branching</li>
+        <li>Particle size correction for inorganics is a single multiplier; doesn't capture full size distribution effects</li>
+      </ul>
+
+      <h4>Limitations — SPF estimator</h4>
+      <ul>
+        <li>CIE 1987 erythema action spectrum is the FDA standard, but <strong>understates UVA-1 sensitivity</strong> in some skin types; mineral sunscreens over-predicted ~10× because the soft TiO₂ band-edge leak past 380 nm doesn't hurt SPF in this metric even though it does on real skin</li>
+        <li>AM 1.5 solar spectrum is a single approximation; real solar varies 10× by latitude / season / time of day</li>
+        <li>HEV blockade computation uses flat solar irradiance in 400–500 nm (good enough for relative comparisons)</li>
+        <li>Display capped at "SPF 100+" — clinical SPF testing has a similar practical ceiling around 100</li>
+        <li>UVA-PF computation uses an unweighted UVA integral, not the full PPD action spectrum</li>
+        <li>Critical wavelength uses 1 nm sampling; sub-nm precision not meaningful</li>
+      </ul>
+
+      <h4>Limitations — data quality and sourcing</h4>
+      <ul>
+        <li><strong>Mexoryl 400</strong> spectral data all traces back to L'Oréal/BASF sponsor measurements (Marionnet 2021 + SCCS/1605/19) — no independent academic ε determination published as of May 2026</li>
+        <li><strong>Iscotrizinol</strong> Φ_T and Φ_Δ values not located; <strong>Bisoctrizole</strong> ε mostly manufacturer-derived (BASF Tinosorb M datasheet)</li>
+        <li><strong>Cinoxate, Padimate O</strong> — original ε measurement papers not retrieved during audit; values cited in secondary literature only</li>
+        <li><strong>Mexenone (BP-10)</strong> and <strong>BCSA (Mexoryl SD)</strong>: no modern primary spectra located — values held by structural analogy (C5 confidence)</li>
+        <li>Iron oxide effective E1% calibrated against ~10 HEV-blockade anchor points (Mahmoud 2010, Ruvolo 2018, Castanedo-Cazares 2014, Lyons 2021, Dumbuya 2020)</li>
+        <li>ZnO concentration-nonlinearity parameters fit to 9 mineral formulations (Badger, ThinkSport, Aveeno + industry benchmarks); 22% mean SPF error on validation set</li>
         <li>Coral-reef toxicity for benzophenones other than BP-3 — analogous Downs-style assays not located</li>
-        <li>Long-term chronic dermal exposure data for nano-coated inorganic forms</li>
+      </ul>
+
+      <h4>Limitations — scope</h4>
+      <ul>
+        <li>36 filters covered; some Korea- or China-only modern filters not included</li>
+        <li>Photostabilizer interactions covered in §07 but not factored into the SPF math</li>
+        <li>After-sun repair products, antioxidant boosters (Vitamin E, C, ferulic acid), and DNA-repair enzymes not modeled</li>
+        <li>Filter interactions with skincare actives (retinol, AHAs, vitamin C) not addressed</li>
+        <li>Octocrylene → benzophenone shelf-life kinetics (Downs 2021) noted but not implemented in the SPF model — predicted SPF doesn't degrade with age</li>
+        <li>DHHB's DnHexP phthalate impurity noted but not explored in depth</li>
+        <li>Half-life values are conditions-dependent; a single value per filter is an approximation</li>
+      </ul>
+
+      <h4>Limitations — visualization</h4>
+      <ul>
+        <li>Y-axis E(1%, 1cm) requires mental conversion to film absorbance (multiply by 0.002 for a 2 mg/cm² film); the Spectrum Builder offers Lab / Real-world modes for direct transmittance</li>
+        <li>Log scale on most charts can mislead users unfamiliar with logarithmic axes</li>
+        <li>Color choices not formally tested for full color-blind safety; the UV-band palette uses violet/pink/amber which may collapse for some forms of dichromacy</li>
+        <li>Modal SVGs use a single x-axis range per filter; comparing two filters with different ranges requires opening each modal separately</li>
+        <li>Mobile experience tested at 375 px width but very narrow viewports (&lt;320 px) may have minor layout issues</li>
+      </ul>
+
+      <h4>Limitations — real-world translation</h4>
+      <ul>
+        <li><strong>Application thickness</strong> varies widely in real users (0.3–1.5 mg/cm²) vs the FDA-standard 2 mg/cm² test; switch the Spectrum Builder to "Real-world" mode for the typical-use case</li>
+        <li>Coverage is rarely 100% even with diligent application — finger-ridge gaps reduce effective protection</li>
+        <li>Sweat / water resistance varies by formulation; not modeled (use the brand's water-resistance claim as the practical guide)</li>
+        <li>Reapplication kinetics (every 2 h, or after sweating/swimming) not modeled — the chart assumes a fresh single application</li>
+        <li>Skin type (Fitzpatrick I–VI) affects baseline MED but not modeled; visible-light damage in particular is more relevant for IV–VI</li>
+        <li>Geographic / seasonal UV exposure varies by 10× and not factored — the chart assumes mid-latitude noon clear-sky AM 1.5</li>
+        <li>Indoor light through windows: UVB blocked, UVA-1 partially transmitted (not modeled)</li>
+        <li>Product expiration / shelf life reduces filter potency over time, especially for octocrylene-stabilized formulations (Downs 2021 retro-aldol decomposition)</li>
+      </ul>
+
+      <h4>Limitations — regulatory currency</h4>
+      <ul>
+        <li>Regulatory status is a snapshot of May 2026 — jurisdictions change rapidly</li>
+        <li>FDA Dec 2025 bemotrizinol Proposed Order at 6% GRASE is recent and not yet final (expected June 2026)</li>
+        <li>Reef-ban legislation (Hawaii Act 104, Florida Keys, Palau, USVI, Aruba, Bonaire) may evolve</li>
+        <li>EU 4-MBC ban effective May 2026 — formulations may still be in distribution channel as of the atlas date</li>
+        <li>Asia-Pacific markets (Thailand, Vietnam, Indonesia) less thoroughly covered than US/EU/JP/KR/AU</li>
       </ul>
     </div>
   </section>
@@ -2675,8 +2756,8 @@ applyTheme();
 // Spectrum Builder — pick filters, see combined absorbance
 // =========================================
 const PRESETS = {
-  'uvmune-400':     [['Mexoryl 400', 3], ['Bemotrizinol', 5], ['Bisoctrizole', 5], ['DHHB', 5], ['Avobenzone', 3], ['Octocrylene', 5]],
-  'skinaqua':       [['Octinoxate', 7.5], ['DHHB', 3], ['Zinc Oxide', 10], ['Titanium Dioxide (rutile)', 2], ['Iron Oxide Yellow', 0.3], ['Iron Oxide Red', 0.1]],
+  'uvmune-400':     [['Octisalate', 5], ['Bemotrizinol', 5], ['Ethylhexyl Triazone', 3], ['Avobenzone', 4], ['Mexoryl 400', 3], ['DHHB', 3], ['Drometrizole Trisiloxane', 1.5], ['Ecamsule', 1]],
+  'skinaqua':       [['Zinc Oxide', 10], ['Octinoxate', 7.5], ['DHHB', 3]],
   'us-classic':     [['Avobenzone', 3], ['Octocrylene', 7], ['Octisalate', 5], ['Homosalate', 10]],
   'eu-broad':       [['Bisoctrizole', 8], ['Bemotrizinol', 5], ['DHHB', 8], ['Ethylhexyl Triazone', 4]],
   'mineral':        [['Zinc Oxide', 15], ['Titanium Dioxide (rutile)', 5]],

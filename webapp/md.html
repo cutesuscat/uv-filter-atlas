@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UV Filter Atlas — Document Viewer</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked@13/marked.min.js" integrity="sha384-c2C2v1RUdpTvdOjpr3J/D6V3bgWcsjL/dMK4j2aNcUffJaC2HG4tHQZJ3/MdtSMl" crossorigin="anonymous"></script>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg: #f8f6f1; --bg-2: #ffffff; --ink: #15121b; --ink-soft: #2d2735;
+    --muted: #6b6473; --rule: #1a1620; --line: #d8d3cb; --line-soft: #e9e4dc;
+    --accent: #6b1f6e; --accent-soft: #f4e8f4;
+    --warn: #b94a3c; --warn-soft: #f7e7e3;
+    --ok: #2d6b3f; --ok-soft: #e3efe6;
+    --serif: 'Inter', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #0f0d14; --bg-2: #16131b; --ink: #efeae0; --ink-soft: #d4cdbf;
+      --muted: #948b9a; --rule: #efeae0; --line: #2d2737; --line-soft: #1f1b27;
+      --accent: #d6a4d8; --accent-soft: #2c1d2e;
+      --warn: #e8806f; --warn-soft: #36211d;
+      --ok: #87c697; --ok-soft: #1d2c22;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #0f0d14; --bg-2:#16131b; --ink:#efeae0; --ink-soft:#d4cdbf;
+    --muted:#948b9a; --rule:#efeae0; --line:#2d2737; --line-soft:#1f1b27;
+    --accent:#d6a4d8; --accent-soft:#2c1d2e; --warn:#e8806f; --warn-soft:#36211d;
+    --ok:#87c697; --ok-soft:#1d2c22;
+  }
+  html{ scroll-behavior:smooth }
+  body{
+    font-family: var(--serif); background: var(--bg); color: var(--ink);
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  .container{ max-width: 880px; margin: 0 auto; padding: 0 32px }
+  .topbar{
+    display:grid; grid-template-columns: 1fr auto 1fr;
+    align-items:center; gap: 24px;
+    padding: 20px 0; margin-top: 8px;
+    border-bottom: 1.5px solid var(--rule);
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.6px;
+    color: var(--muted);
+  }
+  .topbar-mid{ text-align:center; font-weight:500; color: var(--ink-soft) }
+  .topbar-right{ text-align:right; display:flex; gap:12px; justify-content:flex-end; align-items:center }
+  .back{ color: var(--accent); text-decoration:none }
+  .back:hover{ text-decoration:underline }
+  .theme-toggle{
+    background:none; border:1px solid var(--line); color: var(--ink-soft);
+    padding: 4px 10px; border-radius: 999px; cursor: pointer;
+    font: inherit; font-size: 0.68rem; letter-spacing: 1.4px; text-transform: uppercase;
+  }
+
+  article#content{ padding: 50px 0 80px; max-width: 75ch }
+  article#content h1{
+    font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800;
+    line-height: 1.15; letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  article#content h2{
+    font-size: 1.4rem; font-weight: 700; margin: 36px 0 12px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--line);
+  }
+  article#content h3{ font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px }
+  article#content h4{ font: 700 0.78rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin: 18px 0 8px }
+  article#content p{ margin: 12px 0; color: var(--ink-soft); max-width: 75ch }
+  article#content strong{ color: var(--ink); font-weight: 600 }
+  article#content em{ color: var(--accent); font-style: italic }
+  article#content a{ color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px }
+  article#content a:hover{ color: var(--ink) }
+  article#content ul, article#content ol{ margin: 12px 0; padding-left: 24px; color: var(--ink-soft) }
+  article#content li{ margin: 4px 0 }
+  article#content code{ font: 500 0.88em var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--line-soft) }
+  article#content pre{ background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; margin: 16px 0 }
+  article#content pre code{ background: none; border: none; padding: 0; color: var(--ink-soft); font-size: 0.85rem }
+  article#content blockquote{
+    border-left: 3px solid var(--accent); padding: 4px 16px;
+    margin: 16px 0; color: var(--muted); font-style: italic;
+  }
+  article#content table{
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 0.92rem; background: var(--bg-2);
+    border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+  }
+  article#content th, article#content td{
+    text-align: left; padding: 10px 14px;
+    border-bottom: 1px solid var(--line-soft); vertical-align: top;
+  }
+  article#content th{
+    font: 700 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 1px;
+    color: var(--muted); border-bottom: 1.5px solid var(--rule);
+    background: var(--bg);
+  }
+  article#content tr:hover{ background: var(--accent-soft) }
+  article#content hr{ border: none; border-top: 1.5px solid var(--rule); margin: 32px 0 }
+
+  .doc-meta{
+    font: 500 0.78rem var(--mono); color: var(--muted);
+    padding: 14px 0; border-bottom: 1px dashed var(--line);
+    margin-bottom: 28px;
+  }
+  .doc-meta a{ color: var(--accent) }
+  .error-box{
+    padding: 24px; border: 1px solid var(--warn); border-radius: 4px;
+    background: var(--warn-soft); color: var(--warn);
+    font: 500 0.92rem var(--mono); line-height: 1.7;
+  }
+  footer{
+    padding: 24px 0; border-top: 1.5px solid var(--rule);
+    font: 500 0.7rem var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.4px;
+  }
+  footer a{ color: var(--accent); text-decoration: none }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <span><a class="back" href="index.html">← Atlas</a></span>
+    <span class="topbar-mid" id="docPath">Document Viewer</span>
+    <span class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme">Auto</button>
+    </span>
+  </div>
+
+  <article id="content"><p>Loading…</p></article>
+
+  <footer>
+    <span>UV Filter Atlas · Document Viewer</span>
+  </footer>
+</div>
+
+<div style="position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);font-size:9px;padding:2px 7px;border-radius:8px;z-index:9999;font-family:system-ui,-apple-system,sans-serif;pointer-events:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);letter-spacing:0.3px;text-transform:uppercase;font-weight:500;">ai gen</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const path = params.get('path') || '';
+const content = document.getElementById('content');
+const docPath = document.getElementById('docPath');
+
+if (!path){
+  content.innerHTML = `<div class="error-box"><strong>Missing ?path= parameter.</strong><br><br>Use this viewer with a path to a markdown file in the project, e.g.:<br><code>md.html?path=research/sources/skinaqua-source.md</code><br>or<br><code>md.html?path=MASTER-SYNTHESIS.md</code></div>`;
+} else {
+  // Resolve relative to the project root (one level up from /webapp/)
+  const url = '../' + path;
+  docPath.textContent = path;
+  fetch(url)
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(md => {
+      const html = marked.parse(md, { gfm: true, breaks: false, headerIds: true, mangle: false });
+      // Rewrite internal .md links to use this viewer
+      const rewritten = html.replace(/href="([^"]+\.md)"/g, (m, href) => {
+        if (href.startsWith('http')) return m;
+        // resolve relative to current path
+        const baseDir = path.split('/').slice(0, -1).join('/');
+        const target = href.startsWith('/') ? href.slice(1)
+                     : (baseDir ? baseDir + '/' + href : href);
+        return `href="md.html?path=${target.replace(/^\.\//, '')}"`;
+      });
+      content.innerHTML = `<div class="doc-meta">📄 <a href="${url}" target="_blank">View raw markdown</a> · Path: <code>${path}</code></div>` + rewritten;
+    })
+    .catch(err => {
+      content.innerHTML = `<div class="error-box"><strong>Could not load <code>${path}</code></strong><br><br>${err.message}<br><br>Check the path is correct relative to the project root.</div>`;
+    });
+}
+
+// Theme toggle (auto / light / dark)
+const modes = ['auto','light','dark'];
+const labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+let modeIndex = modes.indexOf(localStorage.getItem('theme') || 'auto');
+const tbtn = document.getElementById('themeToggle');
+function applyTheme(){
+  const m = modes[modeIndex];
+  localStorage.setItem('theme', m);
+  if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  tbtn.textContent = labels[m];
+}
+tbtn.addEventListener('click', () => { modeIndex = (modeIndex + 1) % modes.length; applyTheme(); });
+applyTheme();
+</script>
+</body>
+</html>
