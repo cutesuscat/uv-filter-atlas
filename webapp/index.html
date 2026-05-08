@@ -968,14 +968,19 @@
     line-height: 1.5;
   }
   .spectrum-refs li:first-child{ border-top: none; padding-top: 2px }
-  .ref-link{
+  .ref-link, .ref-fig-link{
     display: inline-block;
     font: 600 0.76rem var(--mono); color: var(--accent);
     text-decoration: none; padding: 1px 0;
-    margin-right: 8px;
+    margin-right: 6px;
     border-bottom: 1px solid var(--accent);
   }
-  .ref-link:hover{ color: var(--ink); border-bottom-color: var(--ink) }
+  .ref-link:hover, .ref-fig-link:hover{ color: var(--ink); border-bottom-color: var(--ink) }
+  .ref-fig-link{
+    color: var(--moderate); border-bottom-color: var(--moderate);
+    font-weight: 500;
+  }
+  .ref-fig-link:hover{ color: var(--ink); border-bottom-color: var(--ink) }
   .ref-cite{
     font: 500 0.78rem/1.5 var(--serif); color: var(--ink-soft);
     display: block; margin-top: 2px;
@@ -2499,14 +2504,21 @@ function methodologyBubble(f){
 }
 
 // Render a block of literature references for verifying the absorption spectrum.
-// Each filter's `spectrumRefs` is an array of {label, citation, url} objects.
+// Each ref is {label, citation, url, [figure_url]}. When figure_url is present,
+// a separate "🖼 figure" link is rendered alongside the paper link to point
+// directly at the published spectrum image on the publisher's site.
 function spectrumRefsBlock(f){
   const refs = (typeof SPECTRUM_REFS !== 'undefined' && SPECTRUM_REFS[f.idx]) || f.spectrumRefs || [];
   if (!refs.length) return '';
-  const items = refs.map(r => `
-    <li><a href="${r.url}" target="_blank" rel="noopener" class="ref-link">${r.label || 'View'}</a>
+  const items = refs.map(r => {
+    const figLink = r.figure_url
+      ? ` <a href="${r.figure_url}" target="_blank" rel="noopener" class="ref-fig-link" title="Direct link to the spectrum figure on the publisher's site">🖼 figure</a>`
+      : '';
+    return `
+    <li><a href="${r.url}" target="_blank" rel="noopener" class="ref-link">📄 ${r.label || 'paper'}</a>${figLink}
       <span class="ref-cite">${r.citation}</span>
-    </li>`).join('');
+    </li>`;
+  }).join('');
   return `<div class="spectrum-refs">
     <div class="spectrum-refs-head">Verify the spectrum — published sources</div>
     <ul>${items}</ul>
